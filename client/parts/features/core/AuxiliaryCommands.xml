@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.AuxiliaryCommands.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Auxiliary Commands section and Auxiliary Commands Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.AuxiliaryCommands">
+      <title>Auxiliary Commands</title>
+      <para>
+        Auxiliary Commands section defines Client ability to manage auxiliary commands supported by the Device.
+      </para>
+  </section>
+ <section xml:id="tc.AuxiliaryCommands">
+    <title>Auxiliary Commands Test Cases</title>
+    <section xml:id="tc.AuxiliaryCommands.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Auxiliary Commands (AuxiliaryCommands)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="None (ONVIF Profile T Simulator is used as device)">Check Condition based on Device Features:</emphasis> None (ONVIF Profile T Simulator is used as device).
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.18 Auxiliary Commands">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to ONVIF Profile T Simulator to manage auxiliary commands supported by the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Auxiliary Commands if the
+              following conditions are met:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    ONVIF Profile T Simulator detects <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with at least one of the following auxiliary commands:
+                    <itemizedlist>
+                      <listitem>
+                        <para>tt:Wiper|On</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:Wiper|Off</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:Washer|On</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:Washer|Off</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:WashingProcedure|On</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:WashingProcedure|Off</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:IRLamp|On</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:IRLamp|Off</para>
+                      </listitem>
+                      <listitem>
+                        <para>tt:IRLamp|Auto</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Auxiliary Commands if
+              ANY of the following is TRUE:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                     <itemizedlist>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Wiper|On auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Wiper|Off auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Washer|On auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Washer|Off auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:WashingProcedure|On auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:WashingProcedure|Off auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:IRLamp|On auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:IRLamp|Off auxiliary command
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:IRLamp|Auto auxiliary command.
+
+                    </para>
+                  </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>        
+        </orderedlist>
+      </para>
+     <para>
+            <emphasis role="bold">Recommendation:</emphasis> Clients should support all auxiliary operations listed in the scenario.
+          </para>
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-1">
+      <title>WIPER ON</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:Wiper|On (AuxiliaryCommands_WiperOn)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Wiper|On">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:Wiper|On"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-1.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-1.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:Wiper|On"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-1.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-1.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-2">
+      <title>WIPER OFF</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:Wiper|Off (AuxiliaryCommands_WiperOff)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Wiper|Off">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:Wiper|Off"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-2.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-2.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:Wiper|Off"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-2.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-2.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-3">
+      <title>WASHER ON</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:Washer|On (AuxiliaryCommands_WasherOn)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Washer|On">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:Washer|On"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-3.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-3.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:Washer|On"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-3.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-3.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-4">
+      <title>WASHER OFF</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:Washer|Off (AuxiliaryCommands_WasherOff)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Washer|Off">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:Washer|Off"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-4.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-4.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:Washer|Off"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-4.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-4.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-5">
+      <title>WASHINGPROCEDURE ON</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-5
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:WashingProcedure|On (AuxiliaryCommands_WashingProcedureOn)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:WashingProcedure|On">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:WashingProcedure|On"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-5.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-5.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:WashingProcedure|On"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-5.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-5.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-6">
+      <title>WASHINGPROCEDURE OFF</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-6
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:WashingProcedure|Off (AuxiliaryCommands_WashingProcedureOff)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:WashingProcedure|Off">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:WashingProcedure|Off"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-6.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-6.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:WashingProcedure|Off"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-6.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-6.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-7">
+      <title>IRLAMP ON</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-7
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:IRLamp|On (AuxiliaryCommands_IRLampOn)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:IRLamp|On">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:IRLamp|On"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-7.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-7.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:IRLamp|On"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-7.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-7.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-8">
+      <title>IRLAMP OFF</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-8
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:IRLamp|Off (AuxiliaryCommands_IRLampOff)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:IRLamp|Off">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:IRLamp|Off"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-8.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-8.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:IRLamp|Off"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-8.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-8.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-9">
+      <title>IRLAMP AUTO</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Auxiliary Commands
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AUXILIARYCOMMANDS-9
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> tt:IRLamp|Auto (AuxiliaryCommands_IRLampAuto)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:IRLamp|Auto">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:IRLamp|Auto"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-9.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-9.1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:IRLamp|Auto"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-9.2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.AuxiliaryCommands.AUXILIARYCOMMANDS-9.3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.ExternalAuthorization.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+		<para>Scope\AreaInformation section was added.</para>
+		<para>Area Information Test Cases section was added.</para>
+		<para>System Component Information section was removed.</para>
+		<para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>
+  <section xml:id="s.intro.ExternalAuthorization">
+    <title>External Authorization</title>
+    <para>
+      External Authorization section specifies Client ability to receive authorization
+      request from Device and then make decisions about granting access and send it to
+      Device. This section also specifies Client ability to retrieve and receive
+      notifications about access decisions related to External Authorization.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.ExternalAuthorization">
+    <title>External Authorization Test Cases</title>
+    <section xml:id="tc.ExternalAuthorization.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> External Authorization (ExternalAuthorization)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ExternalAuthorization">Check Condition based on Device Features:</emphasis> External Authorization is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.ExternalAuthorization.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client receives authorization request from Device and makes a decision
+              about granting access.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client receives notifications about access decisions related to External Authorization.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting External Authorization if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports EventHandling_Pullpoint feature AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports access_control_decisions feature AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to receive authorization request from
+                    Device AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to send authorization decision to Device
+                    using <emphasis role="bold">ExternalAuthorization</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting External Authorization if ANY
+              of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support EventHandling_Pullpoint feature OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support access_control_decisions feature OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client unable to receive authorization request from Device
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to <emphasis role="bold">ExternalAuthorization</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1">
+      <title>RECEIVE AUTHORIZATION REQUEST</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> External Authorization - Receive
+        Authorization Request
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> EXTERNALAUTHORIZATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Receive Authorization Request (ExternalAuthorization_ReceiveAuthRequest)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        receive authorization request from Device using Pull Point event mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> and PullMessages
+              operations present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with <emphasis role="bold">ExternalAuthorization</emphasis> operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message without any filter
+              or with appropriate filter.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">PullMessages</emphasis> command with Timeout and MessageLimit
+              elements.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">PullMessagesResponse</emphasis>
+              message with corresponding event topic value.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.1">
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/Request/Credential</emphasis> OR <emphasis role="bold">tns1:AccessControl/Request/Anonymous</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.2">
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/Request/Credential</emphasis> OR <emphasis role="bold">tns1:AccessControl/Request/Anonymous</emphasis> OR <emphasis role="bold">tns1:AccessControl/Request//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.3">
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.4">
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.5">
+                  <para>
+                    [S6] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:PullMessages</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">PullMessages</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.6">
+                  <para>
+                    [S7] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.7">
+                  <para>
+                    [S8] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:PullMessagesResponse</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-1.8">
+                  <para>
+                    [S9] A least one <emphasis role="bold">wsnt:NotificationMessage/wsnt:Topic</emphasis> element has value equal to EITHER <emphasis role="bold">tns1:AccessControl/Request/Credential</emphasis> OR <emphasis role="bold">tns1:AccessControl/Request/Anonymous</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2" xreflabel="EXTERNALAUTHORIZATION-2 SEND AUTHORIZATION DECISION">
+      <title>SEND AUTHORIZATION DECISION</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> External Authorization - Send
+        Authorization Decision
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> EXTERNALAUTHORIZATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Send Authorization Desicion (ExternalAuthorization_SendAuthDecision)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ExternalAuthorization">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        send Granted or Denied decision to Device.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with ExternalAuthorization operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client sends ExternalAuthorization message to Device with Granted or
+              Denied decision.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              ExternalAuthorizationResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">ExternalAuthorization</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">ExternalAuthorization</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2.0">
+                  <para>
+                    [S1] Client request contains "&lt;ExternalAuthorization&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2.1">
+                  <para>
+                    [S2] "&lt;ExternalAuthorization&gt;" includes tag: "&lt;AccessPointToken&gt;" with non-empty string value of specific token
+                    AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2.3">
+                  <para>
+                    [S4] Device response contains "&lt;ExternalAuthorizationResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

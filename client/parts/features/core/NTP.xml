@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+        <revision  xml:id="s.revhistory.NTP.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>NTP section and NTP Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.NTP.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>NTP section and NTP Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NTP.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>NTP section and NTP Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.NTP">
+      <title>NTP</title>
+      <para>
+        NTP section defines Client ability to configure synchronization of time using NTP
+        servers on Device.
+      </para>
+  </section>
+   <section xml:id="tc.NTP">
+    <title>NTP Test Cases</title>
+    <section xml:id="tc.NTP.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> NTP (NTP)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="NTP">Check Condition based on Device Features:</emphasis> NTP is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.8 NTP">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.NTP.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to configure synchronization of time using
+              NTP servers on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting NTP if the following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to get the NTP settings from Device using
+                    the GetNTP operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to set the NTP settings on Device using the
+                    SetNTP operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting NTP if ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>No Valid Device Response to GetNTP request OR</para>
+                </listitem>
+                <listitem>
+                  <para>No Valid Device Response to SetNTP request.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.NTP.NTP-1">
+      <title>GET NTP</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> NTP - GetNTP
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> NTP-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get NTP (NTP_GetNTP)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNTP">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        get the NTP settings from Device using the GetNTP operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetNTP operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetNTP request message to get current settings of NTP
+              servers on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetNTPResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNTP</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNTP</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.NTP.NTP-1.0">
+                    [S1] Client request contains "&lt;GetNTP&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NTP.NTP-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NTP.NTP-1.2">
+                    [S3] Device response contains "&lt;GetNTPResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.NTP.NTP-2">
+      <title>SET NTP</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> NTP - SetNTP
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> NTP-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set NTP (NTP_SetNTP)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetNTP">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set the NTP settings on Device using the SetNTP operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with SetNTP operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetNTP request message to set the NTP servers settings
+              on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and SetNTPResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetNTP</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetNTP</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.NTP.NTP-2.0">
+                    [S1] Client request contains "&lt;SetNTP&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NTP.NTP-2.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NTP.NTP-2.2">
+                    [S3] Device response contains "&lt;SetNTPResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove">
+      <title>Get default PTZ space of PTZ Configuration corresponding to Move Operation</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Get default PTZ space of PTZ Configuration corresponding to PTZ Move Operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetProfiles</emphasis> (Media2 Service) or
+              <emphasis role="bold">AddConfiguration</emphasis> (Media2 Service) operations
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> PTZ Move Opertaion request (AbsoluteMove or ContinuousMove) (<emphasis role="italic">moveOpertaion</emphasis>),  Default space element name to get (<emphasis role="italic">defaultSpace</emphasis>)
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> Default PTZ space value (<emphasis role="italic">spaceValue</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Annex Procedure:</emphasis>
+        <itemizedlist>
+          <!--Find GetProfilesResponse that contains Media Profile with requested token and with PTZ config with required default space-->
+          <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.0">
+            <para>
+              The Client Test Tool checks that there is Client <emphasis role="bold">AddConfiguration</emphasis> request
+              or Device <emphasis role="bold">GetProfilesResponse</emphasis> in Test Procedure that fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.1">
+                  <para>
+                    [S1] It is invoked before <emphasis role="italic">moveOpertaion</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.2">
+                  <para>
+                    If it is <emphasis role="bold">AddConfiguration</emphasis> request:
+                    <itemizedlist>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.3">
+                        <para>
+                          [S2] <emphasis role="bold">tr2:AddConfiguration/tr2:ProfileToken</emphasis> value is equal to <emphasis role="bold">ProfileToken</emphasis> value from <emphasis role="italic">moveOpertaion</emphasis> request AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.4">
+                        <para>
+                          [S3] <emphasis role="bold">tr2:AddConfiguration</emphasis> has <emphasis role="bold">tr2:Configuration</emphasis> element with <emphasis role="bold">tr2:Type</emphasis> value is equal to <emphasis role="bold">PTZ</emphasis>
+                          AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                  <para>
+                    If it is <emphasis role="bold">GetProfilesResponse</emphasis> message:
+                    <itemizedlist>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.5">
+                        <para>
+                          [S4] It contains <emphasis role="bold">tr2:Profiles</emphasis> element with <emphasis role="bold">tr2:Profiles/@token</emphasis> value is equal to <emphasis role="bold">ProfileToken</emphasis>
+                          value from <emphasis role="italic">moveOpertaion</emphasis> request (hereinafter <emphasis role="italic">profile</emphasis>) AND
+
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.6">
+                        <para>
+                          [S5] <emphasis role="italic">profile</emphasis> has <emphasis role="bold">tr2:Configurations/tr2:PTZ</emphasis> element AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.7">
+                  <para>
+                    [S6] It is the closest one preceding <emphasis role="italic">moveOpertaion</emphasis> request that fullfils ([S2] and [S3]) or ([S4] and [S5]) requirements AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--Check if PTZConfiguration was changed-->
+          <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.8">
+            <para>
+              The Client Test Tool checks if there is <emphasis role="bold">SetConfiguration</emphasis> command that fulfills the following requirements:
+              <itemizedlist>
+                <!--<listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.3">
+                  <para>
+                    [S5] It invoked for the same Device as <emphasis role="bold">GetStreamUri</emphasis> request AND
+                  </para>
+                </listitem>-->
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.9">
+                  <para>
+                    If <emphasis role="bold">AddConfiguration</emphasis> request was found during previous steps:
+                    <itemizedlist>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.10">
+                        <para>
+                          [S7]  It invoked after <emphasis role="bold">AddConfiguration</emphasis> request AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.11">
+                        <para>
+                          [S8]  It is the closest one preceding the <emphasis role="italic">moveOpertaion</emphasis> request AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.12">
+                        <para>
+                          [S9] <emphasis role="bold">tptz:SetConfiguration/tptz:PTZConfiguration/@token</emphasis> value is equal to <emphasis role="bold">tr2:AddConfiguration/tr2:Configuration/tr2:Token</emphasis> value of
+                          <emphasis role="bold">tr2:Configuration</emphasis> with <emphasis role="bold">tr2:Type</emphasis> value is equal to <emphasis role="bold">PTZ</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.13">
+                  <para>
+                    If <emphasis role="bold">GetProfiles</emphasis> request was found during previous steps:
+                    <itemizedlist>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.14">
+                        <para>
+                          [S10]  It invoked after <emphasis role="bold">GetProfiles</emphasis> request AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.15">
+                        <para>
+                          [S11]  It is the closest one preceding the <emphasis role="italic">moveOpertaion</emphasis> request AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.16">
+                        <para>
+                          [S12] <emphasis role="bold">tptz:SetConfiguration/tptz:PTZConfiguration/@token</emphasis> value is equal to <emphasis role="bold">tr2:PTZ/@token</emphasis> value of <emphasis role="italic">profile</emphasis> AND <!--from <emphasis role="bold">tr2:GetProfilesResponse/tr2:Profiles</emphasis> with <emphasis role="bold">tr2:Profiles/@token</emphasis> attribute value is equal to <emphasis role="bold">ProfileToken</emphasis> value from <emphasis role="italic">moveOpertaion</emphasis> request-->
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.17">
+            <para>
+              IF <emphasis role="bold">SetConfiguration</emphasis> command was detected during previous steps then <emphasis role="italic">defaultSpace</emphasis> element value of <emphasis role="bold">tptz:SetConfiguration/tptz:PTZConfiguration</emphasis> will be returened as result of current procedure
+            </para>
+          </listitem>
+          <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.18">
+            <para>
+              ELSE IF <emphasis role="bold">GetProfiles</emphasis> response was found during previous steps
+              then <emphasis role="italic">defaultSpace</emphasis> value of <emphasis role="bold">tr2:Configurations/tr2:PTZ</emphasis> from <emphasis role="italic">profile</emphasis><!--from <emphasis role="bold">tr2:GetProfilesResponse/tr2:Profiles</emphasis> element with <emphasis role="bold">tr2:Profiles/@token</emphasis> is equal to <emphasis role="bold">ProfileToken</emphasis> value from <emphasis role="italic">moveOpertaion</emphasis> request --> will be returened
+              as result of current procedure
+            </para>
+          </listitem>
+          <!--Procudure for AddConfiguration-->
+          <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.19">
+            <para>
+              ELSE IF <emphasis role="bold">AddConfiguration</emphasis> request was found during previous steps and no <emphasis role="bold">SetConfiguration</emphasis> was found during previous steps, the Client Test Tool checks the following:
+              <itemizedlist>
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.20">
+                  <para>
+                    There is <emphasis role="bold">GetCompatibleConfigurations</emphasis> request in Test Procedure that fulfills the following requirements:
+                    <itemizedlist>
+                      <!--<listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.11">
+                        <para>
+                          [S13] It is invoked for the same Device as the <emphasis role="bold">AddVideoSourceConfiguration</emphasis> request AND
+                        </para>
+                      </listitem>-->
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.21">
+                        <para>
+                          [S13] It is the closest one preceding the <emphasis role="bold">AddConfiguration</emphasis> request AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.22">
+                        <para>
+                          [S14] <emphasis role="bold">tptz:GetCompatibleConfigurations/tptz:ProfileToken</emphasis> value is equal to <emphasis role="bold">ProfileToken</emphasis> value from <emphasis role="italic">moveOpertaion</emphasis> request AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.23">
+                  <para>
+                    Device response on the <emphasis role="bold">GetCompatibleConfigurations</emphasis> request fulfills the following requirements:
+                    <itemizedlist>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.24">
+                        <para>
+                          [S15] It has HTTP 200 response code AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.25">
+                        <para>
+                          [S16] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:GetCompatibleConfigurationsResponse</emphasis> AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.26">
+                        <para>
+                          [S17] It contains <emphasis role="bold">tptz:PTZConfiguration/@token</emphasis> value is equal to <emphasis role="bold">tr2:AddConfiguration/tr2:Configuration/tr2:Token</emphasis> value of
+                          <emphasis role="bold">tr2:Configuration</emphasis> with <emphasis role="bold">tr2:Type</emphasis> value is equal to <emphasis role="bold">PTZ</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.27">
+                  <para>
+                    [S18] <emphasis role="italic">defaultSpace</emphasis> value from <emphasis role="bold">tptz:GetCompatibleConfigurationsResponse/tptz:PTZConfiguration</emphasis> element with @token is equal to <emphasis role="bold">tr2:AddConfiguration/tr2:Configuration/tr2:Token</emphasis> value of
+                    <emphasis role="bold">tr2:Configuration</emphasis> with <emphasis role="bold">tr2:Type</emphasis> value is equal to <emphasis role="bold">PTZ</emphasis> will be returened
+                    as result of current procedure.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>

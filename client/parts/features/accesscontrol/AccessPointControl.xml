@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.AccessControl.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+		<para>Scope\AreaInformation section was added.</para>
+		<para>Area Information Test Cases section was added.</para>
+		<para>System Component Information section was removed.</para>
+		<para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>  
+  <section xml:id="s.intro.AccessPointControl">
+        <title>Access Point Control</title>
+        <para>
+          Access Point Control section specifies Client ability to control Access Points
+          (enabled/disabled).
+        </para>
+      </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.AccessPointControl">
+      <title>Access Points Control Test Cases</title>
+      <section xml:id="tc.AccessPointControl.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Access Points Control (AccessPointControl)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="EnableDisableAccessPoint">Check Condition based on Device Features:</emphasis> Enable/Disable Access Point is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 1
+        </para>
+        <para>
+          <emphasis role="bold">Profile C Requirement:</emphasis> Conditional
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="8.2	Access Point Control">Profile D Requirement:</emphasis> Conditional
+        </para>
+      </section>
+      <section xml:id="tc.AccessPointControl.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes a specific Access Points Control commands in order to
+                change the state of access point.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Access Points Control if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Device returns a valid response to EnableAccessPoint
+                      request AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Device returns a valid response to DisableAccessPoint
+                      request.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Access Points Control if ANY of
+                the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid Device response to EnableAccessPoint request
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid Device response to DisableAccessPoint
+                      request.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1">
+        <title>DISABLE ENABLE ACCESS POINT</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Access Points Control -
+          DisableEnableAccessPoint
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSPOINTCONTROL-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Disable Enable Access Point (AccessPointControl_DisableEnableAccessPoint)
+        </para>
+        <para>
+          <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+        </para>
+        <para>
+          <emphasis role="bold" annotations="EnableAccessPoint;DisableAccessPoint">Profile D Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+          disable Access Point using DisableAccessPoint operation and enable Access Point
+          using EnableAccessPoint operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation between
+                Client and Device with DisableAccessPoint and EnableAccessPoint
+                operations present.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes DisableAccessPoint request message to disable Access
+                Point.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and DisableAccessPointResponse
+                message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client invokes EnableAccessPoint request message to enable access
+                point.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and EnableAccessPointResponse
+                message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DisableAccessPoint</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DisableAccessPoint</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.0">
+                    <para>
+                      [S1] Client request contains "&lt;DisableAccessPoint&gt;" tag after the "&lt;Body&gt;" tag AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.1">
+                    <para>
+                      [S2] "&lt;DisableAccessPoint&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.2">
+                    <para>
+                      [S3] Device response contains "HTTP/* 200 OK" AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.3">
+                    <para>
+                      [S4] Device response contains "&lt;DisableAccessPointResponse&gt;" tag
+                      AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">EnableAccessPoint</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">EnableAccessPoint</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.4">
+                    <para>
+                      [S5] Client request contains "&lt;EnableAccessPoint&gt;" tag after the "&lt;Body&gt;" tag AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.5">
+                    <para>
+                      [S6] "&lt;EnableAccessPoint&gt;" includes tag: "&lt;Token&gt;" with token value from DisableAccessPoint operation AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.6">
+                    <para>
+                      [S7] Device response contains "HTTP/* 200 OK" AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointControl.ACCESSPOINTCONTROL-1.7">
+                    <para>
+                      [S8] Device response contains "&lt;EnableAccessPointResponse&gt;" tag.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>The Client failed PASS criteria.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+</feature>

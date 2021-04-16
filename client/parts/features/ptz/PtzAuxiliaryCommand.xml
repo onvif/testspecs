@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.PtzAuxiliaryCommand.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ - Auxiliary Command section and PTZ - Auxiliary Command Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PtzAuxiliaryCommand">
+      <title>PTZ - Auxiliary Command</title>
+      <para>
+        PTZ - Auxiliary Command section specifies Client ability to send auxiliary
+        commands to a PTZ Device.
+      </para>
+  </section>
+   <section xml:id="tc.PtzAuxiliaryCommand">
+    <title>PTZ - Auxiliary Command Test Cases</title>
+    <section xml:id="tc.PtzAuxiliaryCommand.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> PTZ Auxiliary Command (PtzAuxiliaryCommand)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZAuxiliary AND S">Check Condition based on Device Features:</emphasis> Auxiliary Operations (PTZ Service) and Profile S are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PtzAuxiliaryCommand.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to manage the auxiliary commands of a PTZ
+              Node.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ - Auxiliary Command if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to read PTZ capabilities from PTZ Node
+                    using EITHER GetNodes OR GetNode operations AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to call an auxiliary operation on Device
+                    using the SendAuxiliaryCommand operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ - Auxiliary Command if ANY
+              of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    BOTH (No Valid Device Response to GetNodes request AND No
+                    Valid Device Response to GetNode request) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SendAuxiliaryCommand
+                    request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PtzAuxiliaryCommand.PTZAUXILIARYCOMMAND-1">
+      <title>PTZ SEND AUXILIARY COMMAND</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Auxiliary Command -
+        Send Auxiliary Command
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZAUXILIARYCOMMAND-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Send Auxiliary Command (PtzAuxiliaryCommand_PtzSendAuxiliaryCommand)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        call an auxiliary operation on Device using the <emphasis role="bold">SendAuxiliaryCommand</emphasis>
+        operation (PTZ Service).
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with <emphasis role="bold">SendAuxiliaryCommand</emphasis> operation (PTZ Service) present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message (PTZ Service) to call an
+              auxiliary operation on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzAuxiliaryCommand.PTZAUXILIARYCOMMAND-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzAuxiliaryCommand.PTZAUXILIARYCOMMAND-1.1">
+                  <para>
+                    [S2] It contains <emphasis role="bold">tptz:ProfileToken</emphasis> element with non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzAuxiliaryCommand.PTZAUXILIARYCOMMAND-1.2">
+                  <para>
+                    [S3] It contains <emphasis role="bold">tptz:AuxiliaryData</emphasis> element with non-empty string value AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzAuxiliaryCommand.PTZAUXILIARYCOMMAND-1.3">
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzAuxiliaryCommand.PTZAUXILIARYCOMMAND-1.4">
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+  </section>
+</feature>

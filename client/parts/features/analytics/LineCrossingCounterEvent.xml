@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <!--<revhistory>
+    <revision  xml:id="s.revhistory.LineCrossingCounterEvent.20191206.ProfileD">
+      <revnumber>19.12</revnumber>
+      <date>Dec 06, 2019</date>
+      <revdescription>
+        <para>Line Crossing Counter Event feature was added according to #345</para>     
+      </revdescription>
+    </revision>
+  </revhistory>-->
+  <section xml:id="s.intro.LineCrossingCounterEvent">
+    <title>Line Crossing Counter Event</title>
+    <para>
+      Line Crossing Counter Event section specifies Client ability to receive tns1:RuleEngine/CountAggregation/Counter events.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.LineCrossingCounterEvent">
+    <title>Line Crossing Counter Event Test Cases</title>
+    <section xml:id="tc.LineCrossingCounterEvent.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Line Crossing Counter Event (LineCrossingCounterEvent)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature corresponding to LineCrossingCounterEvent].
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.15 Line crossing counter">Profile M Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.LineCrossingCounterEvent.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client gets notifications about the Line Crossing Counter EITHER subscribing to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis> operation OR subscribing to <emphasis role="bold">MQTT Broker</emphasis> server OR
+              initiating of <emphasis role="bold">metadata streaming</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Line Crossing Counter Event if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports Media2_MetadataStreaming_ProfileM feature (please see <xref linkend="tc.Media2_MetadataStreaming_ProfileM"/> section) OR EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) OR
+                    EventBrokerConfiguration feature (please see <xref linkend="tc.EventBrokerConfiguration"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to receive <emphasis role="bold">tns1:RuleEngine/CountAggregation/Counter</emphasis> notification.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Line Crossing Counter Event if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support Media2_MetadataStreaming_ProfileM feature (please see <xref linkend="tc.Media2_MetadataStreaming_ProfileM"/> section) AND EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section)
+                    AND EventBrokerConfiguration feature (please see <xref linkend="tc.EventBrokerConfiguration"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is NOT able to receive <emphasis role="bold">tns1:RuleEngine/CountAggregation/Counter</emphasis> notification.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> Test Operator shall mark corresponding checkbox on the Onvif Client Test Tool UI in case a client supports getting of this notification.
+      </para>
+    </section>
+  </section>
+</feature>

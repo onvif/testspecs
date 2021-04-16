@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+      <revision  xml:id="s.revhistory.ZeroConfiguration.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Zero Configuration section and Zero Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.ZeroConfiguration.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Zero Configuration section and Zero Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.ZeroConfiguration">
+      <title>Zero Configuration</title>
+      <para>
+        Zero Configuration section defines Client ability to enable or disable zero
+        configuration on Device.
+      </para>
+  </section>
+   <section xml:id="tc.ZeroConfiguration">
+    <title>Zero Configuration Test Cases</title>
+    <section xml:id="tc.ZeroConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Zero Configuration (ZeroConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ZeroConfiguration">Check Condition based on Device Features:</emphasis> Zero Configuration is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.ZeroConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to configure Zero Configuration
+              settings.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Zero Configuration if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to get the Zero Configuration settings from
+                    Device using the GetZeroConfiguration operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to set the Zero Configuration settings on
+                    Device using the SetZeroConfiguration operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Zero Configuration if ANY of
+              the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetZeroConfiguration request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SetZeroConfiguration
+                    request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-1">
+      <title>GET ZERO CONFIGURATION</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Zero Configuration -
+        GetZeroConfiguration
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ZEROCONFIGURATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Zero Configuration (ZeroConfiguration_GetZeroConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        get the Zero Configuration settings from Device using the GetZeroConfiguration
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetZeroConfiguration operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetZeroConfiguration request message to get the Zero
+              Configuration settings from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              GetZeroConfigurationResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetZeroConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetZeroConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-1.0">
+                    [S1] Client request contains "&lt;GetZeroConfiguration&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-1.2">
+                    [S3] Device response contains "&lt;GetZeroConfigurationResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-2">
+      <title>SET ZERO CONFIGURATION</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Zero Configuration -
+        SetZeroConfiguration
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ZEROCONFIGURATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Zero Configuration (ZeroConfiguration_SetZeroConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set the Zero Configuration settings on Device using the SetZeroConfiguration
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with SetZeroConfiguration operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetZeroConfiguration request message to set the Zero
+              Configuration settings on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              SetZeroConfigurationResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetZeroConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetZeroConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-2.0">
+                    [S1] Client request contains "&lt;SetZeroConfiguration&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-2.1">
+                    [S2] "&lt;SetZeroConfiguration&gt;" includes tag: "&lt;InterfaceToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-2.2">
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.ZeroConfiguration.ZEROCONFIGURATION-2.3">
+                    [S4] Device response contains "&lt;SetZeroConfigurationResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

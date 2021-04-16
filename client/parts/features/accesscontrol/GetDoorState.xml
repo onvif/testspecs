@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.GetDoorState.20191206.ProfileD">
+      <revnumber>19.12</revnumber>
+      <date>Dec 06, 2019</date>
+      <revdescription>
+        <para>Get Door State feature was added according to #345</para>     
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetDoorState">
+    <title>Get Door State</title>
+    <para>
+      Get Door State section specifies Client ability to request information
+      about the state of Doors using the GetDoorState operation.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.GetDoorState">
+    <title>Get Door State Test Cases</title>
+    <section xml:id="tc.GetDoorState.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Door State (GetDoorState)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DoorEntity">Check Condition based on Device Features:</emphasis> Door entity is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>      
+      <para>
+        <emphasis role="bold" annotations="7.13 Door State">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.GetDoorState.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to get state of a door.              
+            </para>
+          </listitem>          
+          <listitem>
+            <para>
+              Client is considered as supporting Get Door State if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                    <para>
+                      Client is able to get a door state using the  
+                      <emphasis role="bold">GetDoorState</emphasis> operation.                    
+                    </para>
+                  </listitem>                
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Get Door State if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                    <para>
+                      Client is not able to get a door state using the  
+                      <emphasis role="bold">GetDoorState</emphasis> operation.                    
+                    </para>
+                  </listitem>                
+              </itemizedlist>
+            </para>
+          </listitem>
+          
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.GetDoorState.GETDOORSTATE-1">
+        <title>GET DOOR STATE</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Get Door State
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> GETDOORSTATE-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Get Door State (GetDoorState_GetDoorStateRequest)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="GetDoorState">Profile D Normative Reference:</emphasis> Mandatory
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve door state using the
+          <emphasis role="bold">GetDoorState</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetDoorState</emphasis> operation.               
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Door entity.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetDoorState</emphasis> request message to retrieve door state from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetDoorStateResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetDoorState</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetDoorState</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.GetDoorState.GETDOORSTATE-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child
+                      <emphasis role="bold">tdc:GetDoorState</emphasis> element AND
+                    </para>
+                  </listitem>                                 
+                  
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetDoorState</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.GetDoorState.GETDOORSTATE-1.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.GetDoorState.GETDOORSTATE-1.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tdc:GetDoorStateResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>            
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    
+    
+  </section>
+</feature>

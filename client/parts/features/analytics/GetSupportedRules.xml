@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.GetSupportedRules.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Supported Rules section and Get Supported Rules Test Cases section was moved from ONVIF Analytics Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetSupportedRules">
+      <title>Get Supported Rules</title>
+      <para>Get Supported Rules section specifies Client ability to retrieve supported rules.</para>
+  </section>
+       <section xml:id="tc.GetSupportedRules">
+    <title>Get Supported Rules Test Cases</title>
+    <section xml:id="tc.GetSupportedRules.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Supported Rules (GetSupportedRules)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Media2Service AND RuleEngine">Check Condition based on Device Features:</emphasis> Media 2 Service and Rule Engine is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetSupportedRules">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.GetSupportedRules.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve supported Rules using the <emphasis role="bold">GetSupportedRules</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Get Supported Rules if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    Client is able to retrieve supported Rules using the <emphasis role="bold">GetSupportedRules</emphasis> operation.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Get Supported Rules if
+              ANY of the following is TRUE:<itemizedlist><listitem><para>
+                    No valid device response to <emphasis role="bold">GetSupportedRules</emphasis> request.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.GetSupportedRules.GETSUPPORTEDRULES-1" xreflabel ="GETSUPPORTEDRULES-1 GET SUPPORTED RULES">
+      <title>GET SUPPORTED RULES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Supported Rules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> GETSUPPORTEDRULES-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Supported Rules (GetSupportedRules_GetSupportedRulesRequest)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetSupportedRules">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetSupportedRules">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve supported rules using the <emphasis role="bold">GetSupportedRules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetSupportedRules operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Rule Engine (RuleEngine).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetSupportedRules</emphasis> request message to retrieve supported Rules from the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetSupportedRulesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedRules</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedRules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.GetSupportedRules.GETSUPPORTEDRULES-1.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetSupportedRules</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetSupportedRules</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.GetSupportedRules.GETSUPPORTEDRULES-1.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.GetSupportedRules.GETSUPPORTEDRULES-1.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetSupportedRulesResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

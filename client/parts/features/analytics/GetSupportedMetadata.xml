@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.GetSupportedMetadata.20200205.ProfileM">
+      <revnumber>20.06</revnumber>
+      <date>Feb 05, 2020</date>
+      <revdescription>
+        <para>Get Supported Metadata feature was added according to #368</para>      
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetSupportedMetadata">
+      <title>Get Supported Metadata</title>
+      <para>Get Supported Metadata section specifies Client ability to retrieve metadata SampleFrame from a device.</para>
+  </section>
+      <section xml:id="tc.GetSupportedMetadata">
+    <title>Get Supported Metadata Test Cases</title>
+    <section xml:id="tc.GetSupportedMetadata.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Supported Metadata (GetSupportedMetadata)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> Supported Metadata is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.7 Metadata information">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.GetSupportedMetadata.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve metadata SampleFrame using the <emphasis role="bold">GetSupportedMetadata</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Get Supported Metadata if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    Client is able to retrieve metadata SampleFrame using the <emphasis role="bold">GetSupportedMetadata</emphasis> operation.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Get Supported Metadata if
+              ANY of the following is TRUE:<itemizedlist><listitem><para>
+                    No valid device response to <emphasis role="bold">GetSupportedMetadata</emphasis> request.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.GetSupportedMetadata.GETSUPPORTEDMETADATA-1" xreflabel ="GETSUPPORTEDMETADATA-1 GET SUPPORTED METADATA">
+      <title>GET SUPPORTED METADATA</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Supported Metadata
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> GETSUPPORTEDMETADATA-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Supported Metadata (GetSupportedMetadata_GetSupportedMetadataRequest)
+      </para>      
+      <para>
+        <emphasis role="bold" annotations="GetSupportedMetadata">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve metadata SampleFrame using the <emphasis role="bold">GetSupportedMetadata</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetSupportedMetadata operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Supported Metadata.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetSupportedMetadata</emphasis> request message to retrieve metadata SampleFrame from the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetSupportedMetadataResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedMetadata</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedMetadata</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.GetSupportedMetadata.GETSUPPORTEDMETADATA-1.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetSupportedMetadata</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetSupportedMetadata</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.GetSupportedMetadata.GETSUPPORTEDMETADATA-1.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.GetSupportedMetadata.GETSUPPORTEDMETADATA-1.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetSupportedMetadataResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

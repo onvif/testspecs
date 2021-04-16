@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.UserHandling.20201027.ProfileD">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #393:</para>
+        <para>Check Condition based on Device Features of User Handling feature was changed from 'All' to 'User Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20201027.ProfileQ">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #393:</para>
+        <para>Check Condition based on Device Features of User Handling feature was changed from 'All' to 'User Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20201027.ProfileG">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #393:</para>
+        <para>Check Condition based on Device Features of User Handling feature was changed from 'All' to 'User Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20201027.ProfileC">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #393:</para>
+        <para>Check Condition based on Device Features of User Handling feature was changed from 'All' to 'User Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20201027.ProfileA">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #393:</para>
+        <para>Check Condition based on Device Features of User Handling feature was changed from 'All' to 'User Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20201027.ProfileT">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #393:</para>
+        <para>Check Condition based on Device Features of User Handling feature was changed from 'All' to 'User Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20201027.ProfileS">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #393:</para>
+        <para>Check Condition based on Device Features of User Handling feature was changed from 'All' to 'User Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>User Handling section and User Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>User Handling section and User Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>User Handling section and User Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>User Handling section and User Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>User Handling section and User Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.UserHandling.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>User Handling section and User Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.UserHandling">
+    <title>User Handling</title>
+    <para>User Handling section defines Client ability to manage users on Device.</para>
+  </section>
+  <section xml:id="tc.UserHandling">
+    <title>User Handling Test Cases</title>
+    <section xml:id="tc.UserHandling.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> User Handling (UserHandling)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="no UserConfigNotSupported">Check Condition based on Device Features:</emphasis> User Configuration
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.6 User Handling">Profile T Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.6 User Handling">Profile D Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.UserHandling.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to create, list, modify and delete
+              users.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting User Handling if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to create users on Device using the
+                    CreateUsers operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to list existing users of Device using the
+                    GetUsers operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to modify users on Device using the SetUser
+                    operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to delete users from Device using the
+                    DeleteUsers operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting System if ANY of the following
+              is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to CreateUsers request (except
+                    SOAP fault: <emphasis role="bold">soapenv:Receiver/ter:Action/ter:TooManyUsers</emphasis>) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>No Valid Device Response to GetUsers request OR</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SetUser request  (except
+                    SOAP fault: <emphasis role="bold">soapenv:Sender/ter:InvalidArgVal/ter:FixedUser</emphasis>) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to DeleteUsers request (except
+                    SOAP fault: <emphasis role="bold">soapenv:Sender/ter:InvalidArgVal/ter:FixedUser</emphasis>).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.UserHandling.USERHANDLING-1">
+      <title>CREATE USERS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> User Handling - CreateUsers
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> USERHANDLING-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Create Users (UserHandling_CreateUsers)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="CreateUsers">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="CreateUsers">Profile D Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        create users on Device using the CreateUsers operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with CreateUsers operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes CreateUsers request message to create new users and
+              corresponding credentials on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and CreateUsersResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateUsers</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateUsers</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-1.0">
+                    [S1] Client request contains "&lt;CreateUsers&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-1.1">
+                    [S2] "&lt;CreateUsers&gt;" includes tag: "&lt;User&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-1.2">
+                    [S3] "&lt;User&gt;" includes tag: "&lt;Username&gt;" with non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-1.3">
+                    [S4] "&lt;User&gt;" includes tag: "&lt;Password&gt;" with non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-1.4">
+                    [S5] If Device response contains "HTTP/* 200 OK" THEN it contains "&lt;CreateUsersResponse&gt;" tag,
+                    ELSE it contains <emphasis role="bold">soapenv:Fault</emphasis> with <emphasis role="bold">soapenv:Receiver/ter:Action/ter:TooManyUsers</emphasis> fault code.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.UserHandling.USERHANDLING-2">
+      <title>GET USERS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> User Handling - GetUsers
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> USERHANDLING-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Users (UserHandling_GetUsers)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetUsers">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetUsers">Profile D Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        list existing users of Device using the GetUsers operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetUsers operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetUsers request message to list registered users and
+              their user levels.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetUsersResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetUsers</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetUsers</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-2.0">
+                    [S1] Client request contains "&lt;GetUsers&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-2.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-2.2">
+                    [S3] Device response contains "&lt;GetUsersResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.UserHandling.USERHANDLING-3">
+      <title>SET USER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> User Handling - SetUser
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> USERHANDLING-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set User (UserHandling_SetUser)
+      </para>
+
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetUser">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetUser">Profile D Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        modify users on Device using the SetUser operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with SetUser operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetUser request message to update the authentication
+              settings on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and SetUserResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetUser</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetUser</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-3.0">
+                    [S1] Client request contains "&lt;SetUser&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-3.1">
+                    [S2] "&lt;SetUser&gt;" includes tag: "&lt;User&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-3.2">
+                    [S3] "&lt;User&gt;" includes tag: "&lt;Username&gt;" with non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-3.3">
+                    [S4] If Device response contains "HTTP/* 200 OK" THEN it contains "&lt;SetUserResponse&gt;" tag,
+                    ELSE it contains <emphasis role="bold">soapenv:Fault</emphasis> with <emphasis role="bold">soapenv:Sender/ter:InvalidArgVal/ter:FixedUser</emphasis> fault code.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.UserHandling.USERHANDLING-4">
+      <title>DELETE USERS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> User Handling - DeleteUsers
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> USERHANDLING-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Users (UserHandling_DeleteUsers)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DeleteUsers">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DeleteUsers">Profile D Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        delete users from Device using the DeleteUsers operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with DeleteUsers operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes DeleteUsers request message to delete specific users
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and DeleteUsersResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteUsers</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteUsers</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-4.0">
+                    [S1] Client request contains "&lt;DeleteUsers&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-4.1">
+                    [S2] "&lt;DeleteUsers&gt;" includes tag: "&lt;Username&gt;" with non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.UserHandling.USERHANDLING-4.2">
+                    [S3] If Device response contains "HTTP/* 200 OK" THEN it contains "&lt;DeleteUsersResponse&gt;" tag,
+                    ELSE it contains <emphasis role="bold">soapenv:Fault</emphasis> with <emphasis role="bold">soapenv:Sender/ter:InvalidArgVal/ter:FixedUser</emphasis> fault code.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

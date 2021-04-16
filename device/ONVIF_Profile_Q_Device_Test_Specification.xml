@@ -1,0 +1,3303 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--For PDF version (standard)-->
+<!-- <?xml-stylesheet href="docbook/xsl/fo/docbook.xsl" type="text/xsl" ?>-->
+<!--For PDF version-->
+<!-- <?xml-stylesheet href="ONVIF-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<!--For online version-->
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Profile_Imaging_Client_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Profile Q Device Test Specification</title>
+    <subtitle>Version 18.06</subtitle>
+    <date>June 2018</date>
+    <copyright>
+      <year>2018</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <legalnotice role="notices">
+      <para>
+        Recipients of this document may copy, distribute, publish, or display this
+        document so long as this copyright notice, license and disclaimer are retained with
+        all copies of the document. No license is granted to modify this document.
+      </para>
+      <para>
+        THIS DOCUMENT IS PROVIDED &quot;AS IS,&quot; AND THE CORPORATION AND ITS MEMBERS AND THEIR
+        AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+        NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY
+        PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS,
+        COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+      </para>
+      <para>
+        IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR
+        ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES,
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR
+        NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT. THE
+        FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR
+        LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE
+        AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE
+        CORPORATION.
+      </para>
+    </legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>14.12</revnumber>
+        <date/>
+        <revdescription>
+          <para>
+            First Issue
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>15.06</revnumber>
+        <date>Jun, 2015</date>
+        <revdescription>
+          <para>
+            The following test cases were updated:
+          </para>
+          <para>
+            Factory Default state verification
+          </para>
+          <para>
+            Default access policy - Operator
+          </para>
+          <para>
+            Default access policy - Administrator and Anonymous
+          </para>
+          <para>
+            Default access policy - Administrator and User/Operator
+          </para>
+          <para>
+            Processor Usage event
+          </para>
+          <para>
+            Last Reboot event (Status Change)
+          </para>
+          <para>
+            Firmware Upload
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.01</revnumber>
+        <date>Jan, 2016</date>
+        <revdescription>
+          <para>
+            The parameter value &quot;UTCDateTime&quot; has been changed in step 7 of QUICK_INSTALL-3-1-7 and step 10 of QUICK_INSTALL-3-1-6.
+          </para>
+          <para>
+            Clarifications have been added to steps 6 7 of QUICK_INSTALL-3-1-4. The FAIL condition:&quot;The DUT did not send UnsubscribeResponse message.&quot; has been removed from test QUICK_INSTALL-3-1-4.
+          </para>
+          <para>
+            The steps 32-34 have been added to section 4.1.1 (QUICK_INSTALL-1-1-1)
+          </para>
+          <para>
+            The steps 8-10 have been added to section 4.3.2 (QUICK_INSTALL-4-1-2)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>17.01</revnumber>
+        <date>Jan, 2017</date>
+        <revdescription>
+          <para>
+            Section 4.3 Monitoring Events was removed (moved to ONVIF Base Test specification)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>17.02</revnumber>
+        <date>Feb, 2017</date>
+        <revdescription>
+          <para>
+            QUICK_INSTALL-1-1-1: step 14 was updated according to #1207
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Mar, 2018</date>
+        <revdescription>
+          <para>
+            Note added in the following test cases and annex according to #1584
+          </para>
+        <para>
+            QUICK_INSTALL-1-1-1 Factory default state verification
+          </para>
+         <para>           
+QUICK_INSTALL-2-1-4 Default access policy - Administrator and Anonymous
+          </para>
+             <para>           
+QUICK_INSTALL-2-1-5 Default access policy - Administrator And User/Operator
+
+          </para>
+   <para>            
+A.1 Create user with defined user level
+          </para>
+        </revdescription>
+      </revision>
+     <revision>
+				<revnumber>18.06</revnumber>
+				<date>Jun 21, 2018</date>
+				<revdescription>
+          <para>Reformatting document using new template</para>				
+				</revdescription>
+			</revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <para>
+      The goal of the ONVIF test specification set is to make it possible to realize fully interoperable
+      IP physical security implementation from different vendors. The set of ONVIF test specification describes
+      the test cases need to verify the [ONVIF Network Interface Specs] and [ONVIF Conformance] requirements.
+      In addition, the test cases are to be basic inputs for some Profile specification requirements.
+      It also describes the test framework, test setup, pre-requisites, test policies needed for the execution
+      of the described test cases.
+    </para>
+    <para>
+      This ONVIF Profile Q Test Specification acts as a supplementary document to the [ONVIF Core Specs],
+      illustrating test cases need to be executed and passed. In addition, this specification acts as an input
+      document to the development of test tool that will be used to test the ONVIF device implementation conformance
+      towards ONVIF standard. This test tool is referred as ONVIF Client hereafter.
+    </para>
+    <section xml:id="s.intro.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Test Specification defines and regulates the conformance testing procedure for the ONVIF conformant devices.
+        Conformance testing is meant to be functional black-box testing.
+        The objective of this specification is to provide the test cases to test individual requirements of ONVIF devices according
+        to ONVIF core services which are defined in [ONVIF Network Interface Specs].
+      </para>
+      <para>
+        The principal intended purposes are:
+        <orderedlist>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Provide comprehensive test suite coverage for [ONVIF Network Interface Specs].
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        This specification <emphasis role="bold">does not</emphasis> address the following:
+        <orderedlist>
+          <listitem>
+            <para>
+              Product use cases and non-functional (performance and regression) testing.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Service Interoperability Basic Profile version 2.0 (WS-I BP 2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation Conformance test for HTTP, HTTPS, RTP and RTSP protocol.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Wi-Fi Conformance test
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        The set of ONVIF Test Specification will not cover the complete set of requirements as defined in [ONVIF Network Interface Specs];
+        instead, it will cover its subset.
+      </para>
+      <para>
+        This ONVIF Profile Q Test Specification covers the Profile Q conformant transition from a device (unsecure) status after
+        a factory reset command has been executed up to ONVIF Default Access Policy is applied.
+        The following sections describe the brief overview and scope of each functional block.
+      </para>
+      <section xml:id="s.intro.scope.general">
+        <title>General</title>
+        <para>
+          The General section covers the test cases needed for checking of Factory Default state and Operational state of the device.
+        </para>
+        <para>
+          The scope of this specification section is to cover the following functions:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>Turn device to Factory Default state with SetSystemFactoryDefault command</para>
+          </listitem>
+          <listitem>
+            <para>Turn device to Operational state with creation of user with Administrator user level by CreateUsers and SetUser command</para>
+          </listitem>
+          <listitem>
+            <para>Check scopes Factory Default state and Operational state</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="s.intro.scope.default_access_policy">
+        <title>Default Access Policy</title>
+        <para>
+          The Default Access Policy section covers the test cases needed for checking of oprations in the PRE_AUTH,
+          READ_SYSTEM, READ_MEDIA, ACTUATE, UNRECOVERABLE, WRITE_SYSTEM and READ_SYSTEM_SECRET access classes.
+        </para>
+      </section>
+      <section xml:id="s.intro.scope.system">
+        <title>System</title>
+        <para>
+          The System section covers the test cases needed for ONVIF device firmware upgrade via HTTP.
+        </para>
+        <para>
+          The scope of this specification section is to cover the following functions:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Upgrade of firmware with <emphasis role="bold">StartFirmwareUpgrade</emphasis> command
+            </para>
+          </listitem>
+          <listitem>
+            <para>Check ONVIF device state after firmware upgrade.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative references</title>
+    <itemizedlist>
+      <listitem>
+        <para>[ONVIF Conformance] ONVIF Conformance Process Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/conformance/">https://www.onvif.org/profiles/conformance/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Profile Policy] ONVIF Profile Policy:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Network Interface Specs] ONVIF Network Interface Specification documents:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Core Specs] ONVIF Core Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Profile Q Specs] ONVIF Profile Q Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ISO/IEC Directives, Part 2] ISO/IEC Directives, Part 2, Annex H:</para>
+        <para>
+          <link xlink:href="http://www.iso.org/directives">http://www.iso.org/directives</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ISO 16484-5] ISO 16484-5:2014-09 Annex P:</para>
+        <para>
+          <link xlink:href="https://www.iso.org/obp/ui/#!iso:std:63753:en">https://www.iso.org/obp/ui/#!iso:std:63753:en</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[SOAP 1.2, Part 1] W3C SOAP 1.2, Part 1, Messaging Framework:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/soap12-part1/">http://www.w3.org/TR/soap12-part1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[XML-Schema, Part 1] W3C XML Schema Part 1: Structures Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[XML-Schema, Part 2] W3C XML Schema Part 2: Datatypes Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[WS-Security] "Web Services Security: SOAP Message Security 1.1 (WS-Security 2004)", OASIS Standard, February 2006.:</para>
+        <para>
+          <link xlink:href="http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf">http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf</link>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>
+        This section defines terms that are specific to the ONVIF Profile Q and tests. For a list of applicable general terms and definitions, please see [ONVIF Base Test].
+      </para>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>DUT</term>
+          <listitem>
+            <para>Device Under Test</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>HTTP</term>
+          <listitem>
+            <para>Hyper Text Transport Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>RTCP</term>
+          <listitem>
+            <para>RTP Control Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>RTSP</term>
+          <listitem>
+            <para>Real Time Streaming Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>DHCP</term>
+          <listitem>
+            <para>Dynamic Host Configuration Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>IP</term>
+          <listitem>
+            <para>Internet Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>IPv4</term>
+          <listitem>
+            <para>Internet Protocol version 4</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>NTP</term>
+          <listitem>
+            <para>Network Time Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>UTC</term>
+          <listitem>
+            <para>Coordinated Universal Time</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <para>
+      This section provides information the test setup procedure and required prerequisites,
+      and the test policies that should be followed for test case execution.
+    </para>
+    <section xml:id="overview.test_setup">
+      <title>Test Setup</title>
+      <section xml:id="overview.test_setup.network_configuration">
+        <title>Network Configuration for DUT</title>
+        <para>
+          The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 4.1).
+        </para>
+        <para>
+          Based on the individual test case requirements, some of the entities in the below setup may not be needed for the execution of those corresponding test cases.
+        </para>
+        <figure>
+          <title>Test Configuration for DUT</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="test_network.png" format="PNG" scalefit="0"/>
+            </imageobject>
+            <textobject>
+              <phrase>Test Configuration for DUT</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          <emphasis role="bold">DUT:</emphasis> ONVIF device to be tested. Hereafter, this is referred to as DUT (Device Under Test).
+        </para>
+        <para>
+          <emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system and it controls the behavior of the DUT. It handles both expected and unexpected behavior.
+        </para>
+        <para>
+          <emphasis role="bold">HTTP Proxy:</emphasis> provides facilitation in case of RTP and RTSP tunneling over HTTP.
+        </para>
+        <para>
+          <emphasis role="bold">Wireless Access Point:</emphasis> provides wireless connectivity to the devices that support wireless connection.
+        </para>
+        <para>
+          <emphasis role="bold">DNS Server:</emphasis> provides DNS related information to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">DHCP Server:</emphasis> provides IPv4 Address to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">NTP Server:</emphasis> provides time synchronization between ONVIF Client and DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Switching Hub:</emphasis> provides network connectivity among all the test equipments in the test environment. All devices should be connected to the Switching Hub.
+          When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering in order to avoid multicast traffic being flooded to all ports, because this may affect test stability.
+        </para>
+        <para>
+          <emphasis role="bold">Router:</emphasis> provides router advertisements for IPv6 configuration.
+        </para>
+      </section>
+    </section>
+    <section xml:id="overview.prerequisites">
+      <title>Prerequisites</title>
+      <para>
+        The pre-requisites for executing the test cases described in this Test Specification are:
+        <itemizedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              The DUT shall be in out-of-the-box state.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        Test Operator shall configure Reboot Timeout properly so that it would have enough time to reboot device for the following test cases for ONVIF Device Test Tool (see test description for more details):
+        <itemizedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              <link linkend="tc.QUICK_INSTALL-1-1-1">5.1.1 Factory default state verification</link>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <link linkend="tc.QUICK_INSTALL-4-1-1">5.3.1 Firmware Upload</link>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+    <section xml:id="overview.test_policy">
+      <title>Test Policy</title>
+      <para>
+        This section describes the test policies specific to the test case execution of each functional block.
+      </para>
+      <para>
+        The DUT shall adhere to the test policies defined in this section.
+      </para>
+      <section xml:id="overview.test_policy.general">
+        <title>General</title>
+        <para>
+          The DUT shall give the DeviceService entry point and EventService entry point by GetServices command. Otherwise these test cases will be skipped.
+          <itemizedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                DUT shall support the following commands:
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      GetServices
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      GetServiceCapabilities
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall support HTTP Digest authentication
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall support set of user name with user name length equals to MaxUsernameLength
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall support set of user password with user password length equals to MaxPasswordLength
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall allow full anonymous access after hard SystemFactoryDefault
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall have onvif://www.onvif.org/Profile/Q/FactoryDefault scope after hard SystemFactoryDefault
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall not have onvif://www.onvif.org/Profile/Q/Operational scope after hard SystemFactoryDefault
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall have IPv4 network interface on DHCP after hard SystemFactoryDefault
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ZeroConfiguration shall be set to true after hard SystemFactoryDefault
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall conform to the access policy which is specified by Default Access Policy after create or set user with Administrator user level
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall have onvif://www.onvif.org/Profile/Q/Operational scope create or set user with Administrator user level
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall not have onvif://www.onvif.org/Profile/Q/FactoryDefault scope after create or set user with Administrator user level
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The following tests are performed
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      Quick Install SetSystemFactoryDefault state verification
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+          Please refer to <link linkend="tc.quick_install.general">Section 5.1</link> General Test Cases.
+        </para>
+      </section>
+      <section xml:id="overview.test_policy.default_access_policy">
+        <title>Default Access Policy</title>
+        <para>
+          The Default Access Policy section covers the test cases needed for check of access policy on the DUT.
+          <itemizedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                The DUT shall support Default Access Policy
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall conform to the access policy which is specified by Default Access Policy
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT shall support HTTP Digest Authentication
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The following tests are performed
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      Default Access Policy – Anonymous
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Default Access Policy – User
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Default Access Policy – Operator
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Default access policy - Administrator and Anonymous
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Default access policy - Administrator and User/Operator
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+          Please refer to <link linkend="tc.quick_install.default_access_policy">Section 5.2</link> for Default Access Policy Test Cases.
+        </para>
+      </section>
+      <section xml:id="overview.test_policy.System">
+        <title>System</title>
+        <para>
+          The System section covers the test cases with firmware upgrade via HTTP.
+          <itemizedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                DUT shall support HttpFirmwareUpgrade.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT shall returns HTTP 415 message in case invalid firmware file.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The following tests are performed
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      Firmware Upgrade via HTTP with valid firmware file
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Firmware Upgrade via HTTP with invalid firmware file
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+          Please refer to <link linkend="tc.quick_install.system">Section 5.3</link> for System Test Cases.
+        </para>
+      </section>
+    </section>
+  </chapter>
+  <!--Quick Install Test Cases-->
+  <chapter xml:id="tc.quick_install">
+    <title>Quick Install Test Cases</title>
+    <!--General-->
+    <section xml:id="tc.quick_install.general">
+      <title>General</title>
+      <!--QUICK_INSTALL-1-1-1-->
+      <section xml:id="tc.QUICK_INSTALL-1-1-1">
+        <title>Factory default state verification</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> QUICK_INSTALL-1-1-1
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Factory Default, CreateUsers (ONVIF Core Specification), SetUser (ONVIF Core Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> SetSystemFactoryDefault, CreateUsers, SetUsers
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify transition from FactoryDefault state to Operational state.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT.
+          Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability.
+          HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability.
+          ZeroConfiguration is supported by the DUT as indicated by the Network.ZeroConfiguration capability.
+          Maximum Username Length is supported by the DUT as indicated by the Capabilities.Security.MaxUsernameLength,
+          Maximum Password Length is supported by the DUT as indicated by the Capabilities.Security.MaxPasswordLength.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <!--SetSystemFactoryDefault -->
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">SetSystemFactoryDefault</emphasis> with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>FactoryDefault := Hard</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <!--SetSystemFactoryDefaultResponse -->
+            <listitem>
+              <para>
+                DUT responds with a <emphasis role="bold">SetSystemFactoryDefaultResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Until <emphasis role="italic">timeout1</emphasis> timeout expires, repeat the following steps:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted with parameters:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            EndpointReference.Address equal to unique endpoint reference of the DUT
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>Types list</para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Scopes list := <emphasis role="italic">scopesList</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            XAddrs list := <emphasis role="italic">xaddrsList</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>MetadataVersion</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">xaddrsList</emphasis> contains URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, go to step 7.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <!--Check-->
+            <listitem>
+              <para>
+                If <emphasis role="italic">timeout1</emphasis> timeout expires for step 5 without Hello with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client waits for 5 seconds after Hello was received.
+              </para>
+            </listitem>
+            <!--Check-->
+            <listitem>
+              <para>
+                ONVIF client checks the following:<itemizedlist>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">scopesList</emphasis> does not contain "onvif://www.onvif.org/Profile/Q/FactoryDefault" scope, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">scopesList</emphasis> contains "onvif://www.onvif.org/Profile/Q/Operational" scope, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <!--Annex_TimeSynchronization-->
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.9">
+              <para>
+                ONVIF Client synchronize a time between ONVIF Client and DUT by following the procedure mentioned in <link linkend="Annex_HelperTimeSynchronization">Annex A.3</link>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client gets the service capabilities without any authentication (out <emphasis role="italic">cap</emphasis>) by following the procedure mentioned in <link linkend="Annex_HelperGetServiceCapabilities">Annex A.2</link>.
+
+
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetNetworkInterfaces</emphasis> without any authentication.
+
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      NetworkInterfaces.token1 =: <emphasis role="italic">currentNetInt</emphasis>, where token1 is token of the currently used network interface
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <!--Branch Absolute Zoom Movement-->
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.13">
+              <para>
+                If <emphasis role="italic">currentNetInt</emphasis>.IPv4.DHCP is not equal to true, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.14">
+              <para>
+                If <emphasis role="italic">cap</emphasis> contains Network.IPVersion6 item and <emphasis role="italic">cap</emphasis>.Network.IPVersion6 equals to true:
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">currentNetInt</emphasis>.IPv6.Enabled is not equal to true, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">currentNetInt</emphasis>.IPv6.Config does not contain at least one LinkLocal item with not empty Address item, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">currentNetInt</emphasis>.IPv6.Config.AcceptRouterAdvert is not equal to true, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.15">
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetZeroConfiguration</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.16">
+              <para>
+                The DUT responds with <emphasis role="bold">GetZeroConfigurationResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      ZeroConfiguration =: <emphasis role="italic">zeroConfiguration</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.17">
+              <para>
+                If <emphasis role="italic">zeroConfiguration</emphasis>.Enabled is not equal to true, FAIL the test.
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.18">
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetScopes</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.19">
+              <para>
+                DUT responds with a <emphasis role="bold">GetScopesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      Scope list =: <emphasis role="italic">initialScopeList</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.20">
+              <para>
+                If <emphasis role="italic">initialScopeList </emphasis>does not contain "onvif://www.onvif.org/Profile/Q/FactoryDefault" scope, FAIL the test.
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.21">
+              <para>
+                If <emphasis role="italic">initialScopeList </emphasis>contains "onvif://www.onvif.org/Profile/Q/Operational" scope, FAIL the test.
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.22">
+              <para>
+                ONVIF Client invokes Unicast <emphasis role="bold">Probe</emphasis> message with the following parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Types empty</para>
+                  </listitem>
+                  <listitem>
+                    <para>Scopes empty</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.23">
+              <para>
+                DUT responds with a <emphasis role="bold">ProbeMatch</emphasis> message with parameters:
+                <itemizedlist>
+                  <listitem>
+                    <para>ProbeMatch.Scopes</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem xml:id="tc.QUICK_INSTALL-1-1-1.24">
+              <para>
+                Set the following:
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      <emphasis role="italic">initialScopeList </emphasis>:= ProbeMatch.Scopes
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">initialScopeList </emphasis>does not contain "onvif://www.onvif.org/Profile/Q/FactoryDefault" scope, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">initialScopeList</emphasis> contains "onvif://www.onvif.org/Profile/Q/Operational" scope, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">cap</emphasis> does not contain Security.MaxPasswordLength or Security.MaxUserNameLength, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters.
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      User list =: <emphasis role="italic">userList</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">userList</emphasis> contains user with user level Administrator:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      Set the following:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            <emphasis role="italic">passwordLength</emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxPasswordLength
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            <emphasis role="italic">userLogin</emphasis> := Username of user with user level equal to Administrator from <emphasis role="italic">userList</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            <emphasis role="italic">password </emphasis>:= random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">SetUser</emphasis> with parameters
+
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            User[0].Username := <emphasis role="italic">userLogin</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            User[0].Password := <emphasis role="italic">password</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>User[0].UserLevel := Administrator</para>
+                        </listitem>
+                        <listitem>
+                          <para>Extension skipped</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If the DUT responds with <emphasis role="bold">SetUserResponse </emphasis>message, go to 32.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>If DUT returns env:Sender\ter:OperationProhibited\ter:Password SOAP 1.2 fault:</para>
+                    <para>
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            Set the following:
+                            <itemizedlist>
+                              <listitem>
+                                <para>
+                                  <emphasis role="italic">password</emphasis>  := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
+                                </para>
+                              </listitem>
+                            </itemizedlist>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>Go to the step 30.2.</para>
+                        </listitem>
+                      </orderedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>If DUT returns other SOAP 1.2 fault, FAIL the test and skip other steps.</para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">userList</emphasis> does not contain user with user level Administrator:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      Set the following:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            <emphasis role="italic">userLoginLength</emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxUserNameLength
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            <emphasis role="italic">passwordLength</emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxPasswordLength
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            <emphasis role="italic">userLogin</emphasis> := random string, contains userLoginLength low case alphbet characters, differs from usernames listed in <emphasis role="italic">userList</emphasis>
+
+
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            <emphasis role="italic">password</emphasis> := random string, contains passwordLength ASCII characters
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">CreateUsers</emphasis> with parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>User[0].Username := userLogin</para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            User[0].Password := <emphasis role="italic">password</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>User[0].UserLevel := Administrator</para>
+                        </listitem>
+                        <listitem>
+                          <para>Extension skipped</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If the DUT responds with <emphasis role="bold">CreateUsersResponse</emphasis> message, go to 32.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>If the DUT returns env:Sender\ter:OperationProhibited\ter:Password SOAP 1.2 fault:</para>
+                    <para>
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            Set the following:
+                            <itemizedlist>
+                              <listitem>
+                                <para>
+                                  <emphasis role="italic">password</emphasis>  := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
+                                </para>
+                              </listitem>
+                            </itemizedlist>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Go to the step 31.2.
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>If DUT returns other SOAP 1.2 fault, FAIL the test and skip other steps.</para>
+                        </listitem>
+                      </orderedlist>
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client waits the Reboot Timeout.</para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client sends <emphasis role="bold">Probe</emphasis> message and if DUT responds with <emphasis role="bold">ProbeMatch</emphasis> mesage then go to the step 35
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client waits for Hello message sent from newly configured address by the DUT. Then ONVIF Client starts using this newly configured address for further communications with DUT.</para>
+            </listitem>
+            <listitem>
+              <para>
+                Until <emphasis role="italic">timeout1</emphasis> expires, repeat the following steps:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes Unicast <emphasis role="bold">Probe</emphasis> message with the following parameters<itemizedlist>
+                        <listitem>
+                          <para>Types empty</para>
+                        </listitem>
+                        <listitem>
+                          <para>Scopes empty</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If the DUT responds with <emphasis role="bold">ProbeMatch</emphasis> message:
+                    </para>
+                    <para>
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            Set the following:
+                            <itemizedlist>
+                              <listitem>
+                                <para>
+                                  <emphasis role="italic">updatedScopeList</emphasis> := ProbeMatch.Scopes
+                                </para>
+                              </listitem>
+                            </itemizedlist>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">updatedScopeList</emphasis> contains "onvif://www.onvif.org/Profile/Q/Operational" scope, go to the step 35.
+                          </para>
+                        </listitem>
+                      </orderedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If timeout1 timeout expires for step 35 without <emphasis role="bold">ProbeMatch</emphasis> message with "onvif://www.onvif.org/Profile/Q/Operational" scope in <emphasis role="italic">updatedScopeList</emphasis>, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">updatedScopeList</emphasis> contains "onvif://www.onvif.org/Profile/Q/FactoryDefault" scope, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis> with user with the user level Administrator credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters.
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      User list =: <emphasis role="italic">updatedUserList</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">updatedUserList</emphasis> does not contain Username = <emphasis role="italic">userLogin</emphasis> with UserLevel = Administrator, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetScopes</emphasis> with the user level Administrator credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a GetScopesResponse message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      Scope list =: <emphasis role="italic">updatedScopeList</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">updatedScopeList</emphasis> contains "onvif://www.onvif.org/Profile/Q/FactoryDefault" scope, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">updatedScopeList</emphasis> does not contain "onvif://www.onvif.org/Profile/Q/Operational" scope, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Procedure Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">SetSystemFactoryDefaultResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">SetUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">CreateUsersResponse</emphasis> message.
+
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetZeroConfigurationResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetScopesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetNetworkInterfaces</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetZeroConfiguration</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetUsers</emphasis> command before changing the user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">SetUsers</emphasis> command before changing the user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">CreateUsers</emphasis> command before changing the user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetScopes</emphasis> command before changing the user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">GetUsers</emphasis> command after changing the user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">GetScopes</emphasis> command after changing the user with the user level Administrator credantials.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> User with username <emphasis role="italic">userLogin</emphasis> and password <emphasis role="italic">password</emphasis> shall be used for further test cases.
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> <emphasis role="italic">timeout1</emphasis> will be taken from Operation Delay field of ONVIF Device Test Tool.
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> IPv4 address from Hello shall be used for further test cases.
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> ONVIF client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
+        </para>
+      </section>
+    </section>
+    <!--Default access policy-->
+    <section xml:id="tc.quick_install.default_access_policy">
+      <title>Default access policy</title>
+      <!--QUICK_INSTALL-2-1-1-->
+      <section xml:id="tc.QUICK_INSTALL-2-1-1">
+        <title>Default access policy - Anonymous</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> QUICK_INSTALL-2-1-1
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetServices, GetServiceCapabilities, GetHostname, GetSystemDateAndTime
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the PRE_AUTH access class can be accessed without authentication being required.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetServices</emphasis> for Device service without any authentication with parameters<itemizedlist>
+                  <listitem>
+                    <para>IncludeCapability := false</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetServicesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Service list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> for Device Service without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Capabilities</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetHostname</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetHostnameResponse</emphasis> message with parameters<itemizedlist>
+                  <listitem>
+                    <para>HostnameInformation</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetSystemDateAndTime</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>SystemDateAndTime</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetServices</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetServiceCapabilities</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetHostname</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetServicesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetHostnameResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--QUICK_INSTALL-2-1-2-->
+      <section xml:id="tc.QUICK_INSTALL-2-1-2">
+        <title>Default access policy - User</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> QUICK_INSTALL-2-1-2
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetNTP, GetNetworkInterfaces, GetScopes, GetDiscoveryMode, GetEventProperties
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the READ_SYSTEM and READ_MEDIA access classes can be accessed with authentication level User.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Event Service was received from the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Maximum Username Length is supported by the DUT as indicated by the Capabilities.Security.MaxUsernameLength, Maximum Password Length is supported by the DUT as indicated by the Capabilities.Security.MaxPasswordLength. Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set the following:<itemizedlist>
+                  <listitem>
+                    <para>
+                      <emphasis role="italic">userLevel</emphasis> := User
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client generates creates user with predefined user level (in <emphasis role="italic">userLevel</emphasis>) and user login (out <emphasis role="italic">userLogin</emphasis>) and password (out <emphasis role="italic">password</emphasis>) by following the procedure mentioned in <link linkend="Annex_HelperCreateUserLevel">Annex A.1.</link>
+              </para>
+            </listitem>
+            <listitem>
+              <para>If the DUT supports NTP as indicated by Network.NTP capability:</para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetNTP</emphasis> without any authentication.
+
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetNTP</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">GetNTPResponse</emphasis> message with parameters<itemizedlist>
+                        <listitem>
+                          <para>NTPInformation</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetNetworkInterfaces</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetNetworkInterfaces</emphasis> with user with the user level User credantials (userLogin and password).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message with parameters<itemizedlist>
+                  <listitem>
+                    <para>NetworkInterfaces list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetScopes</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetScopes</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with GetScopesResponse message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Scopes list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetDiscoveryMode</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetDiscoveryMode</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetDiscoveryModeResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetEventProperties</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetEventProperties</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetEventPropertiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>TopicNamespaceLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>FixedTopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicExpressionDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentFilterDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ProducerPropertiesFilterDialect list
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentSchemaLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Other additional fields if any
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetNTP</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetNetworkInterfaces</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetEventProperties</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetNTP</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetNetworkInterfaces</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetEventProperties</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetNTPResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetScopesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetDiscoveryModeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetEventPropertiesResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>       
+      </section>
+      <!--QUICK_INSTALL-2-1-4-->
+      <section xml:id="tc.QUICK_INSTALL-2-1-4">
+        <title>Default access policy - Administrator and Anonymous</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> QUICK_INSTALL-2-1-4
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> SetScopes, SetDiscoveryMode, GetAccessPolicy, CreateUsers, SetSystemDateAndTime
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the UNRECOVERABLE, WRITE_SYSTEM and READ_SYSTEM_SECRET access classes can notbe accessed without authentication level Administrator.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client gets the service capabilities (out cap) by following the procedure mentioned in <link linkend="Annex_HelperGetServiceCapabilities">Annex A.2.</link>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetScopes</emphasis> without any authentication with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Scopes[0] := "onvif://www.onvif.org/location/test"</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetDiscoveryMode</emphasis> without any authentication with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error
+              </para>
+            </listitem>
+            <listitem>
+              <para>If cap.Security contains AccessPolicyConfig and cap.Security.AccessPolicyConfig equals to true:</para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetAccessPolicy</emphasis> without any authentication.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">CreateUsers</emphasis> without any authentication with parameters.
+                <itemizedlist>
+                  <listitem>
+                    <para>User[0].Username := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].Password := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].UserLevel := Administrator</para>
+                  </listitem>
+                  <listitem>
+                    <para>Extension skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> without any authentication with parameters<itemizedlist>
+                  <listitem>
+                    <para>DateTimeType := NTP</para>
+                  </listitem>
+                  <listitem>
+                    <para>DaylightSavings := true</para>
+                  </listitem>
+                  <listitem>
+                    <para>TimeZone skipped</para>
+                  </listitem>
+                  <listitem>
+                    <para>UTCDateTime skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">SetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">SetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">GetAccessPolicy</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">CreateUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">SetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> ONVIF client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
+        </para>
+      </section>
+      <!--QUICK_INSTALL-2-1-5-->
+      <section xml:id="tc.QUICK_INSTALL-2-1-5">
+        <title>Default access policy - Administrator And User/Operator</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> QUICK_INSTALL-2-1-5
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> SetScopes, SetDiscoveryMode, GetAccessPolicy, CreateUsers, SetSystemDateAndTime
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the UNRECOVERABLE, WRITE_SYSTEM and READ_SYSTEM_SECRET access classes can not be accessed without authentication level Administrator.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Maximum Username Length is supported by the DUT as indicated by the Capabilities.Security.MaxUsernameLength, Maximum Password Length is supported by the DUT as indicated by the Capabilities.Security.Max PasswordLength.Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set the following:
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      <emphasis role="italic">userLevelUser</emphasis> := User
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      <emphasis role="italic">userLevelOperator</emphasis>:= Operator
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client generates creates user with predefined user level (in <emphasis role="italic">userLevelUser</emphasis>) and user login (out <emphasis role="italic">userLoginUser</emphasis>) and password (out <emphasis role="italic">passwordUser</emphasis>) by following the procedure mentioned in <link linkend="Annex_HelperCreateUserLevel">Annex A.1</link>.
+                <itemizedlist>
+                  <listitem>
+                    <para>Scopes[0] := "onvif://www.onvif.org/location/test"</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client gets the service capabilities (out cap) by following the procedure mentioned in <link linkend="Annex_HelperGetServiceCapabilities">Annex A.2</link>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetScopes</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>) with parameters
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>Scopes[0] := "onvif://www.onvif.org/location/test"</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetDiscoveryMode</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>) with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">cap</emphasis>.Security contains AccessPolicyConfig and <emphasis role="italic">cap</emphasis>.Security.AccessPolicyConfig equals to true:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetAccessPolicy</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">CreateUsers</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                <itemizedlist>
+                  <listitem>
+                    <para>User[0].Username := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].Password := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].UserLevel := Administrator</para>
+                  </listitem>
+                  <listitem>
+                    <para>Extension skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).<itemizedlist>
+                  <listitem>
+                    <para>DateTimeType := NTP</para>
+                  </listitem>
+                  <listitem>
+                    <para>DaylightSavings := true</para>
+                  </listitem>
+                  <listitem>
+                    <para>TimeZone skipped</para>
+                  </listitem>
+                  <listitem>
+                    <para>UTCDateTime skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client generates creates user with predefined user level (in userLevelOperator) and user login (out userLoginOperator) and password (out passwordOperator) by following the procedure mentioned in <link linkend="Annex_HelperCreateUserLevel">Annex 1</link>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetScopes</emphasis> with user with the user level Operator credantials (<emphasis role="italic">userLoginOperator</emphasis> and <emphasis role="italic">passwordOperator</emphasis>) with parameters<itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetDiscoveryMode</emphasis> with user with the user level Operator credantials (<emphasis role="italic">userLoginOperator</emphasis> and <emphasis role="italic">passwordOperator</emphasis>) with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">cap</emphasis>.Security contains AccessPolicyConfig and <emphasis role="italic">cap</emphasis>.Security.AccessPolicyConfig equals to true:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetAccessPolicy</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">CreateUsers</emphasis> with user with the user level User credantials
+                (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                <itemizedlist>
+                  <listitem>
+                    <para>User[0].Username := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].Password := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].UserLevel := Administrator</para>
+                  </listitem>
+                  <listitem>
+                    <para>Extension skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).<itemizedlist>
+                  <listitem>
+                    <para>DateTimeType := NTP</para>
+                  </listitem>
+                  <listitem>
+                    <para>DaylightSavings  := true</para>
+                  </listitem>
+                  <listitem>
+                    <para>TimeZone skipped</para>
+                  </listitem>
+                  <listitem>
+                    <para>UTCDateTime skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">SetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">SetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">GetAccessPolicy</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">CreateUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">SetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">SetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">SetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">GetAccessPolicy</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">CreateUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator  access to the <emphasis role="bold">SetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> ONVIF client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
+        </para>
+      </section>
+      
+    </section>
+    <!--System-->
+    <section xml:id="tc.quick_install.system">
+      <title>System</title>
+      <!--QUICK_INSTALL-4-1-1-->
+      <section xml:id="tc.QUICK_INSTALL-4-1-1">
+        <title>Firmware Upload</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> QUICK_INSTALL-4-1-1
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Firmware Upload via HTTP
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> StartFirmwareUgrade
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that the firmware upgrade is correctly executed.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. HttpFirmwareUpgrade feature is supported by the DUT as indicated by the System.HttpFirmwareUpgrade. Location of Compatible firmware file is provided.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client invokes GetUsers without any authentication.</para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis> with user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>UserList</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">StartFirmwareUpgrade</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      UploadUri =: <emphasis role="italic">uploadUri</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      UploadDelay =: <emphasis role="italic">uploadDuration</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ExpectedDownTime =: <emphasis role="italic">downTimeDuration</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client waits for time <emphasis role="italic">uploadDuration</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">HTTP POST</emphasis> to <emphasis role="italic">uploadUri</emphasis> with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>HTTP Header [Content-Type] := "application/octet-stream"</para>
+                  </listitem>
+                  <listitem>
+                    <para>HTTP Body := compatible firmware file</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 200 OK</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If BYE message is supported by the DUT as indicated by the System.DiscoveryBye capabilities, the DUT will send Multicast
+                <emphasis role="bold">BYE</emphasis> message before rebooting with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>EndpointReference.Address equal to unique endpoint reference of the DUT</para>
+                  </listitem>
+                  <listitem>
+                    <para>Types list</para>
+                  </listitem>
+                  <listitem>
+                    <para>Scopes list</para>
+                  </listitem>
+                  <listitem>
+                    <para>XAddrs list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MetadataVersion</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Until <emphasis role="italic">timeout1</emphasis> timeout expires, repeat the following steps
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted with parameters:
+                      <itemizedlist>
+                        <listitem>
+                          <para>EndpointReference.Address equal to unique endpoint reference of the DUT</para>
+                        </listitem>
+                        <listitem>
+                          <para>Types list</para>
+                        </listitem>
+                        <listitem>
+                          <para>Scopes list</para>
+                        </listitem>
+                        <listitem>
+                          <para>XAddrs list := xaddrsList</para>
+                        </listitem>
+                        <listitem>
+                          <para>MetadataVersion</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">xaddrsList</emphasis> contains URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, go to step 15.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">timeout1</emphasis> timeout expires for step 5 without Hello with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF client waits for 5 seconds after Hello was received.</para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client invokes GetUsers without any authentication.</para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis> with user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>UserList </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">GetUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not response with <emphasis role="bold">HTTP 200 OK</emphasis> to HTTP POST request.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">Bye</emphasis> message with EndpointReference.Address equal to unique endpoint reference of the DUT in case Bye message was supported by the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Reboot Timeout will be used for waiting for the Bye message from the DUT. Reboot Timeout will be taken from the Reboot Timeout field of ONVIF Device Test Tool.
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> <emphasis role="italic">timeout1</emphasis> will be selected as maximum of (<emphasis role="italic">downTimeDuration</emphasis>, Reboot Timeout), where Reboot Timeout will be taken from the Reboot Timeout field of ONVIF Device Test Tool.
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> IPv4 address from Hello shall be used for further test cases.
+        </para>
+      </section>
+      <!--QUICK_INSTALL-4-1-2-->
+      <section xml:id="tc.QUICK_INSTALL-4-1-2">
+        <title>Invalid Firmware Upload</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> QUICK_INSTALL-4-1-2
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Firmware Upload via HTTP
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> StartFirmwareUgrade
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that the firmware upgrade fails with the expected error code.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. HttpFirmwareUpgradefeature is supported by the DUT as indicated by the System.HttpFirmwareUpgrade.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">StartFirmwareUpgrade</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message with parameters<itemizedlist>
+                  <listitem>
+                    <para>
+                      UploadUri =: <emphasis role="italic">uploadUri</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>UploadDelay =: duration</para>
+                  </listitem>
+                  <listitem>
+                    <para>ExpectedDownTime</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client waits for time <emphasis role="italic">duration</emphasis>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">HTTP POST</emphasis> to <emphasis role="italic">uploadUri</emphasis> with parameters
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>HTTP Header [Content-Type] := "application/octet-stream"</para>
+                </listitem>
+                <listitem>
+                  <para>HTTP Body := invalid firmware file</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 415</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF client waits Reboot timeout.</para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client sends <emphasis role="bold">Probe</emphasis> message and if DUT does not respond with <emphasis role="bold">ProbeMatch</emphasis> mesage then go to the step 10. If DUT responds, then finish the test.</para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client waits for Hello message sent from newly configured address by the DUT. Then ONVIF Client starts using this newly configured address for further communications with DUT.</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not response with <emphasis role="bold">HTTP 415</emphasis> to HTTP POST request.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+    </section>
+  </chapter>
+  <appendix>
+    <title>Helper Procedures and Additional Notes</title>
+    <para>This section describes the meaning of the following definitions. These definitions are used in the test case description.</para>
+    <!--A.1-->
+    <section xml:id="Annex_HelperCreateUserLevel">
+      <title>Create user with defined user level</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperCreateUserLevel
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to create user with predefined user level or change existing with new one.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> GetServices command is supported by the DUT. Maximum Username Length is supported by the DUT as indicated by the Capabilities.Security.MaxUsernameLength, Maximum Password Length is supported by the DUT as indicated by the Capabilities.Security.MaxPasswordLength.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> The user level (<emphasis role="italic">userLevel</emphasis>) of user to be created (<emphasis role="italic">userLevel</emphasis> shall have User or Operator value).
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> The user login (<emphasis role="italic">userLogin</emphasis>) with predefined user level and corresponding user password (<emphasis role="italic">password</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client gets the service capabilities (out <emphasis role="italic">cap</emphasis>) by following the procedure mentioned in <link linkend="Annex_HelperGetServiceCapabilities">Annex A.2</link>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">cap</emphasis> does not contain Security.MaxPasswordLength or Security.MaxUserNameLength, FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>User list := userList</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If there is user with user level userLevel in userList:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    Set the following:
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">passwordLength</emphasis> := cap.Security.MaxPasswordLength
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">userLogin</emphasis> := Username of user with user level equal to userLevel from <emphasis role="italic">userList</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">password</emphasis> := random string, contains passwordLength ASCII characters
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">SetUser</emphasis> with parameters
+
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          User[0].Username := <emphasis role="italic">userLogin</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].Password := <emphasis role="italic">password</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].UserLevel := <emphasis role="italic">userLevel</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Extension skipped</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT responds with <emphasis role="bold">SetUserResponse</emphasis> message, skip other steps.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT returns env:Sender\ter:OperationProhibited\ter:Password SOAP 1.2 fault:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          Set the following:<itemizedlist>
+                            <listitem>
+                              <para>
+                                <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">password</emphasis>Length ASCII characters
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Go to the step 6.2.</para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>If DUT returns other SOAP 1.2 fault, FAIL the test and skip other steps.</para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If there are no users with user level <emphasis role="italic">userLevel</emphasis> in <emphasis role="italic">userList</emphasis>:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    Set the following:
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">userLoginLength </emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxUserNameLength
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">passwordLength </emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxPasswordLength
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">userLogin</emphasis> := random string, contains <emphasis role="italic">userLoginLength</emphasis> low case alphbet characters, differs from usernames listed in <emphasis role="italic">userList</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">CreateUsers</emphasis> with parameters
+
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          User[0].Username := <emphasis role="italic">userLogin</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].Password := <emphasis role="italic">password</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].UserLevel := <emphasis role="italic">userLevel</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Extension skipped</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT responds with <emphasis role="bold">CreateUsersResponse</emphasis> message, skip other steps.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT returns env:Sender\ter:OperationProhibited\ter:Password SOAP 1.2 fault:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          Set the following:<itemizedlist>
+                            <listitem>
+                              <para>
+                                <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Go to the step 7.2.</para>
+                      </listitem>
+                      <listitem>
+                        <para>If the DUT returns other SOAP 1.2 fault, FAIL the test and skip other steps.</para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT passed all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not send <emphasis role="bold">GetUsersResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    <para>
+          <emphasis role="bold">Note:</emphasis> ONVIF client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
+        </para>
+    </section>
+    <!--A.2-->
+    <section xml:id="Annex_HelperGetServiceCapabilities">
+      <title>Get service capabilities</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis>HelperGetServiceCapabilities
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to get device service capabilities.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with a <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Capabilities =: <emphasis role="italic">cap</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The DUT passed all assertions.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+    <!--A.3-->
+    <section xml:id="Annex_HelperTimeSynchronization">
+      <title>Time synchronization</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis>HelperTimeSynchronization
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure for time synchronization between ONVIF Client and DUT after hard system factory default.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">SetNTP</emphasis> without any authentication with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>FromDHCP := true</para>
+                </listitem>
+                <listitem>
+                  <para>NTPManual skipped</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with a <emphasis role="bold">SetNTPResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF client invokes <emphasis role="bold">GetSystemDateAndTime</emphasis> without any authentication.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    SystemDateAndTime := <emphasis role="italic">dateAndTimeSettings</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> without any authentication with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>DateTimeType := NTP</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    DaylightSavings := <emphasis role="italic">dateAndTimeSettings</emphasis>.DaylightSavings
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    TimeZone := <emphasis role="italic">dateAndTimeSettings</emphasis>.TimeZone
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>UTCDateTime skipped</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with a <emphasis role="bold">SetSystemDateAndTime</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT passed all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The DUT did not allow Anonymous access to the SetNTP command.</para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not send SetNTPResponse message.
+
+            </para>
+          </listitem>
+          <listitem>
+            <para>The DUT did not allow Anonymous access to the GetSystemDateAndTime command.</para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not send GetSystemDateAndTimeResponse message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not allow Anonymous access to the SetSystemDateAndTime command.
+
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not send SetSystemDateAndTimeResponse message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  </appendix>
+</book>

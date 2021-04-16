@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.DoorControl.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Door Information feature and scope was extracted from System Component Information feature to be reused for Profile D.</para>
+		<para>Scope\Door Information section was added.</para>
+		<para>Door Information Test Cases section was added.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>
+  <section xml:id="s.intro.DoorControlProfileD">
+    <title>Door Control</title>
+    <para>
+      Door Control section specifies Client ability to to control Doors (access door,
+      lock door, unlock door).
+    </para>
+  </section>
+  <section xml:id="tc.DoorControlProfileD">
+    <title>Door Control Test Cases</title>
+    <section xml:id="tc.DoorControlProfileD.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Door Control (DoorControlProfileD)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DoorControlService AND AccessDoor AND LockDoor AND UnlockDoor">Check Condition based on Device Features:</emphasis> Door Control Service and Access Door and Lock Door and Unlock Door are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.14 Door Control">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.DoorControlProfileD.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes a specific, valid mandatory Door Control command in
+              order to change the state of door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Door Control if the following
+              conditions are met:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports DoorControl_AccessDoor feature (please see <xref linkend="tc.DoorControl.DOORCONTROL-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports DoorControl_LockDoor feature (please see <xref linkend="tc.DoorControl.DOORCONTROL-2"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports DoorControl_UnlockDoor feature (please see <xref linkend="tc.DoorControl.DOORCONTROL-3"/> section).</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Door Control if ANY of the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support DoorControl_AccessDoor feature (please see <xref linkend="tc.DoorControl.DOORCONTROL-1"/> section) OR</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support DoorControl_LockDoor feature (please see <xref linkend="tc.DoorControl.DOORCONTROL-2"/> section) OR</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support DoorControl_UnlockDoor feature (please see <xref linkend="tc.DoorControl.DOORCONTROL-3"/> section).</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.Tampering.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Tampering section and Tampering Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.Tampering">
+      <title>Tampering</title>
+      <para>
+        Tampering section specifies Client ability to receive notifications of Tampering events.
+      </para>
+  </section>
+    <section xml:id="tc.Tampering">
+    <title>Tampering Test Cases</title>
+    <section xml:id="tc.Tampering.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Tampering Events (Tampering)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="None (ONVIF Profile T Simulator is used as device)">Check Condition based on Device Features:</emphasis> None (ONVIF Profile T Simulator is used as device).
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.17 Tampering;tns1:VideoSource/ImageTooBlurry;tns1:VideoSource/ImageTooDark;tns1:VideoSource/ImageTooBright;tns1:VideoSource/GlobalSceneChange">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.Tampering.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to ONVIF Profile T Simulator using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get tampering notifications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve the following notification events
+              from ONVIF Profile T Simulator:
+              <itemizedlist><listitem><para>tns1:VideoSource/ImageTooBlurry/AnalyticsService</para></listitem><listitem><para>tns1:VideoSource/ImageTooBlurry/ImagingService</para></listitem><listitem><para>tns1:VideoSource/ImageTooDark/AnalyticsService</para></listitem><listitem><para>tns1:VideoSource/ImageTooDark/ImagingService</para></listitem><listitem><para>tns1:VideoSource/ImageTooBright/AnalyticsService</para></listitem><listitem><para>tns1:VideoSource/ImageTooBright/ImagingService</para></listitem><listitem><para>tns1:VideoSource/GlobalSceneChange/AnalyticsService</para></listitem><listitem><para>tns1:VideoSource/GlobalSceneChange/ImagingService</para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Tampering if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    ONVIF Profile T Simulator detects <emphasis role="bold">Tampering</emphasis> feature as supported.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Tampering if ANY
+              of the following is TRUE:
+              <itemizedlist><listitem><para>
+                    ONVIF Profile T Simulator detects <emphasis role="bold">Tampering</emphasis> feature as not supported.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <section xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="additions.conventions">
+      <title>Conventions</title>
+      <para>
+        The key words "shall", "shall not", "should", "should not", "may", "need not",
+        "can", "cannot" in this specification are to be interpreted as described in [ISO/IEC
+        Directives Part 2].
+      </para>
+    </section>

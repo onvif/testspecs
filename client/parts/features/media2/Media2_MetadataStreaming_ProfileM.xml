@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Media2_MetadataStreaming.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Tampering section and Tampering Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  <section xml:id="s.intro.Media2_MetadataStreaming_ProfileM">
+    <title>Metadata Streaming Using Media2 (Profile M)</title>
+    <para>
+      Metadata Streaming Using Media2 section specifies receiving of metadata stream from Device using Madia2 Service.
+    </para>
+  </section>
+  <section xml:id="tc.Media2_MetadataStreaming_ProfileM" xreflabel="Metadata Streaming Using Media2 Test Cases">
+    <title>Metadata Streaming Using Media2 Test Cases</title>
+    <section xml:id="tc.Media2_MetadataStreaming_ProfileM.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Metadata Streaming Using Media2 for Profile M (Media2_MetadataStreaming_ProfileM)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Media2Service">Check Condition based on Device Features:</emphasis> Media2 Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.6 Metadata streaming">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.Media2_MetadataStreaming_ProfileM.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to receive metadata stream using Media2 Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Metadata Streaming Using Media2 if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports Media2_GetProfiles_Media2_GetProfilesRequest feature (please see <xref linkend="tc.Media2_GetProfiles.MEDIA2_GETPROFILES-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports Media2_GetStreamURI_Media2_GetStreamURIRequest feature (please see <xref linkend="tc.Media2_GetStreamURI.MEDIA2_GETSTREAMURI-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports Media2_MediaStreaming_Media2_UDP feature (please see <xref linkend="tc.Media2_MediaStreaming.MEDIA2_MEDIASTREAMING-2"/> section) OR Media2_MediaStreaming_Media2_HTTP feature (please see <xref linkend="tc.Media2_MediaStreaming.MEDIA2_MEDIASTREAMING-3"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports Media2_MetadataStreaming_MetadataStreamingUsingMedia2 feature (please see <xref linkend="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1"/> section).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Metadata Streaming Using Media2 if the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support Media2_GetProfiles_Media2_GetProfilesRequest feature (please see <xref linkend="tc.Media2_GetProfiles.MEDIA2_GETPROFILES-1"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support both Media2_MediaStreaming_Media2_UDP feature (please see <xref linkend="tc.Media2_MediaStreaming.MEDIA2_MEDIASTREAMING-2"/> section) AND Media2_MediaStreaming_Media2_HTTP feature (please see <xref linkend="tc.Media2_MediaStreaming.MEDIA2_MEDIASTREAMING-3"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support Media2_GetStreamURI_Media2_GetStreamURIRequest feature (please see <xref linkend="tc.Media2_GetStreamURI.MEDIA2_GETSTREAMURI-1"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support Media2_MetadataStreaming_MetadataStreamingUsingMedia2 feature (please see <xref linkend="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1"/> section) OR
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+
+</feature>

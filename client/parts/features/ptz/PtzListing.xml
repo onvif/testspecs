@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+      <revision  xml:id="s.revhistory.PtzListing.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ - Listing section and PTZ - Listing Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.PtzListing.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ - Listing section and PTZ - Listing Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PtzListing">
+      <title>PTZ - Listing</title>
+      <para>PTZ - Listing section specifies Client ability to read PTZ capabilities.</para>
+  </section>
+    <section xml:id="tc.PtzListing">
+    <title>PTZ - Listing Test Cases</title>
+    <section xml:id="tc.PtzListing.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> PTZ Listing (PtzListing)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZService">Check Condition based on Device Features:</emphasis> PTZ Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.2 PTZ Configuration">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PtzListing.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to read PTZ capabilities.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ - Listing if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to read PTZ capabilities from PTZ Node
+                    using EITHER GetNodes OR GetNode operations.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ - Listing if ANY of the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>No Valid Device Response to GetNodes request AND</para>
+                </listitem>
+                <listitem>
+                  <para>No Valid Device Response to GetNode request.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PtzListing.PTZLISTING-1">
+      <title>GET NODES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Listing - GetNodes
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZLISTING-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Nodes (PtzListing_GetNodes)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNode">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all existing
+        PTZ capabilities from Device is received by Client using the GetNodes
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with GetNodes operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetNodes request message to retrieve complete PTZ
+              capabilities list from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetNodesResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNodes</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNodes</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzListing.PTZLISTING-1.0">
+                  <para>
+                    [S1] Client request contains "&lt;GetNodes&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzListing.PTZLISTING-1.1">
+                  <para>
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzListing.PTZLISTING-1.2">
+                  <para>
+                    [S3] Device response contains "&lt;GetNodesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+    <section xml:id="tc.PtzListing.PTZLISTING-2">
+      <title>GET NODE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Listing - GetNode
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZLISTING-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Node (PtzListing_GetNode)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNodes">Profile T Normative Reference:</emphasis> Conditional
+      </para>     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve a specific PTZ capability properties from Device using the GetNode
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with GetNode operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetNode request message to retrieve a specific PTZ
+              capability properties from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetNodeResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNode</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNode</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzListing.PTZLISTING-2.0">
+                  <para>
+                    [S1] Client request contains "&lt;GetNode&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzListing.PTZLISTING-2.1">
+                  <para>
+                    [S2] "&lt;GetNode&gt;" includes tag: "&lt;NodeToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzListing.PTZLISTING-2.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzListing.PTZLISTING-2.3">
+                  <para>
+                    [S4] Device response contains "&lt;GetNodeResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+  </section>
+</feature>

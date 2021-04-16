@@ -1,0 +1,857 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>
+<book xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Profile_Q_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Profile Q Client Test Specification</title>
+    <subtitle>Version 20.12</subtitle>
+    <date>December 2020</date>
+    <copyright>
+      <year>2020</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <xi:include href="parts/general/legalnotice.xml"/>
+    <revhistory>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
+      <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
+                  xpointer="s.revhistory.SystemDateAndTimeConfiguration.20201112.All"/>
+        <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                  xpointer="s.revhistory.NetworkConfiguration.20201027.All"/>
+       <xi:include href="parts/features/core/UserHandling.xml"
+                  xpointer="s.revhistory.UserHandling.20201027.ProfileQ"/>
+       <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                  xpointer="s.revhistory.SetSynchronizationPoint.20200831.All"/>
+        <xi:include href="parts/features/core/Unsubscribe.xml"
+                  xpointer="s.revhistory.Unsubscribe.20200831.All"/>
+      <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml"
+                  xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20200831.All"/>
+       <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml"
+                  xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20200831.All"/>
+            <revision>
+        <revnumber>19.12</revnumber>
+        <date>Sep 18, 2019</date>
+        <revdescription>
+          <para>The following was done according to #325:</para>
+          <para>Scope\Supplementary Features and Test Cases sections was added.</para>
+          <para>Supplementary Features and Test Cases sections was added.</para>
+        </revdescription>
+      </revision>    
+       <xi:include href="parts/features/core/UserHandling.xml"
+                  xpointer="s.revhistory.UserHandling.20201027.ProfileQ"/>
+	      <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="s.revhistory.EventHandling.20190918.All"/>
+	<xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml" xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20190906.All"/>
+      <xi:include href="parts/features/core/HTTPDigest.xml" xpointer="s.revhistory.HTTPDigest.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/Capabilities.xml" xpointer="s.revhistory.Capabilities.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/GetServices.xml" xpointer="s.revhistory.GetServices.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/Discovery.xml" xpointer="s.revhistory.Discovery.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml" xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/UserHandling.xml" xpointer="s.revhistory.UserHandling.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/EventHandling.xml" xpointer="s.revhistory.EventHandling.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/NetworkConfiguration.xml" xpointer="s.revhistory.NetworkConfiguration.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/System.xml" xpointer="s.revhistory.System.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/NTP.xml" xpointer="s.revhistory.NTP.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/ZeroConfiguration.xml" xpointer="s.revhistory.ZeroConfiguration.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml" xpointer="s.revhistory.SystemDateAndTimeConfiguration.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/HTTPFirmwareUpgrade.xml" xpointer="s.revhistory.HTTPFirmwareUpgrade.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/HTTPSystemBackup.xml" xpointer="s.revhistory.HTTPSystemBackup.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/HTTPSystemRestore.xml" xpointer="s.revhistory.HTTPSystemRestore.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/DeviceManagementNotifications.xml" xpointer="s.revhistory.DeviceManagementNotifications.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/MonitoringNotifications.xml" xpointer="s.revhistory.MonitoringNotifications.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/HostnameConfiguration.xml" xpointer="s.revhistory.HostnameConfiguration.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/DNSConfiguration.xml" xpointer="s.revhistory.DNSConfiguration.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/NetworkProtocolsConfiguration.xml" xpointer="s.revhistory.NetworkProtocolsConfiguration.20190814.ProfileQ"/>
+      <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="s.revhistory.TLSConfiguration.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/GetServicesWithCapabilities.xml" xpointer="s.revhistory.GetServicesWithCapabilities.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml" xpointer="s.revhistory.SetSynchronizationPoint.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/Unsubscribe.xml" xpointer="s.revhistory.Unsubscribe.20190814.ProfileQ"/>
+      <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml" xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20190814.ProfileQ"/>
+      <revision>
+        <revnumber>19.06</revnumber>
+        <date>Jun 14, 2019</date>
+        <revdescription>
+          <para>The following was done according to #309:</para>
+          <para>'Validated Feature' section for each feature updated to be synchronized with feature ID used in feature list.</para>
+          <para>'Feature Under Test' section for each test case updated to be synchronized with sub-feature ID used in feature list.</para>
+          <para>'Validated Feature List' test case section removed.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Jun 21, 2018</date>
+        <revdescription>
+          <para>Reformatting document using new template</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Apr 05, 2018</date>
+        <revdescription>
+          <para>'Required Number of Devices Summary' Annex added according to #241</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Feb 16, 2018</date>
+        <revdescription>
+          <para>The following were updated in the scope of #241:</para>
+          <para>Feature Level Requirement (updated with new rules)</para>
+          <para>Each Feature Level Requirement (updated with Check Condition based on Device Features and Required Number of Devices)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>17.06</revnumber>
+        <date>Jun 15, 2017</date>
+        <revdescription>
+          <para>Links in Normative references section were updated.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.07</revnumber>
+        <date>Mar 14, 2016</date>
+        <revdescription>
+          <para>www.onvif.org was removed from Сopyright section.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.01</revnumber>
+        <date>Nov 23, 2015</date>
+        <revdescription>
+          <para>General item (Test Owerview) was added</para>
+          <para>Minor updates in formatting, typos and terms.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.01</revnumber>
+        <date>Sep 25, 2015</date>
+        <revdescription>
+          <para>Initial version:</para>
+          <para>General parts added</para>
+          <para>Transition to Operational State Test Cases added</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <xi:include href="parts/general/introduction_common.xml"/>
+    <para>
+      This particular document defines test cases required for testing Profile Q features of a
+      Client application e.g. Transition to Operational State. It also describes the test framework, test setup,
+      prerequisites, test policies needed for the execution of the described test cases.
+    </para>
+    <section xml:id="s.intro.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Profile Q Client Test Specification defines and regulates the conformance
+        testing procedure for the ONVIF conformant Clients in the scope of Profile Q
+        features. Conformance testing is meant to be black-box network traces analysis and
+        verification. The objective of this specification is to provide the test cases to
+        test individual requirements of ONVIF Clients in the scope of Profile Q features
+        according to ONVIF Profile Specifications.
+      </para>
+      <para>
+        The principal intended purposes are:<itemizedlist>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>Provide comprehensive test suite coverage for Profile Q features.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        This specification <emphasis role="bold">does not</emphasis> address the following:<itemizedlist>
+          <listitem>
+            <para>3rd parties Client use cases</para>
+          </listitem>
+          <listitem>
+            <para>Non-functional (performance and regression) testing and analysis.</para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Services
+              Interoperability Basic Profile version 2.0 (WS-I BP2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation Conformance test for HTTPS and HTTP
+              protocols.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        The following sections cover test cases needed for the verification of relevant
+        features as mentioned in the ONVIF Profile Specifications.
+      </para>
+    </section>
+    <section xml:id="s.intro.mandatory">
+      <title>Test Cases for Profile Mandatory Features</title>
+      <para>
+        This section defines test cases which are mandatory for Profile Q Client conformance.
+      </para>
+      <xi:include href="parts/features/core/HTTPDigest.xml" xpointer="s.intro.HTTPDigest"/>
+      <xi:include href="parts/features/core/Capabilities.xml" xpointer="s.intro.Capabilities"/>
+      <xi:include href="parts/features/core/GetServices.xml" xpointer="s.intro.GetServices"/>
+      <xi:include href="parts/features/core/Discovery.xml" xpointer="s.intro.Discovery"/>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml" xpointer="s.intro.DeviceDiscoveryTypeFilter"/>
+      <xi:include href="parts/features/core/UserHandling.xml" xpointer="s.intro.UserHandling"/>
+      <section xml:id="s.intro.transition_to_operational_state">
+        <title>Transition to Operational State</title>
+        <para>Transition to Operational State section specifies Client ability to transit an ONVIF Device from Factory Default State into Operational State.</para>
+      </section>
+    </section>
+    <section xml:id="s.intro.conditional">
+      <title>Test Cases for Profile Conditional Features</title>
+      <para>
+        This section defines test cases which are mandatory for Profile Q Client conformance.
+      </para>
+      <xi:include href="parts/features/core/EventHandling.xml" xpointer="s.intro.EventHandling"/>
+      <xi:include href="parts/features/core/NetworkConfiguration.xml" xpointer="s.intro.NetworkConfiguration"/>
+      <xi:include href="parts/features/core/System.xml" xpointer="s.intro.System"/>
+      <xi:include href="parts/features/core/NTP.xml" xpointer="s.intro.NTP"/>
+      <xi:include href="parts/features/core/ZeroConfiguration.xml" xpointer="s.intro.ZeroConfiguration"/>
+      <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml" xpointer="s.intro.SystemDateAndTimeConfiguration"/>
+      <xi:include href="parts/features/core/HTTPFirmwareUpgrade.xml" xpointer="s.intro.HTTPFirmwareUpgrade"/>
+      <xi:include href="parts/features/core/HTTPSystemBackup.xml" xpointer="s.intro.HTTPSystemBackup"/>
+      <xi:include href="parts/features/core/HTTPSystemRestore.xml" xpointer="s.intro.HTTPSystemRestore"/>
+      <xi:include href="parts/features/core/MonitoringNotifications.xml" xpointer="s.intro.MonitoringNotifications"/>
+      <xi:include href="parts/features/core/DeviceManagementNotifications.xml" xpointer="s.intro.DeviceManagementNotifications"/>
+      <xi:include href="parts/features/core/HostnameConfiguration.xml" xpointer="s.intro.HostnameConfiguration"/>
+      <xi:include href="parts/features/core/DNSConfiguration.xml" xpointer="s.intro.DNSConfiguration"/>
+      <xi:include href="parts/features/core/NetworkProtocolsConfiguration.xml" xpointer="s.intro.NetworkProtocolsConfiguration"/>
+      <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="s.intro.TLSConfiguration"/>
+    </section>
+    <section xml:id="s.intro.optional">
+      <title>Test Cases for Profile Optional Features</title>
+      <para>
+        This section defines test cases which are optional for Profile S Client conformance.
+      </para>
+      <xi:include href="parts/features/core/GetServicesWithCapabilities.xml" xpointer="s.intro.GetServicesWithCapabilities"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml" xpointer="s.intro.SetSynchronizationPoint"/>
+      <xi:include href="parts/features/core/Unsubscribe.xml" xpointer="s.intro.Unsubscribe"/>
+      <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml" xpointer="s.intro.KeepAliveForPullPointEventHandling"/>
+    </section>
+	      <section xml:id="s.intro.supplementary">
+      <title>Supplementary Features and Test Cases</title>
+      <para>
+        This section defines supplementary features and test cases which are not the part of profile, but Profile Q Features results depends on them.
+      </para>
+    </section>
+
+
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative references</title>
+    <itemizedlist>
+      <xi:include href="parts/general/normative_references_common.xml" xpointer="xpointer(id('s.docbook')/itemizedlist/listitem)"/>
+      <listitem>
+        <para>ONVIF Profile Q Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/profile-q/">https://www.onvif.org/profiles/profile-q/</link>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <xi:include href="parts/general/terms_definitions.conventions.xml"/>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>This section describes terms and definitions used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.definitions_common.xml" xpointer="xpointer(id('additions.definitions')/variablelist/varlistentry)"/>
+        <varlistentry>
+          <term>Profile Q</term>
+          <listitem>
+            <para>The Profile Q Specification.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Factory Default State</term>
+          <listitem>
+            <para>
+              The state of the Profile Q device prior to setting an Administrator
+              password. In this state, the device accepts any commands without authentication.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Operational State</term>
+          <listitem>
+            <para>
+              The state of the Profile Q device after setting an Administrator password.
+              The device requires an authentication according to the ONVIF default access policy to accept commands.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.abbreviations_common.xml" xpointer="xpointer(id('additions.abbreviations')/variablelist/varlistentry)"/>
+        <varlistentry>
+          <term>WS-I BP 2.0</term>
+          <listitem>
+            <para>Web Services Interoperability Basic Profile version 2.0.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.namespaces" xreflabel="Namespaces">
+      <title>Namespaces</title>
+      <para>
+        Prefix and namespaces used in this test specification are listed in Table 1.
+        <emphasis role="bold">These prefixes are not part of the standard and an implementation can use any prefix.</emphasis>
+      </para>
+      <table>
+        <title>Defined namespaces in this specification</title>
+        <tgroup cols="3">
+          <colspec colwidth="109*" />
+          <colspec colwidth="403*" />
+          <colspec colwidth="488*" />
+          <thead>
+            <row>
+              <entry>Prefix</entry>
+              <entry>Namespace URI</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <xi:include href="parts/general/namespaces_common.xml" xpointer="xpointer(id('additions.namespaces')/table/tgroup/tbody/row)"/>
+            <row>
+              <entry>tas</entry>
+              <entry>http://www.onvif.org/ver10/advancedsecurity/wsdl</entry>
+              <entry>The namespace for the WSDL advanced security service</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <xi:include href="parts/general/overview_common.xml" xpointer="overview.para.1"/>
+    <para>
+      An ONVIF Client conformant to Profile Q is an ONVIF Client that can transit
+      an ONVIF Device conformant to Profile Q into Operational State.
+    </para>
+    <xi:include href="parts/general/overview_common.xml" xpointer="overview.para.3"/>
+    <xi:include href="parts/general/overview_common.xml" xpointer="overview.general"/>
+    <section xml:id="overview.test_setup">
+      <title>Test Setup</title>
+      <xi:include href="parts/general/overview_common.xml" xpointer="overview.test_setup.para.1"/>
+      <xi:include href="parts/general/overview_common.xml" xpointer="overview.test_setup.para.2"/>
+      <xi:include href="parts/general/overview_common.xml" xpointer="overview.test_setup.para.3"/>
+      <para>
+        For compatibility with the Profile Q, the ONVIF Client shall follow the
+        requirements of the conformance process. For details, please, see the latest ONVIF
+        Conformance Process Specification.
+      </para>
+    </section>
+    <xi:include href="parts/general/overview_common.xml" xpointer="overview.prerequisites"/>
+  </chapter>
+  <chapter xml:id="tc.ProfileS.ProfileMandatoryFeatures">
+    <title>Test Cases for Profile Mandatory Features</title>
+    <xi:include href="parts/features/core/HTTPDigest.xml" xpointer="tc.HTTPDigest"/>
+    <xi:include href="parts/features/core/Capabilities.xml" xpointer="tc.Capabilities"/>
+    <xi:include href="parts/features/core/GetServices.xml" xpointer="tc.GetServices"/>
+    <xi:include href="parts/features/core/Discovery.xml" xpointer="tc.Discovery"/>
+    <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml" xpointer="tc.DeviceDiscoveryTypeFilter"/>
+    <xi:include href="parts/features/core/UserHandling.xml" xpointer="tc.UserHandling"/>
+    <section xml:id="tc.TransitionToOperationalState">
+      <title>Transition to Operational State Test Cases</title>
+      <section xml:id="tc.get_services_list.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Transition to Operational State (TransitionToOperationalState)
+        </para>
+        <para>
+          <emphasis role="bold" annotations="ProfileQSupported">Check Condition based on Device Features:</emphasis> Profile Q is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 3
+        </para>
+        <para>
+          <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
+        </para>
+      </section>
+      <section xml:id="tc.TransitionToOperationalState.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>A Client connects to a Device in Factory Default State to invoke its transition into Operational State.</para>
+            </listitem>
+            <listitem>
+              <para>
+                The Client is considered as supporting Transition to Operational State if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      The Client is able to invoke the Device transition into the Operational State by using EITHER <emphasis role="bold">CreateUsers</emphasis> OR <emphasis role="bold">SetUser</emphasis> operations.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The Client is considered as NOT supporting Transition to Operational State if
+                ANY of the following is TRUE:
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">CreateUsers</emphasis> request OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">SetUser</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      <emphasis role="bold">SetUser</emphasis> request does not contain user with <emphasis role="bold">Username</emphasis> value contained in <emphasis role="bold">GetUsers</emphasis> response.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1">
+        <title>TRANSITION TO OPERATIONAL STATE BY CREATEUSERS</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Transition to Operational State by Create User
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> TRANSITIONTOOPERATIONALSTATE-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Transition to Operational State by CreateUsers (TransitionToOperationalState_TransitionToOperationalStateByCreateUsers)
+        </para>
+        <para>
+          <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that a Client is able to invoke Device transition into Operational State using the
+          <emphasis role="bold">CreateUsers</emphasis>.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device in Factory Default state with <emphasis role="bold">CreateUsers</emphasis> operation without any authentication which contains User with "Administrator" user level present.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure (expected to be reflected in network trace file):</emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">CreateUsers</emphasis> request message without any authentication
+                and with non-empty password to create a new admin user.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">CreateUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateUsers</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateUsers</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:CreateUsers</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.1">
+                    <para>
+                      [S2] It does not contain Digest Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.2">
+                    <para>
+                      [S3] It does not contain WS-Username Token Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      It contains <emphasis role="bold">tds:User</emphasis> element which fulfills the following requirements:
+                      <itemizedlist>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.3">
+                          <para>
+                            [S4] <emphasis role="bold">tt:Username</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.4">
+                          <para>
+                            [S5] It contains <emphasis role="bold">tt:Password</emphasis> element AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.5">
+                          <para>
+                            [S6] <emphasis role="bold">tt:Password</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.6">
+                          <para>
+                            [S7] <emphasis role="bold">tt:UserLevel</emphasis> element value equals "Administrator" AND
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">CreateUsers</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.7">
+                    <para>
+                      [S8] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.8">
+                    <para>
+                      [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:CreateUsersResponse</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2">
+        <title>TRANSITION TO OPERATIONAL STATE BY SET USER</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Transition to Operational State by Set User
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> TRANSITIONTOOPERATIONALSTATE-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Transition to Operational State by SetUser (TransitionToOperationalState_TransitionToOperationalStateBySetUser)
+        </para>
+        <para>
+          <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that a Client is able to invoke Device transition into Operational State using the <emphasis role="bold">SetUser</emphasis>.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device in Factory Default state with <emphasis role="bold">SetUser</emphasis> operation without any authentication and with UserLevel is equal to "Administrator" present.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure (expected to be reflected in network trace file):</emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetUsers</emphasis> request message without any authentication to retrieve user list from Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and
+                <emphasis role="bold">GetUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">SetUser</emphasis> request message without any authentication
+                to modify the password of an existing admin user.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and
+                <emphasis role="bold">SetUserResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetUser</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetUser</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetUser</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.1">
+                    <para>
+                      [S2] It does not contain Digest Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.2">
+                    <para>
+                      [S3] It does not contain WS-Username Token Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      It contains <emphasis role="bold">tds:User</emphasis> element which fulfills the following requirements:
+                      <itemizedlist>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.3">
+                          <para>
+                            [S4] <emphasis role="bold">tt:Username</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.4">
+                          <para>
+                            [S5] It contains <emphasis role="bold">tt:Password</emphasis> element AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.5">
+                          <para>
+                            [S6] <emphasis role="bold">tt:Password</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.6">
+                          <para>
+                            [S7] <emphasis role="bold">tt:UserLevel</emphasis> element value equals "Administrator" AND
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">SetUser</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.7">
+                    <para>
+                      [S8] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.8">
+                    <para>
+                      [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetUserResponse</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                There is a Client <emphasis role="bold">GetUsers</emphasis> request message in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.9">
+                    <para>
+                      [S10] It is invoked for the same Device as the response for the <emphasis role="bold">SetUser</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.10">
+                    <para>
+                      [S11] It is invoked before the Client <emphasis role="bold">SetUser</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.11">
+                    <para>
+                      [S12] It does not contain digest authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.12">
+                    <para>
+                      [S13] It does not contain WS-username token authentication part AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">GetUsers</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.13">
+                    <para>
+                      [S14] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.14">
+                    <para>
+                      [S15] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetUsersResponse</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.15">
+                    <para>
+                      [S16] It contains <emphasis role="bold">tt:User</emphasis> element which fulfills the following requirements:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            [S17] <emphasis role="bold">tt:Username</emphasis> element value equals to <emphasis role="bold">tt:Username</emphasis> value from the <emphasis role="bold">SetUser</emphasis> request AND
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            [S18] <emphasis role="bold">UserLevel</emphasis> element value equals "Administrator".
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+  
+  </chapter>
+  <chapter xml:id="tc.ProfileS.ProfileConditionalFeatures">
+    <title>Test Cases for Profile Conditional Features</title>
+    <xi:include href="parts/features/core/EventHandling.xml" xpointer="tc.EventHandling"/>
+    <xi:include href="parts/features/core/NetworkConfiguration.xml" xpointer="tc.NetworkConfiguration"/>
+    <xi:include href="parts/features/core/System.xml" xpointer="tc.System"/>
+    <xi:include href="parts/features/core/NTP.xml" xpointer="tc.NTP"/>
+    <xi:include href="parts/features/core/ZeroConfiguration.xml" xpointer="tc.ZeroConfiguration"/>
+    <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml" xpointer="tc.SystemDateAndTimeConfiguration"/>
+    <xi:include href="parts/features/core/HTTPFirmwareUpgrade.xml" xpointer="tc.HTTPFirmwareUpgrade"/>
+    <xi:include href="parts/features/core/HTTPSystemBackup.xml" xpointer="tc.HTTPSystemBackup"/>
+    <xi:include href="parts/features/core/HTTPSystemRestore.xml" xpointer="tc.HTTPSystemRestore"/>
+    <xi:include href="parts/features/core/MonitoringNotifications.xml" xpointer="tc.MonitoringNotifications"/>
+    <xi:include href="parts/features/core/DeviceManagementNotifications.xml" xpointer="tc.DeviceManagementNotifications"/>
+    <xi:include href="parts/features/core/HostnameConfiguration.xml" xpointer="tc.HostnameConfiguration"/>
+    <xi:include href="parts/features/core/DNSConfiguration.xml" xpointer="tc.DNSConfiguration"/>
+    <xi:include href="parts/features/core/NetworkProtocolsConfiguration.xml" xpointer="tc.NetworkProtocolsConfiguration"/>
+    <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="tc.TLSConfiguration"/>
+  </chapter>
+  <chapter xml:id="tc.ProfileS.ProfileOptionalFeatures">
+    <title>Test Cases for Profile Optional Features</title>
+    <xi:include href="parts/features/core/GetServicesWithCapabilities.xml" xpointer="tc.GetServicesWithCapabilities"/>
+    <xi:include href="parts/features/core/SetSynchronizationPoint.xml" xpointer="tc.SetSynchronizationPoint"/>
+    <xi:include href="parts/features/core/Unsubscribe.xml" xpointer="tc.Unsubscribe"/>
+    <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml" xpointer="tc.KeepAliveForPullPointEventHandling"/>
+  </chapter>
+  	    <chapter xml:id="tc.Profile.ProfileSupplementaryFeatures">
+    <title>Supplementary Features and Test Cases</title>
+    <xi:include href="parts/features/media2/Media2_MetadataStreaming.xml" xpointer="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1"/>
+  </chapter>
+  <appendix>
+    <title>Test for Appendix A</title>
+    <section xml:id="Annex_A.1">
+      <title>Required Number of Devices Summary</title>
+      <para>
+        Required number of devices and Device feature dependency used in this test specification are listed in the Table.
+      </para>
+      <table>
+        <title>Required Number of Devices Summary</title>
+        <tgroup cols="5">
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <thead>
+            <row>
+              <entry>Feature ID</entry>
+              <entry>Feature Name</entry>
+              <entry>Required Number of Devices</entry>
+              <entry>Check Condition based on Device Features</entry>
+              <entry>Check Condition based on Device Features ID</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry align="left">tc.TransitionToOperationalState</entry>
+              <entry align="left">Transition to Operational State</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                Profile Q is supported by Device.
+              </entry>
+              <entry align="left">ProfileQSupported</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </appendix>
+</book>

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.AnalyticsModuleConfiguration.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Supported Rules section and Get Supported Rules Test Cases section was moved from ONVIF Analytics Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  <section xml:id="s.intro.AnalyticsModuleConfiguration">
+    <title>Analytics Module Configuration</title>
+    <para>Analytics Module Configuration section specifies Client ability to retrieve supported Analytics Module description, assigned Analytics Module Configurations, adding and removing of Analytics Modules to/from an existing VideoAnalyticsConfiguration.</para>
+  </section>
+  <section xml:id="tc.AnalyticsModuleConfiguration">
+    <title>Analytics Module Configuration Test Cases</title>
+    <section xml:id="tc.AnalyticsModuleConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Analytics Module Configuration (AnalyticsModuleConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="AnalyticsModules">Check Condition based on Device Features:</emphasis> Analytics Modules under Analytics Service is supported by Device. 
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.11 Analytics module configuration">Profile M Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.AnalyticsModuleConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve supported Analytics Module description using the <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve assigned Analytics Module Configurations using the <emphasis role="bold">GetAnalyticsModules</emphasis> operation.
+            </para>
+          </listitem>
+           <listitem>
+            <para>
+              Client connects to Device to add one or more Analytics Modules to an existing VideoAnalyticsConfiguration using <emphasis role="bold">CreateAnalyticsModules</emphasis> operation.
+            </para>
+          </listitem>
+           <listitem>
+            <para>
+              Client connects to Device to remove one or more Analytics Modules from an existing VideoAnalyticsConfiguration using <emphasis role="bold">DeleteAnalyticsModules</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Analytics Module Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve supported Analytics Module description using the <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to retrieve assigned Analytics Module Configurations using the <emphasis role="bold">GetAnalyticsModules</emphasis> operation AND
+                  </para>
+                </listitem>
+                 <listitem>
+                  <para>
+                    Client is able to add Analytics Modules to an existing VideoAnalyticsConfiguration using <emphasis role="bold">CreateAnalyticsModules</emphasis> operation AND
+                  </para>
+                </listitem>
+                  <listitem>
+                  <para>
+                    Client is able to remove Analytics Modules from an existing VideoAnalyticsConfiguration using <emphasis role="bold">DeleteAnalyticsModules</emphasis> operation AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Analytics Module Configuration if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> request OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">GetAnalyticsModules</emphasis> request OR
+                  </para>
+                </listitem>
+                 <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">CreateAnalyticsModules</emphasis> request OR
+                  </para>
+                </listitem>
+                 <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">DeleteAnalyticsModules</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-1">
+      <title>GET SUPPORTED ANALYTICS MODULES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> GetSupportedAnalyticsModules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ANALYTICSMODULECONFIGURATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> GetSupportedAnalyticsModules (AnalyticsModuleConfiguration_GetSupportedAnalyticsModules)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="GetSupportedAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve supported Analytics Module description using the <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetSupportedAnalyticsModules operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports AnalyticsModules feature.
+            </para>
+          </listitem>          
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> request message to retrieve supported Analytics Module description from the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetSupportedAnalyticsModulesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetSupportedAnalyticsModules</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetSupportedAnalyticsModulesResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-2">
+      <title>GET ANALYTICS MODULES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> GetAnalyticsModules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ANALYTICSMODULECONFIGURATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> GetAnalyticsModules (AnalyticsModuleConfiguration_GetAnalyticsModules)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="GetAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve assigned Analytics Modules using the <emphasis role="bold">GetAnalyticsModules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetAnalyticsModules operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports AnalyticsModules feature.
+            </para>
+          </listitem>          
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetAnalyticsModules</emphasis> request message to retrieve assigned Analytics Modules from the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetAnalyticsModulesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetAnalyticsModules</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetAnalyticsModules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-2.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetAnalyticsModules</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetAnalyticsModules</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-2.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-2.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetAnalyticsModulesResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-3">
+      <title>CREATE ANALYTICS MODULES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> CreateAnalyticsModules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ANALYTICSMODULECONFIGURATION-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> CreateAnalyticsModules (AnalyticsModuleConfiguration_CreateAnalyticsModules)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="CreateAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add analytics modules to an existing VideoAnalyticsConfiguration using the <emphasis role="bold">CreateAnalyticsModules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with CreateAnalyticsModules operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports AnalyticsModules feature.
+            </para>
+          </listitem>          
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreateAnalyticsModules</emphasis> request message to add analytics modules to an existing VideoAnalyticsConfiguration.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">CreateAnalyticsModulesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateAnalyticsModules</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateAnalyticsModules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-3.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:CreateAnalyticsModules</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreateAnalyticsModules</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-3.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-3.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:CreateAnalyticsModulesResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-4">
+      <title>DELETE ANALYTICS MODULES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> DeleteAnalyticsModules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ANALYTICSMODULECONFIGURATION-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> DeleteAnalyticsModules (AnalyticsModuleConfiguration_DeleteAnalyticsModules)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="DeleteAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to remove analytics modules from an existing VideoAnalyticsConfiguration using the <emphasis role="bold">DeleteAnalyticsModules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with DeleteAnalyticsModules operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports AnalyticsModules feature.
+            </para>
+          </listitem>          
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">DeleteAnalyticsModules</emphasis> request message to remove analytics modules from an existing VideoAnalyticsConfiguration.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteAnalyticsModulesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteAnalyticsModules</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteAnalyticsModules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-4.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:DeleteAnalyticsModules</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">DeleteAnalyticsModules</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-4.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.AnalyticsModuleConfiguration.ANALYTICSMODULECONFIGURATION-4.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:DeleteAnalyticsModulesResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

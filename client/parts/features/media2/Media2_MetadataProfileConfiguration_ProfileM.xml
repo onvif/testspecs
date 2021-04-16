@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Tampering.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Tampering section and Tampering Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  <section xml:id="s.intro.Media2_MetadataProfileConfiguration_ProfileM">
+    <title>Metadata Profile Configuration Using Media2 (Profile M)</title>
+    <para>
+      Metadata Profile Configuration Using Media2 section specifies Client ability to cofigure a media profile with video source coniguration and with metadata configuration.
+    </para>
+  </section>
+  <section xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM" xreflabel="Metadata Profile Configuration Using Media2 (Profile M) Test Cases">
+    <title>Metadata Profile Configuration Using Media2 (Profile M) Test Cases</title>
+    <section xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Metadata Profile Configuration Using Media2 for Profile M (Media2_MetadataProfileConfiguration_ProfileM)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Media2_Metadata AND (Media2_VideoSource OR Media2_Video)">Check Condition based on Device Features:</emphasis> Metadata feature and either Video Source or Video under Media2 Service is supported  by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>      
+      <para>
+        <emphasis role="bold"
+                  annotations="7.8	Configuration of metadata profile">Profile M Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to configure a media profile with Video Source Configuration and with Metadata
+              Configuration.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Metadata Profile Configuration Using Media2 for Profile M if the
+              following conditions are met:<itemizedlist>                 
+               
+                  <listitem>
+                    <para>
+                      Client supports <emphasis role="bold">Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurations</emphasis> feature (please see <xref linkend="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1"/> section)
+                       AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to add a Video Source Configuration using EITHER
+                      <emphasis role="bold">AddConfiguration</emphasis> operation with Type = VideoSource OR <emphasis role="bold">CreateProfile</emphasis> operation with Type = VideoSource
+                    </para>
+                  </listitem>
+                 <listitem>
+                  <para>
+                    Client supports <emphasis role="bold">Media2_MetadataProfileConfiguration</emphasis> feature (please see <xref linkend="tc.Media2_MetadataProfileConfiguration"/> section).
+                  </para>
+                </listitem>                
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Metadata Profile Configuration Using Media2 for Profile M if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                    <para>
+                      Client does not support <emphasis role="bold">Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurations</emphasis> feature (please see <xref linkend="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1"/> section)
+                       AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is not able to add a Video Source Configuration neither using 
+                      <emphasis role="bold">AddConfiguration</emphasis> operation nor using <emphasis role="bold">CreateProfile</emphasis> operation OR
+                    </para>
+                  </listitem>
+                 <listitem>
+                    <para>
+                      No valid responses for <emphasis role="bold">AddConfiguration</emphasis> request with Type = VideoSource if deteced OR
+                    </para>
+                  </listitem>
+                <listitem>
+                    <para>
+                      No valid responses for <emphasis role="bold">CreateProfile</emphasis> request with Type = VideoSource if deteced OR
+                    </para>
+                  </listitem>
+                   <listitem>
+                  <para>
+                    Client does not support <emphasis role="bold">Media2_MetadataProfileConfiguration</emphasis> feature (please see <xref linkend="tc.Media2_MetadataProfileConfiguration"/> section).
+                  </para>
+                </listitem>
+                
+                
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-1">
+        <title>ADD VIDEO SOURCE CONFIGURATION USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Add Video Source Configuration
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Add Video Source Configuration Using Media2 (Media2_MetadataProfileConfiguration_ProfileM_Media2_AddVideoSourceConfiguration)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="AddConfiguration (VideoSource)">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add an video source configuration to a media profile using the
+          <emphasis role="bold">AddConfiguration</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">AddConfiguration</emphasis> operation with Type = <emphasis role="bold">VideoSource</emphasis>
+                present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Video Source feature (Media2_VideoSource) OR device supports Media2 Video feature  (Media2_Video).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>           
+            
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">AddConfiguration</emphasis> request message with Type = <emphasis role="bold">VideoSource</emphasis> and with Token element to add an video source configuration to specified media profile on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">AddConfigurationResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">AddConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">AddConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:AddConfiguration</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-1.1">
+                    <para>
+                      [S2] It has <emphasis role="bold">tr2:Configuration/tr2:Type</emphasis> element with value is equal to "VideoSource" AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-1.2">
+                    <para>
+                      [S3] It has <emphasis role="bold">tr2:Configuration/tr2:Token</emphasis> element AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">AddConfiguration</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-1.3">
+                    <para>
+                      [S4] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-1.4">
+                    <para>
+                      [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:AddConfigurationResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>    
+    <section xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-2">
+        <title>CREATE MEDIA PROFILE WITH VIDEO SOURCE CONFIGURATION USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Create Media2 Profile with Video Source Configuration
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Create Media2 Profile With Video Source Configuration (Media2_MetadataProfileConfiguration_ProfileM_Media2_CreateMediaProfile)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="AddConfiguration (VideoSource)">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create media profile with video source configuration using the
+          <emphasis role="bold">CreateProfile</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">CreateProfile</emphasis> operation with Type = <emphasis role="bold">VideoSource</emphasis>
+                present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Video Source feature (Media2_VideoSource) OR device supports Media2 Video feature  (Media2_Video).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">CreateProfile</emphasis> request message with <emphasis role="bold">tr2:Configuration\tr2:Type</emphasis> = <emphasis role="bold">VideoSource</emphasis> and with specified <emphasis role="bold">tr2:Token</emphasis> element for this Configuration to create
+                profile with video source configuration on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">CreateProfileResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateProfile</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateProfile</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:CreateProfile</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-2.1">
+                    <para>
+                      [S2] It has <emphasis role="bold">tr2:Configuration/tr2:Type</emphasis> element with value is equal to <emphasis role="bold">"VideoSource"</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-2.2">
+                    <para>
+                      [S3] <emphasis role="bold">tr2:Configuration</emphasis> element with <emphasis role="bold">tr2:Type</emphasis> value is equal to <emphasis role="bold">"VideoSource"</emphasis> has <emphasis role="bold">tr2:Token</emphasis> element AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">CreateProfile</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-2.3">
+                    <para>
+                      [S4] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration_ProfileM.MEDIA2_METADATAPROFILECONFIGURATION_PROFILEM-2.4">
+                    <para>
+                      [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:CreateProfileResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    
+  </section>
+</feature>

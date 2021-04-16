@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.DoorConfigurationChangeNotifications.20190826.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 26, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Door Information - Configuration Change Notifications feature and scope was extracted from Configuration Change Notifications feature.</para>
+        <para>Scope\Door Information - Configuration Change Notifications section was added.</para>
+        <para>Door Information - Configuration Change Notifications Test Cases section was added.</para>
+        <para>Configuration Change Notifications section was removed.</para>
+        <para>Configuration Change Notifications Test Cases section was removed.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.DoorConfigurationChangeNotifications">
+    <title>Door Information - Configuration Change Notifications</title>
+    <para>
+      Door Information - Configuration Change Notifications section specifies Client ability to receive Doors configuration change notifications.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.DoorConfigurationChangeNotifications">
+    <title>Door Information - Configuration Change Notifications Test Cases</title>
+    <section xml:id="tc.DoorConfigurationChangeNotifications.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Door Information - Configuration Change Notifications (DoorConfigurationChangeNotifications)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DoorControlService">Check Condition based on Device Features:</emphasis> Door Control Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <!--List of profiles for which feature mandatory, conditional or optional-->
+      <para>
+        <emphasis role="bold" annotations="8.2 Configuration change notification – Doors">Profile C Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.12 Door Information">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.DoorConfigurationChangeNotifications.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <!--Description of use case-->
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis> operation to get Configuration Change notifications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events from Device.
+            </para>
+          </listitem>
+          <!--Feature is supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as supporting Configuration change  notification if the following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>Client supports DoorInformation_ListingOfDoors feature (please see <xref linkend="tc.DoorInformation.DOORINFORMATION-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to retrieve <emphasis role="bold">tns1:Configuration/Door/Changed</emphasis> notification
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to retrieve <emphasis role="bold">tns1:Configuration/Door/Removed</emphasis> notification.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--Feature is not supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Configuration change notification if ANY
+              of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section)
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support DoorInformation_ListingOfDoors feature (please see <xref linkend="tc.DoorInformation.DOORINFORMATION-1"/> section) 
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client unable to retrieve <emphasis role="bold">tns1:Configuration/Door/Changed</emphasis> notification
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client unable to retrieve <emphasis role="bold">tns1:Configuration/Door/Removed</emphasis> notification.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

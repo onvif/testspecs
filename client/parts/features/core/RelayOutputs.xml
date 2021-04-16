@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.RelayOutputs.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Relay Outputs section and Relay Outputs Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.RelayOutputs">
+      <title>Relay Outputs</title>
+      <para>
+        Relay Outputs section defines Client ability to list, configure and trigger relay
+        outputs on Device.
+      </para>
+  </section>
+     <section xml:id="tc.RelayOutputs">
+    <title>Relay Outputs Test Cases</title>
+    <section xml:id="tc.RelayOutputs.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Relay Outputs (RelayOutputs)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DeviceIORelayOutputs">Check Condition based on Device Features:</emphasis> Relay Outputs (Device Management Service) is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.RelayOutputs.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to list, configure and trigger relay
+              outputs using Device Management service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Relay Outputs if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to list available relay outputs using the
+                    GetRelayOutputs operation using Device Management service AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to trigger relay output using the
+                    SetRelayOutputState operation using Device Management service AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to set settings of relay output in EITHER
+                    "Bistable" OR "Monostable" mode using the
+                    SetRelayOutputSettings operation using Device Management service.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Relay Outputs if ANY of the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetRelayOutputs request to Device Management service
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SetRelayOutputState request to Device Management service
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SetRelayOutputSettings
+                    requests to Device Management service for BOTH "Bistable" AND "Monostable" mode.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.RelayOutputs.RELAYOUTPUTS-1">
+      <title>GET RELAY OUTPUTS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Relay Output - Get Relay Outputs
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RELAYOUTPUTS-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Relay Outputs (RelayOutputs_GetRelayOutputs)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        list available relay outputs using the GetRelayOutputs operation for Device Management Service.
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that relay outputs provided by Device is received by Client using the
+        <emphasis role="bold">GetRelayOutputs</emphasis> operation using Device Management Service.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetRelayOutputs</emphasis> operation for Device Management Service present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client supports Capabilities feature.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Client Test Tool retrieves Device Management Service address from device's response on GetServices or GetCapabilities Client request.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetRelayOutputs</emphasis> request message to Device Management Service to retrieve relay outputs
+              from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetRelayOutputsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetRelayOutputs</emphasis> request messages to Device Management Service are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetRelayOutputs</emphasis> request to Device Management Service in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetRelayOutputs</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetRelayOutputs</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetRelayOutputsResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.RelayOutputs.RELAYOUTPUTS-2">
+      <title>SET RELAY OUTPUT STATE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Relay Output - Set Relay Output State
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RELAYOUTPUTS-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Relay Output State (RelayOutputs_SetRelayOutputState)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to trigger a relay output using the
+        <emphasis role="bold">SetRelayOutputState</emphasis> operation for Device Management Service.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">SetRelayOutputState</emphasis> operation for Device Management Service present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client supports Capabilities feature.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Client Test Tool retrives Device Management Service address from device's response on GetServices or GetCapabilities Client request.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SetRelayOutputState</emphasis> request message to Device Management Service to trigger a relay output
+              on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">SetRelayOutputStateResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputState</emphasis> request messages to Device Management Service are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputState</emphasis> request to Device Management Service in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-2.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputState</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-2.1">
+                  <para>
+                    [S2] <emphasis role="bold">tds:SetRelayOutputState\tds:RelayOutputToken</emphasis> element has non-empty string value AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetRelayOutputState</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-2.2">
+                  <para>
+                    [S3] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-2.3">
+                  <para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputStateResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.RelayOutputs.RELAYOUTPUTS-3">
+      <title>SET RELAY OUTPUT SETTINGS BISTABLE MODE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Relay Outputs -
+        SetRelayOutputSettings Bistable Mode
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RELAYOUTPUTS-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Relay Output Settings Bistable Mode (RelayOutputs_SetRelayOutputBistable)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set settings of relay output in "Bistable" mode using the <emphasis role="bold">SetRelayOutputSettings</emphasis> operation for Device Management Service.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">SetRelayOutputSettings</emphasis> operation for Device Management Service with
+              <emphasis role="bold">tds:SetRelayOutputSettings\tds:Properties\tt:Mode</emphasis> element value is equal to "Bistable" present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SetRelayOutputSettings</emphasis> request message to Device Management Service to set setting
+              of relay output in "Bistable" mode.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">SetRelayOutputSettingsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client SetRelayOutputSettings request
+        message does not contain "Bistable" value of Mode element then Test shall be
+        deemed as "NOT DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputSettings</emphasis> request messages to Device Management Service are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputSettings</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-3.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputSettings</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-3.1">
+                  <para>
+                    [S2] <emphasis role="bold">tds:SetRelayOutputSettings\tds:RelayOutputToken</emphasis> element has non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-3.2">
+                  <para>
+                    [S2] <emphasis role="bold">tds:SetRelayOutputSettings\tds:Properties\tt:Mode</emphasis> element value is equal to "Bistable" AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetRelayOutputSettings</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-3.3">
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-3.4">
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputSettingsResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.RelayOutputs.RELAYOUTPUTS-4">
+      <title>SET RELAY OUTPUT SETTINGS MONOSTABLE MODE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Relay Outputs -
+        SetRelayOutputSettings Monostable Mode
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RELAYOUTPUTS-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Relay Output Settings Monostable Mode (RelayOutputs_SetRelayOutputMonostable)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set settings of relay output in "Monostable" mode using the <emphasis role="bold">SetRelayOutputSettings</emphasis> operation for Device Management Service.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">SetRelayOutputSettings</emphasis> operation for Device Management Service with
+              <emphasis role="bold">tds:SetRelayOutputSettings\tds:Properties\tt:Mode</emphasis> element value is equal to "Monostable" present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SetRelayOutputSettings</emphasis> request message to Device Management Service to set setting
+              of relay output in "Monostable" mode.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">SetRelayOutputSettingsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client SetRelayOutputSettings request
+        message does not contain "Monostable" value of Mode element then Test shall be
+        deemed as "NOT DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputSettings</emphasis> request messages to Device Management Service are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputSettings</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-4.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputSettings</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-4.1">
+                  <para>
+                    [S2] <emphasis role="bold">tds:SetRelayOutputSettings\tds:RelayOutputToken</emphasis> element has non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-4.2">
+                  <para>
+                    [S2] <emphasis role="bold">tds:SetRelayOutputSettings\tds:Properties\tt:Mode</emphasis> element value is equal to "Monostable" AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetRelayOutputSettings</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-4.3">
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RelayOutputs.RELAYOUTPUTS-4.4">
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputSettingsResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+
+  </section>
+</feature>

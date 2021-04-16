@@ -1,0 +1,1803 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--For PDF version (standard)-->
+<!-- <?xml-stylesheet href="docbook/xsl/fo/docbook.xsl" type="text/xsl" ?>-->
+<!--For PDF version-->
+<!-- <?xml-stylesheet href="ONVIF-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<!--For online version-->
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Profile_Imaging_Client_TS">
+	<info>
+		<orgname>
+			<phrase>
+				<trademark class="registered">ONVIF</trademark>
+			</phrase>
+		</orgname>
+		<title>Thermal Device Test Specification</title>
+		<subtitle>Version 18.06</subtitle>
+		<date>June 2018</date>
+		<copyright>
+			<year>2018</year>
+			<holder>ONVIF, Inc. All rights reserved.</holder>
+		</copyright>
+		<address>
+			<uri>www.onvif.org</uri>
+		</address>
+		<legalnotice role="notices">
+			<para>
+				Recipients of this document may copy, distribute, publish, or display this
+				document so long as this copyright notice, license and disclaimer are retained with
+				all copies of the document. No license is granted to modify this document.
+			</para>
+			<para>
+				THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
+				AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+				NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+				NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY
+				PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS,
+				COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+			</para>
+			<para>
+				IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR
+				ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES,
+				ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR
+				NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE
+				POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND
+				ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT. THE
+				FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR
+				LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE
+				AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE
+				CORPORATION.
+			</para>
+		</legalnotice>
+		<revhistory>
+			
+			
+			<revision>
+				<revnumber>17.12</revnumber>
+				<date>Aug 08, 2017</date>
+				<revdescription>
+					<para>First Issue</para>
+				</revdescription>
+			</revision>
+     <revision>
+				<revnumber>18.06</revnumber>
+				<date>Jun 21, 2018</date>
+				<revdescription>
+          <para>Reformatting document using new template</para>				
+				</revdescription>
+			</revision>
+      
+		</revhistory>
+	</info>
+	<chapter xml:id="s.intro">
+		<title>Introduction</title>
+		<para>
+			The goal of the ONVIF test specification set is to make it possible to realize fully interoperable IP physical security implementation from different vendors. The set of ONVIF test specification describes the test cases need to verify the [ONVIF Thermal Service Specs] and [ONVIF Conformance] requirements. It also describes the test framework, test setup, pre-requisites, test policies needed for the execution of the described test cases.
+		</para>
+		<para>
+			This ONVIF Thermal Test Specification acts as a supplementary document to the [ONVIF Thermal Service Specs], illustrating test cases need to be executed and passed. And also this specification acts as an input document to the development of test tool which will be used to test the ONVIF device implementation conformance towards ONVIF standard. This test tool is referred as ONVIF Client hereafter.
+		</para>
+		<section xml:id="s.intro.scope">
+			<title>Scope</title>
+			<para>
+				This ONVIF Thermal Test Specification defines and regulates the conformance testing procedure for the ONVIF conformant devices. Conformance testing is meant to be functional black-box testing. The objective of this specification is to provide test cases to test individual requirements of ONVIF devices according to ONVIF Thermal Service which is defined in [ONVIF Thermal Service Specs].
+			</para>
+			<para>
+				The principal intended purposes are:
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>Provide self-assessment tool for implementations.</para>
+					</listitem>
+					<listitem>
+						<para>
+							Provide comprehensive test suite coverage for [ONVIF Network Interface Specs].
+						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				This specification does not address the following:
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+							Product use cases and non-functional (performance and regression) testing.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							SOAP Implementation Interoperability test i.e. Web Service Interoperability Basic Profile version 2.0 (WS-I BP 2.0).
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Network protocol implementation Conformance test for HTTP, HTTPS, RTP protocol.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Wi-Fi Conformance test
+						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				The set of ONVIF Test Specification will not cover the complete set of requirements as defined in [ONVIF Thermal Service Specs]; instead it would cover subset of it. The scope of this specification is to derive all the normative requirements of [ONVIF Thermal Service Specs] which are related to ONVIF Thermal Service and some of the optional requirements.
+			</para>
+			<para>
+				This ONVIF Thermal Test Specification covers Thermal service which is a functional block of [ONVIF Network Interface Specs]. The following sections describe the brief overview of and scope of each functional block.
+			</para>
+      <section xml:id="s.intro.scope.capabilities">
+				<title>Capabilities</title>
+				<para>
+					The Capabilities section covers the test cases needed for getting capabilities from an ONVIF device.
+				</para>
+				<para>
+					The scope of this specification section is to cover the following functions:
+					<itemizedlist>
+						<listitem>
+							<para>
+								Getting Thermal service address with GetServices command via Device service
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Getting capabilities with GetServiceCapabilities command
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Getting capabilities with GetServices command via Device service
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				
+			</section>
+			<section xml:id="s.intro.scope.thermal_setting">
+				<title>Thermal Setting</title>
+				<para>
+					Thermal Setting test cases are covered for verification to get and set thermal parameters for ColorPalette, NUCTable and Cooler. It means that <emphasis role="bold">GetConfiguration</emphasis>, <emphasis role="bold">GetConfigurationOptions</emphasis> and <emphasis role="bold">SetConfiguration</emphasis> commands are covered by this test case. 
+				</para>
+				
+			</section>
+			
+		</section>
+	</chapter>
+	<chapter xml:id="s.docbook">
+		<title>Normative references</title>
+		<itemizedlist>
+			<listitem>
+				<para>[ONVIF Conformance] ONVIF Conformance Process Specification:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/conformance/">https://www.onvif.org/profiles/conformance/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Profile Policy] ONVIF Profile Policy:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Network Interface Specs] ONVIF Network Interface Specification documents:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Core Specs] ONVIF Core Specifications:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Thermal Service Specs] ONVIF Thermal Service Specification:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Base Test] ONVIF Base Device Test Specification:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/conformance/device-test/">https://www.onvif.org/profiles/conformance/device-test/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ISO/IEC Directives, Part 2] ISO/IEC Directives, Part 2, Annex H:</para>
+				<para>
+					<link xlink:href="http://www.iso.org/directives">http://www.iso.org/directives</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ISO 16484-5] ISO 16484-5:2014-09 Annex P:</para>
+				<para>
+					<link xlink:href="https://www.iso.org/obp/ui/#!iso:std:63753:en">https://www.iso.org/obp/ui/#!iso:std:63753:en</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[SOAP 1.2, Part 1] W3C SOAP 1.2, Part 1, Messaging Framework:</para>
+				<para>
+					<link xlink:href="http://www.w3.org/TR/soap12-part1/">http://www.w3.org/TR/soap12-part1/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[XML-Schema, Part 1] W3C XML Schema Part 1: Structures Second Edition:</para>
+				<para>
+					<link xlink:href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[XML-Schema, Part 2] W3C XML Schema Part 2: Datatypes Second Edition:</para>
+				<para>
+					<link xlink:href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[WS-Security] "Web Services Security: SOAP Message Security 1.1 (WS-Security 2004)", OASIS Standard, February 2006.:</para>
+				<para>
+					<link xlink:href="http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf">http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf</link>
+				</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="additions">
+		<title>Terms and Definitions</title>
+		<section xml:id="additions.conventions">
+			<title>Conventions</title>
+			<para>
+				The key words "shall", "shall not", "should", "should not", "may", "need not",
+				"can", "cannot" in this specification are to be interpreted as described in [ISO/IEC
+				Directives Part 2].
+			</para>
+		</section>
+		<section xml:id="additions.definitions">
+			<title>Definitions</title>
+			<para>This section defines terms that are specific to the ONVIF Advanced Security Service and tests. For a list of applicable general terms and definitions, please see [ONVIF Base Test].</para>
+			<variablelist>
+				<varlistentry>
+					<term>ColorPalette</term>
+					<listitem>
+						<para>
+							Color Palette
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Polarity</term>
+					<listitem>
+						<para>
+							Polarity configuration
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>NUCTable</term>
+					<listitem>
+						<para>
+							Non-Uniformity Correction (NUC) Table
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Cooler</term>
+					<listitem>
+						<para>
+							Cooler settings
+						</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</section>
+	</chapter>
+	<chapter xml:id="overview">
+		<title>Test Overview</title>
+		<para>
+			This section provides information the test setup procedure and required prerequisites, and the test policies that should be followed for test case execution.
+		</para>
+		<section xml:id="overview.test_setup">
+			<title>Test Setup</title>
+			<section xml:id="overview.test_setup.network_configuration">
+				<title>Network Configuration for DUT</title>
+				<para>
+					The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 4.1).
+				</para>
+				<para>
+					Based on the individual test case requirements, some of the entities in the below setup may not be needed for the execution of those corresponding test cases.
+				</para>
+				<figure>
+					<title>Test Configuration for DUT</title>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="test_network.png" format="PNG" scalefit="0"/>
+						</imageobject>
+						<textobject>
+							<phrase>Test Configuration for DUT</phrase>
+						</textobject>
+					</mediaobject>
+				</figure>
+				<para>
+					<emphasis role="bold">DUT:</emphasis> ONVIF device to be tested. Hereafter, this is referred to as DUT (Device Under Test).
+				</para>
+				<para>
+					<emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system and it controls the behavior of the DUT. It handles both expected and unexpected behavior.
+				</para>
+				<para>
+					<emphasis role="bold">HTTP Proxy:</emphasis> provides facilitation in case of RTP and RTSP tunneling over HTTP.
+				</para>
+				<para>
+					<emphasis role="bold">Wireless Access Point:</emphasis> provides wireless connectivity to the devices that support wireless connection.
+				</para>
+				<para>
+					<emphasis role="bold">DNS Server:</emphasis> provides DNS related information to the connected devices.
+				</para>
+				<para>
+					<emphasis role="bold">DHCP Server:</emphasis> provides IPv4 Address to the connected devices.
+				</para>
+				<para>
+					<emphasis role="bold">NTP Server:</emphasis> provides time synchronization between ONVIF Client and DUT.
+				</para>
+				<para>
+					<emphasis role="bold">Switching Hub:</emphasis> provides network connectivity among all the test equipments in the test environment. All devices should be connected to the Switching Hub.
+          When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering in order to avoid multicast traffic being flooded to all ports, because this may affect test stability.
+				</para>
+				<para>
+					<emphasis role="bold">Router:</emphasis> provides router advertisements for IPv6 configuration.
+				</para>
+			</section>
+		</section>
+		<section xml:id="overview.prerequisites">
+			<title>Prerequisites</title>
+			<para>
+				The pre-requisites for executing the test cases described in this Test Specification are:
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+							The DUT shall be configured with an IPv4 address.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT shall be IP reachable [in the test configuration].
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT shall be able to be discovered by the Test Tool.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT shall be configured with the time, i.e. manual configuration of UTC time and if NTP is supported by the DUT then NTP time shall be synchronized with NTP Server.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT time and Test tool time shall be synchronized with each other either manually or by a common NTP server.
+						</para>
+					</listitem>
+					
+				</orderedlist>
+			</para>
+			
+		</section>
+		<section xml:id="overview.test_policy">
+			<title>Test Policy</title>
+			<para>
+				This section describes the test policies specific to the test case execution of each functional block.
+			</para>
+			<para>
+				The DUT shall adhere to the test policies defined in this section.
+			</para>
+      <section xml:id="overview.test_policy.capabilities">
+				<title>Capabilities</title>
+				<para>
+					The test policies specific to the test case execution of Capabilities functional block:
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT shall give the Thermal Service entry point by GetServices command, if DUT supports this service. Otherwise, these test cases will be skipped.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								DUT shall support the following commands:
+								<itemizedlist>
+									<listitem>
+										<para>
+											GetServices
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											GetServiceCapabilities
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The following tests are performed
+								<itemizedlist>
+									<listitem>
+										<para>
+											Getting capabilities with GetServiceCapabilities command
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											Getting capabilities with GetServices command
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+					</itemizedlist>
+							</para>
+							<para>
+								Please refer to <link linkend="tc.thermal.capabilities">Section 5.1</link> for Capabilities Test Cases.
+							</para>
+						</section>
+			<section xml:id="overview.test_policy.thermal_setting">
+				<title>Thermal Setting</title>
+				<para>
+					The test policies specific to the test case execution of all functional blocks: 
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT shall give the Thermal Service entry point by GetServices command, if DUT supports this service. Otherwise, these test cases will be skipped.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								DUT shall support the following commands:
+								<itemizedlist>
+										<listitem>
+											<para>
+												GetConfiguration
+											</para>
+										</listitem>
+										<listitem>
+											<para>
+												GetConfigurationOptions
+											</para>
+										</listitem>
+										<listitem>
+											<para>
+												SetConfiguration 
+											</para>
+										</listitem>
+									</itemizedlist>
+								</para>
+							</listitem>
+								</itemizedlist>
+							</para>
+				<para>
+					Please refer to <link linkend="tc.thermal.thermal_setting">Section 5.2</link> for Thermal Setting Test Cases.
+				</para>
+			</section>
+			
+
+		</section>
+	</chapter>
+	<!--Thermal Test Cases-->
+	<chapter xml:id="tc.thermal">
+		<title>Thermal Test Cases</title>
+    <!-- Capabilities -->
+    <section xml:id="tc.thermal.capabilities">
+			<title>Capabilities</title>
+			<!-- THERMAL-1-1-1 -->
+			<section xml:id="tc.THERMAL-1-1-1">
+				<title>Get Services and Get Thermal Service Capabilities Consistency</title>
+				<para>
+					<emphasis role="bold">Test Case ID:</emphasis> THERMAL-1-1-1
+				</para>
+				<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> Capability exchange (ONVIF Core Specification), Capabilities (Thermal Service Specification)
+				</para>
+				<para>
+					<emphasis role="bold">Feature under test:</emphasis> GetServices, GetServiceCapabilities (Thermal)
+				</para>
+				<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl, thermal.wsdl
+				</para>
+				<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify getting Thermal Service using GetServices request. To verify Get Services and Thermal Service Capabilities consistency. 
+				</para>
+				<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Thermal Service was received from the DUT.
+				</para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist>
+						<?dbfo label-width="1.5em"?>
+						<listitem>
+							<para>
+								Start an ONVIF Client.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Start the DUT.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
+								<itemizedlist>
+									<listitem>
+										<para>
+											IncludeCapability := false
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
+								<itemizedlist>
+									<listitem>
+										<para>
+											Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/thermal/wsdl", FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Set <emphasis role="italic">thermalServ</emphasis> := item from <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/thermal/wsdl".
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">thermalServ</emphasis>.Capabilities is specified, FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
+								<itemizedlist>
+									<listitem>
+										<para>
+											IncludeCapability := true
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
+								<itemizedlist>
+									<listitem>
+										<para>
+											Service list =: <emphasis role="italic">listOfServicesWithCapabilities</emphasis>
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">listOfServicesWithCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/thermal/wsdl", FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Set <emphasis role="italic">thermalServ</emphasis> := item from <emphasis role="italic">listOfServicesWithCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/thermal/wsdl".
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">thermalServ</emphasis>.Capabilities is not specified, FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">thermalServ</emphasis>.Capabilities does not contain valid Capabilities element for Thermal service from "http://www.onvif.org/ver10/thermal/wsdl" namespace, FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						
+						<listitem>
+							<para>
+								ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> (Thermal) request.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+								<itemizedlist>
+									<listitem>
+										<para>
+											Capabilities =: <emphasis role="italic">cap</emphasis>
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">cap</emphasis> differs from <emphasis role="italic">thermalServ</emphasis>.Capabilities.Capabilities, FAIL the test.
+							</para>
+						</listitem>
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT passes all assertions.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								The DUT did not send <emphasis role="bold">GetServicesResponse</emphasis> messages.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+		</section>
+		<!--Thermal Setting-->
+		<section xml:id="tc.thermal.thermal_setting">
+			<title>Thermal Setting</title>
+			<!-- THERMAL-2-1-1 -->
+			<section xml:id="tc.THERMAL-2-1-1">
+				<title>Thermal Get Configuration and Get Configuration Options</title>
+				<para>
+					<emphasis role="bold">Test Case ID:</emphasis> THERMAL-2-1-1
+				</para>
+				<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> Get Configuration (Thermal Service Specification), Get Configuration Options (Thermal Service Specification)
+				</para>
+				<para>
+					<emphasis role="bold">Feature under test:</emphasis> GetConfiguration, GetConfigurationOptions
+				</para>
+				<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> thermal.wsdl
+				</para>
+				<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify retrieving of DUT Thermal Configuration using GetConfiguration command. To verify retrieving of DUT Thermal Configuration Options using GetConfigurationOptions command. To verify that all Configurations are consistent with Configuration Options. 
+				</para>
+				<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Thermal Service is received from the DUT. 
+				</para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist>
+						<?dbfo label-width="1.5em"?>
+						<listitem>
+							<para>
+								Start an ONVIF Client.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Start the DUT.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								ONVIF Client retrieves Video Source Token list by following the procedure mentioned in <link linkend="Annex_HelperGetVideoSourceTokenList">Annex A.1</link> with the following input and output parameters
+								<itemizedlist>
+									<listitem>
+										<para>
+											out <emphasis role="italic">VideoSourceTokenList</emphasis> - Video Source Token list
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								For each Video Source Token <emphasis role="italic">videoSourceToken</emphasis> in <emphasis role="italic">VideoSourceTokenList</emphasis> list repeat the following steps:
+								<orderedlist numeration="arabic" inheritnum="inherit">
+									<?dbfo label-width="2.5em"?>
+									<listitem>
+										<para>
+											ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters
+											<itemizedlist>
+												<listitem>
+													<para>
+														VideoSourceToken := <emphasis role="italic">videoSourceToken</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with <emphasis role="bold">GetConfigurationResponse</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														Configuration  =: <emphasis role="italic">configuration</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											ONVIF Client invokes <emphasis role="bold">GetConfigurationOptions</emphasis> request with parameters
+											<itemizedlist>
+												<listitem>
+													<para>
+														VideoSourceToken := <emphasis role="italic">videoSourceToken</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with <emphasis role="bold">GetConfigurationOptionsResponse</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														ConfigurationOptions =: <emphasis role="italic">configurationOptions</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											For each NUCTable (<emphasis role="italic">nUCTable</emphasis>) in <emphasis role="italic">configurationOptions</emphasis> repeat the following steps:
+											<itemizedlist>
+												<listitem>
+													<para>
+														If <emphasis role="italic">nUCTable</emphasis>.LowTemperature is value greater than <emphasis role="italic">nUCTable</emphasis>.HighTemperature, FAIL the test and skip other steps.
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem xml:id="tc.THERMAL-1-1-1.4.6">
+										<para>
+											If <emphasis role="italic">configuration</emphasis>.ColorPalette is not equal to one of <emphasis role="italic">configurationOptions</emphasis>.ColorPalette items, FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									<listitem xml:id="tc.THERMAL-1-1-1.4.7">
+										<para>
+											If <emphasis role="italic">configuration</emphasis>.NUCTable is not equal to one of <emphasis role="italic">configurationOptions</emphasis>.NUCTable items, FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">configurationOptions</emphasis>.CoolerOptions.Enabled = false and <emphasis role="italic">configuration</emphasis>.Cooler.Enabled = false, FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									
+								</orderedlist>
+							</para>
+						</listitem>
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT passes all assertions.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT did not send <emphasis role="bold">GetConfigurationResponse</emphasis> message.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								DUT did not send <emphasis role="bold">GetConfigurationOptionsResponse</emphasis> message.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Note:</emphasis> The following fields are compared at step <link linkend="tc.THERMAL-1-1-1.4.6">4.6</link>: 
+					<itemizedlist>
+						<listitem>
+							<para>
+								token 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Type
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Name 
+							</para>
+						</listitem>
+						
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Note:</emphasis> The following fields are compared at step <link linkend="tc.THERMAL-1-1-1.4.7">4.7</link>: 
+					<itemizedlist>
+						<listitem>
+							<para>
+								token 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								LowTemperature 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								HighTemperature 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Name 
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				
+			</section>
+			<!-- THERMAL-2-1-2 -->
+			<section xml:id="tc.THERMAL-2-1-2">
+				<title>Thermal Modify Configuration</title>
+				<para>
+					<emphasis role="bold">Test Case ID:</emphasis> THERMAL-2-1-2
+				</para>
+				<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> Set Configuration (Thermal Service Specification) 
+				</para>
+				<para>
+					<emphasis role="bold">Feature under test:</emphasis> SetConfiguration
+				</para>
+				<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> thermal.wsdl
+				</para>
+				<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify modification of Thermal Configuration using SetConfiguration command.
+				</para>
+				<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Thermal Service is received from the DUT. 
+				</para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist>
+						<?dbfo label-width="1.5em"?>
+						<listitem>
+							<para>
+								Start an ONVIF Client.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Start the DUT.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								ONVIF Client retrieves Video Source Token list by following the procedure mentioned in <link linkend="Annex_HelperGetVideoSourceTokenList">Annex A.1</link> with the following input and output parameters
+								<itemizedlist>
+									<listitem>
+										<para>
+											out <emphasis role="italic">VideoSourceTokenList</emphasis> - Video Source Token list
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								For each Video Source Token <emphasis role="italic">videoSourceToken</emphasis> in <emphasis role="italic">VideoSourceTokenList</emphasis> list repeat the following steps:
+								<orderedlist numeration="arabic" inheritnum="inherit">
+									<?dbfo label-width="2.5em"?>
+									<listitem>
+										<para>
+											ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters
+											<itemizedlist>
+												<listitem>
+													<para>
+														VideoSourceToken := <emphasis role="italic">videoSourceToken</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with <emphasis role="bold">GetConfigurationResponse</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														Configuration  =: <emphasis role="italic">initialConfiguration</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											ONVIF Client invokes <emphasis role="bold">GetConfigurationOptions</emphasis> request with parameters
+											<itemizedlist>
+												<listitem>
+													<para>
+														VideoSourceToken := <emphasis role="italic">videoSourceToken</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with <emphasis role="bold">GetConfigurationOptionsResponse</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														ConfigurationOptions =: <emphasis role="italic">configurationOptions1</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									
+									<listitem>
+										<para>
+											If <emphasis role="italic">configurationOptions1</emphasis> contains at least two ColorPalette elements, do the following steps:
+											<orderedlist numeration="arabic" inheritnum="inherit">
+												<?dbfo label-width="3.5em"?>
+												<listitem xml:id="tc.THERMAL-1-1-2.4.5.1">
+													<para>
+														ONVIF Client invokes <emphasis role="bold">SetConfiguration</emphasis> request with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.ColorPalette =: <emphasis role="italic">configurationOptions1</emphasis>.ColorPalette with @token other than <emphasis role="italic">initialConfiguration</emphasis>.ColorPalette.@token  
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.Polarity =: <emphasis role="italic">initialConfiguration</emphasis>.Polarity   
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.NUCTable =: <emphasis role="italic">initialConfiguration</emphasis>.NUCTable   
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.Cooler =: <emphasis role="italic">initialConfiguration</emphasis>.Cooler   
+																</para>
+															</listitem>
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														The DUT responds with <emphasis role="bold">SetConfigurationResponse</emphasis> message.
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+																</para>
+															</listitem>
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														The DUT responds with<emphasis role="bold">GetConfigurationResponse</emphasis> with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	Configuration =: <emphasis role="italic">configuration2</emphasis>
+																</para>
+															</listitem>
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														If <emphasis role="italic">configuration2</emphasis> is not equal to Configuration from step <link linkend="tc.THERMAL-1-1-2.4.5.1">4.5.1</link>, FAIL the test and skip other steps.
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														ONVIF Client restores settings of Configuration with @token = <emphasis role="italic">videoSourceToken</emphasis>.
+													</para>
+												</listitem>
+												
+											</orderedlist>
+										</para>
+									</listitem>
+									<listitem xml:id="tc.THERMAL-1-1-2.4.6">
+										<para>
+											ONVIF Client invokes <emphasis role="bold">SetConfiguration</emphasis> request with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														Configuration.ColorPalette =: <emphasis role="italic">initialConfiguration</emphasis>.ColorPalette    
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														Polarity =: other value than <emphasis role="italic">initialConfiguration</emphasis>.@Polarity
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														Configuration.NUCTable =: <emphasis role="italic">initialConfiguration</emphasis>.NUCTable   
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														Configuration.Cooler =: <emphasis role="italic">initialConfiguration</emphasis>.Cooler   
+													</para>
+												</listitem>
+												
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with <emphasis role="bold">SetConfigurationResponse</emphasis> message.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with<emphasis role="bold">GetConfigurationResponse</emphasis> with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														Configuration =: <emphasis role="italic">configuration2</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">configuration2</emphasis> is not equal to Configuration from step <link linkend="tc.THERMAL-1-1-2.4.6">4.6</link>, FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											ONVIF Client restores settings of Configuration with @token = <emphasis role="italic">videoSourceToken</emphasis>.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">initialConfiguration</emphasis> does not have NUCTable element and <emphasis role="italic">configurationOptions1</emphasis> contains NUCTable element or <emphasis role="italic">configurationOptions1</emphasis> contains at least two NUCTable elements, do the following steps:
+											<orderedlist numeration="arabic" inheritnum="inherit">
+												<?dbfo label-width="3.5em"?>
+												<listitem xml:id="tc.THERMAL-1-1-2.4.12.1">
+													<para>
+														ONVIF Client invokes <emphasis role="bold">SetConfiguration</emphasis> request with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.ColorPalette  =: <emphasis role="italic">initialConfiguration</emphasis>.ColorPalette    
+																</para>
+															</listitem>
+															
+															<listitem>
+																<para>
+																	Configuration.Polarity =: <emphasis role="italic">initialConfiguration</emphasis>.Polarity   
+																</para>
+															</listitem>
+
+															<listitem>
+																<para>
+																	Configuration.NUCTable =: <emphasis role="italic">configurationOptions1</emphasis>.NUCTable with @token other than <emphasis role="italic">initialConfiguration</emphasis>.NUCTable.@token 
+																</para>
+															</listitem>
+															
+															<listitem>
+																<para>
+																	Configuration.Cooler =: <emphasis role="italic">initialConfiguration</emphasis>.Cooler   
+																</para>
+															</listitem>
+															
+															
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														The DUT responds with <emphasis role="bold">SetConfigurationResponse</emphasis> message.
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+																</para>
+															</listitem>
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														The DUT responds with<emphasis role="bold">GetConfigurationResponse</emphasis> with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	Configuration =: <emphasis role="italic">configuration2</emphasis>
+																</para>
+															</listitem>
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														If <emphasis role="italic">configuration2</emphasis> is not equal to Configuration from step <link linkend="tc.THERMAL-1-1-2.4.12.1">4.12.1</link>, FAIL the test and skip other steps.
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														ONVIF Client restores settings of Configuration with @token = <emphasis role="italic">videoSourceToken</emphasis>.
+													</para>
+												</listitem>
+												
+											</orderedlist>
+										</para>
+									</listitem>
+									<listitem xml:id="tc.THERMAL-1-1-3.4.25">
+										<para>
+											If <emphasis role="italic">configurationOptions1</emphasis>.CoolerOptions = true, do the following steps:
+											<orderedlist numeration="arabic" inheritnum="inherit">
+												<?dbfo label-width="3.5em"?>
+												<listitem xml:id="tc.THERMAL-1-1-2.4.13.1">
+													<para>
+														ONVIF Client invokes <emphasis role="bold">SetConfiguration</emphasis> request with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.ColorPalette  =: <emphasis role="italic">initialConfiguration</emphasis>.ColorPalette    
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.Polarity =: <emphasis role="italic">initialConfiguration</emphasis>.Polarity   
+																</para>
+															</listitem>
+															<listitem>
+																<para>
+																	Configuration.NUCTable  =: <emphasis role="italic">initialConfiguration</emphasis>.NUCTable    
+																</para>
+															</listitem>
+															
+
+															<listitem>
+																<para>
+																	Configuration.Cooler.Enabled =: other value than <emphasis role="italic">initialConfiguration</emphasis>.Cooler.Enabled 
+																</para>
+															</listitem>
+															
+
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														The DUT responds with <emphasis role="bold">SetConfigurationResponse</emphasis> message.
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	VideoSourceToken =: <emphasis role="italic">videoSourceToken</emphasis>
+																</para>
+															</listitem>
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														The DUT responds with <emphasis role="bold">GetConfigurationResponse</emphasis> with parameters:
+														<itemizedlist>
+															<listitem>
+																<para>
+																	Configuration =: <emphasis role="italic">configuration2</emphasis>
+																</para>
+															</listitem>
+														</itemizedlist>
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														If <emphasis role="italic">configuration2</emphasis> is not equal to Configuration from step <link linkend="tc.THERMAL-1-1-2.4.13.1">4.13.1</link>, FAIL the test and skip other steps.
+													</para>
+												</listitem>
+												<listitem>
+													<para>
+														ONVIF Client restores settings of Configuration with @token = <emphasis role="italic">videoSourceToken</emphasis>.
+													</para>
+												</listitem>
+												
+											</orderedlist>
+										</para>
+									</listitem>
+									
+								</orderedlist>
+							</para>
+						</listitem>
+						
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT passes all assertions.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								The DUT did not send <emphasis role="bold">GetConfigurationOptionsResponse</emphasis> message.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT did not send <emphasis role="bold">GetConfigurationResponse</emphasis> message(s).
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT did not send <emphasis role="bold">SetConfigurationResponse</emphasis> message(s).
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+			<!-- THERMAL-1-1-3 -->
+			<!-- 			<section xml:id="tc.THERMAL-1-1-3">
+				<title>THERMAL COMMAND GETCONFIGURATION – INVALID VIDEOSOURCETOKEN</title>
+				<para>
+				<emphasis role="bold">Test Case ID:</emphasis> THERMAL-1-1-3
+				</para>
+				<para>
+				<emphasis role="bold">Specification Coverage:</emphasis> Get Configuration (Thermal Service Specification)
+				</para>
+				<para>
+				<emphasis role="bold">Feature under test:</emphasis> GetConfiguration
+				</para>
+				<para>
+				<emphasis role="bold">WSDL Reference:</emphasis> thermal.wsdl
+				</para>
+				<para>
+				<emphasis role="bold">Test Purpose:</emphasis> To verify the behavior of GetConfiguration command in case of invalid VideoSourceToken.
+				</para>
+				<para>
+				<emphasis role="bold">Pre-Requisite:</emphasis> Thermal Service is received from the DUT. 
+				</para>
+				<para>
+				<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+				<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+				<orderedlist>
+				<?dbfo label-width="1.5em"?>
+				<listitem>
+				<para>
+				Start an ONVIF Client.
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				Start the DUT.
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters
+				<itemizedlist>
+				<listitem>
+				<para>
+				VideoSourceToken := "OnvifTest123" 
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				The DUT returns <emphasis role="bold">env:Sender/ter:InvalidArgVal/ter:NoSource</emphasis> SOAP 1.2 fault.
+				</para>
+				</listitem>
+				</orderedlist>
+				</para>
+				<para>
+				<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+				<listitem>
+				<para>
+				DUT passes all assertions.
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+				<listitem>
+				<para>
+				The DUT did not send the <emphasis role="bold">env:Sender/ter:InvalidArgVal/ter:NoSource</emphasis> SOAP 1.2 fault message.
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				
+			</section> -->
+			<!-- THERMAL-1-1-4 -->
+			<!-- 			<section xml:id="tc.THERMAL-1-1-4">
+				<title>THERMAL COMMAND GETCONFIGURATIONOPTIONS – INVALID VIDEOSOURCETOKEN</title>
+				<para>
+				<emphasis role="bold">Test Case ID:</emphasis> THERMAL-1-1-4
+				</para>
+				<para>
+				<emphasis role="bold">Specification Coverage:</emphasis> Get Configuration Options (Thermal Service Specification)
+				</para>
+				<para>
+				<emphasis role="bold">Feature under test:</emphasis> GetConfigurationOptions
+				</para>
+				<para>
+				<emphasis role="bold">WSDL Reference:</emphasis> thermal.wsdl
+				</para>
+				<para>
+				<emphasis role="bold">Test Purpose:</emphasis> To verify the behavior of GetConfigurationOptions command in case of invalid VideoSourceToken.
+				</para>
+				<para>
+				<emphasis role="bold">Pre-Requisite:</emphasis> Thermal Service is received from the DUT. 
+				</para>
+				<para>
+				<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+				<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+				<orderedlist>
+				<?dbfo label-width="1.5em"?>
+				<listitem>
+				<para>
+				Start an ONVIF Client.
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				Start the DUT.
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				ONVIF Client invokes <emphasis role="bold">GetConfigurationOptions</emphasis> request with parameters
+				<itemizedlist>
+				<listitem>
+				<para>
+				VideoSourceToken := "OnvifTest123" 
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				The DUT returns <emphasis role="bold">env:Sender/ter:InvalidArgVal/ter:NoSource</emphasis> SOAP 1.2 fault.
+				</para>
+				</listitem>
+				</orderedlist>
+				</para>
+				<para>
+				<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+				<listitem>
+				<para>
+				DUT passes all assertions.
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+				<listitem>
+				<para>
+				The DUT did not send the <emphasis role="bold">env:Sender/ter:InvalidArgVal/ter:NoSource</emphasis> SOAP 1.2 fault message.
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+			</section> -->
+			<!-- THERMAL-1-1-5 -->
+			<!-- 			<section xml:id="tc.THERMAL-1-1-5">
+				<title>THERMAL COMMAND SETCONFIGURATION - INVALID SETTINGS</title>
+				<para>
+				<emphasis role="bold">Test Case ID:</emphasis> THERMAL-1-1-5
+				</para>
+				<para>
+				<emphasis role="bold">Specification Coverage:</emphasis> Set Configuration (Thermal Service Specification) 
+				</para>
+				<para>
+				<emphasis role="bold">Feature under test:</emphasis> SetConfiguration
+				</para>
+				<para>
+				<emphasis role="bold">WSDL Reference:</emphasis> thermal.wsdl
+				</para>
+				<para>
+				<emphasis role="bold">Test Purpose:</emphasis> To verify the behaviour of SetConfiguration command in case of invalid settings.
+				</para>
+				<para>
+				<emphasis role="bold">Pre-Requisite:</emphasis> Thermal Service is received from the DUT. 
+				</para>
+				<para>
+				<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+				<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+				<orderedlist>
+				<?dbfo label-width="1.5em"?>
+				<listitem>
+				<para>
+				Start an ONVIF Client.
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				Start the DUT.
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				ONVIF Client retrieves Video Source Token list by following the procedure mentioned in <link linkend="Annex_HelperGetVideoSourceTokenList">Annex A.1</link> with the following input and output parameters
+				<itemizedlist>
+				<listitem>
+				<para>
+				out <emphasis role="italic">VideoSourceTokenList</emphasis> - Video Source Token list
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters:
+				<itemizedlist>
+				<listitem>
+				<para>
+				VideoSourceToken =: <emphasis role="italic">VideoSourceTokenList</emphasis>[0]
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem xml:id="tc.THERMAL-1-1-6.5">
+				<para>
+				The DUT responds with<emphasis role="bold">GetConfigurationResponse</emphasis> with parameters:
+				<itemizedlist>
+				<listitem>
+				<para>
+				Configuration =: <emphasis role="italic">configuration1</emphasis>
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				ONVIF Client invokes <emphasis role="bold">GetConfigurationOptions</emphasis> request with parameters:
+				<itemizedlist>
+				<listitem>
+				<para>
+				VideoSourceToken =: <emphasis role="italic">VideoSourceTokenList</emphasis>[0]
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				The DUT responds with <emphasis role="bold">GetConfigurationOptionsResponse</emphasis> with parameters:
+				<itemizedlist>
+				<listitem>
+				<para>
+				ConfigurationOptions =: <emphasis role="italic">configurationOptions1</emphasis>
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				ONVIF Client invokes <emphasis role="bold">SetConfiguration</emphasis> request with parameters:
+				<itemizedlist>
+				<listitem>
+				<para>
+				VideoSourceToken =: <emphasis role="italic">VideoSourceTokenList</emphasis>[0]
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				All parameters from <emphasis role="italic">GetConfigurationOptionsResponse</emphasis> set to invalid value
+				</para>
+				</listitem>
+				
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				The DUT returns <emphasis role="bold">env:Sender/ter:InvalidArgVal/ter:InvalidConfiguration</emphasis> SOAP 1.2 fault. 
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				ONVIF Client invokes <emphasis role="bold">GetConfiguration</emphasis> request with parameters:
+				<itemizedlist>
+				<listitem>
+				<para>
+				VideoSourceToken =: <emphasis role="italic">VideoSourceTokenList</emphasis>[0]
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem xml:id="tc.THERMAL-1-1-6.11">
+				<para>
+				The DUT responds with<emphasis role="bold">GetConfigurationResponse</emphasis> with parameters:
+				<itemizedlist>
+				<listitem>
+				<para>
+				Configuration =: <emphasis role="italic">configuration2</emphasis>
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				If <emphasis role="italic">configuration1</emphasis> from step <link linkend="tc.THERMAL-1-1-6.5">5</link> is not equal to <emphasis role="italic">configuration2</emphasis> from step <link linkend="tc.THERMAL-1-1-6.11">11</link>, FAIL the test and skip other steps.
+				</para>
+				</listitem>			
+				</orderedlist>
+				</para>
+				<para>
+				<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+				<listitem>
+				<para>
+				DUT passes all assertions.
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+				<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+				<listitem>
+				<para>
+				The DUT did not send <emphasis role="bold">GetConfigurationOptionsResponse</emphasis> message.
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				The DUT did not send <emphasis role="bold">GetConfigurationResponse</emphasis> message(s).
+				</para>
+				</listitem>
+				<listitem>
+				<para>
+				The DUT did not send the <emphasis role="bold">env:Sender/ter:InvalidArgVal/ter:InvalidConfiguration</emphasis> SOAP 1.2 fault message. 
+				</para>
+				</listitem>
+				</itemizedlist>
+				</para>
+			</section> --> 
+		</section>		
+		
+	</chapter>
+	<appendix>
+		<title>Helper Procedures and Additional Notes</title>
+		<!--A.1-->
+		<section xml:id="Annex_HelperGetVideoSourceTokenList">
+			<title>Get Video Source Token List</title>
+			<para>
+				<emphasis role="bold"> Name:</emphasis> HelperGetVideoSourceTokenList
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to retrieve Video Source Token List.
+			</para>
+			<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Thermal Service was received from the DUT.
+			</para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None.
+			</para>
+			<para>
+				<emphasis role="bold">Returns:</emphasis> Video Source Token list (<emphasis role="italic">VideoSourceTokenList</emphasis>).
+			</para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+							ONVIF Client invokes <emphasis role="bold">GetConfigurations</emphasis> request.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT responds with <emphasis role="bold">GetConfigurationsResponse</emphasis> message with parameters:
+							<itemizedlist>
+								<listitem>
+									<para>
+										Configuration list  =: <emphasis role="italic">configurationsList</emphasis>
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							If <emphasis role="italic">configurationsList</emphasis> is empty, FAIL the test and skip other steps. 
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							For each Thermal Configuration <emphasis role="italic">configuration</emphasis> from <emphasis role="italic">configurationsList</emphasis> repeat the following steps
+							<itemizedlist>
+								<listitem>
+									<para>
+										Add <emphasis role="italic">configuration</emphasis>.@token to <emphasis role="italic">VideoSourceTokenList</emphasis> list.
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</listitem>
+					
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+							DUT passes all assertions.
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+							The DUT did not send <emphasis role="bold">GetConfigurationsResponse</emphasis> message.
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+	</appendix>
+</book>

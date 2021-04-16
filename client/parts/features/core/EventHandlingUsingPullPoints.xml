@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.EventHandlingUsingPullPoints.20200831.ProfileM">
+      <revnumber>20.12</revnumber>
+      <date>Aug 31, 2020</date>
+      <revdescription>       
+        <para>Event Handling Using Pull Points Feature: Check Condition based on Device Features was changed according to #325.</para>       
+      </revdescription>
+    </revision>
+    
+  </revhistory>
+  <section xml:id="s.intro.EventHandlingUsingPullPoints">
+    <title>Event Handling Using Pull Points</title>
+    <para>
+      Event Handling using Pull Points section defines Client ability to initiate and receive
+      notifications (events) from a Device using realtime pullpoints.
+    </para>
+    
+  </section>
+  <section xml:id="tc.EventHandlingUsingPullPoints">
+    <title>Event Handling Using Pull Points Test Cases</title>
+    <section xml:id="tc.EventHandlingUsingPullPoints.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Event Handling Using Pull Points (EventHandlingUsingPullPoints)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="no UnsupportedPullPointNotification">Check Condition based on Device Features:</emphasis> Pull Point Notification is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>            
+      <para>
+        <emphasis role="bold" annotations="8.4 Event handling using pull points">Profile M Requirement:</emphasis> Conditional
+      </para>
+      
+    </section>
+    <section xml:id="tc.EventHandlingUsingPullPoints.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to retrieving of events from a device using ONVIF realtime pullpoints.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Event Handling Using Pull Points if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports EventHandling_PullPoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) 
+                    AND
+                  </para>
+                </listitem>   
+                 <listitem>
+                  <para>
+                    Client supports SetSynchronizationPoint_SetSynchronizationPointAction feature (please see <xref linkend="tc.SetSynchronizationPoint.SETSYNCHRONIZATIONPOINT-1"/> section).            
+                  </para>
+                </listitem> 
+               </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Event Handling Using Pull Points if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support EventHandling_PullPoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) 
+                    OR
+                  </para>
+                </listitem>   
+                 <listitem>
+                  <para>
+                    Client does not support SetSynchronizationPoint_SetSynchronizationPointAction feature (please see <xref linkend="tc.SetSynchronizationPoint.SETSYNCHRONIZATIONPOINT-1"/> section).                
+                  </para>
+                </listitem> 
+               </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    
+  </section>
+</feature>

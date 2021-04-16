@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.DynamicDns.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Dynamic DNS section and Dynamic DNS Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.DynamicDns">
+      <title>Dynamic DNS</title>
+      <para>
+        Dynamic DNS section defines Client ability to configure dynamic DNS settings on
+        Device.
+      </para>
+  </section>
+     <section xml:id="tc.DynamicDns">
+    <title>Dynamic DNS Test Cases</title>
+    <section xml:id="tc.DynamicDns.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Dynamic DNS (DynamicDns)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DynamicDNS">Check Condition based on Device Features:</emphasis> Dynamic DNS is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.DynamicDns.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to configure Dynamic DNS settings.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Dynamic DNS if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to get the Dynamic DNS settings from Device
+                    using the GetDynamicDNS operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to set the Dynamic DNS settings on Device
+                    using the SetDynamicDNS operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Dynamic DNS if ANY of the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetDynamicDNS request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>No Valid Device Response to SetDynamicDNS request.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.DynamicDns.DYNAMICDNS-1">
+      <title>GET DYNAMIC DNS SETTINGS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Dynamic DNS - GetDynamicDNS
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DYNAMICDNS-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Dynamic DNS (DynamicDns_GetDynamicDnsSettings)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able get
+        the dynamic DNS settings from Device using the GetDynamicDNS operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetDynamicDNS operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetDynamicDNS request message to get the dynamic DNS
+              settings from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetDynamicDNSResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetDynamicDNS</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetDynamicDNS</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.DynamicDns.DYNAMICDNS-1.0">
+                    [S1] Client request contains "&lt;GetDynamicDNS&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.DynamicDns.DYNAMICDNS-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.DynamicDns.DYNAMICDNS-1.2">
+                    [S3] Device response contains "&lt;GetDynamicDNSResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.DynamicDns.DYNAMICDNS-2">
+      <title>SET DYNAMIC DNS SETTINGS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Dynamic DNS - SetDynamicDNS
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DYNAMICDNS-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Dynamic DNS (DynamicDns_SetDynamicDnsSettings)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able set
+        the dynamic DNS settings on Device using the SetDynamicDNS operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with SetDynamicDNS operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetDynamicDNS request message to set the dynamic DNS
+              settings on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and SetDynamicDNSResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetDynamicDNS</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetDynamicDNS</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.DynamicDns.DYNAMICDNS-2.0">
+                    [S1] Client request contains "&lt;SetDynamicDNS&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.DynamicDns.DYNAMICDNS-2.1">
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.DynamicDns.DYNAMICDNS-2.2">
+                    [S4] Device response contains "&lt;SetDynamicDNSResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

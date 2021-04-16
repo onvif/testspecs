@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+            <revision  xml:id="s.revhistory.DeviceManagementNotifications.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Device Management Notifications section and Device Management Notifications Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.DeviceManagementNotifications">
+      <title>Device Management Notifications</title>
+      <para>
+        Device Management Notifications section specifies Client ability to receive
+        from Device device management notifications.
+      </para>
+  </section>
+     <section xml:id="tc.DeviceManagementNotifications">
+    <title>Device Management Notifications Test Cases</title>
+    <section xml:id="tc.DeviceManagementNotifications.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Device Management Notifications (DeviceManagementNotifications)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="MonitoringBackupLastEvent OR DeviceHardwareFailureFanFailureEvent OR DeviceHardwareFailurePowerSupplyFailureEvent OR DeviceHardwareFailureStorageFailureEvent OR DeviceHardwareFailureTemperatureCriticalEvent">Check Condition based on Device Features:</emphasis>
+        Device/HardwareFailure/FanFailure or Device/HardwareFailure/PowerSupplyFailure or Device/HardwareFailure/StorageFailure or Device/HardwareFailure/TemperatureCritical or Monitoring/Backup/Last is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.DeviceManagementNotifications.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get device management notifications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Device Management Notifications if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>Client supports EventHandling_Pullpoint feature AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to retrieve at least one of the following notifications:
+                    <itemizedlist>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/FanFailure notification about fan failure if Device supports DeviceHardwareFailureFanFailureEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/PowerSupplyFailure notification about power supply failure if Device supports DeviceHardwareFailurePowerSupplyFailureEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/StorageFailure notification about storage failure if Device supports DeviceHardwareFailureStorageFailureEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/TemperatureCritical notification about temperature critical if Device supports DeviceHardwareFailureTemperatureCriticalEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/Backup/Last notification about last backup if Device supports MonitoringBackupLastEvent feature</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Device Management Notifications if ANY
+              of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>Client does not support EventHandling_Pullpoint feature OR</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is not able to retrieve the following notifications:
+                    <itemizedlist>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/FanFailure notification about fan failure if Device supports DeviceHardwareFailureFanFailureEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/PowerSupplyFailure notification about power supply failure if Device supports DeviceHardwareFailurePowerSupplyFailureEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/StorageFailure notification about storage failure if Device supports DeviceHardwareFailureStorageFailureEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Device/HardwareFailure/TemperatureCritical notification about temperature critical if Device supports DeviceHardwareFailureTemperatureCriticalEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/Backup/Last notification about last backup if Device supports MonitoringBackupLastEvent feature</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+
+  </section>
+</feature>

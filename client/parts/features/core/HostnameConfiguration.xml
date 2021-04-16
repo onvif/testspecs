@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+            <revision  xml:id="s.revhistory.HostnameConfiguration.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Hostname Configuration section and Hostname Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.HostnameConfiguration.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Hostname Configuration section and Hostname Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.HostnameConfiguration.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Hostname Configuration section and Hostname Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.HostnameConfiguration.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Hostname Configuration section and Hostname Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.HostnameConfiguration.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Hostname Configuration section and Hostname Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.HostnameConfiguration">
+      <title>Hostname Configuration</title>
+      <para>
+        Hostname Configuration section defines Client ability to obtain and configure of
+        hostname settings on Device.
+      </para>
+  </section>
+   <section xml:id="tc.HostnameConfiguration">
+    <title>Hostname Configuration Test Cases</title>
+    <section xml:id="tc.HostnameConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Hostname Configuration (HostnameConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="All">Check Condition based on Device Features:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Optional
+      </para>
+    </section>
+    <section xml:id="tc.HostnameConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to configure hostname.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Hostname Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve a hostname information from the Device using
+                    <emphasis role="bold">GetHostname</emphasis> operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able set a network hostname on the Device using <emphasis role="bold">SetHostname</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Hostname Configuration if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetHostname</emphasis> request OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">SetHostname</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-1">
+      <title>GET HOSTNAME</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Hostname Configuration -
+        Get Hostname
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> HOSTNAMECONFIGURATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Hostname (HostnameConfiguration_GetHostname)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that hostname settings of the Device are received by Client using the
+        <emphasis role="bold">GetHostname</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetHostname</emphasis> operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetHostname</emphasis> request message to retrieve
+              hostname from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetHostnameResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetHostname</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetHostname</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-1.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetHostname</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetHostname</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-1.1">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-1.2">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetHostnameResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-2">
+      <title>SET HOSTNAME</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Hostname Configuration -
+        Set Hostname
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> HOSTNAMECONFIGURATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Hostname (HostnameConfiguration_SetHostname)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set the Hostname settings on Device using the <emphasis role="bold">SetHostname</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">SetHostname</emphasis> operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SetHostname</emphasis> request message to set
+              hostname on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">SetHostnameResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetHostname</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetHostname</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-2.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetHostname</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetHostname</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-2.1">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HostnameConfiguration.HOSTNAMECONFIGURATION-2.2">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetHostnameResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

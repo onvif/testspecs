@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>
+<book xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+      xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd"
+      version="0.1"
+      xml:id="ONVIF_Profile_D_Client_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Profile D Client Test Specification</title>
+    <releaseinfo>Profile D is under development. This test specification is not final and it is subject to changes.</releaseinfo>
+    <subtitle>Draft Version 20.12</subtitle>
+    <date>December 2020</date>
+    <copyright>
+      <year>2020</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <xi:include href="parts/general/legalnotice.xml"/>
+    <revhistory>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
+        <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                  xpointer="s.revhistory.NetworkConfiguration.20201027.All"/>
+      <xi:include href="parts/features/core/UserHandling.xml"
+                  xpointer="s.revhistory.UserHandling.20201027.ProfileD"/>
+       <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                  xpointer="s.revhistory.SetSynchronizationPoint.20200831.All"/>
+      <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml"
+                  xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20200831.All"/>
+       <xi:include href="parts/features/accesscontrol/Feedback.xml"
+                  xpointer="s.revhistory.Feedback.20200529.ProfileD"/>	
+	      <xi:include href="parts/features/accesscontrol/AccessPointInformation.xml"
+                  xpointer="s.revhistory.AccessPointInformation.20191210"/>	
+      <revision>
+        <revnumber>19.12</revnumber>
+        <date>Dec 06, 2019</date>
+        <revdescription>
+          <para>The following mandatory features were added according to #345:</para>  
+             <para>Get AccessPoint State</para>
+        <para>Access Point State Changed Event</para>
+      <para>Get Door State</para>
+      <para>Door Mode State Changed Event</para>
+        <para>Door Physical State Changed Event</para>
+        <para>Lock Physical State Changed Event</para>
+        <para>Double Lock Physical State Changed Event</para>
+          <para>Door Alarm State Changed Event</para>
+          <para>Door Tamper State Changed Event</para>
+          <para>Door Fault State Changed Event</para>     
+        </revdescription>
+      </revision>
+        <revision>
+        <revnumber>19.12</revnumber>
+        <date>Dec 02, 2019</date>
+        <revdescription>
+          <para>Get Services with Capabilities feature was moved from mandatory to optional according to #344</para>      
+        </revdescription>
+      </revision>
+       <xi:include href="parts/features/core/HTTPDigestForRTSPProfileD.xml"
+                  xpointer="s.revhistory.HTTPDigestForRTSPProfileD.20190212.ProfileD"/>
+      <revision>
+        <revnumber>19.12</revnumber>
+        <date>Nov 08, 2019</date>
+        <revdescription>
+          <para>Test Cases for Profile Conditional Features section with the following features were added in the scope of #324:</para>
+        <para>System (included)</para>
+        <para>User Handling (included)</para>
+        <para>Access Point Management (new)</para>
+        <para>Access Point Control (included)</para>
+         <para>Door Management (new)</para>
+        <para>Credential Format Types (new)</para>
+        <para>Credential Whitelisting (new)</para>
+        <para>Credential Blacklisting (new)</para>
+        </revdescription>
+      </revision>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20190906.All"/>
+      <!--Use the following to add history from the parts-->
+      <!--xi:include href="parts/features/core/HTTPDigest.xml" xpointer="s.revhistory.HTTPDigest.20190814.ProfileC"/-->
+      
+       <revision>
+        <revnumber>19.12</revnumber>
+        <date>Aug 23, 2019</date>
+        <revdescription>
+          <para>Initial version.</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <xi:include href="parts/general/introduction_common.xml"/>
+    <para>
+      This particular document defines feaures and related test cases required for testing Profile D features of a
+      Client application e.g. door and access point configuration and control, black- and whitelist management, access control decisions.
+      It also describes the test framework, test setup,
+      prerequisites, test policies needed for the execution of the described test
+      cases.
+    </para>
+    <section xml:id="s.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Profile D Client Test Specification defines and regulates the conformance
+        testing procedure for the ONVIF conformant Clients in the scope of Profile D
+        features. Conformance testing is meant to be black-box network traces analysis and
+        verification. The objective of this specification is to provide the test cases to
+        test individual requirements of ONVIF Clients in the scope of Profile D features
+        according to ONVIF Profile Specifications.
+      </para>
+      <para>
+        The principal intended purposes are:<itemizedlist>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Provide comprehensive test suite coverage for Profile D
+              features.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        This specification <emphasis role="bold">does not</emphasis> address the following:<itemizedlist>
+          <listitem>
+            <para>3rd parties Client use cases</para>
+          </listitem>
+          <listitem>
+            <para>
+              Non-functional (performance and regression) testing and
+              analysis.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Services
+              Interoperability Basic Profile version 2.0 (WS-I BP2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation Conformance test for HTTPS and HTTP
+              protocols.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        The following sections cover test cases needed for the verification of relevant
+        features as mentioned in the ONVIF Profile Specifications.
+      </para>
+    </section>
+    <section xml:id="s.intro.mandatory">
+      <title>Test Cases for Profile Mandatory Features</title>
+      <para>
+        This section defines test cases which are mandatory for Profile D Client conformance.
+      </para>
+      <xi:include href="parts/features/core/HTTPDigest.xml"
+                  xpointer="s.intro.HTTPDigest"/>
+     
+      <xi:include href="parts/features/core/GetServices.xml"
+                  xpointer="s.intro.GetServices"/>    
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.intro.Discovery"/>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.intro.DeviceDiscoveryTypeFilter"/>
+      <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                  xpointer="s.intro.NetworkConfiguration"/>
+      <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="s.intro.EventHandling"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                  xpointer="s.intro.SetSynchronizationPoint"/>
+      <xi:include href="parts/features/accesscontrol/AccessPointInformation.xml"
+                  xpointer="s.intro.AccessPointInformation"/>
+      <xi:include href="parts/features/accesscontrol/AccessPointConfigurationChangeNotifications.xml"
+                  xpointer="s.intro.AccessPointConfigurationChangeNotifications"/>
+   <xi:include href="parts/features/accesscontrol/GetAccessPointState.xml"
+                xpointer="s.intro.GetAccessPointState"/>
+      <xi:include href="parts/features/accesscontrol/AccessPointStateChangedEvent.xml"
+                xpointer="s.intro.AccessPointStateChangedEvent"/>
+       <xi:include href="parts/features/accesscontrol/GetDoorState.xml"
+                xpointer="s.intro.GetDoorState"/>
+       <xi:include href="parts/features/accesscontrol/DoorModeStateChangedEvent.xml"
+                xpointer="s.intro.DoorModeStateChangedEvent"/>
+       <xi:include href="parts/features/accesscontrol/DoorPhysicalStateChangedEvent.xml"
+                xpointer="s.intro.DoorPhysicalStateChangedEvent"/>
+      <xi:include href="parts/features/accesscontrol/LockPhysicalStateChangedEvent.xml"
+                xpointer="s.intro.LockPhysicalStateChangedEvent"/>
+        <xi:include href="parts/features/accesscontrol/DoubleLockPhysicalStateChangedEvent.xml"
+                xpointer="s.intro.DoubleLockPhysicalStateChangedEvent"/>
+        <xi:include href="parts/features/accesscontrol/DoorAlarmStateChangedEvent.xml"
+                xpointer="s.intro.DoorAlarmStateChangedEvent"/>
+       <xi:include href="parts/features/accesscontrol/DoorTamperStateChangedEvent.xml"
+                xpointer="s.intro.DoorTamperStateChangedEvent"/>
+        <xi:include href="parts/features/accesscontrol/DoorFaultStateChangedEvent.xml"
+                xpointer="s.intro.DoorFaultStateChangedEvent"/>
+      
+      <xi:include href="parts/features/accesscontrol/AccessControlAnonymous.xml"
+                  xpointer="s.intro.AccessControlAnonymous"/>
+      <xi:include href="parts/features/accesscontrol/AccessControlIdentifier.xml"
+                  xpointer="s.intro.AccessControlIdentifier"/>
+       <xi:include href="parts/features/accesscontrol/Feedback.xml"
+                  xpointer="s.intro.Feedback"/>
+      <xi:include href="parts/features/accesscontrol/AccessTakenAnonymous.xml"
+                  xpointer="s.intro.AccessTakenAnonymous"/>
+      <xi:include href="parts/features/accesscontrol/AccessTakenIdentifier.xml"
+                  xpointer="s.intro.AccessTakenIdentifier"/>
+      <xi:include href="parts/features/accesscontrol/DoorInformation.xml"
+                  xpointer="s.intro.DoorInformation"/>
+      <xi:include href="parts/features/accesscontrol/DoorConfigurationChangeNotifications.xml"
+                  xpointer="s.intro.DoorConfigurationChangeNotifications"/>
+      <xi:include href="parts/features/accesscontrol/DoorControlProfileD.xml"
+                  xpointer="s.intro.DoorControlProfileD"/>
+    </section>     
+    <section xml:id="s.intro.conditional">
+      <title>Test Cases for Profile Conditional Features</title>
+      <para>
+        This section defines test cases which are conditional for Profile D Client conformance.
+      </para>
+     
+      <xi:include href="parts/features/core/HTTPDigestForRTSP.xml"
+                  xpointer="s.intro.HTTPDigestForRTSP"/>
+       <xi:include href="parts/features/core/System.xml"
+                  xpointer="s.intro.System"/>      
+      <xi:include href="parts/features/core/UserHandling.xml"
+                  xpointer="s.intro.UserHandling"/>
+       <xi:include href="parts/features/accesscontrol/AccessPointManagement.xml"
+                  xpointer="s.intro.AccessPointManagement"/>   
+    <xi:include href="parts/features/accesscontrol/AccessPointControl.xml"
+                  xpointer="s.intro.AccessPointControl"/>
+       <xi:include href="parts/features/doorcontrol/DoorManagement.xml"
+                  xpointer="s.intro.DoorManagement"/> 
+      <xi:include href="parts/features/credential/CredentialFormatTypes.xml"
+                  xpointer="s.intro.CredentialFormatTypes"/>
+       <xi:include href="parts/features/credential/CredentialWhitelisting.xml"
+                  xpointer="s.intro.CredentialWhitelisting"/> 
+      <xi:include href="parts/features/credential/CredentialBlacklisting.xml"
+                  xpointer="s.intro.CredentialBlacklisting"/> 
+    
+    </section>
+    
+    <section xml:id="s.intro.optional">
+      <title>Test Cases for Profile Optional Features</title>
+      <para>
+        This section defines test cases which are optional for Profile D Client conformance.
+      </para>
+      <xi:include href="parts/features/core/GetServicesWithCapabilities.xml"
+                  xpointer="s.intro.GetServicesWithCapabilities"/>     
+    </section>
+    <section xml:id="s.intro.supplementary">
+      <title>Supplementary Features and Test Cases</title>
+      <para>
+        This section defines supplementary features and test cases which are not the part of profile, but Profile D Features results depends on them.
+      </para>
+    </section>
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative References</title>
+    <itemizedlist>
+      <xi:include href="parts/general/normative_references_common.xml"
+                  xpointer="xpointer(id('s.docbook')/itemizedlist/listitem)"/>
+      <listitem>
+        <para>ONVIF Profile D Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/profile-d/">[TODO: put link to profile page]</link>
+        </para>
+      </listitem>
+      <!--TODO: add other profile-specific Normative references-->
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <xi:include href="parts/general/terms_definitions.conventions.xml"/>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>This section describes terms and definitions used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.definitions_common.xml"
+                    xpointer="xpointer(id('additions.definitions')/variablelist/varlistentry)"/>
+        <varlistentry>
+          <term>Profile D</term>
+          <listitem>
+            <para>The Profile D Specification.</para>
+          </listitem>
+        </varlistentry>
+        <!--TODO: add other profile-specific Definitions-->
+      </variablelist>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.abbreviations_common.xml"
+                    xpointer="xpointer(id('additions.abbreviations')/variablelist/varlistentry)"/>
+        <!--TODO: add other profile-specific Definitions-->
+      </variablelist>
+    </section>
+    <section xml:id="additions.namespaces"
+             xreflabel="Namespaces">
+      <title>Namespaces</title>
+      <para>
+        Prefix and namespaces used in this test specification are listed in Table 1.
+        These prefixes are not part of the standard and an implementation can use any prefix.
+      </para>
+      <table>
+        <title>Defined namespaces in this specification</title>
+        <tgroup cols="3">
+          <colspec colwidth="109*" />
+          <colspec colwidth="403*" />
+          <colspec colwidth="488*" />
+          <thead>
+            <row>
+              <entry>Prefix</entry>
+              <entry>Namespace URI</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <xi:include href="parts/general/namespaces_common.xml"
+                        xpointer="xpointer(id('additions.namespaces')/table/tgroup/tbody/row)"/>
+            <row>
+              <entry>d</entry>
+              <entry>http://schemas.xmlsoap.org/ws/2005/04/discovery</entry>
+              <entry>Device discovery namespace as defined by [WS-Discovery]</entry>
+            </row>
+            <row>
+              <entry>wsadis</entry>
+              <entry>http://schemas.xmlsoap.org/ws/2004/08/addressing</entry>
+              <entry>Device addressing namespace referred in WS-Discovery [WS-Discovery]</entry>
+            </row>
+            <row>
+              <entry>tac</entry>
+              <entry>http://www.onvif.org/ver10/accesscontrol/wsdl</entry>
+              <entry>The namespace for the WSDL access control service</entry>
+            </row>
+            <row>
+              <entry>tdc</entry>
+              <entry>http://www.onvif.org/ver10/doorcontrol/wsdl</entry>
+              <entry>The namespace for the WSDL door control service</entry>
+            </row>
+            <row>
+              <entry>tcr</entry>
+              <entry>http://www.onvif.org/ver10/credential/wsdl</entry>
+              <entry>The namespace for the WSDL credential service.</entry>
+            </row>        
+
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.para.1"/>
+    <para>
+      An ONVIF Client conformant to Profile D is an ONVIF Client that at least supports the following features:
+      <itemizedlist>
+        <listitem>
+          <para>HTTP Digest authentication.</para>
+        </listitem>        
+        <listitem>
+          <para>Receiving of Device services using GetServices operation.</para>
+        </listitem>
+        <listitem>
+          <para>Discovering Devices using WS-Discovery.</para>
+        </listitem>
+        <listitem>
+          <para>Configuration of a network interfaces using GetNetworkInterfaces and SetNetworkInterfaces operations.</para>
+        </listitem>
+        <listitem>
+          <para>Configuration of a network default gateway using GetNetworkDefaultGateway and SetNetworkDefaultGateway operations.</para>
+        </listitem>
+        <listitem>
+          <para>Event handling using the SetSynchronizationPoint, CreatePullPointSubscription and PullMessage operations.</para>
+        </listitem>
+        <listitem>
+          <para>Retrieving of Access Point list using GetAccessPointInfoList operation.</para>
+        </listitem>
+        <listitem>
+          <para>
+            Receiving of Access Point configuration change notifications:
+            <itemizedlist>
+              <listitem>
+                <para>tns1:Configuration/AccessPoint/Changed</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Configuration/AccessPoint/Removed</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Receiving of Access Point state using GetAccessPointState operation.            
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Receiving of Access Point state notifications:
+            <itemizedlist>
+              <listitem>
+                <para>tns1:AccessPoint/State/Enabled</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Anonymous access control using ExternalAuthorization operation and related notifications:
+            <itemizedlist>
+              <listitem>
+                <para>tns1:AccessControl/Request/Anonymous</para>
+              </listitem>
+              <listitem>
+                <para>tns1:AccessControl/Request/Timeout</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Access control by Identifier using ExternalAuthorization operation and related notifications:
+            <itemizedlist>
+              <listitem>
+                <para>tns1:AccessControl/Request/Identifier</para>
+              </listitem>
+              <listitem>
+                <para>tns1:AccessControl/Request/Timeout</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Receiving of access decisions notifications:
+            <itemizedlist>
+              <listitem>
+                <para>tns1:AccessControl/AccessTaken/Identifier</para>
+              </listitem>
+              <listitem>
+                <para>tns1:AccessControl/AccessNotTaken/Identifier</para>
+              </listitem>
+              <listitem>
+                <para>tns1:AccessControl/AccessTaken/Anonymous</para>
+              </listitem>
+              <listitem>
+                <para>tns1:AccessControl/AccessNotTaken/Anonymous</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>Retrieving of Door list using GetDoorInfoList operation.</para>
+        </listitem>
+        <listitem>
+          <para>
+            Receiving of Door configuration change notifications:
+            <itemizedlist>
+              <listitem>
+                <para>tns1:Configuration/Door/Changed</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Configuration/Door/Removed</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Receiving of Door state using GetDoorState operation.            
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Receiving of Door state notifications:
+            <itemizedlist>
+              <listitem>
+                <para>tns1:Door/State/DoorMode</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Door/State/DoorPhysicalState</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Door/State/LockPhysicalState</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Door/State/DoubleLockPhysicalState</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Door/State/DoorAlarm</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Door/State/DoorTamper</para>
+              </listitem>
+              <listitem>
+                <para>tns1:Door/State/DoorFault</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>Control of Doors using AccessDoor, LockDoor, and UnlockDoor operations.</para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.para.3"/>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.general"/>
+    <section>
+      <title>Test Setup</title>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.1"/>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.2"/>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.3"/>
+      <para>
+        For compatibility with the Profile D, the ONVIF Client shall follow the
+        requirements of the conformance process. For details please see the latest ONVIF
+        Conformance Process Specification.
+      </para>
+    </section>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.prerequisites"/>
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileMandatoryFeatures">
+    <title>Test Cases for Profile Mandatory Features</title>
+    <!--Use the following to add features from the parts-->
+    <xi:include href="parts/features/core/HTTPDigest.xml"
+                xpointer="tc.HTTPDigest"/>   
+  
+    <xi:include href="parts/features/core/GetServices.xml"
+                xpointer="tc.GetServices"/> 
+    
+    <xi:include href="parts/features/core/Discovery.xml"
+                xpointer="tc.Discovery"/>
+    <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                xpointer="tc.DeviceDiscoveryTypeFilter"/>
+    <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                xpointer="tc.NetworkConfiguration"/>
+    <xi:include href="parts/features/core/EventHandling.xml"
+                xpointer="tc.EventHandling"/>
+    <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                xpointer="tc.SetSynchronizationPoint"/>
+    <xi:include href="parts/features/accesscontrol/AccessPointInformation.xml"
+                xpointer="tc.AccessPointInformation"/>
+    <xi:include href="parts/features/accesscontrol/AccessPointConfigurationChangeNotifications.xml"
+                xpointer="tc.AccessPointConfigurationChangeNotifications"/>
+    <xi:include href="parts/features/accesscontrol/GetAccessPointState.xml"
+                xpointer="tc.GetAccessPointState"/>
+     <xi:include href="parts/features/accesscontrol/AccessPointStateChangedEvent.xml"
+                xpointer="tc.AccessPointStateChangedEvent"/>
+    <xi:include href="parts/features/accesscontrol/GetDoorState.xml"
+                xpointer="tc.GetDoorState"/>
+    <xi:include href="parts/features/accesscontrol/DoorModeStateChangedEvent.xml"
+                xpointer="tc.DoorModeStateChangedEvent"/>
+     <xi:include href="parts/features/accesscontrol/DoorPhysicalStateChangedEvent.xml"
+                xpointer="tc.DoorPhysicalStateChangedEvent"/>
+    <xi:include href="parts/features/accesscontrol/LockPhysicalStateChangedEvent.xml"
+                xpointer="tc.LockPhysicalStateChangedEvent"/>
+     <xi:include href="parts/features/accesscontrol/DoubleLockPhysicalStateChangedEvent.xml"
+                xpointer="tc.DoubleLockPhysicalStateChangedEvent"/>
+     <xi:include href="parts/features/accesscontrol/DoorAlarmStateChangedEvent.xml"
+                xpointer="tc.DoorAlarmStateChangedEvent"/>
+    <xi:include href="parts/features/accesscontrol/DoorTamperStateChangedEvent.xml"
+                xpointer="tc.DoorTamperStateChangedEvent"/>
+      <xi:include href="parts/features/accesscontrol/DoorFaultStateChangedEvent.xml"
+                xpointer="tc.DoorFaultStateChangedEvent"/>
+    
+    <xi:include href="parts/features/accesscontrol/AccessControlAnonymous.xml"
+                xpointer="tc.AccessControlAnonymous"/>
+    <xi:include href="parts/features/accesscontrol/AccessControlIdentifier.xml"
+                xpointer="tc.AccessControlIdentifier"/>
+    <xi:include href="parts/features/accesscontrol/Feedback.xml"
+                  xpointer="tc.Feedback"/>
+    <xi:include href="parts/features/accesscontrol/AccessTakenAnonymous.xml"
+                xpointer="tc.AccessTakenAnonymous"/>
+    <xi:include href="parts/features/accesscontrol/AccessTakenIdentifier.xml"
+                xpointer="tc.AccessTakenIdentifier"/>
+    <xi:include href="parts/features/accesscontrol/DoorInformation.xml"
+                xpointer="tc.DoorInformation"/>
+    <xi:include href="parts/features/accesscontrol/DoorConfigurationChangeNotifications.xml"
+                xpointer="tc.DoorConfigurationChangeNotifications"/>
+    <xi:include href="parts/features/accesscontrol/DoorControlProfileD.xml"
+                xpointer="tc.DoorControlProfileD"/>
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileConditionalFeatures">
+    <title>Test Cases for Profile Conditional Features</title>
+    <!--Use the following to add features from the parts-->
+   
+<xi:include href="parts/features/core/HTTPDigestForRTSPProfileD.xml"
+                xpointer="tc.DigestForRTSPProfileD"/>   
+<xi:include href="parts/features/core/System.xml"
+                xpointer="tc.System"/>     
+    <xi:include href="parts/features/core/UserHandling.xml"
+                xpointer="tc.UserHandling"/>
+    <xi:include href="parts/features/accesscontrol/AccessPointManagement.xml"
+                xpointer="tc.AccessPointManagement"/>
+    <xi:include href="parts/features/accesscontrol/AccessPointControl.xml"
+                  xpointer="tc.AccessPointControl"/>    
+  <xi:include href="parts/features/doorcontrol/DoorManagement.xml"
+                  xpointer="tc.DoorManagement"/>   
+  <xi:include href="parts/features/credential/CredentialFormatTypes.xml"
+                  xpointer="tc.CredentialFormatTypes"/>
+    <xi:include href="parts/features/credential/CredentialWhitelisting.xml"
+                  xpointer="tc.CredentialWhitelisting"/>  
+    <xi:include href="parts/features/credential/CredentialBlacklisting.xml"
+                  xpointer="tc.CredentialBlacklisting"/>   
+    
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileOptionalFeatures">
+    <title>Test Cases for Profile Optional Features</title>
+  <xi:include href="parts/features/core/GetServicesWithCapabilities.xml"
+                xpointer="tc.GetServicesWithCapabilities"/>
+    </chapter>
+  <chapter xml:id="tc.Profile.ProfileSupplementaryFeatures">
+    <title>Supplementary Features and Test Cases</title>
+    <xi:include href="parts/features/core/Capabilities.xml"
+                xpointer="tc.Capabilities.CAPABILITIES-1"/>
+    <xi:include href="parts/features/accesscontrol/ExternalAuthorization.xml"
+                xpointer="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2"/>
+    <xi:include href="parts/features/accesscontrol/DoorControl.xml"
+                xpointer="tc.DoorControl.DOORCONTROL-1"/>
+    <xi:include href="parts/features/accesscontrol/DoorControl.xml"
+                xpointer="tc.DoorControl.DOORCONTROL-2"/>
+    <xi:include href="parts/features/accesscontrol/DoorControl.xml"
+                xpointer="tc.DoorControl.DOORCONTROL-3"/>
+    <xi:include href="parts/features/media2/Media2_MetadataStreaming.xml"
+                xpointer="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1"/>
+    <xi:include href="parts/features/credential/ConfigureCredentials.xml"
+                xpointer="tc.ConfigureCredentials.CONFIGURECREDENTIALS-1"/>  
+     <xi:include href="parts/features/core/HTTPDigestForRTSP.xml"
+                xpointer="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-1"/>  
+   
+  </chapter>
+  <appendix>
+    <title>Test for Appendix A</title>
+    <section xml:id="Annex_RequiredNumberOfDevicesSummary">
+      <!--This annex will be fullfilled automatically by DeviceFeaturesAnnexForTestSpecs during documentation build-->
+      <title>Required Number of Devices Summary</title>
+      <para>
+        Required number of devices and Device feature dependency used in this test specification are listed in the Table.
+      </para>
+      <table>
+        <title>Required Number of Devices Summary</title>
+        <tgroup cols="5">
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <thead>
+            <row>
+              <entry>Feature ID</entry>
+              <entry>Feature Name</entry>
+              <entry>Required Number of Devices</entry>
+              <entry>Check Condition based on Device Features</entry>
+              <entry>Check Condition based on Device Features ID</entry>
+            </row>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <!--Use the following to add annexaes from the parts-->
+    <!--A.1-->
+    <!--section xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove" xreflabel="Annex A.[number of annex in current document]">
+      <xi:include href="parts/features/ptz/HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.xml" xpointer="xpointer(id('Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove')/*)"/>
+    </section-->
+  </appendix>
+</book>

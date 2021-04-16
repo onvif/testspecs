@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.HTTPDigestForRTSP.20191022.All">
+      <revnumber>19.12</revnumber>
+      <date>Oct 22, 2019</date>
+      <revdescription>
+        <para>The following was done according to #325:</para>
+        <para>Check Condition based on Device Features of HTTP Digest Authentication for RTSP feauture was changed from 'Profile T' to 'Profile T or Profile M'.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.HTTPDigestForRTSP.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP Digest Authentication for RTSP section and HTTP Digest Authentication for RTSP Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.HTTPDigestForRTSP">
+      <title>HTTP Digest Authentication for RTSP</title>
+      <para>
+        HTTP Digest Authentication for RTSP section defines security mechanism for Digest Authentication for RTSP.
+      </para>
+  </section>
+  <section xml:id="tc.HTTPDigestForRTSP">
+    <title>HTTP Digest Authentication for RTSP Test Cases</title>
+    <section xml:id="tc.RTSPDigest.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> HTTP Digest Authentication for RTSP (HTTPDigestForRTSP)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ProfileTSupported or ProfileMSupported">Check Condition based on Device Features:</emphasis> Profile T or Profile M
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> None
+      </para>	        
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.1 User authentication">Profile T Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.1 User authentication">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.HTTPDigestForRTSP.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes a specific RTSP command which is under
+              testing without any user credentials (no UsernameToken, no HTTP Digest
+              authentication header).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              IF Device returns HTTP 401 Unauthorized error along with
+              WWW-Authentication: Digest header, then Client resends RTSP command with WWW-Authenticate header.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting HTTP Digest Authentication for RTSP if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Device returns a valid response to specific RTSP request with
+                    HTTP Digest authentication header.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting HTTP Digest Authentication for RTSP
+              if the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>All HTTP Digest attempts detected for RTSP are failed.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-1" xreflabel="HTTPDIGESTFORRTSP-1 HTTP DIGEST AUTHENTICATION FOR RTSP">
+      <title>HTTP DIGEST AUTHENTICATION FOR RTSP</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> HTTP Digest For RTSP
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> HTTPDIGESTFORRTSP-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> HTTP Digest For RTSP (HTTPDigestForRTSP_HTTPDigestForRTSPTest)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Digest authentication for RTSP">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Digest authentication for RTSP">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+       <para>
+        <emphasis role="bold" annotations="Digest authentication for RTSP">Profile D Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the HTTP Digest Authentication for RTSP level security.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between Client and Device with HTTP Digest Authentication for RTSP commands present
+            </para>
+          </listitem>
+          <!--<listitem>
+            <para>
+              The Device supports Digest Authentication.
+            </para>
+          </listitem>-->
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client sends a RTSP request that requires authentication (e.g. DESCRIBE) to the Device without any authentication.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device rejects the request with a RTSP 401 status code, AND a WWW-Authenticate Response Header.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client re-sends the RTSP request with a Authorization Request Header.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device accepts the correct request with RTSP 200 OK status code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-1.0">
+              There is Client RTSP request in Test Procedure that does not contain any authentication
+              AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the Client RTSP request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-2.0">
+                    It has RTSP 401 status code
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-3.0">
+                    WWW-Authenticate Response Header contains challenge =  "Digest" element
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-4.0">
+                    WW-Authenticate Response Header contains "realm=*" element AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-5.0">
+                    WW-Authenticate Response Header contains "nonce=*" element AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              There is Client RTSP request in Test Procedure that fulfills the following requirements
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-6.0">
+                    WW-Authenticate Request Header credentials = "Digest" element
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-7.0">
+                    WW-Authenticate Request Header contains "realm=*" element with value from Device response
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-8.0">
+                    WW-Authenticate Request Header contains "nonce=*" element with value from Device response
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-9.0">
+                    WW-Authenticate Request Header contains "uri=*" element
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code RTSP 200 OK.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

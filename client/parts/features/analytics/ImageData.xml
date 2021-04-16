@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <!--<revhistory>
+    <revision  xml:id="s.revhistory.ImageData.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Rules section and Get Rules Test Cases section was moved from ONVIF Analytics Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>-->
+  <section xml:id="s.intro.ImageData">
+    <title>Image Data</title>
+    <para>Image Data section specifies Client ability to get event or metadata image via the image URI and ability to receive base64 encoding image data.</para>
+  </section>
+  <section xml:id="tc.ImageData">
+    <title>Image Data Test Cases</title>
+    <section xml:id="tc.ImageData.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Image Data (ImageData)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature for ImageData].
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.3 Image sending">Profile M Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.ImageData.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Profile M simulator to retrieve metadata with image URI sending in ImageRef element. Client retrieves image using HTTP GET sent to the image URI.
+            </para>
+          </listitem>
+            <listitem>
+            <para>
+              Client connects to Device to receive base64 encoding image data included in the Appearance Node on metadata streaming.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Image Data if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>                   
+                    ONVIF Profile M Simulator detects <emphasis role="bold">ImageData_ImageURI</emphasis> feature as supported AND
+                  </para>
+                </listitem>
+                   <listitem>
+                  <para>                   
+                    Client is able to retrieve base64 encoding image data included in the Appearance Node on metadata streaming.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Image Data if
+              ANY of the following is TRUE:<itemizedlist>
+               <listitem>
+                  <para>
+                    ONVIF Profile M Simulator does NOT detect <emphasis role="bold">ImageData_ImageURI</emphasis> feature as supported OR
+                  </para>
+                </listitem>
+                 <listitem>
+                  <para>                   
+                    Client is NOT able to retrieve base64 encoding image data included in the Appearance Node on metadata streaming.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> Test Operator shall mark corresponding checkbox on the Onvif Client Test Tool UI in case a client supports receiving of base64 encoding image data.
+      </para>
+    </section>
+    <section xml:id="tc.ImageData.IMAGEDATA-1">
+      <title>METADATA IMAGE URI</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get image via image URI
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IMAGEDATA-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get image via image URI (ImageData_ImageURI)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Get image via image URI">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that a Client is able to get metadata image via the image URI.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile M Simulator is present (please, refer to 'Profile M Simulator' section in Help) .
+            </para>
+          </listitem>          
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client configures an media2 profile on the ONVIF Profile M simulator for metadata streaming with alanytics. Client starts metadata streaming. 
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile M simulator sends metadata streaming with Image URI.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">HTTP GET</emphasis> request to Image Uri.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile M simulator responds with code HTTP 200 OK and sends image.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>          
+          <listitem>
+            <para>
+              Client <emphasis role="bold">HTTP GET</emphasis> request in Test Procedure that fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.ImageData.IMAGEDATA-1.0">
+                  <para>
+                    [S1] It invoked to address which equal to <emphasis role="bold">tt:MetadataStream/tt:VideoAnalytics/tt:Frame/tt:Object/tt:Appearance/tt:ImageRef</emphasis> value from the ONVIF Profile M metadata streaming.
+                    AND
+                  </para>
+                </listitem>                
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile M Simulator response on the <emphasis role="bold">HTTP GET</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.ImageData.IMAGEDATA-1.1">
+                  <para>
+                    [S2] It has <emphasis role="bold">HTTP 200</emphasis> response code.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,1830 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--For PDF version (standard)-->
+<!-- <?xml-stylesheet href="docbook/xsl/fo/docbook.xsl" type="text/xsl" ?>-->
+<!--For PDF version-->
+<!-- <?xml-stylesheet href="ONVIF-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<!--For online version-->
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Profile_Imaging_Client_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Device Test Specification Description</title>
+    <subtitle>Version 17.06</subtitle>
+    <date>June 2017</date>
+    <copyright>
+      <year>2017</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <legalnotice role="notices">
+      <para>
+        Recipients of this document may copy, distribute, publish, or display this
+        document so long as this copyright notice, license and disclaimer are retained with
+        all copies of the document. No license is granted to modify this document.
+      </para>
+      <para>
+        THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
+        AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+        NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY
+        PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS,
+        COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+      </para>
+      <para>
+        IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR
+        ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES,
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR
+        NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT. THE
+        FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR
+        LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE
+        AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE
+        CORPORATION.
+      </para>
+    </legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>17.01</revnumber>
+        <date>Jan 20, 2017</date>
+        <revdescription>
+          <para>
+            Initial version.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>17.06</revnumber>
+        <date>Feb 21, 2017</date>
+        <revdescription>
+          <para>
+            Command under test replaced with Feature under test.
+          </para>
+          <para>
+            Onvif Core Specification coverage is renamed Specification coverage.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <para>
+      The goal of the ONVIF Test Specification Description document is to give the description of general rules of test specification creation.
+    </para>
+    <section xml:id="s.intro.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Test Specification Description document defines:
+        <itemizedlist>
+          <listitem>
+            <para>
+              General structure of the Device Test Specification Set.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              General structure of a Device Test Specification document.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              General structure of a test case.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              General rules on test cases development.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              General rules on test cases formatting.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Examples.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  </chapter>
+  <chapter xml:id="s.device_test_specification_set">
+    <title>Device Test Specification Set Overview</title>
+    <para>
+      Device Test Specification Set has the following main parts:
+      <itemizedlist>
+        <listitem>
+          <para>
+            ONVIF Test Specification
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ONVIF Test Specification Release Notes
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ONVIF Feature Discovery Specification
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ONVIF Test Case Summary for Profile Conformance
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ONVIF Profiles Conformance Test Specification
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ONVIF [x] Test Specification
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <!--ONVIF Test Specification-->
+    <section xml:id="s.device_test_specification_set.test_specification">
+      <title>ONVIF Test Specification</title>
+      <para>
+        <emphasis role="bold">ONVIF Test Specification</emphasis> document is the entry point to ONVIF Device Test Specification set. The document contains a list of ONVIF Device Test Specification set documents and brief description of normative documents, which defines conformance.
+      </para>
+      <para>
+        <emphasis role="bold">Question:</emphasis> Currently this document is not listed on ONVIF page, so probably it is outdated.
+      </para>
+    </section>
+    <!--ONVIF Test Specification Release Notes-->
+    <section xml:id="s.device_test_specification_set.test_specification_release_notes">
+      <title>ONVIF Test Specification Release Notes</title>
+      <para>
+        <emphasis role="bold">ONVIF Test Specification Release Notes</emphasis> contains release notes for current version of document in ONVIF Device Test Specification set and brief descriptions of changes.
+      </para>
+    </section>
+    <!--ONVIF Feature Discovery Specification-->
+    <section xml:id="s.device_test_specification_set.feature_discovery">
+      <title>ONVIF Feature Discovery Specification</title>
+      <para>
+        <emphasis role="bold">ONVIF Feature Discovery Specification</emphasis> contains description on how ONVIF DTT defines supported and unsupported features.
+      </para>
+      <para>
+        If at least one feature during feature discovery process is treated as undefined, the conformance will fail (though it will not stop to provide possibility for device to pass conformance with errata). In addition, all features treated as undefined will be interpreted as supported during the tests run, but as unsupported for conformance documents.
+      </para>
+      <para>
+        During conformance the features are used for:
+        <itemizedlist>
+          <listitem>
+            <para>
+              Feature List XML file
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Support check for features, which are listed on DoC
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Decision whether the test should be performed for the DUT or not (defined by pre-requisites and run conditions).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Profiles support check (check that a DUT supports all required features for a profile)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Some test cases logic.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+    <!--ONVIF Profiles Conformance Test Specification-->
+    <section xml:id="s.device_test_specification_set.profiles_conformance">
+      <title>ONVIF Profiles Conformance Test Specification</title>
+      <para>
+        <emphasis role="bold">ONVIF Test Case Summary for Profile Conformance</emphasis> contains feature category classification (the list of the features) for each profile and profiles support check for each profile.
+      </para>
+      <para>
+        Profiles support check should be based on discovered features.
+      </para>
+      <para>
+        In addition, this document should contain description of specific procedures related to profiles. For example, Profile Q testing preparation procedure.
+      </para>
+    </section>
+    <!--ONVIF Test Case Summary for Profile Conformance-->
+    <section xml:id="s.device_test_specification_set.test_test_case_summary">
+      <title>ONVIF Test Case Summary for Profile Conformance</title>
+      <para>
+        <emphasis role="bold">ONVIF Profiles Conformance Test Specification</emphasis> is an Excel table. It contains definition on what test cases are mandatory or conditional for which profile. It also contains run conditions for test cases.
+      </para>
+      <para>
+        If a test has run condition RUN IF SUPPORTED F1 and F2, and for profile F1 is mandatory for a profile, and F2 is conditional for the profile, the profile requirement will be C(F2). If both F1 and F2 are mandatory for the profile requirement will be M.
+      </para>
+      <para>
+        If test cases have run condition RUN IN DIAGNOSTIC MODE, profile requirement will be '-'.
+      </para>
+      <para>
+        The test cases executed during conformance depend on run condition only and are independent from profile requirements. If a test case has profile requirement '-', but the test is in conformance mode, and the DUT supports features from run condition, it will be performed during conformance.
+      </para>
+    </section>
+    <!--ONVIF [x] Test Specification-->
+    <section xml:id="s.device_test_specification_set.x_test_specification">
+      <title>ONVIF [x] Test Specification</title>
+      <para>
+        <emphasis role="bold">ONVIF [x] Test Specification</emphasis> is a set of test specifications that in general split on service based logic (with some exception). Currently the set includes the following:
+        <itemizedlist>
+          <listitem>
+            <para>
+              ONVIF Base Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    IP Configuration test cases
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    WS-Discovery test cases
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Security test cases (authentication)
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Device Management Service Test cases
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Event Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Access Rules Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Access Rules Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Device IO Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Device IO Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Imaging Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Imaging Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Media2 Configuration Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Media2 Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile Q Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Profile Q-specific functionality, which is out of any Service Specifications
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF PTZ Using Media2 Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    PTZ Service Test cases with Media2 Service
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Real Time Streaming Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Streaming Test cases with Media Service
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Real Time Streaming Using Media2 Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Streaming Test cases with Media2 Service
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Schedule Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Schedule Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Advanced Security Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Advanced Security Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Replay Control Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Replay Service Test cases
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Streaming test cases with Replay Service
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Credential Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Credential Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Media Configuration Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Media Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF PTZ Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    PTZ Service Test cases with Media Service
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Recording Control Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Recording Control Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Recording Search Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Recording Search Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Door Control Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Door Control Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Access Control Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Access Control Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Receiver Test Specification
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Receiver Service Test cases
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        See description of content <link linkend="s.device_test_specification">here</link>.
+      </para>
+    </section>
+  </chapter>
+  <chapter xml:id="s.device_test_specification">
+    <title>Device Test Specification</title>
+    <para>
+      All new test specifications should be developed in DocBook format.
+    </para>
+    <para>
+      All new test cases should be developed according to new template even if other test cases in specification are in old format.
+    </para>
+    <para>
+      Each [x] Device Test Specification has the following structure:
+      <itemizedlist>
+        <listitem>
+          <para>
+            Title page
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Copyright notes
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Revision history
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Table of Contents
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Introduction
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Scope
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Normative references
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Terms and Definitions
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Conventions
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Definitions
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Abbreviations
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Test Overview
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Test Setup
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Prerequisites
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Test Policy
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Test Cases
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Annex A Helper Procedures and Additional Notes
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    <!--Title page-->
+    <section xml:id="s.device_test_specification.title_page">
+      <title>Title page</title>
+      <para>
+        For the title page example in DocBook this document could be used.
+      </para>
+      <para>
+        If test specification was changed during the project version and date should be updated.
+      </para>
+    </section>
+    <!--Copyright notes-->
+    <section xml:id="s.device_test_specification.copyright_notes">
+      <title>Copyright notes</title>
+      <para>
+        For the copyright notes example in DocBook this document could be used.
+      </para>
+      <para>
+        If test specification was changed during the project year should be updated.
+      </para>
+    </section>
+    <!--Revision history-->
+    <section xml:id="s.device_test_specification.revision_history">
+      <title>Revision history</title>
+      <para>
+        For the Revision history example in DocBook this document could be used.
+      </para>
+      <para>
+        Each change in test specification should be listed on revision history.
+      </para>
+      <para>
+        Target release version should be used for version.
+      </para>
+      <para>
+        The date of changes should be used for particular change in the following format: Feb 01, 2017.
+      </para>
+    </section>
+    <!--Table of Contents -->
+    <section xml:id="s.device_test_specification.table_of_contents">
+      <title>Table of Contents</title>
+      <para>
+        For DocBook it is automatically updated.
+      </para>
+      <para>
+        For MS Word it should be updated manually before publication.
+      </para>
+    </section>
+    <!--Introduction-->
+    <section xml:id="s.device_test_specification.Introduction">
+      <title>Introduction</title>
+      <para>
+        Introduction typically has the following content:
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+      <para>
+        The goal of the ONVIF test specification set is to make it possible to realize fully interoperable
+        IP physical security implementation from different vendors. The set of ONVIF test specification
+        describes the test cases need to verify the [ONVIF Network Interface Specs] and [ONVIF
+        Conformance] requirements. In addition, the test cases are to be basic inputs for some Profile
+        specification requirements. It also describes the test framework, test setup, pre-requisites, test
+        policies needed for the execution of the described test cases.
+      </para>
+      <para>
+        This [*document name*] acts as a supplementary document to the
+        [ONVIF Network Interface Specs], illustrating test cases need to be executed and passed. And this
+        specification acts as an input document to the development of test tool, which will be used to test
+        the ONVIF device implementation conformance towards ONVIF standard. This test tool is referred
+        as ONVIF Client hereafter.
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+    </section>
+    <!--Scope-->
+    <section xml:id="s.device_test_specification.Scope">
+      <title>Scope</title>
+      <para>
+        The Scope contains general part and subsections, which describes what functions are tested in which section of test specification (typically for each subsection with test cases).
+      </para>
+      <para>
+        The Scope general part typically has the following content, but could be adjusted if required:
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+      <para>
+        This [*document name*] defines and regulates the conformance testing procedure for the ONVIF conformant devices. Conformance testing is meant to be functional black-box testing. The objective of this specification is to provide test cases to test individual requirements of ONVIF devices according to the [*service under test name*], which is defined in [[*service under test specification document name*]].
+      </para>
+      <para>
+        The principal intended purposes are:
+        <itemizedlist>
+          <listitem>
+            <para>
+              To provide self-assessment tool for implementations.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              To provide comprehensive test suite coverage for [ONVIF Core Specs].
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        This specification does not address the following:
+        <itemizedlist>
+          <listitem>
+            <para>
+              Product use cases and non-functional (performance and regression) testing.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Service Interoperability Basic Profile version 2.0 (WS-I BP 2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Full coverage of network protocol implementation test for HTTP, HTTPS, RTP, RTSP, and TLS protocols.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Poor streaming performance test (audio/video distortions, missing audio/video frames,
+              incorrect lib synchronization etc.).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Wi-Fi Conformance test
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        The set of ONVIF Test Specification will not cover the complete set of requirements as defined in [ONVIF Core Specs]; instead, it will cover its subset.
+      </para>
+      <para>
+        This [*document name*] covers the [*service under test name*], which is a functional block of [ONVIF Core Specs]. The following section gives a brief overview of each functional block and its scope.
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+      <para>
+        The sub section of Scope typically have the following content (example):
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+      <para>
+        <emphasis role="bold">1.1.1 Keystore</emphasis>
+      </para>
+      <para>
+        The Keystore section covers the test cases needed for storage and management of keys on an ONVIF device.
+      </para>
+      <para>
+        The scope of this specification section is to cover the following functions:
+        <itemizedlist>
+          <listitem>
+            <para>
+              Create RSA Key Pair
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Get Key Status
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Get Private Key Status
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Get All Keys
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Delete Key
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+    </section>
+    <!--Normative references -->
+    <section xml:id="s.device_test_specification.normative_references">
+      <title>Normative references</title>
+      <para>
+        The example could be found <link linkend="s.docbook">here</link>.
+      </para>
+      <para>
+        This section should be adjusted for each specification individually.
+      </para>
+    </section>
+    <!--Terms and Definitions-->
+    <section xml:id="s.device_test_specification.terms_and_definitions">
+      <title>Terms and Definitions</title>
+      <para>
+        The example could be found <link linkend="additions">here</link>.
+      </para>
+      <para>
+        This section should be adjusted for each specification individually.
+      </para>
+    </section>
+    <!--Test Overview-->
+    <section xml:id="s.device_test_specification.test_overview">
+      <title>Test Overview</title>
+      <para>
+        The example of general part of test overview, Test Setup subsection, and Prerequisites subsection could be found <link linkend="overview_example">here</link>. Typically this part is common for all test specifications.
+      </para>
+      <para>
+        Test Policy subsection describes the test policies specific to the test case execution of each functional block (typically for each subsection with test cases).
+      </para>
+      <para>
+        Test Policy subsection example:
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+      <para>
+        <emphasis role="bold">3.3	Test Policy</emphasis>
+      </para>
+      <para>
+        This section describes the test policies specific to the test case execution of each functional block.
+      </para>
+      <para>
+        The DUT shall adhere to the test policies defined in this section.
+      </para>
+      <para>
+        <emphasis role="bold">3.3.1	General Policy</emphasis>
+      </para>
+      <para>
+        The test policies specific to the test case execution of all functional blocks:
+        <itemizedlist>
+          <listitem>
+            <para>
+              If a DUT method produces a fault that is not explicitly stated as expected in the test procedure of a test case, the result of the test case shall be FAIL.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">3.3.2	Keystore</emphasis>
+      </para>
+      <para>
+        The test policies specific to the test case execution of Keystore functional block:
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT shall give the Advanced Security Service entry point by GetServices command, if DUT supports this service. Otherwise, these test cases will be skipped.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT shall support on-board generation of an RSA key pair.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The following tests are performed about key management
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    The DUT generates an RSA key pair status handling is done with polling.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT generates an RSA key pair status handling is done with event.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT returns whether a key pair in the keystore contains a private key.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The status of a key in the DUT’s keystore is returned correctly.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    A key is deleted correctly from the keystore on the DUT.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        Please, refer to Section 4.1 for Keystore Test Cases.
+      </para>
+      <para>
+        ---------------------------------------------------------------------
+      </para>
+    </section>
+    <!--Test Cases-->
+    <section xml:id="s.device_test_specification.test_cases">
+      <title>Test Cases</title>
+      <para>
+        Each test cases has the following:
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis role="bold">Test Label</emphasis> - outdated (should be removed for new or updated test cases)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Test Case ID</emphasis> - test’s unique identifier which should not be changed
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">ONVIF Core Specification Coverage</emphasis> - outdated, Specification coverage shall be used instead
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Specification coverage</emphasis> - a list of sections from Network Interface Specifications related to functionality is under test (for better understanding test specification could be given in brackets for each section)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Command Under Test</emphasis> - outdated, Feature under test shall be used instead
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Feature under test</emphasis> - a list of commands, events and functionality that are tested in this test (supplementary commands, events and functions should not be listed)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">WSDL Reference</emphasis> - list of wsdl's, which will be used during the test (excluding device.wsdl, if only GetServices is used as a supplementary command)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Test Purpose</emphasis> - description of purpose of the test
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Pre-Requisite</emphasis> - the pre-requisites for the test (e.g. which service should be received from the DUT, which features should be supported by the DUT, how the DUT should be configured to pass the test)
+            </para>
+            <para>
+              Example: Media2 Service is received from the DUT. Absolute movement is supported by the DUT. The DUT shall have enough free storage capacity for one additional server certificate assignment. Current time of the DUT shall be at least Jan 01, 1970.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Test Configuration</emphasis> - the components according to test setup section, which are required for the test. Typically: ONVIF Client and DUT
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Test Sequence</emphasis> - outdated (<emphasis role="bold">Question:</emphasis> should we remove it)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Test Procedure</emphasis> - the procedure of test cases, best practice and examples could be found <link linkend="s.device_test_specification.test_cases.test_procedure">here</link>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Test Result</emphasis> - pass and fail criteria
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Notes</emphasis> - additional notes to give better understanding of a test case or to give additional information about execution that could not be included in Test Procedure
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <!--Test Case Template-->
+      <section xml:id="tc.test_case_template">
+        <title>Test Case Template</title>
+        <section xml:id="tc.test_id">
+          <title>[Test name]</title>
+          <para>
+            <emphasis role="bold">Test Case ID:</emphasis> [Test ID]
+          </para>
+          <para>
+            <emphasis role="bold">Specification coverage:</emphasis> [a list of sections from Network Interface Specifications related to functionality is under test (for better understanding test specification could be given in brackets for each section)]
+          </para>
+          <para>
+            <emphasis role="bold">Feature under test:</emphasis> [a list of commands, events and functionality that are tested in this test (supplementary commands, events and functions should not be listed)]
+          </para>
+          <para>
+            <emphasis role="bold">WSDL Reference:</emphasis> [list of wsdl's, which will be used during the test (excluding device.wsdl, if only GetServices is used as a supplementary command)]
+          </para>
+          <para>
+            <emphasis role="bold">Test Purpose:</emphasis> [description of purpose of the test]
+          </para>
+          <para>
+            <emphasis role="bold">Pre-Requisite:</emphasis> [the pre-requisites for the test (e.g. which service should be received from the DUT, which features should be supported by the DUT, how the DUT should be configured to pass the test)]
+          </para>
+          <para>
+            <emphasis role="bold">Test Configuration:</emphasis> [the components according to test setup section, which are required for the test. Typically: ONVIF Client and DUT]
+          </para>
+          <para>
+            <emphasis role="bold">Test Procedure:</emphasis>
+          </para>
+          <para>
+            <orderedlist>
+              <?dbfo label-width="1.5em"?>
+              <listitem>
+                <para>
+                  Start an ONVIF Client.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Start the DUT.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  [Other test steps]
+                </para>
+              </listitem>
+            </orderedlist>
+          </para>
+          <para>
+            <emphasis role="bold">Test Result:</emphasis>
+          </para>
+          <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  DUT passes all assertions.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+          <para>
+            <emphasis role="bold">FAIL –</emphasis>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  DUT did not send <emphasis role="bold">[command response]</emphasis> message.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </section>
+      </section>
+      <!--Test Procedure best practice and examples-->
+      <section xml:id="s.device_test_specification.test_cases.test_procedure">
+        <title>Test Procedure best practice and examples</title>
+        <para>
+          Test Procedure best practice:
+          <itemizedlist>
+            <listitem>
+              <para>
+                All supplementary steps should be moved to Annexes.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                All asserts should be declared as a separate step.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          Test Procedure steps examples are given below.
+        </para>
+        <para>
+          <emphasis role="bold">Invoke of the annex:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client selects a Media Profile with required video encoding support by following the procedure mentioned in <link linkend="s.docbook">Annex A.6</link> with the following input and output parameters:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    in H264 - required video encoding
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    out <emphasis role="italic">profile</emphasis> - Media Profile with Video Source Configuration and Video Encoder Configuration with the required video encoding
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    out <emphasis role="italic">vecOptions</emphasis> - Video Encoder Configuration Options for the Media Profile
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="bold">Request with parameters and response without parameters:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">SetVideoEncoderConfiguration</emphasis> request with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Configuration.@token := <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.@token
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.Name := <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.Name
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.UseCount := <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.UseCount
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.@GovLength := minimum item from <emphasis role="italic">vecOptions</emphasis>.@GovLengthRange list
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.@Profile := the highest value from <emphasis role="italic">vecOptions</emphasis>.@ProfilesSupported list according to the following order - High/Extended/Main/Baseline
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.Encoding := H264
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.Resolution.Width := <emphasis role="italic">vecOptions</emphasis>.ResolutionsAvailable[0].Width
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.Resolution.Height := <emphasis role="italic">vecOptions</emphasis>.ResolutionsAvailable[0].Height
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.RateControl.@ConstantBitRate := <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.RateControl.@ConstantBitRate (or skipped if <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.RateControl is skipped)
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.RateControl.FrameRateLimit := <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.RateControl.FrameRateLimit (or 0 if <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.RateControl is skipped)
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.RateControl.BitrateLimit := min {max {<emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.RateControl, <emphasis role="italic">vecOptions</emphasis>.BitrateRange.Min}, <emphasis role="italic">vecOptions</emphasis>.BitrateRange.Max}
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.Multicast := <emphasis role="italic">profile</emphasis>.Configurations.VideoEncoder.Multicast
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Configuration.Quality := <emphasis role="italic">vecOptions</emphasis>.QualityRange.Min
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with <emphasis role="bold">SetVideoEncoderConfigurationResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="bold">Request without parametes and response with parameters:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> request.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Capabilities =: <emphasis role="italic">cap</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="bold">Calculation for supplementary variable:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              Set <emphasis role="italic">keyLength</emphasis> := the smallest supported key length at <emphasis role="italic">cap</emphasis>.RSAKeyLengths.
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="bold">Loop with timeout:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem xml:id="Annex_HelperCreateRSAKeyPair.6">
+            <para>
+              Until <emphasis role="italic">duration</emphasis> + <emphasis role="italic">timeout1</emphasis> expires repeat the following steps:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits for time <emphasis role="italic">duration</emphasis>.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">GetKeyStatus</emphasis> with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          KeyID := <emphasis role="italic">keyID</emphasis>
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT responds with <emphasis role="bold">GetKeyStatusResponse</emphasis> message with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          KeyStatus =: <emphasis role="italic">keyStatus</emphasis>
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If <emphasis role="italic">keyStatus</emphasis> is equal to "ok", <emphasis role="italic">keyID</emphasis>, skip other steps of the procedure.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If <emphasis role="italic">keyStatus</emphasis> is equal to "corrupt", FAIL the test and skip other steps.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="bold">Assertions:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              If <emphasis role="italic">timeout1</emphasis> expires for step <link linkend="Annex_HelperCreateRSAKeyPair.6">6</link> and the last <emphasis role="italic">keyStatus</emphasis> is other than "ok", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If DUT does not send valid RTCP packets, FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">ptzConfigurationOptions</emphasis>.Spaces does not have at least one of the AbsolutePanTiltPositionSpace element or AbsoluteZoomPositionSpace element, FAIL the test and skip other steps.
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="bold">Loop through list:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              For each Media Profile <emphasis role="italic">profile1</emphasis> in <emphasis role="italic">profileList</emphasis> repeat the following steps:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">GetVideoEncoderConfigurationOptions</emphasis> request with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          ConfigurationToken - skipped
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ProfileToken := <emphasis role="italic">profile1</emphasis>.@token
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT responds with <emphasis role="bold">GetVideoEncoderConfigurationOptionsResponse</emphasis> message with parameters:
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          Options list =: <emphasis role="italic">vecOptionsList</emphasis>
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If <emphasis role="italic">vecOptionsList</emphasis> list contains item with Encoding = <emphasis role="italic">requiredVideoEncoding</emphasis>:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="2.5em"?>
+                      <listitem>
+                        <para>
+                          Set <emphasis role="italic">vecOptions</emphasis> := item at <emphasis role="italic">vecOptionsList</emphasis> list with Encoding = <emphasis role="italic">requiredVideoEncoding</emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Set <emphasis role="italic">profile</emphasis> := <emphasis role="italic">profile1</emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Skip other steps in procedure.
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <emphasis role="bold">Branch:</emphasis>
+        </para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              If <emphasis role="italic">vecOptionsList</emphasis> list contains item with Encoding = <emphasis role="italic">requiredVideoEncoding</emphasis>:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    Set <emphasis role="italic">vecOptions</emphasis> := item at <emphasis role="italic">vecOptionsList</emphasis> list with Encoding = <emphasis role="italic">requiredVideoEncoding</emphasis>.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Set <emphasis role="italic">profile</emphasis> := <emphasis role="italic">profile1</emphasis>.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Skip other steps in procedure.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </section>
+    </section>
+    <!--Annexes-->
+    <section xml:id="s.device_test_specification.annexes">
+      <title>Annexes</title>
+      <para>
+        Each annex with procedure description has the following structure:
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis role="bold">Name</emphasis> - unique name for the annex. Example: HelperMediaProfileConfiguration
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Procedure Purpose</emphasis> - description of purpose of the procedure
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Pre-Requisite</emphasis> - the pre-requisites for the test (e.g. which service should be received from the DUT, which features should be supported by the DUT, how should be configured the DUT to pass the test)
+            </para>
+            <para>
+              Example: Media2 Service is received from the DUT. Absolute movement is supported by the DUT. The DUT shall have enough free storage capacity for one additional server certificate assignment. Current time of the DUT shall be at least Jan 01, 1970.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Input</emphasis> - input parameters for the procedure. Example: Uri for media streaming (<emphasis role="italic">streamUri</emphasis>). Media type (<emphasis role="italic">mediaType</emphasis>). Expected media stream encoding (<emphasis role="italic">encoding</emphasis>).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Returns</emphasis> - output parameters for the procedure. Example: The identifiers of the new certification path (<emphasis role="italic">certPathID</emphasis>), certificate (<emphasis role="italic">certID</emphasis>) and RSA key pair (<emphasis role="italic">keyID</emphasis>).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Procedure</emphasis> - the procedure, best practices is the same with test cases and could be found <link linkend="s.device_test_specification.test_cases.test_procedure">here</link>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Procedure Result</emphasis> - pass and fail criteria
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">Notes</emphasis> - additional notes to give better understanding of a procedure or to give additional information about execution that could not be included in Procedure
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <!--Annex Template-->
+      <section xml:id="tc.annex_template">
+        <title>Annex Template</title>
+        <section xml:id="Annex_annex_id">
+          <title>[User readable name]</title>
+          <para>
+            <emphasis role="bold">Name:</emphasis> [unique name for the annex. Example: HelperMediaProfileConfiguration]
+          </para>
+          <para>
+            <emphasis role="bold">Procedure Purpose:</emphasis> [description of purpose of the procedure]
+          </para>
+          <para>
+            <emphasis role="bold">Pre-requisite:</emphasis> [the pre-requisites for the test (e.g. which service should be received from the DUT, which features should be supported by the DUT, how should be configured the DUT to pass the test)]
+          </para>
+          <para>
+            <emphasis role="bold">Input:</emphasis> [input parameters for the procedure]
+          </para>
+          <para>
+            <emphasis role="bold">Returns:</emphasis> [output parameters for the procedure]
+          </para>
+          <para>
+            <emphasis role="bold">Procedure:</emphasis>
+          </para>
+          <para>
+            <orderedlist>
+              <?dbfo label-width="1.5em"?>
+              <listitem>
+                <para>
+                  [Procedure steps]
+                </para>
+              </listitem>
+            </orderedlist>
+          </para>
+          <para>
+            <emphasis role="bold">Procedure Result:</emphasis>
+          </para>
+          <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  DUT passes all assertions.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+          <para>
+            <emphasis role="bold">FAIL –</emphasis>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  DUT did not send <emphasis role="bold">[command response]</emphasis> message.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </section>
+      </section>
+    </section>
+  </chapter>
+  <!--Examples-->
+  <chapter xml:id="tc.Examples">
+    <title>Examples</title>
+    <section xml:id="s.docbook">
+      <title>Normative references (example)</title>
+      <itemizedlist>
+        <listitem>
+          <para>ONVIF Conformance Process Specification:</para>
+          <para>
+            <link xlink:href="http://www.onvif.org/Documents/Specifications.aspx">http://www.onvif.org/Documents/Specifications.aspx</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>ONVIF Profile Policy:</para>
+          <para>
+            <link xlink:href="http://www.onvif.org/Documents/Specifications.aspx">http://www.onvif.org/Documents/Specifications.aspx</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>ONVIF Core Specifications:</para>
+          <para>
+            <link xlink:href="http://www.onvif.org/Documents/Specifications.aspx">http://www.onvif.org/Documents/Specifications.aspx</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>ONVIF Base Test Specification:</para>
+          <para>
+            <link xlink:href="http://www.onvif.org/Portals/0/documents/testspecs/v16_07/ONVIF_Base_Test_Specification_16.07.pdf">http://www.onvif.org/Portals/0/documents/testspecs/v16_07/ONVIF_Base_Test_Specification_16.07.pdf</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>ONVIF Media 2 Service Specification:</para>
+          <para>
+            <link xlink:href="http://www.onvif.org/specs/srv/media/ONVIF-Media2-Service-Spec-v1606.pdf">http://www.onvif.org/specs/srv/media/ONVIF-Media2-Service-Spec-v1606.pdf</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>ONVIF Streaming Specification :</para>
+          <para>
+            <link xlink:href="http://www.onvif.org/specs/stream/ONVIF-Streaming-Spec-v1612.pdf">http://www.onvif.org/specs/stream/ONVIF-Streaming-Spec-v1612.pdf</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>ISO/IEC Directives, Part 2, Annex H:</para>
+          <para>
+            <link xlink:href="http://www.iso.org/directives">http://www.iso.org/directives</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>ISO 16484-5:2014-09 Annex P:</para>
+          <para>
+            <link xlink:href="https://www.iso.org/obp/ui/#!iso:std:63753:en">https://www.iso.org/obp/ui/#!iso:std:63753:en</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>W3C SOAP 1.2, Part 1, Messaging Framework:</para>
+          <para>
+            <link xlink:href="http://www.w3.org/TR/soap12-part1/">http://www.w3.org/TR/soap12-part1/</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>W3C XML Schema Part 1: Structures Second Edition:</para>
+          <para>
+            <link xlink:href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</link>
+          </para>
+        </listitem>
+        <listitem>
+          <para>W3C XML Schema Part 2: Datatypes Second Edition:</para>
+          <para>
+            <link xlink:href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</link>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="additions">
+      <title>Terms and Definitions (example)</title>
+      <section xml:id="additions.conventions">
+        <title>Conventions</title>
+        <para>
+          The key words "shall", "shall not", "should", "should not", "may", "need not",
+          "can", "cannot" in this specification are to be interpreted as described in [ISO/IEC
+          Directives Part 2].
+        </para>
+      </section>
+      <section xml:id="additions.definitions">
+        <title>Definitions</title>
+        <para>This section describes terms and definitions used in this document.</para>
+        <variablelist>
+          <varlistentry>
+            <term>Profile</term>
+            <listitem>
+              <para>See ONVIF Profile Policy.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>ONVIF Device</term>
+            <listitem>
+              <para>
+                Computer appliance or software program that exposes one or multiple
+                ONVIF Web Services.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>ONVIF Client</term>
+            <listitem>
+              <para>
+                Computer appliance or software program that uses ONVIF Web
+                Services.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Configuration Entity</term>
+            <listitem>
+              <para>
+                A network video device media abstract component that is used to produce a media stream on the network,
+                i.e. video and/or audio stream.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Media Profile</term>
+            <listitem>
+              <para>
+                A media profile maps a video and/or audio source to a video and/or an audio encoder, PTZ and analytics configurations.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>SOAP</term>
+            <listitem>
+              <para>
+                SOAP is a lightweight protocol intended for exchanging structured
+                information in a decentralized, distributed environment. It uses XML
+                technologies to define an extensible messaging framework providing a
+                message construct that can be exchanged over a variety of underlying
+                protocols.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Device Test Tool</term>
+            <listitem>
+              <para>
+                ONVIF Device Test Tool that tests ONVIF Device implementation towards
+                the ONVIF Test Specification set.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Media 2 Service</term>
+            <listitem>
+              <para>
+                Services to determine the streaming properties of requested media streams.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+      <section xml:id="additions.abbreviations">
+        <title>Abbreviations</title>
+        <para>This section describes abbreviations used in this document.</para>
+        <variablelist>
+          <varlistentry>
+            <term>HTTP</term>
+            <listitem>
+              <para>Hyper Text Transport Protocol.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>AAC</term>
+            <listitem>
+              <para>Advanced Audio Coding.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>URI</term>
+            <listitem>
+              <para>Uniform Resource Identifier.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>WSDL</term>
+            <listitem>
+              <para>Web Services Description Language.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>XML</term>
+            <listitem>
+              <para>eXtensible Markup Language.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>TTL</term>
+            <listitem>
+              <para>Time To Live.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+    </section>
+    <section xml:id="overview_example">
+      <title>Test Overview (example)</title>
+      <para>
+        This section describes about the test setup and prerequisites needed,
+        and the test policies that should be followed for test case execution.
+      </para>
+      <section xml:id="overview_example.test_setup">
+        <title>Test Setup</title>
+        <section xml:id="overview_example.test_setup.network_configuration">
+          <title>Network Configuration for DUT</title>
+          <para>
+            The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 1).
+          </para>
+          <para>
+            Based on the individual test case requirements, some of the entities in the below setup may not be needed for the execution of those corresponding test cases.
+          </para>
+          <figure>
+            <title>Test Configuration for DUT</title>
+            <mediaobject>
+              <imageobject>
+                <imagedata fileref="test_network.png" format="PNG" scalefit="0"/>
+              </imageobject>
+              <textobject>
+                <phrase>Test Configuration for DUT</phrase>
+              </textobject>
+            </mediaobject>
+          </figure>
+          <para>
+            <emphasis role="bold">DUT:</emphasis> ONVIF device to be tested. Hereafter, this is referred to as DUT (Device Under Test).
+          </para>
+          <para>
+            <emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system, and it controls the behavior of the DUT. It handles both expected and unexpected behavior.
+          </para>
+          <para>
+            <emphasis role="bold">HTTP Proxy:</emphasis> provides facilitation in case of RTP and RTSP tunneling over HTTP.
+          </para>
+          <para>
+            <emphasis role="bold">Wireless Access Point:</emphasis> provides wireless connectivity to the devices that support wireless connection.
+          </para>
+          <para>
+            <emphasis role="bold">DNS Server:</emphasis> provides DNS related information to the connected devices.
+          </para>
+          <para>
+            <emphasis role="bold">DHCP Server:</emphasis> provides IPv4 Address to the connected devices.
+          </para>
+          <para>
+            <emphasis role="bold">NTP Server:</emphasis> provides time synchronization between ONVIF Client and DUT.
+          </para>
+          <para>
+            <emphasis role="bold">Switching Hub:</emphasis> provides network connectivity among all the test equipments in the test environment. All devices should be connected to the Switching Hub.
+            When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering in order to avoid multicast traffic being flooded to all ports, because this may affect test stability.
+          </para>
+          <para>
+            <emphasis role="bold">Router:</emphasis> provides router advertisements for IPv6 configuration.
+          </para>
+        </section>
+      </section>
+      <section xml:id="overview_example.prerequisites">
+        <title>Prerequisites</title>
+        <para>
+          The pre-requisites for executing the test cases described in this Test Specification are:
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                The DUT shall be configured with an IPv4 address.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT shall be IP reachable [in the test configuration].
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT shall be able to be discovered by the Test Tool.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT shall be configured with the time, i.e. manual configuration of UTC time and if NTP is supported by DUT, then NTP time shall be synchronized with NTP Server.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT time and Test tool time shall be synchronized with each other either manually or by common NTP server
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+    </section>
+  </chapter>
+</book>

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+              <revision  xml:id="s.revhistory.Capabilities.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Capabilities section and Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+            <revision  xml:id="s.revhistory.Capabilities.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Capabilities section and Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.Capabilities.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Capabilities section and Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.Capabilities.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Capabilities section and Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.Capabilities.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Capabilities section and Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.Capabilities.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Capabilities section and Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.Capabilities">
+    <title>Capabilities</title>
+    <para>
+      Capabilities section specifies Client ability to retrieve available services and
+      advanced functionalities which are offered by a Device.
+    </para>
+  </section>
+  <section xml:id="tc.Capabilities">
+    <title>Capabilities Test Cases</title>
+    <section xml:id="tc.Capabilities.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Capabilities (Capabilities)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="All">Check Condition based on Device Features:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.2 Capabilities">Profile T Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.Capabilities.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes a specific Capabilities command which is under
+              testing.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Capabilities if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Device returns a valid response to GetServices request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Device returns a valid response to GetCapabilities
+                    request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Capabilities if the following
+              is TRUE:<itemizedlist>
+                <listitem>
+                  <para>No Valid Device Response to GetServices request AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetCapabilities
+                    request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.Capabilities.CAPABILITIES-1" xreflabel="CAPABILITIES-1 GET SERVICES">
+      <title>GET SERVICES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Capabilities - Determine the
+        available Services
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> CAPABILITIES-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Services (Capabilities_GetServicesRequest)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetServices">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="GetServices">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Device Capabilities
+        is received using GetServices request.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetServices command present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetServices request message to retrieve all services of
+              the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Verify that GetServicesResponse message from the Device contains code
+              HTTP 200 OK without SOAP Fault.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetServices</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetServices</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Capabilities.CAPABILITIES-1.0">
+                    [S1] Client request contains "&lt;GetServices&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Capabilities.CAPABILITIES-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Capabilities.CAPABILITIES-1.2">
+                    [S3] Device response contains "&lt;GetServicesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.Capabilities.CAPABILITIES-2">
+      <title>GET CAPABILITIES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Capabilities - Get Device
+        Capabilities
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> CAPABILITIES-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Capabilities (Capabilities_GetCapabilities)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Device Capabilities
+        is received using GetCapabilities request.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetCapabilities command present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetCapabilities request message to retrieve Device
+              Capabilities of the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Verify that GetCapabilitiesResponse response message from the Device
+              contains code HTTP 200 OK without SOAP Fault.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetCapabilities</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetCapabilities</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Capabilities.CAPABILITIES-2.0">
+                    [S1] Client request contains "&lt;GetCapabilities&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Capabilities.CAPABILITIES-2.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Capabilities.CAPABILITIES-2.2">
+                    [S3] Device response contains "&lt;GetCapabilitiesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

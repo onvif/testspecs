@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<para>
+      The goal of the ONVIF Test Specification set is to make it possible to realize fully
+      interoperable IP physical security implementations from different vendors. This
+      specification also acts as an input document to the development of a test tool which
+      will be used to test the ONVIF Client implementation conformance towards ONVIF standard.
+      This Client Test Tool analyzes network communications between ONVIF Devices and Clients
+      being tested and determines whether a specific Client is ONVIF conformant (see ONVIF
+      Conformance Process Specification).
+    </para>

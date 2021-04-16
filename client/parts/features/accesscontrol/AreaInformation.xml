@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.AreaInformation.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+        <para>Scope\AreaInformation section was added.</para>
+        <para>Area Information Test Cases section was added.</para>
+        <para>System Component Information section was removed.</para>
+        <para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.AreaInformation">
+    <title>Area Information</title>
+    <para>
+      Area Information section specifies Client ability to request lists of Areas from Device.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.AreaInformation">
+    <title>Area Information Test Cases</title>
+    <section xml:id="tc.AreaInformation.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Area Information (AreaInformation)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="AccessControlService AND AreaEntity">Check Condition based on Device Features:</emphasis> Access Control Service is supported by Device. Area Entity is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <!--List of profiles for which feature mandatory, conditional or optional-->
+      <para>
+        <emphasis role="bold"
+                  annotations="7.5 System component information – Areas">Profile C Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.AreaInformation.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <!--Description of use case-->
+          <listitem>
+            <para>
+              Client connects to Device to retrieve a lists of
+              Areas.
+            </para>
+          </listitem>
+          <!--Feature is supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as supporting Area Information if the
+              following conditions are met:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to list available Areas using
+                    GetAreaInfoList operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--Feature is not supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Area Information if
+              ANY of the following is TRUE:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetAreaInfoList</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.AreaInformation.AREAINFORMATION-1">
+      <title>LISTING OF AREAS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Area Information -
+        Listing of Areas
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> AREAINFORMATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Listing of Areas (AreaInformation_ListingOfAreas)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all areas
+        items provided by Device is received by Client using the GetAreaInfoList
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetAreaInfoList operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetAreaInfoList request message to retrieve complete
+              list of all areas configured on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetAreaInfoListResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetAreaInfoList</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetAreaInfoList</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.AreaInformation.AREAINFORMATION-1.0">
+                  <para>
+                    [S1] Client request contains "&lt;GetAreaInfoList&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.AreaInformation.AREAINFORMATION-1.1">
+                  <para>
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.AreaInformation.AREAINFORMATION-1.2">
+                  <para>
+                    [S3] Device response contains "&lt;GetAreaInfoListResponse&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.AreaInformation.AREAINFORMATION-1.3">
+                  <para>
+                    [S4] At least one Device response in the same Conversation does not contain: "&lt;NextStartReference&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

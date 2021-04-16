@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.FocusControl.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Focus Control section and Focus Control Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.FocusControl">
+      <title>Focus Control</title>
+      <para>
+        Focus Control section specifies Client ability to control focus on Device.
+      </para>
+  </section>
+   <section xml:id="tc.FocusControl">
+    <title>Focus Control Test Cases</title>
+    <section xml:id="tc.FocusControl.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Focus Control (FocusControl)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="FocusControl">Check Condition based on Device Features:</emphasis> Focus Control is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.15 Focus Control">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.FocusControl.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to control focus.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Focus Control if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    Client supports get_move_options feature AND
+                  </para></listitem><listitem><para>
+                    Client is able to invoke Absolute OR Relative OR Continuous focus move using
+                    <emphasis role="bold">Move</emphasis> operation AND
+                  </para></listitem><listitem><para>
+                    If Client is able to invoke Continuous focus move Client is able to invoke stop focus move using
+                    <emphasis role="bold">Stop</emphasis> operation.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Focus Control if
+              ANY of the following is TRUE:<itemizedlist><listitem><para>
+                    Client does not support get_move_options feature OR
+                  </para></listitem><listitem><para>
+                    No valid responses for <emphasis role="bold">Move</emphasis> request OR
+                  </para></listitem><listitem><para><emphasis role="bold">Move</emphasis> request contains settings which does not correspong to <emphasis role="bold">GetMoveOptions</emphasis> message
+                    for the same video source token OR
+                  </para></listitem><listitem><para>
+                    No valid responses for <emphasis role="bold">Stop</emphasis> request if <emphasis role="bold">Stop</emphasis> request is supported by the Client OR
+                  </para></listitem><listitem><para><emphasis role="bold">Stop</emphasis> request is not supported, in the case Continuous focus move is supported by the Client.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.FocusControl.FOCUSCONTROL-1">
+      <title>ABSOLUTE FOCUS MOVE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Focus Control -
+        Absolute Focus Move
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> FOCUSCONTROL-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Absolute Focus Move (FocusControl_AbsoluteFocusMove)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Move">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able retrive absolute focus move on Device using the <emphasis role="bold">Move</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">Move</emphasis> operation with <emphasis role="bold">tt:Absolute</emphasis> element
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Imaging Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetMoveOptions</emphasis> request message to retrieve focus move options
+              for specified video source from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetMoveOptionsResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="bold">GetMoveOptionsResponse</emphasis> message contains <emphasis role="bold">tt:Absolute</emphasis> element Client invokes <emphasis role="bold">Move</emphasis> request message
+              for specified video source with <emphasis role="bold">tt:Absolute</emphasis> element with parameters which are correspond to the resieved focus move options to start absolute focus movement on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">MoveResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Move</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Move</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:Move</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.1"><para>
+                    [S2] It contains <emphasis role="bold">timg:Focus/tt:Absolute</emphasis> element AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">Move</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.2"><para>
+                    [S3] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.3"><para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:MoveResponse</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              There is a Client <emphasis role="bold">GetMoveOptions</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.4"><para>
+                    [S5] It invoked for the same Device as for the Client <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.5"><para>
+                    [S6] It invoked before the Client <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.6"><para>
+                    [S7] <emphasis role="bold">timg:VideoSourceToken</emphasis> element value is equal to
+                    <emphasis role="bold">timg:VideoSourceToken</emphasis> element from the <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetMoveOptions</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.7"><para>
+                    [S8] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.8"><para>
+                    [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetMoveOptionsResponse</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.9"><para>
+                    [S10] It contains <emphasis role="bold">timg:MoveOptions\tt:Absolute</emphasis> element AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Settings from the <emphasis role="bold">Move</emphasis> request corresponds options recieved in the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.10"><para>
+                    [S11] <emphasis role="bold">timg:Focus/tt:Absolute/tt:Position</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is less or equal to <emphasis role="bold">timg:MoveOptions/tt:Absolute/tt:Position/tt:Max</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.11"><para>
+                    [S12] <emphasis role="bold">timg:Focus/tt:Absolute/tt:Position</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is greater or equal to <emphasis role="bold">timg:MoveOptions/tt:Absolute/tt:Position/tt:Min</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-1.12"><para>
+                    [S13] IF the <emphasis role="bold">Move</emphasis> request contains <emphasis role="bold">timg:Focus/tt:Absolute/tt:Speed</emphasis> element
+                    THEN:
+                    <itemizedlist spacing="compact"><listitem><para>
+                          The <emphasis role="bold">GetMoveOptionsResponse</emphasis> message contains <emphasis role="bold">timg:MoveOptions/tt:Absolute/tt:Speed</emphasis> element AND
+                        </para></listitem><listitem><para><emphasis role="bold">timg:Focus/tt:Absolute/tt:Speed</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is less or equal to <emphasis role="bold">timg:MoveOptions/tt:Absolute/tt:Speed/tt:Max</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message AND
+                        </para></listitem><listitem><para><emphasis role="bold">timg:Focus/tt:Absolute/tt:Speed</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is greater or equal to <emphasis role="bold">timg:MoveOptions/tt:Absolute/tt:Speed/tt:Min</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message.
+                        </para></listitem></itemizedlist></para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+    <section xml:id="tc.FocusControl.FOCUSCONTROL-2">
+      <title>RELATIVE FOCUS MOVE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Focus Control -
+        Relative Focus Move
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> FOCUSCONTROL-2
+      </para>
+        <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Relative Focus Move (FocusControl_RelativeFocusMove)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Move">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able retrive relative focus move on Device using the <emphasis role="bold">Move</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">Move</emphasis> operation with <emphasis role="bold">tt:Relative</emphasis> element
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Imaging Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetMoveOptions</emphasis> request message to retrieve focus move options
+              for specified video source from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetMoveOptionsResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="bold">GetMoveOptionsResponse</emphasis> message contains <emphasis role="bold">tt:Relative</emphasis> element Client invokes <emphasis role="bold">Move</emphasis> request message
+              for specified video source with <emphasis role="bold">tt:Relative</emphasis> element with parameters which are correspond to the resieved focus move options to start relative focus movement on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">MoveResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Move</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Move</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:Move</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.1"><para>
+                    [S2] It contains <emphasis role="bold">timg:Focus/tt:Relative</emphasis> element AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">Move</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.2"><para>
+                    [S3] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.3"><para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:MoveResponse</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              There is a Client <emphasis role="bold">GetMoveOptions</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.4"><para>
+                    [S5] It invoked for the same Device as for the Client <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.5"><para>
+                    [S6] It invoked before the Client <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.6"><para>
+                    [S7] <emphasis role="bold">timg:VideoSourceToken</emphasis> element value is equal to
+                    <emphasis role="bold">timg:VideoSourceToken</emphasis> element from the <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetMoveOptions</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.7"><para>
+                    [S8] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.8"><para>
+                    [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetMoveOptionsResponse</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.9"><para>
+                    [S10] It contains <emphasis role="bold">timg:MoveOptions\tt:Relative</emphasis> element AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Settings from the <emphasis role="bold">Move</emphasis> request corresponds options recieved in the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.10"><para>
+                    [S11] <emphasis role="bold">timg:Focus/tt:Relative/tt:Distance</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is less or equal to <emphasis role="bold">timg:MoveOptions/tt:Relative/tt:Distance/tt:Max</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.11"><para>
+                    [S12] <emphasis role="bold">timg:Focus/tt:Relative/tt:Distance</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is greater or equal to <emphasis role="bold">timg:MoveOptions/tt:Relative/tt:Distance/tt:Min</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-2.12"><para>
+                    [S13] IF the <emphasis role="bold">Move</emphasis> request contains <emphasis role="bold">timg:Focus/tt:Relative/tt:Speed</emphasis> element
+                    THEN:
+                    <itemizedlist spacing="compact"><listitem><para>
+                          The <emphasis role="bold">GetMoveOptionsResponse</emphasis> message contains <emphasis role="bold">timg:MoveOptions/tt:Relative/tt:Speed</emphasis> element AND
+                        </para></listitem><listitem><para><emphasis role="bold">timg:Focus/tt:Relative/tt:Speed</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is less or equal to <emphasis role="bold">timg:MoveOptions/tt:Relative/tt:Speed/tt:Max</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message AND
+                        </para></listitem><listitem><para><emphasis role="bold">timg:Focus/tt:Relative/tt:Speed</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is greater or equal to <emphasis role="bold">timg:MoveOptions/tt:Relative/tt:Speed/tt:Min</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message.
+                        </para></listitem></itemizedlist></para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+    <section xml:id="tc.FocusControl.FOCUSCONTROL-3">
+      <title>CONTINUOUS FOCUS MOVE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Focus Control -
+        Continuous Focus Move
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> FOCUSCONTROL-3
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Continuous Focus Move (FocusControl_ContinuousFocusMove)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Move">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able retrive continuous focus move on Device using the <emphasis role="bold">Move</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">Move</emphasis> operation with <emphasis role="bold">tt:Continuous</emphasis> element
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Imaging Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetMoveOptions</emphasis> request message to retrieve focus move options
+              for specified video source from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetMoveOptionsResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="bold">GetMoveOptionsResponse</emphasis> message contains <emphasis role="bold">tt:Continuous</emphasis> element Client invokes <emphasis role="bold">Move</emphasis> request message
+              for specified video source with <emphasis role="bold">tt:Relative</emphasis> element with parameters which are correspond to the resieved focus move options to start continuous focus movement on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">MoveResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Move</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Move</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:Move</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.1"><para>
+                    [S2] It contains <emphasis role="bold">timg:Focus/tt:Continuous</emphasis> element AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">Move</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.2"><para>
+                    [S3] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.3"><para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:MoveResponse</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              There is a Client <emphasis role="bold">GetMoveOptions</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.4"><para>
+                    [S5] It invoked for the same Device as for the Client <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.5"><para>
+                    [S6] It invoked before the Client <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.6"><para>
+                    [S7] <emphasis role="bold">timg:VideoSourceToken</emphasis> element value is equal to
+                    <emphasis role="bold">timg:VideoSourceToken</emphasis> element from the <emphasis role="bold">Move</emphasis> request AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetMoveOptions</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.7"><para>
+                    [S8] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.8"><para>
+                    [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetMoveOptionsResponse</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.9"><para>
+                    [S10] It contains <emphasis role="bold">timg:MoveOptions\tt:Continuous</emphasis> element AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Settings from the <emphasis role="bold">Move</emphasis> request corresponds options recieved in the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.10"><para>
+                    [S11] <emphasis role="bold">timg:Focus/tt:Continuous/tt:Speed</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is less or equal to <emphasis role="bold">timg:MoveOptions/tt:Continuous/tt:Speed/tt:Max</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-3.11"><para>
+                    [S12] <emphasis role="bold">timg:Focus/tt:Continuous/tt:Speed</emphasis> element value from the <emphasis role="bold">Move</emphasis> request is greater or equal to <emphasis role="bold">timg:MoveOptions/tt:Continuous/tt:Speed/tt:Min</emphasis> from the the <emphasis role="bold">GetMoveOptionsResponse</emphasis> message.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+    <section xml:id="tc.FocusControl.FOCUSCONTROL-4">
+      <title>STOP</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Focus Control -
+        Stop
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> FOCUSCONTROL-4
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Stop (FocusControl_FocusStop)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Stop">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able retrivefocus move options fromon Device using the <emphasis role="bold">Stop</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">Stop</emphasis> operation
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Imaging Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">Stop</emphasis> request message to stop focus move
+              for specified video source for the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">StopResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Stop</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Stop</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-4.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:Stop</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">Stop</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.FocusControl.FOCUSCONTROL-4.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.FocusControl.FOCUSCONTROL-4.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:StopResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Tampering.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Tampering section and Tampering Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  <section xml:id="s.intro.metadata_profile_configuration">
+        <title>Metadata Profile Configuration Using Media2</title>
+        <para>
+          Metadata Profile Configuration Using Media2 section specifies Client ability to add metadata configuration to a media profile.
+        </para>
+      </section>
+  <section xml:id="tc.Media2_MetadataProfileConfiguration" xreflabel ="Metadata Profile Configuration Using Media2">
+      <title>Metadata Profile Configuration Using Media2 Test Cases</title>
+      <section xml:id="tc.Media2_MetadataProfileConfiguration.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Metadata Media2 Profile Configuration (Media2_MetadataProfileConfiguration)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="Media2Service">Check Condition based on Device Features:</emphasis> Media2 Service is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 1
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="7.14 Configuration of Metadata Profile">Profile T Requirement:</emphasis> Conditional
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="7.8 Configuration of metadata profile">Profile M Requirement:</emphasis> Conditional
+        </para>
+      </section>
+      <section xml:id="tc.Media2_MetadataProfileConfiguration.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client connects to Device to add compatible Metadata configuration to a Media Profile.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Metadata Profile Configuration if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve Metadata configurations compatible with media profile using
+                      <emphasis role="bold">GetMetadataConfigurations</emphasis> operation with specified ProfileToken element.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to add an Metadata configuration using
+                      <emphasis role="bold">AddConfiguration</emphasis> operation with Type element value is equal to Metadata.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Metadata Profile Configuration if
+                ANY of the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid responses for <emphasis role="bold">GetMetadataConfigurations</emphasis> request with ProfileToken element
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid responses for <emphasis role="bold">AddConfiguration</emphasis> request with Type element value is equal to Metadata
+                      is detected.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-1">
+        <title>GET METADATA CONFIGURATIONS COMPATIBLE WITH PROFILE USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Get Metadata Configurations
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_METADATAPROFILECONFIGURATION-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Get Metadata Configurations Compatible With Media2 Profile (Media2_MetadataProfileConfiguration_Media2_GetCompatibleMetadataProfileConfigurations)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="GetMetadataConfigurations (compatible)">Profile T Normative Reference:</emphasis> Conditional
+        </para>
+         <para>
+          <emphasis role="bold"
+                    annotations="GetMetadataConfigurations (compatible)">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that list of metadata configurations
+          compatible with a media profile is received by Client using the
+          <emphasis role="bold">GetMetadataConfigurations</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetMetadataConfigurations</emphasis> operation with specified <emphasis role="bold">ProfileToken</emphasis> element
+                present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetMetadataConfigurations</emphasis> request message with <emphasis role="bold">ProfileToken</emphasis> element to retrieve
+                a list of metadata configurations compatible with requested media profile from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetMetadataConfigurationsResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetMetadataConfigurations</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetMetadataConfigurations</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetMetadataConfigurations</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-1.1">
+                    <para>
+                      [S2] It has <emphasis role="bold">tr2:ProfileToken</emphasis> element AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">GetMetadataConfigurations</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-1.2">
+                    <para>
+                      [S3] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-1.3">
+                    <para>
+                      [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetMetadataConfigurationsResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2">
+        <title>ADD METADATA CONFIGURATION USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Add Metadata Configuration
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_METADATAPROFILECONFIGURATION-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Add Metadata Configuration To Media2 Profile (Media2_MetadataProfileConfiguration_Media2_AddMetadataProfileConfiguration)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="AddConfiguration (Metadata)">Profile T Normative Reference:</emphasis> Conditional
+        </para>
+         <para>
+          <emphasis role="bold"
+                    annotations="AddConfiguration (Metadata)">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add an metadata configuration to a media profile using the
+          <emphasis role="bold">AddConfiguration</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">AddConfiguration</emphasis> operation with Type value is equal to "Metadata"
+                present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetMetadataConfigurations</emphasis> request message with specified <emphasis role="bold">ProfileToken</emphasis> to retrieve
+                compatible metadata configurations for specified media profile from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetMetadataConfigurationsResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">AddConfiguration</emphasis> request message with Type element value is equal to Metadata and with Configuration token that was recieved in
+                <emphasis role="bold">GetMetadataConfigurationsResponse</emphasis> message for the same media profile to add an metadata configuration to specified media profile on the Device.
+
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">AddConfigurationResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">AddConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">AddConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:AddConfiguration</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.1">
+                    <para>
+                      [S2] It has <emphasis role="bold">tr2:Configuration/tr2:Type</emphasis> element with value is equal to "Metadata" AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">AddConfiguration</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.2">
+                    <para>
+                      [S3] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.3">
+                    <para>
+                      [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:AddConfigurationResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                There is Client <emphasis role="bold">GetMetadataConfigurations</emphasis> request in Test Procedure that fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.4">
+                    <para>
+                      [S5] It is invoked before the Client <emphasis role="bold">AddConfiguration</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.5">
+                    <para>
+                      [S6] It has <emphasis role="bold">tr2:ProfileToken</emphasis> element with value is equal to <emphasis role="bold">tr2:ProfileToken</emphasis> element value from the <emphasis role="bold">AddConfiguration</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.6">
+                    <para>
+                      [S7] It is the last <emphasis role="bold">GetMetadataConfigurations</emphasis> request which corresponds to [S5], AND [S6] AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">GetMetadataConfigurations</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.7">
+                    <para>
+                      [S8] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.8">
+                    <para>
+                      [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetMetadataConfigurationsResponse</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_MetadataProfileConfiguration.MEDIA2_METADATAPROFILECONFIGURATION-2.9">
+                    <para>
+                      [S10] It contains <emphasis role="bold">tr2:Configurations</emphasis> element with <emphasis role="bold">@token</emphasis> attribute value equal to <emphasis role="bold">tr2:Configuration/tr2:Token</emphasis> value for Configuration with <emphasis role="bold">tr2:Configuration/tr2:Type</emphasis> value is equal to Metadata from the <emphasis role="bold">AddConfiguration</emphasis> request message.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+</feature>

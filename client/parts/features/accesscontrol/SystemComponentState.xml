@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.SystemComponentState.20190823.All">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>System Component State Test Cases was updated with new ID of AccessPointInformation_AccessPointInfoList and DoorInformation_DoorInfoList.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.SystemComponentState">
+    <title>System Component State</title>
+    <para>
+      System Component State section specifies Client ability to request information
+      about the state of Access Points (enabled/disabled) and Doors (locked, unlocked,
+      etc.).
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.SystemComponentState">
+    <title>System Component State Test Cases</title>
+    <section xml:id="tc.SystemComponentState.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> System Component State (SystemComponentState)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AccessControlService AND DoorControlService">Check Condition based on Device Features:</emphasis> Access Control Service and Door Control Service are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+      </para>    
+    </section>
+    <section xml:id="tc.SystemComponentState.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get notifications about the state of access points.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting System Component State if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>Client supports AccessPointInformation_ListingOfAccessPoints feature (please see <xref linkend="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports DoorInformation_ListingOfDoors feature (please see <xref linkend="tc.DoorInformation.DOORINFORMATION-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to receive tns1:AccessPoint/State/Enabled notification about a state of access point if Device supports AccessPointStateEnabledEvent AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to retrieve at least one of the following notifications about a state of door:
+                    <itemizedlist>
+                      <listitem>
+                        <para>tns1:Door/State/DoorMode notification if Device supports DoorModeEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorPhysicalState notification if Device supports DoorPhysicalStateEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/LockPhysicalState notification if Device supports LockPhysicalStateEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoubleLockPhysicalState notification if Device supports DoubleLockPhysicalStateEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorAlarm notification if Device supports DoorAlarmEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorTamper notification if Device supports DoorTamperEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorFault notification if Device supports DoorFaultEvent</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting System Component State if ANY
+              of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>Client does not support AccessPointInformation_ListingOfAccessPoints feature (please see <xref linkend="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support DoorInformation_ListingOfDoors feature (please see <xref linkend="tc.DoorInformation.DOORINFORMATION-1"/> section) AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is not able to receive tns1:AccessPoint/State/Enabled notification about a state of access point if Device supports AccessPointStateEnabledEvent AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is not able to retrieve the following notifications about a state of door:
+                    <itemizedlist>
+                      <listitem>
+                        <para>tns1:Door/State/DoorMode notification if Device supports DoorModeEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorPhysicalState notification if Device supports DoorPhysicalStateEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/LockPhysicalState notification if Device supports LockPhysicalStateEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoubleLockPhysicalState notification if Device supports DoubleLockPhysicalStateEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorAlarm notification if Device supports DoorAlarmEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorTamper notification if Device supports DoorTamperEvent</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Door/State/DoorFault notification if Device supports DoorFaultEvent</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <!--<section>
+      <title>
+        STATE OF ACCESS POINTS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> System Component State - State of
+        Access Points
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> SYSTEMCOMPONENTSTATE-1
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> System Component State
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        receive state of access point through the use of Pull Point event mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with CreatePullPointSubscription, PullMessages
+              operations present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>SYSTEMCOMPONENTINFORMATION-1 has passed.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message without any filter
+              or with appropriate filter.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes PullMessages command with Timeout and MessageLimit
+              elements.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and PullMessagesResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Filter is specified for Client
+        <emphasis role="bold">CreatePullPointSubscription</emphasis> request message and if it does not contain
+        "*:AccessPoint/State" OR "*:AccessPoint//." value of "&lt;TopicExpression&gt;" tag then
+        Test shall be deemed as "NOT DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+             Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] Client request contains "&lt;CreatePullPointSubscription&gt;" tag after the "&lt;Body&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S2] (Client request does not contain "&lt;Filter&gt;" tag
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ([S2] "&lt;CreatePullPointSubscription&gt;" includes tag: "&lt;Filter&gt;" AND
+                    "&lt;Filter&gt;"  includes tag: "&lt;TopicExpression&gt;" AND
+                    "&lt;TopicExpression&gt;" contains value EITHER ("*:AccessPoint/State" OR ":AccessPoint//.")))
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S4] Device response contains "&lt;CreatePullPointSubscriptionResponse&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S5] Client request contains "&lt;PullMessages&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>            
+                <listitem>
+                  <para>
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S7] Device response contains "&lt;PullMessagesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+    <!--<section>
+      <title>
+        STATE OF DOORS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> System Component State - State of
+        Doors
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> SYSTEMCOMPONENTSTATE-2
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> System Component State
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        receive state of door through the use of Pull Point event mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with CreatePullPointSubscription, PullMessages
+              operations present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>SYSTEMCOMPONENTINFORMATION-2 has passed.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message without any filter
+              or with appropriate filter.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes PullMessages command with Timeout and MessageLimit
+              elements.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and PullMessagesResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Filter is specified for Client
+        <emphasis role="bold">CreatePullPointSubscription</emphasis> request message and if it does not contain
+        "*:Door/State" OR "*:Door//." value of "&lt;TopicExpression&gt;" tag then Test shall be
+        deemed as "NOT DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>            
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] Client request contains "&lt;CreatePullPointSubscription&gt;" tag after the "&lt;Body&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S2] (Client request does not contain "&lt;Filter&gt;" tag
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ([S2] "&lt;CreatePullPointSubscription&gt;" includes tag: "&lt;Filter&gt;" AND
+                    "&lt;Filter&gt;"  includes tag: "&lt;TopicExpression&gt;" AND
+                    "&lt;TopicExpression&gt;" contains value EITHER ("*:Door/State" OR "*:Door//.")))
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S4] Device response contains "&lt;CreatePullPointSubscriptionResponse&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>            
+              Client <emphasis role="bold">PullMessages</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S5] Client request contains "&lt;PullMessages&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>                
+                <listitem>
+                  <para>
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S7] Device response contains "&lt;PullMessagesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+  </section>
+</feature>

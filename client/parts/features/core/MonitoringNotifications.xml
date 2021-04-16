@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+            <revision  xml:id="s.revhistory.MonitoringNotifications.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Monitoring Notifications section and Monitoring Notifications Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.MonitoringNotifications">
+      <title>Monitoring Notifications</title>
+      <para>
+        Monitoring Notifications section specifies Client ability to receive
+        from Device monitoring notifications.
+      </para>
+  </section>
+      <section xml:id="tc.MonitoringNotifications">
+    <title>Monitoring Notifications Test Cases</title>
+    <section xml:id="tc.MonitoringNotifications.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Monitoring Notifications (MonitoringNotifications)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="MonitoringProcessorUsageEvent OR MonitoringOperatingTimeLastResetEvent OR MonitoringOperatingTimeLastRebootEvent OR MonitoringOperatingTimeLastClockSynchronizationEvent">Check Condition based on Device Features:</emphasis> Monitoring/ProcessorUsage or Monitoring/OperatingTime/LastReset or Monitoring/OperatingTime/LastReboot or Monitoring/OperatingTime/LastClockSynchronization is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.MonitoringNotifications.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get monitoring notifications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Monitoring Notifications if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>Client supports EventHandling_Pullpoint feature AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to retrieve at least one of the following notifications:
+                    <itemizedlist>
+                      <listitem>
+                        <para>tns1:Monitoring/ProcessorUsage notification about processor usage if Device supports MonitoringProcessorUsageEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/OperatingTime/LastReset notification about last reset if Device supports MonitoringOperatingTimeLastResetEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/OperatingTime/LastReboot notification about last reboot if Device supports MonitoringOperatingTimeLastRebootEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/OperatingTime/LastClockSynchronization notification about last clock synchronization if Device supports MonitoringOperatingTimeLastClockSynchronizationEvent feature</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Monitoring Notifications if ANY
+              of the following is TRUE:
+              <itemizedlist>
+                <listitem>
+                  <para>Client does not support EventHandling_Pullpoint feature OR</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is not able to retrieve the following notifications:
+                    <itemizedlist>
+                      <listitem>
+                        <para>tns1:Monitoring/ProcessorUsage notification about processor usage if Device supports MonitoringProcessorUsageEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/OperatingTime/LastReset notification about last reset if Device supports MonitoringOperatingTimeLastResetEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/OperatingTime/LastReboot notification about last reboot if Device supports MonitoringOperatingTimeLastRebootEvent feature</para>
+                      </listitem>
+                      <listitem>
+                        <para>tns1:Monitoring/OperatingTime/LastClockSynchronization notifications about last clock synchronization if Device supports MonitoringOperatingTimeLastClockSynchronizationEvent feature.</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+
+
+  </section>
+</feature>

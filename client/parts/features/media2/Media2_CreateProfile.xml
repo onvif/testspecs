@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Media2_MediaStreaming.20190918.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #325:</para>
+        <para>EVENTHANDLING-3 METADATA STREAMING test was removed from Event Handling Feature and moved to Metadata Streaming Using Media2. Test case ID was changed to METADATASTREAMING-1.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+      <section xml:id="s.intro.Media2_CreateProfile">
+        <title>Create Profile Using Media2</title>
+        <para>
+          Create Profile Using Media2 section specifies Client ability to create a Media2 profile on Device.
+        </para>
+      </section>
+     <section xml:id="tc.Media2_CreateProfile">
+      <title>Create Profile Using Media2 Test Cases</title>
+      <section xml:id="tc.Media2CreateProfile.feature">
+        <title>Feature Level Normative Reference:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Create Profile Using Media2 (Media2_CreateProfile)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="Media2Service">Check Condition based on Device Features:</emphasis> Media2 Service is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 1
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="8.1 Media profile management">Profile M Requirement:</emphasis> Conditional
+        </para>
+      </section>
+      <section xml:id="tc.Media2_CreateProfile.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client connects to Device to retrive media profiles from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Create Profile if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve media profiles using
+                      <emphasis role="bold">CreateProfile</emphasis> operation (Media2 Service).
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Create Profile if
+                ANY of the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">CreateProfile</emphasis> request (Media2 Service).
+
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.Media2_CreateProfile.MEDIA2_CREATEPROFILE-1" xreflabel="MEDIA2_CREATEPROFILE-1 CREATE PROFILE USING MEDIA2">
+        <title>CREATE PROFILE USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> CreateProfile
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_CREATEPROFILE-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Create Profile Using Media2 (Media2_CreateProfile_Media2_CreateProfileRequest)
+        </para>        
+        <para>
+          <emphasis role="bold"
+                    annotations="CreateProfile">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that media profile is created by Client using the
+          <emphasis role="bold">CreateProfile</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">CreateProfile</emphasis> operation for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">CreateProfile</emphasis> request message to create a media profile on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">CreateProfileResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateProfile</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateProfile</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_CreateProfile.MEDIA2_CREATEPROFILE-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:CreateProfile</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">CreateProfile</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_CreateProfile.MEDIA2_CREATEPROFILE-1.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_CreateProfile.MEDIA2_CREATEPROFILE-1.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:CreateProfileResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+</feature>

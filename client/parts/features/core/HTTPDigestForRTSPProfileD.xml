@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    
+    <revision  xml:id="s.revhistory.HTTPDigestForRTSPProfileD.20190212.ProfileD">
+      <revnumber>19.12</revnumber>
+      <date>Dec 02, 2019</date>
+      <revdescription>
+        <para>Digest Authentication for RTSP (Profile D) feature was added into Test Cases for Profile Conditional Features section according to #343</para>       
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.DigestForRTSPProfileD">
+      <title>Digest Authentication for RTSP (Profile D)</title>
+      <para>
+        Digest Authentication for RTSP section defines security mechanism for Digest Authentication for RTSP.
+      </para>
+  </section>
+  <section xml:id="tc.DigestForRTSPProfileD">
+    <title>Digest Authentication for RTSP (Profile D) Test Cases</title>
+    <section xml:id="tc.DigestForRTSPProfileD.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Digest Authentication for RTSP (DigestForRTSPProfileD)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ProfileDSupported">Check Condition based on Device Features:</emphasis> Profile D
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>      
+	        <para>
+        <emphasis role="bold" annotations="7.1 User authentication">Profile D Requirement:</emphasis> Conditional
+      </para>
+      
+      
+    </section>
+    <section xml:id="tc.DigestForRTSPProfileD.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes a specific RTSP command which is under
+              testing without any user credentials (no UsernameToken, no HTTP Digest
+              authentication header).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              IF Device returns RTSP 401 Unauthorized error along with
+              WWW-Authentication: Digest header, then Client resends RTSP command with WWW-Authenticate header.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Digest Authentication for RTSP (Profile D) if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                     Client supports HTTPDigestForRTSP_HTTPDigestForRTSPTest feature (please see <xref linkend="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-1"/> section)
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Digest Authentication for RTSP (Profile D)
+              if the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>Client does not support HTTPDigestForRTSP_HTTPDigestForRTSPTest feature (please see <xref linkend="tc.HTTPDigestForRTSP.HTTPDIGESTFORRTSP-1"/> section)</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

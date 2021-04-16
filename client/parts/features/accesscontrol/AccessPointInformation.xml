@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+      <revision  xml:id="s.revhistory.AccessPointInformation.20191210">
+      <revnumber>19.12</revnumber>
+      <date>Dec 10, 2019</date>
+      <revdescription>
+        <para>The following was done according to #355:</para>
+        <para>ACCESSPOINTINFORMATION-1 LISTING OF ACCESS POINTS (description was updated with namespaces)</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.AccessPointInformation.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Access Point Information feature and scope was extracted from System Component Information feature to be reused for Profile D.</para>
+        <para>Scope\Access Point Information section was added.</para>
+        <para>Access Point Information Test Cases section was added.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.AccessPointInformation">
+    <title>Access Point Information</title>
+    <para>
+      Access Point Information section specifies Client ability to request lists of Access Points from Device.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.AccessPointInformation">
+    <title>Access Point Information Test Cases</title>
+    <section xml:id="tc.AccessPointInformation.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Access Point Information (AccessPointInformation)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AccessControlService">Check Condition based on Device Features:</emphasis> Access Control Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <!--List of profiles for which feature mandatory, conditional or optional-->
+      <para>
+        <emphasis role="bold" annotations="7.3 System component information – Access points">Profile C Requirement:</emphasis> Mandatory
+      </para>
+
+      <para>
+        <emphasis role="bold" annotations="7.8 Access Point Information">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.AccessPointInformation.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <!--Description of use case-->
+          <listitem>
+            <para>
+              Client connects to Device to retrieve a lists of
+              Access Points.
+            </para>
+          </listitem>
+          <!--Feature is supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as supporting Access Point Information if the
+              following conditions are met:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to list available Access Points using
+                    GetAccessPointInfoList operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--Feature is not supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Access Point Information if
+              ANY of the following is TRUE:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          No valid responses for <emphasis role="bold">GetAccessPointInfoList</emphasis>.
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1" xreflabel="ACCESSPOINTINFORMATION-1 LISTING OF ACCESS POINTS">
+      <title>LISTING OF ACCESS POINTS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> System Component Information -
+        Listing of Access Points
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSPOINTINFORMATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Listing of Access Points (AccessPointInformation_ListingOfAccessPoints)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetAccessPointInfoList">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all access
+        points items provided by Device is received by Client using the
+        GetAccessPointInfoList operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with GetAccessPointInfoList operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetAccessPointInfoList request message to retrieve
+              complete list of all access points configured on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              GetAccessPointInfoListResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+		<itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetAccessPointInfoList</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetAccessPointInfoList</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tcr:GetAccessPointInfoList</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetAccessPointInfoList</emphasis> request fulfils the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tcr:GetAccessPointInfoListResponse</emphasis>.
+                    </para>
+                  </listitem>
+                   <listitem xml:id="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1.3">
+                    <para>
+                      [S4] <emphasis role="bold">tcr:GetAccessPointInfoListResponse</emphasis> does not contain <emphasis role="bold">tcr:NextStartReference</emphasis> element.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

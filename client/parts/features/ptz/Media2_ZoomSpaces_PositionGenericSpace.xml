@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.Media2_ZoomSpaces_PositionGenericSpace.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Using Media2 Absolute Positioning - Zoom Position Generic Space section and PTZ Using Media2 Absolute Positioning - Zoom Position Generic Space section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.Media2_ZoomSpaces_PositionGenericSpace">
+      <title>PTZ Using Media2 Absolute Positioning - Zoom Position Generic Space</title>
+      <para>
+        PTZ Using Media2 Absolute Positioning Test Cases - Zoom Position Generic Space section specifies Client ability to move a PTZ Device
+        using the Zoom AbsoluteMove operation for Media2 profile with Generic Space.
+      </para>
+  </section>
+        <section xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace">
+    <title>PTZ Using Media2 Absolute Positioning - Zoom Position Generic Space Test Cases</title>
+    <section xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Absolute Positioning Using Media2 - Zoom Position Generic Space (Media2_ZoomSpaces_PositionGenericSpace)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZAbsoluteZoom AND PTZGenericCoordinateSpaces AND Media2Service">Check Condition based on Device Features:</emphasis> PTZ Absolute Zoom Move and PTZ Generic Coordinate Spaces are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.21 Absolute PTZ Move">Profile T Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device control the
+              position using absolute positioning with Zoom PositionGenericSpace PTZ space.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ Using Media2 Absolute Positioning with Zoom PositionGenericSpace PTZ space if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to move PTZ Device using the <emphasis role="bold">AbsoluteMove</emphasis>
+                    operation with specified Zoom element EITHER using space attribute in Zoom element with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> value OR
+                    using Media Profile with PTZConfiguration with DefaultAbsolutePantTiltPositionSpace value is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ Using Media2 Absolute Positioning with Zoom PositionGenericSpace PTZ space if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid response to <emphasis role="bold">AbsoluteMove</emphasis> request with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> PTZ space if detected
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid response to <emphasis role="bold">AbsoluteMove</emphasis> request with skipped PTZ space attribute for <emphasis role="bold">AbsoluteMove</emphasis> operations which use media profile with
+                    DefaultAbsolutePantTiltPositionSpace value in PTZConfiguration is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> if detected
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No <emphasis role="bold">AbsoluteMove</emphasis> request with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> PTZ space is detected
+                    AND no <emphasis role="bold">AbsoluteMove</emphasis> request with skipped PTZ space attribute which use media profile with
+                    DefaultAbsolutePantTiltPositionSpace value in PTZConfiguration is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> is detected
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1">
+      <title>PTZ ABSOLUTE MOVE ZOOM POSITION GENERIC SPACE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Using Media2 Absolute Positioning -
+        AbsoluteMove Zoom with PositionGeneric Space
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Absolute Positioning Using Media2 - AbsoluteMove Zoom with PositionGeneric Space (Media2_ZoomSpaces_PositionGenericSpace_PTZAbsolutePositioningZoomPositionGenericSpace)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AbsoluteMove;http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        move a PTZ Device using the AbsoluteMove operation with specified Zoom
+        element using <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> PTZ space.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with AbsoluteMove operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PTZ Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Absolute Zoom movement (PTZAbsoluteZoom).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">AbsoluteMove</emphasis> request message to move of PTZ Device
+              using specific value of Zoom element with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> space attribute value OR
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client find or configure media profile to contain PTZConfiguration with DefaultAbsolutePantTiltPositionSpace with value is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis> and
+              invokes <emphasis role="bold">AbsoluteMove</emphasis> request message using specific value of Zoom element with no space attribute.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">AbsoluteMoveResponse</emphasis>
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <!--<para>
+        <emphasis role="bold">NOTE:</emphasis> If Client AbsoluteMove request message does
+        not contain Zoom with space attribute value is equal to http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace then Test shall be deemed
+        as "NOT DETECTED".
+      </para>-->
+      <itemizedlist>
+        <listitem>
+          <para>
+            Client <emphasis role="bold">AbsoluteMove</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Client <emphasis role="bold">AbsoluteMove</emphasis> request in Test Procedure fulfills the following requirements:
+            <itemizedlist>
+              <listitem xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1.0">
+                <para>
+                  [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:AbsoluteMove</emphasis> AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1.1">
+                <para>
+                  [S2] It contains <emphasis role="bold">tptz:Position/tt:Zoom</emphasis> element
+                  AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1.2">
+                <para>
+                  [S3] If it contains <emphasis role="bold">tptz:Position/tt:Zoom/@space</emphasis> attribute, THEN <emphasis role="bold">tptz:Position/tt:Zoom/@space</emphasis> element value is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace</emphasis>
+                  AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1.3">
+                <para>
+                  [S4] ELSE PTZConfiguration that corresponding to media profile used in <emphasis role="bold">AbsoluteMove</emphasis> request (PTZ Move operation)
+                  has DefaultAbsolutePantTiltPositionSpace (Default space element name to get ) value is equal to http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace (see <link linkend="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove">Annex A.1</link> HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove)
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Device response on the <emphasis role="bold">AbsoluteMove</emphasis> request fulfills the following requirements:
+            <itemizedlist>
+              <listitem xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1.4">
+                <para>
+                  [S4] It has HTTP 200 response code AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_PositionGenericSpace.MEDIA2_ZOOMSPACES_POSITIONGENERICSPACE-1.5">
+                <para>
+                  [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:AbsoluteMoveResponse</emphasis>.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

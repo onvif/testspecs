@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.PtzConfiguration.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ - Configuration section and PTZ - Configuration Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PtzConfiguration">
+      <title>PTZ - Configuration</title>
+      <para>
+        PTZ - Configuration section specifies Client ability to add PTZ configuration to a
+        media profile.
+      </para>
+  </section>
+   <section xml:id="tc.PtzConfiguration">
+    <title>PTZ - Configuration Test Cases</title>
+    <section xml:id="tc.PtzConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> PTZ Configuration (PtzConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZService AND MediaService">Check Condition based on Device Features:</emphasis> PTZ Service and Media Service are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PtzConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to add PTZ configuration to a media
+              profile.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ - Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to add PTZ configuration to an existing
+                    media profile using GetConfigurations operation AND
+                    AddPTZConfiguration operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ - Configuration if ANY of
+              the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetConfigurations request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to AddPTZConfiguration
+                    request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1">
+      <title>ADD PTZ CONFIGURATION</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Configuration - Add PTZ
+        Configuration
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZCONFIGURATION-1
+      </para>
+        <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Add PTZ Configuration to Media Profile (PtzConfiguration_AddPtzConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+    
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        add PTZ configuration to a profile using GetConfigurations and AddPTZConfiguration
+        operations.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with GetConfigurations and AddPTZConfiguration
+              operations present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetConfigurations request message to retrieve all
+              available PTZ configurations from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetConfigurationsResponse
+              message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes AddPTZConfiguration request message to add a PTZ
+              configuration to an existing media profile.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and AddPTZConfigurationResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetConfigurations</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetConfigurations</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.0">
+                  <para>
+                    [S1] Client request contains "&lt;GetConfigurations&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.1">
+                  <para>
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.2">
+                  <para>
+                    [S3] Device response contains "&lt;GetConfigurationsResponse&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddPTZConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddPTZConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.3">
+                  <para>
+                    [S4] Client request contains "&lt;AddPTZConfiguration&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.4">
+                  <para>
+                    [S5] "&lt;AddPTZConfiguration&gt;" includes tag: "&lt;ProfileToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.5">
+                  <para>
+                    [S6] "&lt;AddPTZConfiguration&gt;" includes tag: "&lt;ConfigurationToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.6">
+                  <para>
+                    [S7] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzConfiguration.PTZCONFIGURATION-1.7">
+                  <para>
+                    [S8] Device response contains "&lt;AddPTZConfigurationResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

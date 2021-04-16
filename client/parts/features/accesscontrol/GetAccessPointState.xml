@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.GetAccessPointState.20191206.ProfileD">
+      <revnumber>19.12</revnumber>
+      <date>Dec 06, 2019</date>
+      <revdescription>
+        <para>Get AccessPoint State feature was added according to #345</para>     
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetAccessPointState">
+    <title>Get Access Point State</title>
+    <para>
+      Get Access Point State section specifies Client ability to request information
+      about the state of Access Points using the GetAccessPointState operation.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.GetAccessPointState">
+    <title>Get Access Point State Test Cases</title>
+    <section xml:id="tc.GetAccessPointState.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Access Point State (GetAccessPointState)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AccessPointEntity">Check Condition based on Device Features:</emphasis> AccessPoint entity is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>      
+      <para>
+        <emphasis role="bold" annotations="7.9 Access Point State">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.GetAccessPointState.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to get state of an access point.              
+            </para>
+          </listitem>          
+          <listitem>
+            <para>
+              Client is considered as supporting Get Access Point State if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                    <para>
+                      Client is able to get an access point state using the  
+                      <emphasis role="bold">GetAccessPointState</emphasis> operation.                    
+                    </para>
+                  </listitem>                
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Get Access Point State if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                    <para>
+                      Client is not able to get an access point state using the  
+                      <emphasis role="bold">GetAccessPointState</emphasis> operation.                    
+                    </para>
+                  </listitem>                
+              </itemizedlist>
+            </para>
+          </listitem>
+          
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.GetAccessPointState.GETACCESSPOINTSTATE-1">
+        <title>GET ACCESS POINT STATE</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Get Access Point State
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> GETACCESSPOINTSTATE-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Get Access Point State (GetAccessPointState_GetAccessPointStateRequest)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="GetAccessPointState">Profile D Normative Reference:</emphasis> Mandatory
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve access point state using the
+          <emphasis role="bold">GetAccessPointState</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetAccessPointState</emphasis> operation.               
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports AccessPoint entity.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetAccessPointState</emphasis> request message to retrieve access point state from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetAccessPointStateResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetAccessPointState</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetAccessPointState</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.GetAccessPointState.GETACCESSPOINTSTATE-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child
+                      <emphasis role="bold">tac:GetAccessPointState</emphasis> element AND
+                    </para>
+                  </listitem>                                 
+                  
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetAccessPointState</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.GetAccessPointState.GETACCESSPOINTSTATE-1.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.GetAccessPointState.GETACCESSPOINTSTATE-1.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tac:GetAccessPointStateResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>            
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    
+    
+  </section>
+</feature>

@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>
+<book xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+      xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd"
+      version="0.1"
+      xml:id="ONVIF_Profile_M_Client_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Profile M Client Test Specification</title>
+     <releaseinfo>Profile M is under development. This test specification is not final and it is subject to changes.</releaseinfo>
+    <subtitle>
+      Draft Version 20.12
+    </subtitle>    
+    <date>December 2020</date>    
+   
+    <copyright>
+      <year>2020</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <xi:include href="parts/general/legalnotice.xml"/>
+    <revhistory>
+      <!--Use the following to add history from the parts-->
+      <!--xi:include href="parts/features/core/HTTPDigest.xml" xpointer="s.revhistory.HTTPDigest.20190814.ProfileC"/-->
+     <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
+      <revision>
+        <revnumber>20.12</revnumber>
+        <date>Oct 27, 2020</date>
+        <revdescription>
+          <para>Network Configuration feature was removed according to #395</para>     
+    
+        </revdescription>
+      </revision>
+       <xi:include href="parts/features/core/EventHandlingUsingPullPoints.xml" xpointer="s.revhistory.EventHandlingUsingPullPoints.20200831.ProfileM"/>
+         <revision>
+        <revnumber>20.06</revnumber>
+        <date>Mar 30, 2020</date>
+        <revdescription>
+          <para>The following features were changed according to #382</para>        
+    <para>Human Face Metadata</para>
+    <para>Human Body Metadata</para>
+    <para>Vehicle Metadata</para>
+    <para>License Plate Metadata</para>
+
+        </revdescription>
+      </revision>
+        <xi:include href="parts/features/analytics/LicensePlateRecognitionEvent.xml" xpointer="s.revhistory.LicensePlateRecognitionEvent.20200313.ProfileM"/>
+      <xi:include href="parts/features/analytics/FaceRecognitionEvent.xml" xpointer="s.revhistory.FaceRecognitionEvent.20200313.ProfileM"/>
+       <xi:include href="parts/features/core/EventBrokerConfiguration.xml" xpointer="s.revhistory.EventBrokerConfiguration.20200312.ProfileM"/>
+      <xi:include href="parts/features/analytics/GetSupportedMetadata.xml" xpointer="s.revhistory.GetSupportedMetadata.20200205.ProfileM"/>
+       <revision>
+        <revnumber>20.06</revnumber>
+        <date>Jan 23, 2020</date>
+        <revdescription>
+          <para>Conditional feature added according to #326:</para>
+        <para>System (reused feature)</para>
+         <para>Metadata Profile Configuration Using Media2 (Profile M) (new feature)</para>
+         <para>Analytics Profile Configuration Using Media2 (reused feature)</para>
+        <para>Analytics Module Configuration (new feature)</para>
+          <para>Create Profile Using Media2 (new feature)</para>
+         <para>Video Streaming Using Media2 (Profile M) (new feature)</para>
+        <para>Image Data (new feature)</para>
+        <para>HTTPS Streaming Using Media2 (Profile M) (new feature)</para>
+            <para>Event Handling Using Pull Points (new feature)</para>
+            <para>Rule Configuration (new feature)</para>
+            <para>Object Classification (new feature)</para>
+                <para>Human Face Metadata (new feature)</para>
+              <para>Human Body Metadata (new feature)</para>
+          <para>Vehicle Metadata (new feature)</para>
+         <para>License Plate Metadata (new feature)</para>
+              <para>GeoLocation Metadata (new feature)</para>
+          <para>Face Match Event (new feature)</para>
+           <para>License Plate Recognition Event (new feature)</para>
+          <para>Line Crossing Counter Event (new feature)</para>     
+        </revdescription>
+      </revision> 
+      <xi:include href="parts/features/core/HTTPDigestForRTSP.xml" xpointer="s.revhistory.HTTPDigestForRTSP.20191022.All"/>
+      <revision>
+        <revnumber>19.12</revnumber>
+        <date>Aug 23, 2019</date>
+        <revdescription>
+          <para>Initial version.</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <xi:include href="parts/general/introduction_common.xml"/>
+    <para>
+      This particular document defines feaures and related test cases required for testing Profile M features of a
+      Client application e.g. metadata streaming, analytics configuration. It also describes the test framework, test setup,
+      prerequisites, test policies needed for the execution of the described test
+      cases.
+    </para>
+    <section xml:id="s.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Profile M Client Test Specification defines and regulates the conformance
+        testing procedure for the ONVIF conformant Clients in the scope of Profile M
+        features. Conformance testing is meant to be black-box network traces analysis and
+        verification. The objective of this specification is to provide the test cases to
+        test individual requirements of ONVIF Clients in the scope of Profile M features
+        according to ONVIF Profile Specifications.
+      </para>
+      <para>
+        The principal intended purposes are:<itemizedlist>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Provide comprehensive test suite coverage for Profile M
+              features.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        This specification <emphasis role="bold">does not</emphasis> address the following:<itemizedlist>
+          <listitem>
+            <para>3rd parties Client use cases</para>
+          </listitem>
+          <listitem>
+            <para>
+              Non-functional (performance and regression) testing and
+              analysis.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Services
+              Interoperability Basic Profile version 2.0 (WS-I BP2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation Conformance test for HTTPS and HTTP
+              protocols.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        The following sections cover test cases needed for the verification of relevant
+        features as mentioned in the ONVIF Profile Specifications.
+      </para>
+    </section>
+    <section xml:id="s.intro.mandatory">
+      <title>Test Cases for Profile Mandatory Features</title>
+      <para>
+        This section defines test cases which are mandatory for Profile M Client conformance.
+      </para>
+      <!--Use the following to add scope from the parts-->
+      <xi:include href="parts/features/core/HTTPDigest.xml"
+                  xpointer="s.intro.HTTPDigest"/>
+      <xi:include href="parts/features/core/HTTPDigestForRTSP.xml"
+                  xpointer="s.intro.HTTPDigestForRTSP"/>
+      <xi:include href="parts/features/core/GetServices.xml"
+                  xpointer="s.intro.GetServices"/>
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.intro.Discovery"/>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.intro.DeviceDiscoveryTypeFilter"/>
+      <!--<xi:include href="parts/features/core/NetworkConfiguration.xml"
+                  xpointer="s.intro.NetworkConfiguration"/>-->
+      <xi:include href="parts/features/media2/Media2_MetadataStreaming_ProfileM.xml"
+                  xpointer="s.intro.Media2_MetadataStreaming_ProfileM"/>
+      <xi:include href="parts/features/media2/Media2_MetadataConfiguration_ProfileM.xml"
+                  xpointer="s.intro.Media2_MetadataConfiguration_ProfileM"/>
+      <xi:include href="parts/features/analytics/GetSupportedMetadata.xml"
+                  xpointer="s.intro.GetSupportedMetadata"/>
+      
+    
+    </section>
+    <section xml:id="s.intro.conditional">
+      <title>Test Cases for Profile Conditional Features</title>
+      <para>
+        This section defines test cases which are mandatory for Profile M Client conformance.
+      </para>
+        <xi:include href="parts/features/core/System.xml"
+                  xpointer="s.intro.System"/>
+       <xi:include href="parts/features/media2/Media2_MetadataProfileConfiguration_ProfileM.xml"
+                  xpointer="s.intro.Media2_MetadataProfileConfiguration_ProfileM"/>
+      <xi:include href="parts/features/media2/Media2_AnalyticsProfileConfiguration.xml"
+                  xpointer="s.intro.analytics_profile_configuration"/>
+       <xi:include href="parts/features/analytics/AnalyticsModuleConfiguration.xml"
+                  xpointer="s.intro.AnalyticsModuleConfiguration"/>
+     <xi:include href="parts/features/media2/Media2_CreateProfile.xml"
+                  xpointer="s.intro.Media2_CreateProfile"/>
+       <xi:include href="parts/features/media2/Media2_VideoStreaming_ProfileM.xml"
+                  xpointer="s.intro.Media2_VideoStreaming_ProfileM"/>
+      <xi:include href="parts/features/analytics/ImageData.xml"
+                  xpointer="s.intro.ImageData"/>
+       <xi:include href="parts/features/media2/Media2_HTTPSStreaming_ProfileM.xml"
+                  xpointer="s.intro.Media2_HTTPSStreaming_ProfileM"/>
+       <xi:include href="parts/features/core/EventHandlingUsingPullPoints.xml"
+                  xpointer="s.intro.EventHandlingUsingPullPoints"/>
+       <xi:include href="parts/features/analytics/RuleConfiguration.xml"
+                xpointer="s.intro.RuleConfiguration"/>  
+    <xi:include href="parts/features/analytics/ObjectClassification.xml"
+                xpointer="s.intro.ObjectClassification"/>  
+    <xi:include href="parts/features/analytics/HumanFaceMetadata.xml"
+                xpointer="s.intro.HumanFaceMetadata"/>  
+      <xi:include href="parts/features/analytics/HumanBodyMetadata.xml"
+                xpointer="s.intro.HumanBodyMetadata"/> 
+    <xi:include href="parts/features/analytics/VehicleMetadata.xml"
+                xpointer="s.intro.VehicleMetadata"/> 
+    <xi:include href="parts/features/analytics/LicensePlateMetadata.xml"
+                xpointer="s.intro.LicensePlateMetadata"/> 
+      <xi:include href="parts/features/analytics/GeoLocationMetadata.xml"
+                xpointer="s.intro.GeoLocationMetadata"/> 
+     <xi:include href="parts/features/analytics/FaceRecognitionEvent.xml"
+                xpointer="s.intro.FaceRecognitionEvent"/> 
+      <xi:include href="parts/features/analytics/LicensePlateRecognitionEvent.xml"
+                xpointer="s.intro.LicensePlateRecognitionEvent"/> 
+       <xi:include href="parts/features/analytics/LineCrossingCounterEvent.xml"
+                xpointer="s.intro.LineCrossingCounterEvent"/> 
+     <xi:include href="parts/features/core/EventBrokerConfiguration.xml"
+                xpointer="s.intro.EventBrokerConfiguration"/> 
+    </section>
+    <!--<section xml:id="s.intro.optional">
+      <title>Test Cases for Profile Optional Features</title>
+      <para>
+        This section defines test cases which are optional for Profile M Client conformance.
+      </para>
+      --><!--Use the following to add scope from the parts--><!--
+      --><!--xi:include href="parts/features/core/HTTPDigest.xml" xpointer="s.intro.HTTPDigest"/--><!--
+    </section>-->
+    <section xml:id="s.intro.supplementary">
+      <title>Supplementary Features and Test Cases</title>
+      <para>
+        This section defines supplementary features and test cases which are not the part of profile, but Profile M Features results depends on them.
+      </para>
+    </section>
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative References</title>
+    <itemizedlist>
+      <xi:include href="parts/general/normative_references_common.xml"
+                  xpointer="xpointer(id('s.docbook')/itemizedlist/listitem)"/>
+      <listitem>
+        <para>ONVIF Profile M Specification:</para>
+        <para>
+          <link xlink:href="http://TODO">[TODO: put link to profile page]</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>IETF RFC 2326, Real Time Streaming Protocol (RTSP):</para>
+        <para>
+          <link xlink:href="http://www.ietf.org/rfc/rfc2326.txt">http://www.ietf.org/rfc/rfc2326.txt</link>
+        </para>
+      </listitem>
+      <!--TODO: add other profile-specific Normative references-->
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <xi:include href="parts/general/terms_definitions.conventions.xml"/>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>This section describes terms and definitions used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.definitions_common.xml"
+                    xpointer="xpointer(id('additions.definitions')/variablelist/varlistentry)"/>
+        <varlistentry>
+          <term>Profile M</term>
+          <listitem>
+            <para>The Profile M Specification.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Configuration Entity</term>
+          <listitem>
+            <para>
+              A network video device media abstract component that produces or consumes a media stream on the network, i.e. video and/or audio stream.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Media Profile</term>
+          <listitem>
+            <para>
+              Maps a video and audio sources and outputs encoders as well as PTZ and analytics configurations.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Metadata</term>
+          <listitem>
+            <para>
+              All streaming data except video and audio, including video analytics results, PTZ position data and other metadata (such as textual data from POS applications).
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Reference Token</term>
+          <listitem>
+            <para>
+              Token provided by the device to uniquely reference an instance of a physicalIO, configuration or profile.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Video Analytics</term>
+          <listitem>
+            <para>
+              Algorithms or programs used to analyze video data and to generate data describing object location and behaviour.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.abbreviations_common.xml"
+                    xpointer="xpointer(id('additions.abbreviations')/variablelist/varlistentry)"/>
+        <varlistentry>
+          <term>RTCP</term>
+          <listitem>
+            <para>RTP Control Protocol.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>RTP</term>
+          <listitem>
+            <para>Realtime Transport Protocol.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>RTSP</term>
+          <listitem>
+            <para>Real Time Streaming Protocol.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>SDP</term>
+          <listitem>
+            <para>Session Description Protocol.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.namespaces"
+             xreflabel="Namespaces">
+      <title>Namespaces</title>
+      <para>
+        Prefix and namespaces used in this test specification are listed in Table 1.
+        These prefixes are not part of the standard and an implementation can use any prefix.
+      </para>
+      <table>
+        <title>Defined namespaces in this specification</title>
+        <tgroup cols="3">
+          <colspec colwidth="109*" />
+          <colspec colwidth="403*" />
+          <colspec colwidth="488*" />
+          <thead>
+            <row>
+              <entry>Prefix</entry>
+              <entry>Namespace URI</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <xi:include href="parts/general/namespaces_common.xml"
+                        xpointer="xpointer(id('additions.namespaces')/table/tgroup/tbody/row)"/>
+            <!--TODO: add other profile-specific Namespaces-->
+            <row>
+              <entry>tan</entry>
+              <entry>http://www.onvif.org/ver20/analytics/wsdl</entry>
+              <entry>The namespace for the WSDL Analytics service</entry>
+            </row>
+            <row>
+              <entry>tr2</entry>
+              <entry>http://www.onvif.org/ver20/media/wsdl</entry>
+              <entry>The namespace for the WSDL Media 2 service</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.para.1"/>
+    <para>
+      An ONVIF Client conformant to Profile M is an ONVIF Client that at least supports the following features:
+      [TODO: add breaf description of profile features as itemizedlist]
+    </para>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.para.3"/>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.general"/>
+    <section>
+      <title>Test Setup</title>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.1"/>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.2"/>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.3"/>
+      <para>
+        For compatibility with the Profile M, the ONVIF Client shall follow the
+        requirements of the conformance process. For details please see the latest ONVIF
+        Conformance Process Specification.
+      </para>
+    </section>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.prerequisites"/>
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileMandatoryFeatures">
+    <title>Test Cases for Profile Mandatory Features</title>
+    <!--Use the following to add features from the parts-->
+    <xi:include href="parts/features/core/HTTPDigest.xml"
+                xpointer="tc.HTTPDigest"/>
+    <xi:include href="parts/features/core/HTTPDigestForRTSP.xml"
+                xpointer="tc.HTTPDigestForRTSP"/>
+    <xi:include href="parts/features/core/GetServices.xml"
+                xpointer="tc.GetServices"/>
+    <xi:include href="parts/features/core/Discovery.xml"
+                xpointer="tc.Discovery"/>
+    <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                xpointer="tc.DeviceDiscoveryTypeFilter"/>
+        
+    <xi:include href="parts/features/media2/Media2_MetadataStreaming_ProfileM.xml"
+                xpointer="tc.Media2_MetadataStreaming_ProfileM"/>
+    <xi:include href="parts/features/media2/Media2_MetadataConfiguration_ProfileM.xml"
+                xpointer="tc.Media2_MetadataConfiguration_ProfileM"/>
+     <xi:include href="parts/features/analytics/GetSupportedMetadata.xml"
+                xpointer="tc.GetSupportedMetadata"/>
+  </chapter>
+ <chapter xml:id="tc.Profile.ProfileConditionalFeatures">
+    <title>Test Cases for Profile Conditional Features</title>
+  <xi:include href="parts/features/core/System.xml"
+                xpointer="tc.System"/>     
+     <xi:include href="parts/features/media2/Media2_MetadataProfileConfiguration_ProfileM.xml"
+                xpointer="tc.Media2_MetadataProfileConfiguration_ProfileM"/>
+ <!--AnalyticsProfileConfiguration-->
+    <xi:include href="parts/features/media2/Media2_AnalyticsProfileConfiguration.xml"
+                xpointer="tc.Media2_AnalyticsProfileConfiguration"/>
+    <!--AnalyticsModuleConfiguration-->
+      <xi:include href="parts/features/analytics/AnalyticsModuleConfiguration.xml"
+                  xpointer="tc.AnalyticsModuleConfiguration"/>
+    <!--Media profile management-->
+   <xi:include href="parts/features/media2/Media2_CreateProfile.xml"
+                  xpointer="tc.Media2_CreateProfile"/>
+   
+    <xi:include href="parts/features/media2/Media2_VideoStreaming_ProfileM.xml"
+                  xpointer="tc.Media2_VideoStreaming_ProfileM"/>
+   <!--Image Data-->
+   <xi:include href="parts/features/analytics/ImageData.xml"
+                  xpointer="tc.ImageData"/>
+    <!--HTTPS Streaming-->
+   <xi:include href="parts/features/media2/Media2_HTTPSStreaming_ProfileM.xml"
+                  xpointer="tc.Media2_HTTPSStreaming_ProfileM"/>
+     <!--Event Event handling-->
+    <xi:include href="parts/features/core/EventHandlingUsingPullPoints.xml"
+                xpointer="tc.EventHandlingUsingPullPoints"/>   
+   <!--Rule Configuration-->
+    <xi:include href="parts/features/analytics/RuleConfiguration.xml"
+                xpointer="tc.RuleConfiguration"/>  
+ 
+  <xi:include href="parts/features/analytics/ObjectClassification.xml"
+                xpointer="tc.ObjectClassification"/>  
+ <xi:include href="parts/features/analytics/HumanFaceMetadata.xml"
+                xpointer="tc.HumanFaceMetadata"/>  
+ <xi:include href="parts/features/analytics/HumanBodyMetadata.xml"
+                xpointer="tc.HumanBodyMetadata"/>
+ <xi:include href="parts/features/analytics/VehicleMetadata.xml"
+                xpointer="tc.VehicleMetadata"/>
+ <xi:include href="parts/features/analytics/LicensePlateMetadata.xml"
+                xpointer="tc.LicensePlateMetadata"/>
+ <xi:include href="parts/features/analytics/GeoLocationMetadata.xml"
+                xpointer="tc.GeoLocationMetadata"/>
+  <xi:include href="parts/features/analytics/FaceRecognitionEvent.xml"
+                xpointer="tc.FaceRecognitionEvent"/>
+ <xi:include href="parts/features/analytics/LicensePlateRecognitionEvent.xml"
+                xpointer="tc.LicensePlateRecognitionEvent"/>
+ <xi:include href="parts/features/analytics/LineCrossingCounterEvent.xml"
+                xpointer="tc.LineCrossingCounterEvent"/>
+ <xi:include href="parts/features/core/EventBrokerConfiguration.xml"
+                xpointer="tc.EventBrokerConfiguration"/>
+ </chapter> 
+  <chapter xml:id="tc.Profile.ProfileSupplementaryFeatures">
+    <title>Supplementary Features and Test Cases</title>
+    <!--Use the following to add supplementary features and/or test cases from the parts (to be used for links from the main features)-->
+    <xi:include href="parts/features/media2/Media2_MetadataConfiguration.xml"
+                xpointer="tc.Media2_MetadataConfiguration"/>
+    <xi:include href="parts/features/core/Capabilities.xml"
+                xpointer="tc.Capabilities.CAPABILITIES-1"/>
+    <xi:include href="parts/features/media2/Media2_MetadataStreaming.xml"
+                xpointer="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1"/>
+    <xi:include href="parts/features/media2/Media2_MediaStreaming.xml"
+                xpointer="tc.Media2_MediaStreaming.MEDIA2_MEDIASTREAMING-2"/>
+    <xi:include href="parts/features/media2/Media2_MediaStreaming.xml"
+                xpointer="tc.Media2_MediaStreaming.MEDIA2_MEDIASTREAMING-3"/>
+    <xi:include href="parts/features/media2/Media2_GetProfiles.xml"
+                xpointer="tc.Media2_GetProfiles.MEDIA2_GETPROFILES-1"/>
+    <xi:include href="parts/features/media2/Media2_GetStreamURI.xml"
+                xpointer="tc.Media2_GetStreamURI.MEDIA2_GETSTREAMURI-1"/>
+     <xi:include href="parts/features/media2/Media2_MetadataProfileConfiguration.xml"
+                xpointer="tc.Media2_MetadataProfileConfiguration"/>
+    <xi:include href="parts/features/media2/Media2_VideoSourceConfiguration.xml"
+                xpointer="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1"/>
+     <xi:include href="parts/features/core/EventHandling.xml"
+                xpointer="tc.EventHandling.EVENTHANDLING-1"/>
+     <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                xpointer="tc.SetSynchronizationPoint.SETSYNCHRONIZATIONPOINT-1"/>
+     <xi:include href="parts/features/analytics/GetRules.xml"
+                xpointer="tc.GetRules.GETRULES-1"/>
+   <xi:include href="parts/features/analytics/GetSupportedRules.xml"
+                xpointer="tc.GetSupportedRules.GETSUPPORTEDRULES-1"/>
+  <xi:include href="parts/features/media2/Media2_H264VideoStreaming.xml"
+                xpointer="tc.Media2_VideoStreaming_H264.MEDIA2_VIDEOSTREAMING_H264-1"/>
+  <xi:include href="parts/features/media2/Media2_H265VideoStreaming.xml"
+                xpointer="tc.Media2_VideoStreaming_H265.MEDIA2_VIDEOSTREAMING_H265-1"/>
+  </chapter>
+  <appendix>
+    <title>Test for Appendix A</title>
+    <!--This annex will be fullfilled automatically by DeviceFeaturesAnnexForTestSpecs during documentation build-->
+    <section xml:id="Annex_RequiredNumberOfDevicesSummary">      
+      <title>Required Number of Devices Summary</title>
+      <para>
+        Required number of devices and Device feature dependency used in this test specification are listed in the Table.
+      </para>
+      <table>
+        <title>Required Number of Devices Summary</title>
+        <tgroup cols="5">
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <thead>
+            <row>
+              <entry>Feature ID</entry>
+              <entry>Feature Name</entry>
+              <entry>Required Number of Devices</entry>
+              <entry>Check Condition based on Device Features</entry>
+              <entry>Check Condition based on Device Features ID</entry>
+            </row>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <!--Use the following to add annexaes from the parts-->
+    <!--A.1-->
+    <!--section xml:id="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove" xreflabel="Annex A.[number of annex in current document]">
+      <xi:include href="parts/features/ptz/HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove.xml" xpointer="xpointer(id('Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove')/*)"/>
+    </section-->
+  </appendix>
+</book>

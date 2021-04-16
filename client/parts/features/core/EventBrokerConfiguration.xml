@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.EventBrokerConfiguration.20200312.ProfileM">
+      <revnumber>20.06</revnumber>
+      <date>Mar 12, 2020</date>
+      <revdescription>
+        <para>Event Broker Configuration Test Cases section was added according to #372</para>     
+      </revdescription>
+    </revision>
+    
+  </revhistory>
+  <section xml:id="s.intro.EventBrokerConfiguration">
+    <title>Event Broker Configuration</title>
+    <para>
+      Event Broker Configuration section defines Client ability to configure Event Broker on a Device.
+    </para>
+    
+  </section>
+  <section xml:id="tc.EventBrokerConfiguration" xreflabel="Event Broker Configuration Test Cases">
+    <title>Event Broker Configuration Test Cases</title>
+    <section xml:id="tc.EventBrokerConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Event Broker Configuration (EventBrokerConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: feature corresponding to MQTT Event Handling will be added in the DTT] 
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>            
+      <para>
+        <emphasis role="bold" annotations="8.5	Event handling via MQTT">Profile M Requirement:</emphasis> Conditional
+      </para>
+      
+    </section>
+    <section xml:id="tc.EventBrokerConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to get event broker configurations, add new event broker configuration, delete event broker configuration.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Event Broker Configuration if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                     Client is able to retrieve event broker configurations using
+                      <emphasis role="bold">GetEventBrokers</emphasis> operation 
+                      AND
+                  </para>
+                </listitem>   
+                <listitem>
+                  <para>
+                     Client is able to add event broker configuration using
+                      <emphasis role="bold">AddEventBroker</emphasis> operation AND
+                  </para>
+                </listitem> 
+                 <listitem>
+                  <para>
+                     Client is able to remove event broker configuration using
+                      <emphasis role="bold">DeleteEventBroker</emphasis> operation.
+                  </para>
+                </listitem> 
+               </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Event Broker Configuration if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                   No valid response to <emphasis role="bold">GetEventBrokers</emphasis> request 
+                    OR
+                  </para>
+                </listitem>   
+                <listitem>
+                  <para>
+                   No valid response to <emphasis role="bold">AddEventBroker</emphasis> request 
+                    OR
+                  </para>
+                </listitem>   
+                <listitem>
+                  <para>
+                   No valid response to <emphasis role="bold">DeleteEventBroker</emphasis> request.
+                  </para>
+                </listitem>   
+               </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-1" xreflabel="EVENTBROKERCONFIGURATION-1 GET EVENT BROKERS">
+        <title>GET EVENT BROKERS</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> GetEventBrokers
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> EVENTBROKERCONFIGURATION-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetEventBrokers (EventBrokerConfiguration_GetEventBrokers)
+        </para>       
+        <para>
+          <emphasis role="bold"
+                    annotations="GetEventBrokers">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that event broker configuration provided by Device are received by Client using the
+          <emphasis role="bold">GetEventBrokers</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetEventBrokers</emphasis> operation for Event Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports MQTT feature.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetEventBrokers</emphasis> request message to retrieve a event broker configuration or a list of event broker configurations
+                from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetEventBrokersResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetEventBrokers</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetEventBrokers</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:GetEventBrokers</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetEventBrokers</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-1.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-1.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:GetEventBrokersResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    <section xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-2" xreflabel="EVENTBROKERCONFIGURATION-2 ADD EVENT BROKER">
+        <title>ADD EVENT BROKER</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> AddEventBroker
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> EVENTBROKERCONFIGURATION-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> AddEventBroker (EventBrokerConfiguration_AddEventBroker)
+        </para>       
+        <para>
+          <emphasis role="bold"
+                    annotations="AddEventBroker">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client adds event broker configuration on Device using the
+          <emphasis role="bold">AddEventBroker</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">AddEventBroker</emphasis> operation for Event Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports MQTT feature.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">AddEventBroker</emphasis> request message to add an event broker configuration on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">AddEventBrokerResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">AddEventBroker</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">AddEventBroker</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:AddEventBroker</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">AddEventBroker</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-2.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-2.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:AddEventBrokerResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    <section xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-3" xreflabel="EVENTBROKERCONFIGURATION-3 DELETE EVENT BROKER">
+        <title>DELETE EVENT BROKER</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> DeleteEventBroker
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> EVENTBROKERCONFIGURATION-3
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> DeleteEventBroker (EventBrokerConfiguration_DeleteEventBroker)
+        </para>       
+        <para>
+          <emphasis role="bold"
+                    annotations="DeleteEventBroker">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client removes event broker configuration from Device using the
+          <emphasis role="bold">DeleteEventBroker</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">DeleteEventBroker</emphasis> operation for Event Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports MQTT feature.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">DeleteEventBroker</emphasis> request message to remove an event broker configuration from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteEventBrokerResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DeleteEventBroker</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DeleteEventBroker</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-3.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:DeleteEventBroker</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">DeleteEventBroker</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-3.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.EventBrokerConfiguration.EVENTBROKERCONFIGURATION-3.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:DeleteEventBrokerResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    
+  </section>
+</feature>

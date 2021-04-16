@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Media2_MetadataStreaming.20190918.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #325:</para>
+        <para>EVENTHANDLING-3 METADATA STREAMING test was removed from Event Handling Feature and moved to Metadata Streaming Using Media2. Test case ID was changed to METADATASTREAMING-1.</para>
+      </revdescription>
+    </revision>-->
+    <revision  xml:id="s.revhistory.Media2_MetadataStreaming.20191029.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Oct 29, 2019</date>
+      <revdescription>
+        <para>The following was done according to #325:</para>
+        <para>Metadata Streaming Using Media2 conditional feature was added</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.Media2_MetadataStreaming">
+    <title>Metadata Streaming Using Media2</title>
+    <para>
+      Metadata Streaming Using Media2 section specifies receiving of metadata stream from Device using Madia2 Service.
+    </para>
+  </section>
+  <section xml:id="tc.Media2_MetadataStreaming">
+    <title>Metadata Streaming Using Media2 Test Cases</title>
+    <section xml:id="tc.Media2_MetadataStreaming.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Metadata Streaming Using Media2 (Media2_MetadataStreaming)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Media2Service">Check Condition based on Device Features:</emphasis> Media2 Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.13 Metadata streaming">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.Media2_MetadataStreaming.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to receive metadata stream using Media2 Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Metadata Streaming Using Media2 if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports Media2_GetProfiles_Media2_GetProfilesRequest feature (please see <xref linkend="tc.Media2_GetProfiles.MEDIA2_GETPROFILES-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports Media2_GetStreamURI_Media2_GetStreamURIRequest feature (please see <xref linkend="tc.Media2_GetStreamURI.MEDIA2_GETSTREAMURI-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Metadata stream was successfully established by a Client.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Metadata Streaming Using Media2 if the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support Media2_GetProfiles_Media2_GetProfilesRequest feature (please see <xref linkend="tc.Media2_GetProfiles.MEDIA2_GETPROFILES-1"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support Media2_GetStreamURI_Media2_GetStreamURIRequest feature (please see <xref linkend="tc.Media2_GetStreamURI.MEDIA2_GETSTREAMURI-1"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>Client is unable to establish metadata stream.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1" xreflabel="MEDIA2_METADATASTREAMING-1 METADATA STREAMING USING MEDIA2">
+      <title>METADATA STREAMING USING MEDIA2</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Metadata
+        Streaming Using Media2
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_METADATASTREAMING-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Metadata Streaming (Media2_MetadataStreaming_MetadataStreamingUsingMedia2)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Metadata Streaming using RTSP">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Metadata streaming using RTSP">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
+        to retrieve the Metadata Streaming.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with Metadata Streaming using Media2 Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetStreamUri</emphasis> request message for Media2 service for media profile that contains Metadata Configuration.
+              GetStreamUri request is set for RtspUnicast OR RtspMulticast OR RTSP OR RtspOverHttp transport.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetStreamUriResponse</emphasis>
+              message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP DESCRIBE</emphasis> request to retrieve media stream
+              description.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code RTSP 200 OK and SDP information with Media
+              Type: "application" and with encoding name "vnd.onvif.metadata" or "vnd.onvif.metadata.gzip" or "vnd.onvif.metadata.exi.onvif" or "vnd.onvif.metadata.exi.ext".
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP SETUP</emphasis> request without "onvif-replay" Require header and with transport parameter element to
+              to set media session parameters for metadata streaming.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device responds with code RTSP 200 OK.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP PLAY</emphasis> request without "onvif-replay" Require header to start media stream.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device responds with code RTSP 200 OK.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP TEARDOWN</emphasis> request to terminate the RTSP session.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If Device sends response to RTSP TEARDOWN, it has code RTSP 200 OK or RTSP 454.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">Note:</emphasis> RTSP requests and RTSP response could be tunneled in HTTP if RtspOverHttp transport is used.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.0">
+              There is Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request in Test Procedure
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">RTSP DESCRIBE</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.1">
+                    [S1] It has RTSP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.2">
+                    [S2] SDP packet contains media type "application" (m=application) with sessions attribute "rtpmap" with encoding name "vnd.onvif.metadata" OR "vnd.onvif.metadata.gzip" OR "vnd.onvif.metadata.exi.onvif" OR "vnd.onvif.metadata.exi.ext" (see ONVIF Streaming Spec) AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.3">
+              There is Client <emphasis role="bold">RTSP SETUP</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.4">
+                    [S3] It invoked for the same Device as for the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.5">
+                    [S4] It invoked after the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.6">
+                    [S5] RTSP address that was used to send <emphasis role="bold">RTSP SETUP</emphasis> is correspond to corresponding media Control URL from SDP packet (see [RFC 2326, C.1.1 Control URL]) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.7">
+                    [S6] It does not contain <emphasis role="bold">Require</emphasis> request header field with value is equal to "onvif-replay" AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">RTSP SETUP</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.8">
+                    [S7] It has RTSP 200 response code AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.9">
+              There is a Device response on the <emphasis role="bold">GetStreamUri</emphasis> request invoked for Media2 Service in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.10">
+                    [S8] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.11">
+                    [S9] It received for the same Device as for the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.12">
+                    [S10] It received before the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.13">
+                    [S11] It contains <emphasis role="bold">tr2:GetStreamUriResponse\tr2:Uri</emphasis> element
+                    which value is equal to RTSP address that was used to send the <emphasis role="bold">RTSP DESCRIBE</emphasis> request
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.14">
+              There is Client <emphasis role="bold">RTSP PLAY</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.15">
+                    [S12] It invoked for the same Device as for the Client <emphasis role="bold">RTSP SETUP</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.16">
+                    [S13] It invoked after the Client <emphasis role="bold">RTSP SETUP</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.17">
+                    [S14] RTSP address that was used to send it is correspond to corresponding media Control URL or session Control URL or Content-Base URL from SDP packet (see [RFC 2326, C.1.1 Control URL]) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.18">
+                    [S15] It does not contain <emphasis role="bold">Require</emphasis> request header field with value is equal to "onvif-replay" AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">RTSP PLAY</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.19">
+                    [S16] It has RTSP 200 response code AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.20">
+              There is Client <emphasis role="bold">RTSP TEARDOWN</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.21">
+                    [S17] It invoked for the same Device as for the Client <emphasis role="bold">RTSP SETUP</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.22">
+                    [S18] It invoked after the Client <emphasis role="bold">RTSP PLAY</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.23">
+                    [S19] RTSP address that was used to send it is correspond to corresponding media Control URL or session Control URL or Content-Base URL from SDP packet (see [RFC 2326, C.1.1 Control URL]) AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If there is Device response on the <emphasis role="bold">RTSP TEARDOWN</emphasis> request then it fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1.24">
+                    [S20] It has RTSP 200 response code.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

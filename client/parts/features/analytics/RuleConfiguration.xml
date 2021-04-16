@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <!--<revhistory>
+    <revision  xml:id="s.revhistory.RuleConfiguration.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Rule Configuration section and Rule Configuration Test Cases section was moved from ONVIF Analytics Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>-->
+  <section xml:id="s.intro.RuleConfiguration">
+    <title>Rule Configuration</title>
+    <para>Rule Configuration section specifies Client ability to configure rules.</para>
+  </section>
+  <section xml:id="tc.RuleConfiguration">
+    <title>Rule Configuration Test Cases</title>
+    <section xml:id="tc.RuleConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Rule Configuration (RuleConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Media2Service AND RuleEngine">Check Condition based on Device Features:</emphasis> Media 2 Service and Rule Engine is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.6 Rule configuration">Profile M Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.RuleConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve available Rules using the <emphasis role="bold">GetRules</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve supported rule description using the <emphasis role="bold">GetSupportedRules</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client connects to Device to add one or more rules to an existing VideoAnalyticsConfiguration using the <emphasis role="bold">CreateRules</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client connects to Device to remove one or more rules from a VideoAnalyticsConfiguration using the <emphasis role="bold">DeleteRules</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Rule Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports GetRules_GetRulesRequest feature (please see <xref linkend="tc.GetRules.GETRULES-1"/> section) 
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports GetSupportedRules_GetSupportedRulesRequest feature (please see <xref linkend="tc.GetSupportedRules.GETSUPPORTEDRULES-1"/> section) 
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to add one or more rules to an existing VideoAnalyticsConfiguration using <emphasis role="bold">CreateRules</emphasis> operation
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to remove one or more rules from an existing VideoAnalyticsConfiguration using <emphasis role="bold">DeleteRules</emphasis> operation.                  
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Rule Configuration if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support GetRules_GetRulesRequest feature (please see <xref linkend="tc.GetRules.GETRULES-1"/> section) 
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support GetSupportedRules_GetSupportedRulesRequest feature (please see <xref linkend="tc.GetSupportedRules.GETSUPPORTEDRULES-1"/> section) 
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">CreateRules</emphasis> request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">DeleteRules</emphasis> request.                  
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.RuleConfiguration.RULECONFIGURATION-1">
+      <title>CREATE RULES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Create Rules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RULECONFIGURATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Create Rules (RuleConfiguration_CreateRulesRequest)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="CreateRules">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        create rules using the <emphasis role="bold">CreateRules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with CreateRules operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Rule Engine (RuleEngine).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreateRules</emphasis> request message to add Rules to an existing VideoAnalyticsConfiguration on the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">CreateRulesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateRules</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateRules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RuleConfiguration.RULECONFIGURATION-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:CreateRules</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreateRules</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RuleConfiguration.RULECONFIGURATION-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RuleConfiguration.RULECONFIGURATION-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:CreateRulesResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.RuleConfiguration.RULECONFIGURATION-2">
+      <title>DELETE RULES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Delete Rules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RULECONFIGURATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Rules (RuleConfiguration_DeleteRulesRequest)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DeleteRules">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        delete rules using the <emphasis role="bold">DeleteRules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with DeleteRules operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Rule Engine (RuleEngine).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">DeleteRules</emphasis> request message to remove Rules from an existing VideoAnalyticsConfiguration on the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteRulesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteRules</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteRules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RuleConfiguration.RULECONFIGURATION-2.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:DeleteRules</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">DeleteRules</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.RuleConfiguration.RULECONFIGURATION-2.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.RuleConfiguration.RULECONFIGURATION-2.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:DeleteRulesResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

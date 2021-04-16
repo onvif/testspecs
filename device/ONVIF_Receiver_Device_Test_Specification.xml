@@ -1,0 +1,3791 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--For PDF version (standard)-->
+<!-- <?xml-stylesheet href="docbook/xsl/fo/docbook.xsl" type="text/xsl" ?>-->
+<!--For PDF version-->
+<!-- <?xml-stylesheet href="ONVIF-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<!--For online version-->
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<book xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+      xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd"
+      version="0.1"
+      xml:id="ONVIF_Profile_Imaging_Client_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Receiver Device Test Specification</title>
+    <subtitle>Version 20.06</subtitle>
+    <date>June 2020</date>
+    <copyright>
+      <year>2020</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <legalnotice role="notices">
+      <para>
+        Recipients of this document may copy, distribute, publish, or display this
+        document so long as this copyright notice, license and disclaimer are retained with
+        all copies of the document. No license is granted to modify this document.
+      </para>
+      <para>
+        THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
+        AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+        NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY
+        PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS,
+        COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+      </para>
+      <para>
+        IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR
+        ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES,
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR
+        NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT. THE
+        FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR
+        LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE
+        AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE
+        CORPORATION.
+      </para>
+    </legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>12.12</revnumber>
+        <date>Dec 20, 2012</date>
+        <revdescription>
+          <para>First issue of Receiver Test Specification</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>13.06</revnumber>
+        <date>Jun, 2013</date>
+        <revdescription>
+          <para>Update with spelling and typos fixes.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>13.12</revnumber>
+        <date>Dec, 2013</date>
+        <revdescription>
+          <para>
+            RECEIVER-2-1-14 CONFIGURE RECEIVER test was replaced with RECEIVER-2-1-20 CONFIGURE RECEIVER
+          </para>
+          <para>
+            RECEIVER-2-1-15 CONFIGURE RECEIVER – PERSISTENCE test was replaced with RECEIVER-2-1-21 CONFIGURE RECEIVER – PERSISTENCE
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Jun, 2018</date>
+        <revdescription>
+          <para>Reformatting document using new template.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>19.06</revnumber>
+        <date>Mar, 2019</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #1793:
+          </para>
+          <para>
+            Test Sequences were removed from test cases.
+          </para>
+          <para>
+            RECEIVER-2-1-6 CREATE RECEIVER (new pre-requisite was added)
+          </para>
+          <para>
+            RECEIVER-2-1-7 CREATE RECEIVER – PERSISTENCE (new pre-requisite was added)
+          </para>
+          <para>
+            RECEIVER-2-1-9 DELETE RECEIVER (new pre-requisite was added)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>20.06</revnumber>
+        <date>Dec 18, 2019</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #1434:
+          </para>
+          <para>
+            Reformatting document using new template and format.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>20.06</revnumber>
+        <date>May 13, 2020</date>
+        <revdescription>
+          <para>Pre-Requisite of the following test cases updated with adding of Pull-Point Notification feature according to #1999:</para>
+          <para>RECEIVER-2-1-16 CONFIGURE RECEIVER – (RTP-Unicast/UDP)</para>
+        <para>RECEIVER-2-1-17 CONFIGURE RECEIVER – (RTP/RTSP/TCP)</para>
+        <para>RECEIVER-2-1-18 CONFIGURE RECEIVER – INVALID MEDIA URIT</para>       
+        </revdescription>
+      </revision>      
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <para>
+      The goal of the ONVIF test specification set is to make it possible to realize fully interoperable IP physical security implementation from different vendors. The set of ONVIF test specification describes the test cases need to verify the [ONVIF DeviceIO Service Specs] and [ONVIF Conformance] requirements. It also describes the test framework, test setup, pre-requisites, test policies needed for the execution of the described test cases.
+    </para>
+    <para>
+      This ONVIF Receiver Test Specification acts as a supplementary document to the [ONVIF Network Interface Specs], illustrating test cases that need to be executed and passed. Also this specification acts as an input document to the development of a test tool which will be used to test the ONVIF device implementation conformance towards ONVIF standard. This test tool is referred as ONVIF Client hereafter.
+    </para>
+    <section xml:id="s.intro.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Receiver Test Specification defines and regulates the conformance testing procedure for the ONVIF conformant devices. Conformance testing is meant to be functional black-box testing. The objective of this specification is to provide the test cases to test individual requirements of ONVIF devices according to ONVIF core services which are defined in [ONVIF Network Interface Specs].
+      </para>
+      <para>
+        The principal intended purposes are:
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Provide comprehensive test suite coverage for [ONVIF Network Interface Specs].
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        This specification does not address the following:
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              Product use cases and non-functional (performance and regression) testing.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Service Interoperability Basic Profile version 2.0 (WS-I BP 2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation Conformance test for HTTP, HTTPS, RTP protocol.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Wi-Fi Conformance test
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        The set of ONVIF Test Specification will not cover the complete set of requirements as defined in [ONVIF Network Interface Specs]; instead it would cover subset of it. The scope of this specification is to derive all the normative requirements of [ONVIF DeviceIO Service Specs] which are related to ONVIF Device IO Service and some of the optional requirements.
+      </para>
+      <para>
+        This ONVIF Receiver Test Specification covers ONVIF Receiver service which is a functional block of [ONVIF Network Interface Specs]. The following sections describe the brief overview and scope of each functional block.
+      </para>
+      <section xml:id="s.intro.scope.capabilities">
+        <title>Capabilities</title>
+        <para>
+          Capabilities test cases are covered for verification to get Receiver Service capabilities. It means that GetServices and GetServiceCapabilities commands are covered by this test case.
+        </para>
+      </section>
+      <section xml:id="s.intro.scope.general">
+        <title>General</title>
+        <para>
+          General covers the test cases needed for the verification of receiver features as mentioned in [ONVIF Network Interface Specs]. General section defines different receiver test for getting of information about current receivers configuration and basic configuration of receivers.
+        </para>
+      </section>
+    </section>
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative references</title>
+    <itemizedlist>
+      <listitem>
+        <para>[ONVIF Conformance] ONVIF Conformance Process Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/conformance/">https://www.onvif.org/profiles/conformance/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Profile Policy] ONVIF Profile Policy:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Network Interface Specs] ONVIF Network Interface Specification documents:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Core Specs] ONVIF Core Specifications:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Receiver Service Specs] ONVIF Receiver Specifications:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Base Test] ONVIF Base Device Test Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/conformance/device-test/">https://www.onvif.org/profiles/conformance/device-test/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ISO/IEC Directives, Part 2] ISO/IEC Directives, Part 2, Annex H:</para>
+        <para>
+          <link xlink:href="http://www.iso.org/directives">http://www.iso.org/directives</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ISO 16484-5] ISO 16484-5:2014-09 Annex P:</para>
+        <para>
+          <link xlink:href="https://www.iso.org/obp/ui/#!iso:std:63753:en">https://www.iso.org/obp/ui/#!iso:std:63753:en</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[SOAP 1.2, Part 1] W3C SOAP 1.2, Part 1, Messaging Framework:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/soap12-part1/">http://www.w3.org/TR/soap12-part1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[XML-Schema, Part 1] W3C XML Schema Part 1: Structures Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[XML-Schema, Part 2] W3C XML Schema Part 2: Datatypes Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[WS-Security] "Web Services Security: SOAP Message Security 1.1 (WS-Security 2004)", OASIS Standard, February 2006.:</para>
+        <para>
+          <link xlink:href="http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf">http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf</link>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <section xml:id="additions.conventions">
+      <title>Conventions</title>
+      <para>
+        The key words "shall", "shall not", "should", "should not", "may", "need not",
+        "can", "cannot" in this specification are to be interpreted as described in [ISO/IEC
+        Directives Part 2].
+      </para>
+    </section>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>This section defines terms that are specific to the ONVIF Receiver Service and tests. For the list of applicable general terms and definitions, please see [ONVIF Base Test].</para>
+      <variablelist>
+        <varlistentry>
+          <term>Metadata</term>
+          <listitem>
+            <para>
+              All streaming data except video and audio, including video analytics results, PTZ position data and other metadata (such as textual data from POS applications).
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>DUT</term>
+          <listitem>
+            <para>Device Under Test</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>HTTP</term>
+          <listitem>
+            <para>Hyper Text Transport Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>RTCP</term>
+          <listitem>
+            <para>RTP Control Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>RTSP</term>
+          <listitem>
+            <para>Real Time Streaming Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>RTP</term>
+          <listitem>
+            <para>Real-time Transport Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>SDP</term>
+          <listitem>
+            <para>Session Description Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>TCP</term>
+          <listitem>
+            <para>Transport Control Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>UTC</term>
+          <listitem>
+            <para>Coordinated Universal Time</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>UDP</term>
+          <listitem>
+            <para>User Datagram Protocol</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>URI</term>
+          <listitem>
+            <para>Uniform Resource Identifier</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>WSDL</term>
+          <listitem>
+            <para>Web Services Description Language</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>WS-I BP 2.0</term>
+          <listitem>
+            <para>Web Services Interoperability Basic Profile version 2.0</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>XML</term>
+          <listitem>
+            <para>eXtensible Markup Language</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <para>
+      This section provides information the test setup procedure and required prerequisites, and the test policies that should be followed for test case execution.
+    </para>
+    <section xml:id="overview.test_setup">
+      <title>Test Setup</title>
+      <section xml:id="overview.test_setup.network_configuration">
+        <title>Network Configuration for DUT</title>
+        <para>
+          The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 4.1).
+        </para>
+        <para>
+          Based on the individual test case requirements, some of the entities in the below setup may not be needed for the execution of those corresponding test cases.
+        </para>
+        <figure>
+          <title>Test Configuration for DUT</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="test_network.png"
+                         format="PNG"
+                         scalefit="0"/>
+            </imageobject>
+            <textobject>
+              <phrase>Test Configuration for DUT</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          <emphasis role="bold">DUT:</emphasis> ONVIF device to be tested. Hereafter, this is referred to as DUT (Device Under Test).
+        </para>
+        <para>
+          <emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system and it controls the behavior of the DUT. It handles both expected and unexpected behavior.
+        </para>
+        <para>
+          <emphasis role="bold">HTTP Proxy:</emphasis> provides facilitation in case of RTP and RTSP tunneling over HTTP.
+        </para>
+        <para>
+          <emphasis role="bold">Wireless Access Point:</emphasis> provides wireless connectivity to the devices that support wireless connection.
+        </para>
+        <para>
+          <emphasis role="bold">DNS Server:</emphasis> provides DNS related information to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">DHCP Server:</emphasis> provides IPv4 Address to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">NTP Server:</emphasis> provides time synchronization between ONVIF Client and DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Switching Hub:</emphasis> provides network connectivity among all the test equipments in the test environment. All devices should be connected to the Switching Hub.
+          When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering in order to avoid multicast traffic being flooded to all ports, because this may affect test stability.
+        </para>
+        <para>
+          <emphasis role="bold">Router:</emphasis> provides router advertisements for IPv6 configuration.
+        </para>
+      </section>
+    </section>
+    <section xml:id="overview.prerequisites">
+      <title>Prerequisites</title>
+      <para>
+        The pre-requisites for executing the test cases described in this Test Specification are:
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              The DUT shall be configured with an IPv4 address.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT shall be IP reachable [in the test configuration].
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT shall be able to be discovered by the Test Tool.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT shall be configured with the time, i.e. manual configuration of UTC time and if NTP is supported by the DUT then NTP time shall be synchronized with NTP Server.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT time and Test tool time shall be synchronized with each other either manually or by a common NTP server.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              All receivers shall not be used or there shall be free space to create new receiver.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="overview.test_policy">
+      <title>Test Policy</title>
+      <para>
+        This section describes the test policies specific to the test case execution of each functional block.
+      </para>
+      <para>
+        The DUT shall adhere to the test policies defined in this section.
+      </para>
+      <section xml:id="overview.test_policy.capabilities">
+        <title>Capabilities</title>
+        <para>
+          The device under test shall demonstrate receiver service capability in GetServices and GetServiceCapabilities responses. A DUT that does not display receiver service capability constitutes failure of test procedure.
+        </para>
+        <para>
+          Please refer to <xref linkend="tc.receiver.capabilities"/> for Capabilities Test Cases.
+        </para>
+      </section>
+      <section xml:id="overview.test_policy.general">
+        <title>General</title>
+        <para>
+          The DUT shall give the Receiver Service entry point by GetServices command.
+        </para>
+        <para>
+          Please refer to <xref linkend="tc.receiver.general"/> for General Test Cases.
+        </para>
+      </section>
+    </section>
+    <section xml:id="overview.test_policy.authentication_method_selection">
+      <title>Authentication Method Selection as a Testing Framework</title>
+      <para>
+        According to later version of [ONVIF Network Interface Specs], it requires ONVIF client to support both HTTP digest and WS-UsernameToken functionality as authentication functionality. Therefore, ONVIF Client (ONVIF Device Test Tool in this context) as a testing framework shall properly select authentication method between the two based on the response from DUT toward specific request. The following is the deterministic procedure on which authentication method is to be selected.
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client invokes a specific command which is under testing without any user credentials (no WS-UsernameToken, no HTTP digest authentication header).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If DUT returns correct response, then ONVIF Client determines that DUT does not require any user authentication toward the command according to the configured security policy.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If DUT returns HTTP 401 Unauthorized error along with WWW-Authentication: Digest header, then ONVIF Client determines that DUT supports HTTP digest authentication. ONVIF Client shall provide with the proper level of user credential to continue the test procedure.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If the DUT returns SOAP fault (Sender/NotAuthorized) message, then ONVIF Client determines that WS-UsernameToken is supported by DUT. ONVIF Client shall provide with the proper level of user credential to continue the test procedure.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </chapter>
+  <!--Receiver Test Cases-->
+  <chapter xml:id="tc.receiver">
+    <title>Receiver Test Cases</title>
+    <!--Capabilities-->
+    <section xml:id="tc.receiver.capabilities"
+             xreflabel="Section 5.1">
+      <title>Capabilities</title>
+      <!--RECEIVER-1-1-1-->
+      <section xml:id="tc.RECEIVER-1-1-1">
+        <title>RECEIVER SERVICE CAPABILITIES</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-1-1-1
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Capability exchange (ONVIF Core Specification), GetServiceCapabilities (ONVIF Receiver Service Specification), Service (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetServiceCapabilities (for Receiver Service)
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Receiver Service Capabilities.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve receiver service capabilities of the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Verify the <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> from the DUT.</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent Capabitites.MaximumRTSPURILength less than 128.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT sent Capabitites.SupportedReceivers less than 1.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-1-1-2-->
+      <section xml:id="tc.RECEIVER-1-1-2">
+        <title>GET SERVICES AND GET RECEIVER SERVICE CAPABILITIES CONSISTENCY</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-1-1-2
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Capability exchange (ONVIF Core Specification), GetServiceCapabilities (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetServices, GetServiceCapabilities (for Receiver Service)
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl, receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Get Services and Receiver Service Capabilities consistency.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> None.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServicesRequest</emphasis> message (IncludeCapability = true) to retrieve all services of the DUT with service capabilities.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetServicesResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve Receiver service capabilities of the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Verify the <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message from the DUT.</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetServicesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent different Capabilities in <emphasis role="bold">GetServicesResponse</emphasis> message and in <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Service will be defined as Receiver service if it has Namespace element that is equal to "http://www.onvif.org/ver10/receiver/wsdl".
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Capabilities in <emphasis role="bold">GetServicesResponse</emphasis> message and in <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message will be assumed as different in the following cases:
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                RTP_Multicast attribute is skipped only for <emphasis role="bold">GetServicesResponse</emphasis> message or only for <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                RTP_Multicast attribute values are different.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                RTP_TCP attribute is skipped only for <emphasis role="bold">GetServicesResponse</emphasis> message or only for <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                RTP_TCP attribute values are different.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                RTP_RTSP_TCP attribute is skipped only for <emphasis role="bold">GetServicesResponse</emphasis> message or only for <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                RTP_RTSP_TCP attribute values are different.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                SupportedReceivers attribute values are different.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                MaximumRTSPURILength attribute is skipped only for <emphasis role="bold">GetServicesResponse</emphasis> message or only for <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>MaximumRTSPURILength attribute values are different.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+    </section>
+    <!--General-->
+    <section xml:id="tc.receiver.general"
+             xreflabel="Section 5.2">
+      <title>General</title>
+      <!--RECEIVER-2-1-1-->
+      <section xml:id="tc.RECEIVER-2-1-1">
+        <title>GET RECEIVERS</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-1
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceivers (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceivers
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Get Receivers.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message from the DUT.</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent at least two Receivers with the same Receivers.Token in the <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-2-1-2-->
+      <section xml:id="tc.RECEIVER-2-1-2">
+        <title>GET RECEIVER</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-2
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Get Receiver.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (ReceiverToken = "ReceiverToken1", where ReceiverToken1 is the first Receivers.Token from the <emphasis role="bold">GetReceiversResponse</emphasis> message at step at step 3) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Repeat steps 5-6 for all other receivers from the <emphasis role="bold">GetReceiversResponse</emphasis> message at step at step 3.</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned different parameter values for the same receiver in <emphasis role="bold">GetReceiversResponse</emphasis> message and in <emphasis role="bold">GetReceiverResponse</emphasis> message (see <xref linkend="Annex_ComparisonOfReceivers"/>).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Two Receivers with the same token shall have the same properties.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-3-->
+      <section xml:id="tc.RECEIVER-2-1-3">
+        <title>GET RECEIVER WITH INVALID TOKEN</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-3
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Get Receiver with invalid Token.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (invalid ReceiverToken).
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT will generate SOAP 1.2 fault message (InvalidArgVal/UnknownToken).</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send SOAP 1.2 fault message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT sent an incorrect SOAP 1.2 fault message (fault code, namespace, etc.).</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Other faults than specified in the test are acceptable, though the specified are preferable.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-4-->
+      <section xml:id="tc.RECEIVER-2-1-4">
+        <title>GET RECEIVER STATE</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-4
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceiverState (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiverState
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Get Receiver State.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverStateRequest</emphasis> message (ReceiverToken = "Token1", where Token1 is the first Receivers.Token from the <emphasis role="bold">GetReceiversResponse</emphasis> message at step at step 3) to retrieve receiver state.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverStateResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Repeat steps 5-6 for all other receivers from the <emphasis role="bold">GetReceiversResponse</emphasis> message at step at step 3.</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT did not send a valid <emphasis role="bold">GetReceiverStateResponse</emphasis> message.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-2-1-5-->
+      <section xml:id="tc.RECEIVER-2-1-5">
+        <title>GET RECEIVER STATE WITH INVALID TOKEN</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-5
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceiverState (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiverState
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Get Receiver State with invalid Token.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverStateRequest</emphasis> message (invalid ReceiverToken).
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT will generate SOAP 1.2 fault message (InvalidArgVal/UnknownToken).</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send SOAP 1.2 fault message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT sent an incorrect SOAP 1.2 fault message (fault code, namespace, etc.).</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Other faults than specified in the test are acceptable, though the specified are preferable.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-6-->
+      <section xml:id="tc.RECEIVER-2-1-6">
+        <title>CREATE RECEIVER</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-6
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceiver (ONVIF Receiver Service Specification), GetReceivers (ONVIF Receiver Service Specification), CreateReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiver, CreateReceiver, GetReceivers
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Create Receiver.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. All receivers shall not be used or there shall be free space to create new receiver.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve receiver service capabilities of the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message (Capabilities.SupportedReceivers) from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If number of Receivers from <emphasis role="bold">GetReceiversResponse</emphasis> message is less than specified in Capabilities.SupportedReceivers then skip steps 8-9 and go to step 10
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">DeleteReceiverRequest</emphasis> message (ReceiverToken = ReceiverToken1) to delete Receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">DeleteReceiverResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreateReceiverRequest</emphasis> message (Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) to create new Receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with new receiver) from the DUT. Check that Receiver was created with specified parameters.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (Token = token2) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that Receiver was created with the specified parameters.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">DeleteReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverResponse</emphasis> message without created Receiver for step 13.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver parameters in <emphasis role="bold">GetReceiversResponse</emphasis> message that differ from the specified during Receiver creation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver parameters in <emphasis role="bold">GetReceiverResponse</emphasis> message that differ from the specified during Receiver creation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver parameters in <emphasis role="bold">CreateReceiverResponse</emphasis> message that differ from the specified during Receiver creation.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> If the fault (Action/CannotDeleteReceiver) was received during receiver deletion for step 8, try to delete some other Receiver. If there are no Receivers that could not be deleted, skip steps 10-15 and go to the next test.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-7-->
+      <section xml:id="tc.RECEIVER-2-1-7">
+        <title>CREATE RECEIVER – PERSISTENCE</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-7
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> CreateReceiver (ONVIF Receiver Service Specification), Persistence (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> CreateReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Create Receiver Persistence.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. All receivers shall not be used or there shall be free space to create new receiver.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve receiver service capabilities of the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message (Capabilities.SupportedReceivers) from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If number of Receivers from <emphasis role="bold">GetReceiversResponse</emphasis> message is less than specified in Capabilities.SupportedReceivers, then skip steps 8-9 and go to step 10
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">DeleteReceiverRequest</emphasis> message (ReceiverToken = ReceiverToken1) to delete Receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">DeleteReceiverResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreateReceiverRequest</emphasis> message (Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) to create new Receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SystemReboot</emphasis> message to reset the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that DUT sends <emphasis role="bold">SystemRebootResponse</emphasis> message (example message string = "Rebooting in x seconds").
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT will send Multicast <emphasis role="bold">HELLO</emphasis> message after it is successfully rebooted.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will verify the <emphasis role="bold">HELLO</emphasis> message sent by DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with new receiver) from the DUT. Check that Receiver was created with specified parameters.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (Token = token2) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that Receiver was created with the specified parameters.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">DeleteReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiversResponse</emphasis> message without created Receiver for step 13.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver parameters in <emphasis role="bold">GetReceiversResponse</emphasis> message that differ from the specified during Receiver creation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver parameters in <emphasis role="bold">GetReceiverResponse</emphasis> message that differ from the specified during Receiver creation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver parameters in <emphasis role="bold">CreateReceiverResponse</emphasis> message that differ from the specified during Receiver creation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">SystemRebootResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">HELLO</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> In case a fault (Action/CannotDeleteReceiver) was received during receiver deletion for step 8, try to delete other Receiver. If there are no Receivers that could not be deleted, skip steps 10-15 and go to the next test.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-8-->
+      <section xml:id="tc.RECEIVER-2-1-8">
+        <title>CREATE RECEIVER – RECEIVERS MAX NUMBER</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-8
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetServiceCapabilities (ONVIF Receiver Service Specification), CreateReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> CreateReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT supports specified maximum number of Receivers.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve receiver service capabilities of the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message (Capabilities.SupportedReceivers) from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If the number of Receivers from <emphasis role="bold">GetReceiversResponse</emphasis> message is equal to number that specified in Capabilities.SupportedReceivers then skip steps 8-9 and go to step 11
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreateReceiverRequest</emphasis> message (Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) to create new Receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Repeat steps 7-9.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT will generate SOAP 1.2 fault message (Action/MaxReceivers).</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send SOAP 1.2 fault message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT sent an incorrect SOAP 1.2 fault message (fault code, namespace, etc.).</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Other faults than specified in the test are acceptable, though the specified are preferable.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-9-->
+      <section xml:id="tc.RECEIVER-2-1-9">
+        <title>DELETE RECEIVER</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-9
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceiver (ONVIF Receiver Service Specification), GetReceivers (ONVIF Receiver Service Specification), DeleteReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiver, DeleteReceiver, GetReceivers
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Delete Receiver.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. All receivers shall not be used or there shall be free space to create new receiver.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve receiver service capabilities of the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message (Capabilities.SupportedReceivers) from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If the number of Receivers from <emphasis role="bold">GetReceiversResponse</emphasis> message is equal to what is specified in Capabilities.SupportedReceivers then skip steps 8-9 and go to step 10.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreateReceiverRequest</emphasis> message (Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) to create new Receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = ReceiverToken2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">DeleteReceiverRequest</emphasis> message (ReceiverToken = ReceiverToken2) to delete Receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">DeleteReceiverResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message from the DUT. Check that Receiver (Token = Token2) was deleted and does not present in response message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (Token = ReceiverToken2).
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT will generate SOAP 1.2 fault message (InalidArgVal/UnknownToken).</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">DeleteReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverResponse</emphasis> message with created Receiver for step 14.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send SOAP 1.2 fault message for step 15.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent an incorrect SOAP 1.2 fault message (fault code, namespace, etc.).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Other faults than specified in the test are acceptable, though the specified are preferable.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-10-->
+      <section xml:id="tc.RECEIVER-2-1-10">
+        <title>DELETE RECEIVER WITH INVALID TOKEN</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-10
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> DeleteReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> DeleteReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Delete Receiver with invalid Token.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">DeleteReceiverRequest</emphasis> message (invalid ReceiverToken).
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT will generate SOAP 1.2 fault message (InvalidArgVal/UnknownToken).</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send SOAP 1.2 fault message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT sent an incorrect SOAP 1.2 fault message (fault code, namespace, etc.).</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Other faults than specified in the test are acceptable, though the specified are preferable.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-11-->
+      <section xml:id="tc.RECEIVER-2-1-11">
+        <title>SET RECEIVER MODE</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-11
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceivers (ONVIF Receiver Service Specification), GetReceiver (ONVIF Receiver Service Specification), SetReceiverMode (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiver, SetReceiverMode
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Receiver Mode change.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. At least one Receiver exists on the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SetReceiverModeRequest</emphasis> message (ReceiverToken = ReceiverToken1, Mode = AutoConnect).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with changed receiver) from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (Token = token1) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (Token = token1, Configuration.Mode = "AutoConnect") from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SetReceiverModeRequest</emphasis> message (ReceiverToken = ReceiverToken1, Mode = AlwaysConnect).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with changed receiver) from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (Token = token1) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (Token = token1, Configuration.Mode = "AlwaysConnect") from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SetReceiverModeRequest</emphasis> message (ReceiverToken = ReceiverToken1, Mode = NeverConnect).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with changed receiver) from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (Token = token1) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (Token = token1, Configuration.Mode = "NeverConnect") from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">SetReceiverModeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver mode in <emphasis role="bold">GetReceiversResponse</emphasis> message that differ from the specified during Receiver mode change.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver mode in <emphasis role="bold">GetReceiverResponse</emphasis> message that differ from the specified during Receiver mode change.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-2-1-12-->
+      <section xml:id="tc.RECEIVER-2-1-12">
+        <title>SET RECEIVER MODE – PERSISTENCE</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-12
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Persistence (ONVIF Receiver Service Specification), SetReceiverMode (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> SetReceiverMode
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Receiver Mode change persistence.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. At least one Receiver exists on the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SetReceiverModeRequest</emphasis> message (ReceiverToken = ReceiverToken1, Mode = other than current).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SystemReboot</emphasis> message to reset the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that DUT sends <emphasis role="bold">SystemRebootResponse</emphasis> message (example message string = "Rebooting in x seconds").
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT will send Multicast <emphasis role="bold">HELLO</emphasis> message after it is successfully rebooted.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will verify the <emphasis role="bold">HELLO</emphasis> message sent by DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with changed receiver) from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (Token = token1) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (Token = token1, updated Configuration) from the DUT. Check that Receiver was changed with the specified mode.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">SetReceiverModeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver mode in <emphasis role="bold">GetReceiversResponse</emphasis> message that differ from the specified during Receiver mode change.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver mode in <emphasis role="bold">GetReceiverResponse</emphasis> message that differ from the specified during Receiver mode change.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">SystemRebootResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT did not send <emphasis role="bold">HELLO</emphasis> message.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-2-1-13-->
+      <section xml:id="tc.RECEIVER-2-1-13">
+        <title>SET RECEIVER MODE WITH INVALID TOKEN</title>
+        <para>
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-13
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> SetReceiverMode (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> SetReceiverMode
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Set Receiver Mode with invalid Token.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SetReceiverModeRequest</emphasis> message (invalid ReceiverToken).
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT will generate SOAP 1.2 fault message (InvalidArgVal/UnknownToken).</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send SOAP 1.2 fault message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT sent an incorrect SOAP 1.2 fault message (fault code, namespace, etc.).</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Other faults than specified in the test are acceptable, though the specified are preferable.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-16-->
+      <section xml:id="tc.RECEIVER-2-1-16">
+        <title>CONFIGURE RECEIVER – (RTP-Unicast/UDP)</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-16
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> ConfigureReceiver, GetReceivers (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ConfigureReceiver, SetReceiverMode, GetReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To check receiver functionality.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. Device supports Pull-Point Notification feature.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreatePullPointSubscriptionRequest</emphasis> message with tns1:Receiver/ChangeState Topic as Filter and an InitialTerminationTime = Time1 to check Receiver state.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that the DUT sends a <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">ConfigureReceiverRequest</emphasis> message (ReceiverToken as Token of the first Receiver in the <emphasis role="bold">GetReceiversResponse</emphasis> message, Configuration.Mode = "AlwaysConnect", Configuration.MediaUri as stream_uri of RTSP Simulator, Configuration.StreamSetup.Stream = "RTP-Unicast", StreamSetup.Transport.Tunnel.Protocol = "UDP", no StreamSetup.Transport.Tunnel.Tunnel) to configure the receiver to receive media from RTSP Simulator.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">ConfigureReceiverResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP DESCRIBE</emphasis> request.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> message and SDP information.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP SETUP</emphasis> request with transport parameter as RTP/UDP.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> message and the media stream information.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP PLAY</emphasis> request.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> message and starts media streaming.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends JPEG RTP media stream to DUT over UDP.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends RTCP sender report to DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT processed the received RTP and RTCP packets.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Execute <xref linkend="Annex_PullMessagesReceiverState"/> for catching event with current state of the receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that there is Notification Message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "Connected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message with ReceiverToken = ReceiverToken1.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverStateRequest</emphasis> message to check Receiver State.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">GetReceiverStateResponse</emphasis> message from the DUT. Check that ReceiverState.State = "Connected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreatePullPointSubscriptionRequest</emphasis> message with tns1:Receiver/ChangeState Topic as Filter and an InitialTerminationTime = Time1 to check Receiver state.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that the DUT sends a <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SetReceiverModeRequest</emphasis> message (ReceiverToken = "ReceiverToken1", Mode = "NeverConnect") to stop recording.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">SetReceiverModeResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP TEARDOWN</emphasis> control request at the end of media streaming to terminate the RTSP session.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> Response and terminates the RTSP Session.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Execute <xref linkend="Annex_PullMessagesReceiverState"/> for catching event with current state of the receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that there is Notification Message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "NotConnected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverStateRequest</emphasis> message to check Receiver State.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Verify <emphasis role="bold">GetReceiverStateResponse</emphasis> message from the DUT. Check that ReceiverState.State = "NotConnected".</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">ConfigureReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverStateResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">SetReceiverModeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverResponse</emphasis> message with parameters values differ from sent in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send Notify message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "Connected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send Notify message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "NotConnected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverStateResponse</emphasis> with ReceiverState.State not equal to "Connected" in the step 22.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverStateResponse</emphasis> with ReceiverState.State not equal to "NotConnected" in the step 32.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-2-1-17-->
+      <section xml:id="tc.RECEIVER-2-1-17">
+        <title>CONFIGURE RECEIVER – (RTP/RTSP/TCP)</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-17
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> ConfigureReceiver, GetReceivers (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ConfigureReceiver, SetReceiverMode, GetReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To check receiver functionality.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. Device supports Pull-Point Notification feature.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreatePullPointSubscriptionRequest</emphasis> message with tns1:Receiver/ChangeState Topic as Filter and an InitialTerminationTime = Time1 to check Receiver state.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that the DUT sends a <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">ConfigureReceiverRequest</emphasis> message (ReceiverToken as Token of the first Receiver in the <emphasis role="bold">GetReceiversResponse</emphasis> message, Configuration.Mode = "AlwaysConnect", Configuration.MediaUri as stream_uri of RTSP Simulator, Configuration.StreamSetup.Stream = "RTP-Unicast", StreamSetup.Transport.Tunnel.Protocol = "RTSP", no StreamSetup.Transport.Tunnel.Tunnel) to configure the receiver to receive media from RTSP Simulator.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">ConfigureReceiverResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP DESCRIBE</emphasis> request.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> message and SDP information.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP SETUP</emphasis> request with transport parameter as RTP/TCP along with ‘interleaved’ parameter.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> message and the media stream information.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP PLAY</emphasis> request.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> message and starts media streaming.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends JPEG RTP media stream to DUT over UDP.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends RTCP sender report to DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT processed the received RTP and RTCP packets.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Execute <xref linkend="Annex_PullMessagesReceiverState"/> for catching event with current state of the receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that there is Notification Message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "Connected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message with ReceiverToken = ReceiverToken1.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverStateRequest</emphasis> message to check Receiver State.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">GetReceiverStateResponse</emphasis> message from the DUT. Check that ReceiverState.State = "Connected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreatePullPointSubscriptionRequest</emphasis> message with tns1:Receiver/ChangeState Topic as Filter and an InitialTerminationTime = Time1 to check Receiver state.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that the DUT sends a <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SetReceiverModeRequest</emphasis> message (ReceiverToken = "ReceiverToken1", Mode = "NeverConnect") to stop recording.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">SetReceiverModeResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                DUT invokes <emphasis role="bold">RTSP TEARDOWN</emphasis> control request at the end of media streaming to terminate the RTSP session.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The RTSP SIMULATOR sends <emphasis role="bold">200 OK</emphasis> Response and terminates the RTSP Session.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Execute <xref linkend="Annex_PullMessagesReceiverState"/> for catching event with current state of the receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that there is Notification Message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "NotConnected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverStateRequest</emphasis> message to check Receiver State.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Verify <emphasis role="bold">GetReceiverStateResponse</emphasis> message from the DUT. Check that ReceiverState.State = "NotConnected".</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">ConfigureReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverStateResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send valid <emphasis role="bold">SetReceiverModeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverResponse</emphasis> message with parameters values differ from sent in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send Notify message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "Connected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send Notify message with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to "NotConnected".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverStateResponse</emphasis> with ReceiverState.State not equal to "Connected" in the step 22.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverStateResponse</emphasis> with ReceiverState.State not equal to "NotConnected" in the step 32.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-2-1-18-->
+      <section xml:id="tc.RECEIVER-2-1-18">
+        <title>CONFIGURE RECEIVER – INVALID MEDIA URI</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-18
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> ConfigureReceiver, GetReceivers (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ConfigureReceiver, SetReceiverMode, GetReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To check receiver functionality.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. Device supports Pull-Point Notification feature.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">CreatePullPointSubscriptionRequest</emphasis> message with tns1: Receiver/ConnectionFailed Topic as Filter and an InitialTerminationTime = Time1 to check Receiver state.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that the DUT sends a <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">ConfigureReceiverRequest</emphasis> message (ReceiverToken as Token of the first Receiver in the <emphasis role="bold">GetReceiversResponse</emphasis> message, Configuration.Mode = "AlwaysConnect", Configuration.MediaUri as invalid stream_uri of RTSP Simulator, Configuration.StreamSetup.Stream = "RTP-Unicast", StreamSetup.Transport.Tunnel.Protocol = "UDP", no StreamSetup.Transport.Tunnel.Tunnel) to configure the receiver to receive media from RTSP Simulator.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">ConfigureReceiverResponse</emphasis> message from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Execute <xref linkend="Annex_PullMessageseceiverConnectionFailed"/> for catching event with current state of the receiver.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that there is Notification Message with TopicExpression = tns1:Receiver/ ConnectionFailed, Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1"
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message with ReceiverToken = ReceiverToken1.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverStateRequest</emphasis> message to check Receiver State.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Verify <emphasis role="bold">GetReceiverStateResponse</emphasis> message from the DUT. Check that ReceiverState.State = "NotConnected".</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">ConfigureReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverStateResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverResponse</emphasis> message with parameters values differ from sent in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send Notify message with TopicExpression = tns1:Receiver/ConnectionFailed and Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1".
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT sent <emphasis role="bold">GetReceiverStateResponse</emphasis> with ReceiverState.State not equal to "NotConnected" at step 13.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--RECEIVER-2-1-19-->
+      <section xml:id="tc.RECEIVER-2-1-19">
+        <title>CONFIGURE RECEIVER WITH INVALID TOKEN</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-19
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> ConfigureReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ConfigureReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Configure Receiver with invalid Token.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">ConfigureReceiverRequest</emphasis> message (invalid ReceiverToken).
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT will generate SOAP 1.2 fault message (InvalidArgVal/UnknownToken).</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send SOAP 1.2 fault message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT sent an incorrect SOAP 1.2 fault message (fault code, namespace, etc.).</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Other faults than specified in the test are acceptable, though the specified are preferable.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-20-->
+      <section xml:id="tc.RECEIVER-2-1-20">
+        <title>CONFIGURE RECEIVER</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-20
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> GetReceivers (ONVIF Receiver Service Specification), GetReceiver (ONVIF Receiver Service Specification), ConfigureReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetReceiver, ConfigureReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Receiver configuration.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. At least one Receiver exists on the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve the receiver service capabilities from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message (Capabilities. RTP_Multicast).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">ConfigureReceiverRequest</emphasis> message (ReceiverToken = ReceiverToken1, Mode = other than current, MediaUri = other than current, StreamSetup.Stream = other than current if DUT capability is allow).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with changed receiver) from the DUT. Check that Receiver was changed with the specified configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (ReceiverToken = ReceiverToken1) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (ReceiverToken = ReceiverToken1, updated Configuration) from the DUT. Check that Receiver was changed with the specified configuration.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">ConfigureReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver configuration in <emphasis role="bold">GetReceiversResponse</emphasis> message that differs from the specified during Receiver configuration change.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver configuration in <emphasis role="bold">GetReceiverResponse</emphasis> message that differs from the specified during Receiver configuration change.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> MediaURI in the <emphasis role="bold">ConfigureReceiverRequest</emphasis> message shall be not greater than 28 octet length.
+        </para>
+      </section>
+      <!--RECEIVER-2-1-21-->
+      <section xml:id="tc.RECEIVER-2-1-21">
+        <title>CONFIGURE RECEIVER – PERSISTENCE</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-2-1-21
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Persistence (ONVIF Receiver Service Specification), ConfigureReceiver (ONVIF Receiver Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ConfigureReceiver
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> receiver.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Receiver configuration Persistence.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Receiver Service was received from the DUT. At least one Receiver exists on the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will retrieve a complete receivers list from the DUT and create a new Receiver if the list is empty (see <xref linkend="Annex_GetNotEmptyCompleteReceiversList"/>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetServiceCapabilitiesRequest</emphasis> message to retrieve the receiver service capabilities from the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message (Capabilities. RTP_Multicast).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">ConfigureReceiverRequest</emphasis> message (ReceiverToken = ReceiverToken1, Mode = other than current, MediaUri = other than current, StreamSetup.Stream = other than current if DUT capability is allow).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">SystemReboot</emphasis> message to reset the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that the DUT sends <emphasis role="bold">SystemRebootResponse</emphasis> message (example message string = "Rebooting in x seconds").
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT will send Multicast <emphasis role="bold">HELLO</emphasis> message after it is successfully rebooted.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will verify the <emphasis role="bold">HELLO</emphasis> message sent by the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiversResponse</emphasis> message (receivers list with changed receiver) from the DUT. Check that Receiver was changed with the specified configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client will invoke <emphasis role="bold">GetReceiverRequest</emphasis> message (ReceiverToken = ReceiverToken1) to retrieve receiver configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify the <emphasis role="bold">GetReceiverResponse</emphasis> message (ReceiverToken = ReceiverToken1, updated Configuration) from the DUT. Check that Receiver was changed with the specified configuration.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>The DUT passes all assertions.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">ConfigureReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">GetReceiversResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send a valid <emphasis role="bold">CreateReceiverResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver configuration in <emphasis role="bold">GetReceiversResponse</emphasis> message that differs from the specified during Receiver configuration change.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT returned Receiver configuration in <emphasis role="bold">GetReceiverResponse</emphasis> message that differs from the specified during Receiver configuration change.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">SystemRebootResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The DUT did not send <emphasis role="bold">HELLO</emphasis> message.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> MediaURI in the <emphasis role="bold">ConfigureReceiverRequest</emphasis> message shall be not greater than 28 octet length.
+        </para>
+      </section>
+    </section>
+  </chapter>
+  <appendix>
+    <title>Helper Procedures and Additional Notes</title>
+    <!--A.1-->
+    <section xml:id="Annex_ComparisonOfReceivers"
+             xreflabel="Annex A.1">
+      <title>Comparison of Receivers in GetReceiverResponse and GetReceiversResponse messages</title>
+      <para>
+        Receivers in <emphasis role="bold">GetReceiversResponse</emphasis> message and in <emphasis role="bold">GetReceiverResponse</emphasis> message will be assumed as different in the following cases:
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              Configuration.Mode element values are different.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration.MediaUri element values are different.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration.StreamSetup.Stream element values are different.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration.StreamSetup.Transport.Protocol element values are different.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration.StreamSetup.Transport.Tunnel element is skipped only for <emphasis role="bold">GetReceiversResponse</emphasis> message or only for <emphasis role="bold">GetReceiverResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration.StreamSetup.Transport.Tunnel.Protocol element values are different.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration.StreamSetup.Transport.Tunnel.[...].Tunnel (check recursively) element is skipped only for <emphasis role="bold">GetReceiversResponse</emphasis> message or only for <emphasis role="bold">GetReceiverResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration.StreamSetup.Transport.Tunnel.[...].Tunnel.Protocol (check recursively) element values are different.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <!--A.2-->
+    <section xml:id="Annex_GetNotEmptyCompleteReceiversList"
+             xreflabel="Annex A.2">
+      <title>Get Complete Receivers List and Create a Receiver if the List is Empty</title>
+      <para>
+        ONVIF Client follows the following procedure of Retrieving Receivers List and creation of a Receiver if the list is Empty:
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client will invoke <emphasis role="bold">GetReceiversRequest</emphasis> message to retrieve a complete receivers list.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Verify that the <emphasis role="bold">GetReceiversResponse</emphasis> message contains at least one Receiver.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If there is at least one Receiver, then skip steps 4-5 and return to the Test Procedure.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Client will invoke <emphasis role="bold">CreateReceiverRequest</emphasis> message (Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) to create new Receiver.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (ReceiverToken1, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as were sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <!--A.3-->
+    <section xml:id="Annex_PullMessagesReceiverState"
+             xreflabel="Annex A.3">
+      <title>PullMessages algorithm for check Receiver State changing</title>
+      <para>
+        If the receiver changes state, the device sends the correspond event. Algorithm of <emphasis role="bold">PullMessages</emphasis> sending for catching event with expected state.
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client will invoke <emphasis role="bold">PullMessages</emphasis> command with a PullMessagesTimeout of 20s and a MessageLimit of 1 to find NotificationMessage containing event with required ReceiverState for used Recording.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Verify <emphasis role="bold">PullMessagesResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If event is returned, check UTC Time of the received event. If UTC Time is more than T1+delta skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Find event with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to required receiver state.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If event is not found go to the step 1, otherwise, go to the next step.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>Test will be assumed as failed in the case:</para>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT did not send a valid <emphasis role="bold">PullMessagesResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not send NotificationMessage with event which has Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1", Data.SimpleItemDescription Description item with Name = "New State" and Value is equal to required receiver state.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+    <!--A.4-->
+    <section xml:id="Annex_PullMessageseceiverConnectionFailed"
+             xreflabel="Annex A.4">
+      <title>PullMessages algorithm for Receiver Connection Failed event</title>
+      <para>
+        If the receiver cannot connect to source, the device sends the correspond event. Algorithm of <emphasis role="bold">PullMessages</emphasis> sending for catching event with expected state.
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client will invoke <emphasis role="bold">PullMessages</emphasis> command with a PullMessagesTimeout of 20s and a MessageLimit of 1 to find NotificationMessage containing event with required ReceiverState for used Recording.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Verify <emphasis role="bold">PullMessagesResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If event is returned, check UTC Time of the received event. If UTC Time is more than T1+delta skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Find event with Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1".
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If event is not found, go to the step 1; otherwise go to the next step.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>Test will be assumed as failed in the case:</para>
+      <para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT did not send valid <emphasis role="bold">PullMessagesResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not send NotificationMessage with event with topic tns1: Receiver/ConnectionFailed, which has Source.SimpleItemDescription Description item with Name = "ReceiverToken" and Value is equal to "ReceiverToken1.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  </appendix>
+</book>

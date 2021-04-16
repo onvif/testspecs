@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+      <revision  xml:id="s.revhistory.PtzZoomContinuousPositioning.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Zoom Continuous Positioning section and PTZ Zoom Continuous Positioning Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.PtzZoomContinuousPositioning.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Zoom Continuous Positioning section and PTZ Zoom Continuous Positioning Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PtzZoomContinuousPositioning">
+      <title>PTZ Zoom Continuous Positioning</title>
+      <para>
+        PTZ Zoom Continuous Move section specifies Client ability to move a PTZ Device using
+        ContinuousMove operation for Zoom and stop ongoing pan tilt movement using Stop operation or sending
+        zero values for Zoom.
+      </para>
+  </section>
+     <section xml:id="tc.PtzZoomContinuousPositioning">
+    <title>PTZ Zoom Continuous Positioning Test Cases</title>
+    <section xml:id="tc.PtzZoomContinuousPositioning.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Zoom Continuous Move (PtzZoomContinuousPositioning)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZContinuousZoom">Check Condition based on Device Features:</emphasis> PTZ Continuous Zoom movement is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.PtzZoomContinuousPositioning.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to control PTZ Zoom position using continuous
+              move.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ Zoom Continuous Positioning if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to move PTZ Device using the ContinuousMove
+                    operation with specified Zoom element AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to stop PTZ Zoom Device movement using the Stop
+                    operation OR using ContinuousMove operation with zero values in
+                    Zoom element.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ Zoom Continuous Positioning if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is unable to move a PTZ device using the ContinuousMove operation with specified
+                    Zoom element
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is unable to stop PTZ Zoom movement using EITHER Stop operation OR using ContinuousMove operation
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to <emphasis role="bold">Stop</emphasis> request if detected OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to <emphasis role="bold">ContinuousMove</emphasis> request with zero "x" attributes values in
+                    Zoom element if detected.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-1">
+      <title>PTZ CONTINUOUS MOVE ZOOM</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Continuous Positioning - ContinuousMove Zoom
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZZOOMCONTINUOUSPOSITIONING-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Zoom Continuous Move (PtzZoomContinuousPositioning_ContinuousMoveZoom)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change zoom of PTZ Device using the ContinuousMove operation with specified Zoom
+        element.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with ContinuousMove operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PTZContinuousZoom.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes ContinuousMove request message to change zoom of PTZ
+              Device using specific value of Zoom element.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and ContinuousMoveResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">ContinuousMove</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">ContinuousMove</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-1.0">
+                  <para>
+                    [S1] Client request contains "&lt;ContinuousMove&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-1.1">
+                  <para>
+                    [S2] "&lt;ContinuousMove&gt;" includes tag: "&lt;ProfileToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-1.2">
+                  <para>
+                    [S4] "&lt;Velocity&gt;" includes tag: "&lt;Zoom&gt;" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-1.3">
+                  <para>
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-1.4">
+                  <para>
+                    [S7] Device response contains "&lt;ContinuousMoveResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+   
+    </section>
+    <section xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-2">
+      <title>PTZ ZOOM STOP</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Zoom Continuous Positioning - Stop
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZZOOMCONTINUOUSPOSITIONING-2
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Stop Zoom Movement (PtzZoomContinuousPositioning_ZoomStop)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        stop a PTZ Zoom Device movement using the Stop operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with Stop operation with skipped Zoom element or with Zoom = true present
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes Stop request message to stop ongoing zoom movements of PTZ
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device responds with code HTTP 200 OK and StopResponse message. </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Stop</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Stop</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-2.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:Stop</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-2.1">
+                  <para>
+                    [S2] <emphasis role="bold">tptz:Stop/tptz:ProfileToken</emphasis> element has non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-2.2">
+                  <para>
+                    [S3] If <emphasis role="bold">tptz:Stop</emphasis> contains <emphasis role="bold">tptz:Zoom</emphasis> element then <emphasis role="bold">tptz:Stop/tptz:Zoom</emphasis> = true AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">Stop</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-2.3">
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-2.4">
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:StopResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+  
+    </section>
+    <section xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-3">
+      <title>STOP ZOOM MOVEMENT USING PTZ CONTINUOUS MOVE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Continuous Positioning - Stop Zoom Movement using ContinuousMove
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZZOOMCONTINUOUSPOSITIONING-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Stop Zoom Movement using Continuous Move (PtzZoomContinuousPositioning_ZoomStopUsingPTZContinuousMove)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        stop a PTZ Zoom Device movement using ContinuousMove operation with zero values in Zoom element.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with ContinuousMove operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes ContinuousMove request message with zero "x" attribute value in
+              Zoom element.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and ContinuousMoveResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis>
+        <!--In case when device does not support both PTZContinuousZoom and PTZContinuousZoom features
+        then the test shall be deemed as "NOT DETECTED".-->
+        <!--In case Client does not send ContinuousMove request message with zero "x" and "y" attributes values in Zoom element then the test shall be deemed as "NOT DETECTED".-->
+        In case Client does not send ContinuousMove request message with zero "x" attribute value in Zoom element if device supports PTZContinuousZoom
+        then the test shall be deemed as "NOT DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              There is client <emphasis role="bold">ContinuousMove</emphasis> request messages
+              which corresponds to the following requirements (else skip the check):
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Client <emphasis role="bold">ContinuousMove</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client <emphasis role="bold">ContinuousMove</emphasis> request in Test Procedure fulfills the following requirements:
+                    <itemizedlist>
+                      <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-3.0">
+                        <para>
+                          [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:ContinuousMove</emphasis> AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-3.1">
+                        <para>
+                          [S2] <emphasis role="bold">tptz:ContinuousMove/tptz:ProfileToken</emphasis> element has non-empty string value of specific token AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-3.2">
+                        <para>
+                          [S3] <emphasis role="bold">tptz:ContinuousMove/tptz:Velocity</emphasis> containt tag <emphasis role="bold">tt:Zoom</emphasis> AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-3.3">
+                        <para>
+                          [S4] <emphasis role="bold">tptz:ContinuousMove/tptz:Velocity/tt:Zoom/@x</emphasis> attribute value is equal to 0.
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Device response on the <emphasis role="bold">ContinuousMove</emphasis> request fulfills the following requirements:
+                    <itemizedlist>
+                      <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-3.4">
+                        <para>
+                          [S5] It has HTTP 200 response code AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="tc.PtzZoomContinuousPositioning.PTZZOOMCONTINUOUSPOSITIONING-3.5">
+                        <para>
+                          [S6] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:ContinuousMoveResponse</emphasis>.
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    
+    </section>
+  </section>
+</feature>

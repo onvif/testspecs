@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.GetImagingSettings.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Imaging Settings section and Get Imaging Settings Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetImagingSettings">
+      <title>Get Imaging Settings</title>
+      <para>
+        Get Imaging Settings section specifies Client ability to request imaging settings from Device.
+      </para>
+  </section>
+  <section xml:id="tc.GetImagingSettings">
+    <title>Get Imaging Settings Test Cases</title>
+    <section xml:id="tc.GetImagingSettings.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Imaging Settings (GetImagingSettings)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ImagingService">Check Condition based on Device Features:</emphasis> Imaging Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.16 Imaging Settings">Profile T Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.GetImagingSettings.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve a current imaging settings.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Get Imaging Settings if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve a current imaging settings using
+                    <emphasis role="bold">GetImagingSettings</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Get Imaging Settings if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetImagingSettings</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.GetImagingSettings.GETIMAGINGSETTINGS-1">
+      <title>GET IMAGING SETTINGS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Imaging Settings -
+        Get Imaging Settings
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> GETIMAGINGSETTINGS-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Imaging Settings (GetImagingSettings_GetImgSettings)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetImagingSettings">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that imaging settings for Device is received by Client using the
+        <emphasis role="bold">GetImagingSettings</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetImagingSettings</emphasis> operation
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Imaging Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetImagingSettings</emphasis> request message to retrieve imaging settings
+              for specified video source from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetImagingSettingsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetImagingSettings</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetImagingSettings</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.GetImagingSettings.GETIMAGINGSETTINGS-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetImagingSettings</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetImagingSettings</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.GetImagingSettings.GETIMAGINGSETTINGS-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.GetImagingSettings.GETIMAGINGSETTINGS-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetImagingSettingsResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+
+</feature>

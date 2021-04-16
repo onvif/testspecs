@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.PtzSetConfiguration.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Set Configuration section and PTZ Set Configuration Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PtzSetConfiguration">
+      <title>PTZ Set Configuration</title>
+      <para>
+        PTZ Set Configuration specifies Client ability to modify PTZ configuration on the device.
+      </para>
+  </section>
+       <section xml:id="tc.PtzSetConfiguration">
+    <title>PTZ Set Configuration Test Cases</title>
+    <section xml:id="tc.PtzSetConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Set Configuration (PtzSetConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZService">Check Condition based on Device Features:</emphasis> PTZ Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetConfiguration">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PtzSetConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to modify a PTZ configuration using the <emphasis role="bold">SetConfiguration</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ Set Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to modify a PTZ configuration using the <emphasis role="bold">SetConfiguration</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ Set Configuration if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to <emphasis role="bold">SetConfiguration</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PtzSetConfiguration.PTZSETCONFIGURATION-1">
+      <title>PTZ SET CONFIGURATION</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Set Configuration
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZSETCONFIGURATION-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Configuration (PtzSetConfiguration_PtzSetConfigurationRequest)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetConfiguration">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        to modify a PTZ configuration using the <emphasis role="bold">SetConfiguration</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with SetConfiguration operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PTZ Service (PTZService).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetConfiguration request message to modify a PTZ configuration on the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device responds with code HTTP 200 OK and SetConfigurationResponse message. </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzSetConfiguration.PTZSETCONFIGURATION-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:SetConfiguration</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetConfiguration</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzSetConfiguration.PTZSETCONFIGURATION-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzSetConfiguration.PTZSETCONFIGURATION-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:SetConfigurationResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

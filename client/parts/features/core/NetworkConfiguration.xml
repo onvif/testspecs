@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.NetworkConfiguration.20201027.All">
+      <revnumber>20.12</revnumber>
+      <date>Oct 27, 2020</date>
+      <revdescription>
+        <para>The following was done according to #394:</para>
+        <para>Check Condition based on Device Features of Network Configuration feature was changed from 'All' to 'Network Configuration'</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NetworkConfiguration.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Network Configuration section and Network Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NetworkConfiguration.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Network Configuration section and Network Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NetworkConfiguration.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Network Configuration section and Network Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NetworkConfiguration.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Network Configuration section and Network Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NetworkConfiguration.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Network Configuration section and Network Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NetworkConfiguration.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Network Configuration section and Network Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.NetworkConfiguration">
+    <title>Network Configuration</title>
+    <para>
+      Network Configuration section defines Client ability to obtain and configure of
+      network settings on Device.
+    </para>
+  </section>
+  <section xml:id="tc.NetworkConfiguration">
+    <title>Network Configuration Test Cases</title>
+    <section xml:id="tc.NetworkConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Network Configuration (NetworkConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="no NetworkConfigNotSupported">Check Condition based on Device Features:</emphasis> Network Configuration
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.4 Network Configuration">Profile D Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.4 Network Configuration">Profile T Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.4 Network Configuration">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.NetworkConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to configure network settings.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Network Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to list network interfaces of Device using
+                    the GetNetworkInterfaces operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to set network interfaces of Device using
+                    the SetNetworkInterfaces operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to list default gateway of Device using the
+                    GetNetworkDefaultGateway operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able set default gateway of Device using the
+                    SetNetworkDefaultGateway operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Network Configuration if ANY of
+              the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetNetworkInterfaces request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SetNetworkInterfaces request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetNetworkDefaultGateway
+                    request OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SetNetworkDefaultGateway
+                    request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-1">
+      <title>GET NETWORK INTERFACES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Network Configuration - Get Network
+        Interfaces
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> NETWORKCONFIGURATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Network Interfaces (NetworkConfiguration_GetNetworkInterfaces)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNetworkInterfaces">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNetworkInterfaces">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNetworkInterfaces">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        list network interfaces of Device using the GetNetworkInterfaces operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetNetworkInterfaces operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetNetworkInterfaces request message to get network
+              interface configuration from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              GetNetworkInterfacesResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNetworkInterfaces</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNetworkInterfaces</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-1.0">
+                    [S1] Client request contains "&lt;GetNetworkInterfaces&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-1.2">
+                    [S3] Device response contains "&lt;GetNetworkInterfacesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-2">
+      <title>SET NETWORK INTERFACES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Network Configuration - Set Network
+        Interfaces
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> NETWORKCONFIGURATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Network Interfaces (NetworkConfiguration_SetNetworkInterfaces)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetNetworkInterfaces">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetNetworkInterfaces">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetNetworkInterfaces">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set network interfaces of Device using the SetNetworkInterfaces operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with SetNetworkInterfaces operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetNetworkInterfaces request message to set the network
+              interface configuration on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              SetNetworkInterfacesResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetNetworkInterfaces</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetNetworkInterfaces</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-2.0">
+                    [S1] Client request contains "&lt;SetNetworkInterfaces&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-2.1">
+                    [S2] "&lt;SetNetworkInterfaces&gt;" includes tag: "&lt;InterfaceToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-2.2">
+                    [S4] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-2.3">
+                    [S5] Device response contains "&lt;SetNetworkInterfacesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-3">
+      <title>GET NETWORK DEFAULT GATEWAY</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Network Configuration - Get Network
+        Default Gateway
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> NETWORKCONFIGURATION-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Network Default Gateway (NetworkConfiguration_GetNetworkDefaultGateway)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNetworkDefaultGateway">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNetworkDefaultGateway">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetNetworkDefaultGateway">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        list default gateway of Device using the GetNetworkDefaultGateway operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with GetNetworkDefaultGateway operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetNetworkDefaultGateway request message to get the
+              default gateway settings from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              GetNetworkDefaultGatewayResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNetworkDefaultGateway</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetNetworkDefaultGateway</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-3.0">
+                    [S1] Client request contains "&lt;GetNetworkDefaultGateway&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-3.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-3.2">
+                    [S3] Device response contains "&lt;GetNetworkDefaultGatewayResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-4">
+      <title>SET NETWORK DEFAULT GATEWAY</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Network Configuration - Set Network
+        Default Gateway
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> NETWORKCONFIGURATION-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Network Default Gateway (NetworkConfiguration_SetNetworkDefaultGateway)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetNetworkDefaultGateway">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetNetworkDefaultGateway">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetNetworkDefaultGateway">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set default gateway of Device using the SetNetworkDefaultGateway operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with SetNetworkDefaultGateway operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetNetworkDefaultGateway request message to set the
+              default gateway settings on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              SetNetworkDefaultGatewayResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetNetworkDefaultGateway</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetNetworkDefaultGateway</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-4.0">
+                    [S1] Client request contains "&lt;SetNetworkDefaultGateway&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-4.1">
+                    [S2] "&lt;SetNetworkDefaultGateway&gt;" includes tag: EITHER "&lt;IPv4Address&gt;"
+                    OR "&lt;IPv6Address&gt;" with specific IP address value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-4.2">
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-4.3">
+                    [S4] Device response contains "&lt;SetNetworkDefaultGatewayResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

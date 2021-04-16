@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>    
+	<section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>HTTP</term>
+          <listitem>
+            <para>Hyper Text Transport Protocol.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>HTTPS</term>
+          <listitem>
+            <para>Hyper Text Transport Protocol over Secure Socket Layer.</para>
+          </listitem>
+        </varlistentry>
+		                <varlistentry>
+          <term>IP</term>
+          <listitem>
+            <para>Internet Protocol.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>IPv4</term>
+          <listitem>
+            <para>Internet Protocol version 4.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>TCP</term>
+          <listitem>
+            <para>Transport Control Protocol.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>UDP</term>
+          <listitem>
+            <para>User Datagram Protocol.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>URI</term>
+          <listitem>
+            <para>Uniform Resource Identifier.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>WSDL</term>
+          <listitem>
+            <para>Web Services Description Language.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>XML</term>
+          <listitem>
+            <para>eXtensible Markup Language.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>

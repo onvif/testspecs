@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.AccessControl.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+		<para>Scope\AreaInformation section was added.</para>
+		<para>Area Information Test Cases section was added.</para>
+		<para>System Component Information section was removed.</para>
+		<para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>
+  <section xml:id="s.intro.AccessPointManagement">
+        <title>Access Point Management</title>
+        <para>
+          Access Point Management section specifies Client ability to create, modify, and delete Access Points.        
+        </para>
+      </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.AccessPointManagement">
+      <title>Access Point Management Test Cases</title>
+      <section xml:id="tc.AccessPointManagement.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Access Point Management (AccessPointManagement)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="AccessPointManagement">Check Condition based on Device Features:</emphasis> Access Point Management is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 1
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="8.1	Access Point Management">Profile D Requirement:</emphasis> Conditional
+        </para>
+      </section>
+      <section xml:id="tc.AccessPointManagement.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client connects to Device to create, modify and delete an access point.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Access Point Management if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client is able to create an access point using the  
+                      <emphasis role="bold">CreateAccessPoint</emphasis> operation 
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to modify an access point using the  
+                      <emphasis role="bold">ModifyAccessPoint</emphasis> operation 
+                      AND
+                    </para>
+                  </listitem>
+                 <listitem>
+                    <para>
+                      Client is able to delete an access point using the  
+                      <emphasis role="bold">DeleteAccessPoint</emphasis> operation.                     
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Access Point Management if
+                ANY of the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid responses for <emphasis role="bold">CreateAccessPoint</emphasis> request 
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid responses for <emphasis role="bold">ModifyAccessPoint</emphasis> request 
+                      OR
+                    </para>
+                  </listitem>
+                 <listitem>
+                    <para>
+                      No valid responses for <emphasis role="bold">DeleteAccessPoint</emphasis> request.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-1">
+        <title>CREATE ACCESS POINT</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Create Access Point
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSPOINTMANAGEMENT-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Create Access Point (AccessPointManagement_CreateAccessPoint)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="CreateAccessPoint">Profile D Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create the specified access point in the device using the
+          <emphasis role="bold">CreateAccessPoint</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">CreateAccessPoint</emphasis> operation.               
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Access Point Management.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">CreateAccessPoint</emphasis> request message with empty <emphasis role="bold">@token</emphasis> attribute to create access point on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">CreateAccessPointResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateAccessPoint</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateAccessPoint</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child
+                      <emphasis role="bold">tac:CreateAccessPoint</emphasis> element AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-1.1">
+                    <para>
+                      [S2] <emphasis role="bold">tac:AccessPoint/@token</emphasis> attribute is empty (has empty string value) AND
+                    </para>
+                  </listitem>                
+                  
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">CreateAccessPoint</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-1.2">
+                    <para>
+                      [S3] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-1.3">
+                    <para>
+                      [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tac:CreateAccessPointResponse</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>            
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-2">
+        <title>MODIFY ACCESS POINT</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Modify Access Point
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSPOINTMANAGEMENT-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Modify Access Point (AccessPointManagement_ModifyAccessPoint)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="ModifyAccessPoint">Profile D Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to modify the specified access point using the
+          <emphasis role="bold">ModifyAccessPoint</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">ModifyAccessPoint</emphasis> operation.              
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Access Point Management.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">ModifyAccessPoint</emphasis> request message to modify access point on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">ModifyAccessPointResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">ModifyAccessPoint</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">ModifyAccessPoint</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child
+                      <emphasis role="bold">tac:ModifyAccessPoint</emphasis> element AND
+                    </para>
+                  </listitem>                                 
+                  
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">ModifyAccessPoint</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-2.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-2.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tac:ModifyAccessPointResponse</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>            
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-3">
+        <title>DELETE ACCESS POINT</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Delete Access Point
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSPOINTMANAGEMENT-3
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Delete Access Point (AccessPointManagement_DeleteAccessPoint)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="DeleteAccessPoint">Profile D Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete the specified access point using the
+          <emphasis role="bold">DeleteAccessPoint</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">DeleteAccessPoint</emphasis> operation.               
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Access Point Management.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">DeleteAccessPoint</emphasis> request message to delete access point on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteAccessPointResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DeleteAccessPoint</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DeleteAccessPoint</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-3.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child
+                      <emphasis role="bold">tac:DeleteAccessPoint</emphasis> element AND
+                    </para>
+                  </listitem>                                 
+                  
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">DeleteAccessPoint</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-3.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.AccessPointManagement.ACCESSPOINTMANAGEMENT-3.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tac:DeleteAccessPointResponse</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>            
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      
+    </section>
+</feature>

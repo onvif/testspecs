@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.AccessControl.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+		<para>Scope\AreaInformation section was added.</para>
+		<para>Area Information Test Cases section was added.</para>
+		<para>System Component Information section was removed.</para>
+		<para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>
+  <section xml:id="s.intro.AccessTakenIdentifier">
+    <title>Access Taken With Identifier Access</title>
+    <para>
+	  Access Taken With Identifier Access section specifies Client ability to receive access taken and access not taken notifications for identifier access.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.AccessTakenIdentifier">
+    <title>Access Taken With Identifier Access Test Cases</title>
+    <section xml:id="tc.AccessTakenIdentifier.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Access Taken With Identifier Access (AccessTakenIdentifier)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AccessTaken AND IdentifierAccess">Check Condition based on Device Features:</emphasis> Access Control Service is supported by Device. Identifier Access is supported by Device. Access Taken notifications is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <!--List of profiles for which feature mandatory, conditional or optional-->
+	        <para>
+        <emphasis role="bold" annotations="7.11 Access Taken">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.AccessTakenIdentifier.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <!--Description of use case-->
+          <listitem>
+            <para>
+Client subscribes to Device messages to retrieve notification events
+                from Device
+				using <emphasis role="bold">CreatePullPointSubscription</emphasis> operation
+				and <emphasis role="bold">PullMessage</emphasis> operation.
+            </para>
+          </listitem>
+		  			<listitem>
+              <para>
+                Client receives access taken notification from Device
+				with <emphasis role="bold">tns1:AccessControl/AccessTaken/Identifier</emphasis> notification.
+              </para>
+            </listitem>
+					  			<listitem>
+              <para>
+                Client receives access not taken notification from Device
+				with <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Identifier</emphasis> notification.
+              </para>
+            </listitem>
+          <!--Feature is supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as supporting Access Control With Identifier Access if the
+              following conditions are met:
+              <itemizedlist>
+			                    <listitem>
+                    <para>
+                      Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessTaken/Identifier</emphasis> notification AND
+                    </para>
+                  </listitem>
+				                    <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Identifier</emphasis> notification AND
+                    </para>
+                  </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--Feature is not supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Access Control With Identifier Access if
+              ANY of the following is TRUE:
+              <itemizedlist>
+			                    <listitem>
+                    <para>
+                      Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessTaken/Identifier</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+				                    <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Identifier</emphasis> notification.
+                    </para>
+                  </listitem>
+				  				                  
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

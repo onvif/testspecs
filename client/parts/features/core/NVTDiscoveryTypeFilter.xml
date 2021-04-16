@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.NVTDiscoveryTypeFilter.20201208.ProfileS">
+      <revnumber>20.12</revnumber>
+      <date>Dec 8, 2020</date>
+      <revdescription>
+       <para>NVTDISCOVERYTYPEFILTER-1 NVT DISCOVERY TYPE FILTER was updated according to #406:</para>
+        <para>Types value check was updated to accept QName list instead of one QName value.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NVTDiscoveryTypeFilter.20190906.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Sep 6, 2019</date>
+      <revdescription>       
+		<para>NVTDISCOVERYTYPEFILTER-1 NVT DISCOVERY TYPE FILTER was updated according to #323:</para>
+        <para>Unnecessary step with check that ProbeMatch is sent to Client IP address was removed.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.NVTDiscoveryTypeFilter.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Network Video Transmitter Discovery Type Filter section and Network Video Transmitter Discovery Type Filter Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.NVTDiscoveryTypeFilter">
+      <title>Network Video Transmitter Discovery Type Filter Test Cases</title>
+      <para>
+        Network Video Transmitter Discovery Type Filter Test Cases section defines Client ability to locate services, which are support Network Video Transmitter Discovery Type on a local network
+        using Web Services Dynamic Discovery (WS-Discovery) protocol. It uses IPv4 address 239.255.255.250 or multicast IPv6 address [FF02::C] and
+              port 3702 with Types filter that contains dn:NetworkVideoTransmitter or with skipped Types filter.
+      </para>
+  </section>
+        <section xml:id="tc.NVTDiscoveryTypeFilter">
+    <title>Network Video Transmitter Discovery Type Filter Test Cases</title>
+    <section xml:id="tc.NVTDiscoveryTypeFilter.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> NVT Discovery Type Filter (NVTDiscoveryTypeFilter)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DiscoveryTypesDnNetworkVideoTransmitter">Check Condition based on Device Features:</emphasis> Network Video Transmitter Discovery Type is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Requirement:</emphasis> None
+      </para>
+    </section>
+    <section xml:id="tc.NVTDiscoveryTypeFilter.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client sends Probe message to multicast IPv4 address 239.255.255.250 or multicast IPv6 address [FF02::C] and
+              port 3702 with Types filter that contains <emphasis role="bold">dn:NetworkVideoTransmitter</emphasis> or with skipped Types filter.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Network Video Transmitter Discovery Type if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    <emphasis role="bold">Probe</emphasis> Client message that fulfills the following requirement is detected:
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          Types filter contains dn:NetworkVideoTransmitter or empty or skipped
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Probe is sent to multicast IPv4 address 239.255.255.250 or multicast IPv6 address [FF02::C]
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Probe is sent to UDP port 3702
+                          AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    There is <emphasis role="bold">ProbeMatch</emphasis> Device message that correspond to Client <emphasis role="bold">Probe</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Network Video Transmitter Discovery Type if the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid Device <emphasis role="bold">ProbeMatch</emphasis> message that is correspond to Client <emphasis role="bold">Probe</emphasis> message.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1">
+      <title>NVT DISCOVERY TYPE FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Discovery - Network Video Transmitter Discovery Type Filter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> NVTDISCOVERYTYPEFILTER-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Network Video Transmitter Discovery Type Filter (NVTDiscoveryTypeFilter_NetworkVideoTransmitterFilter)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="WS-Discovery">Profile S Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        discover devices with Network Video Transmitter Discovery Type.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Client Probe message that does not filter out devices with Network Video Transmitter Discovery Type that is sent to multicast WS-Discovery address.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes Probe request message to multicast IPv4 address
+              239.255.255.250 or multicast IPv6 address [FF02::C] and port 3702 with <emphasis role="bold">Types</emphasis> that contains dn:NetworkVideoTransmitter.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device sends ProbeMatch message to the Client.</para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Probe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Probe</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.0">
+                    [S1] It is sent to 239.255.255.250 IPv4 address OR [FF02::C] IPv6 address AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.1">
+                    [S2] It is sent to 3702 UDP port AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.2">
+                    [S3] <emphasis role="bold">soapenv:Envelope/soapenv:Header</emphasis> element has child element <emphasis role="bold">wsadis:Action</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.3">
+                    [S4] <emphasis role="bold">wsadis:Action</emphasis> includes URL address which ends with "Probe" value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.4">
+                    [S5] <emphasis role="bold">soapenv:Envelope/soapenv:Header</emphasis> element has child element <emphasis role="bold">wsadis:MessageID</emphasis> with non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.5">
+                    [S6] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">d:Probe</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.6">
+                    [S7] IF <emphasis role="bold">d:Probe</emphasis> element has child element <emphasis role="bold">d:Types</emphasis> THEN it contains value is equal to <emphasis role="bold">dn:NetworkVideoTransmitter</emphasis> OR empty string value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.7">
+                    [S8] There is Device <emphasis role="bold">ProbeMatches</emphasis> message in test procedure that fulfills the following requirements:
+                    <itemizedlist>
+                      <!--<listitem xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.8">
+                        <para>
+                          [S9] It is sent to Client IP address AND
+                        </para>
+                      </listitem>-->
+                      <listitem xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.8">
+                        <para>
+                          [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">d:ProbeMatches</emphasis> AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="tc.NVTDiscoveryTypeFilter.NVTDISCOVERYTYPEFILTER-1.9">
+                        <para>
+                          [S10] <emphasis role="bold">soapenv:Envelope/soapenv:Header/wsadis:RelatesTo</emphasis> element value is equeal to <emphasis role="bold">soapenv:Envelope/soapenv:Header/wsadis:MessageID</emphasis> value in <emphasis role="bold">Probe</emphasis> message AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">PASS WITH WARNING -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis role="bold">d:Probe/d:Types</emphasis> element is skipped OR
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="bold">d:Probe/d:Types</emphasis> element has empty string value.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

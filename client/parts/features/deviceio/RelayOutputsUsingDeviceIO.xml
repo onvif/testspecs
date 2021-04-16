@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.RelayOutputsUsingDeviceIO.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Relay Outputs Using Device IO section and Relay Outputs Using Device IO Test Cases section was moved from ONVIF Device IO Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.RelayOutputsUsingDeviceIO">
+      <title>Relay Outputs Using Device IO</title>
+      <para>
+        Relay Outputs Using Device IO section specifies Client ability to control of Relay Outputs connected to a device.
+      </para>
+  </section>
+       <section xml:id="tc.RelayOutputsUsingDeviceIO">
+    <title>Relay Outputs Using Device IO Test Cases</title>
+    <section xml:id="tc.RelayOutputsUsingDeviceIO.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Relay Outputs (RelayOutputsUsingDeviceIO)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="RelayOutputs">Check Condition based on Device Features:</emphasis> Relay Outputs (Device IO Service) is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.16 Relay Outputs">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.RelayOutputsUsingDeviceIO.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to control of Relay Outputs connected to a device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Relay Outputs if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    Client is able to retrieve available Relay Outputs using
+                    <emphasis role="bold">GetRelayOutputs</emphasis> operation (Device IO Service)
+                    AND
+                  </para></listitem><listitem><para>
+                    Client is able to control Relay Output state using
+                    <emphasis role="bold">SetRelayOutputState</emphasis> operation (Device IO Service).
+
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Relay Outputs if
+              ANY of the following is TRUE:<itemizedlist><listitem><para>
+                    No valid response to <emphasis role="bold">GetRelayOutputs</emphasis> request (Device IO Service)
+                    OR
+                  </para></listitem><listitem><para>
+                    No valid response to <emphasis role="bold">SetRelayOutputState</emphasis> request (Device IO Service).
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-1">
+      <title>GET RELAY OUTPUTS USING DEVICE IO</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Relay Output - Get Relay Outputs
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RELAYOUTPUTSUSINGDEVICEIO-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Relay Outputs (RelayOutputsUsingDeviceIO_GetRelayOutputsUsingDeviceIO)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetRelayOutputs">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that relay outputs provided by Device is received by Client using the
+        <emphasis role="bold">GetRelayOutputs</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetRelayOutputs</emphasis> operation for Device IO Service present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports RelayOutputs for Device IO Service (RelayOutputs).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client supports Capabilities feature.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Client Test Tool retrives Device IO Service address from device's response on GetServices or GetCapabilities Client request.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetRelayOutputs</emphasis> request message to Device IO Service to retrieve relay outputs
+              from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetRelayOutputsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetRelayOutputs</emphasis> request messages to Device IO Service are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetRelayOutputs</emphasis> request to Device IO Service in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-1.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetRelayOutputs</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetRelayOutputs</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-1.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-1.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetRelayOutputsResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    
+    </section>
+    <section xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-2">
+      <title>SET RELAY OUTPUT STATE USING DEVICE IO</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Relay Output - Set Relay Output State
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> RELAYOUTPUTSUSINGDEVICEIO-2
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Relay Output (RelayOutputsUsingDeviceIO_SetRelayOutputStateUsingDeviceIO)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetRelayOutputState">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to trigger a relay output using the
+        <emphasis role="bold">SetRelayOutputState</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Device supports RelayOutputs for Device IO Service (RelayOutputs).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">SetRelayOutputState</emphasis> operation for Device IO Service present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client supports Capabilities feature.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Client Test Tool retrives Device IO Service address from device's response on GetServices or GetCapabilities Client request.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SetRelayOutputState</emphasis> request message to Device IO Service to trigger a relay output
+              on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">SetRelayOutputStateResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputState</emphasis> request messages to Device IO Service are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetRelayOutputState</emphasis> request to Device IO Service in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-2.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputState</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetRelayOutputState</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-2.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.RelayOutputsUsingDeviceIO.RELAYOUTPUTSUSINGDEVICEIO-2.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetRelayOutputStateResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

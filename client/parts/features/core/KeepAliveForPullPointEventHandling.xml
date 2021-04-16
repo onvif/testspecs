@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.KeepAliveForPullPointEventHandling.20200831.All">
+      <revnumber>20.12</revnumber>
+      <date>Aug 31, 2020</date>
+      <revdescription>       
+        <para>Keep Alive for Pull Point Event Handling Feature: Check Condition based on Device Features was changed according to #325.</para>       
+      </revdescription>
+    </revision>
+            <revision  xml:id="s.revhistory.KeepAliveForPullPointEventHandling.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Keep Alive for Pull Point Event Handling section and Keep Alive for Pull Point Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.KeepAliveForPullPointEventHandling.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Keep Alive for Pull Point Event Handling section and Keep Alive for Pull Point Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.KeepAliveForPullPointEventHandling.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Keep Alive for Pull Point Event Handling section and Keep Alive for Pull Point Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.KeepAliveForPullPointEventHandling.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Keep Alive for Pull Point Event Handling section and Keep Alive for Pull Point Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+		    <revision  xml:id="s.revhistory.KeepAliveForPullPointEventHandling.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Keep Alive for Pull Point Event Handling section and Keep Alive for Pull Point Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.KeepAliveForPullPointEventHandling.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Keep Alive for Pull Point Event Handling section and Keep Alive for Pull Point Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+
+  </revhistory>
+  <section xml:id="s.intro.KeepAliveForPullPointEventHandling">
+    <title>Keep Alive for Pull Point Event Handling</title>
+    <para>
+      Keep Alive for Pull Point Event Handling section specifies Client ability to use keep alive for Pull Point Event Handling using PullMessages or Renew approach.
+    </para>
+  </section>
+  <section xml:id="tc.KeepAliveForPullPointEventHandling">
+    <title>Keep Alive for Pull Point Event Handling Test Cases</title>
+    <section xml:id="tc.KeepAliveForPullPointEventHandling.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Keep Alive for Pull Point Event Handling (KeepAliveForPullPointEventHandling)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="no UnsupportedPullPointNotificatio">Check Condition based on Device Features:</emphasis> Pull Point Notification is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Requirement:</emphasis> Optional
+      </para>
+    </section>
+    <section xml:id="tc.KeepAliveForPullPointEventHandling.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to initiate Pull Point Event Handling.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Keep Alive for Pull Point Event Handling if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>Client supports EventHandling_Pullpoint feature AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to renew pull point subscribtion using <emphasis role="bold">Renew</emphasis> operation OR <emphasis role="bold">PullMessages</emphasis> operation mechanism.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Keep Alive for Pull Point Event Handling if the following
+              is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">Renew</emphasis> request AND for <emphasis role="bold">CreatePullPointSubscription</emphasis> request in the case if <emphasis role="bold">PullMessages</emphasis> used for keep alive OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">Renew</emphasis> request if detected OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">CreatePullPointSubscription</emphasis> request in the case if <emphasis role="bold">PullMessages</emphasis> used for keep alive if detected OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    <emphasis role="bold">Renew</emphasis> request was invoked to address
+                    which was not specified in <emphasis role="bold">tev:SubscriptionReference\wsa:Address</emphasis> element
+                    of corresponding <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-1">
+      <title>RENEW</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Advanced Pull Point Event Handling - Renew
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> KEEPALIVEFORPULLPOINTEVENTHANDLING-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Renew (KeepAliveForPullPointEventHandling_Renew)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
+        to use <emphasis role="bold">Renew</emphasis> operation as keep alive for Pull Point subscribtion.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with <emphasis role="bold">Renew</emphasis> operations present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">Renew</emphasis> message to valid address recieved in <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message
+              for the created Pull Point subscribtion with valid address recieved in <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">RenewResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Renew</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Renew</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-1.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Renew</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">Renew</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-1.1">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-1.2">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:RenewResponse</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-1.3">
+            <para>
+              There is a Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] It received for the same Device as for the Client <emphasis role="bold">Renew</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S6] It received before the Client <emphasis role="bold">Renew</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S7] It contains <emphasis role="bold">tev:SubscriptionReference\wsa:Address</emphasis> element
+                    which is equal to HTTP address that was used to send the <emphasis role="bold">Renew</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-2">
+      <title>PULL MESSAGES AS KEEP ALIVE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Advanced Pull Point Event Handling - Pull Messages as Keep Alive
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> KEEPALIVEFORPULLPOINTEVENTHANDLING-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Pull Messages as Keep Alive (KeepAliveForPullPointEventHandling_PullMessagesAsKeepAlive)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
+        to use <emphasis role="bold">PullMessages</emphasis> operation as keep alive for Pull Point subscribtion.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations whithout <emphasis role="bold">tev:InitialTerminationTime</emphasis> element present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message whithout <emphasis role="bold">tev:InitialTerminationTime</emphasis> element.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-2.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-2.1">
+                    [S2] It does not contain <emphasis role="bold">tev:InitialTerminationTime</emphasis> element AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-2.2">
+                    [S3] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-2.3">
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

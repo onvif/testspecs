@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <!--Revision history for the feature-->
+  <!--Each revision shall have id with the following format:-->
+  <!--xml:id="s.revhistory.[featureId].[date of change in YYYYMMDD].[postfix marked to which spec shall be added: PtofileX or All]"-->
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.AuxiliaryCommands.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Auxiliary Commands section and Auxiliary Commands Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>
+  <!--Information which will be added to scope-->
+  <!--Shall have the following id format-->
+  <!--xml:id="s.intro.[featureId]"-->
+  <section xml:id="s.intro.[featureId]">
+    <title>[Feature Name]</title>
+    <para>
+      [Short feaure description]
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.[featureId]">
+    <title>[Feature Name] Test Cases</title>
+    <section xml:id="tc.[featureId].feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> [Feature Name] ([featureId])
+      </para>
+      <para>
+        <emphasis role="bold" annotations="[Note of which Device Feature IDs shall be used and how]">Check Condition based on Device Features:</emphasis> [Dependence on device features].
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> [number of devices with which feature shall pass, default 3]
+      </para>
+      <!--List of profiles for which feature mandatory, conditional or optional-->
+      <para>
+        <emphasis role="bold" annotations="[link to Profile Spec section for Covarage map proposes, example 7.2 Capabilities]">Profile X Requirement:</emphasis> [Mandatory/Conditional/Optional/None]
+      </para>
+    </section>
+    <section xml:id="tc.[featureId].scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <!--Description of use case-->
+          <listitem>
+            <para>
+              [Example: Client connects to ONVIF Profile T Simulator to manage auxiliary commands supported by the Device.]
+            </para>
+          </listitem>
+          <!--Feature is supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as supporting [Feature Name] if the
+              following conditions are met:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Example:
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to get the NTP settings from Device using
+                    the GetNTP operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to set the NTP settings on Device using the
+                    SetNTP operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--Feature is not supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as NOT supporting [Feature Name] if
+              ANY of the following is TRUE:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Example:
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Wiper|On auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Wiper|Off auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Washer|On auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:Washer|Off auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:WashingProcedure|On auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:WashingProcedure|Off auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:IRLamp|On auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:IRLamp|Off auxiliary command
+                          AND
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Profile T Simulator does not detect <emphasis role="bold">SendAuxiliaryCommand</emphasis> request with tt:IRLamp|Auto auxiliary command.
+
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <!--Optional recomentations-->
+      <para>
+        <emphasis role="bold">Recommendation:</emphasis> Clients should support all auxiliary operations listed in the scenario.
+      </para>
+    </section>
+    <!--Test cases related to this feature-->
+    <!--Based on test results feature will be defined as supported or not-->
+    <section xml:id="tc.[featureId].[testid, example AUXILIARYCOMMANDS-1]">
+      <title>[Test Name]</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> [Subfeature related to test cases name]
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> [testid]
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> [Client Subfeature Name] ([ClientSubfeatureID])
+      </para>
+      <!--Links to profiles where this feature is mensioned-->
+      <para>
+        <emphasis role="bold" annotations="[link to Profile Spec section for Covarage map proposes, example SendAuxiliaryCommand;tt:Wiper|On]">Profile X Normative Reference:</emphasis> [Mandatory/Conditional/Optional/None]
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> [what will be verified]
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <!--What shall be done to pass test cases-->
+        <itemizedlist>
+          <listitem>
+            <para>
+              Example:
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The .osc file of conversation with ONVIF Profile T Simulator is present (please, refer to 'Profile T Simulator' section in Help) .
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">AddConfiguration</emphasis> operation with Type value is equal to <emphasis role="bold">PTZ</emphasis>
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Media2 Service (Media2Service).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PTZ service (PTZService).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <!--What scenario is expected:-->
+        <orderedlist>
+          <listitem>
+            <para>
+              Example:
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SendAuxiliaryCommand</emphasis> request message with <emphasis role="bold">AuxiliaryCommand</emphasis> = <emphasis role="bold">"tt:Wiper|On"</emphasis> to the ONVIF Profile T Simulator (please, refer to 'Profile T Simulator' section in Help).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator responds with <emphasis role="bold">SendAuxiliaryCommandResponse</emphasis> message and 200 OK HTTP code.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <!--Pass criteria with example-->
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SendAuxiliaryCommand</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.[featureId].[testid].0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommand</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.[featureId].[testid].1">
+                    [S2] <emphasis role="bold">tds:SendAuxiliaryCommand/tds:AuxiliaryCommand</emphasis> is equal to <emphasis role="bold">"tt:Wiper|On"</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Profile T Simulator response on the <emphasis role="bold">SendAuxiliaryCommand</emphasis> request
+              fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.[featureId].[testid].2">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.[featureId].[testid].3">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SendAuxiliaryCommandResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

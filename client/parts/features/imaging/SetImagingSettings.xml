@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.SetImagingSettings.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Imaging Settings Configuration section and Imaging Settings Configuration Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.SetImagingSettings">
+      <title>Imaging Settings Configuration</title>
+      <para>
+        Imaging Settings Configuration section specifies Client ability to change imaging settings on Device.
+      </para>
+  </section>
+ <section xml:id="tc.SetImagingSettings">
+    <title>Imaging Settings Configuration Test Cases</title>
+    <section xml:id="tc.SetImagingSettings.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Imaging Settings Configuration (SetImagingSettings)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ImagingService">Check Condition based on Device Features:</emphasis> Imaging Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.16 Imaging Settings">Profile T Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.SetImagingSettings.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to change imaging settings.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Imaging Settings Configuration if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    Client is able to retrieve a imaging options using
+                    <emphasis role="bold">GetOptions</emphasis> operation AND
+                  </para></listitem><listitem><para>
+                    Client is able to change a imaging settings using
+                    <emphasis role="bold">SetImagingSettings</emphasis> operation.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Imaging Settings Configuration if
+              ANY of the following is TRUE:<itemizedlist><listitem><para>
+                    No valid responses for <emphasis role="bold">GetOptions</emphasis> request OR
+                  </para></listitem><listitem><para>
+                    No valid responses for <emphasis role="bold">SetImagingSettings</emphasis> request OR
+                  </para></listitem><listitem><para>
+                    There is no <emphasis role="bold">GetOptions</emphasis> request for the same video source token as used in <emphasis role="bold">SetImagingSettings</emphasis> request.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-1">
+      <title>GET OPTIONS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Imaging Settings -
+        Get Options
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> SETIMAGINGSETTINGS-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Options (SetImagingSettings_GetOptions)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetOptions">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that imaging options for Device is received by Client using the
+        <emphasis role="bold">GetOptions</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetOptions</emphasis> operation
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Imaging Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetOptions</emphasis> request message to retrieve imaging options
+              for specified video source from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetOptionsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetOptions</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetOptions</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-1.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetOptions</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetOptions</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-1.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-1.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetOptionsResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+    <section xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2">
+      <title>SET IMAGING SETTINGS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Set Imaging Settings -
+        Set Imaging Settings
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> SETIMAGINGSETTINGS-2
+      </para>
+        <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set Imaging Settings (SetImagingSettings_SetImagingSettingsRequest)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="SetImagingSettings">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to change
+        imaging settings on Device using the <emphasis role="bold">SetImagingSettings</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">SetImagingSettings</emphasis> operation
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Imaging Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetOptions</emphasis> request message to retrieve imaging options
+              for specified video source from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetOptionsResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SetImagingSettings</emphasis> request message to change imaging settings
+              for specified video source which correspond to the retrieved options on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">SetImagingSettingsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetImagingSettings</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetImagingSettings</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:SetImagingSettings</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetImagingSettings</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:SetImagingSettingsResponse</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.3">
+            <para>
+              There is a Client <emphasis role="bold">GetOptions</emphasis> request in Test Procedure that fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.4"><para>
+                    [S4] <emphasis role="bold">timg:VideoSourceToken</emphasis> element value is equal to
+                    <emphasis role="bold">timg:VideoSourceToken</emphasis> element from the <emphasis role="bold">SetImagingSettings</emphasis> request AND
+                  </para></listitem><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.5"><para>
+                    [S5] It is invoked before the Client <emphasis role="bold">SetImagingSettings</emphasis> request AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetOptions</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact"><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.6"><para>
+                    [S6] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.SetImagingSettings.SETIMAGINGSETTINGS-2.7"><para>
+                    [S7] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">timg:GetOptionsResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+   
+    </section>
+  </section>
+</feature>

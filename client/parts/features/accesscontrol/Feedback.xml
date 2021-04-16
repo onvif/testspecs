@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.AccessControl.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+		<para>Scope\AreaInformation section was added.</para>
+		<para>Area Information Test Cases section was added.</para>
+		<para>System Component Information section was removed.</para>
+		<para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision-->
+    <revision xml:id="s.revhistory.Feedback.20200529.ProfileD">
+        <revnumber>20.06</revnumber>
+        <date>May 29, 2020</date>
+        <revdescription>
+          <para>Feedback mandatory feature was added according to #386.</para>  
+        </revdescription>
+      </revision>
+  </revhistory>  
+  <section xml:id="s.intro.Feedback">
+        <title>Feedback</title>
+        <para>
+          Feedback section specifies Client ability to send feedback indications using the Feedback operation.
+        </para>
+      </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.Feedback">
+      <title>Feedback Test Cases</title>
+      <section xml:id="tc.Feedback.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Feedback (Feedback)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="EnableDisableAccessPoint">Check Condition based on Device Features:</emphasis> Feedback is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 3
+        </para>
+        
+        <para>
+          <emphasis role="bold"
+                    annotations="7.10	Access Control">Profile D Requirement:</emphasis> Mandatory
+        </para>
+      </section>
+      <section xml:id="tc.Feedback.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+               Client instructs the access point about progress of ExternalAuthorization operation using <emphasis role="bold">Feedback</emphasis> operation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Feedback if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client is able to send feedback using <emphasis role="bold">Feedback</emphasis> operation AND  
+                    </para>
+                  </listitem>   
+                  <listitem>
+                    <para>
+                      Client supports AccessControlIdentifier feature (please see <xref linkend="tc.AccessControlIdentifier"/> section). 
+                    </para>
+                  </listitem>   
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Feedback if ANY of
+                the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid Device response to <emphasis role="bold">Feedback</emphasis> request OR                    
+                    </para>
+                  </listitem>   
+                   <listitem>
+                    <para>
+                      Client does not support AccessControlIdentifier feature (please see <xref linkend="tc.AccessControlIdentifier"/> section). 
+                    </para>
+                  </listitem>   
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.Feedback.FEEDBACK-1">
+        <title>FEEDBACK OPERATION</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Feedback Operation
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> FEEDBACK-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Feedback (Feedback_FeedbackRequest)
+        </para>        
+        <para>
+          <emphasis role="bold" annotations="Feedback">Profile D Normative Reference:</emphasis> Mandatory
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+          send feedback indications using the Feedback operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation between
+                Client and Device with Feedback
+                operations present.
+              </para>
+            </listitem>
+             <listitem>
+              <para>
+                Device supports Feedback.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">Feedback</emphasis> request message to instruct the access point about progress of ExternalAuthorization operation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">FeedbackResponse</emphasis>
+                message.
+              </para>
+            </listitem>           
+            
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">Feedback</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">Feedback</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>                  
+                  <listitem xml:id="tc.Feedback.FEEDBACK-1.0">
+                    <para>
+                      [S0] <emphasis role="bold">soapenv:Body</emphasis> element has child
+                      <emphasis role="bold">tac:Feedback</emphasis> element AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Feedback.FEEDBACK-1.1">
+                    <para>
+                      [S1] If <emphasis role="bold">tac:Feedback/tac:FeedbackType</emphasis> = "pt:RequireIdentifier", then <emphasis role="bold">tac:Feedback</emphasis> contains at least one 
+                      <emphasis role="bold">tac:RecognitionType</emphasis> element AND                     
+                    </para>
+                  </listitem>
+                  
+                </itemizedlist>
+              </para>
+            </listitem>           
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">Feedback</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Feedback.FEEDBACK-1.2">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Feedback.FEEDBACK-1.3">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tac:FeedbackResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>The Client failed PASS criteria.</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+</feature>

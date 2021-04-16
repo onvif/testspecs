@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Tampering.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Tampering section and Tampering Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  
+  <section xml:id="s.intro.video_source_configuration">
+        <title>Video Source Configuration Using Media2</title>
+        <para>
+          Video Source Configuration Using Media2 section specifies listing and modification of video source configurations on Device.
+        </para>
+      </section>
+  
+  <section xml:id="tc.Media2_VideoSourceConfiguration" xreflabel ="Video Source Configuration Using Media2">
+      <title>Video Source Configuration Using Media2 Test Cases</title>
+      <section xml:id="tc.Media2_VideoSourceConfiguration.feature">
+        <title>Feature Level Normative Reference:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Video Source Configuration Using Media2 (Media2_VideoSourceConfiguration)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="Media2_Video OR Media2_VideoSource">Check Condition based on Device Features:</emphasis> Video (Media2 Service) or VideoSource (Media2 Service) is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 1
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="7.11 Video Source Configuration">Profile T Requirement:</emphasis> Conditional
+        </para>
+      </section>
+      <section xml:id="tc.Media2_VideoSourceConfiguration.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client connects to Device to modify Video Source
+                Configuration.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Video Source Configuration if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve video source configuratoins using
+                      <emphasis role="bold">GetVideoSourceConfigurations</emphasis> operation (Media2 Service)
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve video source configuratoin options using
+                      <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> operation (Media2 Service)
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to modify video source configuratoin using
+                      <emphasis role="bold">SetVideoSourceConfiguration</emphasis> operation (Media2 Service)
+                      AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Video Source Configuration if
+                ANY of the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request (Media2 Service)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> request (Media2 Service)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">SetVideoSourceConfiguration</emphasis> request (Media2 Service)
+                      OR
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1" xreflabel ="MEDIA2_VIDEOSOURCECONFIGURATION-1 GET VIDEO SOURCE CONFIGURATIONS USING MEDIA2">
+        <title>GET VIDEO SOURCE CONFIGURATIONS USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Video Source Configuration - Get Video Source Configurations
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_VIDEOSOURCECONFIGURATION-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configurations Using Media2 (Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurations)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="GetVideoSourceConfigurations">Profile T Normative Reference:</emphasis> Conditional
+        </para>
+         <para>
+          <emphasis role="bold"
+                    annotations="GetVideoSourceConfigurations">Profile M Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that video source configuration provided by Device is received by Client using the
+          <emphasis role="bold">GetVideoSourceConfigurations</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetVideoSourceConfigurations</emphasis> operation for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Video feature for Media2 Service (Media2_Video) OR Device supports Video Source feature for Media2 Service (Media2_VideoSource).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request message to retrieve an video source configuration or a list of video source configurations
+                from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetVideoSourceConfigurationsResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetVideoSourceConfigurations</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetVideoSourceConfigurationsResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-2">
+        <title>GET VIDEO SOURCE CONFIGURATION OPTIONS USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Video Source Configuration - Get Video Source Configuration Options
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_VIDEOSOURCECONFIGURATION-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configuration Options Using Media2 (Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurationOptions)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="GetVideoSourceConfigurationOptions">Profile T Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that video source configuration options provided by Device is received by Client using the
+          <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> operation for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Video feature for Media2 Service (Media2_Video) OR Device supports Video Source feature for Media2 Service (Media2_VideoSource).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> request message to retrieve an video source configuration options
+                from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetVideoSourceConfigurationOptionsResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetVideoSourceConfigurationOptions</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-2.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-2.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetVideoSourceConfigurationOptionsResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-3">
+        <title>SET VIDEO SOURCE CONFIGURATION USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Video Source Configuration - Set Video Source Configuration
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_VIDEOSOURCECONFIGURATION-3
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Set Video Source Configuration Using Media2 (Media2_VideoSourceConfiguration_Media2_SetVideoSourceConfiguration)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="SetVideoSourceConfiguration">Profile T Normative Reference:</emphasis> Conditional
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to change video source configuration provided by Device using the
+          <emphasis role="bold">SetVideoSourceConfiguration</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">SetVideoSourceConfiguration</emphasis> operation for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Video feature for Media2 Service (Media2_Video) OR Device supports Video Source feature for Media2 Service (Media2_VideoSource).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">SetVideoSourceConfiguration</emphasis> request message to change an video source configuration
+                on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">SetVideoSourceConfigurationResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetVideoSourceConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetVideoSourceConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-3.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:SetVideoSourceConfiguration</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">SetVideoSourceConfiguration</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-3.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-3.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:SetVideoSourceConfigurationResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+</feature>

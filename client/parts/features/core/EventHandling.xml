@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.EventHandling.20200831.All">
+      <revnumber>20.12</revnumber>
+      <date>Aug 31, 2020</date>
+      <revdescription>       
+        <para>Event Handling Feature: Check Condition based on Device Features was changed according to #325.</para>       
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.EventHandling.20190918.All">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #325:</para>
+        <para>EVENTHANDLING-3 METADATA STREAMING test was removed from Event Handling Feature and moved to Metadata Streaming Using Media2. Test case ID was changed to MEDIA2_METADATASTREAMING-1. Event Handling will use link to this test.</para>
+        <para>EVENTHANDLING-4 METADATA STREAMING USING MEDIA was added for Profile S Devices.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.EventHandling.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Event Handling section and Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.EventHandling.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Event Handling section and Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.EventHandling.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Event Handling section and Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.EventHandling.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Event Handling section and Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.EventHandling.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Event Handling section and Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.EventHandling.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Event Handling section and Event Handling Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.EventHandling">
+    <title>Event Handling</title>
+    <para>
+      Event Handling section defines Client ability to initiate and receive
+      notifications (events) from a Device.
+    </para>
+    <para>
+      The event handling test cases cover the following mandatory interfaces:<itemizedlist>
+        <listitem>
+          <para>
+            Pull Point Notification Interface<itemizedlist>
+              <listitem>
+                <para>
+                  This test specification provides test cases to verify the
+                  implementation of the PullPoint Interface of a
+                  Client.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Basic Notification Interface<itemizedlist>
+              <listitem>
+                <para>
+                  This test specification provides test cases to verify the
+                  implementation of the Basic Notification Interface of a
+                  Client.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Metadata Streaming Interface<itemizedlist>
+              <listitem>
+                <para>
+                  This test specification provides test cases to verify the
+                  implementation of the Metadata Streaming Interface of a
+                  Client using Media Service and using Media2 Service.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+  </section>
+  <section xml:id="tc.EventHandling" xreflabel ="Event Handling Test Cases">
+    <title>Event Handling Test Cases</title>
+    <section xml:id="tc.EventHandling.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Event Handling (EventHandling)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="no UnsupportedPullPointNotification OR WSBasicNotification OR Profile S OR Media2_Metadata">Check Condition based on Device Features:</emphasis> Pull Point Notification OR WS Basic Notification 
+        OR Profile S OR Metadata under Media2 service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.7 Event Handling">Profile T Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.7 Event Handling">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.EventHandling.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to initiate Event Handling.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Event Handling if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to handle the Pull Point Event mechanism
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to handle the Base Notification Event
+                    mechanism OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to handle the Metadata Streaming by supporting EventHandling_MetadataStreamingUsingMedia feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-4"/> section) OR Media2_MetadataStreaming_MetadataStreamingUsingMedia2 feature (please see <xref linkend="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1"/> section).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Event Handling if the following
+              is TRUE:<itemizedlist>
+                <listitem>
+                  <para>All Pull Point attempts detected have failed AND</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    All Base Notification attempts detected have failed
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    All Metadata Streaming attempts detected have
+                    failed.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.EventHandling.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">
+      <title>PULLPOINT</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Event Handling - Pull Point
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> EVENTHANDLING-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Pull Point (EventHandling_PullPoint)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Governed by business rule #3
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="CreatePullPointSubscription;PullMessage">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="CreatePullPointSubscription;PullMessage">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+       <para>
+        <emphasis role="bold" annotations="CreatePullPointSubscription;PullMessage">Profile M Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
+        to retrieve events using Pull Point.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with Pull Point event type.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>Client invokes CreatePullPointSubscription message.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              CreatePullPointSubscriptionResponse message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes PullMessages command with Timeout and MessageLimit
+              elements.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and PullMessagesResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-1.0">
+                    [S1] Client request contains "&lt;CreatePullPointSubscription&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-1.2">
+                    [S3] Device response contains "&lt;CreatePullPointSubscriptionResponse&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-1.3">
+                    [S4] Client request contains "&lt;PullMessages&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-1.4">
+                    [S7] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-1.5">
+                    [S8] Device response contains "&lt;PullMessagesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.EventHandling.EVENTHANDLING-2">
+      <title>BASE NOTIFICATION</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Event Handling - Basic
+        Notification
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> EVENTHANDLING-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Base Notification (EventHandling_WSBaseNotification)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Governed by business rule #3
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
+        to retrieve events using WS-Base Notification.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with Basic Notification event type.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes Subscribe message with ConsumerReference
+              element.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and SubscribeResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-2.0">
+                    [S1] Client request contains "&lt;Subscribe&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-2.1">
+                    [S4] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-2.2">
+                    [S5] Device response contains "&lt;SubscribeResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.EventHandling.EVENTHANDLING-4" xreflabel="EVENTHANDLING-4 METADATA STREAMING USING MEDIA">
+      <title>METADATA STREAMING USING MEDIA</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Event Handling - Metadata Streaming Using Media
+        Streaming
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> EVENTHANDLING-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Metadata Streaming (EventHandling_MetadataStreamingUsingMedia)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
+        to retrieve the Metadata Streaming using Media Service.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with Metadata Streaming event type using Media Service.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetStreamUri</emphasis> request message for Media service for media profile that contains Video Source Configuration and Metadata Configuration.
+              GetStreamUri request is set for RTP-Unicast/UDP OR RTP-Multicast/UDP OR RTP/RTSP/TCP OR RTP-Unicast/RTSP/HTTP/TCP transport.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetStreamUriResponse</emphasis>
+              message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP DESCRIBE</emphasis> request to retrieve media stream
+              description.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code RTSP 200 OK and SDP information with Media
+              Type: "application" and with encoding name "vnd.onvif.metadata" or "vnd.onvif.metadata.gzip" or "vnd.onvif.metadata.exi.onvif" or "vnd.onvif.metadata.exi.ext".
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP SETUP</emphasis> request without "onvif-replay" Require header and with transport parameter element to
+              to set media session parameters for metadata streaming.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device responds with code RTSP 200 OK.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP PLAY</emphasis> request without "onvif-replay" Require header to start media stream.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device responds with code RTSP 200 OK.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RTSP TEARDOWN</emphasis> request to terminate the RTSP session.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If Device sends response to RTSP TEARDOWN, it has code RTSP 200 OK or RTSP 454.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">Note:</emphasis> RTSP requests and RTSP response could be tunneled in HTTP if RTP-Unicast/RTSP/HTTP/TCP transport is used.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para xml:id="tc.EventHandling.EVENTHANDLING-4.0">
+              There is Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request in Test Procedure
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">RTSP DESCRIBE</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.1">
+                    [S1] It has RTSP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.2">
+                    [S2] SDP packet contains media type "application" (m=application) with sessions attribute "rtpmap" with encoding name "vnd.onvif.metadata" OR "vnd.onvif.metadata.gzip" OR "vnd.onvif.metadata.exi.onvif" OR "vnd.onvif.metadata.exi.ext" (see ONVIF Streaming Spec) AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.EventHandling.EVENTHANDLING-4.3">
+              There is Client <emphasis role="bold">RTSP SETUP</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.4">
+                    [S3] It invoked for the same Device as for the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.5">
+                    [S4] It invoked after the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.6">
+                    [S5] RTSP address that was used to send <emphasis role="bold">RTSP SETUP</emphasis> is correspond to corresponding media Control URL from SDP packet (see [RFC 2326, C.1.1 Control URL]) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.7">
+                    [S6] It does not contain <emphasis role="bold">Require</emphasis> request header field with value is equal to "onvif-replay" AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">RTSP SETUP</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.8">
+                    [S7] It has RTSP 200 response code AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.EventHandling.EVENTHANDLING-4.9">
+              There is a Device response on the <emphasis role="bold">GetStreamUri</emphasis> request invoked for Media Service in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.10">
+                    [S8] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.11">
+                    [S9] It received for the same Device as for the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.12">
+                    [S10] It received before the Client <emphasis role="bold">RTSP DESCRIBE</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.13">
+                    [S11] It contains <emphasis role="bold">trt:MediaUri\tt:Uri</emphasis> element
+                    which value is equal to RTSP address that was used to send the <emphasis role="bold">RTSP DESCRIBE</emphasis> request                  
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.EventHandling.EVENTHANDLING-4.14">
+              There is Client <emphasis role="bold">RTSP PLAY</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.15">
+                    [S12] It invoked for the same Device as for the Client <emphasis role="bold">RTSP SETUP</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.16">
+                    [S13] It invoked after the Client <emphasis role="bold">RTSP SETUP</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.17">
+                    [S14] RTSP address that was used to send it is correspond to corresponding media Control URL or session Control URL or Content-Base URL from SDP packet (see [RFC 2326, C.1.1 Control URL]) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.18">
+                    [S15] It does not contain <emphasis role="bold">Require</emphasis> request header field with value is equal to "onvif-replay" AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">RTSP PLAY</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.19">
+                    [S16] It has RTSP 200 response code AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para xml:id="tc.EventHandling.EVENTHANDLING-4.20">
+              There is Client <emphasis role="bold">RTSP TEARDOWN</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.21">
+                    [S17] It invoked for the same Device as for the Client <emphasis role="bold">RTSP SETUP</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.22">
+                    [S18] It invoked after the Client <emphasis role="bold">RTSP PLAY</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.23">
+                    [S19] RTSP address that was used to send it is correspond to corresponding media Control URL or session Control URL or Content-Base URL from SDP packet (see [RFC 2326, C.1.1 Control URL]) AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If there is Device response on the <emphasis role="bold">RTSP TEARDOWN</emphasis> request then it fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.EventHandling.EVENTHANDLING-4.24">
+                    [S20] It has RTSP 200 response code.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

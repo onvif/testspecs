@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.HTTPDigest.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP Digest section and HTTP Digest Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.HTTPDigest.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP Digest section and HTTP Digest Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.HTTPDigest.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP Digest section and HTTP Digest Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.HTTPDigest.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP Digest section and HTTP Digest Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.HTTPDigest.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP Digest section and HTTP Digest Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.HTTPDigest.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP Digest section and HTTP Digest Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.HTTPDigest">
+    <title>HTTP Digest</title>
+    <para>
+      HTTP Digest section defines security mechanism for HTTP Digest Authentication.
+    </para>
+  </section>
+  <section xml:id="tc.HTTPDigest">
+    <title>HTTP Digest Test Cases</title>
+    <section xml:id="tc.HTTPDigest.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold"
+                  annotations="All">Validated Feature:</emphasis> HTTP Digest authentication (HTTPDigest)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Digest">Check Condition based on Device Features:</emphasis> Digest
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.1 User authentication">Profile D Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.1 User authentication">Profile T Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.1 User authentication">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.HTTPDigest.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes a specific command which is under
+              testing without any user credentials (no UsernameToken, no HTTP Digest
+              authentication header).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device returns HTTP 401 Unauthorized error along with
+              WWW-Authentication: Digest header.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client re-sends request with HTTP Digest Authentication header corresponding to header provided in device response.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device sends a valid response to this request.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting HTTP Digest if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Device returns a valid response to specific request with
+                    HTTP Digest authentication header.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting HTTP Digest
+              if the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>All HTTP Digest attempts detected are failed.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.HTTPDigest.HTTPDIGEST-1">
+      <title>HTTP DIGEST</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Security - HTTP Digest
+        Authentication.
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> HTTPDIGEST-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> HTTP Digest (HTTPDigest_HTTPDigestAuthentication)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Digest authentication for HTTP">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Digest authentication for HTTP">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Digest authentication for HTTP">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports
+        the HTTP Digest Authentication for HTTP level security.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with HTTP Digest Authentication present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client sends a request that requires authentication (e.g. GetUsers) to
+              the Device without any authentication.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device rejects the request with HTTP error code 401 AND an HTTP Digest
+              challenge.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Client sends a valid request with HTTP Digest Authentication.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Device accepts the correct request with response code HTTP 200
+              OK.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.0">
+            <para>
+              [S1] Client request contains (HTTP GET method OR HTTP POST method) without any authentication AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client HTTP GET request has a proper hierarchy (refer to [RFC 1945]) AND
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HTTPDigest.HTTPDIGEST-1.1">
+                    [S2] Device response contains "HTTP/* 401 Unauthorized" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.2">
+                  <para>
+                    [S3] Device response contains "realm=*" element AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.3">
+                  <para>
+                    [S4] Device response contains "nonce=*" element AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.4">
+                  <para>
+                    [S5] Client request contains (HTTP GET method OR HTTP POST method)
+                    with "Authorization: Digest username=*" element AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client HTTP GET request with HTTP Authentication has a proper hierarchy (refer to [RFC 1945]) AND
+              <itemizedlist>
+                <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.5">
+                  <para>
+                    [S6] Client request contains "realm=*" element with value from Device response AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.6">
+                  <para>
+                    [S7] Client request contains "nonce=*" element with value from Device response AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.7">
+                  <para>
+                    [S8] Client request contains "uri=*" element AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.HTTPDigest.HTTPDIGEST-1.8">
+                  <para>
+                    [S9] Device response contains "HTTP/* 200 OK".
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  </section>
+</feature>

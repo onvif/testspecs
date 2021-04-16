@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Media2_MetadataStreaming.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Tampering section and Tampering Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  <section xml:id="s.intro.Media2_VideoStreaming_ProfileM">
+    <title>Video Streaming Using Media2 (Profile M)</title>
+    <para>
+      Video Streaming Using Media2 section specifies receiving of video stream from Device using Madia2 Service.
+    </para>
+  </section>
+  <section xml:id="tc.Media2_VideoStreaming_ProfileM">
+    <title>Video Streaming Using Media2 Test Cases</title>
+    <section xml:id="tc.Media2_VideoStreaming_ProfileM.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Video Streaming Using Media2 for Profile M (Media2_VideoStreaming_ProfileM)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="Media2_H264 OR Media2_H265">Check Condition based on Device Features:</emphasis> H264 or H265 under Media2 Service is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="8.2 Video streaming">Profile M Requirement:</emphasis> Conditional 
+      </para>
+    </section>
+    <section xml:id="tc.Media2_VideoStreaming_ProfileM.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to receive video stream using Media2 Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Video Streaming Using Media2 (Profile M) if the following
+              conditions are met:<itemizedlist>               
+                
+                <listitem>
+                  <para>
+                    Client supports Media2_VideoStreaming_H264_Media2_H264VideoStreaming feature (please see <xref linkend="tc.Media2_VideoStreaming_H264.MEDIA2_VIDEOSTREAMING_H264-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports Media2_VideoStreaming_H265_Media2_H265VideoStreaming feature (please see <xref linkend="tc.Media2_VideoStreaming_H265.MEDIA2_VIDEOSTREAMING_H265-1"/> section).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Video Streaming Using Media2 (Profile M) if the
+              following is TRUE:<itemizedlist>
+                 <listitem>
+                  <para>
+                    Client does NOT support Media2_VideoStreaming_H264_Media2_H264VideoStreaming feature (please see <xref linkend="tc.Media2_VideoStreaming_H264.MEDIA2_VIDEOSTREAMING_H264-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does NOT support Media2_VideoStreaming_H265_Media2_H265VideoStreaming feature (please see <xref linkend="tc.Media2_VideoStreaming_H265.MEDIA2_VIDEOSTREAMING_H265-1"/> section).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+
+</feature>

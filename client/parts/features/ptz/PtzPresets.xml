@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+      <revision  xml:id="s.revhistory.PtzPresets.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Presets section and PTZ Presets Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.PtzPresets.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Presets section and PTZ Presets Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PtzPresets">
+      <title>PTZ Presets</title>
+      <para>
+        PTZ Presets section specifies Client ability to list the presets of a PTZ Node
+        and move a PTZ Device to a specific preset.
+      </para>
+  </section>
+    <section xml:id="tc.PtzPresets">
+    <title>PTZ Presets Test Cases</title>
+    <section xml:id="tc.PtzPresets.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> PTZ Presets (PtzPresets)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZPresets">Check Condition based on Device Features:</emphasis> PTZ Presets is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.3 PTZ Presets">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PtzPresets.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to manage the presets of a PTZ Node.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ Presets if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to list the presets using the GetPresets
+                    operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to move a PTZ Device to a specific preset
+                    using the GotoPreset operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ Presets if ANY of the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>No Valid Device Response to GetPresets request OR</para>
+                </listitem>
+                <listitem>
+                  <para>No Valid Device Response to GotoPreset request.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PtzPresets.PTZPRESETS-1">
+      <title>PTZ GET PRESETS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Presets - GetPresets
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZPRESETS-1
+      </para>
+         <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Presets (PtzPresets_PtzGetPresets)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetPresets">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+   
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        list the presets using the GetPresets operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with GetPresets operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetPresets request message to list the available
+              presets from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetPresetsResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetPresets</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetPresets</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-1.0">
+                  <para>
+                    [S1] Client request contains "&lt;GetPresets&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-1.1">
+                  <para>
+                    [S2] "&lt;GetPresets&gt;" includes tag: "&lt;ProfileToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-1.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-1.3">
+                  <para>
+                    [S4] Device response contains "&lt;GetPresetsResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+    <section xml:id="tc.PtzPresets.PTZPRESETS-2">
+      <title>PTZ GOTO PRESET</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Presets - GotoPreset
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZPRESETS-2
+      </para>
+        <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Goto Preset (PtzPresets_PtzGotoPreset)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GotoPreset">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        move a PTZ Device to a specific preset using the GotoPreset operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with GotoPreset operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GotoPreset request message to move PTZ Device to
+              specific preset.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GotoPresetResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GotoPreset</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GotoPreset</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-2.0">
+                  <para>
+                    [S1] Client request contains "&lt;GotoPreset&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-2.1">
+                  <para>
+                    [S2] "&lt;GotoPreset&gt;" includes tag: "&lt;ProfileToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-2.2">
+                  <para>
+                    [S3] "&lt;GotoPreset&gt;" includes tag: "&lt;PresetToken&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-2.3">
+                  <para>
+                    [S4] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzPresets.PTZPRESETS-2.4">
+                  <para>
+                    [S5] Device response contains "&lt;GotoPresetResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

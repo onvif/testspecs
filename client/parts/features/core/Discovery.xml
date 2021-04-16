@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+              <revision  xml:id="s.revhistory.Discovery.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Discovery section and Discovery Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+            <revision  xml:id="s.revhistory.Discovery.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Discovery section and Discovery Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.Discovery.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Discovery section and Discovery Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.Discovery.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Discovery section and Discovery Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.Discovery.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Discovery section and Discovery Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.Discovery.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Discovery section and Discovery Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.Discovery">
+      <title>Discovery</title>
+      <para>
+        Discovery section defines Client ability to locate services on a local network
+        using Web Services Dynamic Discovery (WS-Discovery) protocol. It uses IP multicast
+        address 239.255.255.250 and TCP and UDP port 3702 and SOAP-over-UDP standard for
+        communication between nodes.
+      </para>
+  </section>
+      <section xml:id="tc.Discovery">
+    <title>Discovery Test Cases</title>
+    <section xml:id="tc.Discovery.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Discovery (Discovery)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="All">Check Condition based on Device Features:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.3 Discovery">Profile T Requirement:</emphasis> Mandatory
+      </para>
+	        <para>
+        <emphasis role="bold" annotations="7.3 Discovery">Profile D Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.3 Discovery">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.Discovery.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client sends Probe message to multicast IP address 239.255.255.250 and
+              port 3702 to locate services on a local network.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Discovery if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Probe request detected AND at least one ProbeMatch
+                    response detected
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Discovery if the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>No Valid Device Response to Probe request.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.Discovery.DISCOVERY-1">
+      <title>WS-DISCOVERY</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Discovery - WS-Discovery
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DISCOVERY-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> WS-Discovery (Discovery_WSDiscovery)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="WS-Discovery">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="WS-Discovery">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="WS-Discovery">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        send Probe request and receive ProbeMatch response from Device.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contain at least one Client Probe request
+              to multicast IP address and one ProbeMatch response from Device directly
+              to the Client.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes Probe request message to multicast IP address
+              239.255.255.250 and port 3702.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device sends ProbeMatch message directly to the Client.</para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Probe</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Probe</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.Discovery.DISCOVERY-1.0">
+                    [S1] Client request contains "&lt;Action&gt;" tag after the "&lt;Header&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Discovery.DISCOVERY-1.1">
+                    [S2] "&lt;Action&gt;" includes URL address which ends with "Probe" value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Discovery.DISCOVERY-1.2">
+                    [S3] Client request contains "&lt;MessageID&gt;" with non-empty string value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Discovery.DISCOVERY-1.3">
+                    [S4] Client request contains "&lt;Probe&gt;" tag after the "&lt;Body&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.Discovery.DISCOVERY-1.4">
+                    [S5] Device response message contains "&lt;ProbeMatches&gt;" tag after the "&lt;Body&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

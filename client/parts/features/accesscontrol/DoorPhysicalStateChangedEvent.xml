@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.DoorPhysicalStateChangedEvent.20191206.ProfileD">
+      <revnumber>19.12</revnumber>
+      <date>Dec 06, 2019</date>
+      <revdescription>
+        <para>Door Physical State Changed Event feature was added according to #345</para>     
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.DoorPhysicalStateChangedEvent">
+    <title>Door Physical State Changed Event</title>
+    <para>
+      Door Physical State Changed Event section specifies Client ability to receive tns1:Door/State/DoorPhysicalState events.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.DoorPhysicalStateChangedEvent">
+    <title>Door Physical State Changed Event Test Cases</title>
+    <section xml:id="tc.DoorPhysicalStateChangedEvent.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Door Physical State Changed Event (DoorPhysicalStateChangedEvent)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DoorPhysicalStateEvent">Check Condition based on Device Features:</emphasis> DoorPhysicalState event is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>      
+      <para>
+        <emphasis role="bold" annotations="7.13	Door State">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.DoorPhysicalStateChangedEvent.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get notifications about the physical state of door.
+            </para>
+          </listitem>          
+          <listitem>
+            <para>
+              Client is considered as supporting Door Physical State Changed Event if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND</para>
+                </listitem>
+                 <listitem>
+                  <para>
+                    Client is able to receive <emphasis role="bold">tns1:Door/State/DoorPhysicalState</emphasis> notification (SystemComponentState_DoorStateDoorPhysicalStateNotification feature) if Device supports DoorPhysicalStateEvent.
+                  </para>
+                </listitem>                                
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Door Physical State Changed Event if the
+              following conditions are met:<itemizedlist>
+                 <listitem>
+                  <para>
+                    Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is NOT able to receive <emphasis role="bold">tns1:Door/State/DoorPhysicalState</emphasis> notification (SystemComponentState_DoorStateDoorPhysicalStateNotification feature).
+                  </para>
+                </listitem>              
+              </itemizedlist>
+            </para>
+          </listitem>
+          
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

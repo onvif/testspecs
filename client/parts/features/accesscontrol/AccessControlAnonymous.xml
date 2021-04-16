@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.AccessControl.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+		<para>Scope\AreaInformation section was added.</para>
+		<para>Area Information Test Cases section was added.</para>
+		<para>System Component Information section was removed.</para>
+		<para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>
+  <section xml:id="s.intro.AccessControlAnonymous">
+    <title>Access Control With Anonymous Access</title>
+    <para>
+	  Access Control With Anonymous Access section specifies Client ability to control anonymous access using external authorization functionality of a Device.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.AccessControlAnonymous">
+    <title>Access Control With Anonymous Access Test Cases</title>
+    <section xml:id="tc.AccessControlAnonymous.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Access Control With Anonymous Access (AccessControlAnonymous)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ExternalAuthorization AND AnonymousAccess">Check Condition based on Device Features:</emphasis> Access Control Service is supported by Device. Anonymous Access is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <!--List of profiles for which feature mandatory, conditional or optional-->
+	        <para>
+        <emphasis role="bold" annotations="7.10	Access Control">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.AccessControlAnonymous.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <!--Description of use case-->
+          <listitem>
+            <para>
+Client subscribes to Device messages to retrieve notification events
+                from Device
+				using <emphasis role="bold">CreatePullPointSubscription</emphasis> operation
+				and <emphasis role="bold">PullMessage</emphasis> operation.
+            </para>
+          </listitem>
+		  			<listitem>
+              <para>
+                Client receives authorization request from Device
+				with <emphasis role="bold">tns1:AccessControl/Request/Anonymous</emphasis> notification.
+              </para>
+            </listitem>
+		  			<listitem>
+              <para>
+                Client makes a decision
+                about granting or denying anonymous access by <emphasis role="bold">ExternalAuthorization</emphasis> operation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client receives notifications about access decisions related to External Authorization with <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> notification or <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis>.
+              </para>
+            </listitem>
+			            <listitem>
+              <para>
+                Client receives notifications about request timeout with <emphasis role="bold">tns1:AccessControl/Request/Timeout</emphasis> notification.
+              </para>
+            </listitem>
+          <!--Feature is supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as supporting Access Control With Anonymous Access if the
+              following conditions are met:
+              <itemizedlist>
+			                    <listitem>
+                    <para>
+                      Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND</para>
+                  </listitem>
+			                    <listitem>
+                    <para>
+                      Client supports ExternalAuthorization_SendAuthDecision feature (please see <xref linkend="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2"/> section) AND</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/Request/Anonymous</emphasis> notification AND
+                    </para>
+                  </listitem>
+				                    <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> notification AND
+                    </para>
+                  </listitem>
+				                    <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> notification AND
+                    </para>
+                  </listitem>
+				                    <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/Request/Timeout</emphasis> notification.
+                    </para>
+                  </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--Feature is not supported conditions-->
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Access Control With Anonymous Access if
+              ANY of the following is TRUE:
+              <itemizedlist>
+			                    <listitem>
+                    <para>
+                      Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section)
+                      OR
+                    </para>
+                  </listitem>
+			                    <listitem>
+                    <para>
+                      Client does not support ExternalAuthorization_SendAuthDecision feature (please see <xref linkend="tc.ExternalAuthorization.EXTERNALAUTHORIZATION-2"/> section)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/Request/Anonymous</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+				                    <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+				  				                    <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+				  				                    <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/Request/Timeout</emphasis> notification.
+                    </para>
+                  </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

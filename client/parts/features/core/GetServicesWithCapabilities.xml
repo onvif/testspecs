@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+            <revision  xml:id="s.revhistory.GetServicesWithCapabilities.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services with Capabilities section and Get Services with Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.GetServicesWithCapabilities.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services with Capabilities section and Get Services with Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.GetServicesWithCapabilities.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services with Capabilities section and Get Services with Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.GetServicesWithCapabilities.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services with Capabilities section and Get Services with Capabilities Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetServicesWithCapabilities">
+      <title>Get Services with Capabilities</title>
+      <para>
+        Get Services with Capabilities section specifies Client ability to retrieve capabilities of services with using GetServices operation.
+      </para>
+  </section>
+   <section xml:id="tc.GetServicesWithCapabilities" xreflabel="Get Services with Capabilities">
+    <title>Get Services with Capabilities Test Cases</title>
+    <section xml:id="tc.GetServicesWithCapabilities.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Services with Capabilities (GetServicesWithCapabilities)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetServices">Check Condition based on Device Features:</emphasis> GetServices is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Supplimentary Feature">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Optional
+      </para>
+	        <para>
+        <emphasis role="bold" annotations="7.2 Capabilities">Profile D Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Optional
+      </para>
+    </section>
+    <section xml:id="tc.GetServicesWithCapabilities.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve a service capabilities.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Get Services with Capabilities if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve a services capabilities using
+                    <emphasis role="bold">GetServices</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Get Services with Capabilities if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetServices</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.GetServicesWithCapabilities.GETSERVICESWITHCAPABILITIES-1">
+      <title>GET SERVICES</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Services with Capabilities -
+        Get Services
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> GETSERVICESWITHCAPABILITIES-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Services with Capabilities (GetServicesWithCapabilities_GetServicesWithCapabilitiesRequest)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetServiceCapabilities">Profile D Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that services capabilities provided by Device is received by Client using the
+        <emphasis role="bold">GetServices</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetServices</emphasis> operation with <emphasis role="bold">tds:IncludeCapability</emphasis> element equal to true present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The Device supports GetServices command.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetServices</emphasis> request message with <emphasis role="bold">tds:IncludeCapability</emphasis> element equal to true to retrieve
+              redential service capabilities from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetServicesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetServices</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetServices</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.GetServicesWithCapabilities.GETSERVICESWITHCAPABILITIES-1.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetServices</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.GetServicesWithCapabilities.GETSERVICESWITHCAPABILITIES-1.1">
+                    [S2] It contains <emphasis role="bold">tds:IncludeCapability</emphasis> element equal to true AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetServices</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.GetServicesWithCapabilities.GETSERVICESWITHCAPABILITIES-1.2">
+                    [S3] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.GetServicesWithCapabilities.GETSERVICESWITHCAPABILITIES-1.3">
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetServicesResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

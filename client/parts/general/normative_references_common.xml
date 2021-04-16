@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chapter xml:id="s.docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Normative references</title>
+    <itemizedlist>
+      <listitem>
+        <para>ONVIF Conformance Process Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/conformance/">https://www.onvif.org/profiles/conformance/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>ONVIF Profile Policy:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>ONVIF Network Interface Specifications:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>ISO/IEC Directives, Part 2, Annex H:</para>
+        <para>
+          <link xlink:href="www.iso.org/directives">www.iso.org/directives</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>ISO 16484-5:2014-09 Annex P:</para>
+        <para>
+          <link xlink:href="https://www.iso.org/obp/ui/#!iso:std:63753:en">https://www.iso.org/obp/ui/#!iso:std:63753:en</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>WS-BaseNotification:</para>
+        <para>
+          <link xlink:href="http://docs.oasis-open.org/wsn/wsn-ws_base_notification-1.3-spec-os.pdf">http://docs.oasis-open.org/wsn/wsn-ws_base_notification-1.3-spec-os.pdf</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>W3C SOAP 1.2, Part 1, Messaging Framework:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/soap12-part1/">http://www.w3.org/TR/soap12-part1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>W3C XML Schema Part 1: Structures Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>W3C XML Schema Part 2: Datatypes Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-2/">"http://www.w3.org/TR/xmlschema-2/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>W3C Web Services Addressing 1.0 – Core:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/ws-addr-core/">http://www.w3.org/TR/ws-addr-core/</link>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>

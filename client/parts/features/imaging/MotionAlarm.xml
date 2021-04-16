@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.MotionAlarm.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Motion Alarm section and Motion Alarm Test Cases section was moved from ONVIF Imaging Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.MotionAlarm">
+      <title>Motion Alarm</title>
+      <para>
+        Motion Alarm section specifies Client ability to receive notifications of motion alarm event.
+      </para>
+  </section>
+ <section xml:id="tc.MotionAlarm">
+    <title>Motion Alarm Test Cases</title>
+    <section xml:id="tc.MotionAlarm.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Motion Alarm Event (MotionAlarm)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="MotionAlarm">Check Condition based on Device Features:</emphasis> Motion Alarm is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.20 Motion Alarm Events;tns1: VideoSource/MotionAlarm">Profile T Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.MotionAlarm.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get motion alarm notifications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Motion Alarm if the
+              following conditions are met:<itemizedlist><listitem><para>Client supports EventHandling_Pullpoint feature AND</para></listitem><listitem><para>
+                    Client is able to retrieve tns1:VideoSource/MotionAlarm notifications if Device supports Motion Alarm feature.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Motion Alarm if ANY
+              of the following is TRUE:
+              <itemizedlist><listitem><para>Client does not support EventHandling_Pullpoint feature OR</para></listitem><listitem><para>
+                    Client is not able to retrieve tns1:VideoSource/MotionAlarm.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

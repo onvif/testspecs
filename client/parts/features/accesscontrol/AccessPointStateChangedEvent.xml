@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.AccessPointStateChangedEvent.20191206.ProfileD">
+      <revnumber>19.12</revnumber>
+      <date>Dec 06, 2019</date>
+      <revdescription>
+        <para>Access Point State Changed Event feature was added according to #345</para>     
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.AccessPointStateChangedEvent">
+    <title>Access Point State Changed Event</title>
+    <para>
+      Access Point State Changed Event section specifies Client ability to receive tns1:AccessPoint/State/Enabled events.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.AccessPointStateChangedEvent">
+    <title>Access Point State Changed Event Test Cases</title>
+    <section xml:id="tc.AccessPointStateChangedEvent.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Access Point State Changed Event (AccessPointStateChangedEvent)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AccessPointStateEnabledEvent">Check Condition based on Device Features:</emphasis> AccessPointStateEnabled event is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>      
+      <para>
+        <emphasis role="bold" annotations="7.9 Access Point State">Profile D Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.AccessPointStateChangedEvent.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get notifications about the state of access points.
+            </para>
+          </listitem>          
+          <listitem>
+            <para>
+              Client is considered as supporting Access Point State Changed Event if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND</para>
+                </listitem>
+                 <listitem>
+                  <para>
+                    Client is able to receive <emphasis role="bold">tns1:AccessPoint/State/Enabled</emphasis> notification (SystemComponentState_AccessPointStateEnabledNotification feature) about a state of access point if Device supports AccessPointStateEnabledEvent.
+                  </para>
+                </listitem>                                
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Access Point State Changed Event if the
+              following conditions are met:<itemizedlist>
+                 <listitem>
+                  <para>
+                    Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is NOT able to receive <emphasis role="bold">tns1:AccessPoint/State/Enabled</emphasis> notification about a state of access point (SystemComponentState_AccessPointStateEnabledNotification feature).
+                  </para>
+                </listitem>                
+              </itemizedlist>
+            </para>
+          </listitem>
+          
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+</feature>

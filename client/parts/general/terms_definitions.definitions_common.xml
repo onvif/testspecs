@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<section xml:id="additions.definitions" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+      <title>Definitions</title>
+      <para>This section describes terms and definitions used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>Address</term>
+          <listitem>
+            <para>An address refers to a URI.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Profile</term>
+          <listitem>
+            <para>See ONVIF Profile Policy.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ONVIF Device</term>
+          <listitem>
+            <para>
+              Computer appliance or software program that exposes one or multiple
+              ONVIF Web Services.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ONVIF Client</term>
+          <listitem>
+            <para>
+              Computer appliance or software program that uses ONVIF Web
+              Services.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Conversation</term>
+          <listitem>
+            <para>
+              A Conversation is all exchanges between two MAC addresses that
+              contains SOAP request and response.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Network</term>
+          <listitem>
+            <para>
+              A network is an interconnected group of devices communicating using
+              the Internet protocol.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Network Trace Capture file</term>
+          <listitem>
+            <para>
+              Data file created by a network protocol analyzer software (such as
+              Wireshark). Contains network packets data recorded during a live network
+              communications.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>SOAP</term>
+          <listitem>
+            <para>
+              SOAP is a lightweight protocol intended for exchanging structured
+              information in a decentralized, distributed environment. It uses XML
+              technologies to define an extensible messaging framework providing a
+              message construct that can be exchanged over a variety of underlying
+              protocols.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Client Test Tool</term>
+          <listitem>
+            <para>
+              ONVIF Client Test Tool that tests ONVIF Client implementation towards
+              the ONVIF Test Specification set.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Valid Device Response</term>
+          <listitem>
+            <para>
+              Device has responded to specific request with code HTTP or RTSP 200 OK
+              and SOAP fault message has not
+              appeared.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>

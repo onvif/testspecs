@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+        <revision  xml:id="s.revhistory.IPAddressFiltering.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>IP Address Filtering section and IP Address Filtering Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.IPAddressFiltering.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>IP Address Filtering section and IP Address Filtering Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.IPAddressFiltering.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>IP Address Filtering section and IP Address Filtering Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.IPAddressFiltering">
+      <title>IP Address Filtering</title>
+      <para>
+        IP Address Filtering section defines Client ability to manage IP address filters
+        on Device.
+      </para>
+  </section>
+   <section xml:id="tc.IPAddressFiltering">
+    <title>IP Address Filtering Test Cases</title>
+    <section xml:id="tc.IPAddressFiltering.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> IP Address Filtering (IPAddressFiltering)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="IPFilter">Check Condition based on Device Features:</emphasis> IP Filter is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.IPAddressFiltering.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to manage IP address filters.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting IP Address Filtering if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to get the IP address filter settings from
+                    Device using the GetIPAddressFilter operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to set the IP address filter settings on
+                    Device using the SetIPAddressFilter operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to add the IP address filter settings to
+                    Device using the AddIPAddressFilter operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to delete the IP address filter settings
+                    from Device using the RemoveIPAddressFilter
+                    operation.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    <emphasis role="bold">NOTE:</emphasis> Requests
+                    SetIPAddressFilter, AddIPAddressFilter and
+                    RemoveIPAddressFilter are permitted to use the IPv4 OR IPv6
+                    protocol settings.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting IP Address Filtering if ANY of
+              the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to GetIPAddressFilter request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to SetIPAddressFilter request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to AddIPAddressFilter request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No Valid Device Response to RemoveIPAddressFilter
+                    request.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    NOTE: Requests SetIPAddressFilter, AddIPAddressFilter and
+                    RemoveIPAddressFilter should be deemed as failed if both
+                    IPv4 AND IPv6 protocol settings have No Valid Device
+                    Responses.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-1">
+      <title>GET IP ADDRESS FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> IP Address Filtering -
+        GetIPAddressFilter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IPADDRESSFILTERING-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Ip Address Filter (IPAddressFiltering_GetIpAddressFilter)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        get the IP address filter settings from Device using the GetIPAddressFilter
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with GetIPAddressFilter operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetIPAddressFilter request message to get the IP
+              address filter settings from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and GetIPAddressFilterResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetIPAddressFilter</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetIPAddressFilter</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-1.0">
+                    [S1] Client request contains "&lt;GetIPAddressFilter&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-1.2">
+                    [S3] Device response contains "&lt;GetIPAddressFilterResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-2">
+      <title>SET IPv4 ADDRESS FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> IP Address Filtering -
+        SetIPv4AddressFilter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IPADDRESSFILTERING-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set IPv4 Address Filter (IPAddressFiltering_SetIpV4AddressFilter)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set the IP address filter settings on Device using the SetIPAddressFilter
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with SetIPAddressFilter operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetIPAddressFilter request message to set the IP
+              address filter settings on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and SetIPAddressFilterResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client SetIPAddressFilter request
+        message does not contain "&lt;IPv4Address&gt;" tag then Test shall be deemed as "NOT
+        DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetIPAddressFilter</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetIPAddressFilter</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-2.0">
+                    [S1] Client request contains "&lt;SetIPAddressFilter&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-2.1">
+                    [S3] "&lt;SetIPAddressFilter&gt;" includes tag: "&lt;IPv4Address&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-2.2">
+                    [S4] "&lt;IPv4Address&gt;" includes tag: "&lt;Address&gt;" with specific IPv4 address value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-2.3">
+                    [S5] "&lt;IPv4Address&gt;" includes tag: "&lt;PrefixLength&gt;" with value range from "0" to "32" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-2.4">
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-2.5">
+                    [S7] Device response contains "&lt;SetIPAddressFilterResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-3">
+      <title>SET IPv6 ADDRESS FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> IP Address Filtering -
+        SetIPv6AddressFilter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IPADDRESSFILTERING-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set IPv6 Address Filter (IPAddressFiltering_SetIpV6AddressFilter)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        set the IP address filter settings on Device using the SetIPAddressFilter
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with SetIPAddressFilter operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes SetIPAddressFilter request message to set the IP
+              address filter settings on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and SetIPAddressFilterResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client SetIPAddressFilter request
+        message does not contain "&lt;IPv6Address&gt;" tag then Test shall be deemed as "NOT
+        DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetIPAddressFilter</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetIPAddressFilter</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-3.0">
+                    [S1] Client request contains "&lt;SetIPAddressFilter&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-3.1">
+                    [S3] "&lt;SetIPAddressFilter&gt;" includes tag: "&lt;IPv6Address&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-3.2">
+                    [S4] "&lt;IPv6Address&gt;" includes tag: "&lt;Address&gt;" with specific IPv6 address value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-3.3">
+                    [S5] "&lt;IPv6Address&gt;" includes tag: "&lt;PrefixLength&gt;" with value range from "0" to "128" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-3.4">
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-3.5">
+                    [S7] Device response contains "&lt;SetIPAddressFilterResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-4">
+      <title>ADD IPv4 ADDRESS FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> IP Address Filtering -
+        AddIPv4AddressFilter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IPADDRESSFILTERING-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Add IPv4 Address Filter (IPAddressFiltering_AddIpV4AddressFilter)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        add the IP address filter to Device using the AddIPAddressFilter operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with AddIPAddressFilter operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes AddIPAddressFilter request message to add the IP
+              address filter on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and AddIPAddressFilterResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client AddIPAddressFilter request
+        message does not contain "&lt;IPv4Address&gt;" tag then Test shall be deemed as "NOT
+        DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddIPAddressFilter</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddIPAddressFilter</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-4.0">
+                    [S1] Client request contains "&lt;AddIPAddressFilter&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-4.1">
+                    [S3] "&lt;AddIPAddressFilter&gt;" includes tag: "&lt;IPv4Address&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-4.2">
+                    [S4] "&lt;IPv4Address&gt;" includes tag: "&lt;Address&gt;" with specific IPv4 address value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-4.3">
+                    [S5] "&lt;IPv4Address&gt;" includes tag: "&lt;PrefixLength&gt;" with value range from "0" to "32" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-4.4">
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-4.5">
+                    [S7] Device response contains "&lt;AddIPAddressFilterResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-5">
+      <title>ADD IPv6 ADDRESS FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> IP Address Filtering -
+        AddIPv6AddressFilter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IPADDRESSFILTERING-5
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Add IPv6 Address Filter (IPAddressFiltering_AddIpV6AddressFilter)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        add the IP address filter to Device using the AddIPAddressFilter operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with AddIPAddressFilter operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes AddIPAddressFilter request message to add the IP
+              address filter on Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and AddIPAddressFilterResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client AddIPAddressFilter request
+        message does not contain "&lt;IPv6Address&gt;" tag then Test shall be deemed as "NOT
+        DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddIPAddressFilter</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddIPAddressFilter</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-5.0">
+                    [S1] Client request contains "&lt;AddIPAddressFilter&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-5.1">
+                    [S3] "&lt;AddIPAddressFilter&gt;" includes tag: "&lt;IPv6Address&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-5.2">
+                    [S4] "&lt;IPv6Address&gt;" includes tag: "&lt;Address&gt;" with specific IPv6 address value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-5.3">
+                    [S5] "&lt;IPv6Address&gt;" includes tag: "&lt;PrefixLength&gt;" with value range from "0" to "128" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-5.4">
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-5.5">
+                    [S7] Device response contains "&lt;AddIPAddressFilterResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-6">
+      <title>REMOVE IPv4 ADDRESS FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> IP Address Filtering -
+        RemoveIPv4AddressFilter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IPADDRESSFILTERING-6
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Remove IPv4 Address Filter (IPAddressFiltering_RemoveIpV4AddressFilter)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        delete the IP address filter from Device using the RemoveIPAddressFilter
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with RemoveIPAddressFilter operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes RemoveIPAddressFilter request message to delete the IP
+              address filter from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              RemoveIPAddressFilterResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client RemoveIPAddressFilter request
+        message does not contain "&lt;IPv4Address&gt;" tag then Test shall be deemed as "NOT
+        DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">RemoveIPAddressFilter</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">RemoveIPAddressFilter</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-6.0">
+                    [S1] Client request contains "&lt;RemoveIPAddressFilter&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-6.1">
+                    [S3] "&lt;RemoveIPAddressFilter&gt;" includes tag: "&lt;IPv4Address&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-6.2">
+                    [S4] "&lt;IPv4Address&gt;" includes tag: "&lt;Address&gt;" with specific IPv4 address value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-6.3">
+                    [S5] "&lt;IPv4Address&gt;" includes tag: "&lt;PrefixLength&gt;" with value range from "0" to "32" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-6.4">
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-6.5">
+                    [S7] Device response contains "&lt;RemoveIPAddressFilterResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-7">
+      <title>REMOVE IPv6 ADDRESS FILTER</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> IP Address Filtering -
+        RemoveIPv6AddressFilter
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> IPADDRESSFILTERING-7
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Remove IPv6 Address Filter (IPAddressFiltering_RemoveIpV6AddressFilter)
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        delete the IP address filter from Device using the RemoveIPAddressFilter
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with RemoveIPAddressFilter operation
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes RemoveIPAddressFilter request message to delete the IP
+              address filter from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              RemoveIPAddressFilterResponse message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> If Client RemoveIPAddressFilter request
+        message does not contain "&lt;IPv6Address&gt;" tag then Test shall be deemed as "NOT
+        DETECTED".
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">RemoveIPAddressFilter</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">RemoveIPAddressFilter</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-7.0">
+                    [S1] Client request contains "&lt;RemoveIPAddressFilter&gt;" tag after the "&lt;Body&gt;" tag  AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-7.1">
+                    [S3] "&lt;RemoveIPAddressFilter&gt;" includes tag: "&lt;IPv6Address&gt;" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-7.2">
+                    [S4] "&lt;IPv6Address&gt;" includes tag: "&lt;Address&gt;" with specific IPv6 address value AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-7.3">
+                    [S5] "&lt;IPv6Address&gt;" includes tag: "&lt;PrefixLength&gt;" with value range from "0" to "128" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-7.4">
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.IPAddressFiltering.IPADDRESSFILTERING-7.5">
+                    [S7] Device response contains "&lt;RemoveIPAddressFilterResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

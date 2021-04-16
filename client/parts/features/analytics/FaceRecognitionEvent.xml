@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.FaceRecognitionEvent.20200313.ProfileM">
+      <revnumber>20.06</revnumber>
+      <date>Mar 13, 2020</date>
+      <revdescription>
+        <para>Face Match Event feature was replaced with Face Recognition Event feature according to #379</para>     
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.FaceRecognitionEvent">
+    <title>Face Recognition Event</title>
+    <para>
+      Face Recognition Event section specifies Client ability to receive tns1:RuleEngine/Recognition/Face events.
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.FaceRecognitionEvent">
+    <title>Face Recognition Event Test Cases</title>
+    <section xml:id="tc.FaceRecognitionEvent.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Face Recognition Event (FaceRecognitionEvent)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature corresponding to FaceRecognitionEvent].
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>      
+      <para>
+        <emphasis role="bold" annotations="8.13 Face match event">Profile M Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.FaceRecognitionEvent.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client gets notifications about the Face Recognition EITHER subscribing to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis> operation OR subscribing to <emphasis role="bold">MQTT Broker</emphasis> server OR 
+               initiating of <emphasis role="bold">metadata streaming</emphasis>.
+            </para>
+          </listitem>          
+          <listitem>
+            <para>
+              Client is considered as supporting Face Recognition Event if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports Media2_MetadataStreaming_ProfileM feature (please see <xref linkend="tc.Media2_MetadataStreaming_ProfileM"/> section) OR EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) OR EventBrokerConfiguration feature (please see <xref linkend="tc.EventBrokerConfiguration"/> section)</para> 
+                  AND
+                </listitem>
+                 <listitem>
+                  <para>
+                    Client is able to receive <emphasis role="bold">tns1:RuleEngine/Recognition/Face</emphasis> notification.
+                  </para>
+                </listitem>                                
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Face Recognition Event if the
+              following conditions are met:<itemizedlist>
+                 <listitem>
+                  <para>
+                    Client does not support Media2_MetadataStreaming_ProfileM feature (please see <xref linkend="tc.Media2_MetadataStreaming_ProfileM"/> section) AND EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) AND EventBrokerConfiguration feature (please see <xref linkend="tc.EventBrokerConfiguration"/> section) 
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is NOT able to receive <emphasis role="bold">tns1:RuleEngine/Recognition/Face</emphasis> notification.
+                  </para>
+                </listitem>              
+              </itemizedlist>
+            </para>
+          </listitem>
+          
+        </orderedlist>
+      </para>
+       <para>
+        <emphasis role="bold">NOTE:</emphasis> Test Operator shall mark corresponding checkbox on the Onvif Client Test Tool UI in case a client supports getting of this notification.
+      </para>
+    </section>
+  </section>
+</feature>

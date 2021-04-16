@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+      <revision  xml:id="s.revhistory.PersistentNotificationStorageRetrieval.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Persistent Notification Storage Retrieval section and Persistent Notification Storage Retrieval Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <revhistory>
+      <revision  xml:id="s.revhistory.PersistentNotificationStorageRetrieval.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Persistent Notification Storage Retrieval section and Persistent Notification Storage Retrieval Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PersistentNotificationStorageRetrieval">
+      <title>Persistent Notification Storage Retrieval</title>
+      <para>
+        Persistent Notification Storage Retrieval section defines Client ability to seek
+        stored events in Device.
+      </para>
+  </section>
+  <section xml:id="tc.PersistentNotificationStorageRetrieval">
+    <title>Persistent Notification Storage Retrieval Test Cases</title>
+    <section xml:id="tc.PersistentNotificationStorageRetrieval.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Persistent Notification Storage Retrieval (PersistentNotificationStorageRetrieval)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PersistentNotificationStorage">Check Condition based on Device Features:</emphasis> Persistent Notification Storage is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PersistentNotificationStorageRetrieval.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client subscribes to device messages using CreatePullPointSubscription
+              operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Seek method to change position of the pull pointer to
+              include all NotificationMessages in the persistent storage with UtcTime
+              attribute greater than or equal to the Seek argument.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Persistent Notification Storage
+              Retrieval if the following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to seek stored events in Device using the
+                    Seek operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Persistent Notification Storage
+              Retrieval if ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>No Valid Device Response to Seek request.</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1">
+      <title>SEEK</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Persistent Notification Storage
+        Retrieval - Seek
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis>
+        PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Seek (PersistentNotificationStorageRetrieval_Seek)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        seek stored events in Device using Pull Point event mechanism and Seek
+        operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with CreatePullPointSubscription, Seek and
+              PullMessages operations present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>Client invokes CreatePullPointSubscription message.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              CreatePullPointSubscriptionResponse message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes Seek message to re-adjust the pull pointer into the
+              past.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and SeekResponse
+              message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes PullMessages command with Timeout and MessageLimit
+              elements.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and PullMessagesResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.0">
+                    [S1] Client request contains "&lt;CreatePullPointSubscription&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.1">
+                    [S2] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.2">
+                    [S3] Device response contains "&lt;CreatePullPointSubscriptionResponse&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Seek</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Seek</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.3">
+                    [S4] Client request contains "&lt;Seek&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.4">
+                    [S6] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.5">
+                    [S7] Device response contains "&lt;SeekResponse&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">PullMessages</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.6">
+                    [S8] Client request contains "&lt;PullMessages&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.7">
+                    [S11] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.PersistentNotificationStorageRetrieval.PERSISTENTNOTIFICATIONSTORAGERETRIEVAL-1.8">
+                    [S12] Device response contains "&lt;PullMessagesResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

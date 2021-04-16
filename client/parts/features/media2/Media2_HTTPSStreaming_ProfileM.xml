@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.Media2_MediaStreaming.20190918.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #325:</para>
+        <para>EVENTHANDLING-3 METADATA STREAMING test was removed from Event Handling Feature and moved to Metadata Streaming Using Media2. Test case ID was changed to METADATASTREAMING-1.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  <section xml:id="s.intro.Media2_HTTPSStreaming_ProfileM">
+        <title>HTTPS Streaming Using Media2 (Profile M)</title>
+        <para>
+          HTTPS Streaming Using Media2 (Profile M) section specifies Client ability to establish specific media
+          streams over RTP/RTSP/HTTPS/TCP.
+        </para>
+      </section>
+  
+      <section xml:id="tc.Media2_HTTPSStreaming_ProfileM">
+      <title>HTTPS Streaming Using Media2 (Profile M) Test Cases</title>
+      <section xml:id="tc.Media2_HTTPSStreaming_ProfileM.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> HTTPS Streaming Using Media2 (Profile M) (Media2_HTTPSStreaming_ProfileM)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="">Check Condition based on Device Features:</emphasis> No (ONVIF Profile M Simulator is used as device).
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 1
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="Streaming over RTP/RTSP/HTTPS/TCP">Profile M Requirement:</emphasis> Conditional
+        </para>
+      </section>
+      <section xml:id="tc.Media2_HTTPSStreaming_ProfileM.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>Client connects to ONVIF Profile M Simulator to initiate HTTPS metadata Streaming.</para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting HTTPS Streaming if the following
+                conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      ONVIF Profile M Simulator detects <emphasis role="bold">Streaming over RTP/RTSP/HTTPS/TCP</emphasis> feature as supported.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting HTTPS Streaming if the
+                following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      ONVIF Profile M Simulator detects <emphasis role="bold">Streaming over RTP/RTSP/HTTPS/TCP</emphasis> feature as not supported.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+    </section>     
+</feature>

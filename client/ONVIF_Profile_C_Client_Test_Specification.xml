@@ -1,0 +1,2424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>
+<book xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+      xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd"
+      version="0.1"
+      xml:id="ONVIF_Profile_C_Client_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Profile C Client Test Specification</title>
+    <subtitle>Version 20.12</subtitle>
+    <date>December 2020</date>
+    <copyright>
+      <year>2020</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <xi:include href="parts/general/legalnotice.xml"/>
+    <revhistory> 
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
+      <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
+                  xpointer="s.revhistory.SystemDateAndTimeConfiguration.20201112.All"/>
+      <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                  xpointer="s.revhistory.NetworkConfiguration.20201027.All"/>
+      <xi:include href="parts/features/core/UserHandling.xml"
+                  xpointer="s.revhistory.UserHandling.20201027.ProfileC"/>
+       <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                  xpointer="s.revhistory.SetSynchronizationPoint.20200831.All"/>
+        <xi:include href="parts/features/core/Unsubscribe.xml"
+                  xpointer="s.revhistory.Unsubscribe.20200831.All"/>
+      <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml"
+                  xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20200831.All"/>
+      <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="s.revhistory.EventHandling.20200831.All"/>
+	      <xi:include href="parts/features/accesscontrol/AccessPointInformation.xml"
+                  xpointer="s.revhistory.AccessPointInformation.20191210"/>
+      <revision>
+        <revnumber>19.12</revnumber>
+        <date>Sep 18, 2019</date>
+        <revdescription>
+          <para>The following was done according to #325:</para>
+          <para>Scope\Supplementary Features and Test Cases sections was added.</para>
+          <para>Supplementary Features and Test Cases sections was added.</para>
+        </revdescription>
+      </revision>
+      <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="s.revhistory.EventHandling.20190918.All"/>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20190906.All"/>
+      <xi:include href="parts/features/accesscontrol/AreaConfigurationChangeNotifications.xml"
+                  xpointer="s.revhistory.AreaConfigurationChangeNotifications.20190826.ProfileC"/>
+      <xi:include href="parts/features/accesscontrol/DoorConfigurationChangeNotifications.xml"
+                  xpointer="s.revhistory.DoorConfigurationChangeNotifications.20190826.ProfileC"/>
+      <xi:include href="parts/features/accesscontrol/AccessPointConfigurationChangeNotifications.xml"
+                  xpointer="s.revhistory.AccessPointConfigurationChangeNotifications.20190826.ProfileC"/>
+      <xi:include href="parts/features/accesscontrol/AreaInformation.xml"
+                  xpointer="s.revhistory.AreaInformation.20190823.ProfileC"/>
+      <xi:include href="parts/features/accesscontrol/DoorInformation.xml"
+                  xpointer="s.revhistory.DoorInformation.20190823.ProfileC"/>
+      <xi:include href="parts/features/accesscontrol/AccessPointInformation.xml"
+                  xpointer="s.revhistory.AccessPointInformation.20190823.ProfileC"/>
+      <xi:include href="parts/features/core/HTTPDigest.xml"
+                  xpointer="s.revhistory.HTTPDigest.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/Capabilities.xml"
+                  xpointer="s.revhistory.Capabilities.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/GetServices.xml"
+                  xpointer="s.revhistory.GetServices.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="s.revhistory.EventHandling.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml"
+                  xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.revhistory.Discovery.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                  xpointer="s.revhistory.NetworkConfiguration.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/System.xml"
+                  xpointer="s.revhistory.System.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/UserHandling.xml"
+                  xpointer="s.revhistory.UserHandling.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/IPAddressFiltering.xml"
+                  xpointer="s.revhistory.IPAddressFiltering.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/PersistentNotificationStorageRetrieval.xml"
+                  xpointer="s.revhistory.PersistentNotificationStorageRetrieval.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/GetServicesWithCapabilities.xml"
+                  xpointer="s.revhistory.GetServicesWithCapabilities.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                  xpointer="s.revhistory.SetSynchronizationPoint.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/Unsubscribe.xml"
+                  xpointer="s.revhistory.Unsubscribe.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
+                  xpointer="s.revhistory.SystemDateAndTimeConfiguration.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/HostnameConfiguration.xml"
+                  xpointer="s.revhistory.HostnameConfiguration.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/DNSConfiguration.xml"
+                  xpointer="s.revhistory.DNSConfiguration.20190814.ProfileC"/>
+      <xi:include href="parts/features/core/NetworkProtocolsConfiguration.xml"
+                  xpointer="s.revhistory.NetworkProtocolsConfiguration.20190814.ProfileC"/>
+      <revision>
+        <revnumber>19.06</revnumber>
+        <date>Jun 14, 2019</date>
+        <revdescription>
+          <para>The following was done according to #309:</para>
+          <para>'Validated Feature' section for each feature updated to be synchronized with feature ID used in feature list.</para>
+          <para>'Feature Under Test' section for each test case updated to be synchronized with sub-feature ID used in feature list.</para>
+          <para>'Validated Feature List' test case section removed.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Jun 21, 2018</date>
+        <revdescription>
+          <para>Reformatting document using new template</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Apr 05, 2018</date>
+        <revdescription>
+          <para>'Required Number of Devices Summary' Annex added according to #241</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>18.06</revnumber>
+        <date>Feb 16, 2018</date>
+        <revdescription>
+          <para>The following were updated in the scope of #241:</para>
+          <para>Feature Level Requirement (updated with new rules)</para>
+          <para>Each Feature Level Requirement (updated with Check Condition based on Device Features and Required Number of Devices)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>17.06</revnumber>
+        <date>Jun 15, 2017</date>
+        <revdescription>
+          <para>Links in Normative references section were updated.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.07</revnumber>
+        <date>Apr 19, 2016</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Test cases about specific event were removed:
+                SYSTEMCOMPONENTSTATE-1, SYSTEMCOMPONENTSTATE-2,
+                ACCESSCONTROLDECISIONS-1, ACCESSCONTROLDECISIONS-2, ACCESSCONTROLDECISIONS-3, ACCESSCONTROLDECISIONS-4, ACCESSCONTROLDECISIONS-5, ACCESSCONTROLDECISIONS-6, ACCESSCONTROLDECISIONS-7, ACCESSCONTROLDECISIONS-8, ACCESSCONTROLDECISIONS-9,
+                CONFIGURATIONCHANGENOTIFICATION-1, CONFIGURATIONCHANGENOTIFICATION-2, CONFIGURATIONCHANGENOTIFICATION-3, CONFIGURATIONCHANGENOTIFICATION-4, CONFIGURATIONCHANGENOTIFICATION-5, CONFIGURATIONCHANGENOTIFICATION-6,
+                DURESS-1.
+              </para>
+            </listitem>
+            <listitem>
+              <para>System Component State scenario updated</para>
+            </listitem>
+            <listitem>
+              <para>Access Control Decisions scenario updated</para>
+            </listitem>
+            <listitem>
+              <para>Configuration Change Notifications scenario updated</para>
+            </listitem>
+            <listitem>
+              <para>Duress Notifications scenario updated</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.07</revnumber>
+        <date>Apr 05, 2016</date>
+        <revdescription>
+          <para>
+            The description about structure and hierarchy was replaced for the test cases:
+            SYSTEMCOMPONENTINFORMATION-1, SYSTEMCOMPONENTINFORMATION-2, SYSTEMCOMPONENTINFORMATION-3, SYSTEMCOMPONENTSTATE-1, SYSTEMCOMPONENTSTATE-2,
+            DOORCONTROL-1, DOORCONTROL-2, DOORCONTROL-3, DOORCONTROL-4, DOORCONTROL-5, DOORCONTROL-6, DOORCONTROL-7, ACCESSPOINTCONTROL-1, EXTERNALAUTHORIZATION-2
+          </para>
+          <para>Old description:</para>
+          <para>Client %COMMAND NAME% request message is a well-formed SOAP request (refer to onvif.xsd) AND</para>
+          <para>Client %COMMAND NAME% request message has a proper hierarchy (refer to %SERVICE%.wsdl) AND</para>
+          <para>New description:</para>
+          <para>
+            Client %COMMAND NAME% request messages are valid according to XML Schemas listed in Namespaces AND
+          </para>
+          <para>
+            Client %COMMAND NAME% request in Test Procedure fulfills the following requirements:
+          </para>
+          <para>The following steps was removed because the requirements are fullfield by XML Schemas validation:</para>
+          <itemizedlist>
+            <listitem>
+              <para>SYSTEMCOMPONENTSTATE-1:</para>
+              <para>[S6] "&lt;PullMessages&gt;" includes tag: "&lt;Timeout&gt;" AND</para>
+              <para>[S7] "&lt;PullMessages&gt;" includes tag: "&lt;MessageLimit&gt;" AND</para>
+            </listitem>
+            <listitem>
+              <para>SYSTEMCOMPONENTSTATE-2:</para>
+              <para>[S6] "&lt;PullMessages&gt;" includes tag: "&lt;Timeout&gt;" AND</para>
+              <para>[S7] "&lt;PullMessages&gt;" includes tag: "&lt;MessageLimit&gt;" AND</para>
+            </listitem>
+            <listitem>
+              <para>EXTERNALAUTHORIZATION-2:</para>
+              <para>[S3] "&lt;ExternalAuthorization&gt;" includes tag: "&lt;Decision&gt;" AND</para>
+              <para>[S4] "&lt;Decision&gt;" contains value EITHER ("Granted" OR "Denied") AND</para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.07</revnumber>
+        <date>Mar 14, 2016</date>
+        <revdescription>
+          <para>www.onvif.org was removed from Сopyright section.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.01</revnumber>
+        <date>Dec 2, 2015</date>
+        <revdescription>
+          <para>
+            General item (Test Owerview) was added
+          </para>
+          <para>
+            Minor updates in formatting, typos and terms according review result of other Client Test Specifications
+          </para>
+          <para>
+            EXTERNALAUTHORIZATION-3 was removed. Related feature was chnaged in accordance.
+          </para>
+          <para>
+            EXTERNALAUTHORIZATION-1 was updated to include new pre-requisite and new test style was upplied.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.01</revnumber>
+        <date>Nov 20, 2015</date>
+        <revdescription>
+          <para>
+            Change according to # 67:Expected Scenarios Under Test of Access Control Decisions, Configuration Change Notifications, Duress Notifications were updated:
+            dependence on Device features were added. New Note was added into corresponding test cases.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>16.01</revnumber>
+        <date>Sep 28, 2015</date>
+        <revdescription>
+          <para>Added Access Control Decisions Test Cases, Configuration Change  Notifications, Duress Notifications Test Cases sections</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>15.06</revnumber>
+        <date>Jun 10, 2015</date>
+        <revdescription>
+          <para>No major changes were made, just minor formatting fixes.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>15.05</revnumber>
+        <date>May 20, 2015</date>
+        <revdescription>
+          <para>No major changes were made, just minor grammatical corrections.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>15.03</revnumber>
+        <date>Mar 20, 2015</date>
+        <revdescription>
+          <para>Added External Authorization Test Cases section.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>15.02</revnumber>
+        <date>Feb 19, 2015</date>
+        <revdescription>
+          <para>
+            Pass criteria in SYSTEMCOMPONENTSTATE-1 and 2 test cases have been updated
+            (added additional criteria for checking &lt;TopicExpression&gt; tag
+            value).
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>14.12</revnumber>
+        <date>Dec 11, 2014</date>
+        <revdescription>
+          <para>Fixed typos and inconsistencies.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>1.0</revnumber>
+        <date>Oct 16, 2014</date>
+        <revdescription>
+          <para>Initial version</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <xi:include href="parts/general/introduction_common.xml"/>
+    <para>
+      This particular document defines test cases required for testing Profile C features of a
+      Client application e.g. System Component Information, System Component State, Door
+      Control and Access Point Control. It also describes the test framework, test setup,
+      prerequisites, test policies needed for the execution of the described test
+      cases.
+    </para>
+    <section xml:id="s.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Profile C Client Test Specification defines and regulates the conformance
+        testing procedure for the ONVIF conformant Clients in the scope of Profile C
+        features. Conformance testing is meant to be black-box network traces analysis and
+        verification. The objective of this specification is to provide the test cases to
+        test individual requirements of ONVIF Clients in the scope of Profile C features
+        according to ONVIF Profile Specifications.
+      </para>
+      <para>
+        The principal intended purposes are:<itemizedlist>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Provide comprehensive test suite coverage for Profile C
+              features.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        This specification <emphasis role="bold">does not</emphasis> address the following:<itemizedlist>
+          <listitem>
+            <para>3rd parties Client use cases</para>
+          </listitem>
+          <listitem>
+            <para>
+              Non-functional (performance and regression) testing and
+              analysis.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Services
+              Interoperability Basic Profile version 2.0 (WS-I BP2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation Conformance test for HTTPS and HTTP
+              protocols.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        The following sections cover test cases needed for the verification of relevant
+        features as mentioned in the ONVIF Profile Specifications.
+      </para>
+    </section>
+    <section xml:id="s.intro.mandatory">
+      <title>Test Cases for Profile Mandatory Features</title>
+      <para>
+        This section defines test cases which are mandatory for Profile C Client conformance.
+      </para>
+      <xi:include href="parts/features/core/HTTPDigest.xml"
+                  xpointer="s.intro.HTTPDigest"/>
+      <xi:include href="parts/features/core/Capabilities.xml"
+                  xpointer="s.intro.Capabilities"/>
+      <xi:include href="parts/features/core/GetServices.xml"
+                  xpointer="s.intro.GetServices"/>
+      <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="s.intro.EventHandling"/>
+      <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml"
+                  xpointer="s.intro.KeepAliveForPullPointEventHandling"/>
+      <xi:include href="parts/features/accesscontrol/AccessPointInformation.xml"
+                  xpointer="s.intro.AccessPointInformation"/>
+      <xi:include href="parts/features/accesscontrol/DoorInformation.xml"
+                  xpointer="s.intro.DoorInformation"/>
+      <xi:include href="parts/features/accesscontrol/AreaInformation.xml"
+                  xpointer="s.intro.AreaInformation"/>
+      <xi:include href="parts/features/accesscontrol/SystemComponentState.xml"
+                  xpointer="s.intro.SystemComponentState"/>
+      <xi:include href="parts/features/accesscontrol/DoorControl.xml"
+                  xpointer="s.intro.DoorControl"/>
+      <section>
+        <title>Access Control Decisions</title>
+        <para>
+          Access Control Decisions section specifies Client ability to receive
+          notifications about access decisions related to Access Control.
+        </para>
+      </section>
+      <xi:include href="parts/features/accesscontrol/AccessPointConfigurationChangeNotifications.xml"
+                  xpointer="s.intro.AccessPointConfigurationChangeNotifications"/>
+      <xi:include href="parts/features/accesscontrol/DoorConfigurationChangeNotifications.xml"
+                  xpointer="s.intro.DoorConfigurationChangeNotifications"/>
+      <xi:include href="parts/features/accesscontrol/AreaConfigurationChangeNotifications.xml"
+                  xpointer="s.intro.AreaConfigurationChangeNotifications"/>
+      <section>
+        <title>Duress Notifications</title>
+        <para>
+          Duress Notifications section specifies Client ability to receive
+          notifications about duress situation.
+        </para>
+      </section>
+    </section>
+    <section xml:id="s.intro.conditional">
+      <title>Test Cases for Profile Conditional Features</title>
+      <para>
+        This section defines test cases which are conditional for Profile C Client conformance.
+      </para>
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.intro.Discovery"/>
+      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                  xpointer="s.intro.DeviceDiscoveryTypeFilter"/>
+      <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                  xpointer="s.intro.NetworkConfiguration"/>
+      <xi:include href="parts/features/core/System.xml"
+                  xpointer="s.intro.System"/>
+      <xi:include href="parts/features/core/UserHandling.xml"
+                  xpointer="s.intro.UserHandling"/>
+      <xi:include href="parts/features/core/IPAddressFiltering.xml"
+                  xpointer="s.intro.IPAddressFiltering"/>
+      <xi:include href="parts/features/core/PersistentNotificationStorageRetrieval.xml"
+                  xpointer="s.intro.PersistentNotificationStorageRetrieval"/>
+ <xi:include href="parts/features/accesscontrol/AccessPointControl.xml"
+                  xpointer="s.intro.AccessPointControl"/>     
+ <xi:include href="parts/features/accesscontrol/ExternalAuthorization.xml"
+                  xpointer="s.intro.ExternalAuthorization"/>
+     
+    </section>
+    <section xml:id="s.intro.optional">
+      <title>Test Cases for Profile Optional Features</title>
+      <para>
+        This section defines test cases which are optional for Profile C Client conformance.
+      </para>
+      <xi:include href="parts/features/core/GetServicesWithCapabilities.xml"
+                  xpointer="s.intro.GetServicesWithCapabilities"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                  xpointer="s.intro.SetSynchronizationPoint"/>
+      <xi:include href="parts/features/core/Unsubscribe.xml"
+                  xpointer="s.intro.Unsubscribe"/>
+      <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
+                  xpointer="s.intro.SystemDateAndTimeConfiguration"/>
+      <xi:include href="parts/features/core/HostnameConfiguration.xml"
+                  xpointer="s.intro.HostnameConfiguration"/>
+      <xi:include href="parts/features/core/DNSConfiguration.xml"
+                  xpointer="s.intro.DNSConfiguration"/>
+      <xi:include href="parts/features/core/NetworkProtocolsConfiguration.xml"
+                  xpointer="s.intro.NetworkProtocolsConfiguration"/>
+    </section>
+    <section xml:id="s.intro.supplementary">
+      <title>Supplementary Features and Test Cases</title>
+      <para>
+        This section defines supplementary features and test cases which are not the part of profile, but Profile C Features results depends on them.
+      </para>
+    </section>
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative references</title>
+    <itemizedlist>
+      <xi:include href="parts/general/normative_references_common.xml"
+                  xpointer="xpointer(id('s.docbook')/itemizedlist/listitem)"/>
+      <listitem>
+        <para>ONVIF Profile C Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/profile-c/">https://www.onvif.org/profiles/profile-c/</link>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <xi:include href="parts/general/terms_definitions.conventions.xml"/>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>This section describes terms and definitions used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.definitions_common.xml"
+                    xpointer="xpointer(id('additions.definitions')/variablelist/varlistentry)"/>
+        <varlistentry>
+          <term>Profile C</term>
+          <listitem>
+            <para>The Profile C Specification.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Door</term>
+          <listitem>
+            <para>
+              A physical door, barrier, turnstile, etc which can be controlled
+              remotely and restricts access between two areas. A door is usually
+              equipped with an electronic lock and a sensor.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Door Alarm</term>
+          <listitem>
+            <para>
+              An abnormal state of the door where door is forced open or held open
+              beyond the permitted time duration.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Door Mode</term>
+          <listitem>
+            <para>
+              Logical state of the door indicating whether the door is locked,
+              unlocked, blocked, locked down or locked open etc.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Lock</term>
+          <listitem>
+            <para>
+              An operation after which a door is locked and alarm is
+              unmasked.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Unlock</term>
+          <listitem>
+            <para>
+              An operation to allow a door to be freely used for passage without any
+              door alarms being triggered.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Access Point</term>
+          <listitem>
+            <para>
+              A logical composition of a physical door and ID point(s) controlling
+              access in one direction.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Disable Access Point </term>
+          <listitem>
+            <para>
+              If an Access Point is disabled, it will not be considered in the
+              decision making process and no commands will be issued from that Access
+              Point to the Door configured for that Access Point. When an Access Point
+              is disabled, the associated ID Point may or may not be disabled or shut
+              down. Clients may still be able to command the Door Controller to
+              control associated door even though that door is also referenced by a
+              disabled access point.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ID Point</term>
+          <listitem>
+            <para>
+              A device that converts reader signals to protocols recognized by an
+              authorization engine. It can be card reader, REX, biometric reader
+              etc.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <xi:include href="parts/general/terms_definitions.abbreviations_common.xml"
+                    xpointer="xpointer(id('additions.abbreviations')/variablelist/varlistentry)"/>
+        <varlistentry>
+          <term>PACS</term>
+          <listitem>
+            <para>Physical Access Control System.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.namespaces"
+             xreflabel="Namespaces">
+      <title>Namespaces</title>
+      <para>
+        Prefix and namespaces used in this test specification are listed in Table 1.
+        These prefixes are not part of the standard and an implementation can use any prefix.
+      </para>
+      <table>
+        <title>Defined namespaces in this specification</title>
+        <tgroup cols="3">
+          <colspec colwidth="109*" />
+          <colspec colwidth="403*" />
+          <colspec colwidth="488*" />
+          <thead>
+            <row>
+              <entry>Prefix</entry>
+              <entry>Namespace URI</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <xi:include href="parts/general/namespaces_common.xml"
+                        xpointer="xpointer(id('additions.namespaces')/table/tgroup/tbody/row)"/>
+            <row>
+              <entry>tac</entry>
+              <entry>http://www.onvif.org/ver10/accesscontrol/wsdl</entry>
+              <entry>The namespace for the WSDL access control service</entry>
+            </row>
+            <row>
+              <entry>tdc</entry>
+              <entry>http://www.onvif.org/ver10/doorcontrol/wsdl</entry>
+              <entry>The namespace for the WSDL door control service</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.para.1"/>
+    <para>
+      An ONVIF Client conformant to Profile C is an ONVIF Client that can request
+      information regarding the Physical Access Control System (PACS) related entities from an
+      ONVIF Device conformant to Profile C and do basic control of Doors and Access Points
+      over an IP network. ONVIF Client can also retrieve and receive standardized PACS related
+      events.
+    </para>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.para.3"/>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.general"/>
+    <section>
+      <title>Test Setup</title>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.1"/>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.2"/>
+      <xi:include href="parts/general/overview_common.xml"
+                  xpointer="overview.test_setup.para.3"/>
+      <para>
+        For compatibility with the Profile C, the ONVIF Client shall follow the
+        requirements of the conformance process. For details please see the latest ONVIF
+        Conformance Process Specification.
+      </para>
+    </section>
+    <xi:include href="parts/general/overview_common.xml"
+                xpointer="overview.prerequisites"/>
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileMandatoryFeatures">
+    <title>Test Cases for Profile Mandatory Features</title>
+    <xi:include href="parts/features/core/HTTPDigest.xml"
+                xpointer="tc.HTTPDigest"/>
+    <xi:include href="parts/features/core/Capabilities.xml"
+                xpointer="tc.Capabilities"/>
+    <xi:include href="parts/features/core/GetServices.xml"
+                xpointer="tc.GetServices"/>
+    <xi:include href="parts/features/core/EventHandling.xml"
+                xpointer="tc.EventHandling"/>
+    <xi:include href="parts/features/core/KeepAliveForPullPointEventHandling.xml"
+                xpointer="tc.KeepAliveForPullPointEventHandling"/>
+    <xi:include href="parts/features/accesscontrol/AccessPointInformation.xml"
+                xpointer="tc.AccessPointInformation"/>
+    <xi:include href="parts/features/accesscontrol/DoorInformation.xml"
+                xpointer="tc.DoorInformation"/>
+    <xi:include href="parts/features/accesscontrol/AreaInformation.xml"
+                xpointer="tc.AreaInformation"/>
+    <xi:include href="parts/features/accesscontrol/SystemComponentState.xml"
+                xpointer="tc.SystemComponentState"/>
+    <xi:include href="parts/features/accesscontrol/DoorControl.xml"
+                xpointer="tc.DoorControl"/>
+    <section xml:id="tc.AccessControlDecisions">
+      <title>Access Control Decisions Test Cases</title>
+      <section xml:id="tc.AccessControlDecisions.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Access Control Decisions (AccessControlDecisions)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="AccessControlService AND AccessGrantedCredentialEvent AND AccessDeniedCredentialEvent AND AccessGrantedAnonymousEvent AND AccessDeniedAnonymousEvent&#xD;&#xA;                  AccessDeniedCredentialCredentialNotFoundCardEvent AND AccessTakenAnonymousEvent AND AccessTakenCredentialEvent AND AccessNotTakenAnonymousEvent AND AccessNotTakenCredentialEvent">Check Condition based on Device Features:</emphasis>
+          Access Control Service and tns1:AccessControl/AccessGranted/Credential and tns1:AccessControl/AccessDenied/Credential and tns1:AccessControl/AccessGranted/Anonymous and tns1:AccessControl/AccessDenied/AnonymousEvent
+          tns1:AccessControl/AccessDenied/Credential/CredentialNotFoundCard and tns1:AccessControl/AccessTaken/Anonymous and tns1:AccessControl/AccessTaken/Credential and tns1:AccessControl/AccessNotTaken/Anonymous and tns1:AccessControl/AccessNotTaken/CredentialEvent are supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 3
+        </para>
+        <para>
+          <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+        </para>
+      </section>
+      <section xml:id="tc.AccessControlDecisions.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client subscribes to device messages using CreatePullPointSubscription
+                operation to get Access Control Decisions notifications.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Access Control Decisions if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>Client supports EventHandling_Pullpoint feature AND</para>
+                  </listitem>
+                  <listitem>
+                    <para>Client supports SystemComponentInformation_AccessPointInfoList feature AND</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessGranted/Credential</emphasis> notification AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/Denied/Credential</emphasis> notification AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> notification
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> notification
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/Denied/CredentialNotFound/Card</emphasis> notification
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessTaken/Credential</emphasis> notification
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessTaken/Anonymous</emphasis> notification
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Credential</emphasis> notification
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Anonymous</emphasis> notification.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Access Control Decisions if ANY
+                of the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client does not support EventHandling_Pullpoint feature
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client does not support SystemComponentInformation_AccessPointInfoList feature
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessGranted/Credential</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/Denied/Credential</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/Denied/CredentialNotFound/Card</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessTaken/Credential</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessTaken/Anonymous</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Credential</emphasis> notification
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Anonymous</emphasis> notification.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-1">
+      <title>
+        RETRIEVE ACCESS GRANTED WITH CREDENTIAL NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/AccessGranted/Credential event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-1
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Granted with Credential notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/AccessGranted/Credential</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/AccessGranted/Credential</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/AccessGranted/Credential</emphasis> OR <emphasis role="bold">tns1:AccessControl/AccessGranted//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-2">
+      <title>
+        RETRIEVE ACCESS GRANTED TO ANONYMOUS NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/AccessGranted/Anonymous event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-2
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Granted to Anonymous notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">AccessGrantedAnonymousEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> OR <emphasis role="bold">tns1:AccessControl/AccessGranted//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-3">
+      <title>
+        RETRIEVE ACCESS DENIED WITH CREDENTIAL NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/Denied/Credential event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-3
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Denied with Credential notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/Denied/Credential</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/Denied/Credential</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/Denied/Credential</emphasis> OR <emphasis role="bold">tns1:AccessControl/Denied//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-4">
+      <title>
+        RETRIEVE ACCESS DENIED TO ANONYMOUS NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/Denied/Anonymous event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-4
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Denied to Anonymous notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">AccessDeniedAnonymousEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> OR <emphasis role="bold">tns1:AccessControl/Denied//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-5">
+      <title>
+        RETRIEVE ACCESS DENIED WITH CREDENTIAL (CREDENTIAL NOT FOUND – CARD) NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/Denied/CredentialNotFound/Card event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-5
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Denied with Credential (Credential Not Found) notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/Denied/CredentialNotFound/Card</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">AccessDeniedCredentialCredentialNotFoundCardEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/Denied/CredentialNotFound/Card</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/Denied/CredentialNotFound/Card</emphasis> OR <emphasis role="bold">tns1:AccessControl/Denied/CredentialNotFound//.</emphasis> OR <emphasis role="bold">tns1:AccessControl/Denied//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-6">
+      <title>
+        RETRIEVE ACCESS TAKEN WITH CREDENTIAL NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/AccessTaken/Credential event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-6
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Taken with Credential notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/AccessTaken/Credential</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">AccessTakenCredentialEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/AccessTaken/Credential</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/AccessTaken/Credential</emphasis> OR <emphasis role="bold">tns1:AccessControl/AccessTaken//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-7">
+      <title>
+        RETRIEVE ACCESS TAKEN BY ANONYMOUS NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/AccessTaken/Anonymous event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-7
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Taken by Anonymous notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/AccessTaken/Anonymous</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">AccessTakenAnonymousEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/AccessTaken/Anonymous</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/AccessTaken/Anonymous</emphasis> OR <emphasis role="bold">tns1:AccessControl/AccessTaken//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-8">
+      <title>
+        RETRIEVE ACCESS NOT TAKEN WITH CREDENTIAL NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/AccessNotTaken/Credential event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-8
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Not Taken with Credential notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Credential</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">AccessNotTakenCredentialEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Credential</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Credential</emphasis> OR <emphasis role="bold">tns1:AccessControl/AccessNotTaken//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>-->
+      <!--<section xml:id="tc.access_control_decisions.ACCESSCONTROLDECISIONS-9">
+      <title>
+        RETRIEVE ACCESS NOT TAKEN BY ANONYMOUS NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications about Access Control Decisions: tns1:AccessControl/AccessNotTaken/Anonymous event
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROLDECISIONS-9
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Control Decisions
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve Access Not Taken by Anonymous notifications from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Anonymous</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">AccessNotTakenAnonymousEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Anonymous</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Anonymous</emphasis> OR <emphasis role="bold">tns1:AccessControl/AccessNotTaken//.</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>-->
+    </section>
+    <xi:include href="parts/features/accesscontrol/AccessPointConfigurationChangeNotifications.xml"
+                xpointer="tc.AccessPointConfigurationChangeNotifications"/>
+    <xi:include href="parts/features/accesscontrol/DoorConfigurationChangeNotifications.xml"
+                xpointer="tc.DoorConfigurationChangeNotifications"/>
+    <xi:include href="parts/features/accesscontrol/AreaConfigurationChangeNotifications.xml"
+                xpointer="tc.AreaConfigurationChangeNotifications"/>
+    <section xml:id="tc.DuressNotifications">
+      <title>Duress Notifications Test Cases</title>
+      <section xml:id="tc.DuressNotifications.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Duress Notifications (DuressNotifications)
+        </para>
+        <para>
+          <emphasis role="bold"
+                    annotations="DuressEvent">Check Condition based on Device Features:</emphasis> Duress is supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 3
+        </para>
+        <para>
+          <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+        </para>
+      </section>
+      <section xml:id="tc.DuressNotifications.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+                operation.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client uses Pull Point event mechanism to retrieve notification events
+                from Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Duress notification if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>Client supports EventHandling_Pullpoint feature AND</para>
+                  </listitem>
+                  <listitem>
+                    <para>Client supports SystemComponentInformation_AccessPointInfoList feature AND</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve <emphasis role="bold">tns1:AccessControl/Duress</emphasis> notification.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting Duress notification if ANY
+                of the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client does not support EventHandling_Pullpoint feature
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client does not support SystemComponentInformation_AccessPointInfoList feature
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client unable to retrieve <emphasis role="bold">tns1:AccessControl/Duress</emphasis> notification.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <!--<section xml:id="tc.duress_notifications.DURESS-1">
+      <title>
+        RETRIEVE DURESS NOTIFICATIONS
+      </title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Retrieve
+        Notifications About Duress: tns1:AccessControl/Duress
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DURESS-1
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Duress Situation Detected notification
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve notifications about duress situation detected at an access point from Device using the Pull Point event
+        mechanism.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations which do not filter out <emphasis role="bold">tns1:AccessControl/Duress</emphasis> event present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">NOTE:</emphasis> In case when Device does not support <emphasis role="bold">DuressEvent</emphasis> feature then
+        Test shall be deemed as "PASSED" with this Device.
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:AccessControl/Duress</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
+                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:AccessControl/Duress</emphasis> OR <emphasis role="bold">tns1:AccessControl//.</emphasis> in expression AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    [S4] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>-->
+    </section>
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileConditionalFeatures">
+    <title>Test Cases for Profile Conditional Features</title>
+    <xi:include href="parts/features/core/Discovery.xml"
+                xpointer="tc.Discovery"/>
+    <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
+                xpointer="tc.DeviceDiscoveryTypeFilter"/>
+    <xi:include href="parts/features/core/NetworkConfiguration.xml"
+                xpointer="tc.NetworkConfiguration"/>
+    <xi:include href="parts/features/core/System.xml"
+                xpointer="tc.System"/>
+    <xi:include href="parts/features/core/UserHandling.xml"
+                xpointer="tc.UserHandling"/>
+    <xi:include href="parts/features/core/IPAddressFiltering.xml"
+                xpointer="tc.IPAddressFiltering"/>
+    <xi:include href="parts/features/core/PersistentNotificationStorageRetrieval.xml"
+                xpointer="tc.PersistentNotificationStorageRetrieval"/>
+    <xi:include href="parts/features/accesscontrol/AccessPointControl.xml"
+                xpointer="tc.AccessPointControl"/>
+    <xi:include href="parts/features/accesscontrol/ExternalAuthorization.xml"
+                xpointer="tc.ExternalAuthorization"/>
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileOptionalFeatures">
+    <title>Test Cases for Profile Optional Features</title>
+    <xi:include href="parts/features/core/GetServicesWithCapabilities.xml"
+                xpointer="tc.GetServicesWithCapabilities"/>
+    <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                xpointer="tc.SetSynchronizationPoint"/>
+    <xi:include href="parts/features/core/Unsubscribe.xml"
+                xpointer="tc.Unsubscribe"/>
+    <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
+                xpointer="tc.SystemDateAndTimeConfiguration"/>
+    <xi:include href="parts/features/core/HostnameConfiguration.xml"
+                xpointer="tc.HostnameConfiguration"/>
+    <xi:include href="parts/features/core/DNSConfiguration.xml"
+                xpointer="tc.DNSConfiguration"/>
+    <xi:include href="parts/features/core/NetworkProtocolsConfiguration.xml"
+                xpointer="tc.NetworkProtocolsConfiguration"/>
+  </chapter>
+  <chapter xml:id="tc.Profile.ProfileSupplementaryFeatures">
+    <title>Supplementary Features and Test Cases</title>
+    <xi:include href="parts/features/media2/Media2_MetadataStreaming.xml"
+                xpointer="tc.Media2_MetadataStreaming.MEDIA2_METADATASTREAMING-1"/>
+  </chapter>
+  <appendix>
+    <title>Test for Appendix A</title>
+    <section xml:id="Annex_A.1">
+      <title>Required Number of Devices Summary</title>
+      <para>
+        Required number of devices and Device feature dependency used in this test specification are listed in the Table.
+      </para>
+      <table>
+        <title>Required Number of Devices Summary</title>
+        <tgroup cols="5">
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <colspec align="center" />
+          <thead>
+            <row>
+              <entry>Feature ID</entry>
+              <entry>Feature Name</entry>
+              <entry>Required Number of Devices</entry>
+              <entry>Check Condition based on Device Features</entry>
+              <entry>Check Condition based on Device Features ID</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry align="left">tc.SystemComponentInformation</entry>
+              <entry align="left">System Component Information</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                Access Control Service and Door Control Service are supported by Device.
+              </entry>
+              <entry align="left">AccessControlService AND DoorControlService</entry>
+            </row>
+            <row>
+              <entry align="left">tc.SystemComponentState</entry>
+              <entry align="left">System Component State</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                Access Control Service and Door Control Service are supported by Device.
+              </entry>
+              <entry align="left">AccessControlService AND DoorControlService</entry>
+            </row>
+            <row>
+              <entry align="left">tc.DoorControl</entry>
+              <entry align="left">Door Control</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                Door Control Service and Access Door and Lock Door and Unlock Door are supported by Device.
+              </entry>
+              <entry align="left">DoorControlService AND AccessDoor AND LockDoor AND UnlockDoor</entry>
+            </row>
+            <row>
+              <entry align="left">tc.AccessPointControl</entry>
+              <entry align="left">Access Points Control</entry>
+              <entry align="left">
+                1
+              </entry>
+              <entry align="left">
+                Enable/Disable Access Point is supported by Device.
+              </entry>
+              <entry align="left">EnableDisableAccessPoint</entry>
+            </row>
+            <row>
+              <entry align="left">tc.ExternalAuthorization</entry>
+              <entry align="left">External Authorization</entry>
+              <entry align="left">
+                1
+              </entry>
+              <entry align="left">
+                External Authorization is supported by Device.
+              </entry>
+              <entry align="left">ExternalAuthorization</entry>
+            </row>
+            <row>
+              <entry align="left">tc.AccessControlDecisions</entry>
+              <entry align="left">Access Control Decisions</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                Check Condition based on Device Features:
+                Access Control Service and tns1:AccessControl/AccessGranted/Credential and tns1:AccessControl/AccessDenied/Credential and tns1:AccessControl/AccessGranted/Anonymous and tns1:AccessControl/AccessDenied/AnonymousEvent
+                tns1:AccessControl/AccessDenied/Credential/CredentialNotFoundCard and tns1:AccessControl/AccessTaken/Anonymous and tns1:AccessControl/AccessTaken/Credential and tns1:AccessControl/AccessNotTaken/Anonymous and tns1:AccessControl/AccessNotTaken/CredentialEvent are supported by Device.
+              </entry>
+              <entry align="left">
+                AccessControlService AND AccessGrantedCredentialEvent AND AccessDeniedCredentialEvent AND AccessGrantedAnonymousEvent AND AccessDeniedAnonymousEvent
+                AccessDeniedCredentialCredentialNotFoundCardEvent AND AccessTakenAnonymousEvent AND AccessTakenCredentialEvent AND AccessNotTakenAnonymousEvent AND AccessNotTakenCredentialEvent
+              </entry>
+            </row>
+            <row>
+              <entry align="left">tc.ConfigurationChangeNotifications</entry>
+              <entry align="left">Configuration Change Notifications</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                tns1:AccessPoint/Changed and tns1:AccessPoint/Removed and tns1:Area/Changed and tns1:Area/Removed and tns1:Door/Changed and tns1:Door/Removed are supported by Device.
+              </entry>
+              <entry align="left">AccessPointChangedEvent AND AccessPointRemovedEvent AND AreaChangedEvent AND AreaRemovedEvent AND DoorChangedEvent AND DoorRemovedEvent</entry>
+            </row>
+            <row>
+              <entry align="left">tc.DuressNotifications</entry>
+              <entry align="left">Duress Notifications</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                Duress is supported by Device.
+              </entry>
+              <entry align="left">DuressEvent</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </appendix>
+</book>

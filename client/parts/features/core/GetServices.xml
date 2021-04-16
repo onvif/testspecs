@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+            <revision  xml:id="s.revhistory.GetServices.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services section and Get Services Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.GetServices.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services section and Get Services Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.GetServices.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services section and Get Services Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.GetServices.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services section and Get Services Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.GetServices.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Services section and Get Services Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetServices">
+      <title>Get Services</title>
+      <para>
+        Get Services section specifies Client ability to retrieve list of services with using GetServices operation.
+      </para>
+  </section>
+  <section xml:id="tc.GetServices">
+    <title>Get Services Test Cases</title>
+    <section xml:id="tc.GetServices.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Services (GetServices)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetServices">Check Condition based on Device Features:</emphasis> GetServices is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
+      </para>
+	        <para>
+        <emphasis role="bold" annotations="7.2 Capabilities">Profile D Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.2 Capabilities">Profile T Requirement:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.2 Get services">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.GetServices.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve a services using <emphasis role="bold">GetServices</emphasis> commad.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Get Services if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports Capabilities_GetServicesRequest feature (please see <xref linkend="tc.Capabilities.CAPABILITIES-1"/> section).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Get Services if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support Capabilities_GetServicesRequest feature (please see <xref linkend="tc.Capabilities.CAPABILITIES-1"/> section).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+  </section>
+
+</feature>

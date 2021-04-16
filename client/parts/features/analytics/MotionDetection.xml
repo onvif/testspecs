@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.MotionDetection.20200831.ProfileT">
+      <revnumber>20.12</revnumber>
+      <date>Aug 31, 2020</date>
+      <revdescription>       
+        <para>Motion Detection Feature: Check Condition based on Device Features was changed according to #325.</para>       
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.MotionDetection.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Motion Detection section and Motion Detection Cases section was moved from ONVIF Analytics Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.MotionDetection">
+      <title>Motion Detection</title>
+      <para>Motion Detection section specifies Client ability to create Motion Region Detector rules and to receive notifications of Motion Region Detector events.</para>
+  </section>
+     <section xml:id="tc.MotionDetection">
+    <title>Motion Detection Test Cases</title>
+    <section xml:id="tc.MotionDetection.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Motion Detection (MotionDetection)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Media2Service AND RuleEngine AND RuleOptions AND MotionRegionDetectorRule AND no UnsupportedPullPointNotification">Check Condition based on Device Features:</emphasis> Media 2 Service and Rule Engine and Rule Options and Motion Region Detector Rule and Pull Point Notification is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.6 Motion Region Detector Configuration;tns1:RuleEngine/MotionRegionDetector/Motion">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.MotionDetection.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve available Rules using the <emphasis role="bold">GetRules</emphasis> and <emphasis role="bold">GetSupportedRules</emphasis> operations.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client creates Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using the <emphasis role="bold">GetRuleOptions</emphasis> and <emphasis role="bold">CreateRules</emphasis> operations.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client deletes Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using the <emphasis role="bold">DeleteRules</emphasis> operations.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get <emphasis role="bold">Motion Region Detector</emphasis> notifications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Motion Detection if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    Client supports <emphasis role="bold">Get Supported Rules</emphasis> feature
+                    AND
+                  </para></listitem><listitem><para>
+                    Client supports <emphasis role="bold">Get Rules</emphasis> feature
+                    AND
+                  </para></listitem><listitem><para>
+                    Client supports <emphasis role="bold">EventHandling_Pullpoint</emphasis> feature AND
+                  </para></listitem><listitem><para>
+                    Client is able to retrieve options of Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using <emphasis role="bold">GetRuleOptions</emphasis> operation
+                    AND
+                  </para></listitem><listitem><para>
+                    Client is able to create Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using <emphasis role="bold">CreateRules</emphasis> operation
+                    AND
+                  </para></listitem><listitem><para>
+                    Client is able to delete Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using <emphasis role="bold">DeleteRules</emphasis> operation
+                    AND
+                  </para></listitem><listitem><para>
+                    Client is able to retrieve <emphasis role="bold">tns1:RuleEngine/MotionRegionDetector/Motion</emphasis> notifications about Motion Region Detector if device supports MotionRegionDetector Rule.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Motion Detection if
+              ANY of the following is TRUE:<itemizedlist><listitem><para>
+                    Client does not support <emphasis role="bold">Get Supported Rules</emphasis> feature OR
+                  </para></listitem><listitem><para>
+                    Client does not support <emphasis role="bold">Get Rules</emphasis> feature OR
+                  </para></listitem><listitem><para>
+                    Client does not support <emphasis role="bold">EventHandling_Pullpoint</emphasis> feature OR
+                  </para></listitem><listitem><para>
+                    No valid device response to <emphasis role="bold">GetRuleOptions</emphasis> request with RuleType value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> OR
+                  </para></listitem><listitem><para>
+                    No valid device response to <emphasis role="bold">CreateRules</emphasis> request with Rule Type value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> OR
+                  </para></listitem><listitem><para>
+                    No valid device response to <emphasis role="bold">DeleteRules</emphasis> request with Rule Type value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> OR
+                  </para></listitem><listitem><para>
+                    Client is not able to retrieve <emphasis role="bold">tns1:RuleEngine/MotionRegionDetector/Motion</emphasis> notifications about Motion Region Detector if device supports MotionRegionDetector Rule.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.MotionDetection.MOTIONDETECTION-1">
+      <title>GET MOTION REGION DETECTOR RULE OPTIONS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Rule Options
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> MOTIONDETECTION-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Rule Options (MotionDetection_GetRuleOptions)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetRuleOptions">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve MotionRegionDetector rule options using the <emphasis role="bold">GetRuleOptions</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetRuleOptions operation with RuleType value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Rule Options (RuleOptions).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetRuleOptions</emphasis> request message with RuleType value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> to retrieve motion region detector rule options from the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetRuleOptions</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetRuleOptions</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetRuleOptions</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetRuleOptions</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.1"><para>
+                    [S2] <emphasis role="bold">axt:GetRuleOptions</emphasis> element has child element <emphasis role="bold">axt:RuleType</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.2"><para>
+                    [S3] <emphasis role="bold">axt:GetRuleOptions/axt:RuleType</emphasis> element value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetRuleOptions</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.3"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.4"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetRuleOptionsResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+    <section xml:id="tc.MotionDetection.MOTIONDETECTION-2">
+      <title>CREATE MOTION REGION DETECTOR RULE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Create Rules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> MOTIONDETECTION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Create Motion Region Detector Rule (MotionDetection_CreateRules)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="CreateRules (tt:MotionRegionDetector)">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        create MotionRegionDetector rule using the <emphasis role="bold">CreateRules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with <emphasis role="bold">CreateRules</emphasis> operation with Rule Type value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Rule Engine (RuleEngine).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreateRules</emphasis> request message with Rule element that has Type value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> to create motion region detector rule on the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">CreateRules</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateRules</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateRules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:CreateRules</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.1"><para>
+                    [S2] <emphasis role="bold">axt:CreateRules</emphasis> element has child element <emphasis role="bold">axt:Rule</emphasis> with <emphasis role="bold">@Type</emphasis> = <emphasis role="bold">tt:MotionRegionDetector</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreateRules</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.2"><para>
+                    [S3] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.3"><para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:CreateRulesResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+    <section xml:id="tc.MotionDetection.MOTIONDETECTION-3">
+      <title>DELETE MOTION REGION DETECTOR RULE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Delete Rules
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> MOTIONDETECTION-3
+      </para>
+        <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Rules (MotionDetection_DeleteRules)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="CreateRules (tt:MotionRegionDetector)">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Rules
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        delete MotionRegionDetector rule using the <emphasis role="bold">DeleteRules</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with <emphasis role="bold">DeleteRules</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Rule Engine (RuleEngine).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">DeleteRules</emphasis> request message with RuleName that corresponds to Rule with <emphasis role="bold">tt:MotionRegionDetector</emphasis> Type to delete motion region detector rule on the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteRules</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteRules</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteRules</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:DeleteRules</emphasis> AND
+                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.1"><para>
+                    [S2] <emphasis role="bold">axt:DeleteRules</emphasis> contains <emphasis role="bold">tr2:RuleName</emphasis> that corresponds to rule with <emphasis role="bold">tt:MotionRegionDetector</emphasis> type (see <xref linkend="Annex_HelperDefineTypeCorrespondingToRuleName"/>)
+                    AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">DeleteRules</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.2"><para>
+                    [S3] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.3"><para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:DeleteRulesResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    
+    </section>
+  </section>
+</feature>

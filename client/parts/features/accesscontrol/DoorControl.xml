@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--revision  xml:id="s.revhistory.DoorControl.20190823.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #323:</para>
+        <para>Area Information feature and scope was extracted from System Component Information feature.</para>
+		<para>Scope\AreaInformation section was added.</para>
+		<para>Area Information Test Cases section was added.</para>
+		<para>System Component Information section was removed.</para>
+		<para>System Component Information Test Cases section was removed.</para>
+      </revdescription>
+    </revision-->
+  </revhistory>
+  <section xml:id="s.intro.DoorControl">
+    <title>Door Control</title>
+    <para>
+      Door Control section specifies Client ability to to control Doors (access door,
+      lock door, unlock door, etc.).
+    </para>
+  </section>
+  <!--Feature and related test cases-->
+  <!--Shall have the following id format-->
+  <!--xml:id="tc.[featureId]"-->
+  <section xml:id="tc.DoorControl">
+    <title>Door Control Test Cases</title>
+    <section xml:id="tc.DoorControl.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Door Control (DoorControl)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DoorControlService AND AccessDoor AND LockDoor AND UnlockDoor">Check Condition based on Device Features:</emphasis> Door Control Service and Access Door and Lock Door and Unlock Door are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.DoorControl.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes a specific, valid mandatory Door Control command in
+              order to change the state of door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Door Control if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Device returns a valid response to AccessDoor request
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Device returns a valid response to LockDoor request
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Device returns a valid response to UnlockDoor
+                    request
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    When Device and Client support any of the following
+                    conditional features:
+                  </para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        Device returns a valid response to DoubleLockDoor
+                        request OR
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        Device returns a valid response to BlockDoor
+                        request
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+                <listitem>
+                  <para>
+                    When Device and Client support LockDown conditional
+                    features:
+                  </para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        Device returns a valid response to LockDownDoor
+                        request AND
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        Device returns a valid response to
+                        LockDownReleaseDoor request
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+                <listitem>
+                  <para>
+                    When Device and Client support LockOpen conditional
+                    features:
+                  </para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        Device returns a valid response to LockOpenDoor
+                        request AND
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        Device returns a valid response to
+                        LockOpenReleaseDoor request.
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Door Control if ANY of the
+              following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>No valid Device response to AccessDoor request OR</para>
+                </listitem>
+                <listitem>
+                  <para>No valid Device response to LockDoor request OR</para>
+                </listitem>
+                <listitem>
+                  <para>No valid Device response to UnlockDoor request</para>
+                </listitem>
+                <listitem>
+                  <para>
+                    When Device and Client support any of the following
+                    conditional features:
+                  </para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        No valid Device response to DoubleLockDoor request
+                        AND
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        No valid Device response to BlockDoor
+                        request
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+                <listitem>
+                  <para>
+                    When Device and Client support LockDown conditional
+                    features:
+                  </para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        No valid Device response to LockDownDoor request
+                        OR
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        No valid Device response to LockDownReleaseDoor
+                        request
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+                <listitem>
+                  <para>
+                    When Device and Client support LockOpen conditional
+                    features:
+                  </para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        No valid Device response to LockOpenDoor request
+                        OR
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        No valid Device response to LockOpenReleaseDoor
+                        request.
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.DoorControl.DOORCONTROL-1" xreflabel="DOORCONTROL-1 ACCESS DOOR">
+      <title>ACCESS DOOR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Door Control - AccessDoor
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Door (DoorControl_AccessDoor)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AccessDoor">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change the state of door using AccessDoor operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with AccessDoor operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes AccessDoor request message to change the state of
+              door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and AccessDoorResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AccessDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AccessDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-1.0">
+                  <para>
+                    [S1] Client request contains "&lt;AccessDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-1.1">
+                  <para>
+                    [S2] "&lt;AccessDoor&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-1.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-1.3">
+                  <para>
+                    [S4] Device response contains "&lt;AccessDoorResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.DoorControl.DOORCONTROL-2" xreflabel="DOORCONTROL-2 LOCK DOOR">
+      <title>LOCK DOOR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Door Control - LockDoor
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Lock Door (DoorControl_LockDoor)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="LockDoor">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change the state of door using LockDoor operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with LockDoor operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes LockDoor request message to change the state of
+              door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and LockDoorResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-2.0">
+                  <para>
+                    [S1] Client request contains "&lt;LockDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-2.1">
+                  <para>
+                    [S2] "&lt;LockDoor&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-2.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-2.3">
+                  <para>
+                    [S4] Device response contains "&lt;LockDoorResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.DoorControl.DOORCONTROL-3" xreflabel="DOORCONTROL-3 UNLOCK DOOR">
+      <title>UNLOCK DOOR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Door Control - UnlockDoor
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Unlock Door (DoorControl_UnlockDoor)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold" annotations="UnlockDoor">Profile D Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change the state of door using UnlockDoor operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with UnlockDoor operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes UnlockDoor request message to change the state of
+              door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and UnlockDoorResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UnlockDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UnlockDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-3.0">
+                  <para>
+                    [S1] Client request contains "&lt;UnlockDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-3.1">
+                  <para>
+                    [S2] "&lt;UnlockDoor&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-3.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-3.3">
+                  <para>
+                    [S4] Device response contains "&lt;UnlockDoorResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.DoorControl.DOORCONTROL-4">
+      <title>DOUBLE LOCK DOOR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Door Control - DoubleLockDoor
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Double Lock Door (DoorControl_DoubleLockDoor)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change the state of door using DoubleLockDoor operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with DoubleLockDoor operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes DoubleLockDoor request message to change the state of
+              door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and DoubleLockDoorResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DoubleLockDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DoubleLockDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-4.0">
+                  <para>
+                    [S1] Client request contains "&lt;DoubleLockDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-4.1">
+                  <para>
+                    [S2] "&lt;DoubleLockDoor&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-4.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-4.3">
+                  <para>
+                    [S4] Device response contains "&lt;DoubleLockDoorResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.DoorControl.DOORCONTROL-5">
+      <title>BLOCK DOOR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Door Control - BlockDoor
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-5
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Block Door (DoorControl_BlockDoor)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change the state of door using BlockDoor operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with BlockDoor operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes BlockDoor request message to change the state of
+              door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and BlockDoorResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">BlockDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">BlockDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-5.0">
+                  <para>
+                    [S1] Client request contains "&lt;BlockDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-5.1">
+                  <para>
+                    [S2] "&lt;BlockDoor&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-5.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-5.3">
+                  <para>
+                    [S4] Device response contains "&lt;BlockDoorResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.DoorControl.DOORCONTROL-6">
+      <title>LOCK DOWN DOOR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Door Control - LockDownDoor
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-6
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Lock Down Door (DoorControl_LockDownDoor)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change the state of Door using LockDownDoor operation and then releasing this state
+        using LockDownReleaseDoor operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with LockDownDoor and LockDownReleaseDoor operations
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes LockDownDoor request message to change the state of
+              door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and LockDownDoorResponse
+              message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes LockDownReleaseDoor request message to release the
+              LockedDown state.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and LockDownReleaseDoorResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockDownDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockDownDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.0">
+                  <para>
+                    [S1] Client request contains "&lt;LockDownDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.1">
+                  <para>
+                    [S2] "&lt;LockDownDoor&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.3">
+                  <para>
+                    [S4] Device response contains "&lt;LockDownDoorResponse&gt;" tag
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockDownReleaseDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockDownReleaseDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.4">
+                  <para>
+                    [S5] Client request contains "&lt;LockDownReleaseDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.5">
+                  <para>
+                    [S6] "&lt;LockDownReleaseDoor&gt;" includes tag: "&lt;Token&gt;" with token value from LockDownDoor operation AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.6">
+                  <para>
+                    [S7] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-6.7">
+                  <para>
+                    [S8] Device response contains "&lt;LockDownReleaseDoorResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.DoorControl.DOORCONTROL-7">
+      <title>LOCK OPEN DOOR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Door Control - LockOpenDoor
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-7
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Lock Open Door (DoorControl_LockOpenDoor)
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        change the state of Door using LockOpenDoor operation and then releasing this state
+        using LockOpenReleaseDoor operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with LockOpenDoor and LockOpenReleaseDoor
+              operations present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes LockOpenDoor request message to change the state of
+              door.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and LockOpenDoorResponse
+              message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes LockOpenReleaseDoor request message to release the
+              LockOpenDoor state.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and LockOpenReleaseDoorResponse
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockOpenDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockOpenDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.0">
+                  <para>
+                    [S1] Client request contains "&lt;LockOpenDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.1">
+                  <para>
+                    [S2] "&lt;LockOpenDoor&gt;" includes tag: "&lt;Token&gt;" with non-empty string value of specific token AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.2">
+                  <para>
+                    [S3] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.3">
+                  <para>
+                    [S4] Device response contains "&lt;LockOpenDoorResponse&gt;" tag.
+                    AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockOpenReleaseDoor</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">LockOpenReleaseDoor</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.4">
+                  <para>
+                    [S5] Client request contains "&lt;LockOpenReleaseDoor&gt;" tag after the "&lt;Body&gt;" tag AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.5">
+                  <para>
+                    [S6] "&lt;LockOpenReleaseDoor&gt;" includes tag: "&lt;Token&gt;" with token value from LockOpenDoor operation AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.6">
+                  <para>
+                    [S7] Device response contains "HTTP/* 200 OK" AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.DoorControl.DOORCONTROL-7.7">
+                  <para>
+                    [S8] Device response contains "&lt;LockOpenReleaseDoorResponse&gt;" tag.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The Client failed PASS criteria.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+
+  </section>
+</feature>

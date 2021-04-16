@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>  
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <para xml:id="overview.para.1">
+      This section provides information for the test setup procedure and required
+      prerequisites that should be followed during test case execution.
+    </para>
+    <para xml:id="overview.para.3">
+      An ONVIF Profile is described by a fixed set of functionalities through a number of
+      services that are provided by the ONVIF standard. A number of services and
+      functionalities are mandatory for each type of ONVIF Profile. An ONVIF Device and ONVIF
+      Client may support any combination of Profiles and other optional services and
+      functionalities.
+    </para>
+    <section xml:id="overview.general">
+      <title>General</title>
+      <para>
+        Test Cases are grouped depending on features. Each Test Cases group provides description of feature requirement level for Profiles, expected scenario under test and related test cases:
+        <itemizedlist>
+          <listitem>
+            <para>Feature Level Requirement</para>
+          </listitem>
+          <listitem>
+            <para>Expected Scenarios Under Test</para>
+          </listitem>
+          <listitem>
+            <para>List of Test Cases</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <section xml:id="overview.general.feature_level_requirement">
+        <title>Feature Level Requirement</title>
+        <para>Feature Level Requirement item contains a feature ID, check condition based on Device features, required number of Devices and feature requirement level for the Profiles, which will be used for Profiles conformance.</para>
+        <para>
+          To claim this Feature as supported Client shall pass Expected Scenario Under Test:
+          <itemizedlist>
+            <listitem>
+              <para>for each Device, which supports Device Features defined in Check Condition Based on Device Features</para>
+            </listitem>
+            <listitem>
+              <para>for at least with number of Devices specified in Required Number of Devices</para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>If Feature Level Requirement is defined as Mandatory for some Profile, Client shall support this Feature to claim this Profile Conformance.</para>
+      </section>
+      <section xml:id="overview.general.expected_scenarios_under_test">
+        <title>Expected Scenarios Under Test</title>
+        <para>Expected Scenarios Under Test item contains expected scenario under test, conditions when the feature will be defined as supported and as not supported.</para>
+      </section>
+      <section xml:id="overview.general.test_cases">
+        <title>Test Cases</title>
+        <para>Test Case items contain list of test cases which are related to feature. Test cases provide exact procedure of testing feature support conditions.</para>
+        <para>Each Test Case contains the following parts:</para>
+        <itemizedlist>
+          <listitem>
+            <para>Test Label - Unique label for each test</para>
+          </listitem>
+          <listitem>
+            <para>Test Case ID - Unique ID for each test</para>
+          </listitem>
+          <listitem>
+            <para>Profile Normative References - Requirement level for the feature under test is defined in Profile Specification. This reference is informative and will not be used in conformance procedure.</para>
+          </listitem>
+          <listitem>
+            <para>Feature Under Test - Feature which is under current test. Typically a particular command or an event.</para>
+          </listitem>
+          <listitem>
+            <para>Test Purpose - The purpose of current test case.</para>
+          </listitem>
+          <listitem>
+            <para>Pre-Requisite - The pre-requisite defines when the test should be performed. In case if pre-reqiusite does not match, the test result will be NOT DETECTED.</para>
+          </listitem>
+          <listitem>
+            <para>Test Procedure - scenario expected to be reflected in network trace file.</para>
+          </listitem>
+          <listitem>
+            <para>Test Result - Passed and failed criteria of the test case. Depending on these criteria test result will be defined as PASSED or FAILED.</para>
+          </listitem>
+
+        </itemizedlist>
+      </section>
+    </section>
+    <section xml:id="overview.test_setup">
+      <title>Test Setup</title>
+      <para xml:id="overview.test_setup.para.1">Collect Network traces files required by the test cases.</para>
+      <para xml:id="overview.test_setup.para.2">
+        Collect Feature List XML files for Devices detected in the Network Trace
+        files.
+      </para>
+      <para xml:id="overview.test_setup.para.3">
+        Client shall support all mandatory and conditional features listed in the Device
+        Feature List XML file supplied for the Profiles supported by the Client.
+      </para>
+    </section>
+    <section xml:id="overview.prerequisites">
+      <title>Prerequisites</title>
+      <para>
+        The pre-requisites for executing the test cases described in this Test
+        Specification include:
+      </para>
+      <para>The Device shall be configured with an IPv4 address.</para>
+      <para>The Device shall be able to be discovered by the Client.</para>
+    </section>
+  </chapter>

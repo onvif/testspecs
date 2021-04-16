@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.SystemDateAndTimeConfiguration.20201112.All">
+      <revnumber>20.12</revnumber>
+      <date>Nov 12, 2020</date>
+      <revdescription>
+        <para>The following was done according to #399:</para>
+        <para>System Date and Time Configuration: Check Condition based on Device Features was updated</para>
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.SystemDateAndTimeConfiguration.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>System Date and Time Configuration section and System Date and Time Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.SystemDateAndTimeConfiguration.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>System Date and Time Configuration section and System Date and Time Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.SystemDateAndTimeConfiguration.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>System Date and Time Configuration section and System Date and Time Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+	      <revision  xml:id="s.revhistory.SystemDateAndTimeConfiguration.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>System Date and Time Configuration section and System Date and Time Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.SystemDateAndTimeConfiguration.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>System Date and Time Configuration section and System Date and Time Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.SystemDateAndTimeConfiguration">
+      <title>System Date and Time Configuration</title>
+      <para>
+        System Date and Time Configuration section defines Client ability to configure Device system date and time using GetSystemDateAndTime and SetSystemDateAndTime operations.
+      </para>
+  </section>
+   <section xml:id="tc.SystemDateAndTimeConfiguration">
+    <title>System Date and Time Configuration Test Cases</title>
+    <section xml:id="tc.SystemDateAndTimeConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> System Date and Time Configuration (SystemDateAndTimeConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="Profile A OR Profile C OR Profile G OR Profile Q OR Profile S OR Profile T OR Profile D">Check Condition based on Device Features:</emphasis> Profile A OR Profile C OR Profile G OR Profile Q OR Profile S OR Profile T OR Profile D
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> Optional
+      </para>
+    </section>
+    <section xml:id="tc.SystemDateAndTimeConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to configure system date and time.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting System Date and Time Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve a system date and time using
+                    <emphasis role="bold">GetSystemDateAndTime</emphasis> operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to configure a system date and time using EITHER
+                    <emphasis role="bold">SetSystemDateAndTime</emphasis> operation OR <emphasis role="bold">SetNTP</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting System Date and Time Configuration if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetSystemDateAndTime</emphasis> request OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">SetSystemDateAndTime</emphasis> request if detected AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support NTP feature.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-1">
+      <title>GET SYSTEM DATE AND TIME</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> System Date and Time Configuration -
+        Get System Date And Time
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> SYSTEMDATEANDTIMECONFIGURATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get System Date And Time (SystemDateAndTimeConfiguration_GetSystemDateAndTime)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Device system date and time is received by Client using the
+        <emphasis role="bold">GetSystemDateAndTime</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetSystemDateAndTime</emphasis> operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetSystemDateAndTime</emphasis> request message to retrieve
+              system date and time from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSystemDateAndTime</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSystemDateAndTime</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-1.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetSystemDateAndTime</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetSystemDateAndTime</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-1.1">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-1.2">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetSystemDateAndTimeResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-2">
+      <title>SET SYSTEM DATE AND TIME</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> System Date and Time Configuration -
+        Set System Date And Time
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> SYSTEMDATEANDTIMECONFIGURATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Set System Date And Time (SystemDateAndTimeConfiguration_SetSystemDateAndTime)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        configure system date and time on Device using the <emphasis role="bold">SetSystemDateAndTime</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">SetSystemDateAndTime</emphasis> operation present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> request message to set
+              Device system date and time.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">SetSystemDateAndTimeResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetSystemDateAndTime</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">SetSystemDateAndTime</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-2.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetSystemDateAndTime</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-2.1">
+                    [S2] If <emphasis role="bold">tds:DateTimeType</emphasis> element value is equal to "Manual" THEN <emphasis role="bold">tds:SetSystemDateAndTime</emphasis> contains <emphasis role="bold">tds:UTCDateTime</emphasis> element AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">SetSystemDateAndTime</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-2.2">
+                    [S3] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.SystemDateAndTimeConfiguration.SYSTEMDATEANDTIMECONFIGURATION-2.3">
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetSystemDateAndTimeResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

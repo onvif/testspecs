@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+            <revision  xml:id="s.revhistory.HTTPSystemBackup.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>HTTP System Backup section and HTTP System Backup Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.HTTPSystemBackup">
+      <title>HTTP System Backup</title>
+      <para>
+        HTTP System Backup section defines Client ability to backup system configurations over HTTP using GetSystemUris operation and HTTP GET.
+      </para>
+  </section>
+   <section xml:id="tc.HTTPSystemBackup">
+    <title>HTTP System Backup Test Cases</title>
+    <section xml:id="tc.HTTPSystemBackup.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> System Backup via HTTP (HTTPSystemBackup)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="HttpSystemBackup">Check Condition based on Device Features:</emphasis> HTTP System Backup is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.HTTPSystemBackup.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to the Device to retrieve URI from which a system backup may be downloaded using the GetSystemUris operation.
+            </para>
+            <para>
+              Client gets the backup system configurations using HTTP GET sent to the System Backup Uri provided by the Device in GetSystemUrisResponse.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting HTTP System Backup if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve URI from Device for system backup using
+                    <emphasis role="bold">GetSystemUris</emphasis> operation if Device supports HTTP System Backup AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to to backup system configurations using <emphasis role="bold">HTTP GET</emphasis> if Device supports HTTP System Backup AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting HTTP System Backup if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetSystemUris</emphasis> request if Device supports HTTP System Backup OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">HTTP GET</emphasis> request to the System Backup Uri if Device supports HTTP System Backup.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.HTTPSystemBackup.HTTPSYSTEMBACKUP-1">
+      <title>GET SYSTEM URIS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> System Backup via HTTP - Get System Uris
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> HTTPSYSTEMBACKUP-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get System Uris (HTTPSystemBackup_GetSystemUris)
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to backup system configurations via HTTP
+        using the <emphasis role="bold">GetSystemUris</emphasis> operation and <emphasis role="bold">HTTP GET</emphasis>.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetSystemUris</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports HTTP System Backup.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetSystemUris</emphasis> request message to retrieve URI from which a system backup file may be downloaded.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetSystemUrisResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client retrieves the backup file using <emphasis role="bold">HTTP GET</emphasis> to the System Backup Uri provided by the Device in GetSystemUrisResponse.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK message and with backup file.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSystemUris</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSystemUris</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HTTPSystemBackup.HTTPSYSTEMBACKUP-1.0">
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetSystemUris</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetSystemUris</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HTTPSystemBackup.HTTPSYSTEMBACKUP-1.1">
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPSystemBackup.HTTPSYSTEMBACKUP-1.2">
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetSystemUrisResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              There is <emphasis role="bold">HTTP GET</emphasis> request in Test Procedure that fulfills the following requirements:
+              <itemizedlist>
+                <listitem>
+                  <para xml:id="tc.HTTPSystemBackup.HTTPSYSTEMBACKUP-1.3">
+                    [S4] It invoked to address which equal to <emphasis role="bold">tds:GetSystemUrisResponse/tds:SystemBackupUri</emphasis> value from the Device response to <emphasis role="bold">GetSystemUris</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para xml:id="tc.HTTPSystemBackup.HTTPSYSTEMBACKUP-1.4">
+                    [S5] It invoked after the Client <emphasis role="bold">GetSystemUris</emphasis> request AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">HTTP GET</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para xml:id="tc.HTTPSystemBackup.HTTPSYSTEMBACKUP-1.5">
+                    [S6] It has HTTP 200 response code.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,2052 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+            <revision  xml:id="s.revhistory.TLSConfiguration.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>TLS Configuration section and TLS Configuration Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.TLSConfiguration">
+      <title>TLS Configuration</title>
+      <para>
+        TLS Configuration section specifies Client ability to manage the associations between certification paths and the TLS server on Device.
+      </para>
+  </section>
+   <section xml:id="tc.TLSConfiguration">
+    <title>TLS Configuration Test Cases</title>
+    <section xml:id="tc.TLSConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> TLS Configuration (TLSConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="TLSServerSupport">Check Condition based on Device Features:</emphasis> TLS Server (Security Configuration Service) is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Requirement:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Requirement:</emphasis> None
+      </para>
+    </section>
+    <section xml:id="tc.TLSConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to manage the associations between certification paths and the TLS server.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting TLS Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client may upload a passphrase from the keystore of the Device using
+                    <emphasis role="bold">UploadPassphrase</emphasis> operation if Device supports Passphrase handling AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client may delete a passphrase to the keystore of the Device using
+                    <emphasis role="bold">DeletePassphrase</emphasis> operation if Device supports Passphrase handling AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to generates a DER-encoded PKCS#10 using <emphasis role="bold">CreatePKCS10CSR</emphasis> operation
+                    and upload created certificate using <emphasis role="bold">UploadCertificate</emphasis> operation if Device supports PKCS10ExternalCertificationWithRSA AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to upload a certificate using
+                    <emphasis role="bold">UploadCertificate</emphasis> operation if Device supports PKCS10ExternalCertificationWithRSA AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to delete a certificate to the keystore of the Device using
+                    <emphasis role="bold">DeleteCertificate</emphasis> operation if Device supports PKCS10ExternalCertificationWithRSA or SelfSignedCertificateCreationWithRSA or PKCS12CertificateWithRSAPrivateKeyUpload AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to delete a certification path using
+                    <emphasis role="bold">DeleteCertificationPath</emphasis> operation if Device supports TLSServerSupport or PKCS12CertificateWithRSAPrivateKeyUpload AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to delete a key using
+                    <emphasis role="bold">DeleteKey</emphasis> operation if MaximumNumberOfKeys is greater than zero on Device AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to get key status using EITHER
+                    <emphasis role="bold">GetKeyStatus</emphasis> operation OR using <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> event
+                    if MaximumNumberOfKeys is greater than zero on Device AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports EventHandling_Pullpoint feature (please, see ONVIF Core Client Test Specification) when <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> event is supported
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to upload a certification path consisting of X.509 certificates using
+                    <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> operation if Device supports PKCS12CertificateWithRSAPrivateKeyUpload AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to assigns a key pair and certificate along with a certification path to the TLS server on the Device using
+                    <emphasis role="bold">AddServerCertificateAssignment</emphasis> operation if Device supports TLSServerSupport AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to remove key pair and certificate assignment to the TLS server on the Device using
+                    <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> operation if Device supports TLSServerSupport AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to replace an existing key pair and certificate assignment to the TLS server on the Device by a new key pair and certificate assignment using
+                    <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> operation if Device supports TLSServerSupport AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to create certification path using
+                    <emphasis role="bold">CreateCertificationPath</emphasis> operation if Device supports TLSServerSupport AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to generate RSA key pair using
+                    <emphasis role="bold">CreateRSAKeyPair</emphasis> operation if Device supports RSAKeyPairGeneration AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports network_protocols_configuration.set_network_protocols feature (see ONVIF Core Client Test Specification).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting TLS Configuration if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">UploadPassphrase</emphasis> request if detected if Device supports Passphrase handling OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">DeletePassphrase</emphasis> request if detected if Device supports Passphrase handling OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">CreatePKCS10CSR</emphasis> request if Device supports Passphrase handling OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">UploadCertificate</emphasis> request if Device supports Passphrase handling OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">DeleteCertificate</emphasis> request if Device supports PKCS10ExternalCertificationWithRSA or SelfSignedCertificateCreationWithRSA or PKCS12CertificateWithRSAPrivateKeyUpload OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">DeleteCertificationPath</emphasis> request if Device supports TLSServerSupport or PKCS12CertificateWithRSAPrivateKeyUpload OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">DeleteKey</emphasis> request if MaximumNumberOfKeys is greater than zero on Device OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetKeyStatus</emphasis> request if detected if MaximumNumberOfKeys is greater than zero on Device OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client unable to get key status using <emphasis role="bold">GetKeyStatus</emphasis> request OR using <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> event if MaximumNumberOfKeys is greater than zero on Device OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support EventHandling_Pullpoint feature (please, see ONVIF Core Client Test Specification) when
+                    Client supports <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> notification if if MaximumNumberOfKeys is greater than zero on Device OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> request if Device supports PKCS12CertificateWithRSAPrivateKeyUpload OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">AddServerCertificateAssignment</emphasis> request if Device supports TLSServerSupport OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> request if Device supports TLSServerSupport OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> request if Device supports TLSServerSupport OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">CreateCertificationPath</emphasis> request if Device supports TLSServerSupport OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">CreateRSAKeyPair</emphasis> request if Device supports RSAKeyPairGeneration OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support network_protocols_configuration.set_network_protocols feature (see ONVIF Core Client Test Specification).
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-1">
+      <title>UPLOAD PASSPHRASE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Upload Passphrase
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Upload Passphrase (TLSConfiguration_UploadPassphrase)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to upload a passphrase to the keystore of the Device using
+        <emphasis role="bold">UploadPassphrase</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">UploadPassphrase</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Passphrase handling.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">UploadPassphrase</emphasis> request message to upload a passphrase
+              to the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">UploadPassphraseResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UploadPassphrase</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UploadPassphrase</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:UploadPassphrase</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">UploadPassphrase</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:UploadPassphraseResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-2">
+      <title>DELETE PASSPHRASE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Delete Passphrase
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-2
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Passphrase (TLSConfiguration_DeletePassphrase)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete a passphrase from the keystore of the Device using
+        <emphasis role="bold">DeletePassphrase</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">DeletePassphrase</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Passphrase handling.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">DeletePassphrase</emphasis> request message to delete a passphrase
+              from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">DeletePassphraseResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeletePassphrase</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeletePassphrase</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-2.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeletePassphrase</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">DeletePassphrase</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-2.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-2.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeletePassphraseResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3">
+      <title>CREATE PKCS#10 CERTIFICATION</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Create PKCS#10 Certification
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-3
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Create PKCS#10 Certification (TLSConfiguration_CreatePKCS10Certification)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to generates a DER-encoded PKCS#10 using <emphasis role="bold">CreatePKCS10CSR</emphasis> operation,
+        create an X.509 certificate from a PKCS#10 certification request and upload created certificate using <emphasis role="bold">UploadCertificate</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreatePKCS10CSR</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PKCS10ExternalCertificationWithRSA.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePKCS10CSR</emphasis> request message to generate PKCS#10
+              on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePKCS10CSRResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client creates a certificate from the PKCS#10 request with RSAkey pair and associated CA certificate
+              and a corresponding private key
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">UploadCertificate</emphasis> request message to upload a certificate
+              on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">UploadCertificateResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePKCS10CSR</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreatePKCS10CSR</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:CreatePKCS10CSR</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreatePKCS10CSR</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:CreatePKCS10CSRResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              There is Client <emphasis role="bold">UploadCertificate</emphasis> request in Test Procedure that fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.3">
+                  <para>
+                    [S4] It is invoked after the Client <emphasis role="bold">CreatePKCS10CSR</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    <emphasis role="bold">tas:UploadCertificate/tas:Certificate</emphasis> element value fulfills the following requirements:
+                    <itemizedlist>
+                      <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.4">
+                        <para>
+                          [S5] It contains Subject element with value equals to Subject element value from <emphasis role="bold">tas:CreatePKCS10CSRResponse/tas:PKCS10CSR</emphasis> AND
+                        </para>
+                      </listitem>
+                      <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.5">
+                        <para>
+                          [S6] It contains Public Key element with value equals to Public Key element value from <emphasis role="bold">tas:CreatePKCS10CSRResponse/tas:PKCS10CSR</emphasis> AND
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response to the <emphasis role="bold">UploadCertificate</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.6">
+                  <para>
+                    [S7] It has RTSP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-3.7">
+                  <para>
+                    [S8] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:UploadCertificateResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-4">
+      <title>UPLOAD CERTIFICATE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Upload Certificate
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-4
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Upload Certificate (TLSConfiguration_UploadCertificate)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to upload a certificate using <emphasis role="bold">UploadCertificate</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">UploadCertificate</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PKCS10ExternalCertificationWithRSA.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">UploadCertificate</emphasis> request message to upload a certificate
+              on the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">UploadCertificateResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UploadCertificate</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UploadCertificate</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-4.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:UploadCertificate</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">UploadCertificate</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-4.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-4.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:UploadCertificateResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-5">
+      <title>DELETE CERTIFICATE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Delete Certificate
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-5
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Certificate (TLSConfiguration_DeleteCertificate)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete a certificate using <emphasis role="bold">DeleteCertificate</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">DeleteCertificate</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PKCS10ExternalCertificationWithRSA or SelfSignedCertificateCreationWithRSA or PKCS12CertificateWithRSAPrivateKeyUpload.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">DeleteCertificate</emphasis> request message to delete a certificate
+              from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteCertificateResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteCertificate</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteCertificate</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-5.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeleteCertificate</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">DeleteCertificate</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-5.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-5.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeleteCertificateResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-6">
+      <title>DELETE CERTIFICATION PATH</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Delete Certification Path
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-6
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Certification Path (TLSConfiguration_DeleteCertificationPath)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete a certification path using <emphasis role="bold">DeleteCertificationPath</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">DeleteCertificationPath</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports TLSServerSupport or PKCS12CertificateWithRSAPrivateKeyUpload.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">DeleteCertificationPath</emphasis> request message to delete a certification path
+              from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteCertificationPathResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteCertificate</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteCertificationPath</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-6.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeleteCertificationPath</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">DeleteCertificationPath</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-6.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-6.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeleteCertificationPathResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-7">
+      <title>DELETE KEY</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> DeleteKey
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-7
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Key (TLSConfiguration_DeleteKey)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete a key using <emphasis role="bold">DeleteKey</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">DeleteKey</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              MaximumNumberOfKeys is greater than zero.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">DeleteKey</emphasis> request message to delete a key
+              from the keystore of Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteKeyResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteKey</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">DeleteKey</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-7.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeleteKey</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">DeleteKey</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-7.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-7.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:DeleteKeyResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-8">
+      <title>GET KEY STATUS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Key Status
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-8
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Key Status (TLSConfiguration_GetKeyStatus)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to get key status using <emphasis role="bold">GetKeyStatus</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetKeyStatus</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              MaximumNumberOfKeys is greater than zero.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetKeyStatus</emphasis> request message to get a key status
+              from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetKeyStatusResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetKeyStatus</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetKeyStatus</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-8.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:GetKeyStatus</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetKeyStatus</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-8.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-8.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:GetKeyStatusResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-9">
+      <title>UPLOAD PKCS12</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Upload PKCS12
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-9
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Upload PKCS12 (TLSConfiguration_UploadPKCS12)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to upload a certification path consisting of X.509 certificates using <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PKCS12CertificateWithRSAPrivateKeyUpload.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> request message to upload a PKCS12
+              to the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12Response</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-9.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:UploadCertificateWithPrivateKeyInPKCS12</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">UploadCertificateWithPrivateKeyInPKCS12</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-9.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-9.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:UploadCertificateWithPrivateKeyInPKCS12Response</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-10">
+      <title>ADD SERVER CERTIFICATE ASSIGNMENT</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Add Server Certificate Assignment
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-10
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Add Server Certificate Assignment (TLSConfiguration_AddServerCertificateAssignment)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to assigns a key pair and certificate along with a certification path to the TLS server on the Device using <emphasis role="bold">AddServerCertificateAssignment</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">AddServerCertificateAssignment</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports TLSServerSupport.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">AddServerCertificateAssignment</emphasis> request message to assign of a certificate to a TLS server.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">AddServerCertificateAssignmentResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddServerCertificateAssignment</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddServerCertificateAssignment</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-10.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:AddServerCertificateAssignment</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">AddServerCertificateAssignment</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-10.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-10.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:AddServerCertificateAssignmentResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-11">
+      <title>REMOVE SERVER CERTIFICATE ASSIGNMENT</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Remove Server Certificate Assignment
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-11
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Remove Server Certificate Assignment (TLSConfiguration_RemoveServerCertificateAssignment)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to remove key pair and certificate assignment to the TLS server on the Device using <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports TLSServerSupport.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> request message to remove server certification assignment.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">RemoveServerCertificateAssignmentResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-11.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:RemoveServerCertificateAssignment</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">RemoveServerCertificateAssignment</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-11.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-11.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:RemoveServerCertificateAssignmentResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-12">
+      <title>REPLACE SERVER CERTIFICATE ASSIGNMENT</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Replace Server Certificate Assignment
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-12
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Replace Server Certificate Assignment (TLSConfiguration_ReplaceServerCertificateAssignment)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to replace an existing key pair and certificate assignment to the TLS server on the Device by a new key pair and certificate assignment using <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports TLSServerSupport.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> request message to replace certificate assignment to a TLS server.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">ReplaceServerCertificateAssignmentResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-12.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:ReplaceServerCertificateAssignment</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-12.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-12.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:ReplaceServerCertificateAssignmentResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-13">
+      <title>CREATE CERTIFICATION PATH</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Create Certification Path
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-13
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Create Certification Path (TLSConfiguration_CreateCertificationPath)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create certification path using <emphasis role="bold">CreateCertificationPath</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreateCertificationPath</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports TLSServerSupport.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreateCertificationPath</emphasis> request message to create certification path.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">CreateCertificationPathResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateCertificationPath</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateCertificationPath</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-13.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:CreateCertificationPath</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreateCertificationPath</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-13.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-13.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:CreateCertificationPathResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-14">
+      <title>CREATE RSA KEY PAIR</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Create RSA Key Pair
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> TLSCONFIGURATION-14
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Create RSA Key Pair (TLSConfiguration_CreateRSAKeyPair)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to generate RSA key pair using <emphasis role="bold">CreateRSAKeyPair</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">CreateRSAKeyPair</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Security Configuration Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports RSAKeyPairGeneration.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreateRSAKeyPair</emphasis> request message to create RSA key pair.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">CreateRSAKeyPairResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateRSAKeyPair</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">CreateRSAKeyPair</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-14.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:CreateRSAKeyPair</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">CreateRSAKeyPair</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-14.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.TLSConfiguration.TLSCONFIGURATION-14.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tas:CreateRSAKeyPairResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

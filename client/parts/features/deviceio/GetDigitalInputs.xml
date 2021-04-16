@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.GetDigitalInputs.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Digital Inputs section and Get Digital Inputs Test Cases section was moved from ONVIF Device IO Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.GetDigitalInputs">
+      <title>Get Digital Inputs</title>
+      <para>
+        Get Digital Inputs section specifies Client ability to retrieve of Digital Inputs connected to a device.
+      </para>
+  </section>
+      <section xml:id="tc.GetDigitalInputs">
+    <title>Get Digital Inputs Test Cases</title>
+    <section xml:id="tc.GetDigitalInputs.feature">
+      <title>Feature Level Normative Reference:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Digital Inputs (GetDigitalInputs)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="DigitalInputs">Check Condition based on Device Features:</emphasis> Digital Inputs (Device IO Service) is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.17 Digital Inputs;tns1:Device/Trigger/DigitalInput">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.GetDigitalInputs.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve of Digital Inputs connected to a device using <emphasis role="bold">GetDigitalInputs</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client subscribes to device messages using <emphasis role="bold">CreatePullPointSubscription</emphasis>
+              operation to get <emphasis role="bold">tns1:Device/Trigger/DigitalInput</emphasis> notifications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client uses Pull Point event mechanism to retrieve notification events
+              from Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Digital Inputs if the
+              following conditions are met:<itemizedlist><listitem><para>
+                    Client is able to retrieve available Digital Inputs using
+                    <emphasis role="bold">GetDigitalInputs</emphasis> operation
+                    AND
+                  </para></listitem><listitem><para>Client supports EventHandling_Pullpoint feature AND</para></listitem><listitem><para>
+                    Client is able to monitor the state of the input pins using
+                    <emphasis role="bold">tns1:Device/Trigger/DigitalInput</emphasis> event if device supports DigitalInputs feature.
+
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Digital Inputs if
+              ANY of the following is TRUE:<itemizedlist><listitem><para>
+                    No valid response to <emphasis role="bold">GetDigitalInputs</emphasis> request
+                    OR
+                  </para></listitem><listitem><para>Client does not support EventHandling_Pullpoint feature OR</para></listitem><listitem><para>
+                    Client does not support <emphasis role="bold">tns1:Device/Trigger/DigitalInput</emphasis> event.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1">
+      <title>GET DIGITAL INPUTS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Get Digital Inputs
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> GETDIGITALINPUTS-1
+      </para>
+         <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Digital Inputs (GetDigitalInputs_GetDigitalInputsRequest)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetDigitalInputs">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+   
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that digital inputs provided by Device is received by Client using the
+        <emphasis role="bold">GetDigitalInputs</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetDigitalInputs</emphasis> operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Digital Inputs feature (DigitalInputs).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetDigitalInputs</emphasis> request message to retrieve digital inputs
+              from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetDigitalInputsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetDigitalInputs</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetDigitalInputs</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.0"><para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tmd:GetDigitalInputs</emphasis> AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetDigitalInputs</emphasis> request fulfills the following requirements:
+              <itemizedlist><listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.1"><para>
+                    [S2] It has HTTP 200 response code AND
+                  </para></listitem><listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.2"><para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tmd:GetDigitalInputsResponse</emphasis>.
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.PtzGetCompatibleConfigurations.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Get Compatible Configurations section and PTZ Get Compatible Configurations Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PtzGetCompatibleConfigurations">
+      <title>PTZ Get Compatible Configurations</title>
+      <para>
+        PTZ Get Compatible Configurations specifies Client ability to get PTZ configurations compatible with media profile from the device.
+      </para>
+  </section>
+         <section xml:id="tc.PtzGetCompatibleConfigurations">
+    <title>PTZ Get Compatible Configurations Test Cases</title>
+    <section xml:id="tc.PtzGetCompatibleConfigurations.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Get Compatible Configurations (PtzGetCompatibleConfigurations)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZGetCompatibleConfigurations">Check Condition based on Device Features:</emphasis> GetCompatibleConfigurations (PTZ Service) is supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetCompatibleConfigurations">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PtzGetCompatibleConfigurations.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve PTZ configurations compatible with profile using the <emphasis role="bold">GetCompatibleConfigurations</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ Get Compatible Configurations if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve PTZ configurations compatible with profile using the <emphasis role="bold">GetCompatibleConfigurations</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ Get Compatible Configurations if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No Valid Device Response to <emphasis role="bold">GetCompatibleConfigurations</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PtzGetCompatibleConfigurations.PTZGETCOMPATIBLECONFIGURATIONS-1">
+      <title>PTZ GET COMPATIBLE CONFIGURATIONS</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ GetCompatibleConfigurations
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZGETCOMPATIBLECONFIGURATIONS-1
+      </para>
+        <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Compatible Configurations (PtzGetCompatibleConfigurations_PTZGetCompatibleConfigurationsRequest)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="GetCompatibleConfigurations">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+    
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve PTZ configurations compatible with profile using the <emphasis role="bold">GetCompatibleConfigurations</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetCompatibleConfigurations operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Get Compatible Configurations feature (PTZGetCompatibleConfigurations).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes GetCompatibleConfigurations request message to get TPZ configurations compatible with profile.
+            </para>
+          </listitem>
+          <listitem>
+            <para>Device responds with code HTTP 200 OK and GetCompatibleConfigurationsResponse message. </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetCompatibleConfigurations</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetCompatibleConfigurations</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzGetCompatibleConfigurations.PTZGETCOMPATIBLECONFIGURATIONS-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:GetCompatibleConfigurations</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetCompatibleConfigurations</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PtzGetCompatibleConfigurations.PTZGETCOMPATIBLECONFIGURATIONS-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PtzGetCompatibleConfigurations.PTZGETCOMPATIBLECONFIGURATIONS-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:GetCompatibleConfigurationsResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

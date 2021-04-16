@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <section xml:id="Annex_HelperDefineTypeCorrespondingToRuleName">
+      <title>Define rule type corresponding to Rule Name</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperDefineTypeCorrespondingToRuleName
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Define rule type corresponding to Rule Name.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">GetRules</emphasis> or
+              <emphasis role="bold">CreateRules</emphasis> operations
+              present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> Delete Rules request (<emphasis role="italic">deleteRules</emphasis>), Rule Name (<emphasis role="italic">ruleName</emphasis>)
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> Rule Type (<emphasis role="italic">ruleType</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Annex Procedure:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client Test Tool checks that there is Client <emphasis role="bold">CreateRules</emphasis> request
+              or Device <emphasis role="bold">GetRulesResponse</emphasis> in Test Procedure that fulfills the following requirements:
+              <itemizedlist><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.0"><para>
+                    [S1] It is invoked before <emphasis role="italic">deleteRules</emphasis> request AND
+                  </para></listitem><listitem><para>
+                    If <emphasis role="bold">CreateRules</emphasis> request was found during previous steps:
+                    <itemizedlist><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.1"><para>
+                          [S2] <emphasis role="bold">axt:CreateRules/axt:ConfigurationToken</emphasis> value is equal to <emphasis role="bold">axt:ConfigurationToken</emphasis> value in <emphasis role="italic">deleteRules</emphasis> AND
+                        </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.2"><para>
+                          [S3] <emphasis role="bold">CreateRules</emphasis> has <emphasis role="bold">axt:Rule</emphasis> element (<emphasis role="italic">rule1</emphasis>) with <emphasis role="bold">@Name</emphasis> value is equal to <emphasis role="italic">ruleName</emphasis>
+                          AND
+                        </para></listitem><listitem><para>
+                          Device response on the <emphasis role="bold">CreateRules</emphasis> request fulfills the following requirements:
+                          <itemizedlist><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.3"><para>
+                                [S4] It has HTTP 200 response code AND
+                              </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.4"><para>
+                                [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:CreateRulesResponse</emphasis> AND
+                              </para></listitem></itemizedlist></para></listitem></itemizedlist></para><para>
+                    If <emphasis role="bold">GetRulesResponse</emphasis> was found during previous steps:
+                    <itemizedlist><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.5"><para>
+                          [S6] It has <emphasis role="bold">tr2:Rule</emphasis> element (<emphasis role="italic">rule2</emphasis>) with <emphasis role="bold">@Name</emphasis> value is equal to <emphasis role="italic">ruleName</emphasis>
+                          AND
+                        </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.6"><para>
+                          [S7] It has HTTP 200 response code
+                          AND
+                        </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.7"><para>
+                          [S8] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetRulesResponse</emphasis> AND
+                        </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.8"><para>
+                          [S9] <emphasis role="bold">GetRules</emphasis> request fulfills the following requirements:
+                          <itemizedlist><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.9"><para>
+                                [S10] <emphasis role="bold">axt:GetRules/axt:ConfigurationToken</emphasis> value is equal to <emphasis role="bold">axt:ConfigurationToken</emphasis> value in <emphasis role="italic">deleteRules</emphasis>
+                                AND
+                              </para></listitem></itemizedlist></para></listitem></itemizedlist></para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.10"><para>
+                    [S11] It is the closest one preceding <emphasis role="italic">deleteRules</emphasis> request that fullfils ([S2] and [S3]) or ([S4] and [S5]) requirements AND
+                  </para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>
+              The Client Test Tool checks if there is <emphasis role="bold">ModifyRules</emphasis> command that fulfills the following requirements:
+              <itemizedlist><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.11"><para>
+                    [S12]  It invoked after operation detected at previous steps (<emphasis role="bold">CreateRules</emphasis> OR <emphasis role="bold">GetRulesResponse</emphasis>) AND
+                  </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.12"><para>
+                    [S13]  It is the closest one preceding the <emphasis role="italic">deleteRules</emphasis> request AND
+                  </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.13"><para>
+                    [S14] <emphasis role="bold">axt:ModifyRules/axt:ConfigurationToken</emphasis> value is equal to <emphasis role="bold">axt:ConfigurationToken</emphasis> value in <emphasis role="italic">deleteRules</emphasis> request
+                    AND
+                  </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.14"><para>
+                    [S15] <emphasis role="bold">ModifyRules</emphasis> has <emphasis role="bold">tr2:Rule</emphasis> element (<emphasis role="italic">rule3</emphasis>) with <emphasis role="bold">@Name</emphasis> value is equal to <emphasis role="italic">ruleName</emphasis>
+                    AND
+                  </para></listitem><listitem><para>
+                    Device response on the <emphasis role="bold">ModifyRules</emphasis> request fulfills the following requirements:
+                    <itemizedlist><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.15"><para>
+                          [S16] It has HTTP 200 response code AND
+                        </para></listitem><listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.16"><para>
+                          [S17] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:ModifyRulesResponse</emphasis> AND
+                        </para></listitem></itemizedlist></para></listitem></itemizedlist></para>
+          </listitem>
+          <listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.17">
+            <para>
+              [S18] IF <emphasis role="bold">ModifyRules</emphasis> command was detected during previous steps then <emphasis role="italic">ruleType</emphasis> =  <emphasis role="italic">rule3</emphasis>.@Type
+            </para>
+          </listitem>
+          <listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.18">
+            <para>
+              [S19] ELSE IF <emphasis role="bold">GetRulesResponse</emphasis> response was found during previous steps
+              then <emphasis role="italic">ruleType</emphasis> =  <emphasis role="italic">rule2</emphasis>.@Type
+            </para>
+          </listitem>
+          <listitem xml:id="Annex_HelperDefineTypeCorrespondingToRuleName.19">
+            <para>
+              [S20] ELSE IF <emphasis role="bold">CreateRules</emphasis> request was found during previous steps then <emphasis role="italic">ruleType</emphasis> =  <emphasis role="italic">rule1</emphasis>.@Type
+
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>

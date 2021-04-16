@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.PTZUsingMedia2ProfileConfiguration.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Media2 Profile Configuration section and PTZ Media2 Profile Configuration Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.PTZUsingMedia2ProfileConfiguration">
+      <title>PTZ Media2 Profile Configuration</title>
+      <para>
+        PTZ Media2 Profile Configuration specifies Client ability to add compatible with media profile PTZ configuration to a Media2 profile.
+      </para>
+  </section>
+         <section xml:id="tc.PTZUsingMedia2ProfileConfiguration">
+    <title>PTZ Media2 Profile Configuration Test Cases</title>
+    <section xml:id="tc.PTZUsingMedia2ProfileConfiguration.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> PTZ Using Media2 Profile Configuration (PTZUsingMedia2ProfileConfiguration)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZService AND Medi2Service">Check Condition based on Device Features:</emphasis> PTZ Service and Media2 Service are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 1
+      </para>
+      <para>
+        <emphasis role="bold" annotations="8.1 Configuration of PTZ Profile">Profile T Requirement:</emphasis> Conditional
+      </para>
+    </section>
+    <section xml:id="tc.PTZUsingMedia2ProfileConfiguration.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to add compatible ptz configuration to a Media Profile.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ Media2 Profile Configuration if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports
+                    <emphasis role="bold">PtzGetCompatibleConfigurations</emphasis> feature
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to add compatible ptz configuration using <emphasis role="bold">GetCompatibleConfigurations</emphasis> operation and
+                    <emphasis role="bold">AddConfiguration</emphasis> operation with Type element value is equal to <emphasis role="bold">PTZ</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ Media2 Profile Configuration if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support <emphasis role="bold">PtzGetCompatibleConfigurations</emphasis> feature
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is unable to add an ptz configuration compatible with profile using
+                    <emphasis role="bold">GetCompatibleConfigurations</emphasis> operation and <emphasis role="bold">AddConfiguration</emphasis> operation
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">GetCompatibleConfigurations</emphasis> request
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">AddConfiguration</emphasis> request with Type element value is equal to <emphasis role="bold">PTZ</emphasis>.
+
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1">
+      <title>ADD PTZ CONFIGURATION USING MEDIA2</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Add PTZ Configuration to Media2 Profile
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> PTZUSINGMEDIA2PROFILECONFIGURATION-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Add PTZ Configuration in Media2 Profile (PTZUsingMedia2ProfileConfiguration_AddPTZConfigurationToMedia2Profile)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="AddConfiguration (PTZ)">Profile T Normative Reference:</emphasis> Conditional
+      </para>
+     
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add an ptz configuration to a media profile using the
+        <emphasis role="bold">AddConfiguration</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation
+              between Client and Device with <emphasis role="bold">AddConfiguration</emphasis> operation with Type value is equal to <emphasis role="bold">PTZ</emphasis>
+              present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Media2 Service (Media2Service).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PTZ service (PTZService).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetCompatibleConfigurations</emphasis> request message with specified <emphasis role="bold">ProfileToken</emphasis> to retrieve
+              compatible ptz configurations for specified media profile from the Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetCompatibleConfigurationsResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">AddConfiguration</emphasis> request message with Type element value is equal to PTZ and with Configuration token that was recieved in
+              <emphasis role="bold">GetCompatibleConfigurationsResponse</emphasis> message for the same media profile to add an ptz configuration to specified media profile on the Device.
+
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">AddConfigurationResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddConfiguration</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">AddConfiguration</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:AddConfiguration</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.1">
+                  <para>
+                    [S2] It has <emphasis role="bold">tr2:Configuration/tr2:Type</emphasis> element with value is equal to <emphasis role="bold">PTZ</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response to the <emphasis role="bold">AddConfiguration</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.2">
+                  <para>
+                    [S3] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.3">
+                  <para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:AddConfigurationResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              There is Client <emphasis role="bold">GetCompatibleConfigurations</emphasis> request in Test Procedure that fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.4">
+                  <para>
+                    [S5] It is invoked before the Client <emphasis role="bold">AddConfiguration</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.5">
+                  <para>
+                    [S6] It has <emphasis role="bold">tptz:ProfileToken</emphasis> element with value is equal to <emphasis role="bold">tr2:ProfileToken</emphasis> element value from the <emphasis role="bold">AddConfiguration</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.6">
+                  <para>
+                    [S7] It is the last <emphasis role="bold">GetCompatibleConfigurations</emphasis> request which corresponds to [S5], AND [S6] AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response to the <emphasis role="bold">GetCompatibleConfigurations</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.7">
+                  <para>
+                    [S8] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.8">
+                  <para>
+                    [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:GetCompatibleConfigurationsResponse</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1.9">
+                  <para>
+                    [S10] It contains <emphasis role="bold">tptz:PTZConfiguration</emphasis> element with <emphasis role="bold">@token</emphasis> attribute value is equal to <emphasis role="bold">tr2:Configuration/tr2:Token</emphasis> value for Configuration with <emphasis role="bold">tr2:Configuration/tr2:Type</emphasis> value is equal to PTZ from the <emphasis role="bold">AddConfiguration</emphasis> request message.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<section xml:id="additions.namespaces">
+  <title>Namespaces</title>
+  <para>
+    Prefix and namespaces used in this test specification are listed in Table 1.
+    These prefixes are not part of the standard and an implementation can use any prefix.
+  </para>
+  <table>
+    <title>Defined namespaces in this specification</title>
+    <tgroup cols="3">
+      <colspec colwidth="109*" />
+      <colspec colwidth="403*" />
+      <colspec colwidth="488*" />
+      <thead>
+        <row>
+          <entry>Prefix</entry>
+          <entry>Namespace URI</entry>
+          <entry>Description</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>soapenv</entry>
+          <entry>http://www.w3.org/2003/05/soap-envelope</entry>
+          <entry>Envelope namespace as defined by SOAP 1.2 [SOAP 1.2, Part 1]</entry>
+        </row>
+        <row>
+          <entry>xs</entry>
+          <entry>http://www.w3.org/2001/XMLSchema</entry>
+          <entry>Instance namespace as defined by XS [XML-Schema, Part1] and [XMLSchema,Part 2]</entry>
+        </row>
+        <row>
+          <entry>xsi</entry>
+          <entry>http://www.w3.org/2001/XMLSchema-instance</entry>
+          <entry>XML schema instance namespace</entry>
+        </row>
+        <row>
+          <entry>tns1</entry>
+          <entry>http://www.onvif.org/ver10/topics</entry>
+          <entry>The namespace for the ONVIF topic namespace</entry>
+        </row>
+        <row>
+          <entry>tt</entry>
+          <entry>http://www.onvif.org/ver10/schema</entry>
+          <entry>ONVIF XML schema descriptions</entry>
+        </row>
+        <row>
+          <entry>tds</entry>
+          <entry>http://www.onvif.org/ver10/device/wsdl</entry>
+          <entry>The namespace for the WSDL device service</entry>
+        </row>
+        <row>
+          <entry>tev</entry>
+          <entry>http://www.onvif.org/ver10/events/wsdl</entry>
+          <entry>The namespace for the WSDL event service</entry>
+        </row>
+        <row>
+          <entry>ter</entry>
+          <entry>http://www.onvif.org/ver10/error</entry>
+          <entry>The namespace for ONVIF defined faults</entry>
+        </row>
+        <!--<row>
+          <entry>trt</entry>
+          <entry>http://www.onvif.org/ver10/media/wsdl</entry>
+          <entry>The namespace for the WSDL media service</entry>
+        </row>-->
+        <!--<row>
+          <entry>tr2</entry>
+          <entry>http://www.onvif.org/ver20/media/wsdl</entry>
+          <entry>The namespace for the WSDL media2 service</entry>
+        </row>-->
+        <row>
+          <entry>wsnt</entry>
+          <entry>http://docs.oasis-open.org/wsn/b-2</entry>
+          <entry>Schema namespace of the [WS-BaseNotification] specification.</entry>
+        </row>
+        <row>
+          <entry>wsa</entry>
+          <entry>http://www.w3.org/2005/08/addressing</entry>
+          <entry>Device addressing namespace as defined by [WS-Addressing].</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</section>

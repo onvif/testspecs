@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.Media2_ZoomSpaces_VelocityGenericSpace.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>PTZ Using Media2 Zoom Continuous Positioning section and PTZ Using Media2 Zoom Continuous Positioning Test Cases section was moved from ONVIF PTZ Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.Media2_ZoomSpaces_VelocityGenericSpace">
+      <title>PTZ Using Media2 Zoom Continuous Positioning</title>
+      <para>
+        PTZ Using Media2 Zoom Continuous Positioning section specifies Client ability to move a PTZ Device using
+        zoom ContinuousMove operation for Media2 profile.
+      </para>
+  </section>
+        <section xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace">
+    <title>PTZ Using Media2 Zoom Continuous Positioning Test Cases</title>
+    <section xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> PTZ Using Media2 Zoom Continuous Positioning (Media2_ZoomSpaces_VelocityGenericSpace)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="PTZContinuousZoom AND Media2Service">Check Condition based on Device Features:</emphasis> PTZ Continuous Zoom and Medis2 Service are supported by Device.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold" annotations="7.22 Continuous PTZ Move">Profile T Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device control the
+              zoom position using absolute positioning with VelocityGenericSpace PTZ spaces.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting PTZ Using Media2 Zoom Continuous Positioning if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to move PTZ Device using the <emphasis role="bold">ContinuousMove</emphasis>
+                    operation with specified Zoom element EITHER using space attribute in Zoom element with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> value OR
+                    using Media Profile with PTZConfiguration with DefaultContinuousZoomVelocitySpace value is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis>
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports PtzContinuousPositioning.Stop feature OR PtzContinuousPositioning.StopMovementUsingContinuousMove feature.
+
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting PTZ Using Media2 Zoom Continuous Positioning if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid response to <emphasis role="bold">ContinuousMove</emphasis> request with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> PTZ space
+                    if detected
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid response to <emphasis role="bold">ContinuousMove</emphasis> request with skipped PTZ space attribute for <emphasis role="bold">ContinuousMove</emphasis> operations which use media profile with
+                    DefaultContinuousZoomVelocitySpace value in PTZConfiguration is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> if detected
+                    OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No <emphasis role="bold">ContinuousMove</emphasis> request with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> PTZ space is detected
+                    AND no <emphasis role="bold">ContinuousMove</emphasis> request with skipped PTZ space attribute which use media profile with
+                    DefaultContinuousZoomVelocitySpace value in PTZConfiguration is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> is detected
+                    AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support PtzContinuousPositioning.Stop feature AND PtzContinuousPositioning.StopMovementUsingContinuousMove feature.
+
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1">
+      <title>PTZ CONTINUOUS MOVE ZOOM VELOCITY GENERIC SPACE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> PTZ Using Media2 Continuous Positioning -
+        ContinuousMove Zoom
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1
+      </para>
+       <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Zoom Continuous Move Using Media2 - Velocity Generic Space (Media2_ZoomSpaces_VelocityGenericSpace_PTZContinuousPositioningZoomVelocityGenericSpace)
+      </para>
+      <para>
+        <emphasis role="bold" annotations="ContinuousMove;http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace">Profile T Normative Reference:</emphasis> Mandatory
+      </para>
+      
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        move a PTZ Device using the ContinuousMove operation with specified Zoom
+        element using <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> PTZ space.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation between
+              Client and Device with ContinuousMove operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports PTZ Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Continuous Zoom movement (PTZContinuousZoom).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">ContinuousMove</emphasis> request message to move of PTZ Device
+              using specific value of Zoom element with <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> space attribute value OR
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client find or configure media profile to contain PTZConfiguration with DefaultContinuousZoomVelocitySpace with value is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis> and
+              invokes <emphasis role="bold">ContinuousMove</emphasis> request message using specific value of Zoom element with no space attribute.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">ContinuousMoveResponse</emphasis>
+              message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <!--<para>
+        <emphasis role="bold">NOTE:</emphasis> If Client ContinuousMove request message does
+        not contain Zoom with space attribute value is equal to http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace then Test shall be deemed
+        as "NOT DETECTED".
+      </para>-->
+      <itemizedlist>
+        <listitem>
+          <para>
+            Client <emphasis role="bold">ContinuousMove</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Client <emphasis role="bold">ContinuousMove</emphasis> request in Test Procedure fulfills the following requirements:
+            <itemizedlist>
+              <listitem xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1.0">
+                <para>
+                  [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:ContinuousMove</emphasis> AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1.1">
+                <para>
+                  [S2] It contains <emphasis role="bold">tptz:Velocity/tt:Zoom</emphasis> element
+                  AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1.2">
+                <para>
+                  [S3] If it contains <emphasis role="bold">tptz:Velocity/tt:Zoom/@space</emphasis> attribute, THEN <emphasis role="bold">tptz:Velocity/tt:Zoom/@space</emphasis> element value is equal to <emphasis role="bold">http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace</emphasis>
+                  AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1.3">
+                <para>
+                  [S4] ELSE PTZConfiguration that corresponding to media profile used in <emphasis role="bold">ContinuousMove</emphasis> request (PTZ Move operation)
+                  has DefaultContinuousZoomVelocitySpace (Default space element name to get ) value is equal to http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace (see <link linkend="Annex_HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove">Annex A.1</link> HelperGetDefaultPtzSpaceOfPtzConfigurationCorrespondingToMove)
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Device response on the <emphasis role="bold">ContinuousMove</emphasis> request fulfills the following requirements:
+            <itemizedlist>
+              <listitem xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1.4">
+                <para>
+                  [S4] It has HTTP 200 response code AND
+                </para>
+              </listitem>
+              <listitem xml:id="tc.Media2_ZoomSpaces_VelocityGenericSpace.MEDIA2_ZOOMSPACES_VELOCITYGENERICSPACE-1.5">
+                <para>
+                  [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tptz:ContinuousMoveResponse</emphasis>.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+     
+    </section>
+  </section>
+</feature>

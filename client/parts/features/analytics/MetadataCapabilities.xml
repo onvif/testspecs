@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <!--<revision  xml:id="s.revhistory.MetadataCapabilities.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Get Supported Rules section and Get Supported Rules Test Cases section was moved from ONVIF Analytics Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>-->
+  </revhistory>
+  <section xml:id="s.intro.MetadataCapabilities">
+    <title>Metadata Capabilities</title>
+    <para>Metadata Capabilities section specifies Client ability to retrieve supported metadata XML schema and metadata XML instance.</para>
+  </section>
+  <section xml:id="tc.MetadataCapabilities">
+    <title>Metadata Capabilities Test Cases</title>
+    <section xml:id="tc.MetadataCapabilities.feature">
+      <title>Feature Level Requirement:</title>
+      <para>
+        <emphasis role="bold">Validated Feature:</emphasis> Metadata Capabilities (MetadataCapabilities)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="AnalyticsService">Check Condition based on Device Features:</emphasis> Analytics Service is supported by Device. TODO: check if there any other conditions after DTT Profile M implementation.
+      </para>
+      <para>
+        <emphasis role="bold">Required Number of Devices:</emphasis> 3
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="7.7 Metadata capabilities">Profile M Requirement:</emphasis> Mandatory
+      </para>
+    </section>
+    <section xml:id="tc.MetadataCapabilities.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve metadata XML schema using the <emphasis role="bold">GetSupportedMetadata</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client connects to Device to retrieve metadata XML instance using the <emphasis role="bold">GetMetadataInstance</emphasis> operation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Metadata Capabilities if the
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to retrieve metadata XML schema using the <emphasis role="bold">GetSupportedMetadata</emphasis> operation AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client is able to retrieve metadata XML instance using the <emphasis role="bold">GetMetadataInstance</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Metadata Capabilities if
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">GetSupportedMetadata</emphasis> request OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    No valid device response to <emphasis role="bold">GetMetadataInstance</emphasis> request.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-1">
+      <title>GET SUPPORTED METADATA</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> GetSupportedMetadata
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> METADATACAPABILITIES-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Supported Metadata (MetadataCapabilities_GetSupportedMetadata)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="GetSupportedMetadata">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve supported rules using the <emphasis role="bold">GetSupportedMetadata</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetSupportedMetadata operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Analytics Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports [TODO: check if there any other conditions after DTT Profile M implementation].
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetSupportedMetadata</emphasis> request message to retrieve metadata XML schema from the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetSupportedMetadataResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedMetadata</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetSupportedMetadata</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-1.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetSupportedMetadata</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetSupportedMetadata</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-1.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-1.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetSupportedMetadataResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+    <section xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-2">
+      <title>GET METADATA INSTANCE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> GetMetadataInstance
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> METADATACAPABILITIES-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Get Metadata Instance (MetadataCapabilities_GetMetadataInstance)
+      </para>
+      <para>
+        <emphasis role="bold"
+                  annotations="GetMetadataInstance">Profile M Normative Reference:</emphasis> Mandatory
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
+        retrieve supported rules using the <emphasis role="bold">GetMetadataInstance</emphasis> operation.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one conversation
+              between Client and Device with GetMetadataInstance operation present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports Analytics Service.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device supports [TODO: check if there any other conditions after DTT Profile M implementation].
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">GetMetadataInstance</emphasis> request message to retrieve metadata XML instance from the
+              Device.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responds with code HTTP 200 OK and <emphasis role="bold">GetMetadataInstanceResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetMetadataInstance</emphasis> request messages are valid according to XML Schemas listed in <xref linkend="additions.namespaces"/> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">GetMetadataInstance</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-2.0">
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetMetadataInstance</emphasis> AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">GetMetadataInstance</emphasis> request fulfills the following requirements:
+              <itemizedlist>
+                <listitem xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-2.1">
+                  <para>
+                    [S2] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MetadataCapabilities.METADATACAPABILITIES-2.2">
+                  <para>
+                    [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tan:GetMetadataInstanceResponse</emphasis>.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>

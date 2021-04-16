@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+  <revhistory>
+    <revision  xml:id="s.revhistory.Unsubscribe.20200831.All">
+      <revnumber>20.12</revnumber>
+      <date>Aug 31, 2020</date>
+      <revdescription>       
+        <para>Unsubscribe Feature: Check Condition based on Device Features was changed according to #325.</para>       
+      </revdescription>
+    </revision>
+          <revision  xml:id="s.revhistory.Unsubscribe.20190814.ProfileQ">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Unsubscribe section and Unsubscribe Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile Q Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision  xml:id="s.revhistory.Unsubscribe.20190814.ProfileG">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Unsubscribe section and Unsubscribe Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile G Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+      <revision  xml:id="s.revhistory.Unsubscribe.20190814.ProfileC">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Unsubscribe section and Unsubscribe Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile C Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+	      <revision  xml:id="s.revhistory.Unsubscribe.20190814.ProfileA">
+      <revnumber>19.12</revnumber>
+      <date>Aug 14, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Unsubscribe section and Unsubscribe Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile A Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+	      <revision  xml:id="s.revhistory.Unsubscribe.20190813.ProfileT">
+      <revnumber>19.12</revnumber>
+      <date>Aug 13, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Unsubscribe section and Unsubscribe Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile T Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+    <revision  xml:id="s.revhistory.Unsubscribe.20190812.ProfileS">
+      <revnumber>19.12</revnumber>
+      <date>Aug 12, 2019</date>
+      <revdescription>
+        <para>The following was done according to #341:</para>
+        <para>Unsubscribe section and Unsubscribe Test Cases section was moved from ONVIF Core Client Test Specification to ONVIF Profile S Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+  </revhistory>
+  <section xml:id="s.intro.Unsubscribe">
+    <title>Unsubscribe</title>
+    <para>
+      Unsubscribe section defines Client ability to terminete subscription using Unsubscribe operation.
+    </para>
+  </section>
+  <section xml:id="tc.Unsubscribe">
+    <title>Unsubscribe Test Cases</title>
+    <para>
+      <emphasis role="bold">Validated Feature:</emphasis> Unsubscribe (Unsubscribe)
+    </para>
+    <para>
+      <emphasis role="bold" annotations="no UnsupportedPullPointNotification OR WSBasicNotification">Check Condition based on Device Features:</emphasis> Pull Point Notification OR WS-Basic Notification is supported by Device.
+    </para>
+    <para>
+      <emphasis role="bold">Required Number of Devices:</emphasis> 1
+    </para>
+    <para>
+      <emphasis role="bold">Profile A Requirement:</emphasis> Optional
+    </para>
+    <para>
+      <emphasis role="bold">Profile C Requirement:</emphasis> Optional
+    </para>
+    <para>
+      <emphasis role="bold">Profile S Requirement:</emphasis> Optional
+    </para>
+    <para>
+      <emphasis role="bold">Profile Q Requirement:</emphasis> Optional
+    </para>
+    <para>
+      <emphasis role="bold">Profile G Requirement:</emphasis> Optional
+    </para>
+    <para>
+      <emphasis role="bold">Profile T Requirement:</emphasis> Optional
+    </para>
+    <section xml:id="tc.Unsubscribe.scenario">
+      <title>Expected Scenarios Under Test:</title>
+      <para>
+        <orderedlist>
+          <listitem>
+            <para>Client connects to Device to Unsubscribe subscribtions.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as supporting Unsubscribe if the following
+              conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client is able to unsubscribe subscribtions using <emphasis role="bold">Unsubscribe</emphasis> operation.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client is considered as NOT supporting Unsubscribe if the following
+              is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    No valid responses for <emphasis role="bold">Unsubscribe</emphasis> request OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    <emphasis role="bold">Unsubscribe</emphasis> request does not contains valid <emphasis role="bold">wsa:Action</emphasis> header.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="tc.Unsubscribe.UNSUBSCRIBE-1">
+      <title>UNSUBSCRIBE</title>
+      <para>
+        <emphasis role="bold">Test Label:</emphasis> Unsubscribe - Unsubscribe
+      </para>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> UNSUBSCRIBE-1
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Unsubscribe (Unsubscribe_UnsubscribeAction)
+      </para>
+      <para>
+        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
+      </para>
+      <para>
+        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
+      </para>
+      <para>
+        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
+      </para>
+      <para>
+        <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
+      </para>
+
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
+        to use <emphasis role="bold">Unsubscribe</emphasis> operation to terminate a subscribtion.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-Requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Network Trace Capture files contains at least one Conversation between
+              Client and Device with <emphasis role="bold">Unsubscribe</emphasis> operations present.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">
+          Test Procedure (expected to be reflected in network trace
+          file):
+        </emphasis>
+        <orderedlist>
+          <!--<listitem>
+            <para>
+              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> message.
+            </para>
+          </listitem>-->
+          <!--<listitem>
+            <para>
+              Device responses with code HTTP 200 OK and
+              <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
+            </para>
+          </listitem>-->
+          <listitem>
+            <para>
+              Client invokes <emphasis role="bold">Unsubscribe</emphasis> message with valid <emphasis role="bold">wsa:Action</emphasis> header
+              to terminete a subscription.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device responses with code HTTP 200 OK and <emphasis role="bold">UnsubscribeResponse</emphasis> message.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Unsubscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Client <emphasis role="bold">Unsubscribe</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>
+                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Unsubscribe</emphasis> AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S2] It contains <emphasis role="bold">wsa:Action</emphasis> element in header equal to "http://docs.oasis-open.org/wsn/bw-2/SubscriptionManager/UnsubscribeRequest" AND
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Device response on the <emphasis role="bold">Unsubscribe</emphasis> request fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>
+                    [S3] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:UnsubscribeResponse</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <!--<listitem>
+            <para>
+              There is a Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>
+                    [S5] It has HTTP 200 response code AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S6] It received for the same Device as for the Client <emphasis role="bold">Unsubscribe</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S7] It received before the Client <emphasis role="bold">Unsubscribe</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S8] It contains <emphasis role="bold">tev:SubscriptionReference\wsa:Address</emphasis> element
+                    which is equal to HTTP address that was used to send the <emphasis role="bold">Unsubscribe</emphasis> request AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    [S9] All reference parameters listed in <emphasis role="bold">tev:SubscriptionReference\wsa:ReferenceParameters</emphasis> element
+                    was send in <emphasis role="bold">Unsubscribe</emphasis> request header with the same values and namespaces
+                    as in <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message and with <emphasis role="bold">@wsa:IsReferenceParameter</emphasis> attribute equal to true
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>-->
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The Client failed PASS criteria.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+  </section>
+</feature>
