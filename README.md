@@ -11,4 +11,4 @@ Official test specifications are available at onvif.org:
 
 With the closure of the ONVIF Member Forum, this repository's [discussion tab](https://github.com/onvif/testspecs/discussions) is available as a replacement. Questions regarding the test specifications and the ONVIF test tool (available to ONVIF Members) should be asked there.
 
-General questions regarding ONVIF may also be asked at Stack Overflow, using the [ONVIF tag](https://stackoverflow.com/questions/tagged/onvif)
+General questions regarding ONVIF stack implementation aspects may also be discussed at Stack Overflow, using the [ONVIF tag](https://stackoverflow.com/questions/tagged/onvif)
