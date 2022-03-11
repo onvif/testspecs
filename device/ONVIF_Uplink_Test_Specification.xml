@@ -403,6 +403,9 @@
 									<listitem>
 										<para> GetUsers (Device Mgmt Service) </para>
 									</listitem>
+							</itemizedlist></para></listitem>
+							<listitem>
+								<para> A DUT supporting the Media2 service shall support the following commands: <itemizedlist>
 									<listitem>
 										<para> GetProfiles (Media2) </para>
 									</listitem>
