@@ -1,0 +1,914 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--For PDF version (standard)-->
+<!-- <?xml-stylesheet href="docbook/xsl/fo/docbook.xsl" type="text/xsl" ?>-->
+<!--For PDF version-->
+<!-- <?xml-stylesheet href="ONVIF-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<!--For online version-->
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Profile_Imaging_Client_TS">
+	<info>
+		<orgname>
+			<phrase>
+				<trademark class="registered">ONVIF</trademark>
+			</phrase>
+		</orgname>
+		<title>Uplink Test Specification</title>
+		<subtitle>Version 22.06</subtitle>
+		<date>June 2022</date>
+		<copyright>
+			<year>2022</year>
+			<holder>ONVIF, Inc. All rights reserved.</holder>
+		</copyright>
+		<address>
+			<uri>www.onvif.org</uri>
+		</address>
+		<legalnotice role="notices">
+			<para> Recipients of this document may copy, distribute, publish, or display this
+				document so long as this copyright notice, license and disclaimer are retained with
+				all copies of the document. No license is granted to modify this document. </para>
+			<para> THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
+				AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+				NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+				NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY
+				PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS,
+				COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS. </para>
+			<para> IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR
+				ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES,
+				ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR
+				NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE
+				POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND
+				ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT. THE
+				FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR
+				LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE
+				AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE
+				CORPORATION. </para>
+		</legalnotice>
+		<revhistory>
+			<revision>
+				<revnumber>22.03</revnumber>
+				<date>Mar 11, 2022</date>
+				<revdescription>
+					<para>Initial version</para>
+				</revdescription>
+			</revision>
+		</revhistory>
+	</info>
+	<chapter xml:id="s.intro">
+		<title>Introduction</title>
+		<para> The goal of the ONVIF test specification set is to make it possible to realize fully
+			interoperable IP physical security implementation from different vendors. The set of
+			ONVIF test specification describes the test cases need to verify the [ONVIF Uplink
+			Specification] and [ONVIF Conformance] requirements. It also describes the test
+			framework, test setup, pre-requisites, test policies needed for the execution of the
+			described test cases. </para>
+		<para> This ONVIF Uplink Test Specification acts as a supplementary document to the [ONVIF Uplink
+			Specification], illustrating test cases need to be executed and passed. And also this
+			specification acts as an input document to the development of test tool which will be
+			used to test the ONVIF device implementation conformance towards ONVIF standard. This
+			test tool is referred as ONVIF Client hereafter. </para>
+		<section xml:id="s.intro.scope">
+			<title>Scope</title>
+			<para> This ONVIF Uplink Test Specification defines and regulates the conformance testing
+				procedure for the ONVIF conformant devices. Conformance testing is meant to be
+				functional black-box testing. The objective of this specification is to provide test
+				cases to test individual requirements of ONVIF devices according to ONVIF Uplink
+				which is defined in [ONVIF Uplink Specification]. </para>
+			<para>
+				The principal intended purposes are:
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>Provide self-assessment tool for implementations.</para>
+					</listitem>
+					<listitem>
+						<para>
+							Provide comprehensive test suite coverage for [ONVIF Network Interface Specs].
+						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				This specification does not address the following:
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+							Product use cases and non-functional (performance and regression) testing.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							SOAP Implementation Interoperability test i.e. Web Service Interoperability Basic Profile version 2.0 (WS-I BP 2.0).
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Network protocol implementation Conformance test for HTTP, HTTPS, RTP protocol.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							Wi-Fi Conformance test
+						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para> The set of ONVIF Test Specification will not cover the complete set of requirements as
+				defined in [ONVIF Uplink Specification]; instead it would cover subset of it. The
+				scope of this specification is to derive all the normative requirements of [ONVIF
+				Uplink Specification] which are related to ONVIF Uplink and some of the optional
+				requirements. </para>
+			<para> This ONVIF Uplink Test Specification covers Uplink service which is a functional block of
+				[ONVIF Network Interface Specs]. The following sections give the brief overview of
+				and scope of each functional block. </para>
+			
+			<section xml:id="s.intro.scope.uplink_connect">
+				<title>Connection</title>
+				<para> The Connection section covers the test cases needed for initiating an uplink from a
+					device to a service endpoint. Once the connection is established the service
+					endpoint acts as client. </para>
+				<para>
+					The scope of this specification section is to cover the following functions:
+					<itemizedlist>
+						<listitem>
+							<para> Setting device uplink configuration. </para>
+						</listitem>
+						<listitem>
+							<para> Connection establishment and teardown. </para>
+						</listitem>
+						<listitem>
+							<para> Reconnecting on communication timeout. </para>
+						</listitem>
+						<listitem>
+							<para> Verification of authentication and user level.</para>
+						</listitem>
+						<listitem>
+							<para> Responding to requests. </para>
+						</listitem>
+						<listitem>
+							<para> Streaming of video.</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+			
+			<section xml:id="s.intro.scope.capabilities">
+				<title>Capabilities</title>
+				<para>
+					The Capabilities section covers the test cases needed for getting capabilities from an ONVIF device.
+				</para>
+				<para>
+					The scope of this specification section is to cover the following functions:
+					<itemizedlist>
+						<listitem>
+							<para> Getting Uplink service address with GetServices command via Device service </para>
+						</listitem>
+						<listitem>
+							<para>
+								Getting capabilities with GetServiceCapabilities command
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Getting capabilities with GetServices command via Device service
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+		</section>
+	</chapter>
+	<chapter xml:id="s.docbook">
+		<title>Normative references</title>
+		<itemizedlist>
+			<listitem>
+				<para>[ONVIF Conformance] ONVIF Conformance Process Specification:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/conformance/">https://www.onvif.org/profiles/conformance/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Profile Policy] ONVIF Profile Policy:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Network Interface Specs] ONVIF Network Interface Specification documents:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Core Specs] ONVIF Core Specifications:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Uplink Specification] Uplink Specification</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/specs/srv/uplink/ONVIF-Uplink-Spec.pdf"/>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ONVIF Base Test] ONVIF Base Device Test Specification:</para>
+				<para>
+					<link xlink:href="https://www.onvif.org/profiles/conformance/device-test/">https://www.onvif.org/profiles/conformance/device-test/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ISO/IEC Directives, Part 2] ISO/IEC Directives, Part 2, Annex H:</para>
+				<para>
+					<link xlink:href="http://www.iso.org/directives">http://www.iso.org/directives</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[ISO 16484-5] ISO 16484-5:2014-09 Annex P:</para>
+				<para>
+					<link xlink:href="https://www.iso.org/obp/ui/#!iso:std:63753:en">https://www.iso.org/obp/ui/#!iso:std:63753:en</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[SOAP 1.2, Part 1] W3C SOAP 1.2, Part 1, Messaging Framework:</para>
+				<para>
+					<link xlink:href="http://www.w3.org/TR/soap12-part1/">http://www.w3.org/TR/soap12-part1/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[XML-Schema, Part 1] W3C XML Schema Part 1: Structures Second Edition:</para>
+				<para>
+					<link xlink:href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[XML-Schema, Part 2] W3C XML Schema Part 2: Datatypes Second Edition:</para>
+				<para>
+					<link xlink:href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</link>
+				</para>
+			</listitem>
+			<listitem>
+				<para>[WS-Security] "Web Services Security: SOAP Message Security 1.1 (WS-Security 2004)", OASIS Standard, February 2006.:</para>
+				<para>
+					<link xlink:href="http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf">http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf</link>
+				</para>
+			</listitem>
+		</itemizedlist>
+	</chapter>
+	<chapter xml:id="additions">
+		<title>Terms and Definitions</title>
+		<section xml:id="additions.conventions">
+			<title>Conventions</title>
+			<para>
+				The key words "shall", "shall not", "should", "should not", "may", "need not",
+				"can", "cannot" in this specification are to be interpreted as described in [ISO/IEC
+				Directives Part 2].
+			</para>
+		</section>
+		<section xml:id="additions.definitions">
+			<title>Definitions</title>
+			<para>This section defines terms that are specific to the ONVIF Uplink Service and tests. For the
+				list of applicable general terms and definitions, please see [ONVIF Base
+				Test].</para>
+			<variablelist>
+				<varlistentry>
+					<term>Uplink</term>
+					<listitem>
+						<para>
+							Doing something in advance to prepare for something else.
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Video Source</term>
+					<listitem>
+						<para>
+							Entity defined by [ONVIF Device I/O Specification] 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>Video Source Token</term>
+					<listitem>
+						<para>
+							Token referencing a Device I/O Video Source 
+						</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</section>
+	</chapter>
+	<chapter xml:id="overview">
+		<title>Test Overview</title>
+		<para>
+			This section provides information about the test setup procedure and required prerequisites, and the test policies that should be followed for test case execution.
+		</para>
+		<section xml:id="overview.test_setup">
+			<title>Test Setup</title>
+			<section xml:id="overview.test_setup.network_configuration">
+				<title>Network Configuration for DUT</title>
+				<para>
+					The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 4.1).
+				</para>
+				<para>
+					Based on the individual test case requirements, some of the entities in the below setup may not be needed for the execution of those corresponding test cases.
+				</para>
+				<figure>
+					<title>Test Configuration for DUT</title>
+					<mediaobject>
+						<imageobject>
+							<imagedata fileref="figures/uplink-dtt.svg" format="PNG" scalefit="0"/>
+						</imageobject>
+						<textobject>
+							<phrase>Test Configuration for DUT</phrase>
+						</textobject>
+					</mediaobject>
+				</figure>
+				<para>
+					<emphasis role="bold">DUT:</emphasis> ONVIF device to be tested. Hereafter, this is referred to as DUT (Device Under Test).
+				</para>
+				<para>
+					<emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system and it controls the behavior of the DUT. It handles both expected and unexpected behavior.
+				</para>
+			</section>
+		</section>
+		<section xml:id="overview.prerequisites">
+			<title>Prerequisites</title>
+			<para>
+				The pre-requisites for executing the test cases described in this Test Specification are:
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+							The DUT shall be configured with an IPv4 address.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT shall be IP reachable [in the test configuration].
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT shall be able to be discovered by the Test Tool.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT shall be configured with the time, i.e. manual configuration of UTC time and if NTP is supported by the DUT then NTP time shall be synchronized with NTP Server.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							The DUT time and Test tool time shall be synchronized with each other either manually or by a common NTP server.
+						</para>
+					</listitem>
+					
+				</orderedlist>
+			</para>
+			
+		</section>
+		<section xml:id="overview.test_policy">
+			<title>Test Policy</title>
+			<para>
+				This section describes the test policies specific to the test case execution of each functional block.
+			</para>
+			<para>
+				The DUT shall adhere to the test policies defined in this section.
+			</para>
+			<section xml:id="overview.test_policy.uplink_connect">
+				<title>Uplink Move</title>
+				<para> The test policies specific to the test case execution of all functional blocks: <itemizedlist>
+						<listitem>
+							<para> DUT shall give the Uplink Service entry point by GetServices
+								command, if DUT supports this service. Otherwise, these test cases
+								will be skipped. </para>
+						</listitem>
+						<listitem>
+							<para> DUT shall support the following commands: <itemizedlist>
+									<listitem>
+										<para> GetUplinks </para>
+									</listitem>
+									<listitem>
+										<para> SetUplink </para>
+									</listitem>
+									<listitem>
+										<para> DeleteUplink </para>
+									</listitem>
+									<listitem>
+										<para> GetDeviceInformation (Device Mgmt Service) </para>
+									</listitem>
+									<listitem>
+										<para> GetUsers (Device Mgmt Service) </para>
+									</listitem>
+									<listitem>
+										<para> GetProfiles (Media2) </para>
+									</listitem>
+									<listitem>
+										<para> GetStreamUri (Media2) </para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+							<para> Please refer to <link linkend="tc.uplink.uplink_connect">Section 5.1</link>
+					for Uplink Test Cases. </para>
+						</section>
+						
+			<section xml:id="overview.test_policy.capabilities">
+				<title>Capabilities</title>
+				<para>
+					The test policies specific to the test case execution of Capabilities functional block:
+					<itemizedlist>
+						<listitem>
+							<para> DUT shall give the Uplink Service entry point by GetServices command, if DUT supports
+								this service. Otherwise, these test cases will be skipped. </para>
+						</listitem>
+						<listitem>
+							<para>
+								DUT shall support the following commands:
+								<itemizedlist>
+									<listitem>
+										<para>
+											GetServices
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											GetServiceCapabilities
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The following tests are performed
+								<itemizedlist>
+									<listitem>
+										<para>
+											Getting capabilities with GetServiceCapabilities command
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											Getting capabilities with GetServices command
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+					</itemizedlist>
+							</para>
+							<para> Please refer to <link linkend="tc.uplink.capabilities">Section 5.2</link> for
+					Uplink Test Cases. </para>
+						</section>
+					</section>
+				</chapter>
+				<!--Uplink Test Cases-->
+				<chapter xml:id="tc.uplink">
+					<title>Uplink Test Cases</title>
+					<!--Uplink connect -->
+					<section xml:id="tc.uplink.uplink_connect">
+						<title> Uplink Connection</title>
+						<!-- UPLINK-1-1-1 -->
+						<section xml:id="tc.UPLINK-1-1-1">
+							<title>CONNECT AND DISCONNECT</title>
+							<para>
+					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-1-1-1 </para>
+							<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> GetUplinks (Uplink
+					Specification), SetUplink (Uplink Specification), DeleteUplink (Uplink
+					Specification)  </para>
+							<para>
+					<emphasis role="bold">Feature Under Test:</emphasis> Connect, Disconnect</para>
+							<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> uplink.wsdl</para>
+							<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify conect and disconnect
+					operation. </para>
+							<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service is received from
+					the DUT. </para>
+							<para>
+								<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+							</para>
+							<para>
+								<emphasis role="bold">Test Procedure:</emphasis>
+							</para>
+							<para>
+								<orderedlist>
+									<?dbfo label-width="1.5em"?>
+									<listitem>
+										<para>
+											Start an ONVIF Client.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											Start the DUT.
+										</para>
+									</listitem>
+									<listitem>
+										<para> ONVIF Client retrieves Uplink Service capabilities by following the procedure
+								mentioned in <link linkend="Annex_HelperGetServiceCapabilities"
+									>Annex A.1</link> with the following input and output parameters <itemizedlist>
+									<listitem>
+										<para> out <emphasis role="italic">cap</emphasis> - Uplink Service capabilities </para>
+									</listitem>
+								</itemizedlist>
+							</para>
+									</listitem>
+									<listitem>
+										<para> ONVIF Client removes any existing uplink configurations using the procedure <link
+									linkend="Annex_HelperClear">Annex A.2</link>.</para>
+									</listitem>
+									<listitem>
+							<para> ONVIF Client starts service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client calls SetUplink with with parameters</para>
+								<itemizedlist>
+									<listitem>
+										<para> RemoteAddress  := <emphasis role="italic">IPv4 address and port of service
+											endpoint</emphasis></para>
+									</listitem>
+									<listitem>
+										<para> UserLevel := <emphasis>Administrator</emphasis></para>
+									</listitem>
+									<listitem>
+										<para> Without CertificateID  </para>
+									</listitem>
+								</itemizedlist>
+						</listitem>
+									<listitem>
+										<para> ONVIF Client awaits device connecting to service endpoint.</para>
+									</listitem>
+									<listitem>
+										<para> ONVIF Client sends GetDeviceInformation via the service endpoint.</para>
+									</listitem>
+									<listitem>
+										<para> ONVIF Client removes any existing uplink configurations using the procedure <link
+											linkend="Annex_HelperClear">Annex A.2</link>.</para>
+									</listitem>
+								
+								</orderedlist>
+							</para>
+							<para>
+								<emphasis role="bold">Test Result:</emphasis>
+							</para>
+							<para>
+								<emphasis role="bold">PASS –</emphasis>
+								<itemizedlist>
+									<listitem>
+										<para>
+											DUT passes all assertions.
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+							<para>
+								<emphasis role="bold">FAIL –</emphasis>
+								<itemizedlist>
+									<listitem>
+										<para> DUT did not send <emphasis role="bold">SetUplinkResponseC</emphasis> message(s). </para>
+									</listitem>
+									<listitem>
+										<para> DUT did not connect to the service endpoint. </para>
+									</listitem>
+									<listitem>
+										<para> DUT did not send <emphasis role="bold">GetDeviceInformationResponse</emphasis>
+								message(s). </para>
+									</listitem>
+									<listitem>
+										<para> DUT did not send <emphasis role="bold">DeleteUplinkResponseC</emphasis> message(s). </para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</section>
+						<!-- UPLINK-1-1-2 -->
+						<section xml:id="tc.UPLINK-1-1-5">
+				<para> </para>
+			</section>
+					</section>
+					<section xml:id="tc.uplink.capabilities">
+						<title>Capabilities</title>
+						<!-- UPLINK-2-1-1 -->
+						<section xml:id="tc.UPLINK-2-1-1">
+							<title>GET SERVICES AND GET UPLINK SERVICE CAPABILITIES CONSISTENCY</title>
+							<para>
+					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-2-1-1 </para>
+							<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> Capability exchange
+					(ONVIF Core Specification), Capabilities (Uplink Service Specification) </para>
+							<para>
+					<emphasis role="bold">Feature Under Test:</emphasis> GetServices,
+					GetServiceCapabilities (Uplink) </para>
+							<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl,
+					uplink.wsdl</para>
+							<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify getting Uplink Service
+					using GetServices request. To verify Get Services and Uplink Service
+					Capabilities consistency. </para>
+							<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service is received from
+					the DUT. </para>
+							<para>
+								<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+							</para>
+							<para>
+								<emphasis role="bold">Test Procedure:</emphasis>
+							</para>
+							<para>
+								<orderedlist>
+									<?dbfo label-width="1.5em"?>
+									<listitem>
+										<para>
+											Start an ONVIF Client.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											Start the DUT.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														IncludeCapability := false
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											Set <emphasis role="italic">uplinkServ</emphasis> := item from <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/uplink/wsdl".
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">uplinkServ</emphasis>.Capabilities is specified, FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														IncludeCapability := true
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
+											<itemizedlist>
+												<listitem>
+													<para>
+														Service list =: <emphasis role="italic">listOfServicesWithCapabilities</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">listOfServicesWithCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											Set <emphasis role="italic">uplinkServ</emphasis> := item from <emphasis role="italic">listOfServicesWithCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/uplink/wsdl".
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">uplinkServ</emphasis>.Capabilities is not specified, FAIL the test and skip other steps.
+										</para>
+									</listitem>
+									<listitem>
+										<para> If <emphasis role="italic">uplinkServ</emphasis>.Capabilities does not
+								contain valid Capabilities element for Uplink service from
+								"http://www.onvif.org/ver10/uplink/wsdl" namespace, FAIL the
+								test and skip other steps. </para>
+									</listitem>
+									<listitem>
+										<para> ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis>
+								(Uplink) message. </para>
+									</listitem>
+									<listitem>
+										<para>
+											The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+											<itemizedlist>
+												<listitem>
+													<para>
+														Capabilities =: <emphasis role="italic">cap</emphasis>
+													</para>
+												</listitem>
+											</itemizedlist>
+										</para>
+									</listitem>
+									<listitem>
+										<para>
+											If <emphasis role="italic">cap</emphasis> differs from <emphasis role="italic">uplinkServ</emphasis>.Capabilities.Capabilities, FAIL the test.
+										</para>
+									</listitem>
+								</orderedlist>
+							</para>
+							<para>
+								<emphasis role="bold">Test Result:</emphasis>
+							</para>
+							<para>
+								<emphasis role="bold">PASS –</emphasis>
+								<itemizedlist>
+									<listitem>
+										<para>
+											DUT passed all assertions.
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+							<para>
+								<emphasis role="bold">FAIL –</emphasis>
+								<itemizedlist>
+									<listitem>
+										<para>
+											The DUT did not send <emphasis role="bold">GetServicesResponse</emphasis> message.
+										</para>
+									</listitem>
+                  <listitem>
+										<para>
+											The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</section>
+					</section>
+				</chapter>
+				<appendix>
+					<title>Helper Procedures and Additional Notes</title>
+					<!--A.1-->
+					<section xml:id="Annex_HelperGetServiceCapabilities">
+						<title>Get Uplink Service Capabilities</title>
+						<para>
+							<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
+						</para>
+						<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to get Uplink
+				Service Capabilities from the DUT. </para>
+						<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Uplink Service is received from the
+				DUT. </para>
+						<para>
+							<emphasis role="bold">Input:</emphasis> None
+						</para>
+						<para>
+							<emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
+						</para>
+						<para>
+							<emphasis role="bold">Procedure:</emphasis>
+						</para>
+						<para>
+							<orderedlist>
+								<?dbfo label-width="1.5em"?>
+								<listitem>
+									<para>
+										ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> request.
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+										<itemizedlist>
+											<listitem>
+												<para>
+													Capabilities =: <emphasis role="italic">cap</emphasis>
+												</para>
+											</listitem>
+										</itemizedlist>
+									</para>
+								</listitem>
+							</orderedlist>
+						</para>
+						<para>
+							<emphasis role="bold">Procedure Result:</emphasis>
+						</para>
+						<para>
+							<emphasis role="bold">PASS –</emphasis>
+							<itemizedlist>
+								<listitem>
+									<para>
+										DUT passed all assertions.
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+						<para>
+							<emphasis role="bold">FAIL –</emphasis>
+							<itemizedlist>
+								<listitem>
+									<para>
+										DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</section>
+					<!--A.2-->
+					<section xml:id="Annex_HelperClear">
+						<title>Clear Uplink Service Configuration</title>
+						<para>
+							<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
+						</para>
+						<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to get Uplink
+				Service Capabilities from the DUT. </para>
+						<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Uplink Service is received from the
+				DUT. </para>
+						<para>
+							<emphasis role="bold">Input:</emphasis> None
+						</para>
+						<para>
+							<emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
+						</para>
+						<para>
+							<emphasis role="bold">Procedure:</emphasis>
+						</para>
+						<para>
+							<orderedlist>
+								<?dbfo label-width="1.5em"?>
+								<listitem>
+									<para>
+										ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> request.
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+										<itemizedlist>
+											<listitem>
+												<para>
+													Capabilities =: <emphasis role="italic">cap</emphasis>
+												</para>
+											</listitem>
+										</itemizedlist>
+									</para>
+								</listitem>
+							</orderedlist>
+						</para>
+						<para>
+							<emphasis role="bold">Procedure Result:</emphasis>
+						</para>
+						<para>
+							<emphasis role="bold">PASS –</emphasis>
+							<itemizedlist>
+								<listitem>
+									<para>
+										DUT passed all assertions.
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+						<para>
+							<emphasis role="bold">FAIL –</emphasis>
+							<itemizedlist>
+								<listitem>
+									<para>
+										DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</section>
+				</appendix>
+			</book>			
