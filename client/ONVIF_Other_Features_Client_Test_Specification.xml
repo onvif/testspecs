@@ -10,10 +10,10 @@
       </phrase>
     </orgname>
     <title>Other Features Client Test Specification</title>
-    <subtitle>Version 19.12</subtitle>
-    <date>December 2019</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2019</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -21,7 +21,28 @@
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
  
-      <revhistory>
+      <revhistory> 
+         <xi:include href="parts/features/core/MonitoringNotifications.xml" xpointer="s.revhistory.MonitoringNotifications.20211007.OtherFeatures"/>
+        <xi:include href="parts/features/core/HTTPSystemRestore.xml" xpointer="s.revhistory.HTTPSystemRestore.20211007.OtherFeatures"/>
+        <xi:include href="parts/features/core/HTTPSystemBackup.xml" xpointer="s.revhistory.HTTPSystemBackup.20211007.OtherFeatures"/>
+        <xi:include href="parts/features/core/HTTPFirmwareUpgrade.xml" xpointer="s.revhistory.HTTPFirmwareUpgrade.20211007.OtherFeatures"/>
+        <xi:include href="parts/features/core/DeviceManagementNotifications.xml" xpointer="s.revhistory.DeviceManagementNotifications.20211007.OtherFeatures"/>
+        <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="s.revhistory.TLSConfiguration.20211007.OtherFeatures"/> 
+            <revision>
+      <revnumber>21.12</revnumber>
+      <date>Oct 07, 2021</date>
+      <revdescription>
+        <para>The following was done according to #426:</para>
+        <para>Operational State section and Operational State Test Cases was moved from ONVIF Profile Q Client Test Specification to ONVIF Other Features Client Test Specifications.</para>
+      </revdescription>
+    </revision>
+        <revision>
+        <revnumber>21.12</revnumber>
+        <date>Jun 02, 2021</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
         <revision>
         <revnumber>19.12</revnumber>
         <date>Oct 04, 2019</date>
@@ -222,6 +243,38 @@
         </para>
       </section>
     </section>
+
+    <section xml:id="s.intro.operational_state">
+        <title>Operational State Features</title>
+      <section xml:id="s.intro.TransitionToOperationalState">
+        <title>Transition to Operational State</title>
+        <para>Transition to Operational State section specifies Client ability to transit an ONVIF Device from Factory Default State into Operational State.</para>
+      </section>
+    </section>
+    <section xml:id="s.intro.FirmwareUpgrade">
+        <title>Firmware Upgrade Features</title>
+        <xi:include href="parts/features/core/HTTPFirmwareUpgrade.xml" xpointer="s.intro.HTTPFirmwareUpgrade"/>
+    </section>
+    <section xml:id="s.intro.BackupAndRestore">
+        <title>Backup and Restore Features</title>
+        <xi:include href="parts/features/core/HTTPSystemBackup.xml" xpointer="s.intro.HTTPSystemBackup"/>
+        <xi:include href="parts/features/core/HTTPSystemRestore.xml" xpointer="s.intro.HTTPSystemRestore"/>
+    </section>
+    <section xml:id="s.intro.Monitoring">
+        <title>Standard Events for Monitoring Features</title>
+        <xi:include href="parts/features/core/MonitoringNotifications.xml" xpointer="s.intro.MonitoringNotifications"/>
+    </section>
+    <section xml:id="s.intro.DeviceManagement">
+        <title>Standard Events for Device Management Features</title>
+        <xi:include href="parts/features/core/DeviceManagementNotifications.xml" xpointer="s.intro.DeviceManagementNotifications"/>
+    </section>
+    <section xml:id="s.intro.TLS">
+        <title>TLS Configuration Features</title>
+        <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="s.intro.TLSConfiguration"/>
+    </section>
+    
+    
+      
   </chapter>
   <chapter xml:id="s.docbook">
     <title>Normative references</title>
@@ -426,9 +479,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -504,21 +554,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Decoder Configuration Options (AudioBackchannelStreaming_GetAudioDecoderConfigurationOptions)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -626,22 +661,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> G.711 Audio Backchannel Streaming (AudioBackchannelStreaming_G711AudioBackchannelStreaming)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
-
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio backchannel streaming to Device was successfully started by Client.
         </para>
@@ -931,22 +950,6 @@
           <emphasis role="bold">Feature Under Test:</emphasis> G.726 Audio Backchannel Streaming (AudioBackchannelStreaming_G726AudioBackchannelStreaming)
         </para>
         <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
-
-        <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio backchannel streaming to Device was successfully started by Client.
         </para>
         <para>
@@ -1234,21 +1237,7 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> AAC Audio Backchannel Streaming (AudioBackchannelStreaming_AACAudioBackchannelStreaming)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
+
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio backchannel streaming to Device was successfully started by Client.
@@ -1550,9 +1539,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -1604,21 +1590,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Decoder Configurations (GetAudioDecoderConfigurationsList_GetAudioDecoderConfigurations)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -1740,9 +1711,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -1794,21 +1762,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Output Configurations (GetAudioOutputConfigurationsList_GetAudioOutputConfigurations)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -1930,9 +1883,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -1984,21 +1934,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Outputs (GetAudioOutputsList_GetAudioOutputs)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -2120,9 +2055,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -2174,21 +2106,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Decoder Configuration (GetAudioDecoderConfiguration_GetAudioDecoderConfigurationFeature)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -2309,9 +2226,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -2363,21 +2277,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Output Configuration (GetAudioOutputConfiguration_GetAudioOutputConfigurationFeature)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -2498,9 +2397,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -2618,21 +2514,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Compatible Audio Output Configurations (ProfileConfigurationForAudioBackchannel_GetCompatibleAudioOutputConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that compatible audio output configurations
@@ -2739,21 +2620,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Audio Output Configuration (ProfileConfigurationForAudioBackchannel_AddAudioOutputConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -2923,21 +2789,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Remove Audio Output Configuration (ProfileConfigurationForAudioBackchannel_RemoveAudioOutputConfiguration)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to remove audio output configurations
@@ -3045,21 +2896,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Compatible Audio Decoder Configurations (ProfileConfigurationForAudioBackchannel_GetCompatibleAudioDecoderConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that compatible audio decoder configurations
@@ -3166,21 +3002,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Audio Decoder Configuration (ProfileConfigurationForAudioBackchannel_AddAudioDecoderConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -3350,21 +3171,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Remove Audio Decoder Configuration (ProfileConfigurationForAudioBackchannel_RemoveAudioDecoderConfiguration)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to remove audio decoder configurations
@@ -3484,9 +3290,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -3538,21 +3341,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Audio Decoder Configuration (SetAudioDecoderConfiguration_SetAudioDecoderConfigurationRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -3673,9 +3461,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -3738,21 +3523,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Output Configuration Options (SetAudioOutputConfiguration_GetAudioOutputConfigurationOptions)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -3859,21 +3629,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Audio Output Configuration (SetAudioOutputConfiguration_SetAudioOutputConfigurationRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -4942,9 +4697,6 @@
           <emphasis role="bold">Profile G Requirement:</emphasis> None
         </para>
         <para>
-          <emphasis role="bold">Profile Q Requirement:</emphasis> None
-        </para>
-        <para>
           <emphasis role="bold">Profile S Requirement:</emphasis> None
         </para>
       </section>
@@ -5009,21 +4761,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Enabled TLS Versions (EnabledTLSVersionsConfiguration_GetEnabledTLSVersions)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -5130,21 +4867,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Enabled TLS Versions (EnabledTLSVersionsConfiguration_SetEnabledTLSVersions)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
         </para>
 
         <para>
@@ -5332,6 +5054,432 @@
 
     </section>
   </chapter>
+  <chapter xml:id="tc.OtherFeatures.operational_state">
+    <title>Test Cases for Operational State</title>
+    <section xml:id="tc.TransitionToOperationalState">
+      <title>Transition to Operational State Test Cases</title>
+      <section xml:id="tc.get_services_list.feature">
+        <title>Feature Level Requirement:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Transition to Operational State (TransitionToOperationalState)
+        </para>
+        <para>
+          <emphasis role="bold" annotations="TBD">Check Condition based on Device Features:</emphasis> TO BE DISCUSSED
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 3
+        </para>
+      </section>
+      <section xml:id="tc.TransitionToOperationalState.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>A Client connects to a Device in Factory Default State to invoke its transition into Operational State.</para>
+            </listitem>
+            <listitem>
+              <para>
+                The Client is considered as supporting Transition to Operational State if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      The Client is able to invoke the Device transition into the Operational State by using EITHER <emphasis role="bold">CreateUsers</emphasis> OR <emphasis role="bold">SetUser</emphasis> operations.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The Client is considered as NOT supporting Transition to Operational State if
+                ANY of the following is TRUE:
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">CreateUsers</emphasis> request OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">SetUser</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      <emphasis role="bold">SetUser</emphasis> request does not contain user with <emphasis role="bold">Username</emphasis> value contained in <emphasis role="bold">GetUsers</emphasis> response.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1">
+        <title>TRANSITION TO OPERATIONAL STATE BY CREATEUSERS</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Transition to Operational State by Create User
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> TRANSITIONTOOPERATIONALSTATE-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Transition to Operational State by CreateUsers (TransitionToOperationalState_TransitionToOperationalStateByCreateUsers)
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that a Client is able to invoke Device transition into Operational State using the
+          <emphasis role="bold">CreateUsers</emphasis>.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device in Factory Default state with <emphasis role="bold">CreateUsers</emphasis> operation without any authentication which contains User with "Administrator" user level present.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure (expected to be reflected in network trace file):</emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">CreateUsers</emphasis> request message without any authentication
+                and with non-empty password to create a new admin user.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">CreateUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateUsers</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateUsers</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:CreateUsers</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.1">
+                    <para>
+                      [S2] It does not contain Digest Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.2">
+                    <para>
+                      [S3] It does not contain WS-Username Token Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      It contains <emphasis role="bold">tds:User</emphasis> element which fulfills the following requirements:
+                      <itemizedlist>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.3">
+                          <para>
+                            [S4] <emphasis role="bold">tt:Username</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.4">
+                          <para>
+                            [S5] It contains <emphasis role="bold">tt:Password</emphasis> element AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.5">
+                          <para>
+                            [S6] <emphasis role="bold">tt:Password</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.6">
+                          <para>
+                            [S7] <emphasis role="bold">tt:UserLevel</emphasis> element value equals "Administrator" AND
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">CreateUsers</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.7">
+                    <para>
+                      [S8] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-1.8">
+                    <para>
+                      [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:CreateUsersResponse</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2">
+        <title>TRANSITION TO OPERATIONAL STATE BY SET USER</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Transition to Operational State by Set User
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> TRANSITIONTOOPERATIONALSTATE-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Transition to Operational State by SetUser (TransitionToOperationalState_TransitionToOperationalStateBySetUser)
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that a Client is able to invoke Device transition into Operational State using the <emphasis role="bold">SetUser</emphasis>.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device in Factory Default state with <emphasis role="bold">SetUser</emphasis> operation without any authentication and with UserLevel is equal to "Administrator" present.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure (expected to be reflected in network trace file):</emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetUsers</emphasis> request message without any authentication to retrieve user list from Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and
+                <emphasis role="bold">GetUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">SetUser</emphasis> request message without any authentication
+                to modify the password of an existing admin user.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and
+                <emphasis role="bold">SetUserResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetUser</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetUser</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetUser</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.1">
+                    <para>
+                      [S2] It does not contain Digest Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.2">
+                    <para>
+                      [S3] It does not contain WS-Username Token Authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      It contains <emphasis role="bold">tds:User</emphasis> element which fulfills the following requirements:
+                      <itemizedlist>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.3">
+                          <para>
+                            [S4] <emphasis role="bold">tt:Username</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.4">
+                          <para>
+                            [S5] It contains <emphasis role="bold">tt:Password</emphasis> element AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.5">
+                          <para>
+                            [S6] <emphasis role="bold">tt:Password</emphasis> element has non-empty string value AND
+                          </para>
+                        </listitem>
+                        <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.6">
+                          <para>
+                            [S7] <emphasis role="bold">tt:UserLevel</emphasis> element value equals "Administrator" AND
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">SetUser</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.7">
+                    <para>
+                      [S8] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.8">
+                    <para>
+                      [S9] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:SetUserResponse</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                There is a Client <emphasis role="bold">GetUsers</emphasis> request message in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.9">
+                    <para>
+                      [S10] It is invoked for the same Device as the response for the <emphasis role="bold">SetUser</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.10">
+                    <para>
+                      [S11] It is invoked before the Client <emphasis role="bold">SetUser</emphasis> request AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.11">
+                    <para>
+                      [S12] It does not contain digest authentication part AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.12">
+                    <para>
+                      [S13] It does not contain WS-username token authentication part AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response to the <emphasis role="bold">GetUsers</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.13">
+                    <para>
+                      [S14] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.14">
+                    <para>
+                      [S15] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tds:GetUsersResponse</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.TransitionToOperationalState.TRANSITIONTOOPERATIONALSTATE-2.15">
+                    <para>
+                      [S16] It contains <emphasis role="bold">tt:User</emphasis> element which fulfills the following requirements:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            [S17] <emphasis role="bold">tt:Username</emphasis> element value equals to <emphasis role="bold">tt:Username</emphasis> value from the <emphasis role="bold">SetUser</emphasis> request AND
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            [S18] <emphasis role="bold">UserLevel</emphasis> element value equals "Administrator".
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+  </chapter>
+  <chapter xml:id="tc.OtherFeatures.FirmwareUpgrade">
+    <title>Test Cases for Firmware Upgrade</title>
+    <xi:include href="parts/features/core/HTTPFirmwareUpgrade.xml" xpointer="tc.HTTPFirmwareUpgrade"/>
+  </chapter>
+  <chapter xml:id="tc.OtherFeatures.BackupAndRestore">
+    <title>Test Cases for Backup and Restore</title>
+    <xi:include href="parts/features/core/HTTPSystemBackup.xml" xpointer="tc.HTTPSystemBackup"/>
+    <xi:include href="parts/features/core/HTTPSystemRestore.xml" xpointer="tc.HTTPSystemRestore"/>
+  </chapter>
+  <chapter xml:id="tc.OtherFeatures.Monitoring">
+    <title>Test Cases for Standard Events for Monitoring</title>
+    <xi:include href="parts/features/core/MonitoringNotifications.xml" xpointer="tc.MonitoringNotifications"/>
+  </chapter>
+  <chapter xml:id="tc.OtherFeatures.DeviceManagement">
+    <title>Test Cases for Standard Events for Device Management</title>
+    <xi:include href="parts/features/core/DeviceManagementNotifications.xml" xpointer="tc.DeviceManagementNotifications"/>
+  </chapter>
+   <chapter xml:id="tc.OtherFeatures.TLS">
+    <title>Test Cases for TLS Configuration</title>
+    <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="tc.TLSConfiguration"/>
+  </chapter> 
+  
+  
   <appendix>
     <title>Test for Appendix A</title>
     <section xml:id="Annex_A.1">
@@ -5455,6 +5603,17 @@
                 Audio Output (Media Service) is supported by Device.
               </entry>
               <entry align="left">AudioOutput</entry>
+            </row>
+            <row>
+              <entry align="left">tc.TransitionToOperationalState</entry>
+              <entry align="left">Transition to Operational State</entry>
+              <entry align="left">
+                3
+              </entry>
+              <entry align="left">
+                 TO BE DISCUSSED.
+              </entry>
+              <entry align="left"> TBD</entry>
             </row>
           </tbody>
         </tgroup>

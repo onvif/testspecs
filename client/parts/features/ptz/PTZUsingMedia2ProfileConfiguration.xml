@@ -49,7 +49,8 @@
                 <listitem>
                   <para>
                     Client supports
-                    <emphasis role="bold">PtzGetCompatibleConfigurations</emphasis> feature
+                    <emphasis role="bold">PtzGetCompatibleConfigurations_PTZGetCompatibleConfigurationsRequest</emphasis> feature 
+                    (please see <xref linkend="tc.PTZUsingMedia2ProfileConfiguration.PTZGETCOMPATIBLECONFIGURATIONS-1"/> section)
                     AND
                   </para>
                 </listitem>
@@ -68,7 +69,8 @@
               ANY of the following is TRUE:<itemizedlist>
                 <listitem>
                   <para>
-                    Client does not support <emphasis role="bold">PtzGetCompatibleConfigurations</emphasis> feature
+                    Client does not support <emphasis role="bold">PtzGetCompatibleConfigurations_PTZGetCompatibleConfigurationsRequest</emphasis> feature 
+                    (please see <xref linkend="tc.PTZUsingMedia2ProfileConfiguration.PTZGETCOMPATIBLECONFIGURATIONS-1"/> section)
                     OR
                   </para>
                 </listitem>
@@ -97,6 +99,10 @@
         </orderedlist>
       </para>
     </section>
+      <section xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZGETCOMPATIBLECONFIGURATIONS-1" xreflabel="PTZGETCOMPATIBLECONFIGURATIONS-1 PTZ GET COMPATIBLE CONFIGURATIONS">   
+       <xi:include href="PtzGetCompatibleConfigurations.xml"
+                  xpointer="xpointer(id('tc.PtzGetCompatibleConfigurations.PTZGETCOMPATIBLECONFIGURATIONS-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</section>
     <section xml:id="tc.PTZUsingMedia2ProfileConfiguration.PTZUSINGMEDIA2PROFILECONFIGURATION-1">
       <title>ADD PTZ CONFIGURATION USING MEDIA2</title>
       <para>
@@ -107,9 +113,6 @@
       </para>
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Add PTZ Configuration in Media2 Profile (PTZUsingMedia2ProfileConfiguration_AddPTZConfigurationToMedia2Profile)
-      </para>
-      <para>
-        <emphasis role="bold" annotations="AddConfiguration (PTZ)">Profile T Normative Reference:</emphasis> Conditional
       </para>
      
       <para>

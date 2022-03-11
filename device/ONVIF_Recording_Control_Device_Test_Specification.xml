@@ -22,10 +22,10 @@
       </phrase>
     </orgname>
     <title>Recording Control Device Test Specification</title>
-    <subtitle>Version 20.06</subtitle>
-    <date>June 2020</date>
+    <subtitle>Version 21.06</subtitle>
+    <date>June 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -362,7 +362,16 @@
     <para>RECORDING-5-1-9 RECORDING CONTROL – DELETE TRACK EVENT</para>
         </revdescription>
       </revision>
-      
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 13, 2021</date>
+        <revdescription>
+           <para>The following test cases were updated according to #2147:</para>
+          <para>RECORDING-5-1-18 RECORDING CONTROL – JOB STATE EVENT (step 17, step 26)</para>
+           <para>RECORDING-5-1-19 RECORDING CONTROL – JOB STATE CHANGE EVENT (step 23, step 28)</para>          
+   
+        </revdescription>
+      </revision>
     
     
     </revhistory>
@@ -7450,7 +7459,7 @@
             </listitem>
             <listitem>
               <para>
-                Check that this event contains Data.ElementItemDescription item with Name = "Information" and Type = "tt:RecordingJobStateInformation".
+                If event contains Data.ElementItemDescription item with Name = "Information", check that its Type = "tt:RecordingJobStateInformation".
               </para>
             </listitem>
             <listitem>
@@ -7495,7 +7504,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify that each notification contains Data.ElementItem item with Name = "Information" and Value with type is equal to tt:RecordingJobStateInformation (validation with XML Schema complex type).
+                If notification contains Data.ElementItem item with Name = "Information", verify that its Value type is equal to tt:RecordingJobStateInformation (validation with XML Schema complex type).
               </para>
             </listitem>
             <listitem>
@@ -7757,7 +7766,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify that notification contains Data.ElementItem item with Name = "Information" and Value with type is equal to tt:RecordingJobStateInformation (validation with XML Schema complex type).
+                If notification contains Data.ElementItem item with Name = "Information", verify that its Value type is equal to tt:RecordingJobStateInformation (validation with XML Schema complex type).
               </para>
             </listitem>
             <listitem>
@@ -7772,7 +7781,27 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetRecordingJobStateResponse</emphasis> messages from the DUT. Verify that Data.ElementItem item with Name = "Information" from Notification message has the same value with State element from corresponding <emphasis role="bold">GetRecordingJobStateResponse</emphasis> messages for selected Recording Job. Verify that Data.ElementItem item with Name = "State" from Notification message has the same value with State.State element from corresponding <emphasis role="bold">GetRecordingJobStateResponse</emphasis> messages for selected Recording Job.
+                Verify the <emphasis role="bold">GetRecordingJobStateResponse</emphasis> messages from the DUT. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Verify that Data.ElementItem item with Name = "State" from Notification message has the same value with State.State element from corresponding <emphasis role="bold">GetRecordingJobStateResponse</emphasis> messages for selected Recording Job.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If Information element present in notification
+                <orderedlist numeration="arabic" inheritnum="inherit">
+			<?dbfo label-width=2.5em"?>
+			<listitem>
+				<para>
+Verify that Data.ElementItem item with Name = "Information" from Notification message has the same value with State element from corresponding <emphasis role="bold">GetRecordingJobStateResponse</emphasis> messages for selected Recording Job.
+				</para>
+			</listitem>
+		</orderedlist>
+                
+            
               </para>
             </listitem>
             <listitem>

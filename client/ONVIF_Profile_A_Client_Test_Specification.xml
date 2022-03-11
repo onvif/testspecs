@@ -19,10 +19,10 @@
       </phrase>
     </orgname>
     <title>Profile A Client Test Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -30,6 +30,53 @@
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
     <revhistory>
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.revhistory.Discovery.20211012.All"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                  xpointer="s.revhistory.SetSynchronizationPoint.20210603.All"/>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Jun 02, 2021</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jan 13, 2021</date>
+        <revdescription>         
+          <para>In the scope of #364 format of the following features were updated to show dependent test cases inside feature:</para>
+        <para>Keep Alive for Pull Point Event Handling</para>
+            <para>Get Credential Capabilities</para>
+    <para>Credentials Notifications</para>
+    <para>Schedules Notifications</para>
+    <para>Access Profile Notifications</para>
+    <para>Get Schedule State</para>
+    <para>Antipassback Violation Notifications</para>
+    <para>Special Days Notifications</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jan 11, 2021</date>
+        <revdescription>         
+          <para>'Access Profile Configuration Notifications' feature was renamed to 'Access Profile Notifications' to be compatible with feature name and id in the CTT.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jan 11, 2021</date>
+        <revdescription>         
+          <para>'Schedule Configuration Notifications' feature was renamed to 'Schedules Notifications' to be compatible with feature name and id in the CTT.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jan 11, 2021</date>
+        <revdescription>         
+          <para>'Credential Configuration and State Notifications' feature was renamed to 'Credentials Notifications' to be compatible with feature name and id in the CTT.</para>
+        </revdescription>
+      </revision>
       <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
                   xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
       <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
@@ -291,6 +338,7 @@
           </itemizedlist>
         </revdescription>
       </revision>
+    
     </revhistory>
   </info>
   <chapter xml:id="s.intro">
@@ -379,12 +427,8 @@
                   xpointer="s.intro.DeviceDiscoveryTypeFilter"/>
       <xi:include href="parts/features/core/UserHandling.xml"
                   xpointer="s.intro.UserHandling"/>
-      <section xml:id="s.intro.get_credential_capabilities">
-        <title>Get Credential Capabilities</title>
-        <para>
-          Get Credential Capabilities section specifies Client ability to request lcapabilities of Credential Service from Device.
-        </para>
-      </section>
+       <xi:include href="parts/features/credential/GetCredentialCapabilities.xml"
+                  xpointer="s.intro.GetCredentialCapabilities"/> 
       <section xml:id="s.intro.get_credential_list">
         <title>Get Credential List</title>
         <para>
@@ -402,9 +446,9 @@
                   xpointer="s.intro.configure_credentials"/> 
       
       <section xml:id="s.intro.credentials_notifications">
-        <title>Credential Configuration and State Notifications</title>
+        <title>Credentials Notifications</title>
         <para>
-          Credential Configuration and State Notifications section specifies Client ability to receive
+          Credentials Notifications section specifies Client ability to receive
           from Device configuration and state notifications for Credentials.
         </para>
       </section>
@@ -415,9 +459,9 @@
         </para>
       </section>
       <section xml:id="s.intro.schedules_notifications">
-        <title>Schedule Configuration Notifications</title>
+        <title>Schedules Notifications</title>
         <para>
-          Schedule Configuration Notifications section specifies Client ability to receive
+          Schedules Notifications section specifies Client ability to receive
           from Device configuration notifications for Schedules.
         </para>
       </section>
@@ -428,9 +472,9 @@
         </para>
       </section>
       <section xml:id="s.intro.access_profiles_notifications">
-        <title>Access Profile Configuration Notifications</title>
+        <title>Access Profile Notifications</title>
         <para>
-          Access Profile Configuration Notifications section specifies Client ability to receive
+          Access Profile Notifications section specifies Client ability to receive
           from Device configuration notifications for Access Profiles.
         </para>
       </section>
@@ -880,171 +924,8 @@
                 xpointer="tc.DeviceDiscoveryTypeFilter"/>
     <xi:include href="parts/features/core/UserHandling.xml"
                 xpointer="tc.UserHandling"/>
-    <section xml:id="tc.GetCredentialCapabilities">
-      <title>Get Credential Capabilities Test Cases</title>
-      <section xml:id="tc.get_services_list.feature">
-        <title>Feature Level Normative Reference:</title>
-        <para>
-          <emphasis role="bold">Validated Feature:</emphasis> Get Credential Capabilities (GetCredentialCapabilities)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="Credential">Check Condition based on Device Features:</emphasis> Credential Service is supported by Device.
-        </para>
-        <para>
-          <emphasis role="bold">Required Number of Devices:</emphasis> 3
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
-        </para>
-      </section>
-      <section xml:id="tc.GetCredentialCapabilities.scenario">
-        <title>Expected Scenarios Under Test:</title>
-        <para>
-          <orderedlist>
-            <listitem>
-              <para>
-                Client connects to Device to retrieve a credential service capabilities.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Client is considered as supporting Get Credential Capabilities if the
-                following conditions are met:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client is able to retrieve a credential service capabilities using
-                      <emphasis role="bold">GetServiceCapabilities</emphasis> operation (Credential Service) OR supports get_services_capabilities.get_services feature (Please, see ONVIF Core Client Test Specification).
-                    </para>
-                  </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Client is considered as NOT supporting Get Credential Capabilities if
-                ANY of the following is TRUE:<itemizedlist>
-                  <listitem>
-                    <para>
-                      No valid response <emphasis role="bold">GetServiceCapabilities</emphasis> request (Credential Service) AND get_credential_capabilities.get_services feature is not supported by Client.
-                    </para>
-                  </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-          </orderedlist>
-        </para>
-      </section>
-      <section xml:id="tc.GetCredentialCapabilities.GETCREDENTIALCAPABILITIES-1">
-        <title>GET SERVICE CAPABILITIES</title>
-        <para>
-          <emphasis role="bold">Test Label:</emphasis> Get Credential Capabilities -
-          Get Service Capabilities
-        </para>
-        <para>
-          <emphasis role="bold">Test Case ID:</emphasis> GETCREDENTIALCAPABILITIES-1
-        </para>
-        <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> Get Credential Service Capabilities (GetCredentialCapabilities_GetCredentialServiceCapabilities)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
-        </para>
-
-        <para>
-          <emphasis role="bold">Test Purpose:</emphasis> To verify that credential service capabilities provided by Device is received by Client using the
-          <emphasis role="bold">GetServiceCapabilities</emphasis> operation.
-        </para>
-        <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                The Network Trace Capture files contains at least one Conversation
-                between Client and Device with <emphasis role="bold">GetServiceCapabilities</emphasis> operation for Credential Service present.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Device supports Credential Service.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">
-            Test Procedure (expected to be reflected in network trace
-            file):
-          </emphasis>
-          <orderedlist>
-            <listitem>
-              <para>
-                Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> request message to retrieve credential service capabilities
-                from the Device.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Device responds with code HTTP 200 OK and <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
-              </para>
-            </listitem>
-          </orderedlist>
-        </para>
-        <para>
-          <emphasis role="bold">Test Result:</emphasis>
-        </para>
-        <para>
-          <emphasis role="bold">PASS -</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                Client <emphasis role="bold">GetServiceCapabilities</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Client <emphasis role="bold">GetServiceCapabilities</emphasis> request in Test Procedure fulfills the following requirements:
-                <itemizedlist>
-                  <listitem xml:id="tc.GetCredentialCapabilities.GETCREDENTIALCAPABILITIES-1.0">
-                    <para>
-                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tcr:GetServiceCapabilities</emphasis> AND
-                    </para>
-                  </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Device response on the <emphasis role="bold">GetServiceCapabilities</emphasis> request fulfills the following requirements:
-                <itemizedlist>
-                  <listitem xml:id="tc.GetCredentialCapabilities.GETCREDENTIALCAPABILITIES-1.1">
-                    <para>
-                      [S2] It has HTTP 200 response code AND
-                    </para>
-                  </listitem>
-                  <listitem xml:id="tc.GetCredentialCapabilities.GETCREDENTIALCAPABILITIES-1.2">
-                    <para>
-                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tcr:GetServiceCapabilitiesResponse</emphasis>.
-                    </para>
-                  </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">FAIL -</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                The Client failed PASS criteria.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-
-      </section>
-    </section>
+      <xi:include href="parts/features/credential/GetCredentialCapabilities.xml"
+                  xpointer="tc.GetCredentialCapabilities"/> 
     <section xml:id="tc.GetCredentialList">
       <title>Get Credential List Test Cases</title>
       <section xml:id="tc.GetCredentialList.feature">
@@ -1124,9 +1005,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Credential List (GetCredentialList_GetCredentialListRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -1284,9 +1162,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Credential Info List (GetCredentialList_GetCredentialInfoListRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -1501,9 +1376,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Credentials (GetCredentialDetails_GetCredentialDetailsRequest)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that credential details
@@ -1609,7 +1481,7 @@
                   xpointer="tc.ConfigureCredentials"/> 
    
     <section xml:id="tc.CredentialsNotifications">
-      <title>Credential Configuration and State Notifications Test Cases</title>
+      <title>Credentials Notifications Test Cases</title>
       <section xml:id="tc.CredentialsNotifications.feature">
         <title>Feature Level Normative Reference:</title>
         <para>
@@ -1652,21 +1524,21 @@
             </listitem>
             <listitem>
               <para>
-                Client is considered as supporting Credential Configuration and State Notifications if the
+                Client is considered as supporting Credentials Notifications if the
                 following conditions are met:<itemizedlist>
                   <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature OR EventHandling_WS-BaseNotification feature AND</para>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.CredentialsNotifications.EVENTHANDLING-1"/> section) OR EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.CredentialsNotifications.EVENTHANDLING-2"/> section) AND</para>
                   </listitem>
                   <listitem>
-                    <para>Client supports get_credential_list feature AND</para>
+                    <para>Client supports GetCredentialList feature AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.47">
                     <para>Client is able to retrieve tns1:Configuration/Credential/Changed notifications about credential configuration change AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.48">
                     <para>Client is able to retrieve tns1:Configuration/Credential/Removed notifications about credential removing AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.49">
                     <para>Client is able to retrieve tns1:Credential/State/Enabled notifications about credential enable state change.</para>
                   </listitem>
                 </itemizedlist>
@@ -1674,14 +1546,14 @@
             </listitem>
             <listitem>
               <para>
-                Client is considered as NOT supporting Credential Configuration and State Notifications if ANY
+                Client is considered as NOT supporting Credentials Notifications if ANY
                 of the following is TRUE:
                 <itemizedlist>
                   <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature AND EventHandling_WS-BaseNotification feature OR</para>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.CredentialsNotifications.EVENTHANDLING-1"/> section) AND EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.CredentialsNotifications.EVENTHANDLING-2"/> section) OR</para>
                   </listitem>
                   <listitem>
-                    <para>Client does not support get_credential_list feature OR</para>
+                    <para>Client does not support GetCredentialList feature OR</para>
                   </listitem>
                   <listitem>
                     <para>Client is not able to retrieve tns1:Configuration/Credential/Changed notifications about credential configuration change OR</para>
@@ -1698,675 +1570,14 @@
           </orderedlist>
         </para>
       </section>
-      <!--<section xml:id="tc.credentials_notifications.CREDENTIALNOTIFICATIONS-1">
-      <title>
-        RETRIEVE CREDENTIAL CONFIGURATION CHANGED NOTIFICATIONS - PULL POINT
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Credential Configuration Changed Notifications - Pull Point
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> CREDENTIALNOTIFICATIONS-1
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about credential configuration changes from Device using
-        the Pull Point event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Credential Service.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis> OR <emphasis role="bold">tns1:Configuration/Credential//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-     
-    </section>-->
-      <!--<section xml:id="tc.credentials_notifications.CREDENTIALNOTIFICATIONS-2">
-      <title>
-        RETRIEVE CREDENTIAL CONFIGURATION REMOVED NOTIFICATIONS - PULL POINT
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Credential Configuration Removed Notifications - Pull Point
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> CREDENTIALNOTIFICATIONS-2
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about credential configuration removing from Device using
-        the Pull Point event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Credential Service.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis> OR <emphasis role="bold">tns1:Configuration/Credential//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-     
-    </section>-->
-      <!--<section xml:id="tc.credentials_notifications.CREDENTIALNOTIFICATIONS-3">
-      <title>
-        RETRIEVE CREDENTIAL ENABLE STATE NOTIFICATIONS - PULL POINT
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Credential Enable State Notifications - Pull Point
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> CREDENTIALNOTIFICATIONS-3
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Credential/State/Enabled</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about credential enable state from Device using
-        the Pull Point event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Credential/State/Enabled</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Credential Service.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Credential/State/Enabled</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Credential/State/Enabled</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Credential/State/Enabled</emphasis> OR <emphasis role="bold">tns1:Credential/State//.</emphasis> OR <emphasis role="bold">tns1:Credential//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      
-    </section>-->
-      <!--<section xml:id="tc.credentials_notifications.CREDENTIALNOTIFICATIONS-4">
-      <title>
-        RETRIEVE CREDENTIAL CONFIGURATION CHANGED NOTIFICATIONS - BASIC NOTIFICATION
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Credential Configuration Changed Notifications - Basic Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> CREDENTIALNOTIFICATIONS-4
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about credential configuration changes from Device using
-        the Basic Notification event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">Subscribe</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Credential Service.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Basic Notification.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">Subscribe</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">SubscribeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Subscribe</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Credential/Changed</emphasis> OR <emphasis role="bold">tns1:Configuration/Credential//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">Subscribe</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:SubscribeResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-     
-    </section>-->
-      <!--<section xml:id="tc.credentials_notifications.CREDENTIALNOTIFICATIONS-5">
-      <title>
-        RETRIEVE CREDENTIAL CONFIGURATION REMOVED NOTIFICATIONS - BASIC NOTIFICATION
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Credential Configuration Removed Notifications - Basic Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> CREDENTIALNOTIFICATIONS-5
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about credential configuration removing from Device using
-        the Basic Notification event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">Subscribe</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Credential Service.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Basic Notification.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">Subscribe</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">SubscribeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Subscribe</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Credential/Removed</emphasis> OR <emphasis role="bold">tns1:Configuration/Credential//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">Subscribe</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:SubscribeResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-     
-    </section>-->
-      <!--<section xml:id="tc.credentials_notifications.CREDENTIALNOTIFICATIONS-6">
-      <title>
-        RETRIEVE CREDENTIAL ENABLE STATE NOTIFICATIONS - BASIC NOTIFICATION
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Credential Enable State Notifications - Basic Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> CREDENTIALNOTIFICATIONS-6
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Credential/State/Enabled</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about credential enable state from Device using
-        the Basic Notification event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">Subscribe</emphasis> operations present which is not filter out notification with topic tns1:Credential/State/Enabled.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Credential Service.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Basic Notification.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">Subscribe</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Credential/State/Enabled</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">SubscribeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Subscribe</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Credential/State/Enabled</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Credential/State/Enabled</emphasis> OR <emphasis role="bold">tns1:Credential/State//.</emphasis> OR <emphasis role="bold">tns1:Credential//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">Subscribe</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:SubscribeResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      
-    </section>-->
+      <section xml:id="tc.CredentialsNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+    <section xml:id="tc.CredentialsNotifications.EVENTHANDLING-2" xreflabel="EVENTHANDLING-2 BASE NOTIFICATION">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
     </section>
     <section xml:id="tc.GetScheduleList">
       <title>Get Schedule List Test Cases</title>
@@ -2447,9 +1658,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Schedule List (GetScheduleList_GetScheduleListRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -2608,9 +1816,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Schedules Info List (GetScheduleList_GetSchedulesInfoListRequest)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all schedules
@@ -2758,7 +1963,7 @@
       </section>
     </section>
     <section xml:id="tc.SchedulesNotifications">
-      <title>Schedule Configuration Notifications Test Cases</title>
+      <title>Schedules Notifications Test Cases</title>
       <section xml:id="tc.SchedulesNotifications.feature">
         <title>Feature Level Normative Reference:</title>
         <para>
@@ -2794,18 +1999,18 @@
             </listitem>
             <listitem>
               <para>
-                Client is considered as supporting Schedule Configuration Notifications if the
+                Client is considered as supporting Schedules Notifications if the
                 following conditions are met:<itemizedlist>
-                  <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature OR EventHandling_WS-BaseNotification feature AND</para>
+                 <listitem>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.SchedulesNotifications.EVENTHANDLING-1"/> section) OR EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.SchedulesNotifications.EVENTHANDLING-2"/> section) AND</para>
                   </listitem>
                   <listitem>
                     <para>Client supports get_schedule_list feature AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.50">
                     <para>Client is able to retrieve tns1:Configuration/Schedule/Changed notifications about schedule configuration change AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.51">
                     <para>Client is able to retrieve tns1:Configuration/Schedule/Removed notifications about schedule removing AND</para>
                   </listitem>
                 </itemizedlist>
@@ -2813,10 +2018,10 @@
             </listitem>
             <listitem>
               <para>
-                Client is considered as NOT supporting Schedule Configuration Notifications if ANY
+                Client is considered as NOT supporting Schedules Notifications if ANY
                 of the following is TRUE:<itemizedlist>
-                  <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature AND EventHandling_WS-BaseNotification feature OR</para>
+                 <listitem>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.SchedulesNotifications.EVENTHANDLING-1"/> section) OR EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.SchedulesNotifications.EVENTHANDLING-2"/> section) AND</para>
                   </listitem>
                   <listitem>
                     <para>Client does not support get_schedule_list feature OR</para>
@@ -2833,452 +2038,17 @@
           </orderedlist>
         </para>
       </section>
-      <!--<section xml:id="tc.schedules_notifications.SCHEDULENOTIFICATIONS-1">
-      <title>
-        RETRIEVE SCHEDULE CONFIGURATION CHANGED NOTIFICATIONS - PULL POINT
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Schedule Configuration Changed Notifications - Pull Point
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> SCHEDULENOTIFICATIONS-1
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about schedule configuration changes from Device using
-        the Pull Point event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Schedule Service.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis> OR <emphasis role="bold">tns1:Configuration/Schedule//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-    
-    </section>-->
-      <!--<section xml:id="tc.schedules_notifications.SCHEDULENOTIFICATIONS-2">
-      <title>
-        RETRIEVE SCHEDULE CONFIGURATION REMOVED NOTIFICATIONS - PULL POINT
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Schedule Configuration Removed Notifications - Pull Point
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> SCHEDULENOTIFICATIONS-2
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about schedule configuration removing from Device using
-        the Pull Point event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Schedule Service.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis> OR <emphasis role="bold">tns1:Configuration/Schedule//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-   
-    </section>-->
-      <!--<section xml:id="tc.schedules_notifications.SCHEDULENOTIFICATIONS-3">
-      <title>
-        RETRIEVE SCHEDULE CONFIGURATION CHANGED NOTIFICATIONS - BASIC NOTIFICATION
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Schedule Configuration Changed Notifications - Basic Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> SCHEDULENOTIFICATIONS-3
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about schedule configuration changes from Device using
-        the Basic Notification event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">Subscribe</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Schedule Service.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Basic Notification.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">Subscribe</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">SubscribeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Subscribe</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Schedule/Changed</emphasis> OR <emphasis role="bold">tns1:Configuration/Schedule//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">Subscribe</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:SubscribeResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
+      <section xml:id="tc.SchedulesNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+    <section xml:id="tc.SchedulesNotifications.EVENTHANDLING-2" xreflabel="EVENTHANDLING-2 BASE NOTIFICATION">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
       
-    </section>-->
-      <!--<section xml:id="tc.schedules_notifications.SCHEDULENOTIFICATIONS-4">
-      <title>
-        RETRIEVE SCHEDULE CONFIGURATION REMOVED NOTIFICATIONS - BASIC NOTIFICATION
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Schedule Configuration Removed Notifications - Basic Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> SCHEDULENOTIFICATIONS-4
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about schedule configuration removing from Device using
-        the Basic Notification event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">Subscribe</emphasis> operations present which is not filter out notification with topic tns1:Configuration/Schedule/Removed.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Schedule Service.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Basic Notification.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">Subscribe</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">SubscribeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Subscribe</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/Schedule/Removed</emphasis> OR <emphasis role="bold">tns1:Configuration/Schedule//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">Subscribe</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:SubscribeResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
       
-    </section>-->
+      
     </section>
     <section xml:id="tc.GetAccessProfileList">
       <title>Get Access Profile List Test Cases</title>
@@ -3359,9 +2129,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Access Profile List (GetAccessProfileList_GetAccessProfileListRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -3520,9 +2287,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Access Profile Info List (GetAccessProfileList_GetAccessProfileInfoListRequest)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all access profiles
@@ -3670,7 +2434,7 @@
       </section>
     </section>
     <section xml:id="tc.AccessProfileNotifications">
-      <title>Access Profile Configuration Notifications Test Cases</title>
+      <title>Access Profile Notifications Test Cases</title>
       <section xml:id="tc.AccessProfileNotifications.feature">
         <title>Feature Level Normative Reference:</title>
         <para>
@@ -3706,18 +2470,18 @@
             </listitem>
             <listitem>
               <para>
-                Client is considered as supporting Access Profile Configuration if the
+                Client is considered as supporting Access Profile Notifications if the
                 following conditions are met:<itemizedlist>
-                  <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature OR EventHandling_WS-BaseNotification feature AND</para>
+                 <listitem>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.AccessProfileNotifications.EVENTHANDLING-1"/> section) OR EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.AccessProfileNotifications.EVENTHANDLING-2"/> section) AND</para>
                   </listitem>
                   <listitem>
                     <para>Client supports get_access_profile_list feature AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.52">
                     <para>Client is able to retrieve tns1:Configuration/AccessProfile/Changed notifications about access profile configuration change AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.53">
                     <para>Client is able to retrieve tns1:Configuration/AccessProfile/Removed notifications about access profile removing AND</para>
                   </listitem>
                 </itemizedlist>
@@ -3725,10 +2489,10 @@
             </listitem>
             <listitem>
               <para>
-                Client is considered as NOT supporting Access Profile Configuration and State Notifications if ANY
+                Client is considered as NOT supporting Access Profile Notifications if ANY
                 of the following is TRUE:<itemizedlist>
-                  <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature AND EventHandling_WS-BaseNotification feature OR</para>
+                   <listitem>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.AccessProfileNotifications.EVENTHANDLING-1"/> section) AND EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.AccessProfileNotifications.EVENTHANDLING-2"/> section) AND</para>
                   </listitem>
                   <listitem>
                     <para>Client does not support get_access_profile_list feature OR</para>
@@ -3745,455 +2509,20 @@
           </orderedlist>
         </para>
       </section>
-      <!--<section xml:id="tc.access_profiles_notifications.ACCESSPROFILENOTIFICATIONS-1">
-      <title>
-        RETRIEVE ACCESS PROFILE CONFIGURATION CHANGED NOTIFICATIONS
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Access Profile Configuration Changed Notifications
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> ACCESSPROFILENOTIFICATIONS-1
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about access profile configuration changes from Device using
-        the Pull Point event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Access Rules Service.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis> OR <emphasis role="bold">tns1:Configuration/AccessProfile//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-     
-    </section>-->
-      <!--<section xml:id="tc.access_profiles_notifications.ACCESSPROFILENOTIFICATIONS-2">
-      <title>
-        RETRIEVE ACCESS PROFILE CONFIGURATION REMOVED NOTIFICATIONS
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Access Profile Configuration Removed Notifications
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> ACCESSPROFILENOTIFICATIONS-2
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about access profile configuration removing from Device using
-        the Pull Point event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">CreatePullPointSubscription</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Access Rules Service.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">CreatePullPointSubscription</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">CreatePullPointSubscriptionResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">CreatePullPointSubscription</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscription</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis> OR <emphasis role="bold">tns1:Configuration/AccessProfile//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">CreatePullPointSubscription</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tev:CreatePullPointSubscriptionResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-     
-    </section>-->
-      <!--<section xml:id="tc.access_profiles_notifications.ACCESSPROFILENOTIFICATIONS-3">
-      <title>
-        RETRIEVE ACCESS PROFILE CONFIGURATION CHANGED NOTIFICATIONS - BASIC NOTIFICATION
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Access Profile Configuration Changed Notifications - Basic Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> ACCESSPROFILENOTIFICATIONS-3
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about access profile configuration changes from Device using
-        the Basic Notification event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">Subscribe</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Access Rules Service.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Basic Notification.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">Subscribe</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">SubscribeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Subscribe</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">wsnt:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/AccessProfile/Changed</emphasis> OR <emphasis role="bold">tns1:Configuration/AccessProfile//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">Subscribe</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:SubscribeResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-    
-    </section>-->
-      <!--<section xml:id="tc.access_profiles_notifications.ACCESSPROFILENOTIFICATIONS-4">
-      <title>
-        RETRIEVE ACCESS PROFILE CONFIGURATION REMOVED NOTIFICATIONS - BASIC NOTIFICATION
-      </title>
-      <para>
-        <emphasis role="bold">Test Label:</emphasis> Retrieve Access Profile Configuration Removed Notifications - Basic Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Case ID:</emphasis> ACCESSPROFILENOTIFICATIONS-4
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis> Notification
-      </para>
-      <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
-        retrieve notifications about access profile configuration removing from Device using
-        the Basic Notification event mechanism.
-      </para>
-      <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Network Trace Capture files contains at least one Conversation
-              between Client and Device with <emphasis role="bold">Subscribe</emphasis> operations present which is not filter out notification with topic <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Access Rules Service.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device supports Basic Notification.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">
-          Test Procedure (expected to be reflected in network trace file):
-        </emphasis>
-        <orderedlist>
-          <listitem>
-            <para>
-              Client invokes <emphasis role="bold">Subscribe</emphasis> request message
-              to create subscribtion to retrieve at least <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis>
-              notifications from the Device.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device responds with code HTTP 200 OK and <emphasis role="bold">SubscribeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Client <emphasis role="bold">Subscribe</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:Subscribe</emphasis> AND
-                  </para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://docs.oasis-open.org/wsn/t-1/TopicExpression/Concrete</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S2] <emphasis role="bold">wsnt:TopicExpression</emphasis> element is equal to <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis> AND
-                        </para></listitem></itemizedlist></para></listitem><listitem><para>
-                    If it contains <emphasis role="bold">tev:Filter/wsnt:TopicExpression</emphasis>
-                    with <emphasis role="bold">Dialect</emphasis> attribute equal to <emphasis role="bold">http://www.onvif.org/ver10/tev/topicExpression/ConcreteSet</emphasis> then it fulfills the following requirements (else skip the check):
-                    <itemizedlist><listitem><para>
-                          [S3] <emphasis role="bold">wsnt:TopicExpression</emphasis> element contains <emphasis role="bold">tns1:Configuration/AccessProfile/Removed</emphasis> OR <emphasis role="bold">tns1:Configuration/AccessProfile//.</emphasis> OR <emphasis role="bold">tns1:Configuration//.</emphasis> in expression AND
-                        </para></listitem></itemizedlist></para></listitem></itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Device response on the <emphasis role="bold">Subscribe</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem><para>
-                    [S4] It has HTTP 200 response code AND
-                  </para></listitem><listitem><para>
-                    [S5] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">wsnt:SubscribeResponse</emphasis>.
-                  </para></listitem></itemizedlist>
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The Client failed PASS criteria.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-     
-    </section>-->
+      <section xml:id="tc.AccessProfileNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+    <section xml:id="tc.AccessProfileNotifications.EVENTHANDLING-2" xreflabel="EVENTHANDLING-2 BASE NOTIFICATION">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+      
+      
+      
     </section>
   </chapter>
-  <chapter xml:id="tc.ProfileS.ProfileConditionalFeatures">
+  <chapter xml:id="tc.ProfileA.ProfileConditionalFeatures">
     <title>Test Cases for Profile Conditional Features</title>
     <xi:include href="parts/features/core/NetworkConfiguration.xml"
                 xpointer="tc.NetworkConfiguration"/>
@@ -4272,9 +2601,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Access Profiles (GetAccessProfileDetails_GetAccessProfiles)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4488,9 +2814,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Access Profile (ConfigureAccessProfiles_CreateAccessProfile)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create
@@ -4604,9 +2927,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Modify Access Profile (ConfigureAccessProfiles_ModifyAccessProfile)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to modify
@@ -4714,9 +3034,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete Access Profile (ConfigureAccessProfiles_DeleteAccessProfile)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4879,9 +3196,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Credential State (GetCredentialState_GetCredentialStateRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5056,9 +3370,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Enable Credential (ChangeCredentialState_EnableCredential)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to change a credential state
@@ -5164,9 +3475,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Disable Credential (ChangeCredentialState_DisableCredential)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5330,9 +3638,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Schedules (GetScheduleDetails_GetSchedules)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5531,9 +3836,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Schedule (ConfigureSchedules_CreateSchedule)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create
@@ -5647,9 +3949,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Modify Schedule (ConfigureSchedules_ModifySchedule)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to modify
@@ -5757,9 +4056,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete Schedule (ConfigureSchedules_DeleteSchedule)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5889,7 +4185,7 @@
                 Client is considered as supporting Get Schedule State if the
                 following conditions are met:
                 <itemizedlist>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.54">
                     <para>
                       Client is able to get Schedule state using
                       <emphasis role="bold">GetScheduleState</emphasis> operation OR Client supports <emphasis role="bold">tns1:Schedule/State/Active</emphasis> notification
@@ -5898,7 +4194,8 @@
                   </listitem>
                   <listitem>
                     <para>
-                      Client supports EventHandling_Pullpoint feature OR EventHandling_WS-BaseNotification feature
+                      Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.GetScheduleState.EVENTHANDLING-1"/> section) OR 
+                      EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.GetScheduleState.EVENTHANDLING-2"/> section) 
                       if Client supports <emphasis role="bold">tns1:Schedule/State/Active</emphasis> notification if Device supports StateReporting AND
                     </para>
                   </listitem>
@@ -5922,7 +4219,8 @@
                   </listitem>
                   <listitem>
                     <para>
-                      Client does not support EventHandling_Pullpoint feature OR EventHandling_WS-BaseNotification feature when
+                      Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.GetScheduleState.EVENTHANDLING-1"/> section) 
+                      OR EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.GetScheduleState.EVENTHANDLING-2"/> section) when
                       Client supports <emphasis role="bold">tns1:Schedule/State/Active</emphasis> notification if Device supports StateReporting.
                     </para>
                   </listitem>
@@ -5942,9 +4240,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Schedule State (GetScheduleState_GetScheduleStateRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6041,6 +4336,14 @@
         </para>
 
       </section>
+     <section xml:id="tc.GetScheduleState.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+    <section xml:id="tc.GetScheduleState.EVENTHANDLING-2" xreflabel="EVENTHANDLING-2 BASE NOTIFICATION">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
     </section>
     <section xml:id="tc.ResetAntipassbackViolation">
       <title>Reset Antipassback Violation Test Cases</title>
@@ -6107,9 +4410,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Reset Antipassback Violation (ResetAntipassbackViolation_ResetAntipassbackViolationRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6246,9 +4546,10 @@
                 Client is considered as supporting Antipassback Violation Notifications if the
                 following conditions are met:<itemizedlist>
                   <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature OR EventHandling_WS-BaseNotification feature AND</para>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.AntipassbackViolationNotifications.EVENTHANDLING-1"/> section)  OR 
+                    EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.AntipassbackViolationNotifications.EVENTHANDLING-2"/> section) AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.55">
                     <para>Client is able to retrieve tns1:Credential/State/ApbViolation notifications about antipassback violation if Device supports Credential service AND</para>
                   </listitem>
                 </itemizedlist>
@@ -6260,7 +4561,7 @@
                 of the following is TRUE:
                 <itemizedlist>
                   <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature AND EventHandling_WS-BaseNotification feature OR</para>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.AntipassbackViolationNotifications.EVENTHANDLING-1"/> section) AND EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.AntipassbackViolationNotifications.EVENTHANDLING-2"/> section) OR</para>
                   </listitem>
                   <listitem>
                     <para>Client is not able to retrieve tns1:Credential/State/ApbViolation notifications about antipassback violation if Device supports Credential service.</para>
@@ -6271,6 +4572,14 @@
           </orderedlist>
         </para>
       </section>
+     <section xml:id="tc.AntipassbackViolationNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+    <section xml:id="tc.AntipassbackViolationNotifications.EVENTHANDLING-2" xreflabel="EVENTHANDLING-2 BASE NOTIFICATION">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
     </section>
     <section xml:id="tc.GetSpecialDayGroupList">
       <title>Get Special Day Group List Test Cases</title>
@@ -6351,9 +4660,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Special Day Group List (GetSpecialDayGroupList_GetSpecialDayGroupListRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -6511,9 +4817,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Special Day Group Info List (GetSpecialDayGroupList_GetSpecialDayGroupInfoListRequest)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6728,9 +5031,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Special Day Groups (GetSpecialDayGroupDetails_GetSpecialDayGroups)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to get
@@ -6928,9 +5228,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Special Day Group (ConfigureSpecialDayGroups_CreateSpecialDayGroup)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create
@@ -7044,9 +5341,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Modify Special Day Group (ConfigureSpecialDayGroups_ModifySpecialDayGroup)
         </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to modify
@@ -7154,9 +5448,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete Special Day Group (ConfigureSpecialDayGroups_DeleteSpecialDayGroup)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7294,12 +5585,13 @@
                 Client is considered as supporting Special Days Notifications if the
                 following conditions are met:<itemizedlist>
                   <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature OR EventHandling_WS-BaseNotification feature AND</para>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.SpecialDaysNotifications.EVENTHANDLING-1"/> section) OR 
+                    EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.SpecialDaysNotifications.EVENTHANDLING-2"/> section) AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.56">
                     <para>Client is able to retrieve tns1:Configuration/SpecialDays/Changed notifications about special days configuration change if Device supports SpecialDays AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.57">
                     <para>Client is able to retrieve tns1:Configuration/SpecialDays/Removed notifications about special days removing if Device supports SpecialDays AND</para>
                   </listitem>
                 </itemizedlist>
@@ -7310,7 +5602,8 @@
                 Client is considered as NOT supporting Special Days Notifications if ANY
                 of the following is TRUE:<itemizedlist>
                   <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature AND EventHandling_WS-BaseNotification feature OR</para>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.SpecialDaysNotifications.EVENTHANDLING-1"/> section) AND 
+                    EventHandling_WS-BaseNotification feature (please see <xref linkend="tc.SpecialDaysNotifications.EVENTHANDLING-2"/> section) OR</para>
                   </listitem>
                   <listitem>
                     <para>Client is not able to retrieve tns1:Configuration/SpecialDays/Changed notifications about special days configuration change if Device supports SpecialDays OR</para>
@@ -7324,6 +5617,14 @@
           </orderedlist>
         </para>
       </section>
+     <section xml:id="tc.SpecialDaysNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+    <section xml:id="tc.SpecialDaysNotifications.EVENTHANDLING-2" xreflabel="EVENTHANDLING-2 BASE NOTIFICATION">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
     </section>
   </chapter>
   <chapter xml:id="tc.ProfileS.ProfileOptionalFeatures">
@@ -7416,7 +5717,7 @@
             </row>
             <row>
               <entry align="left">tc.CredentialsNotifications</entry>
-              <entry align="left">Credential Configuration and State Notifications</entry>
+              <entry align="left">Credentials Notifications</entry>
               <entry align="left">
                 3
               </entry>

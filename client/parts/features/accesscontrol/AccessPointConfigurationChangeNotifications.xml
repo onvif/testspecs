@@ -70,13 +70,13 @@
                   <para>
                     Client supports AccessPointInformation_ListingOfAccessPoints feature (please see <xref linkend="tc.AccessPointInformation.ACCESSPOINTINFORMATION-1"/> section) AND</para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.16">
                   <para>
                     Client is able to retrieve <emphasis role="bold">tns1:Configuration/AccessPoint/Changed</emphasis> notification
                     AND
                   </para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.17">
                   <para>
                     Client is able to retrieve <emphasis role="bold">tns1:Configuration/AccessPoint/Removed</emphasis> notification.
                   </para>

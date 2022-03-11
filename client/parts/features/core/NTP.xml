@@ -50,9 +50,6 @@
         <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold" annotations="8.8 NTP">Profile T Requirement:</emphasis> Conditional
       </para>
     </section>
@@ -109,15 +106,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get NTP (NTP_GetNTP)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNTP">Profile T Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -212,15 +200,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set NTP (NTP_SetNTP)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetNTP">Profile T Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

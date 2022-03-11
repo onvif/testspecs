@@ -12,7 +12,7 @@
   </revhistory>-->
   <section xml:id="s.intro.ImageData">
     <title>Image Data</title>
-    <para>Image Data section specifies Client ability to get event or metadata image via the image URI and ability to receive base64 encoding image data.</para>
+    <para>Image Data section specifies Client ability to get event or metadata image via the image URI and ability to receive base64 encoding image data is supported by Device.</para>
   </section>
   <section xml:id="tc.ImageData">
     <title>Image Data Test Cases</title>
@@ -22,7 +22,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Image Data (ImageData)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature for ImageData].
+        <emphasis role="bold" annotations="EmbeddedImageSendingType">Check Condition based on Device Features:</emphasis> Embedded Image Sending Type.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -54,7 +54,7 @@
                     ONVIF Profile M Simulator detects <emphasis role="bold">ImageData_ImageURI</emphasis> feature as supported AND
                   </para>
                 </listitem>
-                   <listitem>
+                   <listitem xml:id="tc.Unknown.UNKNOWN-2.6">
                   <para>                   
                     Client is able to retrieve base64 encoding image data included in the Appearance Node on metadata streaming.
                   </para>
@@ -95,10 +95,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get image via image URI (ImageData_ImageURI)
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="Get image via image URI">Profile M Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

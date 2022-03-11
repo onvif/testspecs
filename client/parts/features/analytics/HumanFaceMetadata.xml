@@ -22,7 +22,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Human Face Metadata (HumanFaceMetadata)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature for HumanFaceMetadata].
+        <emphasis role="bold" annotations="HumanFace">Check Condition based on Device Features:</emphasis> Human Face is supported by Device.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -40,7 +40,7 @@
               Client connects to Device to retrieve metadata streaming with included <emphasis role="bold">MetadataStream /VideoAnalyticsStream/Frame/Object/ Appearance/HumanFace</emphasis> element.
             </para>
           </listitem>
-          <listitem>
+          <listitem xml:id="tc.Unknown.UNKNOWN-2.1">
             <para>
               Client is considered as supporting Human Face Metadata if the
               following conditions are met:<itemizedlist>

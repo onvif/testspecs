@@ -116,10 +116,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Door (DoorManagement_CreateDoor)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="CreateDoor">Profile D Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create the specified door in the device using the
@@ -231,10 +227,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Modify Door (DoorManagement_ModifyDoor)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="ModifyDoor">Profile D Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to modify the specified door using the
@@ -340,10 +332,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete Door (DoorManagement_DeleteDoor)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="DeleteDoor">Profile D Normative Reference:</emphasis> Conditional
         </para>
 
         <para>

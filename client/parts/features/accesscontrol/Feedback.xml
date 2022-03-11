@@ -13,6 +13,15 @@
 		<para>System Component Information Test Cases section was removed.</para>
       </revdescription>
     </revision-->
+    <revision xml:id="s.revhistory.Feedback.20210527.ProfileD">
+      <revnumber>21.06</revnumber>
+      <date>May 27, 2021</date>
+      <revdescription>
+        <para>Feedback feature was updated according to #423:</para>
+        <para>Dependency on AccessControlIdentifier feature was removed.</para>
+      </revdescription>
+    </revision>
+    
     <revision xml:id="s.revhistory.Feedback.20200529.ProfileD">
         <revnumber>20.06</revnumber>
         <date>May 29, 2020</date>
@@ -39,7 +48,7 @@
         </para>
         <para>
           <emphasis role="bold"
-                    annotations="EnableDisableAccessPoint">Check Condition based on Device Features:</emphasis> Feedback is supported by Device.
+                    annotations="Feedback">Check Condition based on Device Features:</emphasis> Feedback is supported by Device.
         </para>
         <para>
           <emphasis role="bold">Required Number of Devices:</emphasis> 3
@@ -65,14 +74,10 @@
                 following conditions are met:<itemizedlist>
                   <listitem>
                     <para>
-                      Client is able to send feedback using <emphasis role="bold">Feedback</emphasis> operation AND  
+                      Client is able to send feedback using <emphasis role="bold">Feedback</emphasis> operation.  
                     </para>
-                  </listitem>   
-                  <listitem>
-                    <para>
-                      Client supports AccessControlIdentifier feature (please see <xref linkend="tc.AccessControlIdentifier"/> section). 
-                    </para>
-                  </listitem>   
+                  </listitem> 
+                     
                 </itemizedlist>
               </para>
             </listitem>
@@ -82,14 +87,10 @@
                 the following is TRUE:<itemizedlist>
                   <listitem>
                     <para>
-                      No valid Device response to <emphasis role="bold">Feedback</emphasis> request OR                    
+                      No valid Device response to <emphasis role="bold">Feedback</emphasis> request.                    
                     </para>
                   </listitem>   
-                   <listitem>
-                    <para>
-                      Client does not support AccessControlIdentifier feature (please see <xref linkend="tc.AccessControlIdentifier"/> section). 
-                    </para>
-                  </listitem>   
+                      
                 </itemizedlist>
               </para>
             </listitem>
@@ -106,9 +107,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Feedback (Feedback_FeedbackRequest)
-        </para>        
-        <para>
-          <emphasis role="bold" annotations="Feedback">Profile D Normative Reference:</emphasis> Mandatory
         </para>
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to

@@ -50,9 +50,6 @@
         <emphasis role="bold">Profile C Requirement:</emphasis> None
       </para>	        
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> None
-      </para>
-      <para>
         <emphasis role="bold" annotations="7.1 User authentication">Profile T Requirement:</emphasis> Mandatory
       </para>
       <para>
@@ -113,27 +110,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> HTTP Digest For RTSP (HTTPDigestForRTSP_HTTPDigestForRTSPTest)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="Digest authentication for RTSP">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="Digest authentication for RTSP">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
-       <para>
-        <emphasis role="bold" annotations="Digest authentication for RTSP">Profile D Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the HTTP Digest Authentication for RTSP level security.

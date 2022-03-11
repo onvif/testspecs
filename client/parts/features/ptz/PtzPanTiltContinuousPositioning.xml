@@ -121,12 +121,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Pan Tilt Continuous Move (PtzPanTiltContinuousPositioning_ContinuousMovePanTilt)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -237,12 +231,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Stop Pan Tilt Movement (PtzPanTiltContinuousPositioning_PanTiltStop)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
       
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -350,12 +338,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Stop Pan Tilt Movement using Continuous Move (PtzPanTiltContinuousPositioning_PanTiltStopUsingPTZContinuousMove)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
       </para>
       
       <para>

@@ -129,9 +129,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Create Rules (RuleConfiguration_CreateRulesRequest)
       </para>
-      <para>
-        <emphasis role="bold" annotations="CreateRules">Profile M Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -236,9 +233,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Delete Rules (RuleConfiguration_DeleteRulesRequest)
-      </para>
-      <para>
-        <emphasis role="bold" annotations="DeleteRules">Profile M Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

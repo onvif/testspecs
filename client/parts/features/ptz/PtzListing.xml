@@ -89,12 +89,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Nodes (PtzListing_GetNodes)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNode">Profile T Normative Reference:</emphasis> Conditional
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all existing
@@ -189,13 +183,7 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Node (PtzListing_GetNode)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNodes">Profile T Normative Reference:</emphasis> Conditional
-      </para>     
+      </para>   
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         retrieve a specific PTZ capability properties from Device using the GetNode

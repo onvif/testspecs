@@ -26,7 +26,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Line Crossing Counter Event (LineCrossingCounterEvent)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature corresponding to LineCrossingCounterEvent].
+        <emphasis role="bold" annotations="LineCrossingCountingRule">Check Condition based on Device Features:</emphasis> Line Crossing Counting Rule is supported by Device.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -55,7 +55,7 @@
                     EventBrokerConfiguration feature (please see <xref linkend="tc.EventBrokerConfiguration"/> section) AND
                   </para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.60">
                   <para>
                     Client is able to receive <emphasis role="bold">tns1:RuleEngine/CountAggregation/Counter</emphasis> notification.
                   </para>

@@ -86,7 +86,7 @@
         </orderedlist>
       </para>
     </section>
-    <section xml:id="tc.AreaInformation.AREAINFORMATION-1">
+    <section xml:id="tc.AreaInformation.AREAINFORMATION-1" xreflabel="AREAINFORMATION-1 LISTING OF AREAS">
       <title>LISTING OF AREAS</title>
       <para>
         <emphasis role="bold">Test Label:</emphasis> Area Information -
@@ -97,9 +97,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Listing of Areas (AreaInformation_ListingOfAreas)
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
       </para>
 
       <para>

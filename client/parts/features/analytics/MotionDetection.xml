@@ -4,8 +4,8 @@
     <revision  xml:id="s.revhistory.MotionDetection.20200831.ProfileT">
       <revnumber>20.12</revnumber>
       <date>Aug 31, 2020</date>
-      <revdescription>       
-        <para>Motion Detection Feature: Check Condition based on Device Features was changed according to #325.</para>       
+      <revdescription>
+        <para>Motion Detection Feature: Check Condition based on Device Features was changed according to #325.</para>
       </revdescription>
     </revision>
     <revision  xml:id="s.revhistory.MotionDetection.20190813.ProfileT">
@@ -18,10 +18,10 @@
     </revision>
   </revhistory>
   <section xml:id="s.intro.MotionDetection">
-      <title>Motion Detection</title>
-      <para>Motion Detection section specifies Client ability to create Motion Region Detector rules and to receive notifications of Motion Region Detector events.</para>
+    <title>Motion Detection</title>
+    <para>Motion Detection section specifies Client ability to create Motion Region Detector rules and to receive notifications of Motion Region Detector events.</para>
   </section>
-     <section xml:id="tc.MotionDetection">
+  <section xml:id="tc.MotionDetection">
     <title>Motion Detection Test Cases</title>
     <section xml:id="tc.MotionDetection.feature">
       <title>Feature Level Requirement:</title>
@@ -66,49 +66,109 @@
           <listitem>
             <para>
               Client is considered as supporting Motion Detection if the
-              following conditions are met:<itemizedlist><listitem><para>
-                    Client supports <emphasis role="bold">Get Supported Rules</emphasis> feature
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client supports <emphasis role="bold">GetSupportedRules_GetSupportedRulesRequest</emphasis> feature (please see <xref linkend="tc.MotionDetection.GETSUPPORTEDRULES-1"/> section)
                     AND
-                  </para></listitem><listitem><para>
-                    Client supports <emphasis role="bold">Get Rules</emphasis> feature
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports <emphasis role="bold">GetRules_GetRulesRequest</emphasis> (please see <xref linkend="tc.MotionDetection.GETRULES-1"/> section) feature
                     AND
-                  </para></listitem><listitem><para>
-                    Client supports <emphasis role="bold">EventHandling_Pullpoint</emphasis> feature AND
-                  </para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client supports <emphasis role="bold">EventHandling_Pullpoint</emphasis> feature (please see <xref linkend="tc.MotionDetection.EVENTHANDLING-1"/> section) AND
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
                     Client is able to retrieve options of Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using <emphasis role="bold">GetRuleOptions</emphasis> operation
                     AND
-                  </para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
                     Client is able to create Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using <emphasis role="bold">CreateRules</emphasis> operation
                     AND
-                  </para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
                     Client is able to delete Rules of type <emphasis role="bold">tt:MotionRegionDetector</emphasis> using <emphasis role="bold">DeleteRules</emphasis> operation
                     AND
-                  </para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.64">
+                  <para>
                     Client is able to retrieve <emphasis role="bold">tns1:RuleEngine/MotionRegionDetector/Motion</emphasis> notifications about Motion Region Detector if device supports MotionRegionDetector Rule.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
               Client is considered as NOT supporting Motion Detection if
-              ANY of the following is TRUE:<itemizedlist><listitem><para>
-                    Client does not support <emphasis role="bold">Get Supported Rules</emphasis> feature OR
-                  </para></listitem><listitem><para>
-                    Client does not support <emphasis role="bold">Get Rules</emphasis> feature OR
-                  </para></listitem><listitem><para>
-                    Client does not support <emphasis role="bold">EventHandling_Pullpoint</emphasis> feature OR
-                  </para></listitem><listitem><para>
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
+                    Client does not support <emphasis role="bold">GetSupportedRules_GetSupportedRulesRequest</emphasis> feature (please see <xref linkend="tc.MotionDetection.GETSUPPORTEDRULES-1"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support <emphasis role="bold">GetRules_GetRulesRequest</emphasis> (please see <xref linkend="tc.MotionDetection.GETRULES-1"/> section) feature OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Client does not support <emphasis role="bold">EventHandling_Pullpoint</emphasis> feature (please see <xref linkend="tc.MotionDetection.EVENTHANDLING-1"/> section) OR
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
                     No valid device response to <emphasis role="bold">GetRuleOptions</emphasis> request with RuleType value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> OR
-                  </para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
                     No valid device response to <emphasis role="bold">CreateRules</emphasis> request with Rule Type value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> OR
-                  </para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
                     No valid device response to <emphasis role="bold">DeleteRules</emphasis> request with Rule Type value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> OR
-                  </para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
                     Client is not able to retrieve <emphasis role="bold">tns1:RuleEngine/MotionRegionDetector/Motion</emphasis> notifications about Motion Region Detector if device supports MotionRegionDetector Rule.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
         </orderedlist>
       </para>
     </section>
+     <section xml:id="tc.MotionDetection.GETSUPPORTEDRULES-1" xreflabel="GETSUPPORTEDRULES-1 GET SUPPORTED RULES">   
+       <xi:include href="GetSupportedRules.xml"
+                  xpointer="xpointer(id('tc.GetSupportedRules.GETSUPPORTEDRULES-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</section>
+    
+      <section xml:id="tc.MotionDetection.GETRULES-1" xreflabel="GETRULES-1 GET RULES">   
+       <xi:include href="GetRules.xml"
+                  xpointer="xpointer(id('tc.GetRules.GETRULES-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</section>
+  
+     <section xml:id="tc.MotionDetection.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="../core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</section>
     <section xml:id="tc.MotionDetection.MOTIONDETECTION-1">
       <title>GET MOTION REGION DETECTOR RULE OPTIONS</title>
       <para>
@@ -117,13 +177,10 @@
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> MOTIONDETECTION-1
       </para>
-       <para>
+      <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Rule Options (MotionDetection_GetRuleOptions)
       </para>
-      <para>
-        <emphasis role="bold" annotations="GetRuleOptions">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-     
+
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         retrieve MotionRegionDetector rule options using the <emphasis role="bold">GetRuleOptions</emphasis> operation.
@@ -177,22 +234,41 @@
           <listitem>
             <para>
               Client <emphasis role="bold">GetRuleOptions</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.0"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.0">
+                  <para>
                     [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetRuleOptions</emphasis> AND
-                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.1"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.1">
+                  <para>
                     [S2] <emphasis role="bold">axt:GetRuleOptions</emphasis> element has child element <emphasis role="bold">axt:RuleType</emphasis> AND
-                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.2"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.2">
+                  <para>
                     [S3] <emphasis role="bold">axt:GetRuleOptions/axt:RuleType</emphasis> element value is equal to <emphasis role="bold">tt:MotionRegionDetector</emphasis> AND
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
               Device response on the <emphasis role="bold">GetRuleOptions</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.3"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.3">
+                  <para>
                     [S2] It has HTTP 200 response code AND
-                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.4"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-1.4">
+                  <para>
                     [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:GetRuleOptionsResponse</emphasis>.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
         </itemizedlist>
       </para>
@@ -206,7 +282,7 @@
           </listitem>
         </itemizedlist>
       </para>
-     
+
     </section>
     <section xml:id="tc.MotionDetection.MOTIONDETECTION-2">
       <title>CREATE MOTION REGION DETECTOR RULE</title>
@@ -219,10 +295,7 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Create Motion Region Detector Rule (MotionDetection_CreateRules)
       </para>
-      <para>
-        <emphasis role="bold" annotations="CreateRules (tt:MotionRegionDetector)">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      
+
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         create MotionRegionDetector rule using the <emphasis role="bold">CreateRules</emphasis> operation.
@@ -276,20 +349,36 @@
           <listitem>
             <para>
               Client <emphasis role="bold">CreateRules</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.0"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.0">
+                  <para>
                     [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:CreateRules</emphasis> AND
-                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.1"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.1">
+                  <para>
                     [S2] <emphasis role="bold">axt:CreateRules</emphasis> element has child element <emphasis role="bold">axt:Rule</emphasis> with <emphasis role="bold">@Type</emphasis> = <emphasis role="bold">tt:MotionRegionDetector</emphasis> AND
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
               Device response on the <emphasis role="bold">CreateRules</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.2"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.2">
+                  <para>
                     [S3] It has HTTP 200 response code AND
-                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.3"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-2.3">
+                  <para>
                     [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:CreateRulesResponse</emphasis>.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
         </itemizedlist>
       </para>
@@ -303,7 +392,7 @@
           </listitem>
         </itemizedlist>
       </para>
-     
+
     </section>
     <section xml:id="tc.MotionDetection.MOTIONDETECTION-3">
       <title>DELETE MOTION REGION DETECTOR RULE</title>
@@ -313,11 +402,8 @@
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> MOTIONDETECTION-3
       </para>
-        <para>
-        <emphasis role="bold">Feature Under Test:</emphasis> Delete Rules (MotionDetection_DeleteRules)
-      </para>
       <para>
-        <emphasis role="bold" annotations="CreateRules (tt:MotionRegionDetector)">Profile T Normative Reference:</emphasis> Conditional
+        <emphasis role="bold">Feature Under Test:</emphasis> Delete Rules (MotionDetection_DeleteRules)
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Delete Rules
@@ -375,21 +461,37 @@
           <listitem>
             <para>
               Client <emphasis role="bold">DeleteRules</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.0"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.0">
+                  <para>
                     [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:DeleteRules</emphasis> AND
-                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.1"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.1">
+                  <para>
                     [S2] <emphasis role="bold">axt:DeleteRules</emphasis> contains <emphasis role="bold">tr2:RuleName</emphasis> that corresponds to rule with <emphasis role="bold">tt:MotionRegionDetector</emphasis> type (see <xref linkend="Annex_HelperDefineTypeCorrespondingToRuleName"/>)
                     AND
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
               Device response on the <emphasis role="bold">DeleteRules</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.2"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.2">
+                  <para>
                     [S3] It has HTTP 200 response code AND
-                  </para></listitem><listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.3"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.MotionDetection.MOTIONDETECTION-3.3">
+                  <para>
                     [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">axt:DeleteRulesResponse</emphasis>.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
         </itemizedlist>
       </para>
@@ -403,7 +505,7 @@
           </listitem>
         </itemizedlist>
       </para>
-    
+
     </section>
   </section>
 </feature>

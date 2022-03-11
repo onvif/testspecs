@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feature>
   <revhistory>
+            <revision  xml:id="s.revhistory.MonitoringNotifications.20211007.OtherFeatures">
+      <revnumber>21.12</revnumber>
+      <date>Oct 07, 2021</date>
+      <revdescription>
+        <para>The following was done according to #426:</para>
+        <para>Monitoring Notifications section and Monitoring Notifications Test Cases was moved from ONVIF Profile Q Client Test Specification to ONVIF Other Features Client Test Specifications.</para>
+      </revdescription>
+    </revision>
             <revision  xml:id="s.revhistory.MonitoringNotifications.20190814.ProfileQ">
       <revnumber>19.12</revnumber>
       <date>Aug 14, 2019</date>
@@ -30,9 +38,6 @@
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
       </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
     </section>
     <section xml:id="tc.MonitoringNotifications.scenario">
       <title>Expected Scenarios Under Test:</title>
@@ -55,22 +60,22 @@
               Client is considered as supporting Monitoring Notifications if the
               following conditions are met:<itemizedlist>
                 <listitem>
-                  <para>Client supports EventHandling_Pullpoint feature AND</para>
+                  <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.MonitoringNotifications.EVENTHANDLING-1"/> section) AND</para>
                 </listitem>
                 <listitem>
                   <para>
                     Client is able to retrieve at least one of the following notifications:
                     <itemizedlist>
                       <listitem>
-                        <para>tns1:Monitoring/ProcessorUsage notification about processor usage if Device supports MonitoringProcessorUsageEvent feature</para>
+                        <para xml:id="tc.Unknown.UNKNOWN-1.0">tns1:Monitoring/ProcessorUsage notification about processor usage if Device supports MonitoringProcessorUsageEvent feature</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.2">
                         <para>tns1:Monitoring/OperatingTime/LastReset notification about last reset if Device supports MonitoringOperatingTimeLastResetEvent feature</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.3">
                         <para>tns1:Monitoring/OperatingTime/LastReboot notification about last reboot if Device supports MonitoringOperatingTimeLastRebootEvent feature</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.4">
                         <para>tns1:Monitoring/OperatingTime/LastClockSynchronization notification about last clock synchronization if Device supports MonitoringOperatingTimeLastClockSynchronizationEvent feature</para>
                       </listitem>
                     </itemizedlist>
@@ -85,7 +90,7 @@
               of the following is TRUE:
               <itemizedlist>
                 <listitem>
-                  <para>Client does not support EventHandling_Pullpoint feature OR</para>
+                  <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.MonitoringNotifications.EVENTHANDLING-1"/> section) OR</para>
                 </listitem>
                 <listitem>
                   <para>
@@ -112,7 +117,10 @@
         </orderedlist>
       </para>
     </section>
-
+<section xml:id="tc.MonitoringNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
 
   </section>
 </feature>

@@ -54,7 +54,7 @@ Client subscribes to Device messages to retrieve notification events
 				and <emphasis role="bold">PullMessage</emphasis> operation.
             </para>
           </listitem>
-		  			<listitem>
+		  			<listitem xml:id="tc.Unknown.UNKNOWN-1.29">
               <para>
                 Client receives authorization request from Device
 				with <emphasis role="bold">tns1:AccessControl/Request/Anonymous</emphasis> notification.

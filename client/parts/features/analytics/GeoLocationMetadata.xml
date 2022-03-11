@@ -22,7 +22,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> GeoLocation Metadata (GeoLocationMetadata)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature for GeoLocationMetadata].
+        <emphasis role="bold" annotations="GeoLocation">Check Condition based on Device Features:</emphasis> Geo Location is supported by Device.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -40,7 +40,7 @@
               Client connects to Device to retrieve metadata streaming with included <emphasis role="bold">MetadataStream/VideoAnalyticsStream/Frame/Object/ Appearance/GeoLocation</emphasis> element.
             </para>
           </listitem>
-          <listitem>
+          <listitem xml:id="tc.Unknown.UNKNOWN-2.5">
             <para>
               Client is considered as supporting GeoLocation Metadata if the
               following conditions are met:<itemizedlist>

@@ -20,17 +20,56 @@
       </phrase>
     </orgname>
     <title>Profile T Client Test Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
       <uri>www.onvif.org</uri>
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
-    <revhistory>
+     <revhistory> 
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.revhistory.Discovery.20211012.All"/>
+        <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                 xpointer="s.revhistory.SetSynchronizationPoint.20210603.All"/>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Jun 02, 2021</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
+       <revision>
+        <revnumber>21.06</revnumber>
+         <date>Jun 21, 2021</date>
+         <revdescription>
+           <para>The following was updated according to #325:</para>
+           <para>Auxiliary Commands feature was rename to Auxiliary Commands (Device Management Service)</para>
+         </revdescription>
+       </revision>
+       <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jan 21, 2021</date>
+        <revdescription>         
+          <para>In the scope of #364 format of the following features were updated to show dependent test cases inside feature:</para>           
+        
+          <para>Media Streaming Using Media2</para>
+    <para>Motion Alarm</para>
+   <para>OSD Configuration Using Media2</para>
+<para>Media Profile Management</para>
+<para>PTZ Media2 Profile Configuration</para>
+<para>Get Digital Inputs Test</para>
+<para>Motion Detection</para>
+        </revdescription>
+      </revision>
+       <xi:include href="parts/features/ptz/Media2_ZoomSpaces_VelocityGenericSpace.xml"
+                  xpointer="s.revhistory.Media2_ZoomSpaces_VelocityGenericSpace.20210121.ProfileT"/>
+     
+       <xi:include href="parts/features/ptz/Media2_PanTiltSpaces_VelocityGenericSpace.xml"
+                  xpointer="s.revhistory.Media2_PanTiltSpaces_VelocityGenericSpace.20210121.ProfileT"/>
       <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
                   xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
         <xi:include href="parts/features/core/NetworkConfiguration.xml"
@@ -1152,9 +1191,6 @@
         <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_VIDEOENCODERCONFIGURATION-1
       </para>
       <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Video Encoder Configurations
       </para>
       <para>
@@ -1261,10 +1297,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Encoder Configuration Options Using Media2 (Media2_VideoEncoderConfiguration_Media2_GetVideoEncoderConfigurationOptions)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoEncoderConfigurationOptions">Profile T Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that video encoder configuration options provided by Device is received by Client using the
@@ -1369,10 +1401,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Video Encoder Configuration Using Media2 (Media2_VideoEncoderConfiguration_Media2_SetVideoEncoderConfigurations)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="SetVideoEncoderConfiguration">Profile T Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -1576,10 +1604,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Multicast Streaming Using RTSP Using Media2 (Media2_MulticastStreaming_Media2_MulticastRTSP)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="RTP/UDP Multicast">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -1941,10 +1965,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Video Encoder Configuration To Media2 Profile (Media2_VideoProfileConfiguration_Media2_AddVideoEncoderConfiguration)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (Video Encoder)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add an video encoder configuration to a media profile using the
@@ -2199,10 +2219,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Encoder Configurations Using Media2 (Media2_AudioEncoderConfiguration_Media2_GetAudioEncoderConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioEncoderConfigurations">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio encoder configuration provided by Device is received by Client using the
@@ -2313,10 +2329,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Encoder Configuration Options Using Media2 (Media2_AudioEncoderConfiguration_Media2_GetAudioEncoderConfigurationOptions)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioEncoderConfigurationOptions">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio encoder configuration options provided by Device is received by Client using the
@@ -2426,10 +2438,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Audio Encoder Configuration Using Media2 (Media2_AudioEncoderConfiguration_Media2_SetAudioEncoderConfigurations)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="SetAudioEncoderConfiguration">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -2565,18 +2573,8 @@
               <para>
                 Client is considered as supporting G711 Audio Streaming if the following
                 conditions are met:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client supports media2_get_profiles.get_profiles feature
-                      AND
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client supports media2_get_stream_uri.get_stream_uri feature
-                      AND
-                    </para>
-                  </listitem>
+                 
+                 
                   <listitem>
                     <para>
                       Client is able to initiate and retrieve audio stream using Media2 with
@@ -2589,24 +2587,12 @@
             <listitem>
               <para>
                 Client is considered as NOT supporting G711 Audio Streaming if ANY of the
-                following is TRUE:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_profiles.get_profiles feature
-                      OR
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_stream_uri.get_stream_uri feature
-                      OR
-                    </para>
-                  </listitem>
+                following is TRUE:<itemizedlist>              
+                  
                   <listitem>
                     <para>
                       Client is unable to initiate and retrieve
                       audio stream using Media2 with G.711 encoding type.
-
                     </para>
                   </listitem>
                 </itemizedlist>
@@ -2625,10 +2611,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> G.711 Audio Streaming Using Media2 (Media2_AudioStreaming_G711_Media2_G711AudioStreaming)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="initiate audio streaming sessions using RTSP;G.711">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -2939,19 +2921,8 @@
             <listitem>
               <para>
                 Client is considered as supporting AAC Audio Streaming if the following
-                conditions are met:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client supports media2_get_profiles.get_profiles feature
-                      AND
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client supports media2_get_stream_uri.get_stream_uri feature
-                      AND
-                    </para>
-                  </listitem>
+                conditions are met:<itemizedlist>                
+                 
                   <listitem>
                     <para>
                       Client is able to initiate and retrieve audio stream using Media2 with
@@ -2964,19 +2935,8 @@
             <listitem>
               <para>
                 Client is considered as NOT supporting AAC Audio Streaming if ANY of the
-                following is TRUE:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_profiles.get_profiles feature
-                      OR
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_stream_uri.get_stream_uri feature
-                      OR
-                    </para>
-                  </listitem>
+                following is TRUE:<itemizedlist>                
+                 
                   <listitem>
                     <para>
                       Client is unable to initiate and retrieve
@@ -2999,10 +2959,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> AAC Audio Streaming Using Media2 (Media2_AudioStreaming_AAC_Media2_AudioStreaming_AAC)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="initiate audio streaming sessions using RTSP;AAC">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -3381,10 +3337,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Audio Source Configuration using Media2 (Media2_AudioProfileConfiguration_Media2_AddAudioSourceConfiguration)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioSourceConfigurations and AddConfiguration (Audio Source Conf)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add an audio source configuration to a media profile using the
@@ -3552,10 +3504,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Media2 Profile with Audio Source Configuration (Media2_AudioProfileConfiguration_Media2_CreateMediaProfileWithAudioSourceConfiguration)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="CreateProfile (Audio Source Conf)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create media profile with audio source configuration using the
@@ -3672,10 +3620,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Encoder Configurations Compatible With Media2 Profile (Media2_AudioProfileConfiguration_Media2_GetCompatibleAudioEncoderConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioEncoderConfigurations (compatible)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of audio encoder configurations
@@ -3787,10 +3731,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Audio Encoder Configuration Using Media2 (Media2_AudioProfileConfiguration_Media2_AddAudioEncoderConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (Audio Encoder)">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4031,25 +3971,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> G.711 Audio Backchannel Streaming Using Media2 (Media2_AudioBackchannelStreaming_Media2_G711AudioBackchannelStreaming)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="initiate backchannel streaming sessions using RTSP;send G.711">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4354,25 +4275,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> AAC Audio Backchannel Streaming Using Media2 (Media2_AudioBackchannelStreaming_Media2_AACAudioBackchannelStreaming)
-        </para>
-        <para>
-          <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="initiate backchannel streaming sessions using RTSP;send AAC">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4719,9 +4621,6 @@
         <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_GETAUDIOOUTPUTCONFIGURATIONS-1
       </para>
       <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Output Configurations
       </para>
       <para>
@@ -4924,10 +4823,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Audio Output Configuration Using Media2 (Media2_AudioOutputProfileConfiguration_Media2_AddAudioOutputConfiguration)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioOutputConfigurations and AddConfiguration (Audio Output Configuration)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add an audio output configuration to a media profile using the
@@ -5095,10 +4990,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Media2 Profile With Audio Output Configuration (Media2_AudioOutputProfileConfiguration_Media2_CreateMediaProfileWithAudioOutputConfiguration)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="CreateProfile (Audio Output Configuration)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create media profile with audio output configuration using the
@@ -5215,10 +5106,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Decoder Configurations Compatible With Media2 Profile (Media2_AudioOutputProfileConfiguration_Media2_GetCompatibleAudioDecoderConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioDecoderConfigurations  (compatible)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of audio decoder configurations
@@ -5330,10 +5217,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Audio Decoder Configuration Using Media2 (Media2_AudioOutputProfileConfiguration_Media2_AddAudioDecoderConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (Audio Decoder Conf)">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5573,10 +5456,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Analytics Configurations Compatible With Media2 Profile (Media2_AnalyticsProfileConfiguration_Media2_GetCompatibleAnalyticsConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAnalyticsConfigurations (compatible)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of analytics configurations
@@ -5688,10 +5567,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Analytics Configuration To Media2 Profile (Media2_AnalyticsProfileConfiguration_Media2_AddAnalyticsConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (Analytics Configuration)">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5937,10 +5812,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Modes (VideoSourceMode_GetVideoSourceModes)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoSourceModes">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that video source modes provided by Device is received by Client using the
@@ -6050,10 +5921,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Video Source Mode (VideoSourceMode_SetVideoSourceMode)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="SetVideoSourceMode">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6252,10 +6119,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configurations Using Media2 (Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoSourceConfigurations">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that video source configuration provided by Device is received by Client using the
@@ -6366,10 +6229,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configuration Options Using Media2 (Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurationOptions)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoSourceConfigurationOptions">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that video source configuration options provided by Device is received by Client using the
@@ -6479,10 +6338,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Video Source Configuration Using Media2 (Media2_VideoSourceConfiguration_Media2_SetVideoSourceConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="SetVideoSourceConfiguration">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6653,10 +6508,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configurations Using Media2 (Media2_ListVideoSourceConfigurations_Media2_GetVideoSourceConfigurationsRequest)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoSourceConfigurations (full list)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that video source configurations provided by Device is received by Client using the
@@ -6797,7 +6648,8 @@
                 following conditions are met:<itemizedlist>
                   <listitem>
                     <para>
-                      Client supports <emphasis role="bold">List video source configurations</emphasis> feature
+                      Client supports <emphasis role="bold">Media2_ListVideoSourceConfigurations_Media2_GetVideoSourceConfigurationsRequest</emphasis> feature 
+                      (please see <xref linkend="tc.Media2_OSDConfiguration.MEDIA2_LISTVIDEOSOURCECONFIGURATIONS-1"/> section)
                       AND
                     </para>
                   </listitem>
@@ -6844,7 +6696,8 @@
                 ANY of the following is TRUE:<itemizedlist>
                   <listitem>
                     <para>
-                      Client does not support <emphasis role="bold">List video source configurations</emphasis> feature
+                      Client does not support <emphasis role="bold">Media2_ListVideoSourceConfigurations_Media2_GetVideoSourceConfigurationsRequest</emphasis> feature 
+                      (please see <xref linkend="tc.Media2_OSDConfiguration.MEDIA2_LISTVIDEOSOURCECONFIGURATIONS-1"/> section)
                       OR
                     </para>
                   </listitem>
@@ -6884,6 +6737,9 @@
           </orderedlist>
         </para>
       </section>
+      <section xml:id="tc.Media2_OSDConfiguration.MEDIA2_LISTVIDEOSOURCECONFIGURATIONS-1" xreflabel="MEDIA2_LISTVIDEOSOURCECONFIGURATIONS-1 LIST VIDEO SOURCE CONFIGURATIONS USING MEDIA2">   
+       <xi:include xpointer = "xpointer(id('tc.Media2_ListVideoSourceConfigurations.MEDIA2_LISTVIDEOSOURCECONFIGURATIONS-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
       <section xml:id="tc.Media2_OSDConfiguration.MEDIA2_OSDCONFIGURATION-1">
         <title>GET OSD CONFIGURATIONS USING MEDIA2</title>
         <para>
@@ -6894,10 +6750,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get OSDs (Media2_OSDConfiguration_Media2_GetOSDConfigurations)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetOSDs">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7014,10 +6866,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Text OSD (Media2_OSDConfiguration_Media2_CreateTextOSD)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="CreateOSD (text)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create text OSD using the
@@ -7131,10 +6979,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Image OSD (Media2_OSDConfiguration_Media2_CreateImageOSD)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="CreateOSD (image)">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7250,10 +7094,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get OSD Options (Media2_OSDConfiguration_Media2_GetOSDOptions)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetOSDOptions">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that OSD options provided by Device is received by Client using the
@@ -7363,10 +7203,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set OSD (Media2_OSDConfiguration_Media2_SetOSDConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="SetOSD">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7503,9 +7339,9 @@
                 following conditions are met:<itemizedlist>
                   <listitem>
                     <para>
-                      Client is able to create media profile using <emphasis role="bold">CreateProfile</emphasis> operation with <emphasis role="bold">Type</emphasis> element value is equal to EITHER <emphasis role="bold">VideoSource</emphasis> OR
-                      <emphasis role="bold">AudioSource</emphasis> (Media2AudioProfileConfiguration.CreateProfileWithAudioSourceConfiguration) OR
-                      <emphasis role="bold">AudioOutput</emphasis> (Media2AudioProfileConfiguration.CreateProfileWithAudioOutputConfiguration) AND
+                      Client is able to create media profile using <emphasis role="bold">CreateProfile</emphasis> operation with <emphasis role="bold">Type</emphasis> element value is equal to EITHER <emphasis role="bold">VideoSource</emphasis> (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_MEDIAPROFILEMANAGEMENT-1"/> section) OR
+                      <emphasis role="bold">AudioSource</emphasis> (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_AUDIOPROFILECONFIGURATION-2"/> section) OR
+                      <emphasis role="bold">AudioOutput</emphasis> (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_AUDIOOUTPUTPROFILECONFIGURATION-2"/> section) AND
                     </para>
                   </listitem>
                   <listitem>
@@ -7516,7 +7352,8 @@
                   </listitem>
                   <listitem>
                     <para>
-                      Client supports <emphasis role="bold">media2_video_source_configuration.get_video_source_configurations</emphasis> feature.
+                      Client supports <emphasis role="bold">Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurations</emphasis> feature 
+                      (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_VIDEOSOURCECONFIGURATION-1"/> section).
                     </para>
                   </listitem>
                 </itemizedlist>
@@ -7534,7 +7371,9 @@
                   </listitem>
                   <listitem>
                     <para>
-                      Client does not support the following features: <emphasis role="bold">Media2MediaProfileManagement.CreateProfileWithVideoSourceConfiguration</emphasis> AND <emphasis role="bold">Media2AudioProfileConfiguration.CreateProfileWithAudioSourceConfiguration</emphasis> AND <emphasis role="bold">Media2AudioProfileConfiguration.CreateProfileWithAudioOutputConfiguration</emphasis>
+                      Client does not support the following features: <emphasis role="bold">Media2_MediaProfileManagement_Media2_CreateMediaProfileWithVideoSourceConfiguration</emphasis> (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_MEDIAPROFILEMANAGEMENT-1"/> section) AND
+                      <emphasis role="bold">Media2_AudioProfileConfiguration_Media2_CreateMediaProfileWithAudioSourceConfiguration</emphasis> (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_AUDIOPROFILECONFIGURATION-2"/> section) AND 
+                      <emphasis role="bold">Media2_AudioOutputProfileConfiguration_Media2_CreateMediaProfileWithAudioOutputConfiguration</emphasis> (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_AUDIOOUTPUTPROFILECONFIGURATION-2"/> section)
                       OR
                     </para>
                   </listitem>
@@ -7546,8 +7385,8 @@
                   </listitem>
                   <listitem>
                     <para>
-                      Client does not support <emphasis role="bold">media2_video_source_configuration.get_video_source_configurations</emphasis>  feature
-                      OR
+                      Client does not support <emphasis role="bold">Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurations</emphasis> feature 
+                      (please see <xref linkend="tc.Media2_MediaProfileManagement.MEDIA2_VIDEOSOURCECONFIGURATION-1"/> section).
                     </para>
                   </listitem>
                 </itemizedlist>
@@ -7556,7 +7395,19 @@
           </orderedlist>
         </para>
       </section>
-      <section xml:id="tc.Media2_MediaProfileManagement.MEDIA2_MEDIAPROFILEMANAGEMENT-1">
+      <section xml:id="tc.Media2_MediaProfileManagement.MEDIA2_AUDIOPROFILECONFIGURATION-2" xreflabel="MEDIA2_AUDIOPROFILECONFIGURATION-2 CREATE MEDIA PROFILE WITH AUDIO SOURCE CONFIGURATION USING MEDIA2">   
+       <xi:include xpointer="xpointer(id('tc.Media2_AudioProfileConfiguration.MEDIA2_AUDIOPROFILECONFIGURATION-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+      
+      <section xml:id="tc.Media2_MediaProfileManagement.MEDIA2_AUDIOOUTPUTPROFILECONFIGURATION-2" xreflabel="MEDIA2_AUDIOOUTPUTPROFILECONFIGURATION-2 CREATE MEDIA PROFILE WITH AUDIO OUTPUT CONFIGURATION USING MEDIA2">   
+       <xi:include xpointer="xpointer(id('tc.Media2_AudioOutputProfileConfiguration.MEDIA2_AUDIOOUTPUTPROFILECONFIGURATION-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+      
+      <section xml:id="tc.Media2_MediaProfileManagement.MEDIA2_VIDEOSOURCECONFIGURATION-1" xreflabel="MEDIA2_VIDEOSOURCECONFIGURATION-1 GET VIDEO SOURCE CONFIGURATIONS USING MEDIA2">   
+       <xi:include xpointer="xpointer(id('tc.Media2_VideoSourceConfiguration.MEDIA2_VIDEOSOURCECONFIGURATION-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
+      
+      <section xml:id="tc.Media2_MediaProfileManagement.MEDIA2_MEDIAPROFILEMANAGEMENT-1" xreflabel="MEDIA2_MEDIAPROFILEMANAGEMENT-1 CREATE MEDIA PROFILE WITH VIDEO SOURCE CONFIGURATION USING MEDIA2">
         <title>CREATE MEDIA PROFILE WITH VIDEO SOURCE CONFIGURATION USING MEDIA2</title>
         <para>
           <emphasis role="bold">Test Label:</emphasis> Create Media2 Profile with Video Source Configuration
@@ -7566,10 +7417,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Media2 Profile with Video Source Configuration (Media2_MediaProfileManagement_Media2_CreateMediaProfileWithVideoSourceConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="CreateProfile (Video Source Conf)">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7686,10 +7533,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Encoder Instances (Media2_MediaProfileManagement_Media2_GetVideoEncoderInstances)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoEncoderInstances">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7976,9 +7819,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Source Configurations Using Media2 (Media2_AudioSourceConfiguration_Media2_GetAudioSourceConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio source configuration provided by Device is received by Client using the
@@ -8089,9 +7929,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Source Configuration Options Using Media2 (Media2_AudioSourceConfiguration_Media2_GetAudioSourceConfigurationOptions)
         </para>
-        <para>
-          <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio source configuration options provided by Device is received by Client using the
@@ -8201,9 +8038,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Audio Source Configuration Using Media2 (Media2_AudioSourceConfiguration_Media2_SetAudioSourceConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -8402,10 +8236,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Output Configurations Using Media2 (Media2_AudioOutputConfiguration_Media2_GetAudioOutputConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioOutputConfigurations">Profile T Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio output configuration provided by Device is received by Client using the
@@ -8516,10 +8346,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Output Configuration Options Using Media2 (Media2_AudioOutputConfiguration_Media2_GetAudioOutputConfigurationOptions)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAudioOutputConfigurationOptions">Profile T Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio output configuration options provided by Device is received by Client using the
@@ -8629,10 +8455,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Audio Output Configuration Using Media2 (Media2_AudioOutputConfiguration_Media2_SetAudioOutputConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="SetAudioOutputConfiguration">Profile T Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -8830,9 +8652,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Decoder Configurations Using Media2 (Media2_AudioDecoderConfiguration_Media2_GetAudioDecoderConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio decoder configuration provided by Device is received by Client using the
@@ -8943,9 +8762,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Audio Decoder Configuration Options Using Media2 (Media2_AudioDecoderConfiguration_Media2_GetAudioDecoderConfigurationOptions)
         </para>
-        <para>
-          <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that audio decoder configuration options provided by Device is received by Client using the
@@ -9055,9 +8871,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Audio Decoder Configuration Using Media2 (Media2_AudioDecoderConfiguration_Media2_SetAudioDecoderConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -9246,10 +9059,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Snapshot Uri (Media2_GetSnapshotUri_Media2_GetSnapshotUriRequest)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetSnapshotUri">Profile T Normative Reference:</emphasis> Optional
         </para>
 
         <para>

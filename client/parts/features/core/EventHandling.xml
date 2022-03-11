@@ -137,9 +137,6 @@
         <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
       </para>
       <para>
@@ -218,30 +215,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Pull Point (EventHandling_PullPoint)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Governed by business rule #3
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="CreatePullPointSubscription;PullMessage">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="CreatePullPointSubscription;PullMessage">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-       <para>
-        <emphasis role="bold" annotations="CreatePullPointSubscription;PullMessage">Profile M Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
@@ -362,7 +335,7 @@
       </para>
 
     </section>
-    <section xml:id="tc.EventHandling.EVENTHANDLING-2">
+    <section xml:id="tc.EventHandling.EVENTHANDLING-2" xreflabel="EVENTHANDLING-2 BASE NOTIFICATION">
       <title>BASE NOTIFICATION</title>
       <para>
         <emphasis role="bold">Test Label:</emphasis> Event Handling - Basic
@@ -373,24 +346,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Base Notification (EventHandling_WSBaseNotification)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Governed by business rule #3
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
       </para>
 
       <para>
@@ -486,24 +441,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Metadata Streaming (EventHandling_MetadataStreamingUsingMedia)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able

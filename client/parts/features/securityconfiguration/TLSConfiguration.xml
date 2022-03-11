@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feature>
   <revhistory>
+            <revision  xml:id="s.revhistory.TLSConfiguration.20211007.OtherFeatures">
+      <revnumber>21.12</revnumber>
+      <date>Oct 07, 2021</date>
+      <revdescription>
+        <para>The following was done according to #426:</para>
+        <para>TLS Configuration section and TLS Configuration Test Cases section was moved from ONVIF Profile Q Client Test Specification to ONVIF Other Features Client Test Specifications.</para>
+      </revdescription>
+    </revision>
             <revision  xml:id="s.revhistory.TLSConfiguration.20190814.ProfileQ">
       <revnumber>19.12</revnumber>
       <date>Aug 14, 2019</date>
@@ -37,9 +45,6 @@
       </para>
       <para>
         <emphasis role="bold">Profile G Requirement:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> None
@@ -100,7 +105,7 @@
                     <emphasis role="bold">DeleteKey</emphasis> operation if MaximumNumberOfKeys is greater than zero on Device AND
                   </para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.62">
                   <para>
                     Client is able to get key status using EITHER
                     <emphasis role="bold">GetKeyStatus</emphasis> operation OR using <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> event
@@ -109,7 +114,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Client supports EventHandling_Pullpoint feature (please, see ONVIF Core Client Test Specification) when <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> event is supported
+                    Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.TLSConfiguration.EVENTHANDLING-1"/> section) when <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> event is supported
                     AND
                   </para>
                 </listitem>
@@ -151,7 +156,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Client supports network_protocols_configuration.set_network_protocols feature (see ONVIF Core Client Test Specification).
+                    Client supports NetworkConfiguration_SetNetworkInterfaces feature (please see <xref linkend="tc.TLSConfiguration.NETWORKCONFIGURATION-2"/> section).
                   </para>
                 </listitem>
               </itemizedlist>
@@ -208,7 +213,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Client does not support EventHandling_Pullpoint feature (please, see ONVIF Core Client Test Specification) when
+                    Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.TLSConfiguration.EVENTHANDLING-1"/> section) when
                     Client supports <emphasis role="bold">tns1:Advancedsecurity/Keystore/KeyStatus</emphasis> notification if if MaximumNumberOfKeys is greater than zero on Device OR
                   </para>
                 </listitem>
@@ -244,7 +249,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Client does not support network_protocols_configuration.set_network_protocols feature (see ONVIF Core Client Test Specification).
+                    Client does not support NetworkConfiguration_SetNetworkInterfaces feature (please see <xref linkend="tc.TLSConfiguration.NETWORKCONFIGURATION-2"/> section).
                   </para>
                 </listitem>
               </itemizedlist>
@@ -253,6 +258,15 @@
         </orderedlist>
       </para>
     </section>
+     <section xml:id="tc.TLSConfiguration.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="../core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+         </section>
+     
+     <section xml:id="tc.TLSConfiguration.NETWORKCONFIGURATION-2" xreflabel="NETWORKCONFIGURATION-2 SET NETWORK INTERFACES">   
+       <xi:include href="../core/NetworkConfiguration.xml"
+                  xpointer="xpointer(id('tc.NetworkConfiguration.NETWORKCONFIGURATION-2')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+         </section>
     <section xml:id="tc.TLSConfiguration.TLSCONFIGURATION-1">
       <title>UPLOAD PASSPHRASE</title>
       <para>
@@ -263,21 +277,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Upload Passphrase (TLSConfiguration_UploadPassphrase)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
       </para>
 
       <para>
@@ -389,21 +388,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Delete Passphrase (TLSConfiguration_DeletePassphrase)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete a passphrase from the keystore of the Device using
@@ -513,21 +497,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Create PKCS#10 Certification (TLSConfiguration_CreatePKCS10Certification)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
       </para>
 
       <para>
@@ -703,21 +672,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Upload Certificate (TLSConfiguration_UploadCertificate)
       </para>
       <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to upload a certificate using <emphasis role="bold">UploadCertificate</emphasis> operation.
       </para>
       <para>
@@ -824,21 +778,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Delete Certificate (TLSConfiguration_DeleteCertificate)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
       </para>
 
       <para>
@@ -949,21 +888,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Delete Certification Path (TLSConfiguration_DeleteCertificationPath)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete a certification path using <emphasis role="bold">DeleteCertificationPath</emphasis> operation.
@@ -1072,21 +996,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Delete Key (TLSConfiguration_DeleteKey)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
       </para>
 
       <para>
@@ -1198,21 +1107,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Get Key Status (TLSConfiguration_GetKeyStatus)
       </para>
       <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to get key status using <emphasis role="bold">GetKeyStatus</emphasis> operation.
       </para>
       <para>
@@ -1319,21 +1213,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Upload PKCS12 (TLSConfiguration_UploadPKCS12)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
       </para>
 
       <para>
@@ -1444,21 +1323,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Add Server Certificate Assignment (TLSConfiguration_AddServerCertificateAssignment)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to assigns a key pair and certificate along with a certification path to the TLS server on the Device using <emphasis role="bold">AddServerCertificateAssignment</emphasis> operation.
@@ -1566,21 +1430,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Remove Server Certificate Assignment (TLSConfiguration_RemoveServerCertificateAssignment)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
       </para>
 
       <para>
@@ -1690,21 +1539,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Replace Server Certificate Assignment (TLSConfiguration_ReplaceServerCertificateAssignment)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to replace an existing key pair and certificate assignment to the TLS server on the Device by a new key pair and certificate assignment using <emphasis role="bold">ReplaceServerCertificateAssignment</emphasis> operation.
@@ -1813,21 +1647,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Create Certification Path (TLSConfiguration_CreateCertificationPath)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create certification path using <emphasis role="bold">CreateCertificationPath</emphasis> operation.
@@ -1935,21 +1754,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Create RSA Key Pair (TLSConfiguration_CreateRSAKeyPair)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
       </para>
 
       <para>

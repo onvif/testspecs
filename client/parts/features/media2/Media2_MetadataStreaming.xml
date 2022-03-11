@@ -110,14 +110,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Metadata Streaming (Media2_MetadataStreaming_MetadataStreamingUsingMedia2)
       </para>
       <para>
-        <emphasis role="bold"
-                  annotations="Metadata Streaming using RTSP">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="Metadata streaming using RTSP">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
         to retrieve the Metadata Streaming.
       </para>

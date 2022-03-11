@@ -82,9 +82,6 @@
         <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
       </para>
        
@@ -147,30 +144,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Device Information (System_GetDeviceInformation)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>      
-      <para>
-        <emphasis role="bold" annotations="GetDeviceInformation">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetDeviceInformation">Profile D Normative Reference:</emphasis> Conditional
-      </para>
-        <para>
-        <emphasis role="bold" annotations="GetDeviceInformation">Profile M Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

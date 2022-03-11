@@ -11,13 +11,13 @@
     </revision>
   </revhistory>
   <section xml:id="s.intro.AuxiliaryCommands">
-      <title>Auxiliary Commands</title>
+      <title>Auxiliary Commands (Device Management Service)</title>
       <para>
         Auxiliary Commands section defines Client ability to manage auxiliary commands supported by the Device.
       </para>
   </section>
  <section xml:id="tc.AuxiliaryCommands">
-    <title>Auxiliary Commands Test Cases</title>
+    <title>Auxiliary Commands (Device Management Service) Test Cases</title>
     <section xml:id="tc.AuxiliaryCommands.feature">
       <title>Feature Level Requirement:</title>
       <para>
@@ -42,9 +42,6 @@
         <emphasis role="bold">Profile C Requirement:</emphasis> None
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> None
-      </para>
-      <para>
         <emphasis role="bold" annotations="8.18 Auxiliary Commands">Profile T Requirement:</emphasis> Conditional
       </para>
     </section>
@@ -59,7 +56,7 @@
           </listitem>
           <listitem>
             <para>
-              Client is considered as supporting Auxiliary Commands if the
+              Client is considered as supporting Auxiliary Commands (Device Management Service) if the
               following conditions are met:
               <itemizedlist>
                 <listitem>
@@ -101,7 +98,7 @@
           </listitem>
           <listitem>
             <para>
-              Client is considered as NOT supporting Auxiliary Commands if
+              Client is considered as NOT supporting Auxiliary Commands (Device Management Service) if
               ANY of the following is TRUE:
               <itemizedlist>
                 <listitem>
@@ -183,21 +180,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:Wiper|On (AuxiliaryCommands_WiperOn)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Wiper|On">Profile T Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -302,21 +284,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:Wiper|Off (AuxiliaryCommands_WiperOff)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Wiper|Off">Profile T Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
@@ -419,21 +386,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:Washer|On (AuxiliaryCommands_WasherOn)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Washer|On">Profile T Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -538,21 +490,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:Washer|Off (AuxiliaryCommands_WasherOff)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:Washer|Off">Profile T Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
@@ -655,21 +592,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:WashingProcedure|On (AuxiliaryCommands_WashingProcedureOn)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:WashingProcedure|On">Profile T Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -774,21 +696,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:WashingProcedure|Off (AuxiliaryCommands_WashingProcedureOff)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:WashingProcedure|Off">Profile T Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
@@ -891,21 +798,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:IRLamp|On (AuxiliaryCommands_IRLampOn)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:IRLamp|On">Profile T Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -1010,21 +902,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:IRLamp|Off (AuxiliaryCommands_IRLampOff)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:IRLamp|Off">Profile T Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports the SendAuxiliaryCommand operation.
@@ -1127,21 +1004,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> tt:IRLamp|Auto (AuxiliaryCommands_IRLampAuto)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SendAuxiliaryCommand;tt:IRLamp|Auto">Profile T Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

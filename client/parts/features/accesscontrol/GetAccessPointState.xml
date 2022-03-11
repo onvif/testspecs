@@ -86,10 +86,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Access Point State (GetAccessPointState_GetAccessPointStateRequest)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAccessPointState">Profile D Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve access point state using the

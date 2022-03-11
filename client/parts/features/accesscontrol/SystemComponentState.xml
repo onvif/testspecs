@@ -69,7 +69,7 @@
                   <para>
                     Client supports DoorInformation_ListingOfDoors feature (please see <xref linkend="tc.DoorInformation.DOORINFORMATION-1"/> section) AND</para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.18">
                   <para>
                     Client is able to receive tns1:AccessPoint/State/Enabled notification about a state of access point if Device supports AccessPointStateEnabledEvent AND
                   </para>
@@ -78,25 +78,25 @@
                   <para>
                     Client is able to retrieve at least one of the following notifications about a state of door:
                     <itemizedlist>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.19">
                         <para>tns1:Door/State/DoorMode notification if Device supports DoorModeEvent</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.20">
                         <para>tns1:Door/State/DoorPhysicalState notification if Device supports DoorPhysicalStateEvent</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.21">
                         <para>tns1:Door/State/LockPhysicalState notification if Device supports LockPhysicalStateEvent</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.22">
                         <para>tns1:Door/State/DoubleLockPhysicalState notification if Device supports DoubleLockPhysicalStateEvent</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.23">
                         <para>tns1:Door/State/DoorAlarm notification if Device supports DoorAlarmEvent</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.24">
                         <para>tns1:Door/State/DoorTamper notification if Device supports DoorTamperEvent</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.25">
                         <para>tns1:Door/State/DoorFault notification if Device supports DoorFaultEvent</para>
                       </listitem>
                     </itemizedlist>
@@ -169,9 +169,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> SYSTEMCOMPONENTSTATE-1
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> System Component State
@@ -331,9 +328,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> SYSTEMCOMPONENTSTATE-2
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> System Component State

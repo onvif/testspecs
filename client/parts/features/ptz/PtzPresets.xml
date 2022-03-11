@@ -98,12 +98,6 @@
          <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Presets (PtzPresets_PtzGetPresets)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetPresets">Profile T Normative Reference:</emphasis> Conditional
-      </para>
    
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -202,12 +196,6 @@
       </para>
         <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Goto Preset (PtzPresets_PtzGotoPreset)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GotoPreset">Profile T Normative Reference:</emphasis> Conditional
       </para>
       
       <para>

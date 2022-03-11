@@ -48,19 +48,8 @@
             <listitem>
               <para>
                 Client is considered as supporting H265 Video Streaming if the
-                following conditions are met:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client supports media2_get_profiles.get_profiles feature
-                      AND
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client supports media2_get_stream_uri.get_stream_uri feature
-                      AND
-                    </para>
-                  </listitem>
+                following conditions are met:<itemizedlist>                 
+                 
                   <listitem>
                     <para>
                       Client is able to receive a stream using Media2 and decode H.265 video using the selected Media Profile over RTSP.
@@ -73,19 +62,8 @@
             <listitem>
               <para>
                 Client is considered as NOT supporting H265 Video Streaming if
-                ANY of the following is TRUE:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_profiles.get_profiles feature
-                      OR
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_stream_uri.get_stream_uri feature
-                      OR
-                    </para>
-                  </listitem>
+                ANY of the following is TRUE:<itemizedlist>                 
+                 
                   <listitem>
                     <para>
                       Client is unable to initiate and retrieve
@@ -108,14 +86,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> H265 Video Streaming Using Media2 (Media2_VideoStreaming_H265_Media2_H265VideoStreaming)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="initiate video streaming sessions using RTSP;H.265">Profile T Normative Reference:</emphasis> Mandatory
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="H.265">Profile M Normative Reference:</emphasis> Conditional
         </para>
 
         <para>

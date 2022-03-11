@@ -125,10 +125,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> GetSupportedAnalyticsModules (AnalyticsModuleConfiguration_GetSupportedAnalyticsModules)
       </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="GetSupportedAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve supported Analytics Module description using the <emphasis role="bold">GetSupportedAnalyticsModules</emphasis> operation.
@@ -232,10 +228,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> GetAnalyticsModules (AnalyticsModuleConfiguration_GetAnalyticsModules)
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="GetAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -341,10 +333,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> CreateAnalyticsModules (AnalyticsModuleConfiguration_CreateAnalyticsModules)
       </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="CreateAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add analytics modules to an existing VideoAnalyticsConfiguration using the <emphasis role="bold">CreateAnalyticsModules</emphasis> operation.
@@ -447,10 +435,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> DeleteAnalyticsModules (AnalyticsModuleConfiguration_DeleteAnalyticsModules)
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="DeleteAnalyticsModules">Profile M Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

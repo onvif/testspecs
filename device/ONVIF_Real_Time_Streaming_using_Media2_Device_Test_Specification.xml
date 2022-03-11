@@ -7,7 +7,7 @@
 <?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
 <!--For PDF version - New ONVIF-->
 <!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Profile_Imaging_Client_TS">
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_RTSS_Media2_Device_TS">
   <info>
     <orgname>
       <phrase>
@@ -16,10 +16,10 @@
     </orgname>
     <title>Real Time Streaming using Media2 Device Test Specification</title>
     <titleabbrev>RT Streaming (Media2) Device Test Spec</titleabbrev>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.06</subtitle>
+    <date>June 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -1347,21 +1347,53 @@
           <para>The following were added according to #2082:</para>
           <para>MEDIA2_RTSS-6-1-1 MEDIA2 STREAMING – G.711 BACKCHANNEL AND H.26X VIDEO AND G.711/AAC AUDIO (RTP-Unicast/UDP)</para>
           <para>A.65 Device Configuration for Audio Backchannel and Video and Audio Streaming</para>
-        <para>A.66 Media2 Service – Adding VideoSource, VideoEncoder, AudioSource and AudioEncoder configurations to Media Profile</para>
-        <para>A.67 Media2 Service – Adding AudioSource and AudioEncoder to Media Profile</para>
-        <para>A.68 Audio Backchannel and Media Streaming over RTP-Unicast/UDP</para>        
+          <para>A.66 Media2 Service – Adding VideoSource, VideoEncoder, AudioSource and AudioEncoder configurations to Media Profile</para>
+          <para>A.67 Media2 Service – Adding AudioSource and AudioEncoder to Media Profile</para>
+          <para>A.68 Audio Backchannel and Media Streaming over RTP-Unicast/UDP</para>
         </revdescription>
       </revision>
-    <revision>
+      <revision>
         <revnumber>20.12</revnumber>
         <date>Sep 23, 2020</date>
         <revdescription>
-          <para>Annex A.47 was renamed in the scope of #2082:</para>  
-        <para>Old name: Media2 Service – Adding AudioSource and AudioEncoder configurations to Media Profile</para>  
-        <para>New name: Media2 Service – Adding AudioSource and AudioEncoder with Specified Audio Encoder Value to Media Profile</para> 
+          <para>Annex A.47 was renamed in the scope of #2082:</para>
+          <para>Old name: Media2 Service – Adding AudioSource and AudioEncoder configurations to Media Profile</para>
+          <para>New name: Media2 Service – Adding AudioSource and AudioEncoder with Specified Audio Encoder Value to Media Profile</para>
         </revdescription>
       </revision>
-  
+      <revision>
+        <revnumber>20.12</revnumber>
+        <date>Nov 17, 2020</date>
+        <revdescription>
+          <para>Annex A.48 RTSP Authentication Check was updated according to #2073</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 09, 2021</date>
+        <revdescription>
+          <para>The following annexes were updated according to #2124:</para>
+          <para>A.23 Turn on IPv6 network interface</para>
+          <para>A.24 Restore Network Settings</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 26, 2021</date>
+        <revdescription>
+          <para>The following test cases and annexes were removed according to #2215:</para>
+          <para>MEDIA2_RTSS-3-1-2 BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</para>
+          <para>MEDIA2_RTSS-3-1-5 BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTP/TCP, IPv6)</para>
+          <para>MEDIA2_RTSS-3-1-8 BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</para>
+          <para>MEDIA2_RTSS-3-1-11 BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTP/TCP, IPv6)</para>
+          <para>MEDIA2_RTSS-3-1-17 BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTPS/TCP, IPv4)</para>
+          <para>MEDIA2_RTSS-3-1-18 BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTPS/TCP, IPv4)</para>
+          <para>MEDIA2_RTSS-3-1-19 BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTPS/TCP, IPv6)</para>
+          <para>MEDIA2_RTSS-3-1-20 BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTPS/TCP, IPv6)</para>
+          <para>A.22 Audio Backchannel over RTP-Unicast/RTSP/HTTP/TCP</para>
+          <para>A.49 Audio Backchannel over RTP-Unicast/RTSP/HTTPS/TCP</para>
+        </revdescription>
+      </revision>
     </revhistory>
   </info>
   <chapter xml:id="s.intro">
@@ -10293,126 +10325,8 @@
             </itemizedlist>
           </para>
         </section>
-        <!--MEDIA2_RTSS-3-1-2-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-2">
-          <title>BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-2
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming).
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel G.711, RTP-Unicast/RTSP/HTTP/TCP, IPv4
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for G.711 audio streaming using RTP-Unicast/RTSP/HTTP/TCP transport for IPv4.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by DUT. G.711 decoder is supported by DUT. Real-time streaming is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-2.3">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in PCMU - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTP/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in G.711 - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-2.3"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-2.3"/>.
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
+
+
         <!--MEDIA2_RTSS-3-1-3-->
         <section xml:id="tc.MEDIA2_RTSS-3-1-3">
           <title>BACKCHANNEL – G.711 (RTP/RTSP/TCP, IPv4)</title>
@@ -10683,154 +10597,7 @@
           </para>
         </section>
         <!--MEDIA2_RTSS-3-1-5-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-5">
-          <title>BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTP/TCP, IPv6)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-5
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming).
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel G.711, RTP-Unicast/RTSP/HTTP/TCP, IPv6
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for G.711 audio streaming using RTP-Unicast/RTSP/HTTP/TCP transport for IPv6.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by DUT. G.711 decoder is supported by DUT. Real-time streaming is supported by DUT. IPv6 is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client configures IPv6 address to use it for the next test steps by following the procedure mentioned in <xref linkend="Annex_HelperTurnOnIPv6"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-5.4">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in PCMU - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in IPv6 - IP Type
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTP/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in G.711 - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-5.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-5.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores network settings by following the procedure mentioned in <xref linkend="Annex_HelperRestoreNetworkSettings"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
+
         <!--MEDIA2_RTSS-3-1-6-->
         <section xml:id="tc.MEDIA2_RTSS-3-1-6">
           <title>BACKCHANNEL – G.711 (RTP/RTSP/TCP, IPv6)</title>
@@ -11105,131 +10872,8 @@
             </itemizedlist>
           </para>
         </section>
-        <!--MEDIA2_RTSS-3-1-8-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-8">
-          <title>BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-8
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming).
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel AAC, RTP-Unicast/RTSP/HTTP/TCP, IPv4
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for AAC audio streaming using RTP-Unicast/RTSP/HTTP/TCP transport for IPv4.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by DUT. AAC decoder is supported by DUT. Real-time streaming is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-8.3">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in AAC - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">aacDecoding</emphasis> - AAC audio decoding that is set in profile
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTP/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">aacDecoding</emphasis> - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-8.3"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-8.3"/>.
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
+
+
         <!--MEDIA2_RTSS-3-1-9-->
         <section xml:id="tc.MEDIA2_RTSS-3-1-9">
           <title>BACKCHANNEL – AAC (RTP/RTSP/TCP, IPv4)</title>
@@ -11509,160 +11153,8 @@
             </itemizedlist>
           </para>
         </section>
-        <!--MEDIA2_RTSS-3-1-11-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-11">
-          <title>BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTP/TCP, IPv6)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-11
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming).
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel AAC, RTP-Unicast/RTSP/HTTP/TCP, IPv6
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for AAC audio streaming using RTP-Unicast/RTSP/HTTP/TCP transport for IPv6.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by DUT. AAC decoder is supported by DUT. Real-time streaming is supported by DUT. IPv6 is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client configures IPv6 address to use it for the next test steps by following the procedure mentioned in <xref linkend="Annex_HelperTurnOnIPv6"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-11.4">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in AAC - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in IPv6 - IP Type
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">aacDecoding</emphasis> - AAC audio decoding that is set in profile
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTP/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">aacDecoding</emphasis> - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-11.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-11.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores network settings by following the procedure mentioned in <xref linkend="Annex_HelperRestoreNetworkSettings"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
+
+
         <!--MEDIA2_RTSS-3-1-12-->
         <section xml:id="tc.MEDIA2_RTSS-3-1-12">
           <title>BACKCHANNEL – AAC (RTP/RTSP/TCP, IPv6)</title>
@@ -12369,599 +11861,7 @@
             </itemizedlist>
           </para>
         </section>
-        <!--MEDIA2_RTSS-3-1-17-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-17">
-          <title>BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTPS/TCP, IPv4)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-17
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming), RTP/RTSP/HTTP/TCP, RTP, RTCP, Stream control, RTSP, RTSP over HTTP, RTSP over HTTPS.
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel G.711, Streaming over RTP-Unicast/RTSP/HTTPS/TCP, IPv4
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for G.711 audio streaming using RTP-Unicast/RTSP/HTTPS/TCP transport for IPv4.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by the DUT. G.711 decoder is supported by the DUT. Real-time streaming is supported by the DUT. RTP/RTSP/HTTPS/TCP feature is supported by the DUT. HTTPS is configured on the DUT, if TLS Server is not supported by the DUT.
-            Security Configuration Service is received from the DUT, if TLS Server is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-17.3">
-                <para>
-                  ONVIF Client configures HTTPS if required by following the procedure mentioned in <xref linkend="Annex_HelperCheckAndConfigureHTTPS"/>.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-17.4">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in PCMU - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTPS/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in G.711 - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-17.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-17.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores HTTPS settings which was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-17.3"/>.
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
-        <!--MEDIA2_RTSS-3-1-18-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-18">
-          <title>BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTPS/TCP, IPv4)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-18
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming), RTP/RTSP/HTTP/TCP, RTP, RTCP, Stream control, RTSP, RTSP over HTTP, RTSP over HTTPS.
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel AAC, Streaming over RTP-Unicast/RTSP/HTTPS/TCP, IPv4
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for AAC audio streaming using RTP-Unicast/RTSP/HTTPS/TCP transport for IPv4.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by the DUT. AAC decoder is supported by the DUT. Real-time streaming is supported by the DUT. RTP/RTSP/HTTPS/TCP feature is supported by the DUT. HTTPS is configured on the DUT, if TLS Server is not supported by the DUT.
-            Security Configuration Service is received from the DUT, if TLS Server is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-18.3">
-                <para>
-                  ONVIF Client configures HTTPS if required by following the procedure mentioned in <xref linkend="Annex_HelperCheckAndConfigureHTTPS"/>.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-18.4">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in AAC - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">aacDecoding</emphasis> - AAC audio decoding that is set in profile
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTPS/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">aacDecoding</emphasis> - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-17.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-18.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores HTTPS settings which was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-18.3"/>.
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
-        <!--MEDIA2_RTSS-3-1-19-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-19">
-          <title>BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTPS/TCP, IPv6)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-19
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming), RTP/RTSP/HTTP/TCP, RTP, RTCP, Stream control, RTSP, RTSP over HTTP, RTSP over HTTPS.
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel G.711, Streaming over RTP-Unicast/RTSP/HTTPS/TCP, IPv6
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for G.711 audio streaming using RTP-Unicast/RTSP/HTTPS/TCP transport for IPv6.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by the DUT. G.711 decoder is supported by the DUT. Real-time streaming is supported by the DUT. RTP/RTSP/HTTPS/TCP feature is supported by the DUT. HTTPS is configured on the DUT, if TLS Server is not supported by the DUT.
-            Security Configuration Service is received from the DUT, if TLS Server is supported by DUT. IPv6 is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client configures IPv6 address to use it for the next test steps by following the procedure mentioned in <xref linkend="Annex_HelperTurnOnIPv6"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-19.4">
-                <para>
-                  ONVIF Client configures HTTPS if required by following the procedure mentioned in <xref linkend="Annex_HelperCheckAndConfigureHTTPS"/>.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-19.5">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in PCMU - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in IPv6 - IP Type
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTPS/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in G.711 - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-19.5"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-19.5"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores HTTPS settings which was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-19.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores network settings by following the procedure mentioned in <xref linkend="Annex_HelperRestoreNetworkSettings"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
-        <!--MEDIA2_RTSS-3-1-20-->
-        <section xml:id="tc.MEDIA2_RTSS-3-1-20">
-          <title>BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTPS/TCP, IPv6)</title>
-          <para>
-            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_RTSS-3-1-20
-          </para>
-          <para>
-            <emphasis role="bold">Specification coverage:</emphasis> Back Channel Connection (Streaming), RTSP Require- Tag (Streaming), Connection setup for a bi-directional connection (Streaming), RTP/RTSP/HTTP/TCP, RTP, RTCP, Stream control, RTSP, RTSP over HTTP, RTSP over HTTPS.
-          </para>
-          <para>
-            <emphasis role="bold">Feature under test:</emphasis> Audio Backchannel AAC, Streaming over RTP-Unicast/RTSP/HTTPS/TCP, IPv6
-          </para>
-          <para>
-            <emphasis role="bold">WSDL Reference:</emphasis> None
-          </para>
-          <para>
-            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for AAC audio streaming using RTP-Unicast/RTSP/HTTPS/TCP transport for IPv6.
-          </para>
-          <para>
-            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service is received from the DUT. Audio Backchannel is supported by the DUT. AAC decoder is supported by the DUT. Real-time streaming is supported by the DUT. RTP/RTSP/HTTPS/TCP feature is supported by the DUT. HTTPS is configured on the DUT, if TLS Server is not supported by the DUT.
-            Security Configuration Service is received from the DUT, if TLS Server is supported by DUT. IPv6 is supported by DUT.
-          </para>
-          <para>
-            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-          </para>
-          <para>
-            <emphasis role="bold">Test Procedure:</emphasis>
-          </para>
-          <para>
-            <orderedlist>
-              <?dbfo label-width="1.5em"?>
-              <listitem>
-                <para>
-                  Start an ONVIF Client.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  Start the DUT.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client configures IPv6 address to use it for the next test steps by following the procedure mentioned in <xref linkend="Annex_HelperTurnOnIPv6"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-20.4">
-                <para>
-                  ONVIF Client configures HTTPS if required by following the procedure mentioned in <xref linkend="Annex_HelperCheckAndConfigureHTTPS"/>.
-                </para>
-              </listitem>
-              <listitem xml:id="tc.MEDIA2_RTSS-3-1-20.5">
-                <para>
-                  ONVIF Client configures a Media Profile which supports a required audio decoding and send primacy with not only www.onvif.org/ver20/HalfDuplex/Server value and gets stream URI for required transport protocol by following the procedure mentioned in <xref linkend="Annex_HelperConfigureMediaProfileForBackchannelStreaming"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in AAC - required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in RtspOverHttp - transport protocol
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in IPv6 - IP Type
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">profile</emphasis> - Media Profile with Audio Output Configuration and Audio Decoder Configuration with the required audio decoding
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        out <emphasis role="italic">aacDecoding</emphasis> - AAC audio decoding that is set in profile
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client tries to start audio backchannel streaming over RTP-Unicast/RTSP/HTTPS/TCP by following the procedure mentioned in <xref linkend="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
-                      </para>
-                    </listitem>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">aacDecoding</emphasis> - expected media stream encoding
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-20.5"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores Media Profile with @token = <emphasis role="italic">profile</emphasis>.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-20.5"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores HTTPS settings which was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-20.4"/>.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  ONVIF Client restores network settings by following the procedure mentioned in <xref linkend="Annex_HelperRestoreNetworkSettings"/> with the following input and output parameters
-                  <itemizedlist>
-                    <listitem>
-                      <para>
-                        in <emphasis role="italic">initialNetworkSettings</emphasis> - initial Network settings
-                      </para>
-                    </listitem>
-                  </itemizedlist>
-                </para>
-              </listitem>
-            </orderedlist>
-          </para>
-          <para>
-            <emphasis role="bold">Test Result:</emphasis>
-          </para>
-          <para>
-            <emphasis role="bold">PASS –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT passes all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-          <para>
-            <emphasis role="bold">FAIL –</emphasis>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  DUT does not pass all assertions.
-                </para>
-              </listitem>
-            </itemizedlist>
-          </para>
-        </section>
-        <!--MEDIA2_RTSS-3-1-21-->
+
         <section xml:id="tc.MEDIA2_RTSS-3-1-21">
           <title>BACKCHANNEL STREAMING BY POST – G.711 (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</title>
           <para>
@@ -13737,7 +12637,7 @@
               </listitem>
               <listitem>
                 <para>
-                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-17.4"/>.
+                  ONVIF Client restores settings of Audio Decoder Configuration with @token = <emphasis role="italic">profile</emphasis>.Configurations.AudioDecoder.@token if it was changed at step <xref linkend="tc.MEDIA2_RTSS-3-1-26.4"/>.
                 </para>
               </listitem>
               <listitem>
@@ -19442,8 +18342,8 @@
                         in <emphasis role="italic">streamUri</emphasis> - Uri for media streaming
                       </para>
                     </listitem>
-                    
-                     <listitem>
+
+                    <listitem>
                       <para>
                         in G.711 - audio backchannel stream encoding
                       </para>
@@ -19453,7 +18353,7 @@
                         in <emphasis role="italic">videoEncoding</emphasis> - expected video stream encoding
                       </para>
                     </listitem>
-                   <listitem>
+                    <listitem>
                       <para>
                         in <emphasis role="italic">audioEncoding</emphasis> - expected audio stream encoding
                       </para>
@@ -19649,7 +18549,28 @@
           </listitem>
           <listitem>
             <para>
-              ONVIF Client waits for HELLO message from the default network interface.
+              If DUT supports Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits for HELLO message from the default network interface.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If DUT does not support Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                  </para>
+                </listitem>
+              </orderedlist>
             </para>
           </listitem>
           <listitem>
@@ -19734,7 +18655,20 @@
           </listitem>
           <listitem>
             <para>
-              If SystemReboot is invoked, wait for HELLO message from the default network interface.
+              If SystemReboot is invoked and DUT supports Discovery, wait for HELLO message from the default network interface.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If DUT does not support Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                  </para>
+                </listitem>
+              </orderedlist>
             </para>
           </listitem>
         </orderedlist>
@@ -23961,7 +22895,7 @@
       </para>
     </section>
     <!--A.22-->
-    <section xml:id="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP" xreflabel="Annex A.22">
+    <!--<section xml:id="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP" xreflabel="Annex A.22" status="Depricated">
       <title>Audio Backchannel over RTP-Unicast/RTSP/HTTP/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP
@@ -24169,9 +23103,9 @@
       <para>
         <emphasis role="bold">Note:</emphasis> If <emphasis role="italic">encoding</emphasis> = MP4A-LATM, then rtpmap value may be equal either MP4A-LATM or MPEG4-GENERIC at step <xref linkend="tc.A22.3"/>.
       </para>
-    </section>
+    </section>-->
     <!--A.23-->
-    <section xml:id="Annex_HelperBackchannelStreamingRTPRTSPTCP" xreflabel="Annex A.23">
+    <section xml:id="Annex_HelperBackchannelStreamingRTPRTSPTCP" xreflabel="Annex A.22">
       <title>Audio Backchannel Streaming over RTP/RTSP/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelStreamingRTPRTSPTCP
@@ -24376,7 +23310,7 @@
       </para>
     </section>
     <!--A.24-->
-    <section xml:id="Annex_HelperBackchannelStreamingRTPMulticast" xreflabel="Annex A.24">
+    <section xml:id="Annex_HelperBackchannelStreamingRTPMulticast" xreflabel="Annex A.23">
       <title>Audio Backchannel Streaming over RTP-Multicast</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelStreamingRTPMulticast
@@ -24581,7 +23515,7 @@
       </para>
     </section>
     <!--A.25-->
-    <section xml:id="Annex_HelperRemoveAudioEncoderConfigAndMetadataConfigAndVideoConfigFromMediaProfile" xreflabel="Annex A.25">
+    <section xml:id="Annex_HelperRemoveAudioEncoderConfigAndMetadataConfigAndVideoConfigFromMediaProfile" xreflabel="Annex A.24">
       <title>Removing Video Encoder Configuration, Audio Encoder Configuration and Metadata Configuration from Media Profile</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperRemoveAudioEncoderConfigAndMetadataConfigAndVideoConfigFromMediaProfile
@@ -24751,7 +23685,7 @@
       </para>
     </section>
     <!--A.26-->
-    <section xml:id="Annex_HelperGetServiceCapabilities" xreflabel="Annex A.26">
+    <section xml:id="Annex_HelperGetServiceCapabilities" xreflabel="Annex A.25">
       <title>Get Media2 Service Capabilities</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
@@ -24820,7 +23754,7 @@
       </para>
     </section>
     <!--A.27-->
-    <section xml:id="Annex_HelperWebSocketHandshake" xreflabel="Annex A.27">
+    <section xml:id="Annex_HelperWebSocketHandshake" xreflabel="Annex A.26">
       <title>Web Socket Handshake</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperWebSocketHandshake
@@ -25080,7 +24014,7 @@
       </para>
     </section>
     <!--A.28-->
-    <section xml:id="Annex_HelperGenerateSecWebSocketKey" xreflabel="Annex A.28">
+    <section xml:id="Annex_HelperGenerateSecWebSocketKey" xreflabel="Annex A.27">
       <title>Sec-WebSocket-Key value generation</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperGenerateSecWebSocketKey
@@ -25117,7 +24051,7 @@
 
     </section>
     <!--A.29-->
-    <section xml:id="Annex_HelperBasicTLSHandshake" xreflabel="Annex A.29">
+    <section xml:id="Annex_HelperBasicTLSHandshake" xreflabel="Annex A.28">
       <title>Basic TLS handshake</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBasicTLSHandshake
@@ -25343,7 +24277,7 @@
 
     </section>
     <!--A.30-->
-    <section xml:id="Annex_HelperStreamingOverWebSocket" xreflabel="Annex A.30">
+    <section xml:id="Annex_HelperStreamingOverWebSocket" xreflabel="Annex A.29">
       <title>Media Streaming over WebSocket</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperStreamingOverWebSocket
@@ -25575,7 +24509,7 @@
       </para>
     </section>
     <!--A.31-->
-    <section xml:id="Annex_HelperConfigureMediaProfileForMetadataStreaming" xreflabel="Annex A.31">
+    <section xml:id="Annex_HelperConfigureMediaProfileForMetadataStreaming" xreflabel="Annex A.30">
       <title>Media2 Service – Media Profile Configuration for Metadata Streaming</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperConfigureMediaProfileForMetadataStreaming
@@ -26232,7 +25166,7 @@
       </para>
     </section>
     <!--A.32-->
-    <section xml:id="Annex_HelperAddPTZConfiguration" xreflabel="Annex A.32">
+    <section xml:id="Annex_HelperAddPTZConfiguration" xreflabel="Annex A.31">
       <title>Media2 Service – Add PTZ Configuration to Media Profile</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperAddPTZConfiguration
@@ -26358,7 +25292,7 @@
       </para>
     </section>
     <!--A.33-->
-    <section xml:id="Annex_HelperAddAnalyticsConfiguration" xreflabel="Annex A.33">
+    <section xml:id="Annex_HelperAddAnalyticsConfiguration" xreflabel="Annex A.32">
       <title>Media2 Service – Add Analytics Configuration to Media Profile</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperAddAnalyticsConfiguration
@@ -26493,7 +25427,7 @@
       </para>
     </section>
     <!--A.34-->
-    <section xml:id="Annex_HelperMetadataStreamingRTPUnicastUDP" xreflabel="Annex A.34">
+    <section xml:id="Annex_HelperMetadataStreamingRTPUnicastUDP" xreflabel="Annex A.33">
       <title>Metadata Streaming over RTP-Unicast/UDP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperMetadataStreamingRTPUnicastUDP
@@ -26826,7 +25760,7 @@
       </para>
     </section>
     <!--A.35-->
-    <section xml:id="Annex_HelperMetadataStreamingRTPUnicastRTSPHTTPTCP" xreflabel="Annex A.35">
+    <section xml:id="Annex_HelperMetadataStreamingRTPUnicastRTSPHTTPTCP" xreflabel="Annex A.34">
       <title>Metadata Streaming over RTP-Unicast/RTSP/HTTP/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperMetadataStreamingRTPUnicastRTSPHTTPTCP
@@ -27165,7 +26099,7 @@
       </para>
     </section>
     <!--A.36-->
-    <section xml:id="Annex_HelperMetadataStreamingRTPRTSPTCP" xreflabel="Annex A.36">
+    <section xml:id="Annex_HelperMetadataStreamingRTPRTSPTCP" xreflabel="Annex A.35">
       <title>Metadata Streaming over RTP/RTSP/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperMetadataStreamingRTPRTSPTCP
@@ -27495,7 +26429,7 @@
       </para>
     </section>
     <!--A.37-->
-    <section xml:id="Annex_HelperMetadataStreamingRTPMulticastUDP" xreflabel="Annex A.37">
+    <section xml:id="Annex_HelperMetadataStreamingRTPMulticastUDP" xreflabel="Annex A.36">
       <title>Metadata Streaming over RTP-Unicast/UDP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperMetadataStreamingRTPMulticastUDP
@@ -27825,7 +26759,7 @@
       </para>
     </section>
     <!--A.38-->
-    <section xml:id="Annex_HelperCreateCACertificate" xreflabel="Annex A.38">
+    <section xml:id="Annex_HelperCreateCACertificate" xreflabel="Annex A.37">
       <title>Provide CA certificate</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperCreateCACertificate
@@ -27928,7 +26862,7 @@
       </para>
     </section>
     <!--A.39-->
-    <section xml:id="Annex_HelperGetStreamUri" xreflabel="Annex A.39">
+    <section xml:id="Annex_HelperGetStreamUri" xreflabel="Annex A.38">
       <title>Get Stream Uri</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperGetStreamUri
@@ -28053,7 +26987,7 @@
       </para>
     </section>
     <!--A.40-->
-    <section xml:id="Annex_HelperDeviceConfigurationForVideoStreaming" xreflabel="Annex A.40">
+    <section xml:id="Annex_HelperDeviceConfigurationForVideoStreaming" xreflabel="Annex A.39">
       <title>Device Configuration for Video Streaming</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperDeviceConfigurationForVideoStreaming
@@ -28360,7 +27294,7 @@
       </para>
     </section>
     <!--A.41-->
-    <section xml:id="Annex_HelperDeviceConfigurationForAudioStreaming" xreflabel="Annex A.41">
+    <section xml:id="Annex_HelperDeviceConfigurationForAudioStreaming" xreflabel="Annex A.40">
       <title>Device Configuration for Audio Streaming</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperDeviceConfigurationForAudioStreaming
@@ -28619,7 +27553,7 @@
       </para>
     </section>
     <!--A.42-->
-    <section xml:id="Annex_HelperBackchannelStreamingOverWebSocket" xreflabel="Annex A.42">
+    <section xml:id="Annex_HelperBackchannelStreamingOverWebSocket" xreflabel="Annex A.41">
       <title>Backchannel Streaming over WebSocket</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelStreamingOverWebSocket
@@ -28859,7 +27793,7 @@
       </para>
     </section>
     <!--A.43-->
-    <section xml:id="Annex_HelperCheckAndConfigureHTTPS" xreflabel="Annex A.43">
+    <section xml:id="Annex_HelperCheckAndConfigureHTTPS" xreflabel="Annex A.42">
       <title>Configuring HTTPS if Required</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperCheckAndConfigureHTTPS
@@ -28941,7 +27875,7 @@
       </para>
     </section>
     <!--A.44-->
-    <section xml:id="Annex_HelperRemoveConfigurationsFromMediaProfile" xreflabel="Annex A.44">
+    <section xml:id="Annex_HelperRemoveConfigurationsFromMediaProfile" xreflabel="Annex A.43">
       <title>Removing Configurations from Media Profile</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperRemoveConfigurationsFromMediaProfile
@@ -29204,7 +28138,7 @@
       </para>
     </section>
     <!--A.45-->
-    <section xml:id="Annex_HelperDeviceConfigurationForAudioStreamingUsingOnlyAudioInProfile" xreflabel="Annex A.45">
+    <section xml:id="Annex_HelperDeviceConfigurationForAudioStreamingUsingOnlyAudioInProfile" xreflabel="Annex A.44">
       <title>Device Configuration for Audio Streaming using Media Profile that contains only Audio Configurations</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperDeviceConfigurationForAudioStreamingUsingOnlyAudioInProfile
@@ -29465,7 +28399,7 @@
       </para>
     </section>
     <!--A.46-->
-    <section xml:id="Annex_HelperDeviceConfigurationForVideoAndAudioStreaming" xreflabel="Annex A.46">
+    <section xml:id="Annex_HelperDeviceConfigurationForVideoAndAudioStreaming" xreflabel="Annex A.45">
       <title>Device Configuration for Video and Audio Streaming</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperDeviceConfigurationForVideoAndAudioStreaming
@@ -30130,7 +29064,7 @@
       </para>
     </section>
     <!--A.47-->
-    <section xml:id="Annex_HelperAddAudioConfigurationsWithSpecificEncoderToMediaProfile" xreflabel="Annex A.47">
+    <section xml:id="Annex_HelperAddAudioConfigurationsWithSpecificEncoderToMediaProfile" xreflabel="Annex A.46">
       <title>Media2 Service – Adding AudioSource and AudioEncoder with Specified Audio Encoder Value to Media Profile</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperAddAudioConfigurationsWithSpecificEncoderToMediaProfile
@@ -30398,37 +29332,37 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                      
+
                     </orderedlist>
                   </para>
                 </listitem>
                 <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
+                    <itemizedlist>
+                      <listitem>
                         <para>
-                          ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                ProfileToken = <emphasis role="italic">profile</emphasis>.@token
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                Configuration[0].Type = AudioSource
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                Configuration[0].Token skipped
-                              </para>
-                            </listitem>
-                          </itemizedlist>
+                          ProfileToken = <emphasis role="italic">profile</emphasis>.@token
                         </para>
                       </listitem>
                       <listitem>
                         <para>
-                          The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
+                          Configuration[0].Type = AudioSource
                         </para>
                       </listitem>
+                      <listitem>
+                        <para>
+                          Configuration[0].Token skipped
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
+                  </para>
+                </listitem>
               </orderedlist>
             </para>
           </listitem>
@@ -30480,7 +29414,7 @@
       </para>
     </section>
     <!--A.48-->
-    <section xml:id="Annex_HelperRTSPAuthentication" xreflabel="Annex A.48">
+    <section xml:id="Annex_HelperRTSPAuthentication" xreflabel="Annex A.47">
       <title>RTSP Authentication Check</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperRTSPAuthenticationCheck
@@ -30549,7 +29483,7 @@
       </para>
     </section>
     <!--A.49-->
-    <section xml:id="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP" xreflabel="Annex A.49">
+    <!--<section xml:id="Annex_HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP" xreflabel="Annex A.49">
       <title>Audio Backchannel over RTP-Unicast/RTSP/HTTPS/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP
@@ -30757,9 +29691,9 @@
       <para>
         <emphasis role="bold">Note:</emphasis> If <emphasis role="italic">encoding</emphasis> = MP4A-LATM, then rtpmap value may be equal either MP4A-LATM or MPEG4-GENERIC at step <xref linkend="tc.A49.3"/>.
       </para>
-    </section>
+    </section>-->
     <!--A.50-->
-    <section xml:id="Annex_HelperMetadataStreamingRTPUnicastRTSPHTTPSTCP" xreflabel="Annex A.50">
+    <section xml:id="Annex_HelperMetadataStreamingRTPUnicastRTSPHTTPSTCP" xreflabel="Annex A.48">
       <title>Metadata Streaming over RTP-Unicast/RTSP/HTTPS/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperMetadataStreamingRTPUnicastRTSPHTTPSTCP
@@ -31098,7 +30032,7 @@
       </para>
     </section>
     <!--A.51-->
-    <section xml:id="Annex_HelperMetadataStreamingWebSocket" xreflabel="Annex A.51">
+    <section xml:id="Annex_HelperMetadataStreamingWebSocket" xreflabel="Annex A.49">
       <title>Metadata Streaming over WebSocket</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperMetadataStreamingWebSocket
@@ -31462,7 +30396,7 @@
       </para>
     </section>
     <!--A.52-->
-    <section xml:id="Annex_HelperMediaProfilesCleanUp" xreflabel="Annex A.52">
+    <section xml:id="Annex_HelperMediaProfilesCleanUp" xreflabel="Annex A.50">
       <title>Remove all non-fixed Media Profiles and remove all configurations from fixed Media Profiles</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperMediaProfilesCleanUp
@@ -31585,7 +30519,7 @@
       </para>
     </section>
     <!--A.53-->
-    <section xml:id="Annex_HelperGetVideoSourceConfigurationsList" xreflabel="Annex A.53">
+    <section xml:id="Annex_HelperGetVideoSourceConfigurationsList" xreflabel="Annex A.51">
       <title>Get Video Source Configurations List</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperGetVideoSourceConfigurationsList
@@ -31669,7 +30603,7 @@
       </para>
     </section>
     <!--A.54-->
-    <section xml:id="Annex_HelperFindGuaranteedProfiles4" xreflabel="Annex A.54">
+    <section xml:id="Annex_HelperFindGuaranteedProfiles4" xreflabel="Annex A.52">
       <title>Create New Media Profiles to Get Guaranteed Number of Media Profiles for Video Source Configuration</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperFindGuaranteedProfiles4
@@ -32075,7 +31009,7 @@
       </para>
     </section>
     <!--A.55-->
-    <section xml:id="Annex_HelperStreamingRTPUnicastUDPInstances" xreflabel="Annex A.55">
+    <section xml:id="Annex_HelperStreamingRTPUnicastUDPInstances" xreflabel="Annex A.53">
       <title>Concurrent Video Streaming over RTP-Unicast/UDP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperStreamingRTPUnicastUDPInstances
@@ -32310,7 +31244,7 @@
       </para>
     </section>
     <!--A.56-->
-    <section xml:id="Annex_HelperNumberOfInstansesForEncoding" xreflabel="Annex A.56">
+    <section xml:id="Annex_HelperNumberOfInstansesForEncoding" xreflabel="Annex A.54">
       <title>Concurrent Video Streaming over RTP-Unicast/UDP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperNumberOfInstansesForEncoding
@@ -32360,7 +31294,7 @@
       </para>
     </section>
     <!--A.57-->
-    <section xml:id="Annex_HelperFindGuaranteedProfiles1" xreflabel="Annex A.57">
+    <section xml:id="Annex_HelperFindGuaranteedProfiles1" xreflabel="Annex A.55">
       <title>Create New Media Profiles to Get Guaranteed Number of Media Profiles for Video Source Configuration for Specified Encoding</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperFindGuaranteedProfiles1
@@ -32763,7 +31697,7 @@
       </para>
     </section>
     <!--A.58-->
-    <section xml:id="Annex_HelperDetermineRSAKeyLength" xreflabel="Annex A.58">
+    <section xml:id="Annex_HelperDetermineRSAKeyLength" xreflabel="Annex A.56">
       <title>Determine RSA key length</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperDetermineRSAKeyLength
@@ -32825,7 +31759,7 @@
       </para>
     </section>
     <!--A.59-->
-    <section xml:id="Annex_HelperGetWebSocketURI" xreflabel="Annex A.59">
+    <section xml:id="Annex_HelperGetWebSocketURI" xreflabel="Annex A.57">
       <title>Get WebSocket URI</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperGetWebSocketURI
@@ -32908,7 +31842,7 @@
 
     </section>
     <!--A.60-->
-    <section xml:id="Annex_HelperBackchannelStreamingByPOSTRTPUnicastRTSPHTTPTCP" xreflabel="Annex A.60">
+    <section xml:id="Annex_HelperBackchannelStreamingByPOSTRTPUnicastRTSPHTTPTCP" xreflabel="Annex A.58">
       <title>Audio Backchannel by POST over RTP-Unicast/RTSP/HTTP/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelStreamingRTPUnicastRTSPHTTPTCP
@@ -33118,7 +32052,7 @@
       </para>
     </section>
     <!--A.61-->
-    <section xml:id="Annex_HelperBackchannelStreamingByPOSTRTPUnicastRTSPHTTPSTCP" xreflabel="Annex A.61">
+    <section xml:id="Annex_HelperBackchannelStreamingByPOSTRTPUnicastRTSPHTTPSTCP" xreflabel="Annex A.59">
       <title>Audio Backchannel by POST over RTP-Unicast/RTSP/HTTPS/TCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelStreamingRTPUnicastRTSPHTTPSTCP
@@ -33328,7 +32262,7 @@
       </para>
     </section>
     <!--A.62-->
-    <section xml:id="Annex_HelperIPAddressTypeInRTSP" xreflabel="Annex A.62">
+    <section xml:id="Annex_HelperIPAddressTypeInRTSP" xreflabel="Annex A.60">
       <title>Check of IP address type in response to RTSP DESCRIBE</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperIPAddressTypeInRTSP
@@ -33483,7 +32417,7 @@
       </para>
     </section>
     <!--A.63-->
-    <section xml:id="Annex_HelperSetVEC" xreflabel="Annex A.63">
+    <section xml:id="Annex_HelperSetVEC" xreflabel="Annex A.61">
       <title>Set Video Encoder Configuration for Streaming</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperSetVEC
@@ -33711,7 +32645,7 @@
 
     </section>
     <!--A.64-->
-    <section xml:id="Annex_HelperSetAEC" xreflabel="Annex A.64">
+    <section xml:id="Annex_HelperSetAEC" xreflabel="Annex A.62">
       <title>Set Audio Encoder Configuration for Streaming</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperSetAEC
@@ -33895,7 +32829,7 @@
 
     </section>
     <!--A.65-->
-    <section xml:id="Annex_HelperDeviceConfigurationForBackchannelAndVideoAndAudioStreaming" xreflabel="Annex A.65">
+    <section xml:id="Annex_HelperDeviceConfigurationForBackchannelAndVideoAndAudioStreaming" xreflabel="Annex A.63">
       <title>Device Configuration for Audio Backchannel and Video and Audio Streaming</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperDeviceConfigurationForBackchannelAndVideoAndAudioStreaming
@@ -34208,63 +33142,63 @@
                         <para>
                           If Audio Decoder was added at step <xref linkend="A.65_AddAACAudioDecoder"/> or at step <xref linkend="A.65_AddG711AudioDecoder"/>:
                           <orderedlist numeration="arabic" inheritnum="inherit">
-                      <?dbfo label-width="4.5em"?>
-                          <listitem xml:id="A.65_ConfigureProfileWithVideoAndAudio" xreflabel="8.5.5.1">
-                            <para>
-                              ONVIF Client tries to add VideoSource Configuration, VideoEncoder Configuration, AudioSource Configuration and AudioEncoder Configuration to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddVideoAndAudioConfigurationsToMediaProfile"/> with the following input and output parameters
-                              <itemizedlist>
-                                <listitem>
-                                  <para>
-                                    in <emphasis role="italic">profile</emphasis> - Media profile
-                                  </para>
-                                </listitem>
-                                <listitem>
-                                  <para>
-                                    out (optional) <emphasis role="italic">vecOptions</emphasis> - Video Encoder Configuration Options for the Media Profile
-                                  </para>
-                                </listitem>
-                                <listitem>
-                                  <para>
-                                    out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
-                                  </para>
-                                </listitem>
-                              </itemizedlist>
-                            </para>
-                          </listitem>
-                          <listitem>
-                                  <para>
-                                    If  <emphasis role="italic">profile</emphasis> was configured with Video and Audio configurations by step <xref linkend="A.65_ConfigureProfileWithVideoAndAudio"/>, go to step <xref linkend="A.65_SetAOC"/>.
-                                  </para>
-                                </listitem>
-                          <listitem>
-                                <para>
-                                  ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
-                                  <itemizedlist>
-                                    <listitem>
-                                      <para>
-                                        ProfileToken = <emphasis role="italic">profile</emphasis>.@token
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Type = AudioDecoder
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Token skipped
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
-                                </para>
-                              </listitem>  
-                          
-</orderedlist>
+                            <?dbfo label-width="4.5em"?>
+                            <listitem xml:id="A.65_ConfigureProfileWithVideoAndAudio" xreflabel="8.5.5.1">
+                              <para>
+                                ONVIF Client tries to add VideoSource Configuration, VideoEncoder Configuration, AudioSource Configuration and AudioEncoder Configuration to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddVideoAndAudioConfigurationsToMediaProfile"/> with the following input and output parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      in <emphasis role="italic">profile</emphasis> - Media profile
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      out (optional) <emphasis role="italic">vecOptions</emphasis> - Video Encoder Configuration Options for the Media Profile
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                If  <emphasis role="italic">profile</emphasis> was configured with Video and Audio configurations by step <xref linkend="A.65_ConfigureProfileWithVideoAndAudio"/>, go to step <xref linkend="A.65_SetAOC"/>.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      ProfileToken = <emphasis role="italic">profile</emphasis>.@token
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Configuration[0].Type = AudioDecoder
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Configuration[0].Token skipped
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
+                              </para>
+                            </listitem>
+
+                          </orderedlist>
                         </para>
                       </listitem>
                     </orderedlist>
@@ -34432,7 +33366,7 @@
       </para>
     </section>
     <!--A.66-->
-    <section xml:id="Annex_HelperAddVideoAndAudioConfigurationsToMediaProfile" xreflabel="Annex A.66">
+    <section xml:id="Annex_HelperAddVideoAndAudioConfigurationsToMediaProfile" xreflabel="Annex A.64">
       <title>Media2 Service – Adding VideoSource, VideoEncoder, AudioSource and AudioEncoder configurations to Media Profile</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperAddVideoAndAudioConfigurationsToMediaProfile
@@ -34452,330 +33386,330 @@
       <para>
         <emphasis role="bold">Procedure:</emphasis>
       </para>
-      <para>      
-          <orderedlist>
-            <?dbfo label-width="1.5em"?>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request with parameters
-                <itemizedlist>
-                  <listitem>
-                    <para>
-                      ConfigurationToken skipped
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      ProfileToken := <emphasis role="italic">profile</emphasis>.@token
-                    </para>
-                  </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT responds with <emphasis role="bold">GetVideoSourceConfigurationsResponse</emphasis> with parameters
-                <itemizedlist>
-                  <listitem>
-                    <para>
-                      Configurations list =: <emphasis role="italic">videoSourceConfList</emphasis>
-                    </para>
-                  </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                For each Video Source Configuration <emphasis role="italic">videoSourceConfiguration</emphasis> in <emphasis role="italic">videoSourceConfList</emphasis> repeat the following steps:
-                <orderedlist numeration="arabic" inheritnum="inherit">
-                  <?dbfo label-width="2.5em"?>
-                  <listitem>
-                    <para>
-                      ONVIF Client invokes <emphasis role="bold">AddConfiguration</emphasis> request with parameters
-                      <itemizedlist>
-                        <listitem>
-                          <para>
-                            ProfileToken := <emphasis role="italic">profile</emphasis>.@token
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            Name skipped
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            Configuration[0].Type := VideoSource
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            Configuration[0].Token := <emphasis role="italic">videoSourceConfiguration</emphasis>.@token
-                          </para>
-                        </listitem>
-                      </itemizedlist>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      The DUT responds with <emphasis role="bold">AddConfigurationResponse</emphasis> message.
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      ONVIF Client invokes <emphasis role="bold">GetVideoEncoderConfigurations</emphasis> request with parameters
-                      <itemizedlist>
-                        <listitem>
-                          <para>
-                            ConfigurationToken skipped
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            ProfileToken := <emphasis role="italic">profile</emphasis>.@token
-                          </para>
-                        </listitem>
-                      </itemizedlist>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      The DUT responds with <emphasis role="bold">GetVideoEncoderConfigurationsResponse</emphasis> with parameters
-                      <itemizedlist>
-                        <listitem>
-                          <para>
-                            Configurations list =: <emphasis role="italic">videoEncoderConfList</emphasis>
-                          </para>
-                        </listitem>
-                      </itemizedlist>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      For each Video Encoder Configuration <emphasis role="italic">videoEncoderConfiguration</emphasis> in <emphasis role="italic">videoEncoderConfList</emphasis> repeat the following steps:
-                      <orderedlist numeration="arabic" inheritnum="inherit">
-                        <?dbfo label-width="3.5em"?>
-                        <listitem>
-                          <para>
-                            ONVIF Client invokes <emphasis role="bold">GetVideoEncoderConfigurationOptions</emphasis> request with parameters
-                            <itemizedlist>
-                              <listitem>
-                                <para>
-                                  ConfigurationToken := <emphasis role="italic">videoEncoderConfiguration</emphasis>.@token
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  ProfileToken := <emphasis role="italic">profile</emphasis>.@token
-                                </para>
-                              </listitem>
-                            </itemizedlist>
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            DUT responds with <emphasis role="bold">GetVideoEncoderConfigurationOptionsResponse</emphasis> message with parameters
-                            <itemizedlist>
-                              <listitem>
-                                <para>
-                                  Options list =: <emphasis role="italic">optionsList</emphasis>
-                                </para>
-                              </listitem>
-                            </itemizedlist>
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            If <emphasis role="italic">optionsList</emphasis> list contains item with Encoding = H264 or H265:
-                            <orderedlist numeration="arabic" inheritnum="inherit">
-                              <?dbfo label-width="4.5em"?>
-                              <listitem>
-                                <para>
-                                  ONVIF Client invokes <emphasis role="bold">AddConfiguration</emphasis> request with parameters
-                                  <itemizedlist>
-                                    <listitem>
-                                      <para>
-                                        ProfileToken := <emphasis role="italic">profile</emphasis>.@token
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Name skipped
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Type := VideoEncoder
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Token := <emphasis role="italic">videoEncoderConfiguration</emphasis>.@token
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  The DUT responds with <emphasis role="bold">AddConfigurationResponse</emphasis> message.
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  Set <emphasis role="italic">vecOptions</emphasis> := item with Encoding = H264 from <emphasis role="italic">optionsList</emphasis> list if present, otherwivce item with Encoding = H265.
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  ONVIF Client sets video encoder configuration by following the procedure mentioned in <xref linkend="Annex_HelperSetVEC"/> with the following input and output parameters
-                                  <itemizedlist>
-                                    <listitem>
-                                      <para>
-                                        in <emphasis role="italic">profile</emphasis> - Media profile
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        in <emphasis role="italic">vecOptions</emphasis> - video encoder configuration options
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        in <emphasis role="italic">protocol</emphasis> - Transport protocol
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        in <emphasis role="italic">ipVersion</emphasis> - IP Type
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    ConfigurationToken skipped
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ProfileToken := <emphasis role="italic">profile</emphasis>.@token
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with <emphasis role="bold">GetVideoSourceConfigurationsResponse</emphasis> with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Configurations list =: <emphasis role="italic">videoSourceConfList</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              For each Video Source Configuration <emphasis role="italic">videoSourceConfiguration</emphasis> in <emphasis role="italic">videoSourceConfList</emphasis> repeat the following steps:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">AddConfiguration</emphasis> request with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          ProfileToken := <emphasis role="italic">profile</emphasis>.@token
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Name skipped
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Configuration[0].Type := VideoSource
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Configuration[0].Token := <emphasis role="italic">videoSourceConfiguration</emphasis>.@token
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT responds with <emphasis role="bold">AddConfigurationResponse</emphasis> message.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">GetVideoEncoderConfigurations</emphasis> request with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          ConfigurationToken skipped
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ProfileToken := <emphasis role="italic">profile</emphasis>.@token
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT responds with <emphasis role="bold">GetVideoEncoderConfigurationsResponse</emphasis> with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          Configurations list =: <emphasis role="italic">videoEncoderConfList</emphasis>
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    For each Video Encoder Configuration <emphasis role="italic">videoEncoderConfiguration</emphasis> in <emphasis role="italic">videoEncoderConfList</emphasis> repeat the following steps:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          ONVIF Client invokes <emphasis role="bold">GetVideoEncoderConfigurationOptions</emphasis> request with parameters
+                          <itemizedlist>
+                            <listitem>
+                              <para>
+                                ConfigurationToken := <emphasis role="italic">videoEncoderConfiguration</emphasis>.@token
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ProfileToken := <emphasis role="italic">profile</emphasis>.@token
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          DUT responds with <emphasis role="bold">GetVideoEncoderConfigurationOptionsResponse</emphasis> message with parameters
+                          <itemizedlist>
+                            <listitem>
+                              <para>
+                                Options list =: <emphasis role="italic">optionsList</emphasis>
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          If <emphasis role="italic">optionsList</emphasis> list contains item with Encoding = H264 or H265:
+                          <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="4.5em"?>
+                            <listitem>
+                              <para>
+                                ONVIF Client invokes <emphasis role="bold">AddConfiguration</emphasis> request with parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      ProfileToken := <emphasis role="italic">profile</emphasis>.@token
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Name skipped
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Configuration[0].Type := VideoEncoder
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Configuration[0].Token := <emphasis role="italic">videoEncoderConfiguration</emphasis>.@token
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                The DUT responds with <emphasis role="bold">AddConfigurationResponse</emphasis> message.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                Set <emphasis role="italic">vecOptions</emphasis> := item with Encoding = H264 from <emphasis role="italic">optionsList</emphasis> list if present, otherwivce item with Encoding = H265.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ONVIF Client sets video encoder configuration by following the procedure mentioned in <xref linkend="Annex_HelperSetVEC"/> with the following input and output parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      in <emphasis role="italic">profile</emphasis> - Media profile
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      in <emphasis role="italic">vecOptions</emphasis> - video encoder configuration options
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      in <emphasis role="italic">protocol</emphasis> - Transport protocol
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      in <emphasis role="italic">ipVersion</emphasis> - IP Type
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
 
-                              <listitem>
-                                <para>
-                                  ONVIF Client tries to add AudioSource Configuration and AudioEncoder Configuration to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddAudioConfigurationsToMediaProfile"/> with the following input and output parameters
-                                  <itemizedlist>                                    
-                                    <listitem>
-                                      <para>
-                                        in <emphasis role="italic">profile</emphasis> - Media profile
-                                      </para>
-                                    </listitem>                                    
-                                    <listitem>
-                                      <para>
-                                        out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  If <emphasis role="italic">aecOptions</emphasis> != NULL
-                                  <orderedlist numeration="arabic" inheritnum="inherit">
-                                    <?dbfo label-width="5.5em"?>
-                                    <listitem>
-                                      <para>
-                                        ONVIF Client sets audio encoder configuration by following the procedure mentioned in <xref linkend="Annex_HelperSetAEC"/> with the following input and output parameters
-                                        <itemizedlist>
-                                          <listitem>
-                                            <para>
-                                              in <emphasis role="italic">profile</emphasis> - Media profile
-                                            </para>
-                                          </listitem>
-                                          <listitem>
-                                            <para>
-                                              in <emphasis role="italic">aecOptions</emphasis> - audio encoder configuration options
-                                            </para>
-                                          </listitem>
-                                          <listitem>
-                                            <para>
-                                              in <emphasis role="italic">protocol</emphasis> - Transport protocol
-                                            </para>
-                                          </listitem>
-                                          <listitem>
-                                            <para>
-                                              in <emphasis role="italic">ipVersion</emphasis> - IP Type
-                                            </para>
-                                          </listitem>
-                                        </itemizedlist>
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                            <para>
-                                              Skip other steps.
-                                            </para>
-                                          </listitem>
-                                  </orderedlist>
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
-                                  <itemizedlist>
-                                    <listitem>
-                                      <para>
-                                        ProfileToken = <emphasis role="italic">profile</emphasis>.@token
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Type = VideoEncoder
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Token skipped
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
-                                </para>
-                              </listitem>
-                            </orderedlist>
-                          </para>
-                        </listitem>
-                      </orderedlist>
-                    </para>
-                  </listitem>
-                  <listitem>
-                                <para>
-                                  ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
-                                  <itemizedlist>
-                                    <listitem>
-                                      <para>
-                                        ProfileToken = <emphasis role="italic">profile</emphasis>.@token
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Type = VideoSource
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        Configuration[0].Token skipped
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
-                              <listitem>
-                                <para>
-                                  The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
-                                </para>
-                              </listitem>
-                </orderedlist>
-              </para>
-            </listitem>
-          </orderedlist>          
-      
+                            <listitem>
+                              <para>
+                                ONVIF Client tries to add AudioSource Configuration and AudioEncoder Configuration to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddAudioConfigurationsToMediaProfile"/> with the following input and output parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      in <emphasis role="italic">profile</emphasis> - Media profile
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                If <emphasis role="italic">aecOptions</emphasis> != NULL
+                                <orderedlist numeration="arabic" inheritnum="inherit">
+                                  <?dbfo label-width="5.5em"?>
+                                  <listitem>
+                                    <para>
+                                      ONVIF Client sets audio encoder configuration by following the procedure mentioned in <xref linkend="Annex_HelperSetAEC"/> with the following input and output parameters
+                                      <itemizedlist>
+                                        <listitem>
+                                          <para>
+                                            in <emphasis role="italic">profile</emphasis> - Media profile
+                                          </para>
+                                        </listitem>
+                                        <listitem>
+                                          <para>
+                                            in <emphasis role="italic">aecOptions</emphasis> - audio encoder configuration options
+                                          </para>
+                                        </listitem>
+                                        <listitem>
+                                          <para>
+                                            in <emphasis role="italic">protocol</emphasis> - Transport protocol
+                                          </para>
+                                        </listitem>
+                                        <listitem>
+                                          <para>
+                                            in <emphasis role="italic">ipVersion</emphasis> - IP Type
+                                          </para>
+                                        </listitem>
+                                      </itemizedlist>
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Skip other steps.
+                                    </para>
+                                  </listitem>
+                                </orderedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      ProfileToken = <emphasis role="italic">profile</emphasis>.@token
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Configuration[0].Type = VideoEncoder
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Configuration[0].Token skipped
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
+                              </para>
+                            </listitem>
+                          </orderedlist>
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">RemoveConfiguration</emphasis> request with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          ProfileToken = <emphasis role="italic">profile</emphasis>.@token
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Configuration[0].Type = VideoSource
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Configuration[0].Token skipped
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT responds with <emphasis role="bold">RemoveConfigurationResponse</emphasis> message.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+
       </para>
       <para>
         <emphasis role="bold">Procedure Result:</emphasis>
@@ -34823,7 +33757,7 @@
       </para>
     </section>
     <!--A.67-->
-   <section xml:id="Annex_HelperAddAudioConfigurationsToMediaProfile" xreflabel="Annex A.67">
+    <section xml:id="Annex_HelperAddAudioConfigurationsToMediaProfile" xreflabel="Annex A.65">
       <title>Media2 Service – Adding AudioSource and AudioEncoder to Media Profile</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperAddAudioConfigurationsToMediaProfile
@@ -34838,7 +33772,7 @@
         <emphasis role="bold">Input:</emphasis> Media Profile (<emphasis role="italic">profile</emphasis>)
       </para>
       <para>
-        <emphasis role="bold">Returns:</emphasis> Video Encoder Configuration Options for the Media Profile (<emphasis role="italic">vecOptions</emphasis>) (optional, returned in case profile was configured with audio). 
+        <emphasis role="bold">Returns:</emphasis> Video Encoder Configuration Options for the Media Profile (<emphasis role="italic">vecOptions</emphasis>) (optional, returned in case profile was configured with audio).
         Audio Encoder Configuration Options for the Media Profile (<emphasis role="italic">aecOptions</emphasis>) (optional, returned in case profile was configured with audio).
       </para>
       <para>
@@ -34848,54 +33782,54 @@
         <orderedlist>
           <?dbfo label-width="1.5em"?>
           <listitem>
-                                <para>
-                                  ONVIF Client tries to add AudioSource Configuration and AudioEncoder Configuration with required audio encoding support to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddAudioConfigurationsWithSpecificEncoderToMediaProfile"/> with the following input and output parameters
-                                  <itemizedlist>
-                                    <listitem>
-                                      <para>
-                                        in PCMU - required audio encoding
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        in <emphasis role="italic">profile</emphasis> - Media profile
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
-        <listitem>
-                                      <para>
-                                        If <emphasis role="italic">aecOptions</emphasis> != NULL, skip other steps in procedure..
-                                      </para>
-                                    </listitem>
-        <listitem>
-                                <para>
-                                  ONVIF Client tries to add AudioSource Configuration and AudioEncoder Configuration with required audio encoding support to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddAudioConfigurationsWithSpecificEncoderToMediaProfile"/> with the following input and output parameters
-                                  <itemizedlist>
-                                    <listitem>
-                                      <para>
-                                        in AAC - required audio encoding
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        in <emphasis role="italic">profile</emphasis> - Media profile
-                                      </para>
-                                    </listitem>
-                                    <listitem>
-                                      <para>
-                                        out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
-                                      </para>
-                                    </listitem>
-                                  </itemizedlist>
-                                </para>
-                              </listitem>
+            <para>
+              ONVIF Client tries to add AudioSource Configuration and AudioEncoder Configuration with required audio encoding support to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddAudioConfigurationsWithSpecificEncoderToMediaProfile"/> with the following input and output parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    in PCMU - required audio encoding
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    in <emphasis role="italic">profile</emphasis> - Media profile
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">aecOptions</emphasis> != NULL, skip other steps in procedure..
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Client tries to add AudioSource Configuration and AudioEncoder Configuration with required audio encoding support to the Media Profile by following the procedure mentioned in <xref linkend="Annex_HelperAddAudioConfigurationsWithSpecificEncoderToMediaProfile"/> with the following input and output parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    in AAC - required audio encoding
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    in <emphasis role="italic">profile</emphasis> - Media profile
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    out (optional) <emphasis role="italic">aecOptions</emphasis> - Audio Encoder Configuration Options for the Media Profile
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
         </orderedlist>
       </para>
       <para>
@@ -34918,12 +33852,12 @@
             <para>
               None.
             </para>
-          </listitem>          
+          </listitem>
         </itemizedlist>
       </para>
     </section>
-  <!--A.68-->
-   <section xml:id="Annex_HelperBackchannelAndMediaStreamingRTPUnicastUDP" xreflabel="Annex A.68">
+    <!--A.68-->
+    <section xml:id="Annex_HelperBackchannelAndMediaStreamingRTPUnicastUDP" xreflabel="Annex A.66">
       <title>Audio Backchannel and Media Streaming over RTP-Unicast/UDP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperBackchannelAndMediaStreamingRTPUnicastUDP
@@ -34932,7 +33866,7 @@
         <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to verify audio backchannel, video, and audio streaming over RTP-Unicast/UDP.
       </para>
       <para>
-        <emphasis role="bold">Pre-requisite:</emphasis> Audio Backchannel is supported by DUT. Audio is supported by DUT. Video is supported by DUT. Real-time streaming is supported by DUT. 
+        <emphasis role="bold">Pre-requisite:</emphasis> Audio Backchannel is supported by DUT. Audio is supported by DUT. Video is supported by DUT. Real-time streaming is supported by DUT.
       </para>
       <para>
         <emphasis role="bold">Input:</emphasis> Uri for media streaming (<emphasis role="italic">streamUri</emphasis>). Audio backchannel stream encoding (<emphasis role="italic">audioBackchannelEncoding</emphasis>). Expected video stream encoding (<emphasis role="italic">videoEncoding</emphasis>).
@@ -34983,7 +33917,7 @@
             <para>
               If <emphasis role="italic">sdp</emphasis> does not contain Media Type = audio with rtpmap value corresponding to <emphasis role="italic">audioEncoding</emphasis> and without session attribute "sendonly" (a=sendonly), FAIL the test and skip other steps.
             </para>
-          </listitem>          
+          </listitem>
           <listitem>
             <para>
               ONVIF Client checks types of IP addresses returned in response to DESCRIBE by following the procedure mentioned in <xref linkend="Annex_HelperIPAddressTypeInRTSP"/> with the following input parameters
@@ -35006,7 +33940,7 @@
               </itemizedlist>
             </para>
           </listitem>
- <listitem>
+          <listitem>
             <para>
               ONVIF Client invokes <emphasis role="bold">RTSP SETUP</emphasis> request with <emphasis role="bold">"Require: www.onvif.org/ver20/backchannel"</emphasis> tag to uri address, which corresponds to audio backchannel media type (see [RFC2326] for details), with parameters
               <itemizedlist>
@@ -35064,17 +33998,17 @@
               </itemizedlist>
             </para>
           </listitem>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">RTSP SETUP</emphasis> request to uri address, which corresponds to audio media type (see [RFC2326] for details), with parameters
+              <itemizedlist>
                 <listitem>
                   <para>
-                    ONVIF Client invokes <emphasis role="bold">RTSP SETUP</emphasis> request to uri address, which corresponds to audio media type (see [RFC2326] for details), with parameters
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          Transport := RTP/AVP;unicast;client_port=<emphasis role="italic">port5</emphasis>-<emphasis role="italic">port6</emphasis>
-                        </para>
-                      </listitem>
-                   
-               
+                    Transport := RTP/AVP;unicast;client_port=<emphasis role="italic">port5</emphasis>-<emphasis role="italic">port6</emphasis>
+                  </para>
+                </listitem>
+
+
                 <listitem>
                   <para>
                     The DUT responds with <emphasis role="bold">200 OK</emphasis> message with parameters
@@ -35204,13 +34138,13 @@
       <para>
         <emphasis role="bold">Note:</emphasis> ONVIF Client checks authentication type for all RTSP requests by following the procedure mentioned in <xref linkend="Annex_HelperRTSPAuthentication"/>.
       </para>
-     <para>
+      <para>
         <emphasis role="bold">Note:</emphasis> If <emphasis role="italic">audioBackchannelEncoding</emphasis> = MP4A-LATM, then rtpmap value may be equal either MP4A-LATM or MPEG4-GENERIC at step <xref linkend="tc.Annex_HelperBackchannelAndMediaStreamingRTPUnicastUDP.CheckSDPBackchannel"/>.
       </para>
       <para>
         <emphasis role="bold">Note:</emphasis> If <emphasis role="italic">audioEncoding</emphasis> = MP4A-LATM, then rtpmap value may be equal either MP4A-LATM or MPEG4-GENERIC at step <xref linkend="tc.Annex_HelperBackchannelAndMediaStreamingRTPUnicastUDP.CheckSDPAudio"/>.
       </para>
-      
+
     </section>
   </appendix>
 </book>

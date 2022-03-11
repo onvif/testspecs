@@ -57,9 +57,6 @@
         <emphasis role="bold">Profile C Requirement:</emphasis> None
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> None
-      </para>
-      <para>
         <emphasis role="bold">Profile G Requirement:</emphasis> None
       </para>
       <para>
@@ -137,24 +134,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Network Video Transmitter Discovery Type Filter (NVTDiscoveryTypeFilter_NetworkVideoTransmitterFilter)
-      </para>
-      <para>
-        <emphasis role="bold" annotations="WS-Discovery">Profile S Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
       </para>
 
       <para>

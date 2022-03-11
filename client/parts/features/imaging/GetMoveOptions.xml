@@ -71,9 +71,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Move Options (GetMoveOptions_GetFocusMoveOptions)
       </para>
-      <para>
-        <emphasis role="bold" annotations="GetMoveOptions">Profile T Normative Reference:</emphasis> Conditional
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able retrive focus move capabilities from Device using the <emphasis role="bold">GetMoveOptions</emphasis> operation.

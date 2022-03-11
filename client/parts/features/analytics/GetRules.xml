@@ -68,12 +68,7 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Rules (GetRules_GetRulesRequest)
       </para>
-      <para>
-        <emphasis role="bold" annotations="GetRules">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetRules">Profile M Normative Reference:</emphasis> Conditional
-      </para>
+      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         retrieve available rules using the <emphasis role="bold">GetRules</emphasis> operation.

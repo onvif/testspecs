@@ -22,10 +22,10 @@
       </phrase>
     </orgname>
     <title>Device Feature Discovery Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>June 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -1313,7 +1313,107 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
         IPv6 feature definition in Device Capabilities Configuration Functionality in Device Management Service (GetServices) section.
         </para>
         </revdescription>
-      </revision>     
+      </revision>    
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Dec 21, 2020</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #2107:
+          </para>
+          <para>
+            Scope (Access Control Service\Access Point Entity\Feedback  feature was added)
+          </para>
+          <para>
+            Discovery Procedure (GetServices): Access Point Entity Support and Access Point Features Support (Feedback feature was added)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Dec 26, 2020</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #1879:
+          </para>
+          <para>
+            Scope (Access Control Service\Access Point Events\ AccessControl/AccessTaken/Identifier  feature was added)
+          </para>
+          <para>
+            Scope (Access Control Service\Access Point Events\ AccessControl/AccessNotTaken/Identifier  feature was added)
+          </para>
+          <para>
+            Discovery Procedure (GetServices): 5.5.17.4 Access Control Events Support (AccessControl/AccessTaken/Identifier and AccessControl/AccessNotTaken/Identifier features were added)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Feb 01, 2021</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #2124:
+          </para>
+          <para>
+            Discovery Types Support section was updated and moved from general section to Discovery Procedure (GetServices) and Discovery Procedure (GetCapabilities).
+          </para>          
+          <para>
+            Discovery Procedure (GetServices): 5.4.1 Device Management Service Capabilities (Discovery features was added)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 09, 2021</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #2124:
+          </para>
+          <para>
+            Pre-Configuration Procedure (IPv6 Enabling Pre-Configuration Procedure).
+          </para>      
+          
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 22, 2021</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #1853:
+          </para>
+          <para>
+            Discovery Procedure (GetServices): Supported Rules (Line Crossing Counting Rule feature was added).
+          </para>
+          <para>
+            Scope (Line Crossing Counting Rule feature was added)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Oct 13, 2021</date>
+        <revdescription>
+          <para>
+            The following were updated in the scope of #2222:
+          </para>
+          <para>
+            Mask feature support was added in Media2 Service – general.
+          </para>
+          <para>
+            Scope list updated.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Dec 15, 2021</date>
+        <revdescription>
+          <para>Profile Q  was removed from Informative References according to #2204</para>
+
+        </revdescription>
+      </revision>
+
       
     </revhistory>
   </info>
@@ -2001,6 +2101,11 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
                     </para>
 
                   </listitem>
+                  <listitem>
+                    <para>
+                    Mask
+                    </para>
+                  </listitem>
                 </itemizedlist>
               </para>
             </listitem>
@@ -2662,6 +2767,11 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
                             Identifier Access
                           </para>
                         </listitem>
+                        <listitem>
+                          <para>
+                            Feedback
+                          </para>
+                        </listitem>
                       </itemizedlist>
                     </para>
                   </listitem>
@@ -2691,12 +2801,22 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
                         </listitem>
                         <listitem>
                           <para>
+                            AccessControl/AccessTaken/Identifier
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
                             AccessControl/AccessNotTaken/Anonymous
                           </para>
                         </listitem>
                         <listitem>
                           <para>
                             AccessControl/AccessNotTaken/Credential
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            AccessControl/AccessNotTaken/Identifier
                           </para>
                         </listitem>
                         <listitem>
@@ -3253,14 +3373,6 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
       </listitem>
       <listitem>
         <para>
-          [ONVIF Profile Q]	ONVIF Profile Q Specification
-        </para>
-        <para>
-          <link xlink:href="https://www.onvif.org/profiles/profile-q/ ">https://www.onvif.org/profiles/profile-q/ </link>
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           [ONVIF Profile A]	ONVIF Profile A Specification
         </para>
         <para>
@@ -3561,100 +3673,7 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
         The <emphasis role="bold">Not Supported</emphasis> column includes conditions when feature in the same row will be assumed as not supported depending on criteria item value.
       </para>
     </section>
-    <!-- Discovery Types Support -->
-    <section xml:id="tc.discovery_procedure.discovery_types_support">
-      <title>Discovery Types Support</title>
-      <para>
-        From the first version of ONVIF Core Specification document, Device Type that is required for Discovery functionality was "dn:NetworkVideoTransmitter". Device Type was modified in the later version of [ONVIF Network Interface Specs] to "tds:Device". Which Device Type shall be used by DUT is defined in the scope of [ONVIF Profile S], [ONVIF Profile G] and [ONVIF Profile C].The following procedure discovers which Types are supported by DUT.
-      </para>
-      <para>
-        <emphasis role="bold">Discovery Procedure:</emphasis>
-        <orderedlist>
-          <?dbfo label-width="1.5em"?>
-          <listitem>
-            <para>
-              ONVIF Client invokes Unicast Probe request (empty Types, empty Scopes) to get ProbeMatches response.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <!--link with table name as hot text:-->
-              <!--ONVIF Client receives ProbeMatch and checks features support as defined in <link endterm="tc.discovery_procedure.table.5.2.title" linkend="tc.discovery_procedure.feature_support_criteria.table.5.2"></link>.-->
-              <!--xref generates hot text:-->
-              ONVIF Client receives ProbeMatch and checks features support as defined in <xref linkend="tc.discovery_procedure.feature_support_criteria.table.5.2"
-                    xrefstyle="template:Table %n"/>.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Note:</emphasis> If DUT does not return ProbeMatch or ProbeMatch &lt;d:Types&gt; does not contain neither "dn:NetworkVideoTransmitter" nor "tds:Device", the following features will be marked as undefined:
-        <itemizedlist>
-          <listitem>
-            <para>
-              WS-Discovery\Types\tds:Device
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              WS-Discovery\Types\dn:NetworkVideoTransmitter
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <table xml:id="tc.discovery_procedure.feature_support_criteria.table.5.2">
-          <title xml:id="tc.discovery_procedure.table.5.2.title">Discovery Types</title>
-          <tgroup cols="3"
-                  align='center'>
-            <colspec colname="c1"/>
-            <colspec colname="c2"/>
-            <colspec colname="c3"/>
-            <thead>
-              <row>
-                <entry>
-                  Criterion Item
-                </entry>
-                <entry namest="c2"
-                       nameend="c3">
-                  <?dbhtml bgcolor="#FFFFFF" ?>
-                  &lt;d:Types&gt; in ProbeMatch response
-                </entry>
-              </row>
-              <row>
-                <entry>Feature</entry>
-                <entry>Supported</entry>
-                <entry>Not Supported</entry>
-              </row>
-            </thead>
-            <tbody>
-              <row xml:id="tc.s-DiscoveryTypesTdsDevice">
-                <entry>
-                  tds:Device
-                </entry>
-                <entry>
-                  <emphasis role="bold">Contains "tds:Device"</emphasis>
-                </entry>
-                <entry>
-                  <emphasis role="bold">Does not contain "tds:Device"</emphasis>
-                </entry>
-              </row>
-              <row xml:id="tc.s-DiscoveryTypesDnNetworkVideoTransmitter">
-                <entry>
-                  dn:NetworkVideoTransmitter
-                </entry>
-                <entry>
-                  <emphasis role="bold">Contains "dn:NetworkVideoTransmitter</emphasis>
-                </entry>
-                <entry>
-                  <emphasis role="bold">Does not contain "dn:NetworkVideoTransmitter"</emphasis>
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-      </para>
-    </section>
+    
     <!-- Capabilities -->
     <section xml:id="tc.discovery_procedure.capabilities">
       <title>Capabilities</title>
@@ -4154,15 +4173,26 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
                     <emphasis role="bold">Skipped Capabilities.Security. TLS1.2 or Capabilities.Security. TLS1.2 = false</emphasis>
                   </entry>
                 </row>
+                <row xml:id="tc.s-Discovery">
+                  <entry>
+                    Discovery
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Skipped Capabilities.System. DiscoveryNotSupported or Capabilities.System. DiscoveryNotSupported = false</emphasis>
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Capabilities.System. DiscoveryNotSupported = true</emphasis>
+                  </entry>
+                </row>
                 <row xml:id="tc.s-BYE">
                   <entry>
                     Bye Message
                   </entry>
                   <entry>
-                    <emphasis role="bold">Capabilities.System. DiscoveryBye = true</emphasis>
+                    <emphasis role="bold"> Discovery feature is supported AND Capabilities.System. DiscoveryBye = true</emphasis>
                   </entry>
                   <entry>
-                    <emphasis role="bold">Skipped Capabilities.System. DiscoveryBye or Capabilities. System.DiscoveryBye = false</emphasis>
+                    <emphasis role="bold">Skipped Capabilities.System. DiscoveryBye OR Capabilities. System.DiscoveryBye = false OR Discovery feature is not supported</emphasis>
                   </entry>
                 </row>
                 <row xml:id="tc.s-SystemLogging">
@@ -4361,6 +4391,114 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
         </para>
 
       </section>
+      <!-- Discovery Types Support -->
+      <section xml:id="tc.discovery_procedure.getservices_getservicecapabilities.discovery_types_support">
+        <title>Discovery Types Support</title>
+        <para>
+          From the first version of ONVIF Core Specification document, Device Type that is required for Discovery functionality was "dn:NetworkVideoTransmitter". Device Type was modified in the later version of [ONVIF Network Interface Specs] to "tds:Device". Which Device Type shall be used by DUT is defined in the scope of [ONVIF Profile S], [ONVIF Profile G] and [ONVIF Profile C].The following procedure discovers which Types are supported by DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                This procedure assumes that Discovery feature is supported by the DUT as defined in <xref linkend="tc.discovery_procedure.getservices_getservicecapabilities.device_management_service_capabilities.table5.4"
+                      xrefstyle="template:Table %n"/>,
+                otherwise all features defined in <xref linkend="tc.discovery_procedure.getservices_getservicecapabilities.feature_support_criteria.table.5.2"
+                        xrefstyle="template:Table %n"/> will be marked as NOT SUPPORTED.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Discovery Procedure:</emphasis>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                ONVIF Client invokes Unicast Probe request (empty Types, empty Scopes) to get ProbeMatches response.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <!--link with table name as hot text:-->
+                <!--ONVIF Client receives ProbeMatch and checks features support as defined in <link endterm="tc.discovery_procedure.getservices_getservicecapabilities.table.5.2.title" linkend="tc.discovery_procedure.getservices_getservicecapabilities.feature_support_criteria.table.5.2"></link>.-->
+                <!--xref generates hot text:-->
+                ONVIF Client receives ProbeMatch and checks features support as defined in <xref linkend="tc.discovery_procedure.getservices_getservicecapabilities.feature_support_criteria.table.5.2"
+                    xrefstyle="template:Table %n"/>.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> If DUT does not return ProbeMatch or ProbeMatch &lt;d:Types&gt; does not contain neither "dn:NetworkVideoTransmitter" nor "tds:Device", the following features will be marked as undefined:
+          <itemizedlist>
+            <listitem>
+              <para>
+                WS-Discovery\Types\tds:Device
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                WS-Discovery\Types\dn:NetworkVideoTransmitter
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <table xml:id="tc.discovery_procedure.getservices_getservicecapabilities.feature_support_criteria.table.5.2">
+            <title xml:id="tc.discovery_procedure.getservices_getservicecapabilities.table.5.2.title">Discovery Types</title>
+            <tgroup cols="3"
+                    align='center'>
+              <colspec colname="c1"/>
+              <colspec colname="c2"/>
+              <colspec colname="c3"/>
+              <thead>
+                <row>
+                  <entry>
+                    Criterion Item
+                  </entry>
+                  <entry namest="c2"
+                         nameend="c3">
+                    <?dbhtml bgcolor="#FFFFFF" ?>
+                    &lt;d:Types&gt; in ProbeMatch response
+                  </entry>
+                </row>
+                <row>
+                  <entry>Feature</entry>
+                  <entry>Supported</entry>
+                  <entry>Not Supported</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row xml:id="tc.s-DiscoveryTypesTdsDevice">
+                  <entry>
+                    tds:Device
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Contains "tds:Device"</emphasis>
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Does not contain "tds:Device"</emphasis>
+                  </entry>
+                </row>
+                <row xml:id="tc.s-DiscoveryTypesDnNetworkVideoTransmitter">
+                  <entry>
+                    dn:NetworkVideoTransmitter
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Contains "dn:NetworkVideoTransmitter</emphasis>
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Does not contain "dn:NetworkVideoTransmitter"</emphasis>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+      </section>
+      
       <!--HTTPS-->
       <section xml:id="tc.s-HTTPS"
                xreflabel="Section 5.5.2">
@@ -5966,6 +6104,19 @@ Discovery Procedure (GetServices): Credential Features Support  (Credential Enti
                   <entry>
                     <emphasis role="bold">
                       Capabilities. ProfileCapabilities. ConfigurationsSupported list does not contain "Metadata"
+                    </emphasis>
+                  </entry>
+                </row>
+                <row xml:id="tc.s-Mask">
+                  <entry>
+                    Mask
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Capabilities.Mask = true</emphasis>
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">
+                      Skipped Capabilities.Mask or Capabilities.Mask = false
                     </emphasis>
                   </entry>
                 </row>
@@ -9627,6 +9778,17 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                       <emphasis role="bold">Does not contain RuleDescription element with Name value is equal to tt:LicensePlateRecognition</emphasis>
                     </entry>
                   </row>
+                <row xml:id="tc.s-LineCrossingCountingRule">
+                    <entry>
+                      Line Crossing Counting Rule
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">Contains RuleDescription element with Name value is equal to tt:LineCounting</emphasis>
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">Does not contain RuleDescription element with Name value is equal to tt:LineCounting</emphasis>
+                    </entry>
+                  </row>
                 </tbody>
               </tgroup>
             </table>
@@ -11989,6 +12151,19 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                       </emphasis>
                     </entry>
                   </row>
+                  <row xml:id="tc.s-Feedback">
+                    <entry>
+                      Feedback
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">Contains at least one AccessPointInfo with Capabilities. SupportedFeedbackTypes with non-empty list of values</emphasis>
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">
+                        Contains no AccessPointInfo with Capabilities. SupportedFeedbackTypes or each SupportedFeedbackTypes list is empty
+                      </emphasis>
+                    </entry>
+                  </row>
                 </tbody>
               </tgroup>
             </table>
@@ -12103,6 +12278,19 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                       </emphasis>
                     </entry>
                   </row>
+                  <row xml:id="tc.s-AccessTakenIdentifierEvent">
+                    <entry>
+                      AccessControl/AccessTaken/Identifier
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">Contains tns1:AccessControl/ AccessTaken/Identifier Event topic</emphasis>
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">
+                        Does not contain tns1:AccessControl/ AccessTaken/Credential Event topic
+                      </emphasis>
+                    </entry>
+                  </row>
                   <row xml:id="tc.s-AccessNotTakenAnonymousEvent">
                     <entry>
                       AccessControl/AccessNotTaken/Anonymous
@@ -12122,6 +12310,19 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                     </entry>
                     <entry>
                       <emphasis role="bold">Contains tns1:AccessControl/ AccessNotTaken/Credential Event topic</emphasis>
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">
+                        Does not contain tns1:AccessControl/ AccessNotTaken/Credential Event topic
+                      </emphasis>
+                    </entry>
+                  </row>
+                  <row xml:id="tc.s-AccessNotTakenIdentifierEvent">
+                    <entry>
+                      AccessControl/AccessNotTaken/Identifier
+                    </entry>
+                    <entry>
+                      <emphasis role="bold">Contains tns1:AccessControl/ AccessNotTaken/Identifier Event topic</emphasis>
                     </entry>
                     <entry>
                       <emphasis role="bold">
@@ -13934,6 +14135,19 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                     </emphasis>
                   </entry>
                 </row>
+                <row xml:id="tc.c-Discovery">
+                  <entry>
+                    Discovery
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Mandatory functionality</emphasis>
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">
+                      -
+                    </emphasis>
+                  </entry>
+                </row>
                 <row xml:id="tc.c-BYE">
                   <entry>
                     Bye Message
@@ -14017,10 +14231,10 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                     User Configuration
                   </entry>
                   <entry>
-                    <emphasis role="bold">Skipped Capabilities.System. UserConfigNotSupported or Capabilities.System. UserConfigNotSupported = false</emphasis>
+                    <emphasis role="bold">Mandatory functionality</emphasis>
                   </entry>
                   <entry>
-                    <emphasis role="bold">Capabilities.System. UserConfigNotSupported = true</emphasis>
+                    <emphasis role="bold">-</emphasis>
                   </entry>
                 </row>
                 <row xml:id="tc.c-NetworkConfiguration">
@@ -14028,10 +14242,106 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                     Network Configuration
                   </entry>
                   <entry>
-                    <emphasis role="bold">Skipped Capabilities.System. UserConfigNotSupported or Capabilities.System. NetworkConfigNotSupported = false</emphasis>
+                    <emphasis role="bold">Mandatory functionality</emphasis>
                   </entry>
                   <entry>
-                    <emphasis role="bold">Capabilities.System. NetworkConfigNotSupported = true</emphasis>
+                    <emphasis role="bold">- </emphasis>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+      </section>
+      <!-- Discovery Types Support -->
+      <section xml:id="tc.discovery_procedure.getcapabilities.discovery_types_support">
+        <title>Discovery Types Support</title>
+        <para>
+          From the first version of ONVIF Core Specification document, Device Type that is required for Discovery functionality was "dn:NetworkVideoTransmitter". 
+          Device Type was modified in the later version of [ONVIF Network Interface Specs] to "tds:Device". 
+          Which Device Type shall be used by DUT is defined in the scope of [ONVIF Profile S], [ONVIF Profile G] and [ONVIF Profile C].The following procedure discovers which Types are supported by DUT.
+        </para>        
+        <para>
+          <emphasis role="bold">Discovery Procedure:</emphasis>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                ONVIF Client invokes Unicast Probe request (empty Types, empty Scopes) to get ProbeMatches response.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <!--link with table name as hot text:-->
+                <!--ONVIF Client receives ProbeMatch and checks features support as defined in <link endterm="tc.discovery_procedure.getcapabilities.table.5.2.title" linkend="tc.discovery_procedure.getcapabilities.feature_support_criteria.table.5.2"></link>.-->
+                <!--xref generates hot text:-->
+                ONVIF Client receives ProbeMatch and checks features support as defined in <xref linkend="tc.discovery_procedure.getcapabilities.feature_support_criteria.table.5.2"
+                    xrefstyle="template:Table %n"/>.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> If DUT does not return ProbeMatch or ProbeMatch &lt;d:Types&gt; does not contain neither "dn:NetworkVideoTransmitter" nor "tds:Device", the following features will be marked as undefined:
+          <itemizedlist>
+            <listitem>
+              <para>
+                WS-Discovery\Types\tds:Device
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                WS-Discovery\Types\dn:NetworkVideoTransmitter
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <table xml:id="tc.discovery_procedure.getcapabilities.feature_support_criteria.table.5.2">
+            <title xml:id="tc.discovery_procedure.getcapabilities.table.5.2.title">Discovery Types</title>
+            <tgroup cols="3"
+                    align='center'>
+              <colspec colname="c1"/>
+              <colspec colname="c2"/>
+              <colspec colname="c3"/>
+              <thead>
+                <row>
+                  <entry>
+                    Criterion Item
+                  </entry>
+                  <entry namest="c2"
+                         nameend="c3">
+                    <?dbhtml bgcolor="#FFFFFF" ?>
+                    &lt;d:Types&gt; in ProbeMatch response
+                  </entry>
+                </row>
+                <row>
+                  <entry>Feature</entry>
+                  <entry>Supported</entry>
+                  <entry>Not Supported</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row xml:id="tc.c-DiscoveryTypesTdsDevice">
+                  <entry>
+                    tds:Device
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Contains "tds:Device"</emphasis>
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Does not contain "tds:Device"</emphasis>
+                  </entry>
+                </row>
+                <row xml:id="tc.c-DiscoveryTypesDnNetworkVideoTransmitter">
+                  <entry>
+                    dn:NetworkVideoTransmitter
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Contains "dn:NetworkVideoTransmitter</emphasis>
+                  </entry>
+                  <entry>
+                    <emphasis role="bold">Does not contain "dn:NetworkVideoTransmitter"</emphasis>
                   </entry>
                 </row>
               </tbody>
@@ -18276,6 +18586,11 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                   License Plate Recognition Rule
                 </para>
               </listitem>
+              <listitem>
+                <para>
+                  Line Crossing Counting Rule
+                </para>
+              </listitem>
             </itemizedlist>
           </para>
         </section>
@@ -19423,10 +19738,31 @@ xrefstyle="template:Table %n"/> will be marked as UNDEFINED.
                 </listitem>
               </orderedlist>
             </para>
+          </listitem>          
+          <listitem>
+            <para>
+              If DUT supports Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="3.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits for HELLO message from the default network interface.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
-              ONVIF Client waits for HELLO message from the default network interface.
+              If DUT does not support Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="3.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                  </para>
+                </listitem>
+              </orderedlist>
             </para>
           </listitem>
         </orderedlist>

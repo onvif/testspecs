@@ -114,14 +114,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configurations Using Media2 (Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoSourceConfigurations">Profile T Normative Reference:</emphasis> Conditional
-        </para>
-         <para>
-          <emphasis role="bold"
-                    annotations="GetVideoSourceConfigurations">Profile M Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that video source configuration provided by Device is received by Client using the
@@ -232,10 +224,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configuration Options Using Media2 (Media2_VideoSourceConfiguration_Media2_GetVideoSourceConfigurationOptions)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetVideoSourceConfigurationOptions">Profile T Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that video source configuration options provided by Device is received by Client using the
@@ -345,10 +333,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Video Source Configuration Using Media2 (Media2_VideoSourceConfiguration_Media2_SetVideoSourceConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="SetVideoSourceConfiguration">Profile T Normative Reference:</emphasis> Conditional
         </para>
 
         <para>

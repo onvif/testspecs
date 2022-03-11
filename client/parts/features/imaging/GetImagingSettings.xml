@@ -82,9 +82,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Imaging Settings (GetImagingSettings_GetImgSettings)
       </para>
-      <para>
-        <emphasis role="bold" annotations="GetImagingSettings">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that imaging settings for Device is received by Client using the

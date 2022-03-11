@@ -41,9 +41,6 @@
       <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
       </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
     </section>
     <section xml:id="tc.ZeroConfiguration.scenario">
       <title>Expected Scenarios Under Test:</title>
@@ -107,12 +104,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Zero Configuration (ZeroConfiguration_GetZeroConfiguration)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -209,12 +200,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Zero Configuration (ZeroConfiguration_SetZeroConfiguration)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

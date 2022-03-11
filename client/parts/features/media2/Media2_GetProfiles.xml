@@ -85,14 +85,6 @@
           <emphasis role="bold">Feature Under Test:</emphasis> Get Profiles Using Media2 (Media2_GetProfiles_Media2_GetProfilesRequest)
         </para>
         <para>
-          <emphasis role="bold"
-                    annotations="GetProfiles">Profile T Normative Reference:</emphasis> Mandatory
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetProfiles">Profile M Normative Reference:</emphasis> Mandatory
-        </para>
-        <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that media profiles provided by Device are received by Client using the
           <emphasis role="bold">GetProfiles</emphasis> operation.
         </para>

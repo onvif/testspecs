@@ -1,0 +1,961 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--For PDF version (standard)-->
+<!-- <?xml-stylesheet href="docbook/xsl/fo/docbook.xsl" type="text/xsl" ?>-->
+<!--For PDF version-->
+<!-- <?xml-stylesheet href="ONVIF-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<!--For online version-->
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<book xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+      xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd"
+      version="0.1"
+      xml:id="ONVIF_Export_File_Format_Device_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Export File Format Device Test Specification</title>
+    <subtitle>Version 21.06</subtitle>
+    <date>June 2021</date>
+    <copyright>
+      <year>2021</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <legalnotice role="notices">
+      <para>
+        Recipients of this document may copy, distribute, publish, or display this
+        document so long as this copyright notice, license and disclaimer are retained with
+        all copies of the document. No license is granted to modify this document.
+      </para>
+      <para>
+        THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
+        AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+        NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY
+        PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS,
+        COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+      </para>
+      <para>
+        IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR
+        ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES,
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR
+        NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT. THE
+        FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR
+        LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE
+        AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE
+        CORPORATION.
+      </para>
+    </legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Mar 03, 2021</date>
+        <revdescription>
+          <para>
+            First Issue.
+          </para>
+        </revdescription>
+      </revision>
+    <revision>
+        <revnumber>21.06</revnumber>
+        <date>Mar 11, 2021</date>
+        <revdescription>
+          <para>
+            Update after review.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <para>
+      The goal of the ONVIF test specification set is to make it possible to realize fully interoperable
+      IP physical security implementation from different vendors. The set of ONVIF test specification describes
+      the test cases need to verify the [ONVIF Network Interface Specs] and [ONVIF Conformance] requirements.
+      In addition, the test cases are to be basic inputs for some Profile specification requirements.
+      It also describes the test framework, test setup, pre-requisites, test policies needed for the execution
+      of the described test cases.
+    </para>
+    <para>
+      This ONVIF Export File Format Device Test Specification acts as a supplementary document to the [ONVIF Network Interface Specs],
+      illustrating test cases need to be executed and passed. And this specification acts as an input document
+      to the development of test tool, which will be used to test the ONVIF device implementation conformance
+      towards ONVIF standard. This test tool is referred as ONVIF Client hereafter.
+    </para>
+    <section xml:id="s.intro.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Export File Format Device Test Specification defines and regulates the conformance testing procedure for the ONVIF conformant devices.
+        Conformance testing is meant to be functional black-box testing. The objective of this specification to provide test cases to test individual
+        requirements of ONVIF devices according to ONVIF Export File Format Specification which is defined in [ONVIF Network Interface Specs].
+      </para>
+      <para>
+        The principal intended purposes are:<itemizedlist>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Provide comprehensive test suite coverage for [ONVIF Network Interface Specs].
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        This specification <emphasis role="bold">does not</emphasis> address the following:
+        <itemizedlist>
+          <listitem>
+            <para>
+              Product use cases and non-functional (performance and regression) testing.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Service Interoperability Basic Profile version 2.0 (WS-I BP 2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation Conformance test for HTTP, HTTPS, RTP and RTSP protocol.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Poor streaming performance test (audio/video distortions, missing audio/video frames, incorrect
+              lib synchronization etc.).
+            </para>
+            <para>
+              Wi-Fi Conformance test
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        The set of ONVIF Test Specification will not cover the complete set of requirements as defined in [ONVIF Network Interface Specs];
+        instead, it will cover its subset.
+      </para>
+      <para>
+        This ONVIF Export File Format Device Test Specification covers requirements for export file format,
+        which is a functional block of [ONVIF Network Interface Specs]. The following section gives a brief overview of each functional block and its scope.
+      </para>
+    </section>
+    <section xml:id="s.intro.scope.export_file_format">
+      <title>Export File Format</title>
+      <para>
+        Export File Format cases cover verification of exported file format defined in [ONVIF Export File Format Specification].
+      </para>
+    </section>
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative references</title>
+    <itemizedlist>
+      <listitem>
+        <para>[ONVIF Conformance] ONVIF Conformance Process Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/conformance/">https://www.onvif.org/profiles/conformance/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Profile Policy] ONVIF Profile Policy:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Network Interface Specs] ONVIF Network Interface Specification documents:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Core Specs] ONVIF Core Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Export File Format Spec] ONVIF Export File Format Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          ISO/IEC 14496-12 Information technology — Coding of audiovisual objects – Part 12: ISO base
+          media file format
+        </para>
+        <para>
+          <link xlink:href="https://www.iso.org/obp/ui/#iso:std:iso-iec:14496:-12:ed-5:v1:en">https://www.iso.org/obp/ui/#iso:std:iso-iec:14496:-12:ed-5:v1:en</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          ISO/IEC 23000-10 Information technology – Multimedia application format – Part 10: Surveillance
+          application format
+        </para>
+        <para>
+          <link xlink:href="https://www.iso.org/obp/ui/#iso:std:iso-iec:23000:-10:ed-2:v1:en">https://www.iso.org/obp/ui/#iso:std:iso-iec:23000:-10:ed-2:v1:en</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>NIST FIPS 180-4 Secure Hash Standard</para>
+        <para>
+          <link xlink:href="https://csrc.nist.gov/publications/detail/fips/180/4/final">https://csrc.nist.gov/publications/detail/fips/180/4/final</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          ISO/IEC 14888-2 Information technology – Security techniques – Digital signatures with appendix
+          – Part 2: Integer factorization based mechanisms
+        </para>
+        <para>
+          <link xlink:href="https://www.iso.org/obp/ui/#iso:std:iso-iec:14888:-2:ed-2:v1:en">https://www.iso.org/obp/ui/#iso:std:iso-iec:14888:-2:ed-2:v1:en</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          IETF RFC 3447 Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography
+          Specifications Version 2.1
+        </para>
+        <para>
+          <link xlink:href="https://tools.ietf.org/rfc/rfc3447.txt">https://tools.ietf.org/rfc/rfc3447.txt</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          ITU-T Recommendation X.690 (2008) | ISO/IEC 8825-1:2008, Information technology – ASN.1
+          encoding rules: Specification of Basic Encoding Rules (BER),Canonical Encoding Rules
+          (CER)and Distinguished Encoding Rules (DER)
+        </para>
+        <para>
+          <link xlink:href="https://www.itu.int/rec/T-REC-X.690-200811-S">https://www.itu.int/rec/T-REC-X.690-200811-S</link>
+        </para>
+      </listitem>
+
+
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <section xml:id="additions.conventions">
+      <title>Conventions</title>
+      <para>
+        The key words "shall", "shall not", "should", "should not", "may", "need not",
+        "can", "cannot" in this specification are to be interpreted as described in [ISO/IEC
+        Directives Part 2].
+      </para>
+    </section>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>This section describes terms and definitions used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>Profile</term>
+          <listitem>
+            <para>See ONVIF Profile Policy.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ONVIF Device</term>
+          <listitem>
+            <para>
+              Computer appliance or software program that exposes one or multiple
+              ONVIF Web Services.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ONVIF Client</term>
+          <listitem>
+            <para>
+              Computer appliance or software program that uses ONVIF Web
+              Services.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Device Test Tool</term>
+          <listitem>
+            <para>
+              ONVIF Device Test Tool that tests ONVIF Device implementation towards
+              the ONVIF Test Specification set.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Certificate
+          </term>
+          <listitem>
+            <para>
+              A certificate as used in this specification binds a public key to a subject entity.
+              The certificate is digitally signed by the certificate issuer to allow for verifying its
+              authenticity.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>
+            Signature
+          </term>
+          <listitem>
+            <para>
+              A digital signature or digital signature scheme is a mathematical scheme for
+              demonstrating the authenticity of a digital message or document.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>SHA</term>
+          <listitem>
+            <para>Secure Hashing Algorithm.</para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <para>
+      This section describes about the test setup and prerequisites needed,
+      and the test policies that should be followed for test case execution.
+    </para>
+    <section xml:id="overview.test_setup">
+      <title>Test Setup</title>
+      <section xml:id="overview.test_setup.network_configuration">
+        <title>Network Configuration for DUT</title>
+        <para>
+          The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 4.1).
+        </para>
+        <para>
+          Based on the individual test case requirements, some of the entities in the below setup may not be needed for the execution of those corresponding test cases.
+        </para>
+        <figure>
+          <title>Test Configuration for DUT</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="test_network.png"
+                         format="PNG"
+                         scalefit="0"/>
+            </imageobject>
+            <textobject>
+              <phrase>Test Configuration for DUT</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          <emphasis role="bold">DUT:</emphasis> ONVIF device to be tested. Hereafter, this is referred to as DUT (Device Under Test).
+        </para>
+        <para>
+          <emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system and it controls the behavior of the DUT. It handles both expected and unexpected behavior.
+        </para>
+        <para>
+          <emphasis role="bold">HTTP Proxy:</emphasis> provides facilitation in case of RTP and RTSP tunneling over HTTP.
+        </para>
+        <para>
+          <emphasis role="bold">Wireless Access Point:</emphasis> provides wireless connectivity to the devices that support wireless connection.
+        </para>
+        <para>
+          <emphasis role="bold">DNS Server:</emphasis> provides DNS related information to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">DHCP Server:</emphasis> provides IPv4 Address to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">NTP Server:</emphasis> provides time synchronization between ONVIF Client and DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Switching Hub:</emphasis> provides network connectivity among all the test equipments in the test environment. All devices should be connected to the Switching Hub.
+          When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering in order to avoid multicast traffic being flooded to all ports, because this may affect test stability.
+        </para>
+        <para>
+          <emphasis role="bold">Router:</emphasis> provides router advertisements for IPv6 configuration.
+        </para>
+      </section>
+    </section>
+    <section xml:id="overview.prerequisites">
+      <title>Prerequisites</title>
+      <para>
+        The pre-requisites for executing the test cases described in this Test Specification are:
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              The DUT shall be configured with an IPv4 address.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT shall be IP reachable [in the test configuration].
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT shall be able to be discovered by the Test Tool.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT shall be configured with the time i.e. manual configuration of UTC time and if NTP is supported by the DUT, then NTP time shall be synchronized with NTP Server.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT time and Test tool time shall be synchronized with each other either manually or by common NTP server
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="overview.test_policy">
+      <title>Test Policy</title>
+      <para>
+        This section describes the test policies specific to the test case execution of each functional block.
+      </para>
+      <para>
+        The DUT shall adhere to the test policies defined in this section.
+      </para>
+      <section xml:id="overview.test_policy.export_format">
+        <title>Export Format</title>
+        <para>
+          The test policies specific to the test case execution of Export File Format functional block:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT shall support exporting of media file according to ONVIF format. Exported file shall contain:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    At least one Video track;
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Meta Box container (meta);
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    SurveillanceExportBox (suep);
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    AFIdentificationBox (sumi);
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    Protection Box (ipro) with RSASSA-PSS signature.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+
+        </itemizedlist>
+        <para>
+          Please, refer to <xref linkend="tc.export_file_format.export_format"/> for Export Format Test Cases.
+        </para>
+
+      </section>
+    </section>
+  </chapter>
+  <!--Export File Format Test Cases-->
+  <chapter xml:id="tc.export_file_format">
+    <title>Export File Format</title>
+    <!--Export File Format Test Cases-->
+    <section xml:id="tc.export_file_format.export_format"
+             xreflabel="Section 5.1">
+      <title>Export Format</title>
+      <!--EXPORT_FORMAT-1-1-1-->
+      <section xml:id="tc.EXPORT_FORMAT-1-1-1">
+        <title>EXPORT FILE FORMAT VALIDATION</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> EXPORT_FORMAT-1-1-1
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Export Format (ONVIF Export File Format Spec)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ONVIF file format for exported media
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> None
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that file format for exported media corresponds to mandatory requerement from ONVIF Export File Format Spec
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> File with exported media is provided in the Device Test Tool user interface. It contains at least one Video track.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                ONVIF Client retrieves file with exported media from user interface.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set <emphasis role="italic">exportedFile</emphasis> := file with exported media from user interface.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client parses <emphasis role="italic">exportedFile</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client checks that <emphasis role="italic">exportedFile</emphasis> contains at least one video track
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">exportedFile</emphasis> does not contain at least one track (moov/trak), FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If at least one track (moov/trak/mdia) does not have 'hdlr' box with type value = 'vide', FAIL the test.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">exportedFile</emphasis> does not contain Meta Box container (<emphasis role="italic">meta</emphasis>), FAIL the test.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client checks <emphasis role="italic">meta</emphasis> structure
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">meta</emphasis> does not contain SurveillanceExportBox with box type = 'suep', FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">meta</emphasis> contains more than one SurveillanceExportBox with box type = 'suep', FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client parses SurveillanceExportBox box according to order described in <xref linkend="Annex_HelperSurveillanceExportBoxFormat"/> and checks information provided inside
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            If SurveillanceExportBox does not contain all required fields (see <xref linkend="Annex_HelperSurveillanceExportBoxFormat"/>), FAIL the test.
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            If at least one field value does not correspond to its type (<xref linkend="Annex_HelperSurveillanceExportBoxFormat"/>), FAIL the test.
+                          </para>
+                        </listitem>
+                      </orderedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">meta</emphasis> does not contain AFIdentificationBox with box type = 'sumi', FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">meta</emphasis> contains more than one AFIdentificationBox with box type = 'sumi', FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client parses AFIdentificationBox box and checks information provided inside
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            If AFIdentificationBox does not contain startTime field with unsigned integer value, FAIL the test.
+                          </para>
+                        </listitem>
+                      </orderedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      For each track fragment (moof/traf) <emphasis role="italic">track</emphasis>
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">track</emphasis> does not contain Track Fragment Decode Time box with box type = 'tfdt', FAIL the test.
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">track</emphasis> contains more than one Track Fragment Decode Time box with box type = 'tfdt', FAIL the test.
+                          </para>
+                        </listitem>
+                      </orderedlist>
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client checks signature
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">meta</emphasis> does not contain Item Protection Box with box type = 'ipro' (<emphasis role="italic">ipro</emphasis>), FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">meta</emphasis> contains more than one Protection Box with box type = 'ipro', FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If Protection Count value in <emphasis role="italic">ipro</emphasis> != 1, FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">ipro</emphasis> does not contain at least one Protection Scheme Info Box with box type = 'sinf', FAIL the test.
+                    </para>
+                  </listitem>
+                  <listitem xml:id="EXPORT_FORMAT-1-1-1.sinf" xreflabel="7.5">
+                    <para>
+                      For each Protection Scheme Info Box with box type = 'sinf' (<emphasis role="italic">sinf</emphasis>)
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">sinf</emphasis> does not contain Scheme Type Box with box type = 'schm' (<emphasis role="italic">schm</emphasis>), FAIL the test.
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">sinf</emphasis> contains more than one Scheme Type Box with box type = 'schm', FAIL the test.
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            If Scheme Type value in <emphasis role="italic">schm</emphasis> = 0x6F656666 ("Onvif Export File Format")
+                            <orderedlist numeration="arabic" inheritnum="inherit">
+                              <?dbfo label-width="4.5em"?>
+                              <listitem>
+                                <para>
+                                  If Scheme Version value in <emphasis role="italic">schm</emphasis> != 0x00010000 (1), FAIL the test.
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  If <emphasis role="italic">sinf</emphasis> contains CorrectStartTimeBox with box type = 'cstb'
+                                  <orderedlist numeration="arabic" inheritnum="inherit">
+                                    <?dbfo label-width="4.5em"?>
+                                    <listitem>
+                                      <para>
+                                        If amout of CorrectStartTimeBox with box type = 'cstb' is more than one, FAIL the test.
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        If track_ID field type is not unsigned integer, FAIL the test.
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        If track_ID field value = 0, FAIL the test.
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        If startTime field type is not unsigned integer, FAIL the test.
+                                      </para>
+                                    </listitem>
+                                  </orderedlist>
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  If <emphasis role="italic">sinf</emphasis> does not contain Scheme Information Box with box type = 'schi' (<emphasis role="italic">schi</emphasis>), FAIL the test.
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  If <emphasis role="italic">sinf</emphasis> contains more than one Scheme Information Box with box type = 'schi', FAIL the test.
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  ONVIF Client checks (<emphasis role="italic">schi</emphasis>)
+                                  <orderedlist numeration="arabic" inheritnum="inherit">
+                                    <?dbfo label-width="4.5em"?>
+                                    <listitem>
+                                      <para>
+                                        If <emphasis role="italic">schi</emphasis> does not contain SignatureBox with box type = 'sibo', FAIL the test.
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        If <emphasis role="italic">schi</emphasis> contains more than one SignatureBox with box type = 'sibo', FAIL the test.
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        ONVIF Client validates signature in SignatureBox with box type = 'sibo' according to <xref linkend="Annex_HelperRSASSA-PSSsignatureValidation"/>   with the following input and output parameters
+                                        <itemizedlist>
+                                          <listitem>
+                                            <para>
+                                              in <emphasis role="italic">sibo</emphasis> - SignatureBox with box type = 'sibo'
+                                            </para>
+                                          </listitem>
+                                          <listitem>
+                                            <para>
+                                              in <emphasis role="italic">exportedFile</emphasis> - signed exported file
+                                            </para>
+                                          </listitem>
+                                        </itemizedlist>
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        If <emphasis role="italic">schi</emphasis> does not contain CertificateBox with box type = 'cert', FAIL the test.
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        If <emphasis role="italic">schi</emphasis> contains more than one CertificateBox with box type = 'cert', FAIL the test.
+                                      </para>
+                                    </listitem>
+                                  </orderedlist>
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  If <emphasis role="italic">sinf</emphasis> does not contain at least one Scheme Information Box with box type = 'schi', FAIL the test.
+                                </para>
+                              </listitem>
+                            </orderedlist>
+                          </para>
+                        </listitem>
+                      </orderedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If at step <xref linkend="EXPORT_FORMAT-1-1-1.sinf"/> there was no at least one box with type = 'sinf' and with Scheme Type value in 'schm'  = 0x6F656666, FAIL the test and skip other steps.
+                    </para>
+                 </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Parsing of file provided in the Device Test Tool user interface was failed.
+              </para>
+            </listitem>
+
+          </itemizedlist>
+        </para>
+
+
+      </section>
+
+    </section>
+
+  </chapter>
+  <appendix>
+    <title>Helper Procedures and Additional Notes</title>
+
+
+    <!--A.1 SurveillanceExportBox Format -->
+    <section xml:id="Annex_HelperSurveillanceExportBoxFormat"
+             xreflabel="Annex A.1">
+      <title>SurveillanceExportBox Format</title>
+      <para>
+        SurveillanceExportBox shall contain all these fields in the following order:
+        <itemizedlist>
+          <listitem>
+            <para>
+              ExportUnitName (UTF-8 characters string)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ExportUnitURL (UTF-8 characters string)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ExportUnitMAC (UTF-8 characters string)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ExportUnitTime (integer)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ExportOperator (UTF-8 characters string)
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              For each media track (moov/trak) in <emphasis role="italic">exportedFile</emphasis>:
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    SourceName (UTF-8 characters string)
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    SourceURL (UTF-8 characters string)
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    SourceMAC (UTF-8 characters string)
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    SourceLine (UTF-8 characters string)
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+    <!--A.2 RSASSA-PSS Signature Validation -->
+    <section xml:id="Annex_HelperRSASSA-PSSsignatureValidation"
+             xreflabel="Annex A.2">
+      <title>RSASSA-PSS Signature Validation</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperRSASSA-PSSsignatureValidation
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to validate signature in SignatureBox.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> SignatureBox with box type = 'sibo' (<emphasis role="italic">sibo</emphasis>). Signed exported file (<emphasis role="italic">exportedFile</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              If <emphasis role="italic">sibo</emphasis> does not contain Signature string with RSASSA-PSS signature format (ISO/IEC 14888-2), FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If secure hash algorithms of Signature string does not correspond to SHA-256 (as specified in FIPS 180-4), FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If an RSA modulus length &lt; 2048 bits, FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If Signature does not correspond to hash of <emphasis role="italic">exportedFile</emphasis>, FAIL the test and skip other steps.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              None.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  </appendix>
+</book>

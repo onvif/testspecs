@@ -22,7 +22,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Object Classification (ObjectClassification)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature for ObjectClassification].
+        <emphasis role="bold" annotations="ObjectClassification">Check Condition based on Device Features:</emphasis> Object Classification is supported by Device.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -40,7 +40,7 @@
               Client connects to Device to retrieve metadata streaming with included Class element <emphasis role="bold">MetadataStream/VideoAnalyticsStream/ Frame/Object/Appearance /Class/Type</emphasis>.
             </para>
           </listitem>
-          <listitem>
+          <listitem xml:id="tc.Unknown.UNKNOWN-2.0">
             <para>
               Client is considered as supporting Object Classification if the
               following conditions are met:<itemizedlist>

@@ -15,10 +15,10 @@
       </phrase>
     </orgname>
     <title>Door Control Device Test Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.06</subtitle>
+    <date>June 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -300,6 +300,14 @@
         <revdescription>
           <para>The following test cases were updated in the scope of #2095:</para>
           <para>DOORCONTROL-5-1-1 GET ACCESS POINT INFO LIST AND GET DOOR INFO LIST CONSISTENCY (Pre-Requisite updated)</para>	
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Dec 22, 2020</date>
+        <revdescription>
+          <para>The following test cases was added in the scope of #2033:</para>
+          <para>DOORCONTROL-5-1-2 DOOR CAPABILITIES CONSISTENCY</para>	
         </revdescription>
       </revision>
     </revhistory>
@@ -6609,6 +6617,107 @@
         </para>
 
       </section>
+<section xml:id="tc.DOORCONTROL-5-1-2"
+               xreflabel="DOORCONTROL-5-1-2">
+        <title>DOOR CAPABILITIES CONSISTENCY</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> DOORCONTROL-5-1-2
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> DoorCapabilities (ONVIF Door Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetDoorInfoList
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> doorcontrol.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Door сapabilities consistency.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Door Control Service was received from the DUT. Door Entity is supported by the DUT. Profile D is supported by the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+           <listitem>
+                    <para>
+                      ONVIF Client retrieves a complete list of door info by following the procedure mentioned in <xref linkend="Annex_HelperGetCompleteDoorInfoList"/> with the following output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">doorInfoCompleteList</emphasis> - complete door info list
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+            <listitem>
+              <para>
+                For each Door Info (<emphasis role="italic">doorInfo</emphasis>) from <emphasis role="italic">doorInfoCompleteList</emphasis> 
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">doorInfo</emphasis>.Capabilities.Access != true, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>    
+                   <listitem>
+                    <para>
+                      If <emphasis role="italic">doorInfo</emphasis>.Capabilities.Lock != true, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>    
+                 <listitem>
+                    <para>
+                      If <emphasis role="italic">doorInfo</emphasis>.Capabilities.Unlock != true, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>    
+                </orderedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT does not pass all assertions.
+              </para>
+            </listitem>            
+          </itemizedlist>
+        </para>
+      </section>      
     </section>
     <!--Property Events-->
     <section xml:id="tc.door_control.property_events">

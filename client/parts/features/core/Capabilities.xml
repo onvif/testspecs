@@ -80,9 +80,6 @@
         <emphasis role="bold">Profile G Requirement:</emphasis> Mandatory
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> Mandatory
       </para>
       <para>
@@ -148,28 +145,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Services (Capabilities_GetServicesRequest)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetServices">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="GetServices">Profile M Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Device Capabilities
@@ -264,18 +239,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Capabilities (Capabilities_GetCapabilities)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> None
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Device Capabilities

@@ -121,12 +121,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Zoom Continuous Move (PtzZoomContinuousPositioning_ContinuousMoveZoom)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -237,12 +231,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Stop Zoom Movement (PtzZoomContinuousPositioning_ZoomStop)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
       
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -350,12 +338,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Stop Zoom Movement using Continuous Move (PtzZoomContinuousPositioning_ZoomStopUsingPTZContinuousMove)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Mandatory
       </para>
       
       <para>

@@ -100,14 +100,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Analytics Configurations Compatible With Media2 Profile (Media2_AnalyticsProfileConfiguration_Media2_GetCompatibleAnalyticsConfigurations)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAnalyticsConfigurations (compatible)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetAnalyticsConfigurations (compatible)">Profile M Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of analytics configurations
@@ -219,14 +211,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Analytics Configuration To Media2 Profile (Media2_AnalyticsProfileConfiguration_Media2_AddAnalyticsConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (Analytics Configuration)">Profile T Normative Reference:</emphasis> Conditional
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (Analytics Configuration)">Profile M Normative Reference:</emphasis> Conditional
         </para>
 
         <para>

@@ -84,9 +84,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Absolute Focus Move (FocusControl_AbsoluteFocusMove)
       </para>
-      <para>
-        <emphasis role="bold" annotations="Move">Profile T Normative Reference:</emphasis> Conditional
-      </para>
       
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able retrive absolute focus move on Device using the <emphasis role="bold">Move</emphasis> operation.
@@ -231,9 +228,6 @@
       </para>
         <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Relative Focus Move (FocusControl_RelativeFocusMove)
-      </para>
-      <para>
-        <emphasis role="bold" annotations="Move">Profile T Normative Reference:</emphasis> Conditional
       </para>
       
       <para>
@@ -380,9 +374,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Continuous Focus Move (FocusControl_ContinuousFocusMove)
       </para>
-      <para>
-        <emphasis role="bold" annotations="Move">Profile T Normative Reference:</emphasis> Conditional
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able retrive continuous focus move on Device using the <emphasis role="bold">Move</emphasis> operation.
@@ -520,9 +511,6 @@
       </para>
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Stop (FocusControl_FocusStop)
-      </para>
-      <para>
-        <emphasis role="bold" annotations="Stop">Profile T Normative Reference:</emphasis> Conditional
       </para>
      
       <para>

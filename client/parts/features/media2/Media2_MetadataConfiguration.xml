@@ -117,14 +117,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Get Metadata Configurations Using Media2 (Media2_MetadataConfiguration_Media2_GetMetadataConfigurations)
       </para>
       <para>
-        <emphasis role="bold"
-                  annotations="GetMetadataConfigurations">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="GetMetadataConfigurations">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that metadata configuration provided by Device is received by Client using the
         <emphasis role="bold">GetMetadataConfigurations</emphasis> operation.
       </para>
@@ -229,14 +221,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Get Metadata Configuration Options Using Media2 (Media2_MetadataConfiguration_Media2_GetMetadataConfigurationOptions)
       </para>
       <para>
-        <emphasis role="bold"
-                  annotations="GetMetadataConfigurationOptions">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="GetMetadataConfigurationOptions">Profile M Normative Reference:</emphasis> Optional
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that metadata configuration options provided by Device is received by Client using the
         <emphasis role="bold">GetMetadataConfigurationOptions</emphasis> operation.
       </para>
@@ -339,14 +323,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Metadata Configuration Using Media2 (Media2_MetadataConfiguration_Media2_SetMetadataConfiguration)
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="SetMetadataConfiguration">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="SetMetadataConfiguration">Profile M Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to change metadata configuration provided by Device using the

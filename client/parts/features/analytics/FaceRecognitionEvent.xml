@@ -26,7 +26,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Face Recognition Event (FaceRecognitionEvent)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: to add DTT feature corresponding to FaceRecognitionEvent].
+        <emphasis role="bold" annotations="FaceRecognitionRule">Check Condition based on Device Features:</emphasis> Face Recognition Rule is supported by Device.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -54,7 +54,7 @@
                     Client supports Media2_MetadataStreaming_ProfileM feature (please see <xref linkend="tc.Media2_MetadataStreaming_ProfileM"/> section) OR EventHandling_Pullpoint feature (please see <xref linkend="tc.EventHandling.EVENTHANDLING-1"/> section) OR EventBrokerConfiguration feature (please see <xref linkend="tc.EventBrokerConfiguration"/> section)</para> 
                   AND
                 </listitem>
-                 <listitem>
+                 <listitem xml:id="tc.Unknown.UNKNOWN-1.58">
                   <para>
                     Client is able to receive <emphasis role="bold">tns1:RuleEngine/Recognition/Face</emphasis> notification.
                   </para>

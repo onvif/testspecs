@@ -15,10 +15,10 @@
       </phrase>
     </orgname>
     <title>Event Handling Device Test Specification</title>
-    <subtitle>Version 20.06</subtitle>
-    <date>June 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -185,6 +185,24 @@
 <para>EVENT-3-1-36	REALTIME PULLPOINT SUBSCRIPTION - UNSUBSCRIBE</para>
 <para>EVENT-3-1-37	REALTIME PULLPOINT SUBSCRIPTION – MAXIMUM SUPPORTED NUMBER OF NOTIFICATION PULL POINTS</para>
 <para>EVENT-3-1-38	REALTIME PULLPOINT SUBSCRIPTION - MESSAGE CONTENT FILTER</para>
+        </revdescription>
+      </revision>
+    <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 31, 2021</date>
+        <revdescription>
+          <para>The following test cases and annex were updated according to #2006 and #2007:</para>        
+          <para>EVENT-7-2-2 MQTT EVENTS PUBLISHING (MQTT TLS, QoS=0) (new)</para>
+          <para>EVENT-7-2-4 MQTT EVENTS PUBLISHING (MQTT TLS OVER WEBSOCKET, QoS=0) (new)</para>
+          <para>A.13 MQTT Event Validation</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Dec 15, 2021</date>
+        <revdescription>
+          <para>Profile Q scope was removed from the Pre-Requisites of the following test cases according to #2204</para>
+          <para>EVENT-3-1-12	REALTIME PULLPOINT SUBSCRIPTION - RENEW</para>
         </revdescription>
       </revision>
     </revhistory>
@@ -3757,7 +3775,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify Renew command
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Event Service is supported by the DUT. Device supports Pull-Point Notification feature. Profile A or Profile C or Profile Q or Profile S or Profile G is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Event Service is supported by the DUT. Device supports Pull-Point Notification feature. Profile A or Profile C or Profile S or Profile G is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -10125,7 +10143,7 @@
                   Set <emphasis role="italic">topicDescription</emphasis> := <emphasis role="italic">topicSet</emphasis>[0], where <emphasis role="italic">topicSet</emphasis>[0] has topic = <emphasis role="italic">topic</emphasis>.
                 </para>
               </listitem>
-              <listitem>
+              <!--<listitem>
                 <para>
                   If Security Configuration Service is supported by the DUT :
                   <orderedlist numeration="arabic" inheritnum="inherit">
@@ -10144,7 +10162,7 @@
                     </listitem>
                     <listitem>
                       <para>
-                        <!--<emphasis role="bold">TODO: Condition can be changed after clarification in #2007</emphasis>-->
+                        --><!--<emphasis role="bold">TODO: Condition can be changed after clarification in #2007</emphasis>--><!--
                         If <emphasis role="italic">cap</emphasis>.KeystoreCapabilities.MaximumNumberOfCertificates > 0:
                         <orderedlist numeration="arabic" inheritnum="inherit">
                           <?dbfo label-width="3.5em"?>
@@ -10170,7 +10188,7 @@
                     </listitem>
                   </orderedlist>
                 </para>
-              </listitem>
+              </listitem>-->
               <listitem>
                 <para>
                   ONVIF Client invokes <emphasis role="bold">AddEventBroker</emphasis> request with parameters
@@ -10197,9 +10215,14 @@
                     </listitem>
                     <listitem>
                       <para>
-                        EventBroker.CertificateID := <emphasis role="italic">certificateID</emphasis> if it was received at step <xref linkend="EVENT-7-2-2.GetCertificateID"/>, otherwise skipped
+                        EventBroker.CertificateID skipped
                       </para>
                     </listitem>
+                    <!--<listitem>
+                      <para>
+                        EventBroker.CertificateID := <emphasis role="italic">certificateID</emphasis> if it was received at step <xref linkend="EVENT-7-2-2.GetCertificateID"/>, otherwise skipped
+                      </para>
+                    </listitem>-->
                     <listitem>
                       <para>
                         EventBroker.PublishFilter skipped
@@ -10724,7 +10747,7 @@
                   Set <emphasis role="italic">topicDescription</emphasis> := <emphasis role="italic">topicSet</emphasis>[0], where <emphasis role="italic">topicSet</emphasis>[0] has topic = <emphasis role="italic">topic</emphasis>.
                 </para>
               </listitem>
-              <listitem>
+              <!--<listitem>
                 <para>
                   If Security Configuration Service is supported by the DUT :
                   <orderedlist numeration="arabic" inheritnum="inherit">
@@ -10743,7 +10766,7 @@
                     </listitem>
                     <listitem>
                       <para>
-                        <!--<emphasis role="bold">TODO: Condition can be changed after clarification in #2007</emphasis>-->
+                        --><!--<emphasis role="bold">TODO: Condition can be changed after clarification in #2007</emphasis>--><!--
                         If <emphasis role="italic">cap</emphasis>.KeystoreCapabilities.MaximumNumberOfCertificates > 0:
                         <orderedlist numeration="arabic" inheritnum="inherit">
                           <?dbfo label-width="3.5em"?>
@@ -10769,7 +10792,7 @@
                     </listitem>
                   </orderedlist>
                 </para>
-              </listitem>
+              </listitem>-->
               <listitem>
                 <para>
                   ONVIF Client invokes <emphasis role="bold">AddEventBroker</emphasis> request with parameters
@@ -10794,9 +10817,14 @@
                         EventBroker.Password skipped
                       </para>
                     </listitem>
-                    <listitem>
+                    <!--<listitem>
                       <para>
                         EventBroker.CertificateID := <emphasis role="italic">certificateID</emphasis> if it was received at step <xref linkend="EVENT-7-2-4.GetCertificateID"/>, otherwise skipped
+                      </para>
+                    </listitem>-->
+                    <listitem>
+                      <para>
+                        EventBroker.CertificateID skipped
                       </para>
                     </listitem>
                     <listitem>
@@ -13207,7 +13235,7 @@
               Set <emphasis role="italic">expectedMQTTtopic</emphasis> := <emphasis role="italic">topicPrefix</emphasis> + "onvif-ej" + (topic of <emphasis role="italic">topicDescription</emphasis> - XML namespace prefix for ONVIF topic)
             </para>
           </listitem>
-          <listitem>
+          <!--<listitem>
             <para>
               For each Source.SimpleItemDescription (<emphasis role="italic">sourceSimpleItemDescription</emphasis>) in <emphasis role="italic">topicDescription</emphasis>:
               <orderedlist numeration="arabic" inheritnum="inherit">
@@ -13242,7 +13270,7 @@
                 </listitem>
               </orderedlist>
             </para>
-          </listitem>
+          </listitem>-->
           <listitem>
             <!--<para>
               <emphasis role="bold">TODO: Will be updated when requirement is changed (see #2006)</emphasis>

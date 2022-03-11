@@ -100,9 +100,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Absolute Positioning Using Media2 - AbsoluteMove Zoom with PositionGeneric Space (Media2_ZoomSpaces_PositionGenericSpace_PTZAbsolutePositioningZoomPositionGenericSpace)
       </para>
-      <para>
-        <emphasis role="bold" annotations="AbsoluteMove;http://www.onvif.org/ver10/tptz/ZoomSpaces/PositionGenericSpace">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to

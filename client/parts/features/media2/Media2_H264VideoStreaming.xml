@@ -52,20 +52,7 @@
                 following conditions are met:<itemizedlist>
                   <listitem>
                     <para>
-                      Client supports media2_get_profiles.get_profiles feature
-                      AND
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client supports media2_get_stream_uri.get_stream_uri feature
-                      AND
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
                       Client is able to receive a stream using Media2 and decode H.264 video using the selected Media Profile over RTSP.
-
                     </para>
                   </listitem>
                 </itemizedlist>
@@ -74,19 +61,8 @@
             <listitem>
               <para>
                 Client is considered as NOT supporting H264 Video Streaming if
-                ANY of the following is TRUE:<itemizedlist>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_profiles.get_profiles feature
-                      OR
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      Client does not support media2_get_stream_uri.get_stream_uri feature
-                      OR
-                    </para>
-                  </listitem>
+                ANY of the following is TRUE:<itemizedlist>                 
+                 
                   <listitem>
                     <para>
                       Client is unable to initiate and retrieve
@@ -110,15 +86,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> H264 Video Streaming Using Media2 (Media2_VideoStreaming_H264_Media2_H264VideoStreaming)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="initiate video streaming sessions using RTSP;H.264">Profile T Normative Reference:</emphasis> Mandatory
-        </para>
-          <para>
-          <emphasis role="bold"
-                    annotations="H.264">Profile M Normative Reference:</emphasis> Conditional
-        </para>
-
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able

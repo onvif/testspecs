@@ -174,9 +174,7 @@
         <emphasis role="bold">Feature Under Test:</emphasis> [Client Subfeature Name] ([ClientSubfeatureID])
       </para>
       <!--Links to profiles where this feature is mensioned-->
-      <para>
-        <emphasis role="bold" annotations="[link to Profile Spec section for Covarage map proposes, example SendAuxiliaryCommand;tt:Wiper|On]">Profile X Normative Reference:</emphasis> [Mandatory/Conditional/Optional/None]
-      </para>
+
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> [what will be verified]
       </para>

@@ -54,13 +54,13 @@ Client subscribes to Device messages to retrieve notification events
 				and <emphasis role="bold">PullMessage</emphasis> operation.
             </para>
           </listitem>
-		  			<listitem>
+		  			<listitem xml:id="tc.Unknown.UNKNOWN-1.31">
               <para>
                 Client receives access taken notification from Device
 				with <emphasis role="bold">tns1:AccessControl/AccessTaken/Identifier</emphasis> notification.
               </para>
             </listitem>
-					  			<listitem>
+					  			<listitem xml:id="tc.Unknown.UNKNOWN-1.32">
               <para>
                 Client receives access not taken notification from Device
 				with <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Identifier</emphasis> notification.
@@ -69,7 +69,7 @@ Client subscribes to Device messages to retrieve notification events
           <!--Feature is supported conditions-->
           <listitem>
             <para>
-              Client is considered as supporting Access Control With Identifier Access if the
+              Client is considered as supporting Access Taken With Identifier Access if the
               following conditions are met:
               <itemizedlist>
 			                    <listitem>
@@ -92,7 +92,7 @@ Client subscribes to Device messages to retrieve notification events
           <!--Feature is not supported conditions-->
           <listitem>
             <para>
-              Client is considered as NOT supporting Access Control With Identifier Access if
+              Client is considered as NOT supporting Access Taken With Identifier Access if
               ANY of the following is TRUE:
               <itemizedlist>
 			                    <listitem>

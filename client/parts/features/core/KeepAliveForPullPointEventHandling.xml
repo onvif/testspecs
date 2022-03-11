@@ -87,9 +87,6 @@
         <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Optional
-      </para>
-      <para>
         <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
       </para>
       <para>
@@ -108,7 +105,7 @@
               Client is considered as supporting Keep Alive for Pull Point Event Handling if the following
               conditions are met:<itemizedlist>
                 <listitem>
-                  <para>Client supports EventHandling_Pullpoint feature AND</para>
+                  <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.KeepAliveForPullPointEventHandling.EVENTHANDLING-1"/> section) AND</para>
                 </listitem>
                 <listitem>
                   <para>
@@ -150,6 +147,10 @@
         </orderedlist>
       </para>
     </section>
+     <section xml:id="tc.KeepAliveForPullPointEventHandling.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
     <section xml:id="tc.KeepAliveForPullPointEventHandling.KEEPALIVEFORPULLPOINTEVENTHANDLING-1">
       <title>RENEW</title>
       <para>
@@ -160,24 +161,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Renew (KeepAliveForPullPointEventHandling_Renew)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
       </para>
 
       <para>
@@ -317,24 +300,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Pull Messages as Keep Alive (KeepAliveForPullPointEventHandling_PullMessagesAsKeepAlive)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able

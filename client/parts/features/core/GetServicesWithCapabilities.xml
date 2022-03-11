@@ -65,9 +65,6 @@
       <para>
         <emphasis role="bold">Profile G Requirement:</emphasis> Optional
       </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Optional
-      </para>
     </section>
     <section xml:id="tc.GetServicesWithCapabilities.scenario">
       <title>Expected Scenarios Under Test:</title>
@@ -117,21 +114,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Services with Capabilities (GetServicesWithCapabilities_GetServicesWithCapabilitiesRequest)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetServiceCapabilities">Profile D Normative Reference:</emphasis> Optional
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that services capabilities provided by Device is received by Client using the

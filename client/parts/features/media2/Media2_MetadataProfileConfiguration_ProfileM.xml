@@ -120,10 +120,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Video Source Configuration Using Media2 (Media2_MetadataProfileConfiguration_ProfileM_Media2_AddVideoSourceConfiguration)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (VideoSource)">Profile M Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to add an video source configuration to a media profile using the
@@ -239,10 +235,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Media2 Profile With Video Source Configuration (Media2_MetadataProfileConfiguration_ProfileM_Media2_CreateMediaProfile)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="AddConfiguration (VideoSource)">Profile M Normative Reference:</emphasis> Conditional
         </para>
 
         <para>

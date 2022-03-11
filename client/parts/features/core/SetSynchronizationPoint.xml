@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feature>
   <revhistory>
+    <revision  xml:id="s.revhistory.SetSynchronizationPoint.20210603.All">
+      <revnumber>21.06</revnumber>
+      <date>Jun 03, 2021</date>
+      <revdescription>
+        <para>The following was updated according to #325:</para>
+        <para>SETSYNCHRONIZATIONPOINT-1 test name was changed from SET SYNCHRONIZATION POINT to SET SYNCHRONIZATION POINT (EVENT SERVICE).</para>
+        <para>Set Synchronization Point feature was renamed to Set Synchronization Point (Event Service)</para>
+      </revdescription>
+    </revision>
     <revision  xml:id="s.revhistory.SetSynchronizationPoint.20200831.All">
       <revnumber>20.12</revnumber>
       <date>Aug 31, 2020</date>
@@ -58,13 +67,13 @@
     </revision>
   </revhistory>
   <section xml:id="s.intro.SetSynchronizationPoint">
-    <title>Set Synchronization Point</title>
+    <title>Set Synchronization Point (Event Service)</title>
     <para>
       Set Synchronization Point section defines Client ability to synchronize its properties  with  the properties of the device using SetSynchronizationPoint operation.
     </para>
   </section>
   <section xml:id="tc.SetSynchronizationPoint">
-    <title>Set Synchronization Point Test Cases</title>
+    <title>Set Synchronization Point (Event Service) Test Cases</title>
     <section xml:id="tc.SetSynchronizationPoint.feature">
       <title>Feature Level Requirement:</title>
       <para>
@@ -86,9 +95,6 @@
         <emphasis role="bold">Profile S Requirement:</emphasis> Optional
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Optional
-      </para>
-      <para>
         <emphasis role="bold">Profile G Requirement:</emphasis> Optional
       </para>
       <para>
@@ -107,7 +113,7 @@
           </listitem>
           <listitem>
             <para>
-              Client is considered as supporting Set Synchronization Point if the following
+              Client is considered as supporting Set Synchronization Point (Event Service) if the following
               conditions are met:<itemizedlist>
                 <listitem>
                   <para>
@@ -119,7 +125,7 @@
           </listitem>
           <listitem>
             <para>
-              Client is considered as NOT supporting Set Synchronization Point if the following
+              Client is considered as NOT supporting Set Synchronization Point (Event Service) if the following
               is TRUE:<itemizedlist>
                 <listitem>
                   <para>
@@ -137,8 +143,8 @@
         </orderedlist>
       </para>
     </section>
-    <section xml:id="tc.SetSynchronizationPoint.SETSYNCHRONIZATIONPOINT-1" xreflabel = "SETSYNCHRONIZATIONPOINT-1 SET SYNCHRONIZATION POINT">
-      <title>SET SYNCHRONIZATION POINT</title>
+    <section xml:id="tc.SetSynchronizationPoint.SETSYNCHRONIZATIONPOINT-1" xreflabel = "SETSYNCHRONIZATIONPOINT-1 SET SYNCHRONIZATION POINT (EVENT SERVICE)">
+      <title>SET SYNCHRONIZATION POINT (EVENT SERVICE)</title>
       <para>
         <emphasis role="bold">Test Label:</emphasis> Set Synchronization Point - Set Synchronization Point
       </para>
@@ -147,30 +153,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Synchronization Point (SetSynchronizationPoint_SetSynchronizationPointAction)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetSynchronizationPoint">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetSynchronizationPoint">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetSynchronizationPoint">Profile M Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able

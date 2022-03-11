@@ -100,9 +100,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Absolute Move PanTilt with PositionGeneric Space (Media2_PanTiltSpaces_PositionGenericSpace_PTZAbsolutePositioningPanTiltPositionGenericSpace)
       </para>
-      <para>
-        <emphasis role="bold" annotations="AbsoluteMove;http://www.onvif.org/ver10/tptz/PanTiltSpaces/PositionGenericSpace">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to

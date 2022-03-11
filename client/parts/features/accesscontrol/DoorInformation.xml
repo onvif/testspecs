@@ -96,12 +96,7 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Listing of Doors (DoorInformation_ListingOfDoors)
         </para>
-        <para>
-          <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-        </para>
-        <para>
-          <emphasis role="bold" annotations="GetDoorInfoList">Profile D Normative Reference:</emphasis> Mandatory
-        </para>
+        
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all doors
           items provided by Device is received by Client using the GetDoorInfoList

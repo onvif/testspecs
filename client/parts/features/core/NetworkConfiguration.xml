@@ -91,9 +91,6 @@
         <emphasis role="bold">Profile G Requirement:</emphasis> Conditional
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> Conditional
       </para>
       <para>
@@ -188,30 +185,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Get Network Interfaces (NetworkConfiguration_GetNetworkInterfaces)
       </para>
       <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNetworkInterfaces">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNetworkInterfaces">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNetworkInterfaces">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         list network interfaces of Device using the GetNetworkInterfaces operation.
       </para>
@@ -293,7 +266,7 @@
       </para>
 
     </section>
-    <section xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-2">
+    <section xml:id="tc.NetworkConfiguration.NETWORKCONFIGURATION-2" xreflabel="NETWORKCONFIGURATION-2 SET NETWORK INTERFACES">
       <title>SET NETWORK INTERFACES</title>
       <para>
         <emphasis role="bold">Test Label:</emphasis> Network Configuration - Set Network
@@ -304,30 +277,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Network Interfaces (NetworkConfiguration_SetNetworkInterfaces)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetNetworkInterfaces">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetNetworkInterfaces">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetNetworkInterfaces">Profile M Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -429,30 +378,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Get Network Default Gateway (NetworkConfiguration_GetNetworkDefaultGateway)
       </para>
       <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNetworkDefaultGateway">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNetworkDefaultGateway">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetNetworkDefaultGateway">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         list default gateway of Device using the GetNetworkDefaultGateway operation.
       </para>
@@ -546,30 +471,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Network Default Gateway (NetworkConfiguration_SetNetworkDefaultGateway)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetNetworkDefaultGateway">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetNetworkDefaultGateway">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetNetworkDefaultGateway">Profile M Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to

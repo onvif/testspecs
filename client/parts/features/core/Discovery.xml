@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feature>
   <revhistory>
+    <revision  xml:id="s.revhistory.Discovery.20211012.All">
+      <revnumber>21.12</revnumber>
+      <date>Oct 12, 2021</date>
+      <revdescription>
+        <para>The following was done according to #425:</para>
+        <para>Check Condition based on Device Features of Discovery feature was changed from 'All' to 'Discovery'</para>
+      </revdescription>
+    </revision>
               <revision  xml:id="s.revhistory.Discovery.20190814.ProfileQ">
       <revnumber>19.12</revnumber>
       <date>Aug 14, 2019</date>
@@ -67,7 +75,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Discovery (Discovery)
       </para>
       <para>
-        <emphasis role="bold" annotations="All">Check Condition based on Device Features:</emphasis> None
+        <emphasis role="bold" annotations="All">Check Condition based on Device Features:</emphasis> Discovery
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 3
@@ -83,9 +91,6 @@
       </para>
       <para>
         <emphasis role="bold">Profile A Requirement:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold" annotations="7.3 Discovery">Profile T Requirement:</emphasis> Mandatory
@@ -144,31 +149,7 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> WS-Discovery (Discovery_WSDiscovery)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="WS-Discovery">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="WS-Discovery">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="WS-Discovery">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
+
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         send Probe request and receive ProbeMatch response from Device.

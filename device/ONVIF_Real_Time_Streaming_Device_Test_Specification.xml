@@ -14,7 +14,7 @@
       xmlns:xml="http://www.w3.org/XML/1998/namespace"
       xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd"
       version="0.1"
-      xml:id="ONVIF_Profile_Imaging_Client_TS">
+      xml:id="ONVIF_RTSS_Media_Device_TS">
   <info>
     <orgname>
       <phrase>
@@ -23,10 +23,10 @@
     </orgname>
     <title>Real Time Streaming Device Test Specification</title>
     <titleabbrev>Real Time Streaming Device Test Spec</titleabbrev>
-    <subtitle>Version 20.06</subtitle>
-    <date>June 2020</date>
+    <subtitle>Version 21.06</subtitle>
+    <date>June 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -739,6 +739,25 @@
         <revdescription>
           <para>The following annex was updated according to #1965:</para>
           <para>Annex A.28 Video Encoder Configuration – Frame Rate Selection (framerate selection logic for the highest JPEG resolution was updated)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 09, 2021</date>
+        <revdescription>
+          <para>The following annexes were updated according to #2124:</para>
+          <para>A.4 Turn on IPv6 network interface</para>
+          <para>A.5 Restore Network Settings</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 26, 2021</date>
+        <revdescription>
+          <para>The following test cases were removed according to #2215:</para>
+          <para>RTSS-6-1-2 BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</para>
+          <para>RTSS-6-1-5 BACKCHANNEL – G.726 (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</para>
+          <para>RTSS-6-1-8 BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</para>
         </revdescription>
       </revision>
     </revhistory>
@@ -29132,248 +29151,7 @@
 
 
       </section>
-      <section xml:id="tc.RTSS-6-1-2">
-        <title>BACKCHANNEL – G.711 (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</title>
-        <para>
-          <emphasis role="bold">Test Case ID:</emphasis> RTSS-6-1-2
-        </para>
-        <para>
-          <emphasis role="bold">Specification Coverage:</emphasis> Back Channel Connection, RTSP Require- Tag, Connection setup for a bi-directional connection
-        </para>
-        <para>
-          <emphasis role="bold">Command Under Test:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">WSDL Reference:</emphasis> media.wsdl
-        </para>
-        <para>
-          <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for G.711 audio streaming using RTP-Unicast/RTSP/HTTP/TCP, IPv4 transport for IPv4.
-        </para>
-        <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Media is supported by the DUT. Audio backchannel is supported by the DUT and G.711 Decoder is implemented by DUT. Media Service entry point is received from the DUT.
-        </para>
-        <para>
-          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-        </para>
-        <para>
-          <emphasis role="bold">Test Procedure:</emphasis>
-        </para>
-        <para>
-          <orderedlist>
-            <?dbfo label-width="1.5em"?>
-            <listitem>
-              <para>
-                Start an ONVIF Client.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Start the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client selects a media profile with G.711 decoding and not only www.onvif.org/ver20/HalfDuplex/Client send primacy support by following the procedure mentioned in <xref linkend="Annex_HelperProfileConfigurationForBackchannelAudioStreaming"/>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes SetAudioOutputConfigurationRequest message (SendPrimacy = “www.onvif.org/ver20/HalfDuplex/Client”, OutputLevel = o1 and force persistence = false) to set output configuration for backchannel.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the SetAudioOutputConfigurationResponse message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes GetStreamUriRequest message (ProfileToken, Stream = “RTP-Unicast”, Transport.Protocol = “HTTP”) to retrieve media stream URI for the selected media profile.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends the GetStreamUriResponse message with RTSP URI and parameters defining the lifetime of the URI like ValidUntilConnect, ValidUntilReboot and Timeout.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client verifies the RTSP media stream URI provided by the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes HTTP GET Request on DUT and establishes DUT to ONVIF Client connection for RTP data transfer.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes HTTP POST Request and establishes ONVIF Client to DUT connection for RTSP control requests.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP DESCRIBE request with additional Require-tag (Require: www.onvif.org/ver20/backchannel) on HTTP POST connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message and SDP information on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify SDP information from the DUT. Check that DUT return audio backchannel and G.711 on the list of supported codecs for backchannel.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP SETUP request on HTTP POST connection for backchannel with transport parameter RTP-Unicast/RTSP/HTTP/TCP, with additional Require-tag (Require: www.onvif.org/ver20/backchannel).
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message and the media stream information on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP PLAY request on HTTP POST connection with additional Require-tag (Require: www.onvif.org/ver20/backchannel).
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client sends RTP Unicast G.711 audio stream to DUT on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT processes a stream and send it to Output.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends RTCP sender report to ONVIF Client.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client validates the received RTCP packets.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP TEARDOWN control request on HTTP POST connection with additional Require-tag (Require: www.onvif.org/ver20/backchannel) at the end of media streaming to terminate the RTSP session.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK Response on HTTP GET connection and closes the HTTP GET connection.
-              </para>
-            </listitem>
-          </orderedlist>
-        </para>
-        <para>
-          <emphasis role="bold">Test Result:</emphasis>
-        </para>
-        <para>
-          <emphasis role="bold">PASS –</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                DUT passes all assertions.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">FAIL –</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                The DUT did not have valid media profile.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send SetAudioOutputConfigurationResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid RTSP URI, ValidUnilConnect, ValidUntilReboot and Timeout in GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send RTSP 200 OK response for RTSP DESCRIBE, SETUP, PLAY and TEARDOWN requests.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid SDP information:
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                There is no backchannel (marked with a=sendonly attribute)
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                There is no G.711 on the list of supported codecs for backchannel
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send RTCP sender report correctly.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not process G.711 RTP media streaming.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send G.711 RTP media streaming to Output from media profile.
-
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> See <xref linkend="Annex_HelperStreamSetupSyntax"/> for correct syntax for the StreamSetup element in GetStreamUri requests. See <xref linkend="Annex_HelperInvalidRTPHeader"/> for Invalid RTP header definition.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> See <xref linkend="Annex_NameParameters"/> for Name and Token Parameters Length limitations.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Client checks authentication type for all RTSP requests by following the procedure mentioned in <xref linkend="Annex_HelperRTSPAuthentication"/>.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Clients checks IP type of Stream URI by following the procedure mentioned in   <xref linkend="Annex_HelperCheckIPTypeOfURI"/>.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Clients checks types of IP addresses returned in response to DESCRIBE by following the procedure mentioned in <xref linkend="Annex_HelperIPAddressTypeInRTSP"/>.
-        </para>
-
-      </section>
+      
       <section xml:id="tc.RTSS-6-1-3">
         <title>BACKCHANNEL – G.711 (RTP/RTSP/TCP, IPv4)</title>
         <para>
@@ -29848,248 +29626,7 @@
         </para>
 
       </section>
-      <section xml:id="tc.RTSS-6-1-5">
-        <title>BACKCHANNEL – G.726 (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</title>
-        <para>
-          <emphasis role="bold">Test Case ID:</emphasis> RTSS-6-1-5
-        </para>
-        <para>
-          <emphasis role="bold">Specification Coverage:</emphasis> Back Channel Connection, RTSP Require- Tag, Connection setup for a bi-directional connection
-        </para>
-        <para>
-          <emphasis role="bold">Command Under Test:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">WSDL Reference:</emphasis> media.wsdl
-        </para>
-        <para>
-          <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for G.726 audio streaming using RTP-Unicast/RTSP/HTTP/TCP, IPv4 transport for IPv4.
-        </para>
-        <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Media is supported by the DUT. Audio backchannel is supported by the DUT and G.726 Decoder is implemented by DUT. Media Service entry point is received from the DUT.
-        </para>
-        <para>
-          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-        </para>
-        <para>
-          <emphasis role="bold">Test Procedure:</emphasis>
-        </para>
-        <para>
-          <orderedlist>
-            <?dbfo label-width="1.5em"?>
-            <listitem>
-              <para>
-                Start an ONVIF Client.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Start the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client selects a media profile with G.726 decoding and not only www.onvif.org/ver20/HalfDuplex/Client send primacy support by following the procedure mentioned in <xref linkend="Annex_HelperProfileConfigurationForBackchannelAudioStreaming"/>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes SetAudioOutputConfigurationRequest message (SendPrimacy = “www.onvif.org/ver20/HalfDuplex/Client”, OutputLevel = o1 and force persistence = false) to set output configuration for backchannel.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the SetAudioOutputConfigurationResponse message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes GetStreamUriRequest message (ProfileToken, Stream = “RTP-Unicast”, Transport.Protocol = “HTTP”) to retrieve media stream URI for the selected media profile.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends the GetStreamUriResponse message with RTSP URI and parameters defining the lifetime of the URI like ValidUntilConnect, ValidUntilReboot and Timeout.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client verifies the RTSP media stream URI provided by the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes HTTP GET Request on DUT and establishes DUT to ONVIF Client connection for RTP data transfer.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes HTTP POST Request and establishes ONVIF Client to DUT connection for RTSP control requests.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP DESCRIBE request with additional Require-tag (Require: www.onvif.org/ver20/backchannel) on HTTP POST connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message and SDP information on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify SDP information from the DUT. Check that DUT return audio backchannel and G.726 on the list of supported codecs for backchannel.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP SETUP request on HTTP POST connection for backchannel with transport parameter RTP-Unicast/RTSP/HTTP/TCP, with additional Require-tag (Require: www.onvif.org/ver20/backchannel).
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message and the media stream information on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP PLAY request on HTTP POST connection with additional Require-tag (Require: www.onvif.org/ver20/backchannel).
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client sends RTP Unicast G.726 audio stream to DUT on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT processes a stream and send it to Output.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends RTCP sender report to ONVIF Client.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client validates the received RTCP packets.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP TEARDOWN control request on HTTP POST connection with additional Require-tag (Require: www.onvif.org/ver20/backchannel) at the end of media streaming to terminate the RTSP session.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK Response on HTTP GET connection and closes the HTTP GET connection.
-              </para>
-            </listitem>
-          </orderedlist>
-        </para>
-        <para>
-          <emphasis role="bold">Test Result:</emphasis>
-        </para>
-        <para>
-          <emphasis role="bold">PASS –</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                DUT passes all assertions.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">FAIL –</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                The DUT did not have valid media profile.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send SetAudioOutputConfigurationResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid RTSP URI, ValidUnilConnect, ValidUntilReboot and Timeout in GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send RTSP 200 OK response for RTSP DESCRIBE, SETUP, PLAY and TEARDOWN requests.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid SDP information:
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                There is no backchannel (marked with a=sendonly attribute)
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                There is no G.726 on the list of supported codecs for backchannel
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send RTCP sender report correctly.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not process G.726 RTP media streaming.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send G.726 RTP media streaming to Output from media profile.
-
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> See <xref linkend="Annex_HelperStreamSetupSyntax"/> for correct syntax for the StreamSetup element in GetStreamUri requests. See <xref linkend="Annex_HelperInvalidRTPHeader"/> for Invalid RTP header definition.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> See <xref linkend="Annex_NameParameters"/> for Name and Token Parameters Length limitations.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Client checks authentication type for all RTSP requests by following the procedure mentioned in <xref linkend="Annex_HelperRTSPAuthentication"/>.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Clients checks IP type of Stream URI by following the procedure mentioned in   <xref linkend="Annex_HelperCheckIPTypeOfURI"/>.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Clients checks types of IP addresses returned in response to DESCRIBE by following the procedure mentioned in <xref linkend="Annex_HelperIPAddressTypeInRTSP"/>.
-        </para>
-
-      </section>
+      
       <section xml:id="tc.RTSS-6-1-6">
         <title>BACKCHANNEL – G.726 (RTP/RTSP/TCP, IPv4)</title>
         <para>
@@ -30564,248 +30101,7 @@
         </para>
 
       </section>
-      <section xml:id="tc.RTSS-6-1-8">
-        <title>BACKCHANNEL – AAC (RTP-Unicast/RTSP/HTTP/TCP, IPv4)</title>
-        <para>
-          <emphasis role="bold">Test Case ID:</emphasis> RTSS-6-1-8
-        </para>
-        <para>
-          <emphasis role="bold">Specification Coverage:</emphasis> Back Channel Connection, RTSP Require- Tag, Connection setup for a bi-directional connection
-        </para>
-        <para>
-          <emphasis role="bold">Command Under Test:</emphasis> None
-        </para>
-        <para>
-          <emphasis role="bold">WSDL Reference:</emphasis> media.wsdl
-        </para>
-        <para>
-          <emphasis role="bold">Test Purpose:</emphasis> To verify DUT Backchannel for AAC audio streaming using RTP-Unicast/RTSP/HTTP/TCP, IPv4 transport for IPv4.
-        </para>
-        <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Media is supported by the DUT. Audio backchannel is supported by the DUT and AAC Decoder is implemented by DUT. Media Service entry point is received from the DUT.
-        </para>
-        <para>
-          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
-        </para>
-        <para>
-          <emphasis role="bold">Test Procedure:</emphasis>
-        </para>
-        <para>
-          <orderedlist>
-            <?dbfo label-width="1.5em"?>
-            <listitem>
-              <para>
-                Start an ONVIF Client.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Start the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client selects a media profile with AAC decoding and not only www.onvif.org/ver20/HalfDuplex/Client send primacy support by following the procedure mentioned in <xref linkend="Annex_HelperProfileConfigurationForBackchannelAudioStreaming"/>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes SetAudioOutputConfigurationRequest message (SendPrimacy = “www.onvif.org/ver20/HalfDuplex/Client”, OutputLevel = o1 and force persistence = false) to set output configuration for backchannel.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the SetAudioOutputConfigurationResponse message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes GetStreamUriRequest message (ProfileToken, Stream = “RTP-Unicast”, Transport.Protocol = “HTTP”) to retrieve media stream URI for the selected media profile.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends the GetStreamUriResponse message with RTSP URI and parameters defining the lifetime of the URI like ValidUntilConnect, ValidUntilReboot and Timeout.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client verifies the RTSP media stream URI provided by the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes HTTP GET Request on DUT and establishes DUT to ONVIF Client connection for RTP data transfer.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes HTTP POST Request and establishes ONVIF Client to DUT connection for RTSP control requests.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP DESCRIBE request with additional Require-tag (Require: www.onvif.org/ver20/backchannel) on HTTP POST connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message and SDP information on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify SDP information from the DUT. Check that DUT return audio backchannel and AAC on the list of supported codecs for backchannel.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP SETUP request on HTTP POST connection for backchannel with transport parameter RTP-Unicast/RTSP/HTTP/TCP, with additional Require-tag (Require: www.onvif.org/ver20/backchannel).
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message and the media stream information on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP PLAY request on HTTP POST connection with additional Require-tag (Require: www.onvif.org/ver20/backchannel).
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK message on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client sends RTP Unicast AAC audio stream to DUT on HTTP GET connection.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT processes a stream and send it to Output.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends RTCP sender report to ONVIF Client.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client validates the received RTCP packets.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes RTSP TEARDOWN control request on HTTP POST connection with additional Require-tag (Require: www.onvif.org/ver20/backchannel) at the end of media streaming to terminate the RTSP session.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT sends 200 OK Response on HTTP GET connection and closes the HTTP GET connection.
-              </para>
-            </listitem>
-          </orderedlist>
-        </para>
-        <para>
-          <emphasis role="bold">Test Result:</emphasis>
-        </para>
-        <para>
-          <emphasis role="bold">PASS –</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                DUT passes all assertions.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">FAIL –</emphasis>
-          <itemizedlist>
-            <listitem>
-              <para>
-                The DUT did not have valid media profile.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send SetAudioOutputConfigurationResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid RTSP URI, ValidUnilConnect, ValidUntilReboot and Timeout in GetStreamUriResponse message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send RTSP 200 OK response for RTSP DESCRIBE, SETUP, PLAY and TEARDOWN requests.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send valid SDP information:
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                There is no backchannel (marked with a=sendonly attribute)
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                There is no AAC on the list of supported codecs for backchannel
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send RTCP sender report correctly.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not process AAC RTP media streaming.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT did not send AAC RTP media streaming to Output from media profile.
-
-              </para>
-            </listitem>
-          </itemizedlist>
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> See <xref linkend="Annex_HelperStreamSetupSyntax"/> for correct syntax for the StreamSetup element in GetStreamUri requests. See <xref linkend="Annex_HelperInvalidRTPHeader"/> for Invalid RTP header definition.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> See <xref linkend="Annex_NameParameters"/> for Name and Token Parameters Length limitations.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Client checks authentication type for all RTSP requests by following the procedure mentioned in <xref linkend="Annex_HelperRTSPAuthentication"/>.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Clients checks IP type of Stream URI by following the procedure mentioned in   <xref linkend="Annex_HelperCheckIPTypeOfURI"/>.
-        </para>
-        <para>
-          <emphasis role="bold">Note:</emphasis> ONVIF Clients checks types of IP addresses returned in response to DESCRIBE by following the procedure mentioned in <xref linkend="Annex_HelperIPAddressTypeInRTSP"/>.
-        </para>
-
-      </section>
+      
       <section xml:id="tc.RTSS-6-1-9">
         <title>BACKCHANNEL – AAC (RTP/RTSP/TCP, IPv4)</title>
         <para>
@@ -35489,7 +34785,28 @@
           </listitem>
           <listitem>
             <para>
-              ONVIF Client waits for HELLO message from the default network interface.
+              If DUT supports Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits for HELLO message from the default network interface.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If DUT does not support Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                  </para>
+                </listitem>
+              </orderedlist>
             </para>
           </listitem>
           <listitem>
@@ -35575,7 +34892,20 @@
           </listitem>
           <listitem>
             <para>
-              If SystemReboot is invoked, wait for HELLO message from the default network interface.
+              If SystemReboot is invoked and DUT supports Discovery, wait for HELLO message from the default network interface.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If DUT does not support Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                  </para>
+                </listitem>
+              </orderedlist>
             </para>
           </listitem>
         </orderedlist>

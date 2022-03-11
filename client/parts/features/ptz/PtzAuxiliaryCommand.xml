@@ -47,13 +47,7 @@
           <listitem>
             <para>
               Client is considered as supporting PTZ - Auxiliary Command if the
-              following conditions are met:<itemizedlist>
-                <listitem>
-                  <para>
-                    Client is able to read PTZ capabilities from PTZ Node
-                    using EITHER GetNodes OR GetNode operations AND
-                  </para>
-                </listitem>
+              following conditions are met:<itemizedlist>               
                 <listitem>
                   <para>
                     Client is able to call an auxiliary operation on Device
@@ -66,13 +60,7 @@
           <listitem>
             <para>
               Client is considered as NOT supporting PTZ - Auxiliary Command if ANY
-              of the following is TRUE:<itemizedlist>
-                <listitem>
-                  <para>
-                    BOTH (No Valid Device Response to GetNodes request AND No
-                    Valid Device Response to GetNode request) OR
-                  </para>
-                </listitem>
+              of the following is TRUE:<itemizedlist>               
                 <listitem>
                   <para>
                     No Valid Device Response to SendAuxiliaryCommand
@@ -96,9 +84,6 @@
       </para>
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Send Auxiliary Command (PtzAuxiliaryCommand_PtzSendAuxiliaryCommand)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
       </para>
      
       <para>

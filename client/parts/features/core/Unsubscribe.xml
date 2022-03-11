@@ -84,9 +84,6 @@
       <emphasis role="bold">Profile S Requirement:</emphasis> Optional
     </para>
     <para>
-      <emphasis role="bold">Profile Q Requirement:</emphasis> Optional
-    </para>
-    <para>
       <emphasis role="bold">Profile G Requirement:</emphasis> Optional
     </para>
     <para>
@@ -141,24 +138,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Unsubscribe (Unsubscribe_UnsubscribeAction)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile T Normative Reference:</emphasis> Optional
       </para>
 
       <para>

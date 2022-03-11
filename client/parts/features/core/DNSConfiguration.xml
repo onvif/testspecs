@@ -72,9 +72,6 @@
         <emphasis role="bold">Profile G Requirement:</emphasis> Optional
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> Optional
       </para>
     </section>
@@ -137,22 +134,7 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get DNS (DNSConfiguration_GetDNS)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-      </para>
-
+      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that DNS settings of Device are received by Client using the
         <emphasis role="bold">GetDNS</emphasis> operation.
@@ -253,22 +235,7 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set DNS (DNSConfiguration_SetDNS)
       </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-      </para>
-
+      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         set the DNS settings on Device using the <emphasis role="bold">SetDNS</emphasis> operation.

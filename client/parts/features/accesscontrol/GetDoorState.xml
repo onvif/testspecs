@@ -86,10 +86,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Door State (GetDoorState_GetDoorStateRequest)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetDoorState">Profile D Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve door state using the

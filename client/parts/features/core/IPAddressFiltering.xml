@@ -157,18 +157,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Ip Address Filter (IPAddressFiltering_GetIpAddressFilter)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -264,18 +252,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set IPv4 Address Filter (IPAddressFiltering_SetIpV4AddressFilter)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -392,18 +368,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set IPv6 Address Filter (IPAddressFiltering_SetIpV6AddressFilter)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -522,18 +486,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Add IPv4 Address Filter (IPAddressFiltering_AddIpV4AddressFilter)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -650,18 +602,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Add IPv6 Address Filter (IPAddressFiltering_AddIpV6AddressFilter)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -777,18 +717,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Remove IPv4 Address Filter (IPAddressFiltering_RemoveIpV4AddressFilter)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -907,19 +835,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Remove IPv6 Address Filter (IPAddressFiltering_RemoveIpV6AddressFilter)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
-
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         delete the IP address filter from Device using the RemoveIPAddressFilter

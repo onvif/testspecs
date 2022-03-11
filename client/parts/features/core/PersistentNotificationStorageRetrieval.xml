@@ -109,12 +109,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Seek (PersistentNotificationStorageRetrieval_Seek)
       </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to

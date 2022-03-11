@@ -79,9 +79,6 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Options (SetImagingSettings_GetOptions)
       </para>
-      <para>
-        <emphasis role="bold" annotations="GetOptions">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that imaging options for Device is received by Client using the
@@ -175,9 +172,6 @@
       </para>
         <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Imaging Settings (SetImagingSettings_SetImagingSettingsRequest)
-      </para>
-      <para>
-        <emphasis role="bold" annotations="SetImagingSettings">Profile T Normative Reference:</emphasis> Mandatory
       </para>
      
       <para>

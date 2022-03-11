@@ -73,17 +73,7 @@
           <listitem>
             <para>
               Client is considered as supporting External Authorization if the
-              following conditions are met:<itemizedlist>
-                <listitem>
-                  <para>
-                    Client supports EventHandling_Pullpoint feature AND
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Client supports access_control_decisions feature AND
-                  </para>
-                </listitem>
+              following conditions are met:<itemizedlist>               
                 <listitem>
                   <para>
                     Client is able to receive authorization request from
@@ -102,17 +92,8 @@
           <listitem>
             <para>
               Client is considered as NOT supporting External Authorization if ANY
-              of the following is TRUE:<itemizedlist>
-                <listitem>
-                  <para>
-                    Client does not support EventHandling_Pullpoint feature OR
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Client does not support access_control_decisions feature OR
-                  </para>
-                </listitem>
+              of the following is TRUE:<itemizedlist>              
+               
                 <listitem>
                   <para>
                     Client unable to receive authorization request from Device
@@ -141,9 +122,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Receive Authorization Request (ExternalAuthorization_ReceiveAuthRequest)
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -323,13 +301,7 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Send Authorization Desicion (ExternalAuthorization_SendAuthDecision)
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="ExternalAuthorization">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
+      </para>    
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         send Granted or Denied decision to Device.

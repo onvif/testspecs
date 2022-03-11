@@ -110,9 +110,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Get Relay Outputs (RelayOutputs_GetRelayOutputs)
       </para>
       <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         list available relay outputs using the GetRelayOutputs operation for Device Management Service.
       </para>
@@ -224,9 +221,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Relay Output State (RelayOutputs_SetRelayOutputState)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to trigger a relay output using the
@@ -344,9 +338,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Set Relay Output Settings Bistable Mode (RelayOutputs_SetRelayOutputBistable)
       </para>
       <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         set settings of relay output in "Bistable" mode using the <emphasis role="bold">SetRelayOutputSettings</emphasis> operation for Device Management Service.
       </para>
@@ -461,9 +452,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Relay Output Settings Monostable Mode (RelayOutputs_SetRelayOutputMonostable)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to

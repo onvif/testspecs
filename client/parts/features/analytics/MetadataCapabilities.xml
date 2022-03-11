@@ -95,10 +95,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Supported Metadata (MetadataCapabilities_GetSupportedMetadata)
       </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="GetSupportedMetadata">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -208,10 +204,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Metadata Instance (MetadataCapabilities_GetMetadataInstance)
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="GetMetadataInstance">Profile M Normative Reference:</emphasis> Mandatory
       </para>
 
       <para>

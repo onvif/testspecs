@@ -92,9 +92,6 @@
         <emphasis role="bold" annotations="7.3 Discovery">Profile D Requirement:</emphasis> Mandatory
       </para>
       <para>
-        <emphasis role="bold" annotations="9.1 Discovery">Profile Q Requirement:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold" annotations="9.3 Discovery">Profile G Requirement:</emphasis> Conditional
       </para>
       <para>
@@ -177,31 +174,7 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Device Discovery Type Filter (DeviceDiscoveryTypeFilter_DeviceDiscoveryFilter)
       </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> None
-      </para>
-      <para>
-        <emphasis role="bold" annotations="9.3 Discovery">Profile G Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="9.1 Discovery">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="9.1 Discovery">Profile Q Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="6.7 Discovery">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="7.3 Discovery">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="WS-Discovery">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="WS-Discovery">Profile M Normative Reference:</emphasis> Mandatory
-      </para>
+      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         discover devices with Device Discovery Type.

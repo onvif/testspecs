@@ -25,7 +25,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Event Broker Configuration (EventBrokerConfiguration)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> [TODO: feature corresponding to MQTT Event Handling will be added in the DTT] 
+        <emphasis role="bold" annotations="EventBroker">Check Condition based on Device Features:</emphasis> Event Broker is supported by Device.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -105,10 +105,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> GetEventBrokers (EventBrokerConfiguration_GetEventBrokers)
-        </para>       
-        <para>
-          <emphasis role="bold"
-                    annotations="GetEventBrokers">Profile M Normative Reference:</emphasis> Conditional
         </para>
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that event broker configuration provided by Device are received by Client using the
@@ -213,10 +209,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> AddEventBroker (EventBrokerConfiguration_AddEventBroker)
-        </para>       
-        <para>
-          <emphasis role="bold"
-                    annotations="AddEventBroker">Profile M Normative Reference:</emphasis> Conditional
         </para>
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client adds event broker configuration on Device using the
@@ -320,11 +312,7 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> DeleteEventBroker (EventBrokerConfiguration_DeleteEventBroker)
-        </para>       
-        <para>
-          <emphasis role="bold"
-                    annotations="DeleteEventBroker">Profile M Normative Reference:</emphasis> Conditional
-        </para>
+        </para>  
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client removes event broker configuration from Device using the
           <emphasis role="bold">DeleteEventBroker</emphasis> operation.

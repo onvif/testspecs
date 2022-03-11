@@ -1,0 +1,3167 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--For PDF version (standard)-->
+<!-- <?xml-stylesheet href="docbook/xsl/fo/docbook.xsl" type="text/xsl" ?>-->
+<!--For PDF version-->
+<!-- <?xml-stylesheet href="ONVIF-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<!--For online version-->
+<?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
+<!--For PDF version - New ONVIF-->
+<!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
+<book xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+      xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd"
+      version="0.1"
+      xml:id="ONVIF_Access_Policy_Device_TS">
+  <info>
+    <orgname>
+      <phrase>
+        <trademark class="registered">ONVIF</trademark>
+      </phrase>
+    </orgname>
+    <title>Access Policy Device Test Specification</title>
+    <releaseinfo>Access Policy Device Test Spec</releaseinfo>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
+    <copyright>
+      <year>2021</year>
+      <holder>ONVIF, Inc. All rights reserved.</holder>
+    </copyright>
+    <address>
+      <uri>www.onvif.org</uri>
+    </address>
+    <legalnotice role="notices">
+      <para>
+        Recipients of this document may copy, distribute, publish, or display this
+        document so long as this copyright notice, license and disclaimer are retained with
+        all copies of the document. No license is granted to modify this document.
+      </para>
+      <para>
+        THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR
+        AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT
+        NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+        NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY
+        PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS,
+        COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+      </para>
+      <para>
+        IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR
+        ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES,
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR
+        NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE
+        POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND
+        ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT. THE
+        FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR
+        LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE
+        AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE
+        CORPORATION.
+      </para>
+    </legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jun 09, 2021</date>
+        <revdescription>
+          <para>
+            First Issue.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jun 22, 2021</date>
+        <revdescription>
+          <para>
+            Update after Working Groupp review.
+          </para>
+        </revdescription>
+        </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Oct 07, 2021</date>
+        <revdescription>
+          <para>The following tests and annexes were moved to Access Policy Device Test Specification according to #2204:</para>
+          <para>ACCESS_POLICY-1-1-2 Default access policy - Anonymous</para>
+          <para>ACCESS_POLICY-1-1-3 Default access policy - User</para>
+          <para>ACCESS_POLICY-1-1-4 Default access policy - Administrator and Anonymous</para>
+          <para>ACCESS_POLICY-1-1-5 Default access policy - Administrator And User/Operator</para>
+          <para>A.3 Create user with defined user level</para>
+          <para>A.4 Get service capabilities</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Oct 08, 2021</date>
+        <revdescription>
+          <para>The following annexes were added according to #2233:</para>
+          <para>A.5 Acceptable Faults</para>
+          <para>The following tests were updated according to #2233:</para>
+          <para>ACCESS_POLICY-1-1-1 ACCESS POLICY (ACCESS NOT ALLOWED)</para>
+          <para>The following annexes were updated according to #2232:</para>
+          <para>A.1 User Credentials File</para>
+          <para>The following annexes were updated according to #2213:</para>
+          <para>A.2 Access Policy File</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+  <chapter xml:id="s.intro">
+    <title>Introduction</title>
+    <para>
+      Access control for ONVIF, including the ONVIF Default Access Policy, is described in the ONVIF Core Specification, section 5.9.2. User-based access control.
+      The recommended access class for each service request is described in the ONVIF service specifications.
+    </para>
+    <para>
+      This test case has been created so that ONVIF members can test whether a device is correctly following an access policy, whether it is the default access policy or a proprietary access policy.
+    </para>
+    <para>
+      As the default access policy described in ONVIF Core Specification section 5.9.2.4 is not mandatory, the Default Access Policy Test Case is in Diagnostic mode only in the ONVIF Device Test Tool.
+    </para>
+    <para>
+      This test case is currently in beta stage and is provided as is, with no guarantees for its accuracy.
+    </para>
+    <section xml:id="s.intro.scope">
+      <title>Scope</title>
+      <para>
+        This ONVIF Access Policy Device Test Specification defines and regulates the  testing procedure of the access policy for ONVIF conformant devices.
+        Access policy testing is meant to be non-functional black box testing.
+        The objective of this specification to provide test cases to test individual requirements of ONVIF devices according to ONVIF Access Policy Specification which is defined in [ONVIF Network Interface Specifications].
+      </para>
+      <para>
+        The principal intended purposes are:<itemizedlist>
+          <listitem>
+            <para>Provide self-assessment tool for implementations.</para>
+          </listitem>
+          <listitem>
+            <para>
+              Provide comprehensive test suite coverage for [ONVIF Network Interface Specifications].
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        This specification <emphasis role="bold">does not</emphasis> address the following:
+        <itemizedlist>
+          <listitem>
+            <para>
+              Product use cases and functional (performance and regression) testing.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SOAP Implementation Interoperability test i.e. Web Service Interoperability Basic Profile version 2.0 (WS-I BP 2.0).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Network protocol implementation, conformance tests for HTTP, HTTPS, RTP and RTSP protocols.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Poor streaming performance test (audio/video distortions, missing audio/video frames, incorrect
+              library synchronization etc.).
+            </para>
+            <para>
+              Wi-Fi conformance test.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        The set of ONVIF Test Specification will not cover the complete set of requirements as defined in [ONVIF Network Interface Specifications];
+        instead, it will cover its subset.
+      </para>
+      <para>
+        This ONVIF Access Policy Device Test Specification covers requirements for user-based access control,
+        which is a functional block of [ONVIF Network Interface Specifications]. The following section gives a brief overview of each functional block and its scope.
+      </para>
+    </section>
+    <section xml:id="s.intro.scope.access_policy">
+      <title>Access Policy</title>
+      <para>
+        Access Policy cases cover verification of user-based access control defined in [ONVIF Core Specification].
+      </para>
+    </section>
+  </chapter>
+  <chapter xml:id="s.docbook">
+    <title>Normative references</title>
+    <itemizedlist>
+      <listitem>
+        <para>[ONVIF Conformance] ONVIF Conformance Process Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/conformance/">https://www.onvif.org/profiles/conformance/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Profile Policy] ONVIF Profile Policy:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/">https://www.onvif.org/profiles/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Network Interface Specs] ONVIF Network Interface Specification documents:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Core Specs] ONVIF Core Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/specifications/">https://www.onvif.org/profiles/specifications/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ONVIF Base Test] ONVIF Base Device Test Specification:</para>
+        <para>
+          <link xlink:href="https://www.onvif.org/profiles/conformance/device-test/">https://www.onvif.org/profiles/conformance/device-test/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ISO/IEC Directives, Part 2] ISO/IEC Directives, Part 2, Annex H:</para>
+        <para>
+          <link xlink:href="http://www.iso.org/directives">http://www.iso.org/directives</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[ISO 16484-5] ISO 16484-5:2014-09 Annex P:</para>
+        <para>
+          <link xlink:href="https://www.iso.org/obp/ui/#!iso:std:63753:en">https://www.iso.org/obp/ui/#!iso:std:63753:en</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[SOAP 1.2, Part 1] W3C SOAP 1.2, Part 1, Messaging Framework:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/soap12-part1/">http://www.w3.org/TR/soap12-part1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[XML-Schema, Part 1] W3C XML Schema Part 1: Structures Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[XML-Schema, Part 2] W3C XML Schema Part 2: Datatypes Second Edition:</para>
+        <para>
+          <link xlink:href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2/</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[WS-Security] "Web Services Security: SOAP Message Security 1.1 (WS-Security 2004)", OASIS Standard, February 2006.:</para>
+        <para>
+          <link xlink:href="http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf">http://www.oasis-open.org/committees/download.php/16790/wss-v1.1-spec-os-SOAPMessageSecurity.pdf</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>[RFC 2396] "Uniform Resource Identifiers (URI): Generic Syntax", T. Berners-Lee, MIT/LCS, R. Fielding, U.C. Irvine, L. Masinter, Xerox Corporation, August 1998:</para>
+        <para>
+          <link xlink:href="https://www.ietf.org/rfc/rfc2396.txt">https://www.ietf.org/rfc/rfc2396.txt</link>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter xml:id="additions">
+    <title>Terms and Definitions</title>
+    <section xml:id="additions.conventions">
+      <title>Conventions</title>
+      <para>
+        The key words "shall", "shall not", "should", "should not", "may", "need not",
+        "can", "cannot" in this specification are to be interpreted as described in [ISO/IEC
+        Directives Part 2].
+      </para>
+    </section>
+    <section xml:id="additions.definitions">
+      <title>Definitions</title>
+      <para>This section describes terms and definitions used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>ONVIF Device (DUT)</term>
+          <listitem>
+            <para>
+              Computer appliance or software program that exposes one or multiple
+              ONVIF Web Services.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ONVIF Client</term>
+          <listitem>
+            <para>
+              Computer appliance or software program that uses ONVIF Web
+              Services.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ONVIF Device Test Tool</term>
+          <listitem>
+            <para>
+              ONVIF Device Test Tool that tests ONVIF Device implementation towards
+              the ONVIF Test Specification set.
+            </para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </section>
+    <section xml:id="additions.abbreviations">
+      <title>Abbreviations</title>
+      <para>This section describes abbreviations used in this document.</para>
+      <variablelist>
+        <varlistentry>
+          <term>UI</term>
+          <listitem>
+            <para>User Interface.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>DUT</term>
+          <listitem>
+            <para>Device Under Test.</para>
+          </listitem>
+        </varlistentry>
+
+      </variablelist>
+    </section>
+  </chapter>
+  <chapter xml:id="overview">
+    <title>Test Overview</title>
+    <para>
+      This section describes about the test setup and prerequisites needed,
+      and the test policies that should be followed for test case execution.
+    </para>
+    <section xml:id="overview.test_setup">
+      <title>Test Setup</title>
+      <section xml:id="overview.test_setup.network_configuration">
+        <title>Network Configuration for an ONVIF Device</title>
+        <para>
+          The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 4.1).
+        </para>
+        <para>
+          Based on the individual test case requirements, most of the entities in the below setup may not be needed for the execution of those corresponding test cases.
+        </para>
+        <figure>
+          <title>Test Configuration for an ONVIF Device</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="test_network.png"
+                         format="PNG"
+                         scalefit="0"/>
+            </imageobject>
+            <textobject>
+              <phrase>Test Configuration Environment Set Up</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          <emphasis role="bold">DUT:</emphasis> ONVIF device to be tested. Hereafter, this is referred to as DUT (Device Under Test).
+        </para>
+        <para>
+          <emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system, and it verifies the behavior of the DUT. It handles both expected and unexpected behavior.
+        </para>
+        <para>
+          <emphasis role="bold">HTTP Proxy:</emphasis> Provides facilitation in case of RTP and RTSP tunneling over HTTP.
+        </para>
+        <para>
+          <emphasis role="bold">Wireless Access Point:</emphasis> Provides wireless connectivity to the devices that support wireless connection.
+        </para>
+        <para>
+          <emphasis role="bold">DNS Server:</emphasis> Provides DNS related information to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">DHCP Server:</emphasis> Provides IPv4 address to the connected devices.
+        </para>
+        <para>
+          <emphasis role="bold">NTP Server:</emphasis> Provides time synchronization between ONVIF Client and DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Switching Hub:</emphasis> Provides network connectivity among all the test equipment in the test environment. All devices should be connected to the Switching Hub.
+          When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering to avoid multicast traffic being flooded to all ports, because this may affect test stability.
+        </para>
+        <para>
+          <emphasis role="bold">Router:</emphasis> Provides router advertisements for IPv6 configuration.
+        </para>
+      </section>
+    </section>
+    <section xml:id="overview.prerequisites">
+      <title>Pre-requisites</title>
+      <para>
+        The pre-requisites for executing the test cases described in this test specification are:
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              The ONVIF Device shall be configured with an IPv4 address.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The ONVIF Device shall be IP reachable in the test environment.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The ONVIF Device shall be able to be discovered by the Test Tool.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The ONVIF Device shall be configured with at least one user account from each available user group.
+            </para>
+          </listitem>
+
+        </orderedlist>
+      </para>
+    </section>
+    <section xml:id="overview.test_policy">
+      <title>Test Policy</title>
+      <para>
+        This section describes the test policies, specific to the test case execution of each functional block.
+      </para>
+      <para>
+        The ONVIF Device shall adhere to the test policies defined in this section.
+      </para>
+      <section xml:id="overview.test_policy.access_policy">
+        <title>Access Policy</title>
+        <para>
+          The following tests are performed
+          <itemizedlist>
+            <listitem>
+              <para>
+                Negative test case ACCESS_POLICY-1-1-1 ACCESS POLICY (ACCESS NOT ALLOWED). This test case goal is checking that a DUT does not allow access for user level lower than the last allowed user level.
+              </para>
+              <para>
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      If Access Policy of a DUT is allowed access to a service request for Administrator only, then a DUT shall reject access for Operator user level.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If Access Policy of a DUT is allowed access to a service request for Administrator and Operator, then a DUT shall reject access for User user level.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If Access Policy of a DUT is allowed access to a service request for Administrator, Operator, and User, then a DUT shall reject access for Anonymous.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      DTT expects HTTP error code 401 or env:Receiver/ter:ActionNotSupported SOAP fault message or env:Receiver/ter:ActionNotSupported/subcode SOAP fault message from a device.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      A device shall have full set of users in the User Credentials file in case Default Access Policy File is used.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+        <para>
+          Please, refer to <xref linkend="tc.access_policy"/> for Access Policy Test Cases.
+        </para>
+
+      </section>
+    </section>
+  </chapter>
+  <!--Access Policy Test Cases-->
+  <chapter xml:id="tc.access_policy" xreflabel="Section 5">
+    <title>Access Policy Test Cases</title>
+<!-- ACCESS_POLICY-1-1-1 -->
+    <section xml:id="tc.ACCESS_POLICY-1-1-1" version="?">
+      <title>ACCESS POLICY (ACCESS NOT ALLOWED)</title>
+      <para>
+        <emphasis role="bold">Test Case ID:</emphasis> ACCESS_POLICY-1-1-1
+      </para>
+      <para>
+        <emphasis role="bold">Specification Coverage:</emphasis> User-based access control (ONVIF Core Specification)
+      </para>
+      <para>
+        <emphasis role="bold">Feature Under Test:</emphasis> Access Policy
+      </para>
+      <para>
+        <emphasis role="bold">WSDL Reference:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that a DUT does not authorize service requests for users with prohibited security level.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Digest is supported by a DUT.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If a DUT has custom User Credentials, then User Credentials file is provided by Test Operator using the Device Test Tool UI (please, see Annex <xref linkend="Annex_UserListFile"/>).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If a DUT has custom Access Policy, then Access Policy File is provided by Test Operator using the Device Test Tool UI (please, see Annex <xref linkend="Annex_AccessPolicyFile"/>).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+            Test operator chose which faults are treated as PASSED (please, see Annex <xref linkend="Annex_AcceptableFaults"/>).
+            </para>
+            </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+      </para>
+      <para>
+        <emphasis role="bold">Test Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              Start an ONVIF Client.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Start the DUT.
+            </para>
+          </listitem>
+                
+          <listitem>
+            <para>
+              ONVIF Client validates Access Policy File and User Credentials consistency
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                 <listitem>
+            <para>
+              Set <emphasis role="italic">userList</emphasis> := User Credentials file from UI (see Annex <xref linkend="Annex_UserListFile"/>).
+            </para>
+          </listitem>   
+                <listitem>
+                  <para>
+                    If Access Policy File is not provided in the Device Test Tool UI
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          Set <emphasis role="italic">accessPolicyFile</emphasis> := Default Access Policy File (see Annex <xref linkend="Annex_AccessPolicyFile"/>).
+                        </para>
+                      </listitem>
+                    <listitem>
+                        <para>
+                          If <emphasis role="italic">userList</emphasis> does not contain user with user level "User", FAIL the test and skip other steps.
+                        </para>
+                      </listitem>
+                    <listitem>
+                        <para>
+                          If <emphasis role="italic">userList</emphasis> does not contain user with user level "Operator", FAIL the test and skip other steps.
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If Access Policy File is provided in the Device Test Tool UI 
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          Set <emphasis role="italic">accessPolicyFile</emphasis> := Custom Access Policy File from UI (see Annex <xref linkend="Annex_AccessPolicyFile"/>).
+                        </para>
+                      </listitem>
+                    <listitem>
+                        <para>
+                          If <emphasis role="italic">accessPolicyFile</emphasis> contains at least one Request in AccessGroup with UserLevel="User" and  <emphasis role="italic">userList</emphasis> does not contain user with user level "User", FAIL the test and skip other steps. 
+                        </para>
+                      </listitem>
+                   <listitem>
+                        <para>
+                          If <emphasis role="italic">accessPolicyFile</emphasis> contains contains at least one Request in AccessGroup with UserLevel="Operator" and  <emphasis role="italic">userList</emphasis> does not contain user with user level "Operator", FAIL the test and skip other steps. 
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>          
+          <listitem>
+            <para>
+              ONVIF Client sets users
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>                
+                <listitem>
+                  <para>
+                    Set <emphasis role="italic">user</emphasis> := User with UserLevel = "User" from <emphasis role="italic">userList</emphasis> if provided.
+                  </para>
+                </listitem>                
+                <listitem>
+                  <para>
+                    Set <emphasis role="italic">operator</emphasis> := User with UserLevel = "Operator" from <emphasis role="italic">userList</emphasis> if provided.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+
+          <listitem xml:id="ACCESS_POLICY-1-1-1.AnonymousRequests">
+            <para>
+              For each Request (<emphasis role="italic">request</emphasis>) from AccessGroup with UserLevel="User" from <emphasis role="italic">accessPolicyFile</emphasis> send the request with user level Anonymous (NOTE: only for services supported by ONVIF Client)
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    If DUT supports service that corresponds to Service.SpecificationName value of <emphasis role="italic">request</emphasis> in <emphasis role="italic">accessPolicyFile</emphasis>
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          ONVIF Client generates valid request structure with arbitrary values of parameters for command corresponds to <emphasis role="italic">request</emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Client invokes generated <emphasis role="italic">request</emphasis> <emphasis role="underline">without any credentials</emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          DUT responds with <emphasis role="bold">HTTP error code 401</emphasis> or with <emphasis role="bold">env:Receiver/ter:ActionNotSupported</emphasis> SOAP fault message or with <emphasis role="bold">env:Receiver/ter:ActionNotSupported/subcode</emphasis> SOAP fault message (see Annex <xref linkend="Annex_AcceptableFaults"/>).
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem xml:id="ACCESS_POLICY-1-1-1.RequestsWithUserCredentials">
+            <para>
+              For each Request (<emphasis role="italic">request</emphasis>) from AccessGroup with UserLevel="Operator" from <emphasis role="italic">accessPolicyFile</emphasis> send the request with user level User (NOTE: only for services supported by ONVIF Client)
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    If DUT supports service that corresponds to Service.SpecificationName of <emphasis role="italic">request</emphasis> in <emphasis role="italic">accessPolicyFile</emphasis>
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          ONVIF Client generates valid request structure with arbitrary values of parameters for command corresponds to <emphasis role="italic">request</emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Client invokes generated <emphasis role="italic">request</emphasis> <emphasis role="underline">
+                            with credentials of <emphasis role="italic">user</emphasis>.
+                          </emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          DUT responds with <emphasis role="bold">HTTP error code 401</emphasis> or with <emphasis role="bold">env:Receiver/ter:ActionNotSupported</emphasis> SOAP fault message or with <emphasis role="bold">env:Receiver/ter:ActionNotSupported/subcode</emphasis> SOAP fault message (see Annex <xref linkend="Annex_AcceptableFaults"/>).
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem xml:id="ACCESS_POLICY-1-1-1.RequestsWithOperatorCredentials">
+            <para>
+              For each Request (<emphasis role="italic">request</emphasis>) from AccessGroup with UserLevel="Administrator" from <emphasis role="italic">accessPolicyFile</emphasis> send the request with user level Operator (NOTE: only for services supported by ONVIF Client)
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    If DUT supports service that corresponds to Service.SpecificationName of <emphasis role="italic">request</emphasis> in <emphasis role="italic">accessPolicyFile</emphasis>
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          ONVIF Client generates valid request structure with arbitrary values of parameters for command corresponds to <emphasis role="italic">request</emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Client invokes generated <emphasis role="italic">request</emphasis> <emphasis role="underline">
+                            with credentials of <emphasis role="italic">operator</emphasis>.
+                          </emphasis>.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          DUT responds with <emphasis role="bold">HTTP error code 401</emphasis> or with <emphasis role="bold">env:Receiver/ter:ActionNotSupported</emphasis> SOAP fault message or with <emphasis role="bold">env:Receiver/ter:ActionNotSupported/subcode</emphasis> SOAP fault message (see Annex <xref linkend="Annex_AcceptableFaults"/>).
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Test Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT did not send either HTTP error code 401 or env:Receiver/ter:ActionNotSupported SOAP fault message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+      <!-- ACCESS_POLICY-1-1-2 -->
+        <section xml:id="tc.ACCESS_POLICY-1-1-2">
+            <title>Default access policy - Anonymous</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESS_POLICY-1-1-2
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetServices, GetServiceCapabilities, GetHostname, GetSystemDateAndTime
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the PRE_AUTH access class can be accessed without authentication being required.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetServices</emphasis> for Device service without any authentication with parameters<itemizedlist>
+                  <listitem>
+                    <para>IncludeCapability := false</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetServicesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Service list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> for Device Service without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Capabilities</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetHostname</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetHostnameResponse</emphasis> message with parameters<itemizedlist>
+                  <listitem>
+                    <para>HostnameInformation</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetSystemDateAndTime</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>SystemDateAndTime</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetServices</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetServiceCapabilities</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetHostname</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow Anonymous access to the <emphasis role="bold">GetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetServicesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetHostnameResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--ACCESS_POLICY-1-1-3-->
+      <section xml:id="tc.ACCESS_POLICY-1-1-3">
+        <title>Default access policy - User</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis>ACCESS_POLICY-1-1-3
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> GetNTP, GetNetworkInterfaces, GetScopes, GetDiscoveryMode, GetEventProperties
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the READ_SYSTEM and READ_MEDIA access classes can be accessed with authentication level User.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Event Service was received from the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Maximum Username Length is supported by the DUT as indicated by the Capabilities.Security.MaxUsernameLength, Maximum Password Length is supported by the DUT as indicated by the Capabilities.Security.MaxPasswordLength. Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set the following:<itemizedlist>
+                  <listitem>
+                    <para>
+                      <emphasis role="italic">userLevel</emphasis> := User
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client generates creates user with predefined user level (in <emphasis role="italic">userLevel</emphasis>) and user login (out <emphasis role="italic">userLogin</emphasis>) and password (out <emphasis role="italic">password</emphasis>) by following the procedure mentioned in <xref linkend="Annex_HelperCreateUserLevel"/>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>If the DUT supports NTP as indicated by Network.NTP capability:</para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetNTP</emphasis> without any authentication.
+
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetNTP</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">GetNTPResponse</emphasis> message with parameters<itemizedlist>
+                        <listitem>
+                          <para>NTPInformation</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetNetworkInterfaces</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetNetworkInterfaces</emphasis> with user with the user level User credantials (userLogin and password).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message with parameters<itemizedlist>
+                  <listitem>
+                    <para>NetworkInterfaces list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetScopes</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetScopes</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with GetScopesResponse message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Scopes list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetDiscoveryMode</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetDiscoveryMode</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetDiscoveryModeResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetEventProperties</emphasis> without any authentication.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">GetEventProperties</emphasis> with user with the user level User credantials (<emphasis role="italic">userLogin</emphasis> and <emphasis role="italic">password</emphasis>).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">GetEventPropertiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>TopicNamespaceLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>FixedTopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicExpressionDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentFilterDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ProducerPropertiesFilterDialect list
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentSchemaLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Other additional fields if any
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetNTP</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetNetworkInterfaces</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allow Anonymous access to the <emphasis role="bold">GetEventProperties</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetNTP</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetNetworkInterfaces</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not allow user with the user level User access to the <emphasis role="bold">GetEventProperties</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetNTPResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetScopesResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetDiscoveryModeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetEventPropertiesResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>       
+      </section>
+      <!--ACCESS_POLICY-1-1-4-->
+      <section xml:id="tc.ACCESS_POLICY-1-1-4">
+        <title>Default access policy - Administrator and Anonymous</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESS_POLICY-1-1-4
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> SetScopes, SetDiscoveryMode, GetAccessPolicy, CreateUsers, SetSystemDateAndTime
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the UNRECOVERABLE, WRITE_SYSTEM and READ_SYSTEM_SECRET access classes can notbe accessed without authentication level Administrator.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client gets the service capabilities (out cap) by following the procedure mentioned in <xref linkend="Annex_HelperGetServiceCapabilities"/>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetScopes</emphasis> without any authentication with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>Scopes[0] := "onvif://www.onvif.org/location/test"</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetDiscoveryMode</emphasis> without any authentication with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error
+              </para>
+            </listitem>
+            <listitem>
+              <para>If cap.Security contains AccessPolicyConfig and cap.Security.AccessPolicyConfig equals to true:</para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetAccessPolicy</emphasis> without any authentication.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">CreateUsers</emphasis> without any authentication with parameters.
+                <itemizedlist>
+                  <listitem>
+                    <para>User[0].Username := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].Password := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].UserLevel := Administrator</para>
+                  </listitem>
+                  <listitem>
+                    <para>Extension skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> without any authentication with parameters<itemizedlist>
+                  <listitem>
+                    <para>DateTimeType := NTP</para>
+                  </listitem>
+                  <listitem>
+                    <para>DaylightSavings := true</para>
+                  </listitem>
+                  <listitem>
+                    <para>TimeZone skipped</para>
+                  </listitem>
+                  <listitem>
+                    <para>UTCDateTime skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">SetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">SetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">GetAccessPolicy</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">CreateUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">SetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> ONVIF client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
+        </para>
+      </section>
+      <!--ACCESS_POLICY-1-1-5-->
+      <section xml:id="tc.ACCESS_POLICY-1-1-5">
+        <title>Default access policy - Administrator And User/Operator</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESS_POLICY-1-1-5
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Default access policy
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> SetScopes, SetDiscoveryMode, GetAccessPolicy, CreateUsers, SetSystemDateAndTime
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that operations in the UNRECOVERABLE, WRITE_SYSTEM and READ_SYSTEM_SECRET access classes can not be accessed without authentication level Administrator.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. Default Access Policy is supported by the DUT as indicated by the Security.DefaultAccessPolicy capability. HTTP Digest Authentication is supported by the DUT as indicated by the Security.HttpDigest capability. Maximum Username Length is supported by the DUT as indicated by the Capabilities.Security.MaxUsernameLength, Maximum Password Length is supported by the DUT as indicated by the Capabilities.Security.Max PasswordLength.Default Access Policy is not modified.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set the following:
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      <emphasis role="italic">userLevelUser</emphasis> := User
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      <emphasis role="italic">userLevelOperator</emphasis>:= Operator
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client generates creates user with predefined user level (in <emphasis role="italic">userLevelUser</emphasis>) and user login (out <emphasis role="italic">userLoginUser</emphasis>) and password (out <emphasis role="italic">passwordUser</emphasis>) by following the procedure mentioned in <xref linkend="Annex_HelperCreateUserLevel"/>.
+                <itemizedlist>
+                  <listitem>
+                    <para>Scopes[0] := "onvif://www.onvif.org/location/test"</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client gets the service capabilities (out cap) by following the procedure mentioned in <xref linkend="Annex_HelperGetServiceCapabilities"/>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetScopes</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>) with parameters
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>Scopes[0] := "onvif://www.onvif.org/location/test"</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetDiscoveryMode</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>) with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">cap</emphasis>.Security contains AccessPolicyConfig and <emphasis role="italic">cap</emphasis>.Security.AccessPolicyConfig equals to true:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetAccessPolicy</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">CreateUsers</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                <itemizedlist>
+                  <listitem>
+                    <para>User[0].Username := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].Password := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].UserLevel := Administrator</para>
+                  </listitem>
+                  <listitem>
+                    <para>Extension skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).<itemizedlist>
+                  <listitem>
+                    <para>DateTimeType := NTP</para>
+                  </listitem>
+                  <listitem>
+                    <para>DaylightSavings := true</para>
+                  </listitem>
+                  <listitem>
+                    <para>TimeZone skipped</para>
+                  </listitem>
+                  <listitem>
+                    <para>UTCDateTime skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+              ONVIF Client generates creates user with predefined user level (in userLevelOperator) and user login (out userLoginOperator) and password (out passwordOperator) by following the procedure mentioned in <xref linkend="Annex_HelperCreateUserLevel"/>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetScopes</emphasis> with user with the user level Operator credantials (<emphasis role="italic">userLoginOperator</emphasis> and <emphasis role="italic">passwordOperator</emphasis>) with parameters<itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetDiscoveryMode</emphasis> with user with the user level Operator credantials (<emphasis role="italic">userLoginOperator</emphasis> and <emphasis role="italic">passwordOperator</emphasis>) with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>DiscoveryMode := Discoverable</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">cap</emphasis>.Security contains AccessPolicyConfig and <emphasis role="italic">cap</emphasis>.Security.AccessPolicyConfig equals to true:
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">GetAccessPolicy</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">CreateUsers</emphasis> with user with the user level User credantials
+                (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).
+                <itemizedlist>
+                  <listitem>
+                    <para>User[0].Username := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].Password := "Test"</para>
+                  </listitem>
+                  <listitem>
+                    <para>User[0].UserLevel := Administrator</para>
+                  </listitem>
+                  <listitem>
+                    <para>Extension skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> with user with the user level User credantials (<emphasis role="italic">userLoginUser</emphasis> and <emphasis role="italic">passwordUser</emphasis>).<itemizedlist>
+                  <listitem>
+                    <para>DateTimeType := NTP</para>
+                  </listitem>
+                  <listitem>
+                    <para>DaylightSavings  := true</para>
+                  </listitem>
+                  <listitem>
+                    <para>TimeZone skipped</para>
+                  </listitem>
+                  <listitem>
+                    <para>UTCDateTime skipped</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">SetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">SetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">GetAccessPolicy</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">CreateUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed User  access to the <emphasis role="bold">SetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">SetScopes</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">SetDiscoveryMode</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">GetAccessPolicy</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator   access to the <emphasis role="bold">CreateUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Operator  access to the <emphasis role="bold">SetSystemDateAndTime</emphasis> command.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> ONVIF client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
+        </para>
+      </section>
+  
+  </chapter>
+  <appendix>
+    <title>Helper Procedures and Additional Notes</title>
+    <!--A.1-->
+    <section xml:id="Annex_UserListFile" xreflabel="Annex A.1">
+      <title>User Credentials File</title>
+      <para>
+        The Device Test Tool uses the User Credentials File in ACCESS_POLICY-1-1-1 ACCESS POLICY (ACCESS NOT ALLOWED) test case.
+      </para>
+      <para>
+        This is a file that contains the username and password for two users that have user levels Operator and User respectively.
+      </para>
+      <para>
+        There are two options for the User Credentials File: <emphasis role="bold">Default User Credentials File</emphasis> and <emphasis role="bold">Custom User Credentials File</emphasis>.
+      </para>
+      <orderedlist>
+        <?dbfo label-width="1.5em"?>
+        <listitem>
+          <para>
+            Default User Credentials File:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  It is an internal file provided with the Device Test Tool.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  By default (if User Credentials File is not provided in the Device Test Tool UI), the ONVIF Client uses this Default User Credentials File.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Test operator shall create users on the Device Under Test with username/password specified in the Default User Credentials File.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Custom User Credentials File:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  How to create Custom User Credentials File:
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        Get Default User Credentials File in the folder ONVIF Test Tool is installed to.
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        Modify User Credentials Policy File with username/password of users that already exist on the Device Under Test.
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        Provide modified file in the Device Test Tool UI.
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </orderedlist> 
+      
+      <para>
+        Here is template of User Credentials File.
+        <programlisting>
+          <![CDATA[
+<?xml version="1.0"?>
+<UserCredentialsDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <AccessLevels>
+        <AccessLevel Name="Operator" Username="operator" Password="op_password"/>
+        <AccessLevel Name="User" Username="user" Password="user_password"/>
+    </AccessLevels>
+</UserCredentialsDefinition>
+                ]]>
+        </programlisting>
+      </para>
+
+    </section>
+    <!--A.2-->
+    <section xml:id="Annex_AccessPolicyFile" xreflabel="Annex A.2">
+      <title>Access Policy File</title>
+      <para>
+        The Device Test Tool uses the Access Policy File in ACCESS_POLICY-1-1-1 ACCESS POLICY (ACCESS NOT ALLOWED) test case.
+      </para>
+      <para>
+        There are two options for the Access Policy File: <emphasis role="bold">Default Access Policy File</emphasis> and <emphasis role="bold">Custom Access Policy File</emphasis>.
+      </para>
+      <orderedlist>
+        <?dbfo label-width="1.5em"?>
+        <listitem>
+          <para>
+            Default Access Policy File:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  It is an internal file provided with the Device Test Tool. It corresponds to Default Access Policy (defined in the Table 6 Default Access Policy Definition in ONVIF Core Specification).
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  By default (if Access Policy File is not provided in the Device Test Tool UI), the ONVIF Client uses this Default Access Policy File.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  If a DUT Access Policy is the same as defined in the Table 6 Default Access Policy Definition of ONVIF Core Specification, test operator does not have to do anything with Access Policy File.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Custom Access Policy File:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  If a DUT Access Policy differs from defined in the Table 6 Default Access Policy Definition of ONVIF Core Specification, test operator shall provide Custom Access Policy File in the Device Test Tool UI.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  How to create Custom Access Policy File:
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                        Get Default Access Policy File in the folder ONVIF Test Tool is installed to.
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        Modify Default Access Policy File with custom access policy.
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        Provide modified file in the Device Test Tool UI.
+                      </para>
+                    </listitem>
+                  </itemizedlist>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        Description of Access Policy File structure:
+        <itemizedlist>
+          <listitem>
+            <para>
+              AccessGroup with UserLevel="Anonymous" contains set of requests that allow access for the following users levels: anonymous access and all user levels ("User", "Operator", "Administrator").
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              AccessGroup with UserLevel="User" contains set of requests that allow access for the following users levels: "User", "Operator", "Administrator". Anonymous access is not allowed.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              AccessGroup with UserLevel="Operator" contains set of requests that allow access for the following users levels: "Operator", "Administrator". Anonymous access and access for "User" user level are not allowed.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              AccessGroup with UserLevel="Administrator" contains set of requests that allow access for "Administrator" user level only. Anonymous access and access for "User" and "Operator" user levels are not allowed.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Service.@SpecificationName attribute has the name of specification where service operation is coming from as value.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        Here is template of Access Policy File.
+        <programlisting>
+          <![CDATA[
+<?xml version="1.0"?>
+<AccessPolicyDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AccessGroups>
+    <AccessGroup UserLevel="Administrator">
+      <Services>
+        <Service SpecificationName="AccessControl">
+          <Requests>
+            <Request Name="CreateAccessPoint" />
+            <Request Name="SetAccessPoint" />
+            <Request Name="ModifyAccessPoint" />
+            <Request Name="DeleteAccessPoint" />
+            <Request Name="CreateArea" />
+            <Request Name="SetArea" />
+            <Request Name="ModifyArea" />
+            <Request Name="DeleteArea" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AccessRules">
+          <Requests>
+            <Request Name="CreateAccessProfile" />
+            <Request Name="SetAccessProfile" />
+            <Request Name="ModifyAccessProfile" />
+            <Request Name="DeleteAccessProfile" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ActionEngine">
+          <Requests>
+            <Request Name="CreateActions" />
+            <Request Name="ModifyActions" />
+            <Request Name="DeleteActions" />
+            <Request Name="CreateActionTriggers" />
+            <Request Name="ModifyActionTriggers" />
+            <Request Name="DeleteActionTriggers" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AnalyticsEngine">
+          <Requests>
+            <Request Name="DeleteAnalyticsModules" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ApplicationManagement">
+          <Requests>
+            <Request Name="Uninstall" />
+            <Request Name="Activate" />
+            <Request Name="Deactivate" />
+            <Request Name="GetInstalledApps" />
+            <Request Name="GetAppsInfo" />
+            <Request Name="InstallLicense" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AuthenticationBehavior">
+          <Requests>
+            <Request Name="CreateAuthenticationProfile" />
+            <Request Name="SetAuthenticationProfile" />
+            <Request Name="ModifyAuthenticationProfile" />
+            <Request Name="DeleteAuthenticationProfile" />
+            <Request Name="CreateSecurityLevel" />
+            <Request Name="SetSecurityLevel" />
+            <Request Name="ModifySecurityLevel" />
+            <Request Name="DeleteSecurityLevel" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Core">
+          <Requests>
+            <Request Name="SetHostname" />
+            <Request Name="SetHostnameFromDHCP" />
+            <Request Name="SetDNS" />
+            <Request Name="SetNTP" />
+            <Request Name="SetDynamicDNS" />
+            <Request Name="SetNetworkInterfaces" />
+            <Request Name="SetNetworkProtocols" />
+            <Request Name="SetNetworkDefaultGateway" />
+            <Request Name="SetZeroConfiguration" />
+            <Request Name="SetIPAddressFilter" />
+            <Request Name="AddIPAddressFilter" />
+            <Request Name="RemoveIPAddressFilter" />
+            <Request Name="GetSystemBackup" />
+            <Request Name="RestoreSystem" />
+            <Request Name="StartSystemRestore" />
+            <Request Name="SetSystemDateAndTime" />
+            <Request Name="SetSystemFactoryDefault" />
+            <Request Name="UpgradeSystemFirmware" />
+            <Request Name="StartFirmwareUpgrade" />
+            <Request Name="GetSystemLog" />
+            <Request Name="GetSystemSupportInformation" />
+            <Request Name="SystemReboot" />
+            <Request Name="SetScopes" />
+            <Request Name="AddScopes" />
+            <Request Name="RemoveScopes" />
+            <Request Name="SetDiscoveryMode" />
+            <Request Name="SetGeoLocation" />
+            <Request Name="DeleteGeoLocation" />
+            <Request Name="GetAccessPolicy" />
+            <Request Name="SetAccessPolicy" />
+            <Request Name="GetUsers" />
+            <Request Name="CreateUsers" />
+            <Request Name="DeleteUsers" />
+            <Request Name="SetUser" />
+            <Request Name="SetRemoteUser" />
+            <Request Name="SetPasswordComplexityConfiguration" />
+            <Request Name="SetPasswordHistoryConfiguration" />
+            <Request Name="SetAuthFailureWarningConfiguration" />
+            <Request Name="AddEventBroker" />
+            <Request Name="DeleteEventBroker" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Credential">
+          <Requests>
+            <Request Name="GetCredentialInfoList" />
+            <Request Name="GetCredentials" />
+            <Request Name="GetCredentialList" />
+            <Request Name="CreateCredential" />
+            <Request Name="SetCredential" />
+            <Request Name="ModifyCredential" />
+            <Request Name="DeleteCredential" />
+            <Request Name="GetCredentialIdentifiers" />
+            <Request Name="SetCredentialIdentifier" />
+            <Request Name="DeleteCredentialIdentifier" />
+            <Request Name="GetWhitelist" />
+            <Request Name="AddToWhitelist" />
+            <Request Name="RemoveFromWhitelist" />
+            <Request Name="DeleteWhitelist" />
+            <Request Name="GetBlacklist" />
+            <Request Name="AddToBlacklist" />
+            <Request Name="RemoveFromBlacklist" />
+            <Request Name="DeleteBlacklist" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DeviceIO">
+          <Requests>
+            <Request Name="GetVideoOutputConfigurationOptions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DoorControl">
+          <Requests>
+            <Request Name="CreateDoor" />
+            <Request Name="SetDoor" />
+            <Request Name="ModifyDoor" />
+            <Request Name="DeleteDoor" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Imaging">
+          <Requests>
+            <Request Name="GetImagingSettings" />
+            <Request Name="GetOptions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media">
+          <Requests>
+            <Request Name="SetVideoSourceMode" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media2">
+          <Requests>
+            <Request Name="SetVideoSourceMode" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Provisioning">
+          <Requests>
+            <Request Name="PanMove" />
+            <Request Name="TiltMove" />
+            <Request Name="ZoomMove" />
+            <Request Name="RollMove" />
+            <Request Name="FocusMove" />
+            <Request Name="Stop" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Receiver">
+          <Requests>
+            <Request Name="GetReceivers" />
+            <Request Name="GetReceiver" />
+            <Request Name="GetReceiverState" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="RecordingSearch">
+          <Requests>
+            <Request Name="EndSearch" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Schedule">
+          <Requests>
+            <Request Name="CreateSchedule" />
+            <Request Name="SetSchedule" />
+            <Request Name="ModifySchedule" />
+            <Request Name="DeleteSchedule" />
+            <Request Name="CreateSpecialDayGroup" />
+            <Request Name="SetSpecialDayGroup" />
+            <Request Name="ModifySpecialDayGroup" />
+            <Request Name="DeleteSpecialDayGroup" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Security">
+          <Requests>
+            <Request Name="UploadPassphrase" />
+            <Request Name="GetAllPassphrases" />
+            <Request Name="DeletePassphrase" />
+            <Request Name="CreateRSAKeyPair" />
+            <Request Name="UploadKeyPairInPKCS8" />
+            <Request Name="GetKeyStatus" />
+            <Request Name="GetPrivateKeyStatus" />
+            <Request Name="GetAllKeys" />
+            <Request Name="DeleteKey" />
+            <Request Name="CreateSelfSignedCertificate" />
+            <Request Name="UploadCertificate" />
+            <Request Name="UploadCertificateWithPrivateKeyInPKCS12" />
+            <Request Name="GetCertificate" />
+            <Request Name="GetAllCertificates" />
+            <Request Name="DeleteCertificate" />
+            <Request Name="CreateCertificationPath" />
+            <Request Name="GetCertificationPath" />
+            <Request Name="GetAllCertificationPaths" />
+            <Request Name="DeleteCertificationPath" />
+            <Request Name="UploadCRL" />
+            <Request Name="GetCRL" />
+            <Request Name="GetAllCRLs" />
+            <Request Name="DeleteCRL" />
+            <Request Name="CreateCertPathValidationPolicy" />
+            <Request Name="GetCertPathValidationPolicy" />
+            <Request Name="GetAllCertPathValidationPolicies" />
+            <Request Name="DeleteCertPathValidationPolicy" />
+            <Request Name="AddServerCertificateAssignment" />
+            <Request Name="RemoveServerCertificateAssignment" />
+            <Request Name="ReplaceServerCertificateAssignment" />
+            <Request Name="GetAssignedServerCertificates" />
+            <Request Name="SetClientAuthenticationRequired" />
+            <Request Name="SetCnMapsToUser" />
+            <Request Name="AddCertPathValidationPolicyAssignment" />
+            <Request Name="RemoveCertPathValidationPolicyAssignment" />
+            <Request Name="ReplaceCertPathValidationPolicyAssignment" />
+            <Request Name="GetAssignedCertPathValidationPolicies" />
+            <Request Name="SetEnabledTLSVersions" />
+            <Request Name="AddDot1XConfiguration" />
+            <Request Name="GetAllDot1XConfigurations" />
+            <Request Name="GetDot1XConfiguration" />
+            <Request Name="DeleteDot1XConfiguration" />
+            <Request Name="SetNetworkInterfaceDot1XConfiguration" />
+            <Request Name="GetNetworkInterfaceDot1XConfiguration" />
+            <Request Name="DeleteNetworkInterfaceDot1XConfiguration" />
+          </Requests>
+        </Service>
+      </Services>
+    </AccessGroup>
+    <AccessGroup UserLevel="Operator">
+      <Services>
+        <Service SpecificationName="AccessControl">
+          <Requests>
+            <Request Name="SetAccessPointAuthenticationProfile" />
+            <Request Name="DeleteAccessPointAuthenticationProfile" />
+            <Request Name="GetAccessPointState" />
+            <Request Name="EnableAccessPoint" />
+            <Request Name="DisableAccessPoint" />
+            <Request Name="ExternalAuthorization" />
+            <Request Name="Feedback" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AnalyticsEngine">
+          <Requests>
+            <Request Name="CreateRules" />
+            <Request Name="ModifyRules" />
+            <Request Name="DeleteRules" />
+            <Request Name="CreateAnalyticsModules" />
+            <Request Name="ModifyAnalyticsModules" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Core">
+          <Requests>
+            <Request Name="SetRelayOutputSettings" />
+            <Request Name="SetRelayOutputState" />
+            <Request Name="SendAuxiliaryCommand" />
+            <Request Name="CreateStorageConfiguration" />
+            <Request Name="SetStorageConfiguration" />
+            <Request Name="DeleteStorageConfiguration" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Credential">
+          <Requests>
+            <Request Name="GetCredentialState" />
+            <Request Name="EnableCredential" />
+            <Request Name="DisableCredential" />
+            <Request Name="ResetAntipassbackViolation" />
+            <Request Name="SetCredentialAccessProfiles" />
+            <Request Name="DeleteCredentialAccessProfiles" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DeviceIO">
+          <Requests>
+            <Request Name="SetVideoOutputConfiguration" />
+            <Request Name="SetRelayOutputSettings" />
+            <Request Name="SetRelayOutputState" />
+            <Request Name="SetDigitalInputConfigurations" />
+            <Request Name="SetSerialPortConfiguration" />
+            <Request Name="SendReceiveSerialCommand" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Display">
+          <Requests>
+            <Request Name="SetPaneConfigurations" />
+            <Request Name="SetPaneConfiguration" />
+            <Request Name="CreatePaneConfiguration" />
+            <Request Name="DeletePaneConfiguration" />
+            <Request Name="SetLayout" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DoorControl">
+          <Requests>
+            <Request Name="AccessDoor" />
+            <Request Name="LockDoor" />
+            <Request Name="UnlockDoor" />
+            <Request Name="BlockDoor" />
+            <Request Name="LockDownDoor" />
+            <Request Name="LockDownReleaseDoor" />
+            <Request Name="LockOpenDoor" />
+            <Request Name="LockOpenReleaseDoor" />
+            <Request Name="DoubleLockDoor" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Imaging">
+          <Requests>
+            <Request Name="SetImagingSettings" />
+            <Request Name="SetCurrentPreset" />
+            <Request Name="Move" />
+            <Request Name="Stop" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media">
+          <Requests>
+            <Request Name="CreateProfile" />
+            <Request Name="AddVideoSourceConfiguration" />
+            <Request Name="AddVideoEncoderConfiguration" />
+            <Request Name="AddAudioSourceConfiguration" />
+            <Request Name="AddAudioEncoderConfiguration" />
+            <Request Name="AddPTZConfiguration" />
+            <Request Name="AddVideoAnalyticsConfiguration" />
+            <Request Name="AddMetadataConfiguration" />
+            <Request Name="AddAudioOutputConfiguration" />
+            <Request Name="AddAudioDecoderConfiguration" />
+            <Request Name="RemoveVideoSourceConfiguration" />
+            <Request Name="RemoveVideoEncoderConfiguration" />
+            <Request Name="RemoveAudioSourceConfiguration" />
+            <Request Name="RemoveAudioEncoderConfiguration" />
+            <Request Name="RemovePTZConfiguration" />
+            <Request Name="RemoveVideoAnalyticsConfiguration" />
+            <Request Name="RemoveMetadataConfiguration" />
+            <Request Name="RemoveAudioOutputConfiguration" />
+            <Request Name="RemoveAudioDecoderConfiguration" />
+            <Request Name="DeleteProfile" />
+            <Request Name="SetVideoSourceConfiguration" />
+            <Request Name="SetVideoEncoderConfiguration" />
+            <Request Name="SetAudioSourceConfiguration" />
+            <Request Name="SetAudioEncoderConfiguration" />
+            <Request Name="SetVideoAnalyticsConfiguration" />
+            <Request Name="SetMetadataConfiguration" />
+            <Request Name="SetAudioOutputConfiguration" />
+            <Request Name="SetAudioDecoderConfiguration" />
+            <Request Name="StartMulticastStreaming" />
+            <Request Name="StopMulticastStreaming" />
+            <Request Name="SetSynchronizationPoint" />
+            <Request Name="CreateOSD" />
+            <Request Name="DeleteOSD" />
+            <Request Name="SetOSD" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media2">
+          <Requests>
+            <Request Name="CreateProfile" />
+            <Request Name="AddConfiguration" />
+            <Request Name="RemoveConfiguration" />
+            <Request Name="DeleteProfile" />
+            <Request Name="CreateMultitrackConfiguration" />
+            <Request Name="SetVideoSourceConfiguration" />
+            <Request Name="SetAudioSourceConfiguration" />
+            <Request Name="SetVideoEncoderConfiguration" />
+            <Request Name="SetAudioEncoderConfiguration" />
+            <Request Name="SetMetadataConfiguration" />
+            <Request Name="SetAudioOutputConfiguration" />
+            <Request Name="SetAudioDecoderConfiguration" />
+            <Request Name="StartMulticastStreaming" />
+            <Request Name="StopMulticastStreaming" />
+            <Request Name="SetSynchronizationPoint" />
+            <Request Name="CreateOSD" />
+            <Request Name="DeleteOSD" />
+            <Request Name="SetOSD" />
+            <Request Name="CreateMask" />
+            <Request Name="DeleteMask" />
+            <Request Name="SetMask" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="PTZ">
+          <Requests>
+            <Request Name="SetConfiguration" />
+            <Request Name="AbsoluteMove" />
+            <Request Name="RelativeMove" />
+            <Request Name="ContinuousMove" />
+            <Request Name="GeoMove" />
+            <Request Name="Stop" />
+            <Request Name="MoveAndStartTracking" />
+            <Request Name="SetPreset" />
+            <Request Name="GotoPreset" />
+            <Request Name="RemovePreset" />
+            <Request Name="GotoHomePosition" />
+            <Request Name="SetHomePosition" />
+            <Request Name="SendAuxiliaryCommand" />
+            <Request Name="CreatePresetTour" />
+            <Request Name="ModifyPresetTour" />
+            <Request Name="OperatePresetTour" />
+            <Request Name="RemovePresetTour" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Receiver">
+          <Requests>
+            <Request Name="CreateReceiver" />
+            <Request Name="DeleteReceiver" />
+            <Request Name="ConfigureReceiver" />
+            <Request Name="SetReceiverMode" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="RecordingControl">
+          <Requests>
+            <Request Name="CreateRecording" />
+            <Request Name="DeleteRecording" />
+            <Request Name="SetRecordingConfiguration" />
+            <Request Name="CreateTrack" />
+            <Request Name="DeleteTrack" />
+            <Request Name="SetTrackConfiguration" />
+            <Request Name="CreateRecordingJob" />
+            <Request Name="DeleteRecordingJob" />
+            <Request Name="SetRecordingJobConfiguration" />
+            <Request Name="SetRecordingJobMode" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ReplayControl">
+          <Requests>
+            <Request Name="SetReplayConfiguration" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Schedule">
+          <Requests>
+            <Request Name="GetScheduleState" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Thermal">
+          <Requests>
+            <Request Name="SetConfiguration" />
+            <Request Name="GetRadiometryConfiguration" />
+            <Request Name="SetRadiometryConfiguration" />
+          </Requests>
+        </Service>
+      </Services>
+    </AccessGroup>
+    <AccessGroup UserLevel="User">
+      <Services>
+        <Service SpecificationName="AccessControl">
+          <Requests>
+            <Request Name="GetAccessPointInfo" />
+            <Request Name="GetAccessPointInfoList" />
+            <Request Name="GetAccessPoints" />
+            <Request Name="GetAccessPointList" />
+            <Request Name="GetAreaInfo" />
+            <Request Name="GetAreaInfoList" />
+            <Request Name="GetAreas" />
+            <Request Name="GetAreaList" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AccessRules">
+          <Requests>
+            <Request Name="GetAccessProfileInfo" />
+            <Request Name="GetAccessProfileInfoList" />
+            <Request Name="GetAccessProfiles" />
+            <Request Name="GetAccessProfileList" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ActionEngine">
+          <Requests>
+            <Request Name="GetSupportedActions" />
+            <Request Name="GetActions" />
+            <Request Name="GetActionTriggers" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AnalyticsEngine">
+          <Requests>
+            <Request Name="GetSupportedRules" />
+            <Request Name="GetRules" />
+            <Request Name="GetRuleOptions" />
+            <Request Name="GetSupportedAnalyticsModules" />
+            <Request Name="GetAnalyticsModules" />
+            <Request Name="GetAnalyticsModuleOptions" />
+            <Request Name="GetSupportedMetadata" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AuthenticationBehavior">
+          <Requests>
+            <Request Name="GetAuthenticationProfileInfo" />
+            <Request Name="GetAuthenticationProfileInfoList" />
+            <Request Name="GetAuthenticationProfiles" />
+            <Request Name="GetAuthenticationProfileList" />
+            <Request Name="GetSecurityLevelInfo" />
+            <Request Name="GetSecurityLevelInfoList" />
+            <Request Name="GetSecurityLevels" />
+            <Request Name="GetSecurityLevelList" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Core">
+          <Requests>
+            <Request Name="GetDNS" />
+            <Request Name="GetNTP" />
+            <Request Name="GetDynamicDNS" />
+            <Request Name="GetNetworkInterfaces" />
+            <Request Name="GetNetworkProtocols" />
+            <Request Name="GetNetworkDefaultGateway" />
+            <Request Name="GetZeroConfiguration" />
+            <Request Name="GetIPAddressFilter" />
+            <Request Name="GetDot11Capabilities" />
+            <Request Name="GetDot11Status" />
+            <Request Name="ScanAvailableDot11Networks" />
+            <Request Name="GetDeviceInformation" />
+            <Request Name="GetSystemUris" />
+            <Request Name="GetScopes" />
+            <Request Name="GetDiscoveryMode" />
+            <Request Name="GetGeoLocation" />
+            <Request Name="GetRemoteUser" />
+            <Request Name="GetPasswordComplexityOptions" />
+            <Request Name="GetPasswordComplexityConfiguration" />
+            <Request Name="GetPasswordHistoryConfiguration" />
+            <Request Name="GetAuthFailureWarningOptions" />
+            <Request Name="GetAuthFailureWarningConfiguration" />
+            <Request Name="GetRelayOutputs" />
+            <Request Name="GetStorageConfigurations" />
+            <Request Name="GetStorageConfiguration" />
+            <Request Name="CreatePullPointSubscription" />
+            <Request Name="PullMessages" />
+            <Request Name="Renew" />
+            <Request Name="Unsubscribe" />
+            <Request Name="Seek" />
+            <Request Name="SetSynchronizationPoint" />
+            <Request Name="GetEventProperties" />
+            <Request Name="GetEventBrokers" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Credential">
+          <Requests>
+            <Request Name="GetCredentialInfo" />
+            <Request Name="GetSupportedFormatTypes" />
+            <Request Name="GetCredentialAccessProfiles" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DeviceIO">
+          <Requests>
+            <Request Name="GetVideoOutputs" />
+            <Request Name="GetVideoOutputConfiguration" />
+            <Request Name="GetVideoSources" />
+            <Request Name="GetAudioOutputs" />
+            <Request Name="GetAudioSources" />
+            <Request Name="GetRelayOutputs" />
+            <Request Name="GetDigitalInputs" />
+            <Request Name="GetDigitalInputConfigurationOptions" />
+            <Request Name="GetSerialPorts" />
+            <Request Name="GetSerialPortConfiguration" />
+            <Request Name="GetSerialPortConfigurationOptions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Display">
+          <Requests>
+            <Request Name="GetPaneConfigurations" />
+            <Request Name="GetPaneConfiguration" />
+            <Request Name="GetLayout" />
+            <Request Name="GetDisplayOptions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DoorControl">
+          <Requests>
+            <Request Name="GetDoorInfo" />
+            <Request Name="GetDoorInfoList" />
+            <Request Name="GetDoors" />
+            <Request Name="GetDoorList" />
+            <Request Name="GetDoorState" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Imaging">
+          <Requests>
+            <Request Name="GetPresets" />
+            <Request Name="GetCurrentPreset" />
+            <Request Name="GetMoveOptions" />
+            <Request Name="GetStatus" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media">
+          <Requests>
+            <Request Name="GetProfiles" />
+            <Request Name="GetProfile" />
+            <Request Name="GetVideoSources" />
+            <Request Name="GetVideoSourceConfigurations" />
+            <Request Name="GetVideoSourceConfiguration" />
+            <Request Name="GetCompatibleVideoSourceConfigurations" />
+            <Request Name="GetVideoSourceConfigurationOptions" />
+            <Request Name="GetVideoEncoderConfigurations" />
+            <Request Name="GetVideoEncoderConfiguration" />
+            <Request Name="GetCompatibleVideoEncoderConfigurations" />
+            <Request Name="GetVideoEncoderConfigurationOptions" />
+            <Request Name="GetGuaranteedNumberOfVideoEncoderInstances" />
+            <Request Name="GetAudioSources" />
+            <Request Name="GetAudioSourceConfigurations" />
+            <Request Name="GetAudioSourceConfiguration" />
+            <Request Name="GetCompatibleAudioSourceConfigurations" />
+            <Request Name="GetAudioSourceConfigurationOptions" />
+            <Request Name="GetAudioEncoderConfigurations" />
+            <Request Name="GetAudioEncoderConfiguration" />
+            <Request Name="GetCompatibleAudioEncoderConfigurations" />
+            <Request Name="GetAudioEncoderConfigurationOptions" />
+            <Request Name="GetVideoAnalyticsConfigurations" />
+            <Request Name="GetVideoAnalyticsConfiguration" />
+            <Request Name="GetCompatibleVideoAnalyticsConfigurations" />
+            <Request Name="GetMetadataConfigurations" />
+            <Request Name="GetMetadataConfiguration" />
+            <Request Name="GetCompatibleMetadataConfigurations" />
+            <Request Name="GetMetadataConfigurationOptions" />
+            <Request Name="GetAudioOutputs" />
+            <Request Name="GetAudioOutputConfigurations" />
+            <Request Name="GetAudioOutputConfiguration" />
+            <Request Name="GetCompatibleAudioOutputConfigurations" />
+            <Request Name="GetAudioOutputConfigurationOptions" />
+            <Request Name="GetAudioDecoderConfigurations" />
+            <Request Name="GetAudioDecoderConfiguration" />
+            <Request Name="GetCompatibleAudioDecoderConfigurations" />
+            <Request Name="GetAudioDecoderConfigurationOptions" />
+            <Request Name="GetStreamUri" />
+            <Request Name="GetSnapshotUri" />
+            <Request Name="GetVideoSourceModes" />
+            <Request Name="GetOSDs" />
+            <Request Name="GetOSD" />
+            <Request Name="GetOSDOptions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media2">
+          <Requests>
+            <Request Name="GetProfiles" />
+            <Request Name="GetVideoSourceConfigurations" />
+            <Request Name="GetAudioSourceConfigurations" />
+            <Request Name="GetVideoEncoderConfigurations" />
+            <Request Name="GetAudioEncoderConfigurations" />
+            <Request Name="GetMetadataConfigurations" />
+            <Request Name="GetAudioOutputConfigurations" />
+            <Request Name="GetAudioDecoderConfigurations" />
+            <Request Name="GetAnalyticsConfigurations" />
+            <Request Name="GetVideoSourceConfigurationOptions" />
+            <Request Name="GetAudioSourceConfigurationOptions" />
+            <Request Name="GetVideoEncoderConfigurationOptions" />
+            <Request Name="GetAudioEncoderConfigurationOptions" />
+            <Request Name="GetMetadataConfigurationOptions" />
+            <Request Name="GetAudioOutputConfigurationOptions" />
+            <Request Name="GetAudioDecoderConfigurationOptions" />
+            <Request Name="GetVideoEncoderInstances" />
+            <Request Name="GetStreamUri" />
+            <Request Name="GetSnapshotUri" />
+            <Request Name="GetVideoSourceModes" />
+            <Request Name="GetOSDs" />
+            <Request Name="GetOSDOptions" />
+            <Request Name="GetMasks" />
+            <Request Name="GetMaskOptions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Provisioning">
+          <Requests>
+            <Request Name="GetUsage" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="PTZ">
+          <Requests>
+            <Request Name="GetNodes" />
+            <Request Name="GetNode" />
+            <Request Name="GetConfigurations" />
+            <Request Name="GetConfiguration" />
+            <Request Name="GetConfigurationOptions" />
+            <Request Name="GetCompatibleConfigurations" />
+            <Request Name="GetStatus" />
+            <Request Name="GetPresets" />
+            <Request Name="GetPresetTours" />
+            <Request Name="GetPresetTour" />
+            <Request Name="GetPresetTourOptions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="RecordingControl">
+          <Requests>
+            <Request Name="GetRecordings" />
+            <Request Name="GetRecordingConfiguration" />
+            <Request Name="GetTrackConfiguration" />
+            <Request Name="GetRecordingJobs" />
+            <Request Name="GetRecordingJobConfiguration" />
+            <Request Name="GetRecordingJobState" />
+            <Request Name="GetRecordingOptions" />
+            <Request Name="ExportRecordedData" />
+            <Request Name="StopExportRecordedData" />
+            <Request Name="GetExportRecordedDataState" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="RecordingSearch">
+          <Requests>
+            <Request Name="GetRecordingSummary" />
+            <Request Name="GetRecordingInformation" />
+            <Request Name="GetMediaAttributes" />
+            <Request Name="FindRecordings" />
+            <Request Name="GetRecordingSearchResults" />
+            <Request Name="FindEvents" />
+            <Request Name="GetEventSearchResults" />
+            <Request Name="FindPTZPosition" />
+            <Request Name="GetPTZPositionSearchResults" />
+            <Request Name="FindMetadata" />
+            <Request Name="GetMetadataSearchResults" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ReplayControl">
+          <Requests>
+            <Request Name="GetReplayUri" />
+            <Request Name="GetReplayConfiguration" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Schedule">
+          <Requests>
+            <Request Name="GetScheduleInfo" />
+            <Request Name="GetScheduleInfoList" />
+            <Request Name="GetSchedules" />
+            <Request Name="GetScheduleList" />
+            <Request Name="GetSpecialDayGroupInfo" />
+            <Request Name="GetSpecialDayGroupInfoList" />
+            <Request Name="GetSpecialDayGroups" />
+            <Request Name="GetSpecialDayGroupList" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Security">
+          <Requests>
+            <Request Name="CreatePKCS10CSR" />
+            <Request Name="GetClientAuthenticationRequired" />
+            <Request Name="GetCnMapsToUser" />
+            <Request Name="GetEnabledTLSVersions" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Thermal">
+          <Requests>
+            <Request Name="GetConfiguration" />
+            <Request Name="GetConfigurationOptions" />
+            <Request Name="GetConfigurations" />
+            <Request Name="GetRadiometryConfigurationOptions" />
+          </Requests>
+        </Service>
+      </Services>
+    </AccessGroup>
+    <AccessGroup UserLevel="Anonymous">
+      <Services>
+        <Service SpecificationName="AccessControl">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AccessRules">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ActionEngine">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AnalyticsEngine">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ApplicationManagement">
+          <Requests>
+            <Request Name="GetCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="AuthenticationBehavior">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Core">
+          <Requests>
+            <Request Name="GetWsdlUrl" />
+            <Request Name="GetServices" />
+            <Request Name="GetServiceCapabilities" />
+            <Request Name="GetCapabilities" />
+            <Request Name="GetHostname" />
+            <Request Name="GetSystemDateAndTime" />
+            <Request Name="GetEndpointReference" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Credential">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DeviceIO">
+          <Requests>
+            <Request Name="GetRelayOutputOptions" />
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Display">
+          <Requests>
+            <Request Name="Capabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="DoorControl">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Imaging">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Media2">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Provisioning">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="PTZ">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Receiver">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="RecordingControl">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="RecordingSearch">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="ReplayControl">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Schedule">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Security">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+        <Service SpecificationName="Thermal">
+          <Requests>
+            <Request Name="GetServiceCapabilities" />
+          </Requests>
+        </Service>
+      </Services>
+    </AccessGroup>
+  </AccessGroups>
+</AccessPolicyDefinition>
+                ]]>
+        </programlisting>
+      </para>
+
+    </section>
+    <!--A.3-->
+    <section xml:id="Annex_HelperCreateUserLevel" xreflabel="Annex A.3">
+      <title>Create user with defined user level</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperCreateUserLevel
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to create user with predefined user level or change existing with new one.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> GetServices command is supported by the DUT. Maximum Username Length is supported by the DUT as indicated by the Capabilities.Security.MaxUsernameLength, Maximum Password Length is supported by the DUT as indicated by the Capabilities.Security.MaxPasswordLength.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> The user level (<emphasis role="italic">userLevel</emphasis>) of user to be created (<emphasis role="italic">userLevel</emphasis> shall have User or Operator value).
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> The user login (<emphasis role="italic">userLogin</emphasis>) with predefined user level and corresponding user password (<emphasis role="italic">password</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client gets the service capabilities (out <emphasis role="italic">cap</emphasis>) by following the procedure mentioned in <xref linkend="Annex_HelperGetServiceCapabilities"/>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">cap</emphasis> does not contain Security.MaxPasswordLength or Security.MaxUserNameLength, FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>User list := userList</para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If there is user with user level userLevel in userList:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    Set the following:
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">passwordLength</emphasis> := cap.Security.MaxPasswordLength
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">userLogin</emphasis> := Username of user with user level equal to userLevel from <emphasis role="italic">userList</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">password</emphasis> := random string, contains passwordLength ASCII characters
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">SetUser</emphasis> with parameters
+
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          User[0].Username := <emphasis role="italic">userLogin</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].Password := <emphasis role="italic">password</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].UserLevel := <emphasis role="italic">userLevel</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Extension skipped</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT responds with <emphasis role="bold">SetUserResponse</emphasis> message, skip other steps.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT returns env:Sender\ter:OperationProhibited\ter:Password SOAP 1.2 fault:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          Set the following:<itemizedlist>
+                            <listitem>
+                              <para>
+                                <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">password</emphasis>Length ASCII characters
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Go to the step 6.2.</para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>If DUT returns other SOAP 1.2 fault, FAIL the test and skip other steps.</para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If there are no users with user level <emphasis role="italic">userLevel</emphasis> in <emphasis role="italic">userList</emphasis>:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    Set the following:
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">userLoginLength </emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxUserNameLength
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">passwordLength </emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxPasswordLength
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">userLogin</emphasis> := random string, contains <emphasis role="italic">userLoginLength</emphasis> low case alphbet characters, differs from usernames listed in <emphasis role="italic">userList</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">CreateUsers</emphasis> with parameters
+
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          User[0].Username := <emphasis role="italic">userLogin</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].Password := <emphasis role="italic">password</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          User[0].UserLevel := <emphasis role="italic">userLevel</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Extension skipped</para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT responds with <emphasis role="bold">CreateUsersResponse</emphasis> message, skip other steps.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If the DUT returns env:Sender\ter:OperationProhibited\ter:Password SOAP 1.2 fault:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          Set the following:<itemizedlist>
+                            <listitem>
+                              <para>
+                                <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>Go to the step 7.2.</para>
+                      </listitem>
+                      <listitem>
+                        <para>If the DUT returns other SOAP 1.2 fault, FAIL the test and skip other steps.</para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT passed all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT did not send <emphasis role="bold">GetUsersResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    <para>
+          <emphasis role="bold">Note:</emphasis> ONVIF client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
+        </para>
+    </section>
+    <!--A.4-->
+    <section xml:id="Annex_HelperGetServiceCapabilities" xreflabel="Annex A.4">
+      <title>Get service capabilities</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis>HelperGetServiceCapabilities
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to get device service capabilities.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with a <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Capabilities =: <emphasis role="italic">cap</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>The DUT passed all assertions.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+    <!--A.5-->
+    <section xml:id="Annex_AcceptableFaults" xreflabel="Annex A.5">
+      <title>Acceptable Faults</title>
+      <para>
+        On the Management tab test operator can choose which faults are treated as PASSED in the ACCESS_POLICY-1-1-1 ACCESS POLICY  (ACCESS NOT ALLOWED) test case:
+        <itemizedlist>
+            <listitem>
+            <para>
+            ter:ActionNotSupported  
+            </para>
+            </listitem>
+            <listitem>
+            <para>
+            ter:ActionNotSupported/subcode 
+            </para>
+            </listitem>
+        </itemizedlist>
+      </para>
+
+    </section>
+
+    </appendix>
+</book>

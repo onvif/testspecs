@@ -23,10 +23,10 @@
     </orgname>
     <title>Profiles Conformance Device Test Specification</title>
     <titleabbrev>Profiles Conformance Device Test Spec</titleabbrev>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -244,7 +244,75 @@
           <para>Check of AccessControl/Denied/Anonymous was updated</para>
           <para>Check of AccessControl/AccessTaken/Credential was updated</para>
           <para>Check of AccessControl/AccessNotTaken/Credential was updated</para>
-        <para>Check of AccessControl/Request/Credential was updated</para>
+          <para>Check of AccessControl/Request/Credential was updated</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Dec 22, 2020</date>
+        <revdescription>
+          <para>The following were updated in the scope of #1866:</para>
+          <para>
+            Profile D Support Check section (added)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jan 29, 2021</date>
+        <revdescription>
+          <para>The following were updated in the scope of #2124:</para>
+          <para>
+            Profile M Support Check section (Discovery detection updated)
+          </para>
+          <para>
+            Profile A Support Check section (Check that Discovery is supported added)
+          </para>
+          <para>
+            Profile C Support Check section (Check that Discovery is supported added)
+          </para>
+          <para>
+            Profile D Support Check section (Check that Discovery is supported added)
+          </para>
+          <para>
+            Profile G Support Check section (Check that Discovery is supported added)
+          </para>
+          <para>
+            Profile Q Support Check section (Check that Discovery is supported added)
+          </para>
+          <para>
+            Profile S Support Check section (Check that Discovery is supported added)
+          </para>
+          <para>
+            Profile T Support Check section (Check that Discovery is supported added)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 13, 2021</date>
+        <revdescription>
+          <para>The following were updated in the scope of #2032:</para>
+          <para>
+            Access Control events added into Profile D Support Check section (steps 7.5.6 - 7.5.9)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jun 07, 2021</date>
+        <revdescription>
+          <para>Profile M was updated in the scope of #2221:</para>
+          <para>
+            ws and wss protocols of MQTT changed from mandatory to optional (steps 8.3.iv and 8.3.v)
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Dec 15, 2021</date>
+        <revdescription>
+          <para>Profile Q was removed according to #2204</para>
         </revdescription>
       </revision>
     </revhistory>
@@ -264,23 +332,23 @@
       Profile C Conformance item focuses on ONVIF Profile C specification ([ONVIF Profile C]) as a referenced Profile by an ONVIF device implementation under test.
     </para>
     <para>
-      Profile Q Conformance item focuses on ONVIF Profile Q specification ([ONVIF Profile Q]) as a referenced Profile by an ONVIF device implementation under test.
-    </para>
-    <para>
       Profile A Conformance item focuses on ONVIF Profile A specification ([ONVIF Profile A]) as a referenced Profile by an ONVIF device implementation under test.
     </para>
     <para>
       Profile T Conformance item focuses on ONVIF Profile T specification ([ONVIF Profile T]) as a referenced Profile by an ONVIF device implementation under test.
     </para>
+    <para>
+      Profile M Conformance item focuses on ONVIF Profile M specification ([ONVIF Profile M]) as a referenced Profile by an ONVIF device implementation under test.
+    </para>
     <!--Profile D-->
-    <!--<para>
+    <para>
       Profile D Conformance item focuses on ONVIF Profile D specification ([ONVIF Profile D]) as a referenced Profile by an ONVIF device implementation under test.
-    </para>-->
+    </para>
     <!--Profile D END-->
     <section xml:id="s.intro.scope">
       <title>Scope</title>
       <para>
-        This ONVIF Profiles Conformance Test Specification document defines and regulates the conformance testing procedure for the ONVIF conformant devices. The objective of this specification is to provide the logic of ONVIF Profiles detection according to ONVIF Profile S Specification, ONVIF Profile G Specification, ONVIF Profile C Specification, ONVIF Profile Q Specification, and ONVIF Profile A Specification.
+        This ONVIF Profiles Conformance Test Specification document defines and regulates the conformance testing procedure for the ONVIF conformant devices. The objective of this specification is to provide the logic of ONVIF Profiles detection according to ONVIF Profile S Specification, ONVIF Profile G Specification, ONVIF Profile C Specification, and ONVIF Profile A Specification.
       </para>
     </section>
     <section xml:id="s.docbook">
@@ -1271,7 +1339,7 @@
           </listitem>
           <listitem>
             <para>
-              Check Discovery feature. If Discovery feature is regarded as unsupported, then it is determined that [ONVIF Profile S] is not supported by DUT. This is mandatory feature for any of ONVIF device implementation.
+              Check Discovery feature. If <emphasis role="bold">Discovery</emphasis> feature is regarded as unsupported, then it is determined that [ONVIF Profile S] is not supported by DUT and certification will be failed.
             </para>
           </listitem>
           <listitem>
@@ -2492,7 +2560,8 @@
           </listitem>
           <listitem>
             <para>
-              Check Discovery feature category of ONVIF profile support. This is a mandatory feature for any of ONVIF device implementation. The following features are defined as supported:
+              Check that Discovery is supported by the DUT. If <emphasis role="bold">Discovery</emphasis> feature is regarded as unsupported by the DUT,
+              then it is determined that [ONVIF Profile G] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
               <itemizedlist>
                 <listitem>
                   <para>
@@ -4172,7 +4241,8 @@
           </listitem>
           <listitem>
             <para>
-              Check Discovery feature category of ONVIF profile support. This is a mandatory feature for any of ONVIF device implementation. The following features are defined as supported:
+              Check that Discovery is supported by the DUT. If <emphasis role="bold">Discovery</emphasis> feature is regarded as unsupported by the DUT,
+              then it is determined that [ONVIF Profile C] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
               <itemizedlist>
                 <listitem>
                   <para>
@@ -4933,1936 +5003,6 @@
             </para>
           </listitem>
         </orderedlist>
-      </para>
-    </section>
-  </chapter>
-  <!--Profile Q Conformance-->
-  <chapter xml:id="tc.profile-q">
-    <title>Profile Q Conformance</title>
-    <!--Feature category classification for ONVIF Profile Q-->
-    <section xml:id="tc.profile-q.features">
-      <title>Feature category classification for ONVIF Profile Q</title>
-      <para>
-        In order for ONVIF Device Test Tool to conduct conformance testing toward [ONVIF Profile Q], it would need to identify whether DUT implements the expected feature set.
-      </para>
-      <para>
-        This section classifies supported features as multiple categories that are related to [ONVIF Profile Q] conformance. Those category classifications will be used to do some preliminary checking prior to the test case execution and also they will be used to determine whether DUT can be considered to be [ONVIF Profile Q] conformant device.
-      </para>
-      <para>
-        The following discovery scope is defined as the scope that signals that DUT is [ONVIF Profile Q] product.
-      </para>
-      <para>
-        <table pgwide="1"
-               xml:id="tc.profile-q.scope.table">
-          <title>Profile Q Discovery Scope</title>
-          <tgroup cols="1"
-                  align='center'>
-            <colspec colname="c1"/>
-            <tbody>
-
-              <row>
-                <entry align="left">
-                  onvif://www.onvif.org/Profile/Q/FactoryDefault
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  onvif://www.onvif.org/Profile/Q/Operational
-                </entry>
-              </row>
-            </tbody>
-          </tgroup>
-        </table>
-      </para>
-      <para>
-        The following table shows the classified feature categories based on commands and/or functional blocks that are referenced by DUT.
-      </para>
-      <para>
-        <table xml:id="tc.profile-q.features.table">
-          <title>Profile Q Features Categories</title>
-          <tgroup cols="2"
-                  align='center'>
-            <colspec colname="c1"/>
-            <colspec colname="c2"/>
-
-            <tbody>
-              <row>
-                <entry namest="c1"
-                       nameend="c2"
-                       align="left">
-                  <emphasis role="bold">Profile Mandatory Features</emphasis>
-                </entry>
-              </row>
-              <row>
-                <entry morerows='4'
-                       align="left">
-                  Capabilities
-                </entry>
-                <entry align="left">
-                  GetServices (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetServiceCapabilities (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetServiceCapabilities (Event)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  MaxUsernameLength capability is supported
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  MaxPasswordLength capability is supported
-                </entry>
-              </row>
-              <row>
-                <entry morerows='11'
-                       align="left">
-                  Network Configuration
-                </entry>
-                <entry align="left">
-                  GetHostname (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetHostname (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetDNS (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetDNS (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetNetworkInterfaces (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetNetworkInterfaces (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetNetworkProtocols (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetNetworkProtocols (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetNetworkDefaultGateway (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetNetworkDefaultGateway (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetZeroConfiguration (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetZeroConfiguration (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry morerows='6'
-                       align="left">
-                  System
-                </entry>
-                <entry align="left">
-                  GetDeviceInformation (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetSystemDateAndTime (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetSystemDateAndTime (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetNTP (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetNTP (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetSystemFactoryDefault (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Reboot (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry morerows='4'
-                       align="left">
-                  User Handling
-                </entry>
-                <entry align="left">
-                  MaxUsers capability is supported
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetUsers (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  CreateUsers (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  DeleteUsers (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetUser (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry morerows='3'
-                       align="left">
-                  Standard Events for Monitoring
-                </entry>
-                <entry align="left">
-                  tns1:Monitoring/ProcessorUsage
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  tns1:Monitoring/OperatingTime/LastReset
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  tns1:Monitoring/OperatingTime/LastReboot
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  tns1:Monitoring/OperatingTime/LastClockSynchronization
-                </entry>
-              </row>
-              <row>
-                <entry morerows='7'
-                       align="left">
-                  Event Handling
-                </entry>
-                <entry align="left">
-                  MaxPullPoint capability is supported and value is not less than 2
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetSynchronizationPoint (Event)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  CreatePullPointSubscription (Event)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  PullMessages (Event)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetEventProperties (Event)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Renew (Event)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Unsubscribe (Event)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  TopicFilter (Event)
-                </entry>
-              </row>
-              <row>
-                <entry namest="c1"
-                       nameend="c2"
-                       align="left">
-                  <emphasis role="bold">Profile Conditional Features</emphasis>
-                </entry>
-              </row>
-              <row>
-                <entry morerows='1'
-                       align="left">
-                  Remote User Management
-                </entry>
-                <entry align="left">
-                  GetRemoteUser (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  SetRemoteUser (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Firmware Upgrade
-                </entry>
-                <entry align="left">
-                  StartFirmwareUpgrade (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry morerows='1'
-                       align="left">
-                  Backup and Restore
-                </entry>
-                <entry align="left">
-                  GetSystemUris (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  StartSystemRestore (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry morerows='18'
-                       align="left">
-                  TLS Configuration - Keystore
-                </entry>
-                <entry align="left">
-                  CreateCertificationPath (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  CreatePKCS10CSR (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  CreateRSAKeyPair (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  CreateSelfSignedCertificate (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  DeleteCertificate (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  DeleteCertificationPath (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  DeleteKey (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  DeletePassphrase (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetAllCertificates (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetAllCertificationPaths (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetAllKeys (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetAllPassphrases (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetCertificate (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetCertificationPath (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetKeyStatus (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  UploadCertificate (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  UploadCertificateWithPrivateKeyInPKCS12 (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  UploadKeyPairInPKCS8 (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  UploadPassphrase (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry morerows='3'
-                       align="left">
-                  TLS Configuration - TLS Server
-                </entry>
-                <entry align="left">
-                  AddServerCertificateAssignment (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetAssignedServerCertificates (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  RemoveServerCertificateAssignment (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  ReplaceServerCertificateAssignment (Security Configuration)
-                </entry>
-              </row>
-              <row>
-                <entry morerows='3'
-                       align="left">
-                  Media Service
-                </entry>
-                <entry align="left">
-                  GetProfiles (Media)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetStreamUri (Media)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetServiceCapabilities (Media)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Media Streaming using RTSP
-                </entry>
-              </row>
-              <row>
-                <entry morerows='4'
-                       align="left">
-                  Standard Events for Device Management
-                </entry>
-                <entry align="left">
-                  tns1:Device/HardwareFailure/FanFailure
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  tns1:Device/HardwareFailure/PowerSupplyFailure
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  tns1:Device/HardwareFailure/StorageFailure
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  tns1:Device/HardwareFailure/TemperatureCritical
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  tns1:Monitoring/Backup/Last
-                </entry>
-              </row>
-              <row>
-                <entry namest="c1"
-                       nameend="c2"
-                       align="left">
-                  <emphasis role="bold">Factory Default State</emphasis>
-                </entry>
-              </row>
-              <row>
-                <entry morerows='2'
-                       align="left">
-                  Factory Default State
-                </entry>
-                <entry align="left">
-                  Factory Default State is signaled by the scope value onvif://www.onvif.org/Profile/Q/FactoryDefault
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Anonymous access in Factory Default State
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  User configuration in Factory Default State
-                </entry>
-              </row>
-              <row>
-                <entry morerows='1'
-                       align="left">
-                  Device Discovery
-                </entry>
-                <entry align="left">
-                  WS-Discovery
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetScopes (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  ZeroConfiguration Network Configuration
-                </entry>
-                <entry align="left">
-                  Dynamic IP configuration enabled in Factory Default State
-                </entry>
-              </row>
-              <row>
-                <entry morerows='1'
-                       align="left">
-                  Automatic IP Assignment
-                </entry>
-                <entry align="left">
-                  IPv4 DHCP enabled in Factory Default State
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  IP v6 stateless autoconfiguration enabled in Factory Default State
-                </entry>
-              </row>
-              <row>
-                <entry namest="c1"
-                       nameend="c2"
-                       align="left">
-                  <emphasis role="bold">Operational State</emphasis>
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Operational State
-                </entry>
-                <entry align="left">
-                  Operational State is signaled by the scope value onvif://www.onvif.org/Profile/Q/Operational
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Authentication
-                </entry>
-                <entry align="left">
-                  HTTP digest authentication
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  Default Access Policy
-
-                </entry>
-                <entry align="left">
-                  Default Access Policy
-
-                </entry>
-              </row>
-
-            </tbody>
-          </tgroup>
-        </table>
-      </para>
-    </section>
-    <!--Profile Q Support Check-->
-    <section xml:id="tc.profile-q.support">
-      <title>Profile Q Support Check</title>
-
-      <para>
-        Preliminary checking for feature discovery will be performed prior to the test execution. For the details of the preliminary feature discovery, refer to [ONVIF Feature Discovery].
-      </para>
-      <para>
-        According to the result of test case execution, final determination of [ONVIF Profile Q] support toward DUT is performed based on the following procedure.
-      </para>
-
-      <para>
-        <emphasis role="bold">Procedure:</emphasis>
-        <orderedlist>
-          <?dbfo label-width="1.5em"?>
-          <listitem>
-            <para>
-              Check that scope list contains at least one scope given in <xref linkend="tc.profile-q.scope.table"
-                    xrefstyle="template:Table %n"/>. If there is no such scope on the scope list of the DUT, then it is determined that [ONVIF Profile Q] is not supported.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Discovery Types support. If <emphasis role="bold">Discovery/Types/tds:Device</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Capabilities feature category of ONVIF profile support:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Check that GetServices command is supported by the DUT. If <emphasis role="bold">Device Service/Capabilities/GetServices</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that Capabilities category is supported with the following features included:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetServices (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          GetServiceCapabilities (Device Management)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that MaxUsernameLength capability is supported by the DUT. If <emphasis role="bold">Device Service/Security/MaxUsernameLength capability</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that Capabilities category is supported with the following features included:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          MaxUsernameLength capability is supported
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that MaxPasswordLength capability is supported by the DUT. If <emphasis role="bold">Device Service/Security/MaxPasswordLength capability</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that Capabilities category is supported with the following features included:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          MaxPasswordLength capability is supported
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Network feature category of ONVIF profile support:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    The following features are a mandatory features for any of ONVIF device implementation and are defined as supported:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetHostname (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetHostname (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          GetDNS (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetDNS (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          GetNetworkInterfaces (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetNetworkInterfaces (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          GetNetworkProtocols (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetNetworkProtocols (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          GetNetworkDefaultGateway (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetNetworkDefaultGateway (Device Management)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that ZeroConfiguration capability is supported by the DUT. If <emphasis role="bold">Device Service/Network/Zero Configuration</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that Network feature category is supported with the following features included:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetZeroConfiguration (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetZeroConfiguration (Device Management)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check System feature category of ONVIF profile support:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    This feature is mandatory for any of ONVIF device implementation. The following features are defined as supported:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetDeviceInformation (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          GetSystemDateAndTime (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetSystemDateAndTime (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetSystemFactoryDefault (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Reboot (Device Management)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that NTP capability is supported by the DUT. If <emphasis role="bold">Device Management/Network/NTP</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that System category is supported with the following features included:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetNTP (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetNTP (Device Management)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check that <emphasis role="bold">Device Service/System/User Handling</emphasis> is supported by the DUT. If <emphasis role="bold">Device Service/System/User Handling</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile Q] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
-              <orderedlist numeration="lowerroman"
-                           inheritnum="ignore">
-                <listitem>
-                  <para>
-                    User Handling feature category:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetUsers (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          CreateUsers (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          DeleteUsers (Device Management)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          SetUser (Device Management)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-
-
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Standard Events for Monitoring feature category of ONVIF profile support:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Check that tns1:Monitoring/ProcessorUsage feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Monitoring/ProcessorUsage</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that tns1:Monitoring/ProcessorUsage feature is supported by the DUT.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that tns1:Monitoring/OperatingTime/LastReset feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Monitoring/OperatingTime/LastReset</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that tns1:Monitoring/OperatingTime/LastReset feature is supported by the DUT.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that tns1:Monitoring/OperatingTime/LastReboot feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Monitoring/OperatingTime/LastReboot</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that tns1:Monitoring/OperatingTime/LastReboot feature is supported by the DUT.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that tns1:Monitoring/OperatingTime/LastClockSynchronization feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Monitoring/OperatingTime/LastClockSynchronization</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that tns1:Monitoring/OperatingTime/LastClockSynchronization feature is supported by the DUT.
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Event Handling feature category.
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Check that Event Service is supported by DUT. If <emphasis role="bold">Event Service</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that Event Handling features is supported by DUT. The following features are defined as supported:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          Capabilities feature category
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                GetServiceCapabilities (Event)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Event Handling feature category
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                GetEventProperties (Event)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that Pull-Point Notification is supported by DUT. If <emphasis role="bold">Event Service/Pull-Point Notification</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are defined as supported:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          Event Handling feature category
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                Renew (Event)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                Unsubscribe (Event)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetSynchronizationPoint (Event)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                CreatePullPointSubscription (Event)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                PullMessage (Event)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                TopicFilter (Event)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that at least two PullPoint subscriptions are supported by the DUT. If <emphasis role="bold">Event Service/GetServiceCapabilities/MaxPullPoints capability</emphasis> is not supported by the DUT or it has value less than 2, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that Event Handling is supported with the following feature category included:
-                    <orderedlist numeration="loweralpha">
-                      <listitem>
-                        <para>
-                          At least two PullPoint subscriptions
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Remote User Management feature category of ONVIF profile support. If <emphasis role="bold">Device Service\Security\Remote User Handling</emphasis> is regarded as supported by DUT, then it is determined that Remote User Management feature category with the following features is supported by DUT:
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    GetRemoteUser (Device Management)
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    SetRemoteUser (Device Management)
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Firmware Upgrade feature category of ONVIF profile support. If <emphasis role="bold">Device Service\System\HTTP Firmware Upgrade</emphasis> is regarded as supported by DUT, then it is determined that Firmware Upgrade feature category with the following features is supported by DUT:
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    StartFirmwareUpgrade (Device Management)
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Backup and Restore feature category of ONVIF profile support. If <emphasis role="bold">Device Service\System\HTTP System Backup</emphasis> is regarded as supported by DUT, then it is determined that Backup and Restore feature category with the following features is supported by DUT:
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    GetSystemUris (Device Management)
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    StartSystemRestore (Device Management)
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="bold">Security Configuration Service</emphasis> is regarded as supported:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Check TLS Configuration - Keystore feature category of ONVIF profile support:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          If <emphasis role="bold">Security Configuration Service\Keystore features support\RSA Key Pair Generation</emphasis> is not supported by the DUT and <emphasis role="bold">Security Configuration Service\Keystore features support\PKCS#12 Container Upload</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by the DUT and certification will be failed. Otherwise, it is determined that feature is supported by the DUT:
-                          <orderedlist numeration="arabic">
-                            <listitem>
-                              <para>
-                                If <emphasis role="bold">Security Configuration Service\Keystore features support\RSA Key Pair Generation</emphasis> is regarded as supported by the DUT:
-                                <itemizedlist>
-                                  <listitem>
-                                    <para>
-                                      CreateRSAKeyPair (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetKeyStatus (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetAllKeys (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      DeleteKey (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                </itemizedlist>
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                If <emphasis role="bold">Security Configuration Service\Keystore features support\PKCS#12 Container Upload</emphasis> is regarded as supported by the DUT:
-                                <itemizedlist>
-                                  <listitem>
-                                    <para>
-                                      DeleteCertificate (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      DeleteCertificationPath (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      DeleteKey (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      DeletePassphrase (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetAllCertificates (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetAllCertificationPaths (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetAllKeys (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetAllPassphrases (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetCertificate (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetCertificationPath (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetKeyStatus (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      UploadPassphrase (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                </itemizedlist>
-                              </para>
-                            </listitem>
-                          </orderedlist>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          If <emphasis role="bold">Security Configuration Service\Keystore features support\RSA Key Pair Generation</emphasis> is supported by the DUT:
-                          <orderedlist numeration="arabic">
-                            <listitem>
-                              <para>
-                                If <emphasis role="bold">Security Configuration Service\Keystore features support\Self-Signed Certificate Creation With RSA</emphasis> is not supported by the DUT or <emphasis role="bold">Security Configuration Service\Keystore features support\PKCS10 External Certification With RSA</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that feature is supported by the DUT:
-                                <itemizedlist>
-                                  <listitem>
-                                    <para>
-                                      CreatePKCS10CSR (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      CreateSelfSignedCertificate (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      DeleteCertificate (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetAllCertificates (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      GetCertificate (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                  <listitem>
-                                    <para>
-                                      UploadCertificate (Security Configuration)
-                                    </para>
-                                  </listitem>
-                                </itemizedlist>
-                              </para>
-                            </listitem>
-                          </orderedlist>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          If <emphasis role="bold">Security Configuration Service\Keystore features support\PKCS#8 Container Upload</emphasis> is regarded as supported by the DUT, then it is determined that the following feature is supported by the DUT:
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                UploadKeyPairInPKCS8 (Security Configuration)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          If DUT returns MaximumNumberOfKeys less than 16, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed.
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          If DUT returns MaximumNumberOfCertificates less than 16, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed.
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check TLS Configuration - TLS server feature category of ONVIF profile support:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          If <emphasis role="bold">Security Configuration Service\TLS features support\TLS Server Support</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that feature is supported by the DUT:
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                CreateCertificationPath (Security Configuration)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetCertificationPath (Security Configuration)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetAllCertificationPaths (Security Configuration)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                DeleteCertificationPath (Security Configuration)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                AddTLSServerCertificateAssignment (Security Configuration)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                RemoveTLSServerCertificateAssignment (Security Configuration)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                ReplaceTLSServerCertificateAssignment (Security Configuration)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetAssignedServerCertificates (Security Configuration)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Media Service feature category of ONVIF profile support:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    If <emphasis role="bold">Media Service</emphasis> is regarded as supported by DUT, then it is determined that the following features is supported by DUT:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetProfiles (Media)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If <emphasis role="bold">Media Service</emphasis> is regarded as supported by DUT and <emphasis role="bold">Device Service/Capabilities/GetServices</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features is supported by DUT:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetServiceCapabilities (Media)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If <emphasis role="bold">Media Service</emphasis> is regarded as supported by DUT and <emphasis role="bold">Media Service/Real-time Streaming</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features is supported by DUT:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetStreamUri (Media)
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Media Streaming using RTSP
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Standard events for Device Management feature category of ONVIF profile support:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Check that tns1:Device/HardwareFailure/FanFailure feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Device/HardwareFailure/FanFailure</emphasis> is regarded as supported by DUT, then it is determined that tns1:Device/HardwareFailure/FanFailure feature is supported by the DUT.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that tns1:Device/HardwareFailure/PowerSupplyFailure feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Device/HardwareFailure/PowerSupplyFailure</emphasis> is regarded as supported by DUT, then it is determined that tns1:Device/HardwareFailure/PowerSupplyFailure feature is supported by the DUT.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that tns1:Device/HardwareFailure/StorageFailure feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Device/HardwareFailure/StorageFailure</emphasis> is regarded as supported by DUT, then it is determined that tns1:Device/HardwareFailure/StorageFailure feature is supported by the DUT.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that tns1:Device/HardwareFailure/TemperatureCritical feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Device/HardwareFailure/TemperatureCritical</emphasis> is regarded as supported by DUT, then it is determined that tns1:Device/HardwareFailure/TemperatureCritical feature is supported by the DUT.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Check that tns1:Monitoring/Backup/Last feature is supported by the DUT. If <emphasis role="bold">Monitoring events\Monitoring/Backup/Last</emphasis> is regarded as supported by DUT, then it is determined that tns1:Monitoring/Backup/Last feature is supported by the DUT.
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check 	Device Discovery feature category of ONVIF profile support:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    The following features are a mandatory features for any of ONVIF device implementation and are defined as supported:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          WS-Discovery
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          GetScopes (Device Management)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="bold">Profile Q</emphasis> is regarded as supported by DUT the following feature categories and related features will be regarded as supported:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Factory Default State feature category:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          Factory Default State is signalled by the scope value onvif://www.onvif.org/Profile/Q/FactoryDefault
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Anonymous access in Factory Default State
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          User configuration in Factory Default State
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    ZeroConfiguration Network Configuration feature category:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          Dynamic IP configuration enabled in Factory Default State
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Automatic IP Assignment feature category:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          IPv4 DHCP enabled in Factory Default State
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    Operational State feature category:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          Operational State is signaled by the scope value onvif://www.onvif.org/Profile/Q/Operational
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="bold">Profile Q</emphasis> is regarded as supported by DUT and <emphasis role="bold">Device Service\Network\IPv6</emphasis> is regarded as supported by DUT the following related features will be regarded as supported:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    IPv6 stateless autoconfiguration enabled in Factory Default State
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Default Access Policy feature category.
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Check that Default Access Policy is supported by the DUT. If <emphasis role="bold">Device Service\Security\Default Access Policy</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that Default Access Policy feature is supported by DUT.
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Check Authentication feature category.
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Check that HTTP Digest Authentication is supported by the DUT. If <emphasis role="bold">Security\Digest</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile Q] is not supported by DUT and certification will be failed. Otherwise, it is determined that HTTP Digest Authentication feature is supported by DUT.
-                  </para>
-                </listitem>
-              </orderedlist>
-
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-
-
-
-    </section>
-
-    <!--Profile Q Testing Preparation-->
-    <section xml:id="tc.profile-q.testing">
-      <title>Profile Q Testing Preparation</title>
-      <para>
-        If a DUT has Profile Q scope, the test tool prepares a DUT to Quick Install test cases during conformance procedure following the procedure of Profile Q testing preparation test case:
-      </para>
-      <para>
-        <emphasis role="bold">Procedure:</emphasis>
-        <orderedlist>
-          <?dbfo label-width="1.5em"?>
-          <listitem>
-            <para>
-              ONVIF Client invokes <emphasis role="bold">SetSystemFactoryDefault</emphasis> with parameters
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    FactoryDefault := Hard
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT responds with a <emphasis role="bold">SetSystemFactoryDefaultResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem xml:id="tc.profile-q.testing.3">
-            <para>
-              Until <emphasis role="italic">timeout1</emphasis> timeout expires repeat the following steps:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    The DUT will send Multicast Hello message after it is successfully rebooted with parameters:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          EndpointReference.Address equal to unique endpoint reference of the DUT
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Types list
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Scopes list := scopesList
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          XAddrs list := xaddrsList
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          MetadataVersion
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If xaddrsList contains URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, go to step <link linkend="tc.profile-q.testing.6">6</link>.
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="italic">timeout1</emphasis> timeout expires for step <link linkend="tc.profile-q.testing.3">3</link> without Hello with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              ONVIF client waits for 5 seconds after Hello was received.
-            </para>
-          </listitem>
-          <listitem xml:id="tc.profile-q.testing.6">
-            <para>
-              ONVIF Client invokes <emphasis role="bold">SetNTP</emphasis> without any authentication with parameters
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    FromDHCP := true
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    NTPManual skipped
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT responds with a <emphasis role="bold">SetNTPResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              ONVIF client invokes <emphasis role="bold">GetSystemDateAndTime</emphasis> without any authentication.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT responds with <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message with parameters
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    SystemDateAndTime := <emphasis role="italic">dateAndTimeSettings</emphasis>
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              ONVIF Client invokes <emphasis role="bold">SetSystemDateAndTime</emphasis> without any authentication with parameters
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    DateTimeType := NTP
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    DaylightSavings := <emphasis role="italic">dateAndTimeSettings</emphasis>.DaylightSavings
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    TimeZone := <emphasis role="italic">dateAndTimeSettings</emphasis>.TimeZone
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    UTCDateTime skipped
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT responds with a <emphasis role="bold">SetSystemDateAndTime</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis>.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT responds with a <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    Capabilities =: <emphasis role="italic">cap</emphasis>
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="italic">cap</emphasis> does not contain Security.MaxPasswordLength or Security.MaxUserNameLength, FAIL the test and skip other steps.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis> without any authentication.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters.
-              <itemizedlist>
-                <listitem>
-                  <para>
-                    User list =: <emphasis role="italic">userList</emphasis>
-                  </para>
-                </listitem>
-              </itemizedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="italic">userList</emphasis> contains user with user level Administrator:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Set the following:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          <emphasis role="italic">passwordLength</emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxPasswordLength
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          <emphasis role="italic">userLogin</emphasis> := Username of user with user level equal to Administrator from <emphasis role="italic">userList</emphasis>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem xml:id="tc.profile-q.testing.17.b">
-                  <para>
-                    ONVIF Client invokes <emphasis role="bold">SetUser</emphasis> with parameters
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          User[0].Username := <emphasis role="italic">userLogin</emphasis>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          User[0].Password := <emphasis role="italic">password</emphasis>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          User[0].UserLevel := Administrator
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Extension skipped
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If the DUT responds with <emphasis role="bold">SetUserResponse</emphasis> message, skip other steps.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If the DUT returns <emphasis role="bold">env:Sender\ter:OperationProhibited\ter:Password</emphasis> SOAP 1.2 fault:
-                    <orderedlist numeration="loweralpha"
-                                 inheritnum="inherit">
-                      <listitem>
-                        <para>
-                          Set the following:
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Go to the step <link linkend="tc.profile-q.testing.17.b">b</link>.
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If the DUT returns other SOAP 1.2 fault, FAIL the test and skip other steps.
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="italic">userList</emphasis> does not contain user with user level Administrator:
-              <orderedlist numeration="loweralpha">
-                <listitem>
-                  <para>
-                    Set the following:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          <emphasis role="italic">userLoginLength</emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxUserNameLength
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          <emphasis role="italic">passwordLength</emphasis> := <emphasis role="italic">cap</emphasis>.Security.MaxPasswordLength
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          <emphasis role="italic">userLogin</emphasis> := random string, contains <emphasis role="italic">userLoginLength</emphasis> low case alphabet characters, differs from usernames listed in userList
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem xml:id="tc.profile-q.testing.18.b">
-                  <para>
-                    ONVIF Client invokes <emphasis role="bold">CreateUsers</emphasis> with parameters
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          User[0].Username := <emphasis role="italic">userLogin</emphasis>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          User[0].Password := <emphasis role="italic">password</emphasis>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          User[0].UserLevel := Administrator
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Extension skipped
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If the DUT responds with <emphasis role="bold">CreateUsersResponse</emphasis> message, skip other steps.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If the DUT returns <emphasis role="bold">env:Sender\ter:OperationProhibited\ter:Password</emphasis> SOAP 1.2 fault:
-                    <orderedlist numeration="loweralpha"
-                                 inheritnum="inherit">
-                      <listitem>
-                        <para>
-                          Set the following:
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                <emphasis role="italic">password</emphasis> := random string, contains <emphasis role="italic">passwordLength</emphasis> ASCII characters
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Go to the step <link linkend="tc.profile-q.testing.18.b">b</link>.
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          If the DUT returns other SOAP 1.2 fault, FAIL the test.
-                        </para>
-                      </listitem>
-                    </orderedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Test Result:</emphasis>
-      </para>
-      <para>
-        <emphasis role="bold">PASS -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              DUT passes all assertions.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">FAIL -</emphasis>
-        <itemizedlist>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">SetSystemFactoryDefaultResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">GetUsersResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">SetUsersResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">CreateUsersResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">SetNTPResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message.
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              The DUT did not send <emphasis role="bold">SetSystemDateAndTimeResponse</emphasis> message.
-            </para>
-          </listitem>
-        </itemizedlist>
-      </para>
-      <para>
-        <emphasis role="bold">Note:</emphasis> User with username <emphasis role="italic">userLogin</emphasis> and password <emphasis role="italic">password</emphasis> shall be used for further test cases.
-      </para>
-      <para>
-        <emphasis role="bold">Note:</emphasis> <emphasis role="italic">timeout1</emphasis> will be taken from Reboot Timeout field of ONVIF Device Test Tool.
-      </para>
-      <para>
-        <emphasis role="bold">Note:</emphasis> IPv4 address from Hello shall be used for further test cases.
-      </para>
-
-      <para>
-        <emphasis role="bold">Note:</emphasis> Onvif Client uses password values from  Management tab for CreateUsers and StUser operations if 'Provide own passwords' is active on Management tab.
       </para>
     </section>
   </chapter>
@@ -7946,7 +6086,7 @@
           </listitem>
           <listitem>
             <para>
-              Check Discovery feature category of ONVIF profile support. This is a mandatory feature for any of ONVIF device implementation. The following features are defined as supported:
+              Check that Discovery is supported by the DUT. If <emphasis role="bold">Discovery</emphasis> feature is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile A] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
               <itemizedlist>
                 <listitem>
                   <para>
@@ -9772,26 +7912,10 @@
                 <?dbfo label-width="2.5em"?>
                 <listitem>
                   <para>
-                    The following features are supported by the DUT, because these are mandatory features for any ONVIF device implementation:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          Capabilities feature category:
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                GetWsdlUrl (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetServiceCapabilities (Device Management)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
+                    Check that Discovery is supported by the DUT. If <emphasis role="bold">Discovery</emphasis> feature is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile T] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                    <orderedlist numeration="arabic"
+                                          inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
                       <listitem>
                         <para>
                           Discovery feature category:
@@ -9834,61 +7958,94 @@
                           </itemizedlist>
                         </para>
                       </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The following features are supported by the DUT, because these are mandatory features for any ONVIF device implementation:
+                    <orderedlist numeration="lowerroman"
+                                 inheritnum="ignore">
                       <listitem>
                         <para>
-                          Network Configuration feature category:
+                          Capabilities feature category:
                           <itemizedlist>
                             <listitem>
                               <para>
-                                GetHostname (Device Management)
+                                GetWsdlUrl (Device Management)
                               </para>
                             </listitem>
                             <listitem>
                               <para>
-                                SetHostname (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetDNS (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetDNS (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkInterfaces (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkInterfaces (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkProtocols (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkProtocols (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkDefaultGateway (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkDefaultGateway (Device Management)
+                                GetServiceCapabilities (Device Management)
                               </para>
                             </listitem>
                           </itemizedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Check that Network Configuration is supported by the DUT. If <emphasis role="bold">Device Service/System/Network Configuration</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile T] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          <orderedlist numeration="lowerroman"
+                                       inheritnum="ignore">
+                            <listitem>
+                              <para>
+                                Network Configuration feature category:
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      GetHostname (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetHostname (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetDNS (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetDNS (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetNetworkInterfaces (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetNetworkInterfaces (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetNetworkProtocols (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetNetworkProtocols (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetNetworkDefaultGateway (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetNetworkDefaultGateway (Device Management)
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                          </orderedlist>
                         </para>
                       </listitem>
                       <listitem>
@@ -9923,9 +8080,10 @@
                           </itemizedlist>
                         </para>
                       </listitem>
+
                       <listitem>
                         <para>
-                          Check that <emphasis role="bold">Device Service/System/User Handling</emphasis> is supported by the DUT. If <emphasis role="bold">Device Service/System/User Handling</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile T] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          Check that User Handling is supported by the DUT. If <emphasis role="bold">Device Service/System/User Handling</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile T] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                           <orderedlist numeration="lowerroman"
                                        inheritnum="ignore">
                             <listitem>
@@ -9955,8 +8113,6 @@
                                 </itemizedlist>
                               </para>
                             </listitem>
-
-
                           </orderedlist>
                         </para>
                       </listitem>
@@ -13337,7 +11493,7 @@
               </row>
               <row>
                 <entry align="left">
-                  CountAggregation Rule (Analytics)
+                  Line Crossing Counting Rule (Analytics)
                 </entry>
               </row>
               <row>
@@ -13406,7 +11562,61 @@
           <!--Discovery Types-->
           <listitem>
             <para>
-              Check Discovery Types support. If <emphasis role="bold">Discovery/Types/tds:Device</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile M] is not supported by DUT and certification will be failed.
+              Check that Discovery is supported by the DUT. If <emphasis role="bold">Discovery</emphasis> feature is regarded as supported by the DUT
+              <orderedlist numeration="arabic"
+                           inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    Check Discovery Types support. If <emphasis role="bold">Discovery/Types/tds:Device</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile M] is not supported by DUT and certification will be failed.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    It is determined that the following features are supported by the DUT:
+                    <orderedlist numeration="lowerroman"
+                                 inheritnum="ignore">
+                      <listitem>
+                        <para>
+                          Discovery feature category:
+                          <itemizedlist>
+                            <listitem>
+                              <para>
+                                WS-Discovery
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                GetDiscoveryMode (Device Management)
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                SetDiscoveryMode (Device Management)
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                SetScopes (Device Management)
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                AddScopes (Device Management)
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                RemoveScopes (Device Management)
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
             </para>
           </listitem>
           <!--Authentication-->
@@ -13447,57 +11657,17 @@
                     The following features are supported by the DUT, because these are mandatory features for any ONVIF device implementation:
                     <orderedlist numeration="lowerroman"
                                  inheritnum="ignore">
-                      <!--<listitem>
-                        <para>
-                          Capabilities feature category:
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                GetWsdlUrl (Device Management)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>-->
+
                       <listitem>
                         <para>
-                          <!--[TODO #2110]-->  Discovery feature category:
+                          Discovery feature category:
                           <itemizedlist>
-                            <listitem>
-                              <para>
-                                WS-Discovery
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetDiscoveryMode (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetDiscoveryMode (Device Management)
-                              </para>
-                            </listitem>
                             <listitem>
                               <para>
                                 GetScopes (Device Management)
                               </para>
                             </listitem>
-                            <listitem>
-                              <para>
-                                SetScopes (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                AddScopes (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                RemoveScopes (Device Management)
-                              </para>
-                            </listitem>
+
                           </itemizedlist>
                         </para>
                       </listitem>
@@ -13533,77 +11703,6 @@
                           </itemizedlist>
                         </para>
                       </listitem>
-
-                      <!--<listitem>
-                  <para>
-                    Check that <emphasis role="bold">Device Service/System/Network Configuration</emphasis> is supported by the DUT. If <emphasis role="bold">Device Service/System/Network Configuration</emphasis> is regarded as supported by DUT: 
-                    <orderedlist numeration="arabic"
-                                 inheritnum="inherit">
-                      <?dbfo label-width="3.5em"?>
-                      <listitem>
-                        <para>
-                          It is determined that the following features are supported by the DUT:
-                          <orderedlist numeration="lowerroman"
-                                       inheritnum="ignore">
-                            <listitem>
-                              <para>
-                                GetHostname (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetHostname (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetDNS (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetDNS (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkInterfaces (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkInterfaces (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkProtocols (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkProtocols (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkDefaultGateway (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkDefaultGateway (Device Management)
-                              </para>
-                            </listitem>
-                          </orderedlist>
-                        </para>
-                      </listitem>
-                  
-                    </orderedlist>
-                  </para>
-                </listitem>-->
-
-
                     </orderedlist>
                   </para>
                 </listitem>
@@ -14579,7 +12678,7 @@
                       <!--Line crossing counter -->
                       <listitem>
                         <para>
-                          Check that Line crossing counter is supported by the DUT. If <emphasis role="bold">Analytics Service/Rule Engine/Count Aggregation Rule</emphasis> is regarded as supported by DUT it is determined that the following features are supported by the DUT:
+                          Check that Line crossing counter is supported by the DUT. If <emphasis role="bold">Analytics Service/Rule Engine/Line Crossing Counting</emphasis> is regarded as supported by DUT it is determined that the following features are supported by the DUT:
                           <orderedlist numeration="lowerroman"
                                        inheritnum="ignore">
                             <listitem>
@@ -14593,7 +12692,7 @@
                                   </listitem>
                                   <listitem>
                                     <para>
-                                      Count Aggregation Rule (Analytics)
+                                      Line Crossing Counting Rule (Analytics)
                                     </para>
                                   </listitem>
                                   <listitem>
@@ -14636,7 +12735,6 @@
               </orderedlist>
             </para>
           </listitem>
-
           <!--Event Handling Service-->
           <listitem>
             <para>
@@ -14816,7 +12914,7 @@
                       </listitem>
                       <listitem>
                         <para>
-                          Check that ws protocol is supported by DUT. If <emphasis role="bold">Event Service/Event Broker/Protocols/ws</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile M] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          Check that ws protocol is supported by DUT. If <emphasis role="bold">Event Service/Event Broker/Protocols/ws</emphasis> is regarded as supported by the DUT,  it is determined that the following features are supported by the DUT:
                           <orderedlist numeration="lowerroman"
                                        inheritnum="ignore">
                             <listitem>
@@ -14836,7 +12934,7 @@
                       </listitem>
                       <listitem>
                         <para>
-                          Check that wss protocol is supported by DUT. If <emphasis role="bold">Event Service/Event Broker/Protocols/wss</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile M] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          Check that wss protocol is supported by DUT. If <emphasis role="bold">Event Service/Event Broker/Protocols/wss</emphasis> is regarded as supported by the DUT,  it is determined that the following features are supported by the DUT:
                           <orderedlist numeration="lowerroman"
                                        inheritnum="ignore">
                             <listitem>
@@ -14934,7 +13032,7 @@
 
   <!--Profile D Conformance-->
 
-  <!--<chapter xml:id="tc.profile-d">
+  <chapter xml:id="tc.profile-d">
     <title>Profile D Conformance</title>
     <section xml:id="tc.profile-d.features">
       <title>Feature Category Classification for ONVIF Profile D</title>
@@ -14986,7 +13084,7 @@
                   <emphasis role="bold">Profile Mandatory Features</emphasis>
                 </entry>
               </row>
-             [TODO: to comment] 7.1 User authentication
+              <!--7.1 User authentication-->
               <row>
                 <entry morerows='1'
                        align="left">
@@ -15001,8 +13099,9 @@
                   RTSP Digest Authentication
                 </entry>
               </row>
+              <!--7.2 Capabilities-->
               <row>
-                <entry morerows='11'
+                <entry morerows='9'
                        align="left">
                   Capabilities
                 </entry>
@@ -15037,16 +13136,6 @@
               </row>
               <row>
                 <entry align="left">
-                  TODO #2027: GetServiceCapabilities (Analytics)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
-                  GetWsdlUrl (Device Management)
-                </entry>
-              </row>
-              <row>
-                <entry align="left">
                   MaxAccessPoints Capability (Access Control)
                 </entry>
               </row>
@@ -15065,7 +13154,7 @@
                   At least one of MaxAccessPoints and MaxDoors is larger than zero (Access Control or Door Control)
                 </entry>
               </row>
-              [TODO: to comment] 7.3 Discovery 
+              <!--7.3 Discovery-->
               <row>
                 <entry morerows='6'
                        align="left">
@@ -15105,7 +13194,7 @@
                   RemoveScopes (Device Management)
                 </entry>
               </row>
-             [TODO: to comment] 7.4 Network Configuration
+              <!--7.4 Network Configuration-->
               <row>
                 <entry morerows='9'
                        align="left">
@@ -15160,7 +13249,7 @@
                   SetNetworkDefaultGateway (Device Management)
                 </entry>
               </row>
-             [TODO: to comment] 7.5 System
+              <!--7.5 System-->
               <row>
                 <entry morerows='4'
                        align="left">
@@ -15190,7 +13279,7 @@
                   System Reboot (Device Management)
                 </entry>
               </row>
-             [TODO: to comment] 7.6 User Handling
+              <!--7.6 User Handling-->
               <row>
                 <entry morerows='3'
                        align="left">
@@ -15215,7 +13304,7 @@
                   SetUser (Device Management)
                 </entry>
               </row>
-            [TODO: to comment]  7.7 Event Handling
+              <!--7.7 Event Handling-->
               <row>
                 <entry morerows='7'
                        align="left">
@@ -15261,7 +13350,7 @@
                   ONVIF Message Content Filter Dialect  (Event)
                 </entry>
               </row>
-           [TODO: to comment]   7.8 Access Point Information
+              <!--7.8 Access Point Information-->
               <row>
                 <entry morerows='5'
                        align="left">
@@ -15296,7 +13385,7 @@
                   tns1:Configuration/AccessPoint/Removed (Event)
                 </entry>
               </row>
-             [TODO: to comment] 7.12 Door Information
+              <!--7.12 Door Information-->
               <row>
                 <entry morerows='5'
                        align="left">
@@ -15332,7 +13421,7 @@
                 </entry>
               </row>
 
-
+              <!--Profile Conditional Features-->
               <row>
                 <entry namest="c1"
                        nameend="c2"
@@ -15340,7 +13429,7 @@
                   <emphasis role="bold">Profile Conditional Features</emphasis>
                 </entry>
               </row>
-            [TODO: to comment]  7.9 Access Point State
+              <!--7.9 Access Point State-->
               <row>
                 <entry morerows='1'
                        align="left">
@@ -15355,14 +13444,34 @@
                   tns1:AccessPoint/State/Enabled (Event)
                 </entry>
               </row>
-            [TODO: to comment]  7.10 Access Control
+              <!--7.10 Access Control-->
               <row>
-                <entry morerows='4'
+                <entry morerows='8'
                        align="left">
                   Access Control
                 </entry>
                 <entry align="left">
                   ExternalAuthorization (Access Control)
+                </entry>
+              </row>
+              <row>
+                <entry align="left">
+                  tns1:AccessControl/AccessGranted/Anonymous (Event)
+                </entry>
+              </row>
+              <row>
+                <entry align="left">
+                  tns1:AccessControl/AccessGranted/Credential (Event)
+                </entry>
+              </row>
+              <row>
+                <entry align="left">
+                  tns1:AccessControl/Denied/Anonymous (Event)
+                </entry>
+              </row>
+              <row>
+                <entry align="left">
+                  tns1:AccessControl/Denied/Credential (Event)
                 </entry>
               </row>
               <row>
@@ -15385,7 +13494,7 @@
                   tns1:AccessControl/Request/Timeout (Event)
                 </entry>
               </row>
-            [TODO: to comment]  7.11 Access Taken
+              <!--7.11 Access Taken-->
               <row>
                 <entry morerows='3'
                        align="left">
@@ -15410,7 +13519,7 @@
                   tns1:AccessControl/AccessNotTaken/Anonymous (Event)
                 </entry>
               </row>
-              [TODO: to comment] 7.13 Door State
+              <!--7.13 Door State-->
               <row>
                 <entry morerows='7'
                        align="left">
@@ -15455,7 +13564,7 @@
                   tns1:Door/State/DoorFault (Event)
                 </entry>
               </row>
-              [TODO: to comment] 7.14 Door Control
+              <!--7.14 Door Control-->
               <row>
                 <entry morerows='8'
                        align="left">
@@ -15505,7 +13614,7 @@
                   LockOpenReleaseDoor (Door Control)
                 </entry>
               </row>
-            [TODO: to comment]  8.1 Access Point Management
+              <!--8.1 Access Point Management-->
               <row>
                 <entry morerows='5'
                        align="left">
@@ -15540,9 +13649,9 @@
                   tns1:Configuration/AccessPoint/Removed (Event)
                 </entry>
               </row>
-            [TODO: to comment]  8.2 Access Point Control
+              <!--8.2 Access Point Control-->
               <row>
-                <entry morerows='2'
+                <entry morerows='1'
                        align="left">
                   Access Point Control
                 </entry>
@@ -15555,12 +13664,12 @@
                   DisableAccessPoint (Access Control)
                 </entry>
               </row>
-              <row>
+              <!--<row>
                 <entry align="left">
                   tns1:AccessPoint/State/Enabled (Event)
                 </entry>
-              </row>
-             [TODO: to comment] 8.3 Door Management
+              </row>-->
+              <!--8.3 Door Management-->
               <row>
                 <entry morerows='5'
                        align="left">
@@ -15595,7 +13704,7 @@
                   tns1:Configuration/Door/Removed (Event)
                 </entry>
               </row>
-            [TODO: to comment]  8.4 Credential Format Types
+              <!--8.4 Credential Format Types-->
               <row>
                 <entry morerows='0'
                        align="left">
@@ -15605,7 +13714,7 @@
                   GetSupportedFormatTypes (Credential)
                 </entry>
               </row>
-            [TODO: to comment]  8.5 Credential Whitelisting
+              <!--8.5 Credential Whitelisting-->
               <row>
                 <entry morerows='4'
                        align="left">
@@ -15635,7 +13744,7 @@
                   tns1:AccessControl/AccessGranted/Identifier (Event)
                 </entry>
               </row>
-             [TODO: to comment] 8.4 Credential Blacklisting
+              <!--8.4 Credential Blacklisting-->
               <row>
                 <entry morerows='4'
                        align="left">
@@ -15670,7 +13779,7 @@
         </table>
       </para>
     </section>
-    [TODO: to comment] Profile D support check
+    <!--Profile D support check-->
     <section xml:id="tc.profile-d.support">
       <title>Profile D Support Check</title>
       <para>
@@ -15683,23 +13792,23 @@
         <emphasis role="bold">Procedure:</emphasis>
         <orderedlist>
           <?dbfo label-width="1.5em"?>
-          [TODO: to comment] Profile D scope
+          <!--Profile D scope-->
           <listitem>
             <para>
               Check that scope list contains the scope given in <xref linkend="tc.profile-d.features.scope.table"
                     xrefstyle="template:Table %n"/>. If there is no such scope in the scope list of the DUT, then it is determined that [ONVIF Profile D] is not supported.
             </para>
           </listitem>
-         [TODO: to comment] Discovery Types
+          <!--Discovery Types-->
           <listitem>
             <para>
               Check Discovery Types support. If <emphasis role="bold">Discovery/Types/tds:Device</emphasis> is not supported by the DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed.
             </para>
           </listitem>
-         [TODO: to comment] Authentication
+          <!--Authentication-->
           <listitem>
             <para>
-              Check that Digest Authentication is supported by the DUT. If <emphasis role="bold">Security/Digest</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile T] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+              Check that Digest Authentication is supported by the DUT. If <emphasis role="bold">Security/Digest</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
               <orderedlist numeration="lowerroman"
                            inheritnum="ignore">
                 <listitem>
@@ -15711,6 +13820,21 @@
                           HTTP Digest Authentication
                         </para>
                       </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Check that RTSP Streaming is supported by the DUT. If <emphasis role="bold">Media2 Service/Real-time Streaming</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
+              <orderedlist numeration="lowerroman"
+                           inheritnum="ignore">
+                <listitem>
+                  <para>
+                    User authentication feature category:
+                    <itemizedlist>
                       <listitem>
                         <para>
                           RTSP Digest Authentication
@@ -15722,7 +13846,7 @@
               </orderedlist>
             </para>
           </listitem>
-         [TODO: to comment] Device Management Service
+          <!--Device Management Service-->
           <listitem>
             <para>
               Check Device Management Service related features:
@@ -15731,21 +13855,11 @@
                 <?dbfo label-width="2.5em"?>
                 <listitem>
                   <para>
-                    The following features are supported by the DUT, because these are mandatory features for any ONVIF device implementation:
-                    <orderedlist numeration="lowerroman"
-                                 inheritnum="ignore">
-                      <listitem>
-                        <para>
-                          Capabilities feature category:
-                          <itemizedlist>
-                            <listitem>
-                              <para>
-                                GetWsdlUrl (Device Management)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
-                        </para>
-                      </listitem>
+                    Check that Discovery is supported by the DUT. If <emphasis role="bold">Discovery</emphasis> feature is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                    <orderedlist numeration="arabic"
+                                          inheritnum="inherit">
+                      <?dbfo label-width="2.5em"?>
+
                       <listitem>
                         <para>
                           Discovery feature category:
@@ -15788,61 +13902,80 @@
                           </itemizedlist>
                         </para>
                       </listitem>
+
+
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The following features are supported by the DUT, because these are mandatory features for any ONVIF device implementation:
+                    <orderedlist numeration="lowerroman"
+                                 inheritnum="ignore">
+
                       <listitem>
                         <para>
-                          Network Configuration feature category:
-                          <itemizedlist>
+                          Check that Network Configuration is supported by the DUT. If <emphasis role="bold">Device Service/System/Network Configuration</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          <orderedlist numeration="lowerroman"
+                                       inheritnum="ignore">
                             <listitem>
                               <para>
-                                GetHostname (Device Management)
+                                Network Configuration feature category:
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      GetHostname (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetHostname (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetDNS (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetDNS (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetNetworkInterfaces (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetNetworkInterfaces (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetNetworkProtocols (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetNetworkProtocols (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      GetNetworkDefaultGateway (Device Management)
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      SetNetworkDefaultGateway (Device Management)
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
                               </para>
                             </listitem>
-                            <listitem>
-                              <para>
-                                SetHostname (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetDNS (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetDNS (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkInterfaces (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkInterfaces (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkProtocols (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkProtocols (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                GetNetworkDefaultGateway (Device Management)
-                              </para>
-                            </listitem>
-                            <listitem>
-                              <para>
-                                SetNetworkDefaultGateway (Device Management)
-                              </para>
-                            </listitem>
-                          </itemizedlist>
+                          </orderedlist>
                         </para>
                       </listitem>
                       <listitem>
@@ -15879,7 +14012,7 @@
                       </listitem>
                       <listitem>
                         <para>
-                          Check that <emphasis role="bold">Device Service/System/User Handling</emphasis> is supported by the DUT. If <emphasis role="bold">Device Service/System/User Handling</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          Check that User Handling is supported by the DUT. If <emphasis role="bold">Device Service/System/User Handling</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                           <orderedlist numeration="lowerroman"
                                        inheritnum="ignore">
                             <listitem>
@@ -15917,10 +14050,11 @@
                     </orderedlist>
                   </para>
                 </listitem>
+
               </orderedlist>
             </para>
           </listitem>
-         [TODO: to comment] Event Handling Service
+          <!--Event Handling Service-->
           <listitem>
             <para>
               Check that Event Handling is supported by the DUT. If <emphasis role="bold">Event Handling Service</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise:
@@ -16048,14 +14182,14 @@
               </orderedlist>
             </para>
           </listitem>
-         [TODO: to comment] Access Control Service
+          <!--Access Control Service-->
           <listitem>
             <para>
               Check that Access Control Service is supported by the DUT. If <emphasis role="bold">Access Control Service</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise:
               <orderedlist numeration="arabic"
                            inheritnum="inherit">
                 <?dbfo label-width="2.5em"?>
-                [TODO: to comment] Mandatory for Access Control Service
+                <!--Mandatory for Access Control Service-->
                 <listitem>
                   <para>
                     It is determined that the following features are supported by the DUT:
@@ -16104,10 +14238,10 @@
                     </orderedlist>
                   </para>
                 </listitem>
-              [TODO: to comment]  MaxAccessPoints Capability
+                <!--MaxAccessPoints Capability-->
                 <listitem>
                   <para>
-                    Check that MaxAccessPoints Capability is supported by DUT. If both <emphasis role="bold">Access Control Service/MaxAccessPoints Capability</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                    Check that MaxAccessPoints Capability is supported by DUT. If <emphasis role="bold">Access Control Service/MaxAccessPoints Capability</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                     <orderedlist numeration="lowerroman"
                                  inheritnum="ignore">
                       <listitem>
@@ -16125,7 +14259,7 @@
                     </orderedlist>
                   </para>
                 </listitem>
-              [TODO: to comment]  tns1:Configuration/AccessPoint/Changed
+                <!--tns1:Configuration/AccessPoint/Changed-->
                 <listitem>
                   <para>
                     Check that tns1:Configuration/AccessPoint/Changed event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/Configuration/AccessPoint/Changed</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16146,7 +14280,7 @@
                     </orderedlist>
                   </para>
                 </listitem>
-               [TODO: to comment] tns1:Configuration/AccessPoint/Removed
+                <!--tns1:Configuration/AccessPoint/Removed-->
                 <listitem>
                   <para>
                     Check that tns1:Configuration/AccessPoint/Removed event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/Configuration/AccessPoint/Removed</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16167,13 +14301,16 @@
                     </orderedlist>
                   </para>
                 </listitem>
-               [TODO: to comment] Access Point Entity
+
+
+                <!--Access Point Entity-->
                 <listitem>
                   <para>
-                    Check that at least one Access Point Entity is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity</emphasis> is regarded as supported by DUT:
+                    Check that Access Point Entity feature is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity</emphasis> is regarded as supported by DUT:
                     <orderedlist numeration="arabic"
                                  inheritnum="inherit">
                       <?dbfo label-width="3.5em"?>
+                      <!--GetAccessPointState-->
                       <listitem>
                         <para>
                           It is determined that the following features are supported by the DUT:
@@ -16194,7 +14331,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                     [TODO: to comment] tns1:AccessPoint/State/Enabled
+                      <!--tns1:AccessPoint/State/Enabled-->
                       <listitem>
                         <para>
                           Check that tns1:AccessPoint/State/Enabled event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/AccessPoint/State/Enabled</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16215,14 +14352,14 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                     [TODO: to comment] External Authorization
+                      <!--External Authorization-->
                       <listitem>
                         <para>
-                          TODO #2029: Check that External Authorization is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/External Authorization</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise:
+                          Check that External Authorization is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/External Authorization</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise:
                           <orderedlist numeration="arabic"
                                        inheritnum="inherit">
                             <?dbfo label-width="4.5em"?>
-                          [TODO: to comment]  Mandatory for External Authorization
+                            <!--Mandatory for External Authorization-->
                             <listitem>
                               <para>
                                 It is determined that the following features are supported by the DUT:
@@ -16237,6 +14374,26 @@
                                             ExternalAuthorization (Access Control)
                                           </para>
                                         </listitem>
+                                        <!--<listitem>
+                                          <para>
+                                            tns1:AccessControl/Request/Timeout (Event)
+                                          </para>
+                                        </listitem>-->
+                                      </itemizedlist>
+                                    </para>
+                                  </listitem>
+                                </orderedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                Check that tns1:AccessControl/Request/Timeout topic is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/tns1:AccessControl\Request\Timeout</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                <orderedlist numeration="lowerroman"
+                                             inheritnum="ignore">
+                                  <listitem>
+                                    <para>
+                                      Access Control feature category:
+                                      <itemizedlist>
                                         <listitem>
                                           <para>
                                             tns1:AccessControl/Request/Timeout (Event)
@@ -16248,7 +14405,7 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                        [TODO: to comment]    Identifier External Authorization
+                            <!--Identifier External Authorization-->
                             <listitem>
                               <para>
                                 Check that Identifier External Authorization is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Identifier Access</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -16269,25 +14426,19 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                         [TODO: to comment]   Feedback
+                            <!--Feedback-->
                             <listitem>
                               <para>
-                                TODO #2030: Feedback
-                              </para>
-                            </listitem>
-                         [TODO: to comment]   Anonymous External Authorization
-                            <listitem>
-                              <para>
-                                Check that Anonymous External Authorization are supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Anonymous Access</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
+                                Check that Feedback is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Feedback</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
                                 <orderedlist numeration="lowerroman"
-                                             inheritnum="ignore">
+                                            inheritnum="ignore">
                                   <listitem>
                                     <para>
                                       Access Control feature category:
                                       <itemizedlist>
                                         <listitem>
                                           <para>
-                                            tns1:AccessControl/Request/Anonymous (Event)
+                                            Feedback (Access Control)
                                           </para>
                                         </listitem>
                                       </itemizedlist>
@@ -16296,17 +14447,47 @@
                                 </orderedlist>
                               </para>
                             </listitem>
+                            <!--Anonymous External Authorization-->
+                            <listitem>
+                              <para>
+                                If <emphasis role="bold">Access Control Service/Access Point Entity/Anonymous Access</emphasis> is regarded as supported by the DUT
+
+                                <orderedlist numeration="lowerroman"
+                                            inheritnum="ignore">
+                                  <listitem>
+                                    <para>
+                                      If <emphasis role="bold">Access Control Service/Access Control Events/AccessControl\Request\Anonymous</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                      <itemizedlist>
+                                        <listitem>
+                                          <para>
+                                            Access Control feature category:
+                                            <itemizedlist>
+                                              <listitem>
+                                                <para>
+                                                  tns1:AccessControl/Request/Anonymous (Event)
+                                                </para>
+                                              </listitem>
+                                            </itemizedlist>
+                                          </para>
+                                        </listitem>
+                                      </itemizedlist>
+                                    </para>
+                                  </listitem>
+                                </orderedlist>
+
+                              </para>
+                            </listitem>
                           </orderedlist>
                         </para>
                       </listitem>
-                     [TODO: to comment] Access Taken
+                      <!--Access Taken-->
                       <listitem>
                         <para>
                           Check that Access Taken is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Access Taken</emphasis> is regarded as supported by DUT:
                           <orderedlist numeration="arabic"
                                        inheritnum="inherit">
                             <?dbfo label-width="4.5em"?>
-                          [TODO: to comment]  Identifier Access Taken
+                            <!--Identifier Access Taken-->
                             <listitem>
                               <para>
                                 Check that Identifier Access Taken is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Identifier Access</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -16332,43 +14513,66 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                         [TODO: to comment]   Anonymous Access Taken
+                            <!--Anonymous Access Taken-->
                             <listitem>
                               <para>
-                                Check that Anonymous Access Taken are supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Anonymous Access</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
+                                Check that Anonymous Access Taken is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Anonymous Access</emphasis> is regarded as supported by DUT
+
                                 <orderedlist numeration="lowerroman"
-                                             inheritnum="ignore">
+                                            inheritnum="ignore">
                                   <listitem>
                                     <para>
-                                      Access Taken feature category:
+                                      If <emphasis role="bold">Access Control Service/Access Control Events/AccessControl\AccessTaken\Anonymous</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                                       <itemizedlist>
                                         <listitem>
                                           <para>
-                                            tns1:AccessControl/AccessTaken/Anonymous (Event)
+                                            Access Taken feature category:
+                                            <itemizedlist>
+                                              <listitem>
+                                                <para>
+                                                  tns1:AccessControl/AccessTaken/Anonymous (Event)
+                                                </para>
+                                              </listitem>
+                                            </itemizedlist>
                                           </para>
                                         </listitem>
+                                      </itemizedlist>
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      If <emphasis role="bold">Access Control Service/Access Control Events/AccessControl\AccessNotTaken\Anonymous</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                      <itemizedlist>
                                         <listitem>
                                           <para>
-                                            tns1:AccessControl/AccessNotTaken/Anonymous (Event)
+                                            Access Taken feature category:
+                                            <itemizedlist>
+                                              <listitem>
+                                                <para>
+                                                  tns1:AccessControl/AccessNotTaken/Anonymous (Event)
+                                                </para>
+                                              </listitem>
+                                            </itemizedlist>
                                           </para>
                                         </listitem>
                                       </itemizedlist>
                                     </para>
                                   </listitem>
                                 </orderedlist>
+
                               </para>
                             </listitem>
                           </orderedlist>
                         </para>
                       </listitem>
-                   [TODO: to comment]   Access Point Management
+                      <!--Access Point Management-->
                       <listitem>
                         <para>
                           Check that Access Point Management is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Management</emphasis> is regarded as supported by DUT:
                           <orderedlist numeration="arabic"
                                        inheritnum="inherit">
                             <?dbfo label-width="4.5em"?>
-                         [TODO: to comment]   Mandatory for Access Point Management
+                            <!--Mandatory for Access Point Management-->
                             <listitem>
                               <para>
                                 It is determined that the following features are supported by the DUT:
@@ -16399,10 +14603,10 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                        [TODO: to comment]    tns1:Configuration/AccessPoint/Changed 
+                            <!--tns1:Configuration/AccessPoint/Changed-->
                             <listitem>
                               <para>
-                                Check that Identifier tns1:Configuration/AccessPoint/Changed event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/Configuration/AccessPoint/Changed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                Check that tns1:Configuration/AccessPoint/Changed event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/Configuration/AccessPoint/Changed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                                 <orderedlist numeration="lowerroman"
                                              inheritnum="ignore">
                                   <listitem>
@@ -16420,10 +14624,10 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                            [TODO: to comment] tns1:Configuration/AccessPoint/Removed 
+                            <!--tns1:Configuration/AccessPoint/Removed-->
                             <listitem>
                               <para>
-                                Check that Identifier tns1:Configuration/AccessPoint/Removed event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/Configuration/AccessPoint/Removed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                Check that tns1:Configuration/AccessPoint/Removed event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/Configuration/AccessPoint/Removed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                                 <orderedlist numeration="lowerroman"
                                              inheritnum="ignore">
                                   <listitem>
@@ -16441,7 +14645,7 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                          [TODO: to comment]  Client-Supplied Token 
+                            <!--Client-Supplied Token-->
                             <listitem>
                               <para>
                                 Check that Client-Supplied Token for Access Points is supported by the DUT. If <emphasis role="bold">Access Control Service/Client Supplied Token</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
@@ -16465,20 +14669,99 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                    [TODO: to comment]  Access Desisions
+
+                      <!--tns1:AccessControl/AccessGranted/Anonymous -->
                       <listitem>
                         <para>
-                          TODO #2032
+                          Check that tns1:AccessControl/AccessGranted/Anonymous  event is supported by the DUT. If <emphasis role="bold">Access Control Service\Access Control Events\AccessControl/AccessGranted/Anonymous </emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          <orderedlist numeration="lowerroman"
+                                       inheritnum="ignore">
+                            <listitem>
+                              <para>
+                                Access Control feature category:
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      tns1:AccessControl/AccessGranted/Anonymous (Event)
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                          </orderedlist>
                         </para>
                       </listitem>
-                   [TODO: to comment]   Access Point Control
+                      <!--tns1:AccessControl/AccessGranted/Credential  -->
+                      <listitem>
+                        <para>
+                          Check that tns1:AccessControl/AccessGranted/Credential   event is supported by the DUT. If <emphasis role="bold">Access Control Service\Access Control Events\AccessControl/AccessGranted/Credential </emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          <orderedlist numeration="lowerroman"
+                                       inheritnum="ignore">
+                            <listitem>
+                              <para>
+                                Access Control feature category:
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      tns1:AccessControl/AccessGranted/Credential  (Event)
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                          </orderedlist>
+                        </para>
+                      </listitem>
+                      <!--tns1:AccessControl/Denied/Anonymous -->
+                      <listitem>
+                        <para>
+                          Check that tns1:AccessControl/Denied/Anonymous  event is supported by the DUT. If <emphasis role="bold">Access Control Service\Access Control Events\AccessControl/Denied/Anonymous </emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          <orderedlist numeration="lowerroman"
+                                       inheritnum="ignore">
+                            <listitem>
+                              <para>
+                                Access Control feature category:
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      tns1:AccessControl/Denied/Anonymous (Event)
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                          </orderedlist>
+                        </para>
+                      </listitem>
+                      <!--tns1:AccessControl/Denied/Credential  -->
+                      <listitem>
+                        <para>
+                          Check that tns1:AccessControl/Denied/Credential   event is supported by the DUT. If <emphasis role="bold">Access Control Service\Access Control Events\AccessControl/Denied/Credential </emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                          <orderedlist numeration="lowerroman"
+                                       inheritnum="ignore">
+                            <listitem>
+                              <para>
+                                Access Control feature category:
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      tns1:AccessControl/Denied/Credential  (Event)
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                          </orderedlist>
+                        </para>
+                      </listitem>
+                      <!--Access Point Control-->
                       <listitem>
                         <para>
                           Check that Access Point Control is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Entity/Enable/Disable Access Point</emphasis> is regarded as supported by DUT:
                           <orderedlist numeration="arabic"
                                        inheritnum="inherit">
                             <?dbfo label-width="4.5em"?>
-                          [TODO: to comment]  Mandatory for Access Point Control
+                            <!--Mandatory for Access Point Control-->
                             <listitem>
                               <para>
                                 It is determined that the following features are supported by the DUT:
@@ -16504,15 +14787,15 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                          [TODO: to comment]  tns1:AccessPoint/State/Enabled 
+                            <!--tns1:AccessPoint/State/Enabled-->
                             <listitem>
                               <para>
-                                Check that Identifier tns1:AccessPoint/State/Enabled event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/AccessPoint/State/Enabled</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                Check that tns1:AccessPoint/State/Enabled event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Control Events/AccessPoint/State/Enabled</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                                 <orderedlist numeration="lowerroman"
                                              inheritnum="ignore">
                                   <listitem>
                                     <para>
-                                      Access Point Control feature category:
+                                      Access Point State feature category:
                                       <itemizedlist>
                                         <listitem>
                                           <para>
@@ -16534,14 +14817,14 @@
               </orderedlist>
             </para>
           </listitem>
-         [TODO: to comment] Door Control Service
+          <!--Door Control Service-->
           <listitem>
             <para>
               Check that Door Control Service is supported by the DUT. If <emphasis role="bold">Door Control Service</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise:
               <orderedlist numeration="arabic"
                            inheritnum="inherit">
                 <?dbfo label-width="2.5em"?>
-               [TODO: to comment] Mandatory for Door Control Service
+                <!--Mandatory for Door Control Service-->
                 <listitem>
                   <para>
                     It is determined that the following features are supported by the DUT:
@@ -16589,10 +14872,10 @@
                     </orderedlist>
                   </para>
                 </listitem>
-               [TODO: to comment] MaxDoors Capability
+                <!--MaxDoors Capability-->
                 <listitem>
                   <para>
-                    Check that MaxDoors Capability is supported by DUT. If both <emphasis role="bold">Door Control Service/MaxDoors Capability</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                    Check that MaxDoors Capability is supported by DUT. If <emphasis role="bold">Door Control Service/MaxDoors Capability</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                     <orderedlist numeration="lowerroman"
                                  inheritnum="ignore">
                       <listitem>
@@ -16601,7 +14884,7 @@
                           <itemizedlist>
                             <listitem>
                               <para>
-                                MaxDoors Capability (Access Control)
+                                MaxDoors Capability (Door Control)
                               </para>
                             </listitem>
                           </itemizedlist>
@@ -16610,7 +14893,7 @@
                     </orderedlist>
                   </para>
                 </listitem>
-             [TODO: to comment]   tns1:Configuration/Door/Changed
+                <!--tns1:Configuration/Door/Changed-->
                 <listitem>
                   <para>
                     Check that tns1:Configuration/Door/Changed event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Control Events/Configuration/Door/Changed</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16631,7 +14914,7 @@
                     </orderedlist>
                   </para>
                 </listitem>
-              [TODO: to comment]  tns1:Configuration/Door/Removed
+                <!--tns1:Configuration/Door/Removed-->
                 <listitem>
                   <para>
                     Check that tns1:Configuration/Door/Removed event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Control Events/Configuration/Door/Removed</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16652,10 +14935,10 @@
                     </orderedlist>
                   </para>
                 </listitem>
-               [TODO: to comment] Door Entity
+                <!--Door Entity-->
                 <listitem>
                   <para>
-                    Check that at least one Door Entity is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity</emphasis> is regarded as supported by DUT:
+                    Check that Door Entity feature is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity</emphasis> is regarded as supported by DUT:
                     <orderedlist numeration="arabic"
                                  inheritnum="inherit">
                       <?dbfo label-width="3.5em"?>
@@ -16684,7 +14967,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                     [TODO: to comment] tns1:Door/State/DoorPhysicalState
+                      <!--tns1:Door/State/DoorPhysicalState-->
                       <listitem>
                         <para>
                           Check that tns1:Door/State/DoorPhysicalState event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Door Monitor</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16705,7 +14988,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                    [TODO: to comment]  tns1:Door/State/LockPhysicalState 
+                      <!--tns1:Door/State/LockPhysicalState-->
                       <listitem>
                         <para>
                           Check that tns1:Door/State/LockPhysicalState event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Lock Monitor</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16726,7 +15009,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                   [TODO: to comment]   tns1:Door/State/DoubleLockPhysicalState 
+                      <!--tns1:Door/State/DoubleLockPhysicalState-->
                       <listitem>
                         <para>
                           Check that tns1:Door/State/DoubleLockPhysicalState event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Double Lock Monitor</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16747,7 +15030,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                   [TODO: to comment]   tns1:Door/State/DoorAlarm 
+                      <!--tns1:Door/State/DoorAlarm-->
                       <listitem>
                         <para>
                           Check that tns1:Door/State/DoorAlarm event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Alarm</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16768,7 +15051,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                  [TODO: to comment]    tns1:Door/State/DoorTamper 
+                      <!--tns1:Door/State/DoorTamper-->
                       <listitem>
                         <para>
                           Check that tns1:Door/State/DoorTamper event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Tamper</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16789,7 +15072,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                     [TODO: to comment] tns1:Door/State/DoorFault  
+                      <!--tns1:Door/State/DoorFault-->
                       <listitem>
                         <para>
                           Check that tns1:Door/State/DoorFault event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Fault</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
@@ -16810,14 +15093,14 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                     [TODO: to comment] Door Management
+                      <!--Door Management-->
                       <listitem>
                         <para>
                           Check that Door Management is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Management</emphasis> is regarded as supported by DUT:
                           <orderedlist numeration="arabic"
                                        inheritnum="inherit">
                             <?dbfo label-width="4.5em"?>
-                        [TODO: to comment]    Mandatory for Door Management
+                            <!--Mandatory for Door Management-->
                             <listitem>
                               <para>
                                 It is determined that the following features are supported by the DUT:
@@ -16848,10 +15131,10 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                            [TODO: to comment] tns1:Configuration/Door/Changed 
+                            <!--tns1:Configuration/Door/Changed-->
                             <listitem>
                               <para>
-                                Check that Identifier tns1:Configuration/Door/Changed event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Control Events/Configuration/Door/Changed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                Check that tns1:Configuration/Door/Changed event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Control Events/Configuration/Door/Changed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                                 <orderedlist numeration="lowerroman"
                                              inheritnum="ignore">
                                   <listitem>
@@ -16869,10 +15152,10 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                         [TODO: to comment]   tns1:Configuration/Door/Removed 
+                            <!--tns1:Configuration/Door/Removed-->
                             <listitem>
                               <para>
-                                Check that Identifier tns1:Configuration/Door/Removed event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Control Events/Configuration/Door/Removed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
+                                Check that tns1:Configuration/Door/Removed event is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Control Events/Configuration/Door/Removed</emphasis> is regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
                                 <orderedlist numeration="lowerroman"
                                              inheritnum="ignore">
                                   <listitem>
@@ -16890,7 +15173,7 @@
                                 </orderedlist>
                               </para>
                             </listitem>
-                          [TODO: to comment]  Client-Supplied Token 
+                            <!--Client-Supplied Token-->
                             <listitem>
                               <para>
                                 Check that Client-Supplied Token for Doors is supported by the DUT. If <emphasis role="bold">Door Control Service/Client Supplied Token</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
@@ -16914,13 +15197,8 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                    [TODO: to comment]  Door Control
-                      <listitem>
-                        <para>
-                          TODO #2033
-                        </para>
-                      </listitem>
-                     [TODO: to comment] Access Door
+                      <!--Door Control-->
+                      <!--Access Door-->
                       <listitem>
                         <para>
                           Check that AccessDoor command is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Access Door</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -16941,7 +15219,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                     [TODO: to comment] Lock Door
+                      <!--Lock Door-->
                       <listitem>
                         <para>
                           Check that LockDoor command is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Lock Door</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -16962,7 +15240,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                    [TODO: to comment]  Unlock Door
+                      <!--Unlock Door-->
                       <listitem>
                         <para>
                           Check that UnlockDoor command is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Unlock Door</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -16983,7 +15261,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                  [TODO: to comment]    Double Lock Door 
+                      <!--Double Lock Door-->
                       <listitem>
                         <para>
                           Check that DoubleLockDoor command is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Double Lock Door</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
@@ -17004,7 +15282,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                 [TODO: to comment]     Block Door
+                      <!--Block Door-->
                       <listitem>
                         <para>
                           Check that BlockDoor command is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Block Door</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
@@ -17025,7 +15303,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                    [TODO: to comment]  Lock Down Door
+                      <!--Lock Down Door-->
                       <listitem>
                         <para>
                           Check that LockDownDoor command and LockDownReleaseDoor command is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Lock Down Door</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
@@ -17051,7 +15329,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                   [TODO: to comment]   Lock Open Door
+                      <!--Lock Open Door-->
                       <listitem>
                         <para>
                           Check that LockOpenDoor command and LockOpenReleaseDoor command is supported by the DUT. If <emphasis role="bold">Door Control Service/Door Entity/Lock Open Door</emphasis> is regarded as supported by DUT, it is determined that the following features are supported by the DUT:
@@ -17083,7 +15361,7 @@
               </orderedlist>
             </para>
           </listitem>
-         [TODO: to comment] General Access Points or Doors support check
+          <!--General Access Points or Doors support check-->
           <listitem>
             <para>
               Check that at least one Door or at least one Access Point is supported by DUT. If both <emphasis role="bold">Access Control Service/Access Point Entity</emphasis> and <emphasis role="bold">Door Control Service/Door Entity</emphasis> are regarded as unsupported by DUT, then it is determined that [ONVIF Profile D] is not supported by DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -17104,14 +15382,14 @@
               </orderedlist>
             </para>
           </listitem>
-        [TODO: to comment]  Credential Service
+          <!--Credential Service-->
           <listitem>
             <para>
               Check that Credential Service is supported by the DUT. If <emphasis role="bold">Credential Service</emphasis> is regarded as supported by the DUT, then:
               <orderedlist numeration="arabic"
                            inheritnum="inherit">
                 <?dbfo label-width="2.5em"?>
-             [TODO: to comment]   Mandatory for Credential Service
+                <!--Mandatory for Credential Service-->
                 <listitem>
                   <para>
                     It is determined that the following features are supported by the DUT:
@@ -17144,14 +15422,14 @@
                     </orderedlist>
                   </para>
                 </listitem>
-          [TODO: to comment]      Whitelist
+                <!--Whitelist-->
                 <listitem>
                   <para>
                     Check that Credential Whitelisting is supported by the DUT. If <emphasis role="bold">Credential Service/Whitelist</emphasis> is regarded as supported by the DUT, then:
                     <orderedlist numeration="arabic"
                                  inheritnum="inherit">
                       <?dbfo label-width="3.5em"?>
-                  [TODO: to comment]    Mandatory for Whitelist
+                      <!--Mandatory for Whitelist-->
                       <listitem>
                         <para>
                           It is determined that the following features are supported by the DUT:
@@ -17187,12 +15465,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                      <listitem>
-                        <para>
-                          TODO #2035
-                        </para>
-                      </listitem>
-                   [TODO: to comment]   tns1:AccessControl/AccessGranted/Identifier
+                      <!--tns1:AccessControl/AccessGranted/Identifier-->
                       <listitem>
                         <para>
                           Check that tns1:AccessControl/AccessGranted/Identifier event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Events/AccessControl/AccessGranted/Identifier</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -17216,14 +15489,14 @@
                     </orderedlist>
                   </para>
                 </listitem>
-            [TODO: to comment]    Blacklist
+                <!--Blacklist-->
                 <listitem>
                   <para>
                     Check that Credential Blacklisting is supported by the DUT. If <emphasis role="bold">Credential Service/Blacklist</emphasis> is regarded as supported by the DUT, then:
                     <orderedlist numeration="arabic"
                                  inheritnum="inherit">
                       <?dbfo label-width="3.5em"?>
-                   [TODO: to comment]   Mandatory for Blacklist
+                      <!--Mandatory for Blacklist-->
                       <listitem>
                         <para>
                           It is determined that the following features are supported by the DUT:
@@ -17259,12 +15532,7 @@
                           </orderedlist>
                         </para>
                       </listitem>
-                      <listitem>
-                        <para>
-                          TODO #2035
-                        </para>
-                      </listitem>
-                  [TODO: to comment]    tns1:AccessControl/AccessGranted/Identifier
+                      <!--tns1:AccessControl/AccessGranted/Identifier-->
                       <listitem>
                         <para>
                           Check that tns1:AccessControl/Denied/Identifier event is supported by the DUT. If <emphasis role="bold">Access Control Service/Access Point Events/AccessControl/Denied/Identifier</emphasis> is regarded as unsupported by the DUT, then it is determined that [ONVIF Profile D] is not supported by the DUT and certification will be failed. Otherwise, it is determined that the following features are supported by the DUT:
@@ -17291,32 +15559,12 @@
               </orderedlist>
             </para>
           </listitem>
-      [TODO: to comment]    Analytics Service
-          <listitem>
-            <para>
-              TODO #2027:Check that Analytics Service is supported by the DUT. If <emphasis role="bold">Analytics Service</emphasis> is regarded as supported by the DUT, then it is determined that the following features are supported by the DUT:
-              <orderedlist numeration="lowerroman"
-                           inheritnum="ignore">
-                <listitem>
-                  <para>
-                    Capabilities feature category:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          GetServiceCapabilities (Analytics)
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-          </listitem>
+
         </orderedlist>
       </para>
     </section>
 
-  </chapter>-->
+  </chapter>
 
 
 </book>

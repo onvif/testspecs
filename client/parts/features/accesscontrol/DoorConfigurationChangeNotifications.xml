@@ -70,13 +70,13 @@
                 <listitem>
                   <para>Client supports DoorInformation_ListingOfDoors feature (please see <xref linkend="tc.DoorInformation.DOORINFORMATION-1"/> section) AND</para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.33">
                   <para>
                     Client is able to retrieve <emphasis role="bold">tns1:Configuration/Door/Changed</emphasis> notification
                     AND
                   </para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.34">
                   <para>
                     Client is able to retrieve <emphasis role="bold">tns1:Configuration/Door/Removed</emphasis> notification.
                   </para>

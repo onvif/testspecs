@@ -19,10 +19,10 @@
       </phrase>
     </orgname>
     <title>Profile G Client Test Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -30,6 +30,29 @@
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
     <revhistory>
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.revhistory.Discovery.20211012.All"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                 xpointer="s.revhistory.SetSynchronizationPoint.20210603.All"/>        
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Jun 02, 2021</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
+        
+    <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jan 18, 2021</date>
+        <revdescription>         
+          <para>In the scope of #364 format of the following features were updated to show dependent test cases inside feature:</para>
+          <para>Recording Control</para>
+    <para>Recording Configuration</para>
+    <para>Track Configuration</para>
+    <para>Recording Control – Using a Receiver as Source</para>
+        </revdescription>
+      </revision>
       <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
                   xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
       <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
@@ -874,9 +897,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Recording Search (MediaSearch_RecordingSearch)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
@@ -1014,9 +1034,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Event Search (MediaSearch_EventSearch)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -1158,9 +1175,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Recording Summary (MediaSearch_RecordingSummary)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -1255,9 +1269,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Recording Information (MediaSearch_RecordingInformation)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -1361,9 +1372,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Media Attributes (MediaSearch_MediaAttributes)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -1459,9 +1467,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Event Search Filter (MediaSearch_EventSearchFilter)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -1715,9 +1720,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Replay Uri (ReplayControl_GetReplayUri)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that recorded stream URI
@@ -1826,9 +1828,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> MJPEG Replay Recording (ReplayControl_MJPEGReplayRecording)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -2140,9 +2139,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> MPEG4 Replay Recording (ReplayControl_MPEG4ReplayRecording)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -2452,9 +2448,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> H264 Replay Recording (ReplayControl_H264ReplayRecording)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -2766,9 +2759,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Reverse Replay (ReplayControl_ReverseReplay)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -2882,9 +2872,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> RTSP Session Timeout Configuration (ReplayControl_RTSPSessionTimeoutConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -3115,9 +3102,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create a Recording (DynamicRecordingConfiguration_CreateRecording)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -3219,9 +3203,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete a Recording (DynamicRecordingConfiguration_DeleteRecording)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -3402,9 +3383,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create a Track (DynamicTracksConfiguration_CreateTrack)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -3516,9 +3494,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete a Track (DynamicTracksConfiguration_DeleteTrack)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -3705,12 +3680,12 @@
                     </para>
                   </listitem>
                   <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature AND</para>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.RecordingControl.EVENTHANDLING-1"/> section) AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.9">
                     <para>Client is able to retrieve tns1:RecordingConfig/JobState notification about change of recording job's state AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.10">
                     <para>Client is able to retrieve tns1:RecordingConfig/DeleteTrackData notification about change of recording's content if Device supports RecordingConfigDeleteTrackDataEvent feature.</para>
                   </listitem>
                 </itemizedlist>
@@ -3751,7 +3726,7 @@
                     </para>
                   </listitem>
                   <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature OR</para>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.RecordingControl.EVENTHANDLING-1"/> section) OR</para>
                   </listitem>
                   <listitem>
                     <para>Client unable to retrieve tns1:RecordingConfig/JobState notification about change of recording job's state OR</para>
@@ -3765,6 +3740,10 @@
           </orderedlist>
         </para>
       </section>
+      <section xml:id="tc.RecordingControl.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
       <section xml:id="tc.RecordingControl.RECORDINGCONTROL-1">
         <title>GET RECORDINGS</title>
         <para>
@@ -3775,9 +3754,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Recordings (RecordingControl_GetRecordings)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -3868,9 +3844,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Recording Jobs (RecordingControl_GetRecordingJobs)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to receive a list of recording jobs
@@ -3959,9 +3932,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Recording Job State (RecordingControl_GetRecordingJobState)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -4056,9 +4026,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Modify Recording Job Mode (RecordingControl_ModifyRecordingJobMode)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4160,9 +4127,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create a Recording Job (RecordingControl_CreateRecordingJob)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4279,9 +4243,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete a Recording Job (RecordingControl_DeleteRecordingJob)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -4367,6 +4328,7 @@
         </para>
 
       </section>
+      
       <!--<section xml:id="tc.recording_control.RECORDINGCONTROL-7">
       <title>
         RETRIEVE JOB STATE CHANGE NOTIFICATION
@@ -4377,9 +4339,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> RECORDINGCONTROL-7
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Recording Control
@@ -4509,9 +4468,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> RECORDINGCONTROL-8
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Recording Control
@@ -4705,12 +4661,12 @@
                     </para>
                   </listitem>
                   <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature AND</para>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.RecordingConfiguration.EVENTHANDLING-1"/> section) AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.11">
                     <para>Client is able to retrieve tns1:RecordingConfig/RecordingConfiguration notification about change in a recording's configuration if Device supports RecordingConfigRecordingConfigurationEvent feature AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.12">
                     <para>Client is able to retrieve tns1:RecordingConfig/RecordingJobConfiguration notification about change in a recording job's configuration if Device supports RecordingConfigRecordingJobConfigurationEvent feature.</para>
                   </listitem>
                 </itemizedlist>
@@ -4741,7 +4697,7 @@
                     </para>
                   </listitem>
                   <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature if Device supports RecordingConfigRecordingConfigurationEvent feature or RecordingConfigRecordingJobConfigurationEvent feature  OR</para>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.RecordingConfiguration.EVENTHANDLING-1"/> section) if Device supports RecordingConfigRecordingConfigurationEvent feature or RecordingConfigRecordingJobConfigurationEvent feature  OR</para>
                   </listitem>
                   <listitem>
                     <para>Client unable to retrieve tns1:RecordingConfig/RecordingConfiguration notification about change of recording's configuration if Device supports RecordingConfigRecordingConfigurationEvent feature OR</para>
@@ -4755,6 +4711,10 @@
           </orderedlist>
         </para>
       </section>
+      <section xml:id="tc.RecordingConfiguration.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
       <section xml:id="tc.RecordingConfiguration.RECORDINGCONFIGURATION-1">
         <title>GET RECORDING CONFIGURATION</title>
         <para>
@@ -4765,9 +4725,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Recording Configuration (RecordingConfiguration_GetRecordingConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4873,9 +4830,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Recording Configuration (RecordingConfiguration_SetRecordingConfiguration)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to manages a recording's configuration using the
@@ -4980,9 +4934,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Recording Job Configuration (RecordingConfiguration_GetRecordingJobConfiguration)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to receive configuration of a recording job
@@ -5086,9 +5037,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Recording Job Configuration (RecordingConfiguration_SetRecordingJobConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5252,9 +5200,6 @@
         <emphasis role="bold">Test Case ID:</emphasis> RECORDINGCONFIGURATION-5
       </para>
       <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:RecordingConfig/RecordingConfiguration</emphasis> Notification
       </para>
       <para>
@@ -5381,9 +5326,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> RECORDINGCONFIGURATION-6
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:RecordingConfig/RecordingJobConfiguration</emphasis> Notification
@@ -5554,9 +5496,9 @@
                     </para>
                   </listitem>
                   <listitem>
-                    <para>Client supports EventHandling_Pullpoint feature AND</para>
+                    <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.TrackConfiguration.EVENTHANDLING-1"/> section) AND</para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.13">
                     <para>Client is able to retrieve tns1:RecordingConfig/TrackConfiguration notification about change in a track's configuration if Device supports RecordingConfigTrackConfigurationEvent feature.</para>
                   </listitem>
                 </itemizedlist>
@@ -5577,7 +5519,7 @@
                     </para>
                   </listitem>
                   <listitem>
-                    <para>Client does not support EventHandling_Pullpoint feature if Device supports RecordingConfigTrackConfigurationEvent feature OR</para>
+                    <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.TrackConfiguration.EVENTHANDLING-1"/> section) if Device supports RecordingConfigTrackConfigurationEvent feature OR</para>
                   </listitem>
                   <listitem>
                     <para>Client unable to retrieve tns1:RecordingConfig/TrackConfiguration notification about change of track's configuration if Device supports RecordingConfigTrackConfigurationEvent feature.</para>
@@ -5588,6 +5530,10 @@
           </orderedlist>
         </para>
       </section>
+      <section xml:id="tc.TrackConfiguration.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
       <section xml:id="tc.TrackConfiguration.TRACKCONFIGURATION-1">
         <title>GET TRACK CONFIGURATION</title>
         <para>
@@ -5598,9 +5544,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Track Configuration (TrackConfiguration_GetTrackConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5710,9 +5653,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Track Configuration (TrackConfiguration_SetTrackConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5826,9 +5766,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> TRACKCONFIGURATION-3
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:RecordingConfig/TrackConfiguration</emphasis> Notification
@@ -6031,7 +5968,7 @@
                 <itemizedlist>
                   <listitem>
                     <para>
-                      Client supports EventHandling_PullPoint feature to use Pull Point event mechanism to retrieve notification events
+                      Client supports EventHandling_PullPoint feature (please see <xref linkend="tc.Receiver.EVENTHANDLING-1"/> section) to use Pull Point event mechanism to retrieve notification events
                       from Device AND
                     </para>
                   </listitem>
@@ -6060,12 +5997,12 @@
                       Client is able to configure receiver using <emphasis role="bold">ConfigureReceiver</emphasis> operation AND
                     </para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.14">
                     <para>
                       Client is able to retrieve <emphasis role="bold">tns1:Receiver/ChangeState</emphasis> notification about change in a receiver’s state AND
                     </para>
                   </listitem>
-                  <listitem>
+                  <listitem xml:id="tc.Unknown.UNKNOWN-1.15">
                     <para>
                       Client is able to retrieve <emphasis role="bold">tns1:Receiver/ChangeState</emphasis> notification OR <emphasis role="bold">tns1:Receiver/ConnectionFailed</emphasis> notification AND
                     </para>
@@ -6084,7 +6021,7 @@
                 <itemizedlist>
                   <listitem>
                     <para>
-                      Client does not support EventHandling_PullPoint feature OR
+                      Client does not support EventHandling_PullPoint feature (please see <xref linkend="tc.Receiver.EVENTHANDLING-1"/> section) OR
                     </para>
                   </listitem>
                   <listitem>
@@ -6138,6 +6075,10 @@
           </orderedlist>
         </para>
       </section>
+       <section xml:id="tc.Receiver.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="parts/features/core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
       <section xml:id="tc.Receiver.RECEIVER-1">
         <title>GET RECEIVERS</title>
         <para>
@@ -6149,9 +6090,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Receivers (Receiver_GetReceivers)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6260,9 +6198,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Receiver (Receiver_GetReceiver)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that receiver configuration
@@ -6369,9 +6304,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Receiver (Receiver_CreateReceiver)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6483,9 +6415,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete Receiver (Receiver_DeleteReceiver)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that receiver is deleted on Devicve by Client using the <emphasis role="bold">DeleteReceiver</emphasis> operation.
@@ -6590,9 +6519,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Configure Receiver (Receiver_ConfigureReceiver)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6704,9 +6630,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Receiver State (Receiver_GetReceiverState)
         </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that receiver state
@@ -6812,9 +6735,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Receiver Mode (Receiver_SetReceiverMode)
-        </para>
-        <para>
-          <emphasis role="bold">Profile G Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6924,9 +6844,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-8
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Receiver/ChangeState</emphasis> Notification
@@ -7061,9 +6978,6 @@
       </para>
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> RECEIVER-9
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Receiving <emphasis role="bold">tns1:Receiver/ConnectionFailed</emphasis> Notification

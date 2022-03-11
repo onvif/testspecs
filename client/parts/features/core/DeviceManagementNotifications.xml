@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feature>
   <revhistory>
+            <revision  xml:id="s.revhistory.DeviceManagementNotifications.20211007.OtherFeatures">
+      <revnumber>21.12</revnumber>
+      <date>Oct 07, 2021</date>
+      <revdescription>
+        <para>The following was done according to #426:</para>
+        <para>Device Management Notifications section and Device Management Notifications Test Cases section was moved from ONVIF Profile Q Client Test Specification to ONVIF Other Features Client Test Specifications.</para>
+      </revdescription>
+    </revision>
             <revision  xml:id="s.revhistory.DeviceManagementNotifications.20190814.ProfileQ">
       <revnumber>19.12</revnumber>
       <date>Aug 14, 2019</date>
@@ -31,9 +39,6 @@
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
       </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
-      </para>
     </section>
     <section xml:id="tc.DeviceManagementNotifications.scenario">
       <title>Expected Scenarios Under Test:</title>
@@ -56,25 +61,25 @@
               Client is considered as supporting Device Management Notifications if the
               following conditions are met:<itemizedlist>
                 <listitem>
-                  <para>Client supports EventHandling_Pullpoint feature AND</para>
+                  <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.DeviceManagementNotifications.EVENTHANDLING-1"/> section) AND</para>
                 </listitem>
                 <listitem>
                   <para>
                     Client is able to retrieve at least one of the following notifications:
                     <itemizedlist>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.5">
                         <para>tns1:Device/HardwareFailure/FanFailure notification about fan failure if Device supports DeviceHardwareFailureFanFailureEvent feature</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.6">
                         <para>tns1:Device/HardwareFailure/PowerSupplyFailure notification about power supply failure if Device supports DeviceHardwareFailurePowerSupplyFailureEvent feature</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.7">
                         <para>tns1:Device/HardwareFailure/StorageFailure notification about storage failure if Device supports DeviceHardwareFailureStorageFailureEvent feature</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.8">
                         <para>tns1:Device/HardwareFailure/TemperatureCritical notification about temperature critical if Device supports DeviceHardwareFailureTemperatureCriticalEvent feature</para>
                       </listitem>
-                      <listitem>
+                      <listitem xml:id="tc.Unknown.UNKNOWN-1.1">
                         <para>tns1:Monitoring/Backup/Last notification about last backup if Device supports MonitoringBackupLastEvent feature</para>
                       </listitem>
                     </itemizedlist>
@@ -88,7 +93,7 @@
               Client is considered as NOT supporting Device Management Notifications if ANY
               of the following is TRUE:<itemizedlist>
                 <listitem>
-                  <para>Client does not support EventHandling_Pullpoint feature OR</para>
+                  <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.DeviceManagementNotifications.EVENTHANDLING-1"/> section) OR</para>
                 </listitem>
                 <listitem>
                   <para>
@@ -118,6 +123,9 @@
         </orderedlist>
       </para>
     </section>
-
+<section xml:id="tc.DeviceManagementNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
   </section>
 </feature>

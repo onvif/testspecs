@@ -85,9 +85,6 @@
         <emphasis role="bold">Profile G Requirement:</emphasis> Mandatory
       </para>
       <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> Mandatory
       </para>
       <para>
@@ -163,33 +160,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> HTTP Digest (HTTPDigest_HTTPDigestAuthentication)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="Digest authentication for HTTP">Profile T Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="Digest authentication for HTTP">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold"
-                  annotations="Digest authentication for HTTP">Profile M Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client supports

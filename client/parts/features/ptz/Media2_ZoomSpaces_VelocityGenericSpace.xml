@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feature>
   <revhistory>
+    <revision  xml:id="s.revhistory.Media2_ZoomSpaces_VelocityGenericSpace.20210121.ProfileT">
+      <revnumber>21.06</revnumber>
+      <date>Jan 21, 2021</date>
+      <revdescription>
+        <para>The following was done according to #364:</para>
+        <para>PTZ Using Media2 Zoom Continuous Positioning feature updated: requirement about PtzContinuousPositioning feature was removed to be compatible with implementation.</para>
+      </revdescription>
+    </revision>
     <revision  xml:id="s.revhistory.Media2_ZoomSpaces_VelocityGenericSpace.20190813.ProfileT">
       <revnumber>19.12</revnumber>
       <date>Aug 13, 2019</date>
@@ -56,12 +64,12 @@
                     AND
                   </para>
                 </listitem>
-                <listitem>
+                <!--<listitem>
                   <para>
                     Client supports PtzContinuousPositioning.Stop feature OR PtzContinuousPositioning.StopMovementUsingContinuousMove feature.
 
                   </para>
-                </listitem>
+                </listitem>-->
               </itemizedlist>
             </para>
           </listitem>
@@ -91,12 +99,12 @@
                     AND
                   </para>
                 </listitem>
-                <listitem>
+                <!--<listitem>
                   <para>
                     Client does not support PtzContinuousPositioning.Stop feature AND PtzContinuousPositioning.StopMovementUsingContinuousMove feature.
 
                   </para>
-                </listitem>
+                </listitem>-->
               </itemizedlist>
             </para>
           </listitem>
@@ -114,9 +122,6 @@
       </para>
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Zoom Continuous Move Using Media2 - Velocity Generic Space (Media2_ZoomSpaces_VelocityGenericSpace_PTZContinuousPositioningZoomVelocityGenericSpace)
-      </para>
-      <para>
-        <emphasis role="bold" annotations="ContinuousMove;http://www.onvif.org/ver10/tptz/ZoomSpaces/VelocityGenericSpace">Profile T Normative Reference:</emphasis> Mandatory
       </para>
       
       <para>

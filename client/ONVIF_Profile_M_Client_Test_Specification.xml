@@ -18,14 +18,14 @@
       </phrase>
     </orgname>
     <title>Profile M Client Test Specification</title>
-     <releaseinfo>Profile M is under development. This test specification is not final and it is subject to changes.</releaseinfo>
+     <!--<releaseinfo>Profile M is under development. This test specification is not final and it is subject to changes.</releaseinfo>-->
     <subtitle>
-      Draft Version 20.12
+      Version 21.12
     </subtitle>    
-    <date>December 2020</date>    
+    <date>December 2021</date>    
    
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -33,8 +33,36 @@
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
     <revhistory>
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.revhistory.Discovery.20211012.All"/>
       <!--Use the following to add history from the parts-->
       <!--xi:include href="parts/features/core/HTTPDigest.xml" xpointer="s.revhistory.HTTPDigest.20190814.ProfileC"/-->
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                xpointer="s.revhistory.SetSynchronizationPoint.20210603.All"/>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Jun 02, 2021</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Jun 01, 2021</date>
+        <revdescription>
+          <para>'Check Condition based on Device Features' sections were updated for the following features according to #383</para>
+          <para>Image Data</para>
+          <para>Object Classification</para>
+          <para>Human Face Metadata</para>
+          <para>Vehicle Metadata</para>
+          <para>License Plate Metadata</para>
+          <para>GeoLocation Metadata</para>
+          <para>Face Recognition Event</para>
+          <para>Line Crossing Counter Event</para>
+          <para>License Plate Recognition Event</para>
+          <para>Event Broker Configuration</para>
+        </revdescription>
+      </revision>
      <xi:include href="parts/features/core/DeviceDiscoveryTypeFilter.xml"
                   xpointer="s.revhistory.DeviceDiscoveryTypeFilter.20201208.All"/>
       <revision>

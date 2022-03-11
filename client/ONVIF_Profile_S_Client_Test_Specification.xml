@@ -18,10 +18,10 @@
       </phrase>
     </orgname>
     <title>Profile S Client Test Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -29,6 +29,10 @@
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
     <revhistory>
+      <xi:include href="parts/features/core/Discovery.xml"
+                  xpointer="s.revhistory.Discovery.20211012.All"/>
+      <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
+                xpointer="s.revhistory.SetSynchronizationPoint.20210603.All"/>
       <xi:include href="parts/features/core/NVTDiscoveryTypeFilter.xml"
                   xpointer="s.revhistory.NVTDiscoveryTypeFilter.20201208.ProfileS"/>
       <xi:include href="parts/features/core/SystemDateAndTimeConfiguration.xml"
@@ -45,6 +49,13 @@
                   xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20200831.All"/>
        <xi:include href="parts/features/core/EventHandling.xml"
                   xpointer="s.revhistory.EventHandling.20200831.All"/>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Jun 02, 2021</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
       <revision>
         <revnumber>19.12</revnumber>
         <date>Oct 04, 2019</date>
@@ -1214,9 +1225,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Profiles (MediaStreaming_GetProfiles)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of media
@@ -1317,9 +1325,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Stream URI (MediaStreaming_GetStreamURI)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -1432,10 +1437,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Streaming Over RTSP (MediaStreaming_RTSPStreaming)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> governed by business rule
-          #21
         </para>
 
         <para>
@@ -1744,10 +1745,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Streaming Over UDP (MediaStreaming_UDP)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> governed by business rule
-          #21
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that stream over UDP
@@ -2034,10 +2031,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Streaming Over HTTP (MediaStreaming_HTTP)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> governed by business rule
-          #21
         </para>
 
         <para>
@@ -2420,9 +2413,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> MJPEG Video Streaming (VideoStreaming_MJPEGStreaming)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
@@ -2714,9 +2704,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> MPEG4 Video Streaming (VideoStreaming_MPEG4Streaming)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
@@ -3002,9 +2989,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> H264 Video Streaming (VideoStreaming_H264Streaming)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -3381,9 +3365,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> List Video Encoder Configurations (VideoEncoderConfigurations_GetVideoEncoderConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all existing
@@ -3489,9 +3470,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Specific Video Encoder Configuration (VideoEncoderConfigurations_GetVideoEncoderConfiguration)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -3595,9 +3573,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Encoder Configuration Options (VideoEncoderConfigurations_GetVideoEncoderConfigurationOptions)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -3709,9 +3684,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Video Encoder Configuration (VideoEncoderConfigurations_SetVideoEncoderConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -3891,9 +3863,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Streaming For Video Sources From GetProfiles (MultipleVideoSources_StreamingForVideoSourcesFromGetProfiles)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Mandatory
         </para>
 
         <para>
@@ -4175,9 +4144,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Multicast Streaming Using RTSP (MulticastStreaming_RTSPMulticast)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -4474,9 +4440,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Multicast Streaming Using SOAP (MulticastStreaming_SOAPMulticast)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able
@@ -4716,9 +4679,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> List Available Media Profiles (MediaProfileConfigurations_ListMediaProfiles)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of media
@@ -4821,9 +4781,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Specific Media Profile (MediaProfileConfigurations_GetMediaProfile)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -4924,9 +4881,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create a Media Profile (MediaProfileConfigurations_CreateMediaProfile)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5163,9 +5117,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> List Video Source Configurations (VideoSourceConfigurations_GetVideoSourceConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all existing
@@ -5271,9 +5222,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Specific Video Source Configuration (VideoSourceConfigurations_GetVideoSourceConfiguration)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -5375,9 +5323,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Video Source Configuration Options (VideoSourceConfigurations_GetVideoSourceConfigurationOptions)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5490,9 +5435,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Set Video Source Configuration (VideoSourceConfigurations_SetVideoSourceConfiguration)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to change video source configuration
@@ -5600,9 +5542,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Compatible Video Source Configurations (VideoSourceConfigurations_GetCompatibleVideoSourceConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to retrieve list of video source configurations that are compatible with a certain media profile
@@ -5708,9 +5647,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Add Video Source Configuration (VideoSourceConfigurations_AddVideoSourceConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -5965,9 +5901,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Audio Streaming - Configure Media Profile (AudioStreaming_AudioStreamingConfigureMediaProfile)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6225,9 +6158,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Audio Streaming - G.711 (AudioStreaming_AudioStreamingG711)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -6518,9 +6448,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Audio Streaming - G.726 (AudioStreaming_AudioStreamingG726)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the Client is able to initiate and retrieve audio stream with G.726 encoding type.
@@ -6799,9 +6726,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Audio Streaming - AAC (AudioStreaming_AudioStreamingAAC)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7164,9 +7088,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> List Metadata Configurations (MetadataConfigurations_GetMetadataConfigurations)
         </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that list of all existing
@@ -7271,9 +7192,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Specific Metadata Configuration (MetadataConfigurations_GetMetadataConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
         </para>
 
         <para>
@@ -7383,9 +7301,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Get Metadata Configuration Options (MetadataConfigurations_GetMetadataConfigurationOptions)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7515,9 +7430,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Modify Metadata Configuration (MetadataConfigurations_ModifyMetadataConfiguration)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>
@@ -7698,9 +7610,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Streaming For Audio Sources From GetProfiles (MultipleAudioSources_StreamingForAudioSourcesFromGetProfiles)
-        </para>
-        <para>
-          <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
         </para>
 
         <para>

@@ -7,7 +7,7 @@
 <?xml-stylesheet href="docbook-css/docbook.xsl" type="text/xsl" ?>
 <!--For PDF version - New ONVIF-->
 <!--<?xml-stylesheet href="../ONVIFNew-stylesheets/onvif-specification-fo-us.xsl" type="text/xsl" ?>-->
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Profile_Imaging_Client_TS">
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xml="http://www.w3.org/XML/1998/namespace" xsi:schemaLocation="http://docbook.org/ns/docbook http://docbook.org/xml/5.0/xsd/docbook.xsd" version="0.1" xml:id="ONVIF_Media2_Config_Device_TS">
   <info>
     <orgname>
       <phrase>
@@ -16,10 +16,10 @@
     </orgname>
     <title>Media2 Configuration Device Test Specification</title>
     <titleabbrev>Media2 Configuration Device Test Spec</titleabbrev>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -1295,6 +1295,86 @@
           <para>MEDIA2-1-1-9 READY TO USE MEDIA PROFILE FOR VIDEO STREAMING (PROFILE M)</para>
         </revdescription>
       </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 09, 2021</date>
+        <revdescription>
+          <para>
+            The following annex was updated according to #2124:
+          </para>
+          <para>A.23 Waiting for Reboot (condition with Discovery feature supporting added)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 27, 2021</date>
+        <revdescription>
+          <para>
+            The following test case was updated according to #2216:
+          </para>
+          <para>MEDIA2-2-2-5 MODIFY ALL SUPPORTED VIDEO SOURCE CONFIGURATIONS (step 5.3 and 5.9 modified to skip change of Rotate if Reboot=true)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Aug 31, 2021</date>
+        <revdescription>
+          <para>
+            The following test case was updated according to #2216:
+          </para>
+          <para>MEDIA2-2-2-5 MODIFY ALL SUPPORTED VIDEO SOURCE CONFIGURATIONS (step 7 added)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Oct 07, 2021</date>
+        <revdescription>
+          <para>
+            The following test cases and annexes were added in the scope of #2222:
+          </para>
+          <para>
+            MEDIA2-10-1-1 CREATE MASKS
+            </para>
+            <para>
+            MEDIA2-10-1-2 GET MASKS
+            </para>
+            <para>
+            MEDIA2-10-1-3 SET MASKS
+            </para>
+            <para>
+            MEDIA2-10-1-4 GET MASK OPTIONS
+            </para>
+            <para>
+            MEDIA2-10-1-5 MASK CONFIGURATIONS AND MASK OPTIONS CONSISTENCY
+            </para>
+            <para>
+            A.34 Device Configuration For Create Mask
+            </para>
+            <para>
+            A.35 Delete Mask
+            </para>
+            <para>
+            A.36 Create Mask
+            </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Oct 13, 2021</date>
+        <revdescription>
+          <para>
+            The following test cases and annexes were added in the scope of #2222:
+          </para>
+          <para>
+            MEDIA2-10-1-6 SINGLE COLOR ONLY PARAMETER
+            </para>
+            <para>
+            A.37 Remove all Masks from Video Source Configuration
+            </para>
+        </revdescription>
+      </revision>
+
+     
     </revhistory>
   </info>
   <chapter xml:id="s.intro">
@@ -7290,7 +7370,7 @@
                           </listitem>
                           <listitem>
                             <para>
-                              If <emphasis role="italic">options</emphasis>.Extension.Rotate specified:
+                              If <emphasis role="italic">options</emphasis>.Extension.Rotate specified and options.Extension.Rotate.@Reboot != true:
                               <itemizedlist>
                                 <listitem>
                                   <para>
@@ -7302,7 +7382,7 @@
                           </listitem>
                           <listitem>
                             <para>
-                              If Configuration.Extension.Rotate.Mode = ON:
+                              If Configuration.Extension.Rotate.Mode = ON and options.Extension.Rotate.@Reboot != true:
                               <itemizedlist>
                                 <listitem>
                                   <para>
@@ -7490,7 +7570,7 @@
 
                           <listitem>
                             <para>
-                              If <emphasis role="italic">options</emphasis>.Extension.Rotate specified:
+                              If <emphasis role="italic">options</emphasis>.Extension.Rotate specified and options.Extension.Rotate.@Reboot != true:
                               <itemizedlist>
                                 <listitem>
                                   <para>
@@ -7502,7 +7582,7 @@
                           </listitem>
                           <listitem>
                             <para>
-                              If Configuration.Extension.Rotate.Mode = ON:
+                              If Configuration.Extension.Rotate.Mode = ON and options.Extension.Rotate.@Reboot != true:
                               <itemizedlist>
                                 <listitem>
                                   <para>
@@ -7625,6 +7705,183 @@
                   </itemizedlist>
                 </para>
               </listitem>
+              <listitem>
+                <para>
+                  For each Video Source Configuration <emphasis role="italic">videoSourceConfiguration</emphasis> in <emphasis role="italic">videoSourceConfList</emphasis> repeat the following steps:
+                  <orderedlist numeration="arabic" inheritnum="inherit">
+                    <?dbfo label-width="2.5em"?>
+                    <listitem>
+                      <para>
+                        ONVIF Client invokes <emphasis role="bold">GetVideoSourceConfigurationOptions</emphasis> request with parameters
+                        <itemizedlist>
+                          <listitem>
+                            <para>
+                              ConfigurationToken := <emphasis role="italic">videoSourceConfiguration</emphasis>.@token
+                            </para>
+                          </listitem>
+                          <listitem>
+                            <para>
+                              ProfileToken skipped
+                            </para>
+                          </listitem>
+                        </itemizedlist>
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        DUT responds with <emphasis role="bold">GetVideoSourceConfigurationOptionsResponse</emphasis> message with parameters
+                        <itemizedlist>
+                          <listitem>
+                            <para>
+                              Options =: <emphasis role="italic">options</emphasis>
+                            </para>
+                          </listitem>
+                        </itemizedlist>
+                      </para>
+                    </listitem>
+                    <listitem>
+                      <para>
+                        If <emphasis role="italic">options</emphasis>.Extension.Rotate specified and <emphasis role="italic">options</emphasis>.Extension.Rotate.@Reboot = true:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem xml:id="tc.MEDIA2-2-2-5.7.3.1">
+                                  <para>
+                                    ONVIF Client invokes <emphasis role="bold">SetVideoSourceConfiguration</emphasis> request with parameters
+                                    <itemizedlist>
+                                      <listitem>
+                                        <para>
+                                          Configuration.@token := <emphasis role="italic">videoSourceConfiguration</emphasis>.@token
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          Configuration.Name := "TestName1"
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          Configuration.SourceToken := first value from <emphasis role="italic">options</emphasis>.VideoSourceTokensAvailable list
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          Configuration.Bounds.x := <emphasis role="italic">options</emphasis>.BoundsRange.XRange.Min
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          Configuration.Bounds.y := <emphasis role="italic">options</emphasis>.BoundsRange.YRange.Min
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          Configuration.Bounds.width := <emphasis role="italic">options</emphasis>.BoundsRange.WidthRange.Min
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          Configuration.Bounds.height := <emphasis role="italic">options</emphasis>.BoundsRange.HeightRange.Min
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          Configuration.Extension.Rotate.Mode := first value from <emphasis role="italic">options</emphasis>.Extension.Rotate.Mode list
+                                        </para>
+                                      </listitem>
+                                      <listitem>
+                                        <para>
+                                          If Configuration.Extension.Rotate.Mode = ON and options.Extension.Rotate.@Reboot = true:
+                                          <itemizedlist>
+                                            <listitem>
+                                              <para>
+                                                If <emphasis role="italic">options</emphasis>.Extension.Rotate.DegreeList is specified and contains at least one Item:
+                                                <itemizedlist>
+                                                  <listitem>
+                                                    <para>
+                                                      Configuration.Extension.Rotate.Degree := first value from <emphasis role="italic">options</emphasis>.Extension.Rotate.DegreeList.Item list
+                                                    </para>
+                                                  </listitem>
+                                                </itemizedlist>
+                                              </para>
+                                            </listitem>
+                                            <listitem>
+                                              <para>
+                                                If <emphasis role="italic">options</emphasis>.Extension.Rotate.DegreeList is not specified:
+                                                <itemizedlist>
+                                                  <listitem>
+                                                    <para>
+                                                      Configuration.Extension.Rotate.Degree := -180
+                                                    </para>
+                                                  </listitem>
+                                                </itemizedlist>
+                                              </para>
+                                            </listitem>
+                                          </itemizedlist>
+                                        </para>
+                                      </listitem>
+                                    </itemizedlist>
+                                  </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ONVIF Client waits for the Device reboot by following the procedure mentioned in <xref linkend="Annex_HelperWaitingReboot"/>.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                DUT responds with <emphasis role="bold">SetVideoSourceConfigurationResponse</emphasis> message.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ONVIF Client invokes <emphasis role="bold">GetVideoSourceConfigurations</emphasis> request with parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      ConfigurationToken := <emphasis role="italic">videoSourceConfiguration</emphasis>.@token
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      ProfileToken skipped
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                The DUT responds with <emphasis role="bold">GetVideoSourceConfigurationsResponse</emphasis> with parameters
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      Configurations list =: <emphasis role="italic">videoSourceConfList</emphasis>
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem xml:id="tc.MEDIA2-2-2-5.7.3.6">
+                              <para>
+                                If <emphasis role="italic">videoSourceConfList</emphasis>[0] is not equal to Configuration from step <link linkend="tc.MEDIA2-2-2-5.7.3.1">7.3.1</link>, FAIL the test and skip other steps.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ONVIF Client restores settings of Video Source Configuration with @token = <emphasis role="italic">videoSourceConfiguration</emphasis>.@token.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                ONVIF Client waits for the Device reboot by following the procedure mentioned in <xref linkend="Annex_HelperWaitingReboot"/>.
+                              </para>
+                            </listitem>
+                        </orderedlist>
+                      </para>
+                    </listitem>
+                  </orderedlist>
+                </para>
+              </listitem>
             </orderedlist>
           </para>
           <para>
@@ -7661,7 +7918,7 @@
             </itemizedlist>
           </para>
           <para>
-            <emphasis role="bold">Note:</emphasis> The following fields are compared at step <link linkend="tc.MEDIA2-2-2-5.5.8">5.8</link> and <link linkend="tc.MEDIA2-2-2-5.5.14">5.14</link>:
+            <emphasis role="bold">Note:</emphasis> The following fields are compared at step <link linkend="tc.MEDIA2-2-2-5.5.8">5.8</link>  and <link linkend="tc.MEDIA2-2-2-5.5.14">5.14</link>:
             <itemizedlist>
               <listitem>
                 <para>
@@ -7736,6 +7993,26 @@
               <listitem>
                 <para>
                   Extension.Extension.LensDescription.Projection.Transmittance
+                </para>
+              </listitem>
+            </itemizedlist>
+          </para>
+          <para>
+            <emphasis role="bold">Note:</emphasis> The following fields are compared at step <link linkend="tc.MEDIA2-2-2-5.7.3.6">7.3.6</link>:
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Extension.Rotate
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Extension.Rotate.Mode
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Extension.Rotate.Degree
                 </para>
               </listitem>
             </itemizedlist>
@@ -19872,6 +20149,1802 @@
       </section>
 
     </section>
+    <!--Masks -->
+    <section xml:id="tc.media_configuration.masks">
+    <title>Masks Configuration</title>
+
+    <!--MEDIA2-10-1-1-->
+    <section xml:id="tc.MEDIA2-10-1-1">
+        <title>CREATE MASKS</title>
+        <para>       
+            <emphasis role="bold">Test Case ID</emphasis>: MEDIA2-10-1-1
+        </para>
+        <para>
+            <emphasis role="bold">Specification Coverage:</emphasis> CreateMask, DeleteMask (ONVIF Media2 Service Specification)</para>
+
+        <para>
+            <emphasis role="bold">Feature Under Test:</emphasis> CreateMask, DeleteMask</para>
+
+        <para>
+            <emphasis role="bold">WSDL Reference:</emphasis> media2.wsdl</para>
+
+        <para>
+            <emphasis role="bold">Test Purpose:</emphasis> To verify the DUT creates and removes Mask.</para>
+
+        <para>
+            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service feature is supported by DUT. Mask feature is supported by DUT.</para>
+
+        <para>
+            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT</para>
+
+        <para>
+            <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        Start an ONVIF Client.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Start the DUT.
+                    </para>
+                </listitem>
+
+                <listitem>
+                    <para>
+                        ONVIF Client configures device for adding of new mask by following the procedure mentioned in <xref linkend="Annex_HelperDeviceConfigurationForCreateMask"/> with the following input and output parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">maskOptions</emphasis> - Options to create mask with
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">vscToken</emphasis> - Token of Video Source Configuration to be used
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">maskToRestore</emphasis> - Mask to restore (if a Mask was removed)
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem xml:id="tc.MEDIA2-10-1-1.4">
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">CreateMask</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    token := "TestMask" (note: this token can be ignored by DUT)
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken := <emphasis role="italic">vscToken</emphasis>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Polygon := Point[0].@x="-0.4", Point[0].@y="-0.2", Point[1].@x="-0.2", Point[1].@y="0.3", Point[2].@x="0.1", Point[2].@y="0.4", Point[3].@x="0.3", Point[3].@y="-0.3" if <emphasis role="italic">maskOptions</emphasis>.RectangleOnly is false or skipped. Else Polygon := Point[0].@x="-0.5", Point[0].@y="-0.5", Point[1].@x="-0.5", Point[1].@y="0.5", Point[2].@x="0.5", Point[2].@y="0.5", Point[3].@x="0.5", Point[3].@y="-0.5"
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Type := first value from <emphasis role="italic">maskOptions</emphasis>.Types list
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If Type = "Color":
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorList is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color := first value that are listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorList
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Colorspace := Colorspace value of the first item that is listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@X := value from the range [X.Min,X.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Y := value from the range [Y.Min,Y.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Z := value from the range [Z.Min,Z.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Enabled := false
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">CreateMaskResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token of the created mask =: <emphasis role="italic">maskToken</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token := <emphasis role="italic">maskToken</emphasis>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken skipped
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Masks =: <emphasis role="italic">maskList</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        If <emphasis role="italic">maskList</emphasis>[0] is not equal to Mask from step <link linkend="tc.MEDIA2-10-1-1.4">4</link>, FAIL the test and skip other steps.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">DeleteMask</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token := <emphasis role="italic">maskToken</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">DeleteMaskResponse</emphasis> message
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token skipped
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>[0].@Token
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Masks =: <emphasis role="italic">maskList2</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        If <emphasis role="italic">maskList2</emphasis> contains Mask with @Token = <emphasis role="italic">maskToken</emphasis>, FAIL the test and skip other steps.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client restores the DUT state.
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+            <itemizedlist>
+
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetVideoSourceConfigurationsResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMasksResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMaskOptionsResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">CreateMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">DeleteMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+
+    <!--MEDIA2-10-1-2-->
+    <section xml:id="tc.MEDIA2-10-1-2">
+        <title>GET MASKS</title>
+        <para>
+            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2-10-1-2
+        </para>
+
+        <para>
+            <emphasis role="bold">Specification Coverage:</emphasis> GetMasks (ONVIF Media2 Service Specification)
+        </para>
+
+        <para>
+            <emphasis role="bold">Feature Under Test:</emphasis> GetMasks
+        </para>
+
+        <para>
+            <emphasis role="bold">WSDL Reference:</emphasis> media2.wsdl
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Purpose:</emphasis> To verify DUT sends complete Masks list and list of Masks, which are compatible with specific Video Source Configuration.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service feature is supported by DUT. Mask feature is supported by DUT.
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        Start an ONVIF Client.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Start the DUT.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token skipped
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken skipped
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Masks =: <emphasis role="italic">maskConfCompleteList1</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        If <emphasis role="italic">maskConfCompleteList1</emphasis> is empty, FAIL the test and skip other steps.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        If <emphasis role="italic">maskConfCompleteList1</emphasis> contains at least two items with the same @token, FAIL the test and skip other steps.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        For each Mask <emphasis role="italic">mask</emphasis> in <emphasis role="italic">maskConfCompleteList1</emphasis> repeat the following steps:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token := <emphasis role="italic">mask</emphasis>.@token
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken skipped
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Masks =: <emphasis role="italic">maskList1</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskList1</emphasis> is empty, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskList1</emphasis> contains more than one item, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskList1</emphasis>[0].@token != <emphasis role="italic">mask</emphasis>.@token, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+
+                            <listitem xml:id="tc.MEDIA2-10-1-2.7.6">
+                                <para>
+                                    If <emphasis role="italic">maskList1</emphasis>[0] is not equal to <emphasis role="italic">mask</emphasis>, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                        </orderedlist>
+
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client retrieves Video Source Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetVideoSourceConfigurationsList"/> with the following input and output parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">videoSourceConfList1</emphasis> - Video Source Configurations list
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        For each Video Source Configuration <emphasis role="italic">videoSourceConf1</emphasis> in <emphasis role="italic">videoSourceConfList1</emphasis> list repeat the following steps:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token skipped
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>.@Token
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Masks =: <emphasis role="italic">maskConfList1</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskConfList1</emphasis> contains at least two items with the same @token, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                            <listitem xml:id="tc.MEDIA2-10-1-2.9.4">
+                                <para>
+                                    If <emphasis role="italic">maskConfCompleteList1</emphasis> does not contain at least one item with @token from <emphasis role="italic">maskConfList1</emphasis> list, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                        </orderedlist>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMasksResponse</emphasis> message(s).  
+                    </para>
+                </listitem>
+            </itemizedlist>          
+        </para>
+
+        <para>
+            <emphasis role="bold">Note:</emphasis> The following fields are compared at step <link linkend="tc.MEDIA2-10-1-2.7.6">7.6</link>:
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        token
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ConfigurationToken
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Polygon
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Type
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Color
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Enabled
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para> 
+    </section>
+
+    <!--MEDIA2-10-1-3-->
+    <section xml:id="tc.MEDIA2-10-1-3">
+        <title>SET MASKS</title>
+        <para>
+            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2-10-1-3
+        </para>
+
+        <para>
+            <emphasis role="bold">Specification Coverage:</emphasis> SetMask, DeleteMask (ONVIF Media2 Service Specification)
+        </para>
+
+        <para>
+            <emphasis role="bold">Feature Under Test:</emphasis> SetMask
+        </para>
+
+        <para>
+            <emphasis role="bold">WSDL Reference:</emphasis> media2.wsdl
+        </para>
+        <para>
+            <emphasis role="bold">Test Purpose:</emphasis> To verify the DUT changes and removes Mask.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service feature is supported by DUT. Mask feature is supported by DUT.
+        </para>
+        <para>
+            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        Start an ONVIF Client.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Start the DUT.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client configures device for adding of new mask by following the procedure mentioned in <xref linkend="Annex_HelperDeviceConfigurationForCreateMask"/> with the following input and output parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">maskOptions</emphasis> - Options to create mask with
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">vscToken</emphasis> - Token of Video Source Configuration to be used
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">maskToRestore</emphasis> - Mask to restore (if a Mask was removed)
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Set <emphasis role="italic">maskType</emphasis> := first value from <emphasis role="italic">maskOptions</emphasis>.Types list
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client creates mask by following the procedure mentioned in <xref linkend="Annex_HelperCreateMask"/> with the following input and output parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    in <emphasis role="italic">vscToken</emphasis> -  Video Source configuration token
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    in <emphasis role="italic">maskOptions</emphasis> - Options of the mask
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    in <emphasis role="italic">maskType</emphasis> - Mask type 
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">maskToken</emphasis> - Token of the created mask
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem xml:id="tc.MEDIA2-10-1-3.5">
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">SetMask</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    token := <emphasis role="italic">maskToken</emphasis>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken := <emphasis role="italic">vscToken</emphasis>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Polygon := Point[0].@x="-0.5", Point[0].@y="-0.3", Point[1].@x="-0.3", Point[1].@y="0.4", Point[2].@x="0.2", Point[2].@y="0.5", Point[3].@x="0.4", Point[3].@y="-0.4" if <emphasis role="italic">maskOptions</emphasis>.RectangleOnly is false or skipped. Else Polygon := Point[0].@x="-0.6", Point[0].@y="-0.6", Point[1].@x="-0.6", Point[1].@y="0.6", Point[2].@x="0.6", Point[2].@y="0.6", Point[3].@x="0.6", Point[3].@y="-0.6"
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Type := last value from <emphasis role="italic">maskOptions</emphasis>.Types list
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If Type = "Color":
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic"> maskOptions</emphasis>.Color.ColorList is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color := last value that are listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorList
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Colorspace := Colorspace value of the last item that is listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@X := value from the range [X.Min,X.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Y := value from the range [Y.Min,Y.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Z := value from the range [Z.Min,Z.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Enabled := true
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">SetMaskResponse</emphasis> message
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token := <emphasis role="italic">maskToken</emphasis>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken skipped
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Masks =: <emphasis role="italic">maskList</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        If <emphasis role="italic">maskList</emphasis>[0] is not equal to Mask from step <link linkend="tc.MEDIA2-10-1-3.5">5</link>, FAIL the test and skip other steps.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">DeleteMask</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token := <emphasis role="italic">maskToken</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">DeleteMaskResponse</emphasis> message
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token skipped
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>[0].@Token
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Masks =: <emphasis role="italic">maskList2</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        If <emphasis role="italic">maskList2</emphasis> contains Mask with @Token = <emphasis role="italic">maskToken</emphasis>, FAIL the test and skip other steps.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client restores the DUT state.
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetVideoSourceConfigurationsResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMasksResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMaskOptionsResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">CreateMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT rejected create Mask Request.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">SetMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">DeleteMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+            </itemizedlist> 
+        </para>
+    </section>
+
+    <!--MEDIA2-10-1-4-->
+    <section xml:id="tc.MEDIA2-10-1-4">
+        <title>GET MASK OPTIONS</title>
+        <para>
+            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2-10-1-4
+        </para>
+        <para>
+            <emphasis role="bold">Specification Coverage:</emphasis> GetMaskOptions (ONVIF Media2 Service Specification)
+        </para>
+        <para>
+            <emphasis role="bold">Feature Under Test:</emphasis> GetMaskOptions
+        </para>
+        <para>
+            <emphasis role="bold">WSDL Reference:</emphasis> media2.wsdl
+        </para>
+        <para>
+            <emphasis role="bold">Test Purpose:</emphasis> To verify consistency in Mask Options.
+        </para>
+        <para>
+            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service feature is supported by DUT. Mask feature is supported by DUT.
+        </para>
+        <para>
+            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+            <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        Start an ONVIF Client.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Start the DUT.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client retrieves Video Source Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetVideoSourceConfigurationsList"/> with the following input and output parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">videoSourceConfList1</emphasis> - Video Source Configurations list
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        For each Video Source Configuration <emphasis role="italic">videoSourceConf1</emphasis> in <emphasis role="italic">videoSourceConfList1</emphasis> list repeat the following steps:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMaskOptions</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>.@token
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMaskOptionsResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                MaskOptions =: <emphasis role="italic">maskOptions</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskOptions</emphasis>.MaxMasks &lt; 0, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskOptions</emphasis>.MaxPoints &lt; 3, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskOptions</emphasis> does not have Types element, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskOptions</emphasis> has Color.ColorspaceRange element:
+                                    <orderedlist numeration="arabic" inheritnum="inherit">
+                                        <?dbfo label-width="3.5em"?>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange.X.Min > <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange.X.Max, FAIL the test and skip other steps.
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange.Y.Min > <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange.Y.Max, FAIL the test and skip other steps.
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange.Z.Min > <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange.Z.Max, FAIL the test and skip other steps.
+                                            </para>
+                                        </listitem>
+                                    </orderedlist>
+                                </para>
+                            </listitem>
+
+                        </orderedlist>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMaskOptionsResponse</emphasis> message(s).
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+
+    <!--MEDIA2-10-1-5-->
+    <section xml:id="tc.MEDIA2-10-1-5">
+        <title>MASK CONFIGURATIONS AND MASK OPTIONS CONSISTENCY</title>
+        <para>
+            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2-10-1-5
+        </para>
+
+        <para>
+            <emphasis role="bold">Specification Coverage:</emphasis> GetMasks, GetMaskOptions (ONVIF Media2 Service Specification)
+        </para>
+
+        <para>
+            <emphasis role="bold">Feature Under Test:</emphasis> GetMasks, GetMaskOptions
+        </para>
+
+        <para>
+            <emphasis role="bold">WSDL Reference:</emphasis> media2.wsdl
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Purpose:</emphasis> To verify all Mask configurations are consistent with Mask Options.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service feature is supported by DUT. Mask feature is supported by DUT.
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        Start an ONVIF Client.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Start the DUT.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client retrieves Video Source Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetVideoSourceConfigurationsList"/> with the following input and output parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">videoSourceConfList1</emphasis> - Video Source Configurations list
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        For each Video Source Configuration <emphasis role="italic">videoSourceConf1</emphasis> in <emphasis role="italic">videoSourceConfList1</emphasis> repeat the following steps:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes GetMasks request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token skipped
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>.@token
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Masks =: <emphasis role="italic">maskConfList1</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMaskOptions</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>.@token
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMaskOptionsResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                MaskOptions := <emphasis role="italic">maskOptions</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Set <emphasis role="italic">colorMask</emphasis> := empty
+                                </para>
+                            </listitem>
+                            <listitem xml:id="tc.MEDIA2-10-1-5.4.6">
+                                <para>
+                                    For each Mask <emphasis role="italic">mask</emphasis> in <emphasis role="italic">maskConfList1</emphasis> repeat the following steps:
+                                    <orderedlist numeration="arabic" inheritnum="inherit">
+                                        <?dbfo label-width="3.5em"?>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">mask</emphasis>.ConfigurationToken is not equal to <emphasis role="italic">videoSourceConf1</emphasis>.@token, FAIL the test and skip other steps.
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis> does not contain Types element with value is equal to <emphasis role="italic">mask</emphasis>.Type, FAIL the test and skip other steps.
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.RectangleOnly = true and <emphasis role="italic">mask</emphasis>.Polygon does not have four points, FAIL the test and skip other steps.
+                                            </para>
+                                        </listitem> 
+                                        <listitem>
+                                            <para>
+                                                If number of points of <emphasis role="italic">mask</emphasis>.Polygon > <emphasis role="italic">maskOptions</emphasis>.MaxPoints, FAIL the test and skip other steps.
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">mask</emphasis>.Color is specified:
+                                                <orderedlist numeration="arabic" inheritnum="inherit">
+                                                    <?dbfo label-width="4.5em"?>
+                                                    <listitem>
+                                                        <para>
+                                                            If  <emphasis role="italic">mask</emphasis>.Color@Colorspace is skipped:
+                                                            <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                <?dbfo label-width="5.5em"?>
+                                                                <listitem>
+                                                                    <para>
+                                                                        Set <emphasis role="italic">mask</emphasis>.Color@Colorspace = http://www.onvif.org/ver10/colorspace/YCbCr
+                                                                    </para>
+                                                                </listitem>
+                                                            </orderedlist>
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            If <emphasis role="italic">maskOptions</emphasis>.Color has at least one ColorList element:
+                                                            <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                <?dbfo label-width="5.5em"?>
+                                                                <listitem>
+                                                                    <para>
+                                                                        For each ColorList element <emphasis role="italic">colorList</emphasis> in <emphasis role="italic">maskOptions</emphasis>.Color repeat the following steps:
+                                                                        <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                            <?dbfo label-width="6.5em"?>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    If  <emphasis role="italic">colorList</emphasis>@Colorspace is skipped:
+                                                                                    <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                                        <?dbfo label-width="7.5em"?>
+                                                                                        <listitem>
+                                                                                            <para>
+                                                                                                Set <emphasis role="italic">colorList</emphasis>@Colorspace = http://www.onvif.org/ver10/colorspace/YCbCr
+                                                                                            </para>
+                                                                                        </listitem>
+                                                                                    </orderedlist>
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    If <emphasis role="italic">maskOptions</emphasis>.Color does not contain ColorList element with @X = <emphasis role="italic">mask</emphasis>.Color.@X, and with @Y = <emphasis role="italic">mask</emphasis>.Color.@Y, and with @Z = <emphasis role="italic">mask</emphasis>.Color.@Z, and with @Colorspace = <emphasis role="italic">mask</emphasis>.Color@Colorspace, FAIL the test and skip other steps.
+                                                                                </para>
+                                                                            </listitem>
+                                                                        </orderedlist>
+                                                                    </para>
+                                                                </listitem>
+                                                            </orderedlist>
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            If <emphasis role="italic">maskOptions</emphasis>.Color has at least one ColorspaceRange element: 
+                                                            <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                <?dbfo label-width="5.5em"?>
+                                                                <listitem>
+                                                                    <para>
+                                                                        Set <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange =: <emphasis role="italic">colorspaceRange1</emphasis>, where <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange is the first ColorspaceRange element that corresponds the following requirements:
+                                                                        <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                            <?dbfo label-width="6.5em"?>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    <emphasis role="italic">colorspaceRange1</emphasis>.@Colorspace = <emphasis role="italic">mask</emphasis>.Color.@Colorspace.
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    <emphasis role="italic">colorspaceRange1</emphasis>.X.Min &lt;= <emphasis role="italic">mask</emphasis>.Color.@X
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    <emphasis role="italic">colorspaceRange1</emphasis>.X.Max >= <emphasis role="italic">mask</emphasis>.Color.@X
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    <emphasis role="italic">colorspaceRange1</emphasis>.Y.Min &lt;= <emphasis role="italic">mask</emphasis>.Color.@Y
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    <emphasis role="italic">colorspaceRange1</emphasis>.Y.Max >= <emphasis role="italic">mask</emphasis>.Color.@Y
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    <emphasis role="italic">colorspaceRange1</emphasis>.Z.Min &lt;= <emphasis role="italic">mask</emphasis>.Color.@Z
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    <emphasis role="italic">colorspaceRange1</emphasis>.Z.Max >= <emphasis role="italic">mask</emphasis>.Color.@Z
+                                                                                </para>
+                                                                            </listitem>
+                                                                        </orderedlist>
+                                                                    </para>
+                                                                </listitem>
+                                                                <listitem>
+                                                                    <para>
+                                                                        If <emphasis role="italic">colorspaceRange1</emphasis> is empty, FAIL the test and skip other steps.
+                                                                    </para>
+                                                                </listitem>                                                            </orderedlist>
+                                                        </para>
+                                                    </listitem>
+                                                                <listitem>
+                                                                    <para>
+                                                                        If <emphasis role="italic">MaskOptions</emphasis>.SingleColorOnly = true
+                                                                        <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                            <?dbfo label-width="6.5em"?>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    If <emphasis role="italic">colorMask</emphasis> is empty:
+                                                                                    <orderedlist numeration="arabic" inheritnum="inherit">
+                                                                                        <?dbfo label-width="7.5em"?>
+                                                                                        <listitem>
+                                                                                            <para>
+                                                                                                <emphasis role="italic">colorMask</emphasis> := <emphasis role="italic">mask</emphasis>.Color
+                                                                                            </para>
+                                                                                        </listitem>
+                                                                                        <listitem>
+                                                                                            <para>
+                                                                                                GoTo step <link linkend="tc.MEDIA2-10-1-5.4.6">4.6</link>
+                                                                                            </para>
+                                                                                        </listitem>
+                                                                                    </orderedlist>
+                                                                                </para>
+                                                                            </listitem>
+                                                                            <listitem>
+                                                                                <para>
+                                                                                    If <emphasis role="italic">colorMask</emphasis> is not equal to <emphasis role="italic">mask</emphasis>.Color, FAIL the test and skip other steps.
+                                                                                </para>
+                                                                            </listitem>
+                                                                        </orderedlist>
+                                                                    </para>
+                                                                </listitem>
+
+                                                    
+                                                </orderedlist>
+                                            </para>
+                                        </listitem>
+                                    </orderedlist>
+                                </para>
+                            </listitem>
+                        </orderedlist>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Test Result:</emphasis>
+        </para>
+
+
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMasksResponse</emphasis> message(s).
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMaskOptionsResponse</emphasis> message(s).
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+
+    <!--MEDIA2-10-1-6-->
+    <section xml:id="tc.MEDIA2-10-1-6">
+        <title>SINGLE COLOR ONLY PARAMETER</title>
+        <para>
+            <emphasis role="bold">Test Case ID:</emphasis> MEDIA2-10-1-6
+        </para>
+
+        <emphasis role="bold">Specification Coverage:</emphasis> GetMaskOptions (ONVIF Media2 Service Specification)
+        <para>
+        </para>
+
+        <para>
+            <emphasis role="bold">Feature Under Test:</emphasis> GetMaskOptions
+        </para>
+
+        <para>
+            <emphasis role="bold">WSDL Reference:</emphasis> media2.wsdl
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Purpose:</emphasis> To verify Masks Color consistency if SingleColorOnly is present and true in Mask Options.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-Requisite:</emphasis> Media2 Service feature is supported by DUT. Mask feature is supported by DUT.
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+
+        <para>
+            <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        Start an ONVIF Client.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        Start the DUT.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        ONVIF Client retrieves Video Source Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetVideoSourceConfigurationsList"/> with the following input and output parameters<itemizedlist>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">videoSourceConfList1</emphasis> - Video Source Configurations list
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem xml:id="tc.MEDIA2-10-1-6.4">
+                    <para>
+                        For each Video Source Configuration <emphasis role="italic">videoSourceConf1</emphasis> in <emphasis role="italic">videoSourceConfList1</emphasis> list repeat the following steps:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMaskOptions</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>.@Token
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMaskOptionsResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                MaskOptions =: <emphasis role="italic">maskOptions</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskOptions</emphasis>.SingleColorOnly != true or <emphasis role="italic">maskOptions</emphasis>.Types list does not contain "Color" or <emphasis role="italic">maskOptions</emphasis>.MaxMasks &lt; 2 go to step <link linkend="tc.MEDIA2-10-1-6.4">4</link>.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ONVIF Client removes all Masks from Video Source Configuration by following the procedure mentioned in <xref linkend="Annex_HelperMasksCleanUp"/> with the following input and output parameters 
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                in <emphasis role="italic">videoSourceConf1</emphasis>.@token - Video Source Configuration token 
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Set <emphasis role="italic">maskType</emphasis> := “Color”
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ONVIF Client creates mask by following the procedure mentioned in <xref linkend="Annex_HelperCreateMask"/> with the following input and output parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                in <emphasis role="italic">vscToken</emphasis> -  Video Source configuration token
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                in <emphasis role="italic">maskOptions</emphasis> - Options of the mask
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                in <emphasis role="italic">maskType</emphasis> - Mask type 
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                out <emphasis role="italic">maskToken1</emphasis> - Token of the created mask
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">CreateMask</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                token := "TestMask" (note: this token can be ignored by DUT)
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>.@token
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                Polygon := Point[0].@x="-0.4", Point[0].@y="-0.2", Point[1].@x="-0.2", Point[1].@y="0.3", Point[2].@x="0.1", Point[2].@y="0.4", Point[3].@x="0.3", Point[3].@y="-0.3" if <emphasis role="italic">maskOptions</emphasis>.RectangleOnly is false or skipped. Else Polygon := Point[0].@x="-0.5", Point[0].@y="-0.5", Point[1].@x="-0.5", Point[1].@y="0.5", Point[2].@x="0.5", Point[2].@y="0.5", Point[3].@x="0.5", Point[3].@y="-0.5"
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                Type := “Color”
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                Enabled := false
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">CreateMaskResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token of the created mask =: <emphasis role="italic">maskToken2</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token := <emphasis role="italic">maskToken1</emphasis>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken skipped
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Masks =: <emphasis role="italic">maskList1</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token := <emphasis role="italic">maskToken2</emphasis>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken skipped
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Masks =: <emphasis role="italic">maskList2</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskList2</emphasis>[0].Color is not equal to <emphasis role="italic">maskList1</emphasis>[0].Color, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                            <listitem xml:id="tc.MEDIA2-10-1-6.4.14">
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">SetMask</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                token := <emphasis role="italic">maskToken2</emphasis>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">vscToken</emphasis>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                Polygon := Point[0].@x="-0.5", Point[0].@y="-0.3", Point[1].@x="-0.3", Point[1].@y="0.4", Point[2].@x="0.2", Point[2].@y="0.5", Point[3].@x="0.4", Point[3].@y="-0.4" if <emphasis role="italic">maskOptions</emphasis>.RectangleOnly is false or skipped. Else Polygon := Point[0].@x="-0.6", Point[0].@y="-0.6", Point[1].@x="-0.6", Point[1].@y="0.6", Point[2].@x="0.6", Point[2].@y="0.6", Point[3].@x="0.6", Point[3].@y="-0.6"
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                Type := "Color"
+                                            </para>
+                                        </listitem>
+
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic"> maskOptions</emphasis>.Color.ColorList is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color := last value that are listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorList
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Colorspace := Colorspace value of the last item that is listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@X := value from the range [X.Min,X.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Y := value from the range [Y.Min,Y.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Z := value from the range [Z.Min,Z.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+
+                                        <listitem>
+                                            <para>
+                                                Enabled := true
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">SetMaskResponse</emphasis> message
+                                </para>
+                            </listitem>
+
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token := <emphasis role="italic">maskToken1</emphasis>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken skipped
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Masks =: <emphasis role="italic">maskList3</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskList3</emphasis>[0].Color is not equal to Color value from step <link linkend="tc.MEDIA2-10-1-6.4.14">4.14</link>, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ONVIF Client restores the DUT state.
+                                </para>
+                            </listitem>
+                        </orderedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        PASS the test.
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Test Result:</emphasis>
+        </para>
+
+
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">CreateMaskResponse</emphasis> message(s).
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">SetMaskResponse</emphasis> message(s).
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMasksResponse</emphasis> message(s).
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        The DUT did not send <emphasis role="bold">GetMaskOptionsResponse</emphasis> message(s).
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+
+</section>
   </chapter>
   <appendix>
     <title>Helper Procedures and Additional Notes</title>
@@ -22765,63 +24838,86 @@
       <para>
         <orderedlist>
           <?dbfo label-width="1.5em"?>
-          <listitem xml:id="Annex_HelperWaitingReboot.1">
+         
+                <listitem>
+                  <para>
+                    If DUT supports Discovery:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="2.5em"?>
+                      <listitem xml:id="Annex_HelperWaitingReboot.1">
+                        <para>
+                          Until <emphasis role="italic">timeout1</emphasis> timeout expires, repeat the following steps:
+                          <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="3.5em"?>
+                            <listitem>
+                              <para>
+                                The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted with parameters:
+                                <itemizedlist>
+                                  <listitem>
+                                    <para>
+                                      EndpointReference.Address equal to unique endpoint reference of the DUT
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Types list
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      Scopes list
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      XAddrs list := <emphasis role="italic">xAddrsList</emphasis>
+                                    </para>
+                                  </listitem>
+                                  <listitem>
+                                    <para>
+                                      MetadataVersion
+                                    </para>
+                                  </listitem>
+                                </itemizedlist>
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                If <emphasis role="italic">xAddrsList</emphasis> contains URI address with IPv4 address other than LinkLocal from ONVIF Client subnet, go to step <link linkend="Annex_HelperWaitingReboot.3">3</link>.
+                              </para>
+                            </listitem>                            
+                          </orderedlist>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          If <emphasis role="italic">timeout1</emphasis> timeout expires for the step <link linkend="Annex_HelperWaitingReboot.1">1.1</link> without <emphasis role="bold">Hello</emphasis> with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
+                        </para>
+                      </listitem>
+                      <listitem xml:id="Annex_HelperWaitingReboot.3">
+                        <para>
+                          ONVIF client waits for 5 seconds after <emphasis role="bold">Hello</emphasis> was received.
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+          <listitem>
             <para>
-              Until <emphasis role="italic">timeout1</emphasis> timeout expires, repeat the following steps:
+              If DUT does not support Discovery:
               <orderedlist numeration="arabic" inheritnum="inherit">
                 <?dbfo label-width="2.5em"?>
                 <listitem>
                   <para>
-                    The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted with parameters:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          EndpointReference.Address equal to unique endpoint reference of the DUT
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Types list
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          Scopes list
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          XAddrs list := <emphasis role="italic">xAddrsList</emphasis>
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          MetadataVersion
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                    If <emphasis role="italic">xAddrsList</emphasis> contains URI address with IPv4 address other than LinkLocal from ONVIF Client subnet, go to step <link linkend="Annex_HelperWaitingReboot.3">3</link>.
+                    ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
                   </para>
                 </listitem>
               </orderedlist>
             </para>
           </listitem>
-          <listitem>
-            <para>
-              If <emphasis role="italic">timeout1</emphasis> timeout expires for the step <link linkend="Annex_HelperWaitingReboot.1">1</link> without <emphasis role="bold">Hello</emphasis> with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
+              </orderedlist>
             </para>
-          </listitem>
-          <listitem xml:id="Annex_HelperWaitingReboot.3">
-            <para>
-              ONVIF client waits for 5 seconds after <emphasis role="bold">Hello</emphasis> was received.
-            </para>
-          </listitem>
-        </orderedlist>
-      </para>
+          
       <para>
         <emphasis role="bold">Procedure Result:</emphasis>
       </para>
@@ -24244,6 +26340,536 @@
           </listitem>
         </itemizedlist>
       </para>
+    </section>
+    <!-- A.34 -->
+    <section xml:id="Annex_HelperDeviceConfigurationForCreateMask" xreflabel="Annex A.34">
+        <title>Device Configuration For Create Mask</title>
+        <para>
+            <emphasis role="bold">Name:</emphasis> HelperDeviceConfigurationForCreateMask
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure for configuring DUT in order to add a mask.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-requisite:</emphasis> Media2 Service is received from the DUT. Mask feature is supported by the DUT.
+        </para>
+
+        <para>
+            <emphasis role="bold">Input:</emphasis> None.
+        </para>
+
+        <para>
+            <emphasis role="bold">Returns:</emphasis> Mask Options (<emphasis role="italic">maskOptions</emphasis>). Video Source configuration token (<emphasis role="italic">vscToken</emphasis>). Mask to restore (optional) (<emphasis role="italic">maskToRestore</emphasis>)
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure:</emphasis>
+        </para>
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+
+                <listitem>
+                    <para>
+                        ONVIF Client retrieves Video Source Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetVideoSourceConfigurationsList"/> with the following input and output parameters<itemizedlist>
+                            <listitem>
+                                <para>
+                                    out <emphasis role="italic">videoSourceConfList1</emphasis> - Video Source Configurations list
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        For each Video Source Configuration <emphasis role="italic">videoSourceConf1</emphasis> in <emphasis role="italic">videoSourceConfList1</emphasis> list repeat the following steps:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">GetMaskOptions</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                ConfigurationToken := <emphasis role="italic">videoSourceConf1</emphasis>.@Token
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">GetMaskOptionsResponse</emphasis> message with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                MaskOptions =: <emphasis role="italic">maskOptions</emphasis>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskOptions</emphasis> does not contain MaxMasks attribute, FAIL the test and skip other steps.
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If <emphasis role="italic">maskOptions</emphasis>.MaxMasks > 0: 
+                                    <orderedlist numeration="arabic" inheritnum="inherit">
+                                        <?dbfo label-width="3.5em"?>
+                                        <listitem>
+                                            <para>
+                                                Set <emphasis role="italic">vscToken</emphasis> := <emphasis role="italic">videoSourceConf1</emphasis>.@Token 
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Token skipped
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            ConfigurationToken := <emphasis role="italic">vscToken</emphasis>
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Masks =: <emphasis role="italic">maskConfList1</emphasis>
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                Set <emphasis role="italic">amountOfExistingMasks</emphasis> := amount of Mask items in <emphasis role="italic">maskConfList1</emphasis>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">amountOfExistingMasks</emphasis> = <emphasis role="italic">maskOptions</emphasis>.MaxMasks
+                                                <orderedlist numeration="arabic" inheritnum="inherit">
+                                                    <?dbfo label-width="3.5em"?>
+                                                    <listitem>
+                                                        <para>
+                                                            Set <emphasis role="italic">maskToDelete</emphasis> := <emphasis role="italic">maskConfList1</emphasis>.Masks[0].token
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            ONVIF Client deletes Mask Configuration by following the procedure mentioned in <xref linkend="Annex_HelperDeleteMask"/> with the following input parameter
+                                                            <itemizedlist>
+                                                                <listitem>
+                                                                    <para>
+                                                                        in <emphasis role="italic">maskToDelete</emphasis> - Mask Configuration token to delete
+                                                                    </para>
+                                                                </listitem>
+                                                            </itemizedlist>
+                                                        </para>
+                                                    </listitem>
+                                                </orderedlist>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                Skip other steps of procedure.
+                                            </para>
+                                        </listitem>
+
+                                    </orderedlist>
+                                </para>
+                            </listitem>
+                        </orderedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        FAIL the test and skip other steps.
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Procedure Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT did not send <emphasis role="bold">GetMaskOptionsResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT did not send <emphasis role="bold">GetMasksResponse</emphasis> message.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+    <!-- A.35 -->
+    <section xml:id="Annex_HelperDeleteMask" xreflabel="Annex A.35">
+        <title>Delete Mask</title>
+        <para>
+            <emphasis role="bold">Name:</emphasis> HelperDeleteMask
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to delete specified Mask.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-requisite:</emphasis> Media2 Service is received from the DUT. Mask feature is supported by the DUT.
+        </para>
+
+        <para>
+            <emphasis role="bold">Input:</emphasis> Mask token (<emphasis role="italic">maskToDelete</emphasis>).
+        </para>
+
+        <para>
+            <emphasis role="bold">Returns:</emphasis> None.
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure:</emphasis>
+        </para>
+
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">DeleteMask</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token := <emphasis role="italic">maskToDelete</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">DeleteMaskResponse</emphasis> message
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Procedure Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT did not send <emphasis role="bold">DeleteMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+    <!-- A.36 -->
+    <section xml:id="Annex_HelperCreateMask" xreflabel="Annex A.36">
+        <title>Create Mask</title>
+        <para>
+            <emphasis role="bold">Name:</emphasis> HelperCreateMask
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure for mask creation for specified Video Source Configuration with valid options.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-requisite:</emphasis> Media2 Service is received from the DUT. Mask feature is supported by the DUT.
+        </para>
+
+        <para>
+            <emphasis role="bold">Input:</emphasis> Video Source configuration token (<emphasis role="italic">vscToken</emphasis>). Mask Options (<emphasis role="italic">maskOptions</emphasis>). Type of Mask (<emphasis role="italic">maskType</emphasis>). 
+        </para>
+
+        <para>
+            <emphasis role="bold">Returns:</emphasis> Token of the created mask (<emphasis role="italic">maskToken</emphasis>).
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure:</emphasis>
+        </para>
+
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">CreateMask</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    token := "TestMask" (note: this token can be ignored by DUT)
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken := <emphasis role="italic">vscToken</emphasis>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Polygon := Point[0].@x="-0.4", Point[0].@y="-0.2", Point[1].@x="-0.2", Point[1].@y="0.3", Point[2].@x="0.1", Point[2].@y="0.4", Point[3].@x="0.3", Point[3].@y="-0.3" if <emphasis role="italic">maskOptions</emphasis>.RectangleOnly is false or skipped. Else Polygon := Point[0].@x="-0.5", Point[0].@y="-0.5", Point[1].@x="-0.5", Point[1].@y="0.5", Point[2].@x="0.5", Point[2].@y="0.5", Point[3].@x="0.5", Point[3].@y="-0.5"
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Type := <emphasis role="italic">maskType</emphasis>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    If Type = “Color”:
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorList is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color := first value that are listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorList
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                        <listitem>
+                                            <para>
+                                                If <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange is specified:
+                                                <itemizedlist>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Colorspace := Colorspace value of the first item that is listed in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@X := value from the range [X.Min,X.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Y := value from the range [Y.Min,Y.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                    <listitem>
+                                                        <para>
+                                                            Color.@Z := value from the range [Z.Min,Z.Max] of the same item in <emphasis role="italic">maskOptions</emphasis>.Color.ColorspaceRange that was used for the Color.@Colorspace
+                                                        </para>
+                                                    </listitem>
+                                                </itemizedlist>
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    Enabled := false
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">CreateMaskResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token of the created mask =: <emphasis role="italic">maskToken</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Procedure Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT did not send <emphasis role="bold">CreateMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+    <!-- A.37 -->
+    <section xml:id="Annex_HelperMasksCleanUp" xreflabel="Annex A.37">
+        <title>Remove all Masks from Video Source Configuration</title>
+        <para>
+            <emphasis role="bold">Name:</emphasis> HelperMasksCleanUp
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure, which removes all masks from Video Source Configuration.
+        </para>
+
+        <para>
+            <emphasis role="bold">Pre-requisite:</emphasis> Media2 Service is received from the DUT. Mask feature is supported by the DUT.
+        </para>
+
+        <para>
+            <emphasis role="bold">Input:</emphasis> Video Source configuration token (<emphasis role="italic">vscToken</emphasis>).
+        </para>
+
+        <para>
+            <emphasis role="bold">Returns:</emphasis> None. 
+        </para>
+
+        <para>
+            <emphasis role="bold">Procedure:</emphasis>
+        </para>
+        <para>
+            <orderedlist>
+                <?dbfo label-width="1.5em"?>
+
+                <listitem>
+                    <para>
+                        ONVIF Client invokes <emphasis role="bold">GetMasks</emphasis> request with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Token skipped
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    ConfigurationToken := <emphasis role="italic">vscToken</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT responds with <emphasis role="bold">GetMasksResponse</emphasis> message with parameters
+                        <itemizedlist>
+                            <listitem>
+                                <para>
+                                    Masks =: <emphasis role="italic">maskConfList1</emphasis>
+                                </para>
+                            </listitem>
+                        </itemizedlist>
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        For each Mask <emphasis role="italic">mask</emphasis> in <emphasis role="italic">maskConfList1</emphasis> list repeat the following steps:
+                        <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width="2.5em"?>
+                            <listitem>
+                                <para>
+                                    ONVIF Client invokes <emphasis role="bold">DeleteMask</emphasis> request with parameters
+                                    <itemizedlist>
+                                        <listitem>
+                                            <para>
+                                                Token := <emphasis role="italic">mask</emphasis>.@Token
+                                            </para>
+                                        </listitem>
+                                    </itemizedlist>
+                                </para>
+                            </listitem>
+                            <listitem>
+                                <para>
+                                    DUT responds with <emphasis role="bold">DeleteMaskResponse</emphasis> message 
+                                </para>
+                            </listitem>
+                        </orderedlist>
+                    </para>
+                </listitem>
+            </orderedlist>
+        </para>
+        <para>
+            <emphasis role="bold">Procedure Result:</emphasis>
+        </para>
+        <para>
+            <emphasis role="bold">PASS –</emphasis>
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT passes all assertions.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <para>
+            <emphasis role="bold">FAIL –</emphasis>
+
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        DUT did not send <emphasis role="bold">DeleteMaskResponse</emphasis> message.
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        DUT did not send <emphasis role="bold">GetMasksResponse</emphasis> message.
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
     </section>
 
   </appendix>

@@ -11,12 +11,12 @@
     </revision>
   </revhistory>
   <section xml:id="s.intro.MotionAlarm">
-      <title>Motion Alarm</title>
-      <para>
-        Motion Alarm section specifies Client ability to receive notifications of motion alarm event.
-      </para>
+    <title>Motion Alarm</title>
+    <para>
+      Motion Alarm section specifies Client ability to receive notifications of motion alarm event.
+    </para>
   </section>
- <section xml:id="tc.MotionAlarm">
+  <section xml:id="tc.MotionAlarm">
     <title>Motion Alarm Test Cases</title>
     <section xml:id="tc.MotionAlarm.feature">
       <title>Feature Level Normative Reference:</title>
@@ -52,20 +52,40 @@
           <listitem>
             <para>
               Client is considered as supporting Motion Alarm if the
-              following conditions are met:<itemizedlist><listitem><para>Client supports EventHandling_Pullpoint feature AND</para></listitem><listitem><para>
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.MotionAlarm.EVENTHANDLING-1"/> section) AND</para>
+                </listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.61">
+                  <para>
                     Client is able to retrieve tns1:VideoSource/MotionAlarm notifications if Device supports Motion Alarm feature.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
               Client is considered as NOT supporting Motion Alarm if ANY
               of the following is TRUE:
-              <itemizedlist><listitem><para>Client does not support EventHandling_Pullpoint feature OR</para></listitem><listitem><para>
+              <itemizedlist>
+                <listitem>
+                  <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.MotionAlarm.EVENTHANDLING-1"/> section) OR</para>
+                </listitem>
+                <listitem>
+                  <para>
                     Client is not able to retrieve tns1:VideoSource/MotionAlarm.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
         </orderedlist>
       </para>
     </section>
+    <section xml:id="tc.MotionAlarm.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="../core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
   </section>
 </feature>

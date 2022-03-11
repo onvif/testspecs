@@ -116,10 +116,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Create Access Point (AccessPointManagement_CreateAccessPoint)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="CreateAccessPoint">Profile D Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create the specified access point in the device using the
@@ -231,10 +227,6 @@
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Modify Access Point (AccessPointManagement_ModifyAccessPoint)
         </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="ModifyAccessPoint">Profile D Normative Reference:</emphasis> Conditional
-        </para>
 
         <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to modify the specified access point using the
@@ -340,10 +332,6 @@
         </para>
         <para>
           <emphasis role="bold">Feature Under Test:</emphasis> Delete Access Point (AccessPointManagement_DeleteAccessPoint)
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="DeleteAccessPoint">Profile D Normative Reference:</emphasis> Conditional
         </para>
 
         <para>

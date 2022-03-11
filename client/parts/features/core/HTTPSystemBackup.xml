@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feature>
   <revhistory>
+            <revision  xml:id="s.revhistory.HTTPSystemBackup.20211007.OtherFeatures">
+      <revnumber>21.12</revnumber>
+      <date>Oct 07, 2021</date>
+      <revdescription>
+        <para>The following was done according to #426:</para>
+        <para>HTTP System Backup section and HTTP System Backup Test Cases section was moved from ONVIF Profile Q Client Test Specification to ONVIF Other Features Client Test Specifications.</para>
+      </revdescription>
+    </revision>
             <revision  xml:id="s.revhistory.HTTPSystemBackup.20190814.ProfileQ">
       <revnumber>19.12</revnumber>
       <date>Aug 14, 2019</date>
@@ -28,9 +36,6 @@
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
       </para>
     </section>
     <section xml:id="tc.HTTPSystemBackup.scenario">
@@ -93,9 +98,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get System Uris (HTTPSystemBackup_GetSystemUris)
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

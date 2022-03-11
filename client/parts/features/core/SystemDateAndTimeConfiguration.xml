@@ -64,7 +64,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> System Date and Time Configuration (SystemDateAndTimeConfiguration)
       </para>
       <para>
-        <emphasis role="bold" annotations="Profile A OR Profile C OR Profile G OR Profile Q OR Profile S OR Profile T OR Profile D">Check Condition based on Device Features:</emphasis> Profile A OR Profile C OR Profile G OR Profile Q OR Profile S OR Profile T OR Profile D
+        <emphasis role="bold" annotations="Profile A OR Profile C OR Profile G OR Profile S OR Profile T OR Profile D">Check Condition based on Device Features:</emphasis> Profile A OR Profile C OR Profile G OR Profile S OR Profile T OR Profile D
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 1
@@ -77,9 +77,6 @@
       </para>
       <para>
         <emphasis role="bold">Profile G Requirement:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Requirement:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Profile S Requirement:</emphasis> Optional
@@ -149,21 +146,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get System Date And Time (SystemDateAndTimeConfiguration_GetSystemDateAndTime)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
       </para>
 
       <para>
@@ -265,21 +247,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set System Date And Time (SystemDateAndTimeConfiguration_SetSystemDateAndTime)
-      </para>
-      <para>
-        <emphasis role="bold">Profile A Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile G Normative Reference:</emphasis> Optional
-      </para>
-      <para>
-        <emphasis role="bold">Profile Q Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Optional
       </para>
 
       <para>

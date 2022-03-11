@@ -18,10 +18,10 @@
       </phrase>
     </orgname>
     <title>Access Control Device Test Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December, 2020</date>
+    <subtitle>Version 21.06</subtitle>
+    <date>June, 2021</date>
     <copyright>
-      <year>2020</year>
+      <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -437,12 +437,12 @@
           <para>ACCESSCONTROL-11-1-5 ACCESS CONTROL - ACCESS DENIED WITH CREDENTIAL (EXTERNAL AUTHORIZATION) (Reason value in ExternalAuthorization request changed; check of Reason vaue in event removed)</para>
         </revdescription>
       </revision>
-    <revision>
+      <revision>
         <revnumber>20.12</revnumber>
         <date>Nov 09, 2020</date>
         <revdescription>
           <para>The following test cases was added in the scope of #2097:</para>
-          <para>ACCESSCONTROL-4-1-2 ACCESS POINT CAPABILITIES CONSISTENCY</para>        
+          <para>ACCESSCONTROL-4-1-2 ACCESS POINT CAPABILITIES CONSISTENCY</para>
         </revdescription>
       </revision>
       <revision>
@@ -450,15 +450,15 @@
         <date>Nov 10, 2020</date>
         <revdescription>
           <para>Pre-Requisites of the following test cases were updated in the scope of #1866:</para>
-          <para>ACCESSCONTROL-6-1-1 ACCESS CONTROL – ACCESS GRANTED TO ANONYMOUS EVENT</para>      
+          <para>ACCESSCONTROL-6-1-1 ACCESS CONTROL – ACCESS GRANTED TO ANONYMOUS EVENT</para>
           <para>ACCESSCONTROL-6-1-2 ACCESS CONTROL – ACCESS GRANTED WITH CREDENTIAL EVENT</para>
           <para>ACCESSCONTROL-7-1-2 ACCESS CONTROL – ACCESS TAKEN WITH CREDENTIAL EVENT</para>
           <para>ACCESSCONTROL-8-1-2 ACCESS CONTROL – ACCESS NOT TAKEN WITH CREDENTIAL EVENT</para>
           <para>ACCESSCONTROL-9-1-1 ACCESS CONTROL – ACCESS DENIED TO ANONYMOUS EVENT</para>
-          <para>ACCESSCONTROL-9-1-2 ACCESS CONTROL – ACCESS DENIED WITH CREDENTIAL EVENT</para>                     
+          <para>ACCESSCONTROL-9-1-2 ACCESS CONTROL – ACCESS DENIED WITH CREDENTIAL EVENT</para>
           <para>ACCESSCONTROL-11-1-4 ACCESS CONTROL – ACCESS GRANTED WITH CREDENTIAL (EXTERNAL AUTHORIZATION)</para>
           <para>ACCESSCONTROL-11-1-5 ACCESS CONTROL – ACCESS DENIED WITH CREDENTIAL (EXTERNAL AUTHORIZATION)</para>
-          <para>ACCESSCONTROL-11-1-6 ACCESS CONTROL – ACCESS TIMEOUT WITH CREDENTIAL (EXTERNAL AUTHORIZATION)</para>       
+          <para>ACCESSCONTROL-11-1-6 ACCESS CONTROL – ACCESS TIMEOUT WITH CREDENTIAL (EXTERNAL AUTHORIZATION)</para>
 
         </revdescription>
       </revision>
@@ -466,7 +466,84 @@
         <revnumber>20.12</revnumber>
         <date>Dec 09, 2020</date>
         <revdescription>
-          <para>'IdentiferAccess' was repleced with 'IdentifierAccess' according to wsdl change in the scope of #2133.</para>                
+          <para>'IdentiferAccess' was repleced with 'IdentifierAccess' according to wsdl change in the scope of #2133.</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Dec 22, 2020</date>
+        <revdescription>
+          <para>The following test case was updated in the scope of #2029:</para>
+          <para>ACCESSCONTROL-4-1-2 ACCESS POINT CAPABILITIES CONSISTENCY (step 4.2 added)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Dec 26, 2020</date>
+        <revdescription>
+          <para>The following was done in the scope of #1879:</para>
+          <para>ACCESSCONTROL-7-1-3 ACCESS CONTROL - ACCESS TAKEN TO IDENTIFIER EVENT (added)</para>
+          <para>ACCESSCONTROL-8-1-3 ACCESS CONTROL - ACCESS NOT TAKEN TO IDENTIFIER EVENT (added)</para>
+          <para>A.6 Retrieve Access Granted Identifier Event by PullPoint (added)</para>
+          <para>A.36 Retrieve Identifier Event by PullPoint (updated)</para>
+          <para>A.37 Validate Identifier Message (added)</para>
+          <para>A.38 Validate Identifier Message Description (added)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Feb 05, 2021</date>
+        <revdescription>
+          <para>The following was done in the scope of #2139:</para>
+          <para>ACCESSCONTROL-11-1-9 was renamed from "ACCESS CONTROL - ACCESS GRANTED TO IDENTIFIER (EXTERNAL AUTHORIZATION)" to "ACCESS CONTROL - ACCESS GRANTED TO ANONYMOUS (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)"</para>
+          <para>ACCESSCONTROL-11-1-9 was updated with waiting for only AccessGranted/Anonymous event</para>
+          <para>ACCESSCONTROL-11-1-10 was renamed from "ACCESS CONTROL - ACCESS DENIED TO IDENTIFIER (EXTERNAL AUTHORIZATION)" to "ACCESS CONTROL - ACCESS DENIED TO ANONYMOUS (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)"</para>
+          <para>ACCESSCONTROL-11-1-10 was updated with waiting for only Denied/Anonymous event</para>
+          <para>ACCESSCONTROL-11-1-12 ACCESS CONTROL - ACCESS GRANTED WITH CREDENTIAL (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST) (added)</para>
+          <para>ACCESSCONTROL-11-1-13 ACCESS CONTROL - ACCESS DENIED WITH CREDENTIAL (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST) (added)</para>
+          <para>A.10 Retrieve AccessGranted Event by PullPoint for Identifier External Authorization (updated)</para>
+          <para>A.11 Retrieve Denied Event by PullPoint for Identifier External Authorization (updated)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Mar 31, 2021</date>
+        <revdescription>
+          <para>Reason value in ExternalAuthorization request was changed to 'Other' in the scope of #2098:</para>
+          <para>ACCESSCONTROL-11-1-10-v21.06 ACCESS CONTROL - ACCESS DENIED TO ANONYMOUS (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)</para>
+          <para>ACCESSCONTROL-11-1-13-v21.06 ACCESS CONTROL - ACCESS DENIED WITH CREDENTIAL (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 16, 2021</date>
+        <revdescription>
+          <para>Credential entity added into Prerequisites in the scope of #2184:</para>
+          <para>ACCESSCONTROL-6-1-2-v21.06 ACCESS CONTROL – ACCESS GRANTED WITH CREDENTIAL EVENT</para>
+          <para>ACCESSCONTROL-9-1-2-v21.06 ACCESS CONTROL – ACCESS DENIED WITH CREDENTIAL EVENT</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 04, 2021</date>
+        <revdescription>
+          <para>ACCESSCONTROL-16-1-1 FEEDBACK test case added in the scope of #2107.</para>      
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 26, 2021</date>
+        <revdescription>
+          <para>Area entity added into Prerequisites in the scope of #2208:</para>
+          <para>ACCESSCONTROL-3-1-4 GET AREA INFO LIST - LIMIT</para>      
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 26, 2021</date>
+        <revdescription>
+          <para>The following test case was updated in the scope of #2029:</para>
+          <para>ACCESSCONTROL-4-1-2 ACCESS POINT CAPABILITIES CONSISTENCY (step 4.2 removed)</para>
         </revdescription>
       </revision>
     </revhistory>
@@ -4313,7 +4390,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify Get Area Info List using Limit.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Access Control Service was received from the DUT. At least one Area is configured and added to the DUT, if the DUT allows this.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Access Control Service was received from the DUT. Area Entity is supported.
 
         </para>
         <para>
@@ -6662,21 +6739,21 @@
       <!--ACCESSCONTROL-11-1-9-->
       <section xml:id="tc.ACCESSCONTROL-11-1-9"
                xreflabel="ACCESSCONTROL-11-1-9 (see Section 4.4.9)">
-        <title>ACCESS CONTROL - ACCESS GRANTED TO IDENTIFIER (EXTERNAL AUTHORIZATION)</title>
+        <title>ACCESS CONTROL - ACCESS GRANTED TO ANONYMOUS (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)</title>
         <para>
           <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROL-11-1-9
         </para>
         <para>
-          <emphasis role="bold">Specification Coverage:</emphasis> tns1:AccessControl/AccessGranted/Anonymous (Access Control Service Specification), tns1:AccessControl/AccessGranted/Credential (Access Control Service Specification), tns1:AccessControl/Request/Identifier (Access Control Service Specification), GetAccessPointInfoList (ONVIF Access Control Service Specification), ExternalAuthorization (ONVIF Access Control Service Specification)
+          <emphasis role="bold">Specification Coverage:</emphasis> tns1:AccessControl/AccessGranted/Anonymous (Access Control Service Specification), tns1:AccessControl/Request/Identifier (Access Control Service Specification), ExternalAuthorization (ONVIF Access Control Service Specification)
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> ExternalAuthorization, tns1:AccessControl/AccessGranted/Anonymous, tns1:AccessControl/AccessGranted/Credential, tns1:AccessControl/Request/Identifier.
+          <emphasis role="bold">Feature Under Test:</emphasis> ExternalAuthorization, tns1:AccessControl/AccessGranted/Anonymous, tns1:AccessControl/Request/Identifier.
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> event.wsdl, accesscontrol.wsdl
         </para>
         <para>
-          <emphasis role="bold">Test Purpose:</emphasis> To verify Access Granted scenario in the case of External Authorization for Identifier.
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Access Granted to Anonymous scenario in the case of External Authorization for Identifier.
         </para>
         <para>
           <emphasis role="bold">Pre-Requisite:</emphasis> Event Service was received from the DUT. Access Control Service was received from the DUT. Access Point Entity is supported by the DUT.
@@ -6764,7 +6841,7 @@
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">topicSet</emphasis> does not contain naither tns1:AccessControl/AccessGranted/Anonymous topic nor tns1:AccessControl/AccessGranted/Credential topic, FAIL the test and skip other steps.
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/AccessGranted/Anonymous topic, FAIL the test and skip other steps.
               </para>
             </listitem>
             <listitem>
@@ -6823,9 +6900,7 @@
             </listitem>
             <listitem>
               <para>
-                Set <emphasis role="italic">topicFilter</emphasis> :=  <emphasis role="bold">"tns1:AccessControl/Request/Identifier|tns1:AccessControl/AccessGranted/Anonymous|tns1:AccessControl/AccessGranted/Credential"</emphasis>
-                ("|tns1:AccessControl/AccessGranted/Anonymous" part to be skipped if <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/AccessGranted/Anonymous topic,
-                "|tns1:AccessControl/AccessGranted/Credential" part to be skipped if <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/AccessGranted/Credential topic).
+                Set <emphasis role="italic">topicFilter</emphasis> :=  <emphasis role="bold">"tns1:AccessControl/Request/Identifier|tns1:AccessControl/AccessGranted/Anonymous"</emphasis>.
               </para>
             </listitem>
             <listitem>
@@ -6931,8 +7006,13 @@
             </listitem>
             <listitem>
               <para>
-                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> or <emphasis role="bold">tns1:AccessControl/AccessGranted/Credential</emphasis> event for the external authorzation by following the procedure mentioned in <xref linkend="Annex_HelperPullExternalAuthAccessGrantedIdentifier"/> with the following input and output parameters
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/AccessGranted/Anonymous</emphasis> event for the external authorzation by following the procedure mentioned in <xref linkend="Annex_HelperPullExternalAuthAccessGrantedIdentifier"/> with the following input and output parameters
                 <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/AccessGranted/Anonymous" - topic to validate
+                    </para>
+                  </listitem>
                   <listitem>
                     <para>
                       in <emphasis role="italic">s</emphasis> - Subscription reference
@@ -7002,25 +7082,26 @@
       <!--ACCESSCONTROL-11-1-10-->
       <section xml:id="tc.ACCESSCONTROL-11-1-10"
                xreflabel="ACCESSCONTROL-11-1-10 (see Section 4.4.10)">
-        <title>ACCESS CONTROL - ACCESS DENIED TO IDENTIFIER (EXTERNAL AUTHORIZATION)</title>
+        <title>ACCESS CONTROL - ACCESS DENIED TO ANONYMOUS (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)</title>
         <para>
           <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROL-11-1-10
         </para>
         <para>
-          <emphasis role="bold">Specification Coverage:</emphasis> tns1:AccessControl/Denied/Anonymous (Access Control Service Specification), tns1:AccessControl/Denied/Credential (Access Control Service Specification), tns1:AccessControl/Request/Identifier (Access Control Service Specification), GetAccessPointInfoList (ONVIF Access Control Service Specification), ExternalAuthorization (ONVIF Access Control Service Specification)
+          <emphasis role="bold">Specification Coverage:</emphasis> tns1:AccessControl/Denied/Anonymous (Access Control Service Specification), tns1:AccessControl/Request/Identifier (Access Control Service Specification), ExternalAuthorization (ONVIF Access Control Service Specification)
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> ExternalAuthorization, tns1:AccessControl/Denied/Anonymous, tns1:AccessControl/Denied/Credential, tns1:AccessControl/Request/Identifier.
+          <emphasis role="bold">Feature Under Test:</emphasis> ExternalAuthorization, tns1:AccessControl/Denied/Anonymous, tns1:AccessControl/Request/Identifier.
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> event.wsdl, accesscontrol.wsdl
         </para>
         <para>
-          <emphasis role="bold">Test Purpose:</emphasis> To verify Access Denied scenario in the case of External Authorization for Identifier.
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Access Denied to Anonymous scenario in the case of External Authorization for Identifier.
         </para>
         <para>
           <emphasis role="bold">Pre-Requisite:</emphasis> Event Service was received from the DUT. Access Control Service was received from the DUT. Access Point Entity is supported by the DUT.
-          At least one Access Point with Identifier Access capability is configured and added to the DUT. Device supports Pull-Point Notification feature.
+          At least one Access Point with Identifier Access capability is configured and added to the DUT.
+          Device supports Pull-Point Notification feature.
 
         </para>
         <para>
@@ -7103,14 +7184,12 @@
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">topicSet</emphasis> does not contain naither tns1:AccessControl/Denied/Anonymous topic nor tns1:AccessControl/Denied/Credential topic, FAIL the test and skip other steps.
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/Denied/Anonymous topic, FAIL the test and skip other steps.
               </para>
             </listitem>
             <listitem>
               <para>
-                Set <emphasis role="italic">topicFilter</emphasis> :=  <emphasis role="bold">"tns1:AccessControl/Request/Identifier|tns1:AccessControl/Denied/Anonymous|tns1:AccessControl/Denied/Credential"</emphasis>
-                ("|tns1:AccessControl/Denied/Anonymous" part to be skipped if <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/Denied/Anonymous topic,
-                "|tns1:AccessControl/Denied/Credential" part to be skipped if <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/Denied/Credential topic).
+                Set <emphasis role="italic">topicFilter</emphasis> :=  <emphasis role="bold">"tns1:AccessControl/Request/Identifier|tns1:AccessControl/Denied/Anonymous"</emphasis>.
               </para>
             </listitem>
             <listitem>
@@ -7198,7 +7277,7 @@
                   </listitem>
                   <listitem>
                     <para>
-                      Reason := "Test Reason"
+                      Reason := "Other"
                     </para>
                   </listitem>
                   <listitem>
@@ -7216,8 +7295,13 @@
             </listitem>
             <listitem>
               <para>
-                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> or <emphasis role="bold">tns1:AccessControl/Denied/Credential</emphasis> event for the external authorzation by following the procedure mentioned in <xref linkend="Annex_HelperPullExternalAuthAccessDeniedIdentifier"/> with the following input and output parameters
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/Denied/Anonymous</emphasis> event for the external authorzation by following the procedure mentioned in <xref linkend="Annex_HelperPullExternalAuthAccessDeniedIdentifier"/> with the following input and output parameters
                 <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/Denied/Anonymous" - topic to validate
+                    </para>
+                  </listitem>
                   <listitem>
                     <para>
                       in <emphasis role="italic">s</emphasis> - Subscription reference
@@ -7545,7 +7629,594 @@
           <emphasis role="bold">Note:</emphasis> <emphasis role="italic">operationDelay</emphasis> will be taken from Operation Delay field of ONVIF Device Test Tool.
         </para>
       </section>
+      <!--ACCESSCONTROL-11-1-12-->
+      <section xml:id="tc.ACCESSCONTROL-11-1-12"
+                 xreflabel="ACCESSCONTROL-11-1-12 (see Section 4.4.12)">
+        <title>ACCESS CONTROL - ACCESS GRANTED WITH CREDENTIAL (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROL-11-1-12
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> tns1:AccessControl/AccessGranted/Credential (Access Control Service Specification), tns1:AccessControl/Request/Identifier (Access Control Service Specification), ExternalAuthorization (ONVIF Access Control Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ExternalAuthorization, tns1:AccessControl/AccessGranted/Credential, tns1:AccessControl/Request/Identifier.
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> event.wsdl, accesscontrol.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Access Granted with Credential scenario in the case of External Authorization for Identifier.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Event Service was received from the DUT. Access Control Service was received from the DUT. Access Point Entity is supported by the DUT.
+          At least one Access Point with Identifier Access capability is configured and added to the DUT.
+          Device supports Pull-Point Notification feature.
 
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves complete list of access point info items by following the procedure mentioned in <xref linkend="Annex_HelperGetCompleteAccessPointInfoList"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointInfoCompleteList</emphasis> - complete access points info list
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointsNumber</emphasis> - access points number
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If there are no Access Points with Capabilities.IdentifierAccess = true in <emphasis role="italic">accessPointInfoCompleteList</emphasis>, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetEventProperties</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetEventPropertiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>TopicNamespaceLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>FixedTopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      TopicSet =: <emphasis role="italic">topicSet</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicExpressionDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentFilterDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentSchemaLocation list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/Request/Identifier topic, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/AccessGranted/Credential topic, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set <emphasis role="italic">topicFilter</emphasis> :=  <emphasis role="bold">"tns1:AccessControl/Request/Identifier|tns1:AccessControl/AccessGranted/Credential"</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client creates PullPoint subscription for the specified topic by following the procedure mentioned in <xref linkend="Annex_HelperCreatePullPointSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">topicFilter</emphasis> - Notification Topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">terminationTime</emphasis> - Subscription termination time
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Test Operator will invoke <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for any Access Points with Capabilities.IdentifierAccess = true.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullRequestIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointToken</emphasis> - token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not contain item with token = <emphasis role="italic">accessPointToken</emphasis>, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If item with token = <emphasis role="italic">accessPointToken</emphasis> from <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not have Capabilities.IdentifierAccess = true, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">ExternalAuthorization</emphasis> request with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      AccessPointToken  := <emphasis role="italic">accessPointToken</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      CredentialToken := "TestCredetialToken"
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Reason := "Test Reason"
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Decision := Granted
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">ExternalAuthorizationResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/AccessGranted/Credential</emphasis> event for the external authorzation by following the procedure mentioned in <xref linkend="Annex_HelperPullExternalAuthAccessGrantedIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/AccessGranted/Credential" - topic to validate
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">accessPointToken</emphasis> - token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in "TestCredetialToken" - token of credetial
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client deletes PullPoint subscription by following the procedure mentioned in <xref linkend="Annex_HelperDeleteSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a <emphasis role="bold">GetEventPropertiesResponse</emphasis>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">ExternalAuthorizationResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+      <!--ACCESSCONTROL-11-1-13-->
+      <section xml:id="tc.ACCESSCONTROL-11-1-13"
+                    xreflabel="ACCESSCONTROL-11-1-13 (see Section 4.4.13)">
+        <title>ACCESS CONTROL - ACCESS DENIED WITH CREDENTIAL (EXTERNAL AUTHORIZATION FOR IDENTIFIER REQUEST)</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROL-11-1-13
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> tns1:AccessControl/Denied/Credential (Access Control Service Specification), tns1:AccessControl/Request/Identifier (Access Control Service Specification), ExternalAuthorization (ONVIF Access Control Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> ExternalAuthorization, tns1:AccessControl/Denied/Credential, tns1:AccessControl/Request/Identifier.
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> event.wsdl, accesscontrol.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Access Denied with Credential scenario in the case of External Authorization for Identifier.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Event Service was received from the DUT. Access Control Service was received from the DUT. Access Point Entity is supported by the DUT.
+          At least one Access Point with Identifier Access capability is configured and added to the DUT.
+          Device supports Pull-Point Notification feature.
+
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves complete list of access point info items by following the procedure mentioned in <xref linkend="Annex_HelperGetCompleteAccessPointInfoList"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointInfoCompleteList</emphasis> - complete access points info list
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointsNumber</emphasis> - access points number
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If there are no Access Points with Capabilities.IdentifierAccess = true in <emphasis role="italic">accessPointInfoCompleteList</emphasis>, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetEventProperties</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetEventPropertiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>TopicNamespaceLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>FixedTopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      TopicSet =: <emphasis role="italic">topicSet</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicExpressionDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentFilterDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentSchemaLocation list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/Request/Identifier topic, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/Denied/Credential topic, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set <emphasis role="italic">topicFilter</emphasis> :=  <emphasis role="bold">"tns1:AccessControl/Request/Identifier|tns1:AccessControl/Denied/Credential"</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client creates PullPoint subscription for the specified topic by following the procedure mentioned in <xref linkend="Annex_HelperCreatePullPointSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">topicFilter</emphasis> - Notification Topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">terminationTime</emphasis> - Subscription termination time
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Test Operator will invoke <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for any Access Points with Capabilities.IdentifierAccess = true.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullRequestIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointToken</emphasis> - token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not contain item with token = <emphasis role="italic">accessPointToken</emphasis>, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If item with token = <emphasis role="italic">accessPointToken</emphasis> from <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not have Capabilities.IdentifierAccess = true, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">ExternalAuthorization</emphasis> request with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      AccessPointToken  := <emphasis role="italic">accessPointToken</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      CredentialToken := "TestCredentialToken"
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Reason := "Other"
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Decision := Denied
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">ExternalAuthorizationResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/Denied/Credential</emphasis> event for the external authorzation by following the procedure mentioned in <xref linkend="Annex_HelperPullExternalAuthAccessDeniedIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/Denied/Credential" - topic to validate
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">accessPointToken</emphasis> - token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in "TestCredentialToken" - token of credential
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client deletes PullPoint subscription by following the procedure mentioned in <xref linkend="Annex_HelperDeleteSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a <emphasis role="bold">GetEventPropertiesResponse</emphasis>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">ExternalAuthorizationResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
     </section>
     <!--Property Events-->
     <section xml:id="tc.access_control.property_events"
@@ -8238,7 +8909,7 @@
         </para>
         <para>
           <emphasis role="bold">Pre-Requisite:</emphasis> Event Service was received from the DUT. Access Control Service was received from the DUT. Access Point Entity is supported by the DUT.
-          At least one Access Point is configured and added to the DUT. Device supports Pull-Point Notification feature. Device supports tns1:AccessControl/AccessGranted/Credential.
+          At least one Access Point is configured and added to the DUT. Device supports Pull-Point Notification feature. Device supports tns1:AccessControl/AccessGranted/Credential. Credential entity is supported by the DUT.
 
         </para>
         <para>
@@ -9133,6 +9804,295 @@
 
         </para>
       </section>
+      <!--ACCESSCONTROL-7-1-3-->
+      <section xml:id="tc.ACCESSCONTROL-7-1-3"
+               xreflabel="ACCESSCONTROL-7-1-3 (see Section 4.7.3)">
+        <title>ACCESS CONTROL - ACCESS TAKEN TO IDENTIFIER EVENT</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROL-7-1-3
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> tns:AccessControl/AccessGranted/Identifier (Access Control Service Specification), tns1:AccessControl/AccessTaken/Identifier (Access Control Service Specification), GetAccessPointInfoList (ONVIF Access Control Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> tns1:AccessControl/AccessTaken/Identifier
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> event.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify tns1:AccessControl/AccessTaken/Identifier event generation and to verify tns1:AccessControl/AccessTaken/Identifier event format.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          Event Service was received from the DUT.
+          Device supports Pull-Point Notification feature.
+          Access Control Service was received from the DUT.
+          Access Point Entity is supported by the DUT.
+          tns1:AccessControl/AccessTaken/Identifier event topic is supported by the DUT.
+          At least one Access Point with Access Taken capability is configured and added to the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetEventProperties</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetEventPropertiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>TopicNamespaceLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>FixedTopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      TopicSet =: <emphasis role="italic">topicSet</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicExpressionDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentFilterDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentSchemaLocation list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/AccessTaken/Identifier topic, FAIL the test, restore the DUT state, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set <emphasis role="italic">accessTakenIdentifierTopic</emphasis> := message description of  tns1:AccessControl/AccessTaken/Identifier topic from <emphasis role="italic">topicSet</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client verifies tns1:AccessControl/AccessTaken/Identifier topic by following the procedure mentioned in <xref linkend="Annex_HelperValidateIdentifierMessageDescription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">accessTakenIdentifierTopic</emphasis> - topic
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+
+            <listitem>
+              <para>
+                ONVIF Client retrieves complete list of access point info items by following the procedure mentioned in <xref linkend="Annex_HelperGetCompleteAccessPointInfoList"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointInfoCompleteList</emphasis> - complete access points info list
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client creates PullPoint subscription for the specified topic by following the procedure mentioned in <xref linkend="Annex_HelperCreatePullPointSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="bold">"tns1:AccessControl/AccessGranted/Identifier|tns1:AccessControl/AccessTaken/Identifier"</emphasis> - Notification Topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">terminationTime</emphasis> - Subscription termination time
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem xml:id="tc.ACCESSCONTROL-7-1-3.SendAccessGrantedEvent"
+               xreflabel="9">
+              <para>
+                Test Operator will invoke <emphasis role="bold">tns1:AccessControl/AccessGranted/Identifier</emphasis> event for any Access Point with Capabilities.AccessTaken = true.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/AccessGranted/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/AccessGranted/Identifier" - topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessGrantedIdentifierNotification</emphasis> - Access Granted Identifier Notification Message
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Test Operator will invoke <emphasis role="bold">tns1:AccessControl/AccessTaken/Identifier</emphasis> event for the same Access Point as was sent in step <xref linkend="tc.ACCESSCONTROL-7-1-3.SendAccessGrantedEvent"/>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/AccessTaken/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/AccessTaken/Identifier" - topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessTakenIdentifierNotification</emphasis> - Access Taken Identifier Notification Message
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"] != <emphasis role="italic">accessTakenIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"], FAIL the test, restore DUT setting, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierType"] != <emphasis role="italic">accessTakenIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierType"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Data.SimpleItem[Name = "FormatType"] != <emphasis role="italic">accessTakenIdentifierNotification</emphasis>.Data.SimpleItem[Name = "FormatType"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierValue"] != <emphasis role="italic">accessTakenIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierValue"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not contain item with token = <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set <emphasis role="italic">accessPointInfo</emphasis> := item from <emphasis role="italic">accessPointInfoCompleteList</emphasis> with token = <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"].
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfo</emphasis>.Capabilities.AccessTaken != true, FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client deletes PullPoint subscription by following the procedure mentioned in <xref linkend="Annex_HelperDeleteSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a <emphasis role="bold">GetEventPropertiesResponse</emphasis>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
 
 
     </section>
@@ -9605,6 +10565,294 @@
 
         </para>
       </section>
+      <!--ACCESSCONTROL-8-1-3-->
+      <section xml:id="tc.ACCESSCONTROL-8-1-3"
+               xreflabel="ACCESSCONTROL-8-1-3 (see Section 4.8.3)">
+        <title>ACCESS CONTROL - ACCESS NOT TAKEN TO IDENTIFIER EVENT</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROL-8-1-3
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> tns:AccessControl/AccessGranted/Identifier (Access Control Service Specification), tns1:AccessControl/AccessNotTaken/Identifier (Access Control Service Specification), GetAccessPointInfoList (ONVIF Access Control Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> tns1:AccessControl/AccessNotTaken/Identifier
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> event.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify tns1:AccessControl/AccessNotTaken/Identifier event generation and to verify tns1:AccessControl/AccessNotTaken/Identifier event format.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          Event Service was received from the DUT.
+          Device supports Pull-Point Notification feature.
+          Access Control Service was received from the DUT.
+          Access Point Entity is supported by the DUT.
+          tns1:AccessControl/AccessNotTaken/Identifier event topic is supported by the DUT.
+          At least one Access Point with Access Taken capability is configured and added to the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetEventProperties</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetEventPropertiesResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>TopicNamespaceLocation list</para>
+                  </listitem>
+                  <listitem>
+                    <para>FixedTopicSet</para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      TopicSet =: <emphasis role="italic">topicSet</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>TopicExpressionDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentFilterDialect list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MessageContentSchemaLocation list</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">topicSet</emphasis> does not contain tns1:AccessControl/AccessNotTaken/Identifier topic, FAIL the test, restore the DUT state, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set <emphasis role="italic">accessNotTakenIdentifierTopic</emphasis> := message description of  tns1:AccessControl/AccessNotTaken/Identifier topic from <emphasis role="italic">topicSet</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client verifies tns1:AccessControl/AccessNotTaken/Identifier topic by following the procedure mentioned in <xref linkend="Annex_HelperValidateIdentifierMessageDescription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">accessNotTakenIdentifierTopic</emphasis> - topic
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves complete list of access point info items by following the procedure mentioned in <xref linkend="Annex_HelperGetCompleteAccessPointInfoList"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointInfoCompleteList</emphasis> - complete access points info list
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client creates PullPoint subscription for the specified topic by following the procedure mentioned in <xref linkend="Annex_HelperCreatePullPointSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="bold">"tns1:AccessControl/AccessGranted/Identifier|tns1:AccessControl/AccessNotTaken/Identifier"</emphasis> - Notification Topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">terminationTime</emphasis> - Subscription termination time
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem xml:id="tc.ACCESSCONTROL-8-1-3.SendAccessGrantedEvent"
+               xreflabel="9">
+              <para>
+                Test Operator will invoke <emphasis role="bold">tns1:AccessControl/AccessGranted/Identifier</emphasis> event for any Access Point with Capabilities.AccessTaken = true.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/AccessGranted/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/AccessGranted/Identifier" - topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessGrantedIdentifierNotification</emphasis> - Access Granted Identifier Notification Message
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Test Operator will invoke <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Identifier</emphasis> event for the same Access Point as was sent in step <xref linkend="tc.ACCESSCONTROL-8-1-3.SendAccessGrantedEvent"/>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/AccessNotTaken/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullIdentifier"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in "tns1:AccessControl/AccessNotTaken/Identifier" - topic
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessNotTakenIdentifierNotification</emphasis> - Access Not Taken Identifier Notification Message
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"] != <emphasis role="italic">accessNotTakenIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"], FAIL the test, restore DUT setting, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierType"] != <emphasis role="italic">accessNotTakenIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierType"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Data.SimpleItem[Name = "FormatType"] != <emphasis role="italic">accessNotTakenIdentifierNotification</emphasis>.Data.SimpleItem[Name = "FormatType"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierValue"] != <emphasis role="italic">accessNotTakenIdentifierNotification</emphasis>.Data.SimpleItem[Name = "IdentifierValue"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not contain item with token = <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"], FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Set <emphasis role="italic">accessPointInfo</emphasis> := item from <emphasis role="italic">accessPointInfoCompleteList</emphasis> with token = <emphasis role="italic">accessGrantedIdentifierNotification</emphasis>.Source.SimpleItem[Name = "AccessPointToken"].
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfo</emphasis>.Capabilities.AccessTaken != true, FAIL the test, restore DUT settings, and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client deletes PullPoint subscription by following the procedure mentioned in <xref linkend="Annex_HelperDeleteSubscription"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      in <emphasis role="italic">s</emphasis> - Subscription reference
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send a <emphasis role="bold">GetEventPropertiesResponse</emphasis>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
     </section>
     <!--Access Denied Events-->
     <section xml:id="tc.access_control.access_denied_events"
@@ -9846,7 +11094,7 @@
         </para>
         <para>
           <emphasis role="bold">Pre-Requisite:</emphasis> Event Service was received from the DUT. Access Control Service was received from the DUT. Access Point Entity is supported by the DUT.
-          At least one Access Point is configured and added to the DUT. Device supports Pull-Point Notification feature. Device supports tns1:AccessControl/Denied/Credential.
+          At least one Access Point is configured and added to the DUT. Device supports Pull-Point Notification feature. Device supports tns1:AccessControl/Denied/Credential. Credential entity is supported by the DUT.
 
         </para>
         <para>
@@ -11120,7 +12368,7 @@
             </listitem>
             <listitem>
               <para>
-                For each Access Point Info (<emphasis role="italic">accessPointInfo</emphasis>) from <emphasis role="italic">accessPointInfoCompleteList</emphasis> 
+                For each Access Point Info (<emphasis role="italic">accessPointInfo</emphasis>) from <emphasis role="italic">accessPointInfoCompleteList</emphasis>
                 <orderedlist numeration="arabic" inheritnum="inherit">
                   <?dbfo label-width=2.5em"?>
                   <listitem>
@@ -11128,6 +12376,20 @@
                       If <emphasis role="italic">accessPointInfo</emphasis>.Capabilities.IdentifierAccess = true and <emphasis role="italic">accessPointInfo</emphasis>.Capabilities.ExternalAuthorization != true, FAIL the test and skip other steps.
                     </para>
                   </listitem>
+                  <!--<listitem>
+                    <para>
+                      If DUT supports Profile D and External Authorization feature:
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width=2.5em"?>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">accessPointInfo</emphasis>.Capabilities.ExternalAuthorization != true, FAIL the test and skip other steps.
+                          </para>
+                        </listitem>
+                      </orderedlist>
+
+                    </para>
+                  </listitem>-->
                 </orderedlist>
               </para>
             </listitem>
@@ -11153,7 +12415,7 @@
               <para>
                 DUT does not pass all assertions.
               </para>
-            </listitem>            
+            </listitem>
           </itemizedlist>
         </para>
       </section>
@@ -22245,7 +23507,398 @@
       </section>
 
     </section>
+    <!--Feedback-->
+    <section xml:id="tc.feedback" xreflabel="Section 4.15">
+      <title>Feedback</title>
+      <!--ACCESSCONTROL-16-1-1-->
+      <section xml:id="tc.ACCESSCONTROL-16-1-1">
+        <title>FEEDBACK</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> ACCESSCONTROL-16-1-1
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Feedback (ONVIF Access Control Service Specification)
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Feedback
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> accesscontrol.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify Feedback command.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> Access Control Service is received from the DUT. Feedback is supported by the DUT as indicated by SupportedFeedbackTypes capability. Pull Point is supported by the DUT.
 
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Procedure:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client retrieves complete list of access point info items by following the procedure mentioned in <xref linkend="Annex_HelperGetCompleteAccessPointInfoList"/> with the following input and output parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      out <emphasis role="italic">accessPointInfoCompleteList</emphasis> - complete access points info list
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not contain at least one Access Point with non empty Capabilities.SupportedFeedbackTypes list, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If Feedback UI tab fields are filled
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client sets <emphasis role="italic">accessPointToken</emphasis> := value of Access Point token from UI tab.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF client sets <emphasis role="italic">feedbackType</emphasis> := value of Feedback Type from UI tab.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not contain item with token = <emphasis role="italic">accessPointToken</emphasis>, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If Access Point with token <emphasis role="italic">accessPointToken</emphasis> from <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not have Capabilities.SupportedFeedbackTypes list with <emphasis role="italic">feedbackType</emphasis> value, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If Feedback UI tab fields are empty
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF client sets <emphasis role="italic">accessPointToken</emphasis> := token of the first AccessPoint from <emphasis role="italic">accessPointInfoCompleteList</emphasis> which has non empty Capabilities.SupportedFeedbackTypes list.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF client sets <emphasis role="italic">feedbackType</emphasis> := the first value of Feedback Type from Capabilities.SupportedFeedbackTypes of Access Point with token <emphasis role="italic">apToken</emphasis>.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">Feedback</emphasis> with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      AccessPointToken  := <emphasis role="italic">accessPointToken</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      FeedbackType := <emphasis role="italic">feedbackType</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      RecognitionType skipped
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      TextMessage skipped
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">FeedbackResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF client invokes <emphasis role="bold">Feedback</emphasis> with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      AccessPointToken  := <emphasis role="italic">accessPointToken</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      FeedbackType := "pt:12345"
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      RecognitionType skipped
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      TextMessage skipped
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">FeedbackResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">accessPointInfoCompleteList</emphasis> contains at least one Access Point with Capabilities.IdentifierAccess = true and with "RequireIdentifier" value in Capabilities.SupportedFeedbackTypes list
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client creates PullPoint subscription for the specified topic by following the procedure mentioned in <xref linkend="Annex_HelperCreatePullPointSubscription"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "tns1:AccessControl/Request/Identifier" - Notification Topic
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">s</emphasis> - Subscription reference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">terminationTime</emphasis> - Subscription termination time
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Test Operator invokes <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for any Access Points with Capabilities.IdentifierAccess = true and with "RequireIdentifier" value in Capabilities.SupportedFeedbackTypes list.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullRequestIdentifier"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">s</emphasis> - Subscription reference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">accessPointToken</emphasis> - token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">identifierType</emphasis> - Identifier Type value received in notification
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">accessPointInfoCompleteList</emphasis> does not contain item with <emphasis role="italic">accessPointToken</emphasis>, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF client sets <emphasis role="italic">accessPointInfo</emphasis> := item with token = <emphasis role="italic">accessPointToken</emphasis> from <emphasis role="italic">accessPointInfoCompleteList</emphasis>.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">accessPointInfo</emphasis> does not have Capabilities.IdentifierAccess = true, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">accessPointInfo</emphasis> does not have "RequireIdentifier" value in Capabilities.SupportedFeedbackTypes, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">accessPointInfo</emphasis> does not have Capabilities.SupportedRecognitionTypes with non empty list, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF client sets <emphasis role="italic">recognitionType</emphasis> := any value from <emphasis role="italic">accessPointInfo</emphasis>.Capabilities.SupportedRecognitionTypes list (differs from <emphasis role="italic">identifierType</emphasis> if possible).
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF client invokes <emphasis role="bold">Feedback</emphasis> with parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            AccessPointToken  := <emphasis role="italic">accessPointToken</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            FeedbackType := "RequireIdentifier"
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            RecognitionType := <emphasis role="italic">recognitionType</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            TextMessage skipped
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT responds with <emphasis role="bold">FeedbackResponse</emphasis> message.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Test Operator invokes <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for Access Point with token = <emphasis role="italic">accessPointToken</emphasis> with recognition type requested in Feedback command.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves and checks <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> event for the specified credential identifiers by following the procedure mentioned in <xref linkend="Annex_HelperPullRequestIdentifier"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">s</emphasis> - Subscription reference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">currentTime</emphasis> - current time for the DUT
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">terminationTime</emphasis> - subscription termination time
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">accessPointToken1</emphasis> - token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">identifierType</emphasis> - Identifier Type value received in notification
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">accessPointToken1</emphasis> != <emphasis role="italic">accessPointToken</emphasis>, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">identifierType</emphasis> != <emphasis role="italic">recognitionType</emphasis>, FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client deletes PullPoint subscription by following the procedure mentioned in <xref linkend="Annex_HelperDeleteSubscription"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">s</emphasis> - Subscription reference
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT passes all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                DUT did not send <emphasis role="bold">FeedbackResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+
+    </section>
 
   </chapter>
   <appendix>
@@ -22725,7 +24378,7 @@
         Subscription termination time (<emphasis role="italic">tt</emphasis>).
       </para>
       <para>
-        <emphasis role="bold">Returns:</emphasis> None
+        <emphasis role="bold">Returns:</emphasis> Access Granted Identifier Notification Message (optional) (<emphasis role="italic">accessGrantedIdentifierNotification</emphasis>)
       </para>
       <para>
         <emphasis role="bold">Procedure:</emphasis>
@@ -22841,7 +24494,7 @@
                       </listitem>
                       <listitem>
                         <para>
-                          Skip other steps of the procedure.
+                          Skip other steps of the procedure and return <emphasis role="italic">message</emphasis>.
                         </para>
                       </listitem>
                     </orderedlist>
@@ -23090,6 +24743,7 @@
       </para>
       <para>
         <emphasis role="bold">Returns:</emphasis> Token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved (<emphasis role="italic">accessPointToken</emphasis>).
+        (optional) Identifier Type value (<emphasis role="italic">identifierType</emphasis>).
       </para>
       <para>
         <emphasis role="bold">Procedure:</emphasis>
@@ -23180,7 +24834,7 @@
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "IdentifierType" does not have Value value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "IdentifierType" does not have Value value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
                       <listitem>
@@ -23190,7 +24844,7 @@
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "FormatType" does not have Value value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "FormatType" does not have Value value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
                       <listitem>
@@ -23200,7 +24854,7 @@
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "IdentifierValue" does not have Value value with type "xs:hexBinary", FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "IdentifierValue" does not have Value value with type "xs:hexBinary", FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
                       <listitem>
@@ -23409,11 +25063,15 @@
         <emphasis role="bold">Pre-requisite:</emphasis> Event Service is received from the DUT.
       </para>
       <para>
-        <emphasis role="bold">Input:</emphasis> Subscription reference (<emphasis role="italic">s</emphasis>). Current time for the DUT (<emphasis role="italic">ct</emphasis>).
-        Subscription termination time (<emphasis role="italic">tt</emphasis>). Token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved (<emphasis role="italic">accessPointToken</emphasis>).
+        <emphasis role="bold">Input:</emphasis> Topic to validate (<emphasis role="italic">topic</emphasis>)
+        Subscription reference (<emphasis role="italic">s</emphasis>).
+        Current time for the DUT (<emphasis role="italic">ct</emphasis>).
+        Subscription termination time (<emphasis role="italic">tt</emphasis>).
+        Token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved (<emphasis role="italic">accessPointToken</emphasis>).
+        (optional) Token of Credential (<emphasis role="italic">credentialToken</emphasis>).
       </para>
       <para>
-        <emphasis role="bold">Returns:</emphasis> None.
+        <emphasis role="bold">Returns:</emphasis> None
       </para>
       <para>
         <emphasis role="bold">Procedure:</emphasis>
@@ -23484,6 +25142,11 @@
                       </listitem>
                       <listitem>
                         <para>
+                          If <emphasis role="italic">message</emphasis>.Topic !=  <emphasis role="italic">topic</emphasis>, FAIL the test, restore the DUT state, and skip other steps.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
                           If <emphasis role="italic">message</emphasis> contains PropertyOperation attribute, FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
@@ -23499,12 +25162,30 @@
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source does not contain SimpleItem item with Name = "External", FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "External", FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "External" does not have Value = true, FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "External" does not have Value = true, FAIL the test, restore the DUT state, and skip other steps.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          If <emphasis role="italic">topic</emphasis> = "tns1:AccessControl/AccessGranted/Credential"
+                          <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width=2.5em"?>
+                            <listitem>
+                              <para>
+                                If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "CredentialToken", FAIL the test, restore the DUT state, and skip other steps.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "CredentialToken" does not have Value = <emphasis role="italic">credentialToken</emphasis>, FAIL the test, restore the DUT state, and skip other steps.
+                              </para>
+                            </listitem>
+                          </orderedlist>
                         </para>
                       </listitem>
                       <listitem>
@@ -23566,8 +25247,13 @@
         <emphasis role="bold">Pre-requisite:</emphasis> Event Service is received from the DUT.
       </para>
       <para>
-        <emphasis role="bold">Input:</emphasis> Subscription reference (<emphasis role="italic">s</emphasis>). Current time for the DUT (<emphasis role="italic">ct</emphasis>).
-        Subscription termination time (<emphasis role="italic">tt</emphasis>). Token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved (<emphasis role="italic">accessPointToken</emphasis>).
+        <emphasis role="bold">Input:</emphasis>
+        Topic to validate (<emphasis role="italic">topic</emphasis>).
+        Subscription reference (<emphasis role="italic">s</emphasis>).
+        Current time for the DUT (<emphasis role="italic">ct</emphasis>).
+        Subscription termination time (<emphasis role="italic">tt</emphasis>).
+        Token of access point for which <emphasis role="bold">tns1:AccessControl/Request/Identifier</emphasis> notification was recieved (<emphasis role="italic">accessPointToken</emphasis>).
+        (optional) Token of Credential (<emphasis role="italic">credentialToken</emphasis>).
       </para>
       <para>
         <emphasis role="bold">Returns:</emphasis> None.
@@ -23641,6 +25327,11 @@
                       </listitem>
                       <listitem>
                         <para>
+                          If <emphasis role="italic">message</emphasis>.Topic !=  <emphasis role="italic">topic</emphasis>, FAIL the test, restore the DUT state, and skip other steps.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
                           If <emphasis role="italic">message</emphasis> contains PropertyOperation attribute, FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
@@ -23656,22 +25347,40 @@
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source does not contain SimpleItem item with Name = "External", FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "External", FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "External" does not have Value = true, FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "External" does not have Value = true, FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source does not contain SimpleItem item with Name = "Reason", FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "Reason", FAIL the test, restore the DUT state, and skip other steps.
                         </para>
                       </listitem>
                       <listitem>
                         <para>
-                          If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "Reason" does not have Value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
+                          If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "Reason" does not have Value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          If <emphasis role="italic">topic</emphasis> = "tns1:AccessControl/Denied/Credential"
+                          <orderedlist numeration="arabic" inheritnum="inherit">
+                            <?dbfo label-width=2.5em"?>
+                            <listitem>
+                              <para>
+                                If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "CredentialToken", FAIL the test, restore the DUT state, and skip other steps.
+                              </para>
+                            </listitem>
+                            <listitem>
+                              <para>
+                                If <emphasis role="italic">message</emphasis>.Data.SimpleItem with Name = "CredentialToken" does not have Value = <emphasis role="italic">credentialToken</emphasis>, FAIL the test, restore the DUT state, and skip other steps.
+                              </para>
+                            </listitem>
+                          </orderedlist>
                         </para>
                       </listitem>
                       <listitem>
@@ -26167,6 +27876,360 @@
       </para>
       <para>
         <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT did not send <emphasis role="bold">PullMessagesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Note:</emphasis> <emphasis role="italic">operationDelay</emphasis> will be taken from Operation Delay field of ONVIF Device Test Tool.
+      </para>
+    </section>
+    <!--A.36 Retrieve Identifier Event by PullPoint-->
+    <section xml:id="Annex_HelperPullIdentifier"
+             xreflabel="Annex A.36">
+      <title>Retrieve Identifier Event by PullPoint</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperPullIdentifier
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to retrieve and check tns1:AccessControl/AccessTaken/Identifier or tns1:AccessControl/AccessNotTaken/Identifier or tns1:AccessControl/AccessGranted/Identifier event message.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> Event Service is received from the DUT.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis>
+        Subscription reference (<emphasis role="italic">s</emphasis>).
+        Current time for the DUT (<emphasis role="italic">ct</emphasis>).
+        Subscription termination time (<emphasis role="italic">tt</emphasis>).
+        Topic (<emphasis role="italic">topic</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> Identifier Notification Message (<emphasis role="italic">message</emphasis>)
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem xml:id="Annex_HelperPullIdentifier.1">
+            <para>
+              Until <emphasis role="italic">operationDelay</emphasis> timeout expires, repeat the following steps:
+              <orderedlist numeration="arabic"
+                           inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits for time <emphasis role="italic">t</emphasis> := min{(<emphasis role="italic">tt</emphasis>-<emphasis role="italic">ct</emphasis>)/2, 1 second}.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ONVIF Client invokes <emphasis role="bold">PullMessages</emphasis> to the subscription endpoint <emphasis role="italic">s</emphasis> with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          Timeout := PT60S
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          MessageLimit := 1
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The DUT responds with <emphasis role="bold">PullMessagesResponse</emphasis> message with parameters
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          CurrentTime =: <emphasis role="italic">ct</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          TerminationTime =: <emphasis role="italic">tt</emphasis>
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          NotificationMessage list =: <emphasis role="italic">notificationMessageList</emphasis>
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If <emphasis role="italic">notificationMessageList</emphasis> is not empty:
+                    <orderedlist numeration="arabic"
+                                 inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          If <emphasis role="italic">notificationMessageList</emphasis>[0].Topic != <emphasis role="italic">topic</emphasis>, FAIL the test, restore DUT settings, and skip other steps.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          Set <emphasis role="italic">message</emphasis> := <emphasis role="italic">notificationMessageList</emphasis>[0].Topic.Message.Message.
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          ONVIF Client validates identifier notifiation message by following the procedure mentioned in <xref linkend="Annex_HelperValidateIdentifierMessage"/> with the following input and output parameters
+                          <itemizedlist>
+                            <listitem>
+                              <para>
+                                in <emphasis role="italic">message</emphasis> - identifier message
+                              </para>
+                            </listitem>
+                          </itemizedlist>
+                        </para>
+                      </listitem>
+
+                      <listitem>
+                        <para>
+                          Skip other steps of the procedure and return <emphasis role="italic">message</emphasis>.
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">operationDelay</emphasis> timeout expires for step <xref linkend="Annex_HelperPullIdentifier.1"/> and no notifications were recieved, FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT did not send <emphasis role="bold">PullMessagesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Note:</emphasis> <emphasis role="italic">operationDelay</emphasis> will be taken from Operation Delay field of ONVIF Device Test Tool.
+      </para>
+    </section>
+
+    <!--A.37 Validate Identifier Message-->
+    <section xml:id="Annex_HelperValidateIdentifierMessage"
+                 xreflabel="Annex A.37">
+      <title>Validate Identifier Message</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperValidateIdentifierMessage
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to check tns1:AccessControl/AccessTaken/Identifier or tns1:AccessControl/AccessNotTaken/Identifier or tns1:AccessControl/AccessGranted/Identifier event message.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> Notification Message (<emphasis role="italic">message</emphasis>)
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis> contains PropertyOperation attribute, FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Source does not contain SimpleItem item with Name = "AccessPointToken", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "AccessPointToken" does not have Value value with type "pt:ReferenceToken", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "IdentifierType", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "IdentifierType" does not have Value value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "FormatType", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "FormatType" does not have Value value with type "xs:string", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Data does not contain SimpleItem item with Name = "IdentifierValue", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">message</emphasis>.Source.SimpleItem with Name = "IdentifierValue" does not have Value value with type "xs:hexBinary", FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT did not send <emphasis role="bold">PullMessagesResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Note:</emphasis> <emphasis role="italic">operationDelay</emphasis> will be taken from Operation Delay field of ONVIF Device Test Tool.
+      </para>
+    </section>
+    <!--A.38 Validate Identifier Message Description-->
+    <section xml:id="Annex_HelperValidateIdentifierMessageDescription"
+                 xreflabel="Annex A.38">
+      <title>Validate Identifier Message Description</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperValidateIdentifierMessageDescription
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to check structure of tns1:AccessControl/AccessTaken/Identifier, tns1:AccessControl/AccessNotTaken/Identifier, tns1:AccessControl/AccessGranted/Identifier topics provided in GetEventPropertiesResponse.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> <emphasis role="italic">topic</emphasis> - message description of identifier topic
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> None
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis>.MessageDescription.IsProperty equals to true, FAIL the test, restore the DUT state, and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis> does not contain MessageDescription.Source.SimpleItemDescription item with Name = "AccessPointToken", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis>.MessageDescription.Source.SimpleItemDescription with Name = "AccessPointToken" does not have Type = "pt:ReferenceToken", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis> does not contain MessageDescription.Data.SimpleItemDescription item with Name = "IdentifierType", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis>.MessageDescription.Data.SimpleItemDescription with Name = "IdentifierType" does not have Type = "xs:string", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis> does not contain MessageDescription.Data.SimpleItemDescription item with Name = "FormatType", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis>.MessageDescription.Data.SimpleItemDescription with Name = "FormatType" does not have Type = "xs:string", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis> does not contain MessageDescription.Data.SimpleItemDescription item with Name = "IdentifierValue", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">topic</emphasis>.MessageDescription.Data.SimpleItemDescription with Name = "IdentifierValue" does not have Type = "xs:hexBinary", FAIL the test and skip other steps.
+            </para>
+          </listitem>
+
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS -</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL -</emphasis>
         <itemizedlist>
           <listitem>
             <para>

@@ -91,9 +91,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Get Dynamic DNS (DynamicDns_GetDynamicDnsSettings)
       </para>
       <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able get
         the dynamic DNS settings from Device using the GetDynamicDNS operation.
       </para>
@@ -185,9 +182,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Set Dynamic DNS (DynamicDns_SetDynamicDnsSettings)
-      </para>
-      <para>
-        <emphasis role="bold">Profile S Normative Reference:</emphasis> Conditional
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able set

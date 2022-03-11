@@ -15,10 +15,10 @@
       </phrase>
     </orgname>
     <title>Base Device Test Specification</title>
-    <subtitle>Version 20.12</subtitle>
-    <date>December 2020</date>
+    <subtitle>Version 21.12</subtitle>
+    <date>December 2021</date>
     <copyright>
-      <year>2020</year>
+        <year>2021</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -563,7 +563,7 @@
           </para>
         </revdescription>
       </revision>
-    <revision>
+      <revision>
         <revnumber>18.12</revnumber>
         <date>Nov 14, 2018</date>
         <revdescription>
@@ -572,7 +572,7 @@
           </para>
           <para>
             DEVICE-2-1-37 SET DYNAMIC DNS CONFIGURATION (TTL value in 5, 11, 17 steps updated; check in 10, 16, 23 steps changed)
-          </para>          
+          </para>
         </revdescription>
       </revision>
       <revision>
@@ -609,107 +609,198 @@
         </revdescription>
       </revision>
       <revision>
-				<revnumber>18.12</revnumber>
-				<date>Dec 21, 2018</date>
-				<revdescription>
-          <para>Switching Hub description in 'Network Configuration for DUT' section was updated according to #1737</para>				
-				</revdescription>
-			</revision>
+        <revnumber>18.12</revnumber>
+        <date>Dec 21, 2018</date>
+        <revdescription>
+          <para>Switching Hub description in 'Network Configuration for DUT' section was updated according to #1737</para>
+        </revdescription>
+      </revision>
       <revision>
-				<revnumber>20.12</revnumber>
-				<date>Sep 03, 2020</date>
-				<revdescription>
+        <revnumber>20.12</revnumber>
+        <date>Sep 03, 2020</date>
+        <revdescription>
           <para>The following test case was updated according to #1983</para>
-          <para>DEVICE-2-1-37 SET DYNAMIC DNS CONFIGURATION (steps 12 and 15 were updated to accept fault, step 17 was added)</para>				
-				</revdescription>
-			</revision>
+          <para>DEVICE-2-1-37 SET DYNAMIC DNS CONFIGURATION (steps 12 and 15 were updated to accept fault, step 17 was added)</para>
+        </revdescription>
+      </revision>
       <revision>
-				<revnumber>20.12</revnumber>
-				<date>Sep 25, 2020</date>
-				<revdescription>
+        <revnumber>20.12</revnumber>
+        <date>Sep 25, 2020</date>
+        <revdescription>
           <para>Pre-Requisites of the following test cases were updated with adding of User Configuration feature according to #2093</para>
           <para>DEVICE-4-1-1 SECURITY COMMAND GETUSERS</para>
-<para>DEVICE-4-1-3 SECURITY COMMAND CREATEUSERS ERROR CASE</para>
-<para>DEVICE-4-1-4 SECURITY COMMAND DELETEUSERS</para>
-<para>DEVICE-4-1-5 SECURITY COMMAND DELETEUSERS ERROR CASE</para>
-<para>DEVICE-4-1-6 SECURITY COMMAND DELETEUSERS DELETE ALL USERS</para>
-<para>DEVICE-4-1-7 SECURITY COMMAND SETUSER</para>
-<para>DEVICE-4-1-8 SECURITY COMMAND USER MANAGEMENT ERROR CASE</para>
-<para>DEVICE-4-1-9 SECURITY COMMAND CREATEUSERS</para>          				
-				</revdescription>
-			</revision>
+          <para>DEVICE-4-1-3 SECURITY COMMAND CREATEUSERS ERROR CASE</para>
+          <para>DEVICE-4-1-4 SECURITY COMMAND DELETEUSERS</para>
+          <para>DEVICE-4-1-5 SECURITY COMMAND DELETEUSERS ERROR CASE</para>
+          <para>DEVICE-4-1-6 SECURITY COMMAND DELETEUSERS DELETE ALL USERS</para>
+          <para>DEVICE-4-1-7 SECURITY COMMAND SETUSER</para>
+          <para>DEVICE-4-1-8 SECURITY COMMAND USER MANAGEMENT ERROR CASE</para>
+          <para>DEVICE-4-1-9 SECURITY COMMAND CREATEUSERS</para>
+        </revdescription>
+      </revision>
       <revision>
-				<revnumber>20.12</revnumber>
-				<date>Nov 08, 2020</date>
-				<revdescription>
+        <revnumber>20.12</revnumber>
+        <date>Nov 08, 2020</date>
+        <revdescription>
           <para>Pre-Requisites of the following test cases were updated with adding of Network Configuration feature according to #2094</para>
-            <para>DEVICE-2-1-1	NETWORK COMMAND HOSTNAME CONFIGURATION</para>
-<para>DEVICE-2-1-3	NETWORK COMMAND SETHOSTNAME TEST ERROR CASE</para>
-<para>DEVICE-2-1-4	GET DNS CONFIGURATION</para>
-<para>DEVICE-2-1-5	SET DNS CONFIGURATION - SEARCHDOMAIN</para>
-<para>DEVICE-2-1-6	SET DNS CONFIGURATION - DNSMANUAL IPV4</para>
-<para>DEVICE-2-1-7	SET DNS CONFIGURATION - DNSMANUAL IPV6</para>
-<para>DEVICE-2-1-8	SET DNS CONFIGURATION - FROMDHCP</para>
-<para>DEVICE-2-1-9	DNS CONFIGURATION - DNSMANUAL INVALID IPV4</para>
-<para>DEVICE-2-1-10	SET DNS CONFIGURATION - DNSMANUAL INVALID IPV6</para>
-<para>DEVICE-2-1-11	GET NTP CONFIGURATION</para>
-<para>DEVICE-2-1-12	SET NTP CONFIGURATION - NTPMANUAL IPV4</para>
-<para>DEVICE-2-1-13	SET NTP CONFIGURATION - NTPMANUAL IPV6</para>
-<para>DEVICE-2-1-14	SET NTP CONFIGURATION - FROMDHCP</para>
-<para>DEVICE-2-1-15	SET NTP CONFIGURATION - NTPMANUAL INVALID IPV4</para>
-<para>DEVICE-2-1-16	SET NTP CONFIGURATION - NTPMANUAL INVALID IPV6</para>
-<para>DEVICE-2-1-17	GET NETWORK INTERFACE CONFIGURATION</para>
-<para>DEVICE-2-1-18	SET NETWORK INTERFACE CONFIGURATION - IPV4</para>
-<para>DEVICE-2-1-19	SET NETWORK INTERFACE CONFIGURATION - IPV6</para>
-<para>DEVICE-2-1-20	SET NETWORK INTERFACE CONFIGURATION - INVALID IPV4</para>
-<para>DEVICE-2-1-21	SET NETWORK INTERFACE CONFIGURATION - INVALID IPV6</para>
-<para>DEVICE-2-1-25	GET NETWORK DEFAULT GATEWAY CONFIGURATION</para>
-<para>DEVICE-2-1-28	SET NETWORK DEFAULT GATEWAY CONFIGURATION - INVALID IPV4</para>
-<para>DEVICE-2-1-29	SET NETWORK DEFAULT GATEWAY CONFIGURATION - INVALID IPV6</para>
-<para>DEVICE-2-1-30	SET NETWORK DEFAULT GATEWAY CONFIGURATION - IPV4</para>
-<para>DEVICE-2-1-31	SET NETWORK DEFAULT GATEWAY CONFIGURATION - IPV6</para>
-<para>DEVICE-2-1-32	NETWORK COMMAND SETHOSTNAME TEST</para>
-<para>DEVICE-2-1-33	GET NETWORK PROTOCOLS CONFIGURATION</para>
-<para>DEVICE-2-1-34	SET NETWORK PROTOCOLS CONFIGURATION</para>
-<para>DEVICE-2-1-35	SET NETWORK PROTOCOLS CONFIGURATION - UNSUPPORTED PROTOCOLS</para>
-<para>DEVICE-2-1-36	GET DYNAMIC DNS CONFIGURATION</para>
-<para>DEVICE-2-1-37	SET DYNAMIC DNS CONFIGURATION</para>
-<para>DEVICE-6-1-1	DEVICE MANAGEMENT - NAMESPACES (DEFAULT NAMESPACES FOR EACH TAG)</para>
-<para>DEVICE-6-1-2	DEVICE MANAGEMENT - NAMESPACES (DEFAULT NAMESPACES FOR PARENT TAG)</para>
-<para>DEVICE-6-1-3	DEVICE MANAGEMENT - NAMESPACES (NOT STANDARD PREFIXES)</para>
-<para>DEVICE-6-1-4	DEVICE MANAGEMENT - NAMESPACES (DIFFERENT PREFIXES FOR THE SAME NAMESPACE)</para>
-<para>DEVICE-6-1-5	DEVICE MANAGEMENT - NAMESPACES (THE SAME PREFIX FOR DIFFERENT NAMESPACES)</para>
-<para>DEVICE-7-1-1	GET IP ADDRESS FILTER</para>
-<para>DEVICE-7-1-2	SET IP ADDRESS FILTER – IPv4</para>
-<para>DEVICE-7-1-3	ADD IP ADDRESS FILTER – IPv4</para>
-<para>DEVICE-7-1-4	REMOVE IP ADDRESS FILTER – IPv4</para>
-<para>IPCONFIG-1-1-3	IPV4 DHCP</para>
-<para>IPCONFIG-1-1-5	IPV4 LINK LOCAL ADDRESS</para>
-<para>IPCONFIG-2-1-2	IPV6 STATELESS IP CONFIGURATION - ROUTER ADVERTISEMENT</para>
-<para>IPCONFIG-2-1-3	IPV6 STATELESS IP CONFIGURATION - NEIGHBOUR DISCOVERY</para>
-<para>IPCONFIG-2-1-4	IPV6 STATEFUL IP CONFIGURATION</para>   				
-				</revdescription>
-			</revision>
+          <para>DEVICE-2-1-1	NETWORK COMMAND HOSTNAME CONFIGURATION</para>
+          <para>DEVICE-2-1-3	NETWORK COMMAND SETHOSTNAME TEST ERROR CASE</para>
+          <para>DEVICE-2-1-4	GET DNS CONFIGURATION</para>
+          <para>DEVICE-2-1-5	SET DNS CONFIGURATION - SEARCHDOMAIN</para>
+          <para>DEVICE-2-1-6	SET DNS CONFIGURATION - DNSMANUAL IPV4</para>
+          <para>DEVICE-2-1-7	SET DNS CONFIGURATION - DNSMANUAL IPV6</para>
+          <para>DEVICE-2-1-8	SET DNS CONFIGURATION - FROMDHCP</para>
+          <para>DEVICE-2-1-9	DNS CONFIGURATION - DNSMANUAL INVALID IPV4</para>
+          <para>DEVICE-2-1-10	SET DNS CONFIGURATION - DNSMANUAL INVALID IPV6</para>
+          <para>DEVICE-2-1-11	GET NTP CONFIGURATION</para>
+          <para>DEVICE-2-1-12	SET NTP CONFIGURATION - NTPMANUAL IPV4</para>
+          <para>DEVICE-2-1-13	SET NTP CONFIGURATION - NTPMANUAL IPV6</para>
+          <para>DEVICE-2-1-14	SET NTP CONFIGURATION - FROMDHCP</para>
+          <para>DEVICE-2-1-15	SET NTP CONFIGURATION - NTPMANUAL INVALID IPV4</para>
+          <para>DEVICE-2-1-16	SET NTP CONFIGURATION - NTPMANUAL INVALID IPV6</para>
+          <para>DEVICE-2-1-17	GET NETWORK INTERFACE CONFIGURATION</para>
+          <para>DEVICE-2-1-18	SET NETWORK INTERFACE CONFIGURATION - IPV4</para>
+          <para>DEVICE-2-1-19	SET NETWORK INTERFACE CONFIGURATION - IPV6</para>
+          <para>DEVICE-2-1-20	SET NETWORK INTERFACE CONFIGURATION - INVALID IPV4</para>
+          <para>DEVICE-2-1-21	SET NETWORK INTERFACE CONFIGURATION - INVALID IPV6</para>
+          <para>DEVICE-2-1-25	GET NETWORK DEFAULT GATEWAY CONFIGURATION</para>
+          <para>DEVICE-2-1-28	SET NETWORK DEFAULT GATEWAY CONFIGURATION - INVALID IPV4</para>
+          <para>DEVICE-2-1-29	SET NETWORK DEFAULT GATEWAY CONFIGURATION - INVALID IPV6</para>
+          <para>DEVICE-2-1-30	SET NETWORK DEFAULT GATEWAY CONFIGURATION - IPV4</para>
+          <para>DEVICE-2-1-31	SET NETWORK DEFAULT GATEWAY CONFIGURATION - IPV6</para>
+          <para>DEVICE-2-1-32	NETWORK COMMAND SETHOSTNAME TEST</para>
+          <para>DEVICE-2-1-33	GET NETWORK PROTOCOLS CONFIGURATION</para>
+          <para>DEVICE-2-1-34	SET NETWORK PROTOCOLS CONFIGURATION</para>
+          <para>DEVICE-2-1-35	SET NETWORK PROTOCOLS CONFIGURATION - UNSUPPORTED PROTOCOLS</para>
+          <para>DEVICE-2-1-36	GET DYNAMIC DNS CONFIGURATION</para>
+          <para>DEVICE-2-1-37	SET DYNAMIC DNS CONFIGURATION</para>
+          <para>DEVICE-6-1-1	DEVICE MANAGEMENT - NAMESPACES (DEFAULT NAMESPACES FOR EACH TAG)</para>
+          <para>DEVICE-6-1-2	DEVICE MANAGEMENT - NAMESPACES (DEFAULT NAMESPACES FOR PARENT TAG)</para>
+          <para>DEVICE-6-1-3	DEVICE MANAGEMENT - NAMESPACES (NOT STANDARD PREFIXES)</para>
+          <para>DEVICE-6-1-4	DEVICE MANAGEMENT - NAMESPACES (DIFFERENT PREFIXES FOR THE SAME NAMESPACE)</para>
+          <para>DEVICE-6-1-5	DEVICE MANAGEMENT - NAMESPACES (THE SAME PREFIX FOR DIFFERENT NAMESPACES)</para>
+          <para>DEVICE-7-1-1	GET IP ADDRESS FILTER</para>
+          <para>DEVICE-7-1-2	SET IP ADDRESS FILTER – IPv4</para>
+          <para>DEVICE-7-1-3	ADD IP ADDRESS FILTER – IPv4</para>
+          <para>DEVICE-7-1-4	REMOVE IP ADDRESS FILTER – IPv4</para>
+          <para>IPCONFIG-1-1-3	IPV4 DHCP</para>
+          <para>IPCONFIG-1-1-5	IPV4 LINK LOCAL ADDRESS</para>
+          <para>IPCONFIG-2-1-2	IPV6 STATELESS IP CONFIGURATION - ROUTER ADVERTISEMENT</para>
+          <para>IPCONFIG-2-1-3	IPV6 STATELESS IP CONFIGURATION - NEIGHBOUR DISCOVERY</para>
+          <para>IPCONFIG-2-1-4	IPV6 STATEFUL IP CONFIGURATION</para>
+        </revdescription>
+      </revision>
       <revision>
-				<revnumber>20.12</revnumber>
-				<date>Nov 08, 2020</date>
-				<revdescription>
+        <revnumber>20.12</revnumber>
+        <date>Nov 08, 2020</date>
+        <revdescription>
           <para>Pre-Requisites of the following test cases were updated with adding of Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile Q scope or Profile T scope according to #2094</para>
-             <para>DEVICE-3-1-4	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID TIMEZONE</para>
-<para>DEVICE-3-1-5	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID DATE</para>
-<para>DEVICE-3-1-6	SYSTEM COMMAND FACTORY DEFAULT HARD</para>
-<para>DEVICE-3-1-7	SYSTEM COMMAND FACTORY DEFAULT SOFT</para>
-<para>DEVICE-3-1-11	SYSTEM COMMAND SETSYSTEMDATEANDTIME</para>
-<para>DEVICE-3-1-12	SYSTEM COMMAND SETSYSTEMDATEANDTIME USING NTP</para>  				
-				</revdescription>
-			</revision>
+          <para>DEVICE-3-1-4	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID TIMEZONE</para>
+          <para>DEVICE-3-1-5	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID DATE</para>
+          <para>DEVICE-3-1-6	SYSTEM COMMAND FACTORY DEFAULT HARD</para>
+          <para>DEVICE-3-1-7	SYSTEM COMMAND FACTORY DEFAULT SOFT</para>
+          <para>DEVICE-3-1-11	SYSTEM COMMAND SETSYSTEMDATEANDTIME</para>
+          <para>DEVICE-3-1-12	SYSTEM COMMAND SETSYSTEMDATEANDTIME USING NTP</para>
+        </revdescription>
+      </revision>
       <revision>
-				<revnumber>20.12</revnumber>
-				<date>Nov 25, 2020</date>
-				<revdescription>
-          <para>DEVICE-1-1-1 GET WSDL URL was removed according to #2109</para>          	
-				</revdescription>
-			</revision>
+        <revnumber>20.12</revnumber>
+        <date>Nov 25, 2020</date>
+        <revdescription>
+          <para>DEVICE-1-1-1 GET WSDL URL was removed according to #2109</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Feb 01, 2021</date>
+        <revdescription>
+          <para>The following test case was updated according to #2124: </para>
+          <para>DEVICE-1-1-18 DEVICE SERVICE CAPABILITIES (step 5 added)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Feb 08, 2021</date>
+        <revdescription>
+          <para>The following test cases were updated according to #2122: </para>
+          <para>DEVICE-6-1-1	DEVICE MANAGEMENT - NAMESPACES (DEFAULT NAMESPACES FOR EACH TAG)</para>
+          <para>DEVICE-6-1-2	DEVICE MANAGEMENT - NAMESPACES (DEFAULT NAMESPACES FOR PARENT TAG)</para>
+          <para>DEVICE-6-1-3	DEVICE MANAGEMENT - NAMESPACES (NOT STANDARD PREFIXES)</para>
+          <para>DEVICE-6-1-4	DEVICE MANAGEMENT - NAMESPACES (DIFFERENT PREFIXES FOR THE SAME NAMESPACE)</para>
+          <para>DEVICE-6-1-5	DEVICE MANAGEMENT - NAMESPACES (THE SAME PREFIX FOR DIFFERENT NAMESPACES)</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>Apr 06, 2021</date>
+        <revdescription>
+          <para>The following test cases were updated according to #2124:</para>
+          <para>A.13 Procedure to Turn Off IPv4 DHCP (step 4.4 updated, step 4.5 added)</para>
+          <para>A.15 Procedure to Turn Off IPv6 DHCP (step 4.4 updated, step 4.5 added)</para>
+          <para>A.8 Restore Network Settings (step 4 updated, step 5 added)</para>
+          <para>DEVICE-3-1-8 SYSTEM COMMAND REBOOT (step 5 updated, step 6 added)</para>
+          <para>DEVICE-2-1-18 SET NETWORK INTERFACE CONFIGURATION - IPV4 (step 9 updated, step 10 added)</para>
+          <para>DEVICE-2-1-19 SET NETWORK INTERFACE CONFIGURATION - IPV6 (step 9 updated, step 10 added)</para>
+          <para>DEVICE-9-1-4 Last Reboot event (Status change) (step 10 and step 11 changed)</para>
+          <para>IPCONFIG-2-1-2 IPV6 STATELESS IP CONFIGURATION - NEIGHBOUR DISCOVERY (step 9 updated, step 10 added)</para>
+          <para>IPCONFIG-2-1-3	IPV6 STATELESS IP CONFIGURATION - ROUTER ADVERTISEMENT	(step 9 updated, step 10 added)</para>
+          <para>IPCONFIG-2-1-4	IPV6 STATEFUL IP CONFIGURATION (step 9 updated, step 10 added)</para>
+          <para>Discovery added into Pre-Requisite of the following test cases:</para>
+          <para>DEVICE-2-1-8 SET DNS CONFIGURATION - FROMDHCP</para>
+          <para>DEVICE-2-1-14 SET NTP CONFIGURATION - FROMDHCP</para>
+          <para>DEVICE-3-1-14 START SYSTEM RESTORE</para>
+          <para>DEVICE-3-1-15 START SYSTEM RESTORE – INVALID BACKUP FILE</para>
+          <para>DISCOVERY-1-1-2 HELLO MESSAGE VALIDATION</para>
+          <para>DISCOVERY-1-1-3 SEARCH BASED ON DEVICE SCOPE TYPES</para>
+          <para>DISCOVERY-1-1-4 SEARCH WITH OMITTED DEVICE AND SCOPE TYPES</para>
+          <para>DISCOVERY-1-1-5 RESPONSE TO INVALID SEARCH REQUEST</para>
+          <para>DISCOVERY-1-1-6 SEARCH USING UNICAST PROBE MESSAGE</para>
+          <para>DISCOVERY-1-1-9 DISCOVERY MODE CONFIGURATION</para>
+          <para>DISCOVERY-1-1-10 SOAP FAULT MESSAGE</para>
+          <para>DISCOVERY-1-1-11 DEVICE SCOPES CONFIGURATION</para>
+          <para>DISCOVERY-2-1-1 DISCOVERY - NAMESPACES (DEFAULT NAMESPACES FOR EACH TAG)</para>
+          <para>DISCOVERY-2-1-2 DISCOVERY - NAMESPACES (DEFAULT NAMESPACES FOR PARENT TAG)</para>
+          <para>DISCOVERY-2-1-3 DISCOVERY - NAMESPACES (NOT STANDARD PREFIXES)</para>
+          <para>DISCOVERY-2-1-4 DISCOVERY - NAMESPACES (DIFFERENT PREFIXES FOR THE SAME NAMESPACE)</para>
+          <para>DISCOVERY-2-1-5 DISCOVERY - NAMESPACES (THE SAME PREFIX FOR DIFFERENT NAMESPACES)</para>
+          <para>IPCONFIG-1-1-3 IPV4 DHCP</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.06</revnumber>
+        <date>May 26, 2021</date>
+        <revdescription>
+          <para>Profile D was added as Pre-Requisite according to #2157:</para>
+          <para>DEVICE-3-1-4	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID TIMEZONE</para>
+          <para>DEVICE-3-1-5	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID DATE</para>
+          <para>DEVICE-3-1-6	SYSTEM COMMAND FACTORY DEFAULT HARD</para>
+          <para>DEVICE-3-1-7	SYSTEM COMMAND FACTORY DEFAULT SOFT</para>
+          <para>DEVICE-3-1-11	SYSTEM COMMAND SETSYSTEMDATEANDTIME</para>
+          <para>DEVICE-3-1-12	SYSTEM COMMAND SETSYSTEMDATEANDTIME USING NTP</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Oct 07, 2021</date>
+        <revdescription>
+          <para>The following tests were moved to Base Device Test Specification according to #2204:</para>
+          <para>DEVICE-3-1-16 Firmware Upload</para>
+          <para>DEVICE-3-1-17 Invalid Firmware Upload</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>21.12</revnumber>
+        <date>Dec 15, 2021</date>
+        <revdescription>
+          <para>Profile Q scope was removed from the Pre-Requisites of the following test cases according to #2204</para>
+          <para>DEVICE-3-1-4	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID TIMEZONE</para>
+          <para>DEVICE-3-1-5	SYSTEM COMMAND SETSYSTEMDATEANDTIME TEST FOR INVALID DATE</para>
+          <para>DEVICE-3-1-6	SYSTEM COMMAND FACTORY DEFAULT HARD</para>
+          <para>DEVICE-3-1-7	SYSTEM COMMAND FACTORY DEFAULT SOFT</para>
+          <para>DEVICE-3-1-11	SYSTEM COMMAND SETSYSTEMDATEANDTIME</para>
+          <para>DEVICE-3-1-12	SYSTEM COMMAND SETSYSTEMDATEANDTIME USING NTP</para>
+        </revdescription>
+      </revision>
     </revhistory>
   </info>
   <chapter xml:id="s.intro">
@@ -1374,7 +1465,7 @@
         </para>
         <para>
           <emphasis role="bold">Switching Hub:</emphasis> provides network connectivity among all the test equipments in the test environment. All devices should be connected to the Switching Hub.
-           When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering in order to avoid multicast traffic being flooded to all ports, because this may affect test stability.
+          When running multiple test instances in parallel on the same network, the Switching Hub should be configured to use filtering in order to avoid multicast traffic being flooded to all ports, because this may affect test stability.
         </para>
         <para>
           <emphasis role="bold">Router:</emphasis> provides router advertisements for IPv6 configuration.
@@ -1756,7 +1847,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To test IPv4 DHCP Configuration.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT. Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client, DUT, and DHCPv4 server
@@ -2539,46 +2630,70 @@
                 </orderedlist>
               </para>
             </listitem>
+            
+            
+
             <listitem>
               <para>
-                The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
-                <itemizedlist>
+                If DUT supports Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
                   <listitem>
                     <para>
-                      EndpointReference
+                      The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            EndpointReference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Types =: <emphasis role="italic">types</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Scopes
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            XAddrs =: <emphasis role="italic">xAddrs</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            MetadataVersion
+                          </para>
+                        </listitem>
+                      </itemizedlist>
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Types =: <emphasis role="italic">types</emphasis>
+                      If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">19</link>.
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Scopes
+                      If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">19</link>.
                     </para>
                   </listitem>
-                  <listitem>
-                    <para>
-                      XAddrs =: <emphasis role="italic">xAddrs</emphasis>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      MetadataVersion
-                    </para>
-                  </listitem>
-                </itemizedlist>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">20</link>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">20</link>.
+                If DUT does not support Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="3.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
@@ -2605,27 +2720,27 @@
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">19</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">19</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.AcceptRouterAdvert = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.AcceptRouterAdvert = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">19</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.FromRA is skipped, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.FromRA is skipped, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">19</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Off, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Off, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-2.20">19</link>.
               </para>
             </listitem>
             <listitem xml:id="tc.IPCONFIG-2-1-2.20">
@@ -2840,46 +2955,68 @@
                 </orderedlist>
               </para>
             </listitem>
-            <listitem>
+            
+           <listitem>
               <para>
-                The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
-                <itemizedlist>
+                If DUT supports Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
                   <listitem>
                     <para>
-                      EndpointReference
+                      The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            EndpointReference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Types =: <emphasis role="italic">types</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Scopes
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            XAddrs =: <emphasis role="italic">xAddrs</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            MetadataVersion
+                          </para>
+                        </listitem>
+                      </itemizedlist>
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Types =: <emphasis role="italic">types</emphasis>
+                      If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">18</link>.
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Scopes
+                      If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">18</link>.
                     </para>
                   </listitem>
-                  <listitem>
-                    <para>
-                      XAddrs =: <emphasis role="italic">xAddrs</emphasis>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      MetadataVersion
-                    </para>
-                  </listitem>
-                </itemizedlist>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">19</link>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">19</link>.
+                If DUT does not support Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
@@ -2906,22 +3043,22 @@
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">19</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">18</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">19</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">18</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.LinkLocal is skipped, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">19</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.LinkLocal is skipped, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">18</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Off, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">19</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Off, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-3.19">18</link>.
               </para>
             </listitem>
             <listitem xml:id="tc.IPCONFIG-2-1-3.19">
@@ -3140,47 +3277,68 @@
                   </listitem>
                 </orderedlist>
               </para>
-            </listitem>
+            </listitem>            
             <listitem>
               <para>
-                The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
-                <itemizedlist>
+                If DUT supports Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
                   <listitem>
                     <para>
-                      EndpointReference
+                      The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            EndpointReference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Types =: <emphasis role="italic">types</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Scopes
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            XAddrs =: <emphasis role="italic">xAddrs</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            MetadataVersion
+                          </para>
+                        </listitem>
+                      </itemizedlist>
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Types =: <emphasis role="italic">types</emphasis>
+                      If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">19</link>.
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Scopes
+                      If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">19</link>.
                     </para>
                   </listitem>
-                  <listitem>
-                    <para>
-                      XAddrs =: <emphasis role="italic">xAddrs</emphasis>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      MetadataVersion
-                    </para>
-                  </listitem>
-                </itemizedlist>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">20</link>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">20</link>.
+                If DUT does not support Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
@@ -3207,22 +3365,22 @@
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">19</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">19</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.FromDHCP is skipped, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.FromDHCP is skipped, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">19</link>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Stateful, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Stateful, FAIL the test and go to step <link linkend="tc.IPCONFIG-2-1-4.20">19</link>.
               </para>
             </listitem>
             <listitem xml:id="tc.IPCONFIG-2-1-4.20">
@@ -3302,10 +3460,10 @@
         <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
       </para>
       <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify the mandatory XML elements Device type, Scope types, Endpoint Reference and Meta data version in the Hello message.
+        <emphasis role="bold">Test Purpose:</emphasis> To verify the mandatory XML elements Device type, Scope types, Endpoint Reference and Meta data version in the Hello message. 
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -3414,7 +3572,7 @@
         <emphasis role="bold">Test Purpose:</emphasis> To search the DUT based on the mandatory scope types (type, location, hardware and name).
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -3538,10 +3696,10 @@
         <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl
       </para>
       <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To search the DUT with device and scope types being omitted.
+        <emphasis role="bold">Test Purpose:</emphasis> To search the DUT with device and scope types being omitted. 
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -3645,10 +3803,10 @@
         <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl
       </para>
       <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT does not reply to the invalid multicast Probe request (invalid device and scope types).
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT does not reply to the invalid multicast Probe request (invalid device and scope types). 
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -3737,10 +3895,10 @@
         <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
       </para>
       <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT transmits Bye message before the system reboot.
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT transmits Bye message before the system reboot. 
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Bye message is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -3831,7 +3989,7 @@
         <emphasis role="bold">Test Purpose:</emphasis> To verify DUT behavior for Discovery mode configuration.
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -3997,10 +4155,10 @@
         <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
       </para>
       <para>
-        <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT generates a SOAP 1.2 fault message to the invalid Unicast Probe request (Invalid matching rule).
+        <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT generates a SOAP 1.2 fault message to the invalid Unicast Probe request (Invalid matching rule). 
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -4087,7 +4245,7 @@
         <emphasis role="bold">Test Purpose:</emphasis> To verify DUT behavior for scope parameter configuration.
       </para>
       <para>
-        <emphasis role="bold">Pre-Requisite:</emphasis> None
+        <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -4272,7 +4430,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
@@ -4281,7 +4439,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that DUT accepts requests for Device Discovery with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> None
+          <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -4402,7 +4560,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
@@ -4411,7 +4569,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT accepts requests for Device Discovery with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> None
+          <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -4532,7 +4690,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
@@ -4541,7 +4699,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that DUT accepts requests for Device Discovery with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> None
+          <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -4662,7 +4820,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
@@ -4671,7 +4829,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that DUT accepts requests for Device Discovery with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> None
+          <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -4792,7 +4950,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> ws-discovery.wsdl, devicemgmt.wsdl
@@ -4801,7 +4959,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that DUT accepts requests for Device Discovery with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> None
+          <emphasis role="bold">Pre-Requisite:</emphasis> Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -6935,6 +7093,11 @@
                     </para>
                   </listitem>
                 </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">Capabilities</emphasis>.System.DiscoveryNotSupported = true and <emphasis role="italic">Capabilities</emphasis>.Device.System.DiscoveryBye = true, FAIL the test and skip other steps.
               </para>
             </listitem>
           </orderedlist>
@@ -11317,7 +11480,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To configure DNS FromDHCP setting in DUT through SetDNS command.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT. DHCP is enabled (see Annex A.12 and A.14).
+          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT. Discovery is supported by the DUT. DHCP is enabled (see Annex A.12 and A.14).
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -11943,7 +12106,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To configure DUT's NTP settings via DHCP server using SetNTP command.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT. DHCP is enabled (see Annex A.12 and A.14). NTP is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT. DHCP is enabled (see Annex A.12 and A.14). NTP is supported by the DUT. Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -12481,47 +12644,74 @@
                   </listitem>
                 </orderedlist>
               </para>
-            </listitem>
+            </listitem>           
+            
             <listitem>
               <para>
-                The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
-                <itemizedlist>
+                If DUT supports Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="3.5em"?>
                   <listitem>
                     <para>
-                      EndpointReference
+                      The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            EndpointReference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Types =: <emphasis role="italic">types</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Scopes
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            XAddrs =: <emphasis role="italic">xAddrs</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            MetadataVersion
+                          </para>
+                        </listitem>
+                      </itemizedlist>
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Types =: <emphasis role="italic">types</emphasis>
+                      If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-18.RestoreNetwork"/>.
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Scopes
+                      If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-18.RestoreNetwork"/>.
                     </para>
                   </listitem>
-                  <listitem>
-                    <para>
-                      XAddrs =: <emphasis role="italic">xAddrs</emphasis>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      MetadataVersion
-                    </para>
-                  </listitem>
-                </itemizedlist>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-18.20">20</link>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-18.20">20</link>.
+                If DUT does not support Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="3.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client uses value of NetworkInterface.IPv4.Manual.Address from step <xref linkend="tc.DEVICE-2-1-18.6"/> as ID of the DUT for further steps.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
@@ -12548,30 +12738,30 @@
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4 is skipped or empty, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-18.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4 is skipped or empty, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-18.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Enabled = false, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-18.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Enabled = false, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-18.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Config.Manual is skipped, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-18.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Config.Manual is skipped, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-18.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Config.Manual is not equal to address at step <link linkend="tc.DEVICE-2-1-18.6">6</link>, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-18.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Config.Manual is not equal to address at step <link linkend="tc.DEVICE-2-1-18.6">6</link>, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-18.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Config.DHCP = true, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-18.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv4.Config.DHCP = true, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-18.RestoreNetwork"/>.
               </para>
             </listitem>
-            <listitem xml:id="tc.DEVICE-2-1-18.20">
+            <listitem xml:id="tc.DEVICE-2-1-18.RestoreNetwork" xreflabel="19">
               <para>
                 ONVIF Client restores the original settings  by following the procedure mentioned in <link linkend="Annex_HelperRestoreNetworkSettings">Annex A.8</link> with the following input and output parameters
                 <itemizedlist>
@@ -12788,46 +12978,69 @@
                 </orderedlist>
               </para>
             </listitem>
+            
+            
             <listitem>
               <para>
-                The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
-                <itemizedlist>
+                If DUT supports Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
                   <listitem>
                     <para>
-                      EndpointReference
+                      The DUT sends <emphasis role="bold">Hello</emphasis> message from a newly configured address:
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            EndpointReference
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Types =: <emphasis role="italic">types</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Scopes
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            XAddrs =: <emphasis role="italic">xAddrs</emphasis>
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            MetadataVersion
+                          </para>
+                        </listitem>
+                      </itemizedlist>
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Types =: <emphasis role="italic">types</emphasis>
+                      If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-19.RestoreNetwork"/>.
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      Scopes
+                      If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-19.RestoreNetwork"/>.
                     </para>
                   </listitem>
-                  <listitem>
-                    <para>
-                      XAddrs =: <emphasis role="italic">xAddrs</emphasis>
-                    </para>
-                  </listitem>
-                  <listitem>
-                    <para>
-                      MetadataVersion
-                    </para>
-                  </listitem>
-                </itemizedlist>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">types</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-19.20">20</link>.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">xAddrs</emphasis> is skipped or empty, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-19.20">20</link>.
+                If DUT does not support Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
@@ -12854,30 +13067,30 @@
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-19.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6 is skipped or empty, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-19.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-19.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Enabled = false, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-19.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.Manual is skipped, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-19.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.Manual is skipped, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-19.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.Manual is not equal to address at step <link linkend="tc.DEVICE-2-1-19.6">6</link>, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-19.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.Manual is not equal to address at step <link linkend="tc.DEVICE-2-1-19.6">6</link>, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-19.RestoreNetwork"/>.
               </para>
             </listitem>
             <listitem>
               <para>
-                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Off, FAIL the test and go to step <link linkend="tc.DEVICE-2-1-19.20">20</link>.
+                If <emphasis role="italic">updatedNetworkSettings</emphasis>.IPv6.Config.DHCP != Off, FAIL the test and go to step <xref linkend="tc.DEVICE-2-1-19.RestoreNetwork"/>.
               </para>
             </listitem>
-            <listitem xml:id="tc.DEVICE-2-1-19.20">
+            <listitem xml:id="tc.DEVICE-2-1-19.RestoreNetwork" xreflabel="19">
               <para>
                 ONVIF Client restores the original settings  by following the procedure mentioned in <link linkend="Annex_HelperRestoreNetworkSettings">Annex A.8</link> with the following input and output parameters
                 <itemizedlist>
@@ -14375,8 +14588,8 @@
                   </listitem>
                 </orderedlist>
               </para>
-            </listitem>           
-            
+            </listitem>
+
             <listitem>
               <para>
                 ONVIF Client invokes <emphasis role="bold">SetDynamicDNS</emphasis> with parameters
@@ -14404,52 +14617,52 @@
                 The DUT responds with a <emphasis role="bold">SetDynamicDNSResponse</emphasis> message or with SOAP 1.2 fault message.
               </para>
             </listitem>
-            
+
             <listitem>
               <para>
                 If <emphasis role="bold">SetDynamicDNSResponse</emphasis> was returned
                 <orderedlist numeration="arabic" inheritnum="inherit">
                   <?dbfo label-width="2.5em"?>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDynamicDNS</emphasis> request.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT responds with a <emphasis role="bold">GetDynamicDNSResponse</emphasis> message with parameters
-                <itemizedlist>
                   <listitem>
                     <para>
-                      DynamicDNSInformation =: <emphasis role="italic">updatedDynamicDNSSettings</emphasis>
+                      ONVIF Client invokes <emphasis role="bold">GetDynamicDNS</emphasis> request.
                     </para>
                   </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.Type value is not equal to "ServerUpdates", FAIL the test and skip other steps.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">initialDynamicDNSSettings</emphasis> contains TTL field:
-                <orderedlist numeration="arabic" inheritnum="inherit">
-                  <?dbfo label-width="3.5em"?>
                   <listitem>
                     <para>
-                      If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.TTL value is not equal to PT25S, FAIL the test and skip other steps.
+                      The DUT responds with a <emphasis role="bold">GetDynamicDNSResponse</emphasis> message with parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            DynamicDNSInformation =: <emphasis role="italic">updatedDynamicDNSSettings</emphasis>
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.Type value is not equal to "ServerUpdates", FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">initialDynamicDNSSettings</emphasis> contains TTL field:
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.TTL value is not equal to PT25S, FAIL the test and skip other steps.
+                          </para>
+                        </listitem>
+                      </orderedlist>
                     </para>
                   </listitem>
                 </orderedlist>
               </para>
-            </listitem>       
-            </orderedlist>
-                </para>
-              </listitem>
-            
-             
+            </listitem>
+
+
             <listitem>
               <para>
                 ONVIF Client invokes <emphasis role="bold">SetDynamicDNS</emphasis> with parameters
@@ -14482,49 +14695,49 @@
                 If <emphasis role="bold">SetDynamicDNSResponse</emphasis> was returned
                 <orderedlist numeration="arabic" inheritnum="inherit">
                   <?dbfo label-width="2.5em"?>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDynamicDNS</emphasis> request.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT responds with a <emphasis role="bold">GetDynamicDNSResponse</emphasis> message with parameters
-                <itemizedlist>
                   <listitem>
                     <para>
-                      DynamicDNSInformation =: <emphasis role="italic">updatedDynamicDNSSettings</emphasis>
+                      ONVIF Client invokes <emphasis role="bold">GetDynamicDNS</emphasis> request.
                     </para>
                   </listitem>
-                </itemizedlist>
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.Type value is not equal to "ClientUpdates", FAIL the test and skip other steps.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.Name value is not equal to "Onvif-Test0-oNvif-Onv12", FAIL the test and skip other steps.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If <emphasis role="italic">initialDynamicDNSSettings</emphasis> contains TTL field:
-                <orderedlist numeration="arabic" inheritnum="inherit">
-                  <?dbfo label-width="3.5em"?>
                   <listitem>
                     <para>
-                      If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.TTL value is not equal to PT30S, FAIL the test and skip other steps.
+                      The DUT responds with a <emphasis role="bold">GetDynamicDNSResponse</emphasis> message with parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            DynamicDNSInformation =: <emphasis role="italic">updatedDynamicDNSSettings</emphasis>
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.Type value is not equal to "ClientUpdates", FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.Name value is not equal to "Onvif-Test0-oNvif-Onv12", FAIL the test and skip other steps.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">initialDynamicDNSSettings</emphasis> contains TTL field:
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            If <emphasis role="italic">updatedDynamicDNSSettings</emphasis>.TTL value is not equal to PT30S, FAIL the test and skip other steps.
+                          </para>
+                        </listitem>
+                      </orderedlist>
                     </para>
                   </listitem>
                 </orderedlist>
               </para>
-            </listitem>  
-             </orderedlist>
-                </para>
-              </listitem>
+            </listitem>
             <listitem>
               <para>
                 If the DUT returned SOAP 1.2 fault message on both step <xref linkend="tc.DEVICE-2-1-37.SetServerUpdatesResponse"/> and step <xref linkend="tc.DEVICE-2-1-37.SetClientUpdatesResponse"/>, FAIL the test and restore the DUT settings.
@@ -14695,7 +14908,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify the behavior of the DUT for invalid TimeZone configuration.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile Q scope or Profile T scope.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile T scope or Profile D scope.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -14959,7 +15172,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify the behavior of the DUT for invalid system date and time configuration.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile Q scope or Profile T scope.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile T scope or Profile D scope.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -15196,7 +15409,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To reload all parameters of the DUT to their default values using SetSystemFactoryDefault command. This test is for hard factory default.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile Q scope or Profile T scope.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile T scope or Profile D scope.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -15276,7 +15489,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> Factory default (ONVIF Core Specification)
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
@@ -15285,7 +15498,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To reload all parameters of the DUT to their default values using SetSystemFactoryDefault command. This test is for soft factory default.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile Q scope or Profile T scope.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile T scope or Profile D scope.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -15412,29 +15625,56 @@
             </listitem>
             <listitem>
               <para>
-                The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted.
+                If DUT supports Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="3.5em"?>
+                  <listitem>
+                    <para>
+                      The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will wait for <emphasis role="bold">Hello</emphasis> message sent from newly configured address by the DUT. Then ONVIF Client will verify the <emphasis role="bold">Hello</emphasis> message and start using this newly configured address for further communications with DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will send Unicast <emphasis role="bold">Probe</emphasis> message to discover the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      The DUT will send a <emphasis role="bold">ProbeMatch</emphasis> message.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will verify the <emphasis role="bold">ProbeMatch</emphasis> message sent by the DUT.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                ONVIF Client will wait for <emphasis role="bold">Hello</emphasis> message sent from newly configured address by the DUT. Then ONVIF Client will verify the <emphasis role="bold">Hello</emphasis> message and start using this newly configured address for further communications with DUT.
+                If DUT does not support Discovery:
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="3.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client uses initial IP address of the DUT for further test cases.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
-            <listitem>
-              <para>
-                ONVIF Client will send Unicast <emphasis role="bold">Probe</emphasis> message to discover the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                The DUT will send a <emphasis role="bold">ProbeMatch</emphasis> message.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client will verify the <emphasis role="bold">ProbeMatch</emphasis> message sent by the DUT.
-              </para>
-            </listitem>
+            
           </orderedlist>
         </para>
         <para>
@@ -15670,7 +15910,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To set the DUT system date and time using SetSystemDateAndTime command, date and time are entered manually.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile Q scope or Profile T scope.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile T scope or Profile D scope.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -15776,7 +16016,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To set the DUT system date and time using SetSystemDateAndTime command via NTP.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile Q scope or Profile T scope.
+          <emphasis role="bold">Pre-Requisite:</emphasis> Profile S scope or Profile G scope or Profile C scope or Profile A scope or Profile T scope or Profile D scope. NTP is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client, DUT and NTP
@@ -16169,7 +16409,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify Start System Restore.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> System backup and restore using HTTP GET and POST is supported by the DUT as indicated by the System.HttpSystemBackup capability.
+          <emphasis role="bold">Pre-Requisite:</emphasis> System backup and restore using HTTP GET and POST is supported by the DUT as indicated by the System.HttpSystemBackup capability. Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -16389,7 +16629,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify Start System Restore in the case if backup file is invalid.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> System backup and restore using HTTP GET and POST is supported by the DUT as indicated by the System.HttpSystemBackup capability.
+          <emphasis role="bold">Pre-Requisite:</emphasis> System backup and restore using HTTP GET and POST is supported by the DUT as indicated by the System.HttpSystemBackup capability. Discovery is supported by the DUT.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -16511,7 +16751,399 @@
           <emphasis role="bold">Note:</emphasis> HTTP POST request could require authentication.
         </para>
       </section>
-    </section>
+      <!--DEVICE-3-1-16-->
+      <section xml:id="tc.DEVICE-3-1-16">
+        <title>Firmware Upload</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> DEVICE-3-1-16
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Firmware Upload via HTTP
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> StartFirmwareUgrade
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that the firmware upgrade is correctly executed.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. HttpFirmwareUpgrade feature is supported by the DUT as indicated by the System.HttpFirmwareUpgrade. Location of Compatible firmware file is provided.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client invokes GetUsers without any authentication.</para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis> with user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>UserList</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">StartFirmwareUpgrade</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>
+                      UploadUri =: <emphasis role="italic">uploadUri</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      UploadDelay =: <emphasis role="italic">uploadDuration</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ExpectedDownTime =: <emphasis role="italic">downTimeDuration</emphasis>
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client waits for time <emphasis role="italic">uploadDuration</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">HTTP POST</emphasis> to <emphasis role="italic">uploadUri</emphasis> with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>HTTP Header [Content-Type] := "application/octet-stream"</para>
+                  </listitem>
+                  <listitem>
+                    <para>HTTP Body := compatible firmware file</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 200 OK</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If BYE message is supported by the DUT as indicated by the System.DiscoveryBye capabilities, the DUT will send Multicast
+                <emphasis role="bold">BYE</emphasis> message before rebooting with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>EndpointReference.Address equal to unique endpoint reference of the DUT</para>
+                  </listitem>
+                  <listitem>
+                    <para>Types list</para>
+                  </listitem>
+                  <listitem>
+                    <para>Scopes list</para>
+                  </listitem>
+                  <listitem>
+                    <para>XAddrs list</para>
+                  </listitem>
+                  <listitem>
+                    <para>MetadataVersion</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Until <emphasis role="italic">timeout1</emphasis> timeout expires, repeat the following steps
+              </para>
+              <para>
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width="2.5em"?>
+                  <listitem>
+                    <para>
+                      The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted with parameters:
+                      <itemizedlist>
+                        <listitem>
+                          <para>EndpointReference.Address equal to unique endpoint reference of the DUT</para>
+                        </listitem>
+                        <listitem>
+                          <para>Types list</para>
+                        </listitem>
+                        <listitem>
+                          <para>Scopes list</para>
+                        </listitem>
+                        <listitem>
+                          <para>XAddrs list := xaddrsList</para>
+                        </listitem>
+                        <listitem>
+                          <para>MetadataVersion</para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      If <emphasis role="italic">xaddrsList</emphasis> contains URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, go to step 15.
+                    </para>
+                  </listitem>
+                </orderedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If <emphasis role="italic">timeout1</emphasis> timeout expires for step 5 without Hello with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF client waits for 5 seconds after Hello was received.</para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client invokes GetUsers without any authentication.</para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 401 Unauthorized</emphasis> error.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">GetUsers</emphasis> with user with the user level Administrator credantials.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">GetUsersResponse</emphasis> message with parameters
+                <itemizedlist>
+                  <listitem>
+                    <para>UserList </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetUsersResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT allowed Anonymous access to the <emphasis role="bold">GetUsers</emphasis> command.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not response with <emphasis role="bold">HTTP 200 OK</emphasis> to HTTP POST request.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">Bye</emphasis> message with EndpointReference.Address equal to unique endpoint reference of the DUT in case Bye message was supported by the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">GetSystemDateAndTimeResponse</emphasis> message.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> Reboot Timeout will be used for waiting for the Bye message from the DUT. Reboot Timeout will be taken from the Reboot Timeout field of ONVIF Device Test Tool.
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> <emphasis role="italic">timeout1</emphasis> will be selected as maximum of (<emphasis role="italic">downTimeDuration</emphasis>, Reboot Timeout), where Reboot Timeout will be taken from the Reboot Timeout field of ONVIF Device Test Tool.
+        </para>
+        <para>
+          <emphasis role="bold">Note:</emphasis> IPv4 address from Hello shall be used for further test cases.
+        </para>
+      </section>
+      <!--DEVICE-3-1-17-->
+      <section xml:id="tc.DEVICE-3-1-17">
+        <title>Invalid Firmware Upload</title>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> DEVICE-3-1-17
+        </para>
+        <para>
+          <emphasis role="bold">Specification Coverage:</emphasis> Firmware Upload via HTTP
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> StartFirmwareUgrade
+        </para>
+        <para>
+          <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
+        </para>
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that the firmware upgrade fails with the expected error code.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis> GetServices command is supported by the DUT. HttpFirmwareUpgradefeature is supported by the DUT as indicated by the System.HttpFirmwareUpgrade. Discovery is supported by the DUT.
+        </para>
+        <para>
+          <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+        </para>
+        <para>
+          <emphasis role="bold">Test Sequence:</emphasis>
+        </para>
+        <para>
+          <orderedlist>
+            <?dbfo label-width="1.5em"?>
+            <listitem>
+              <para>
+                Start an ONVIF Client.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Start the DUT.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">StartFirmwareUpgrade</emphasis>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with a <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message with parameters<itemizedlist>
+                  <listitem>
+                    <para>
+                      UploadUri =: <emphasis role="italic">uploadUri</emphasis>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>UploadDelay =: duration</para>
+                  </listitem>
+                  <listitem>
+                    <para>ExpectedDownTime</para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client waits for time <emphasis role="italic">duration</emphasis>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ONVIF Client invokes <emphasis role="bold">HTTP POST</emphasis> to <emphasis role="italic">uploadUri</emphasis> with parameters
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>HTTP Header [Content-Type] := "application/octet-stream"</para>
+                </listitem>
+                <listitem>
+                  <para>HTTP Body := invalid firmware file</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT responds with <emphasis role="bold">HTTP 415</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>ONVIF client waits Reboot timeout.</para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client sends <emphasis role="bold">Probe</emphasis> message and if DUT does not respond with <emphasis role="bold">ProbeMatch</emphasis> mesage then go to the step 10. If DUT responds, then finish the test.</para>
+            </listitem>
+            <listitem>
+              <para>ONVIF Client waits for Hello message sent from newly configured address by the DUT. Then ONVIF Client starts using this newly configured address for further communications with DUT.</para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS –</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT passed all assertions.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL –</emphasis>
+        </para>
+        <para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The DUT did not send <emphasis role="bold">StartFirmwareUpgradeResponse</emphasis> message.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The DUT did not response with <emphasis role="bold">HTTP 415</emphasis> to HTTP POST request.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+      </section>
+
+      </section>
     <!--Security-->
     <section xml:id="tc.device_management.security">
       <title>Security</title>
@@ -19216,7 +19848,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
@@ -19225,7 +19857,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT accepts requests for Device Management Service with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> None.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -19248,39 +19880,121 @@
             </listitem>
             <listitem>
               <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                If Network Configuration is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                If Network Configuration is not supported by the DUT and Metadata feature under Media2 Service is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfigurationsList"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Defaults Namespaces Definition in Each Tag" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConfList</emphasis> - Metadata Configurations list
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client sets Metadata Configuration with default namespaces definition in each tag by following the procedure mentioned in <xref linkend="Annex_HelperSetMetadataConfiguration"/> with the following input parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0] - Metadata Configuration
+                          </para>
+                        </listitem>
+                       <listitem>
+                          <para>
+                            in "Defaults Namespaces Definition in Each Tag" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configuration by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfiguration"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Defaults Namespaces Definition in Each Tag" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0].@token - Token of Metadata Configuration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConf</emphasis> - Metadata Configuration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+ <listitem>
+                          <para>
+                            If <emphasis role="italic">metadataConf</emphasis>.Name != "TestName1", restore DUT settings and FAIL the test.
+                          </para>
+                        </listitem>                
+                </orderedlist>
               </para>
             </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
-              </para>
-            </listitem>
+          <listitem>
+                          <para>
+                            ONVIF Client restores DUT settings.
+                          </para>
+                        </listitem>
           </orderedlist>
         </para>
         <para>
@@ -19330,7 +20044,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
@@ -19339,7 +20053,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT accepts requests for Device Management Service with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> None.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -19351,50 +20065,132 @@
           <orderedlist>
             <?dbfo label-width="1.5em"?>
             <listitem>
+                    <para>
+                      Start an ONVIF Client.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Start the DUT.
+                    </para>
+                  </listitem>
+            <listitem>
               <para>
-                Start an ONVIF Client.
+                If Network Configuration is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>                  
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                Start the DUT.
+                If Network Configuration is not supported by the DUT and Metadata feature under Media2 Service is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfigurationsList"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Defaults Namespaces Definition in Parent Tag" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConfList</emphasis> - Metadata Configurations list
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client sets Metadata Configuration with default namespaces definition in parent tag by following the procedure mentioned in <xref linkend="Annex_HelperSetMetadataConfiguration"/> with the following input parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0] - Metadata Configuration
+                          </para>
+                        </listitem>
+                       <listitem>
+                          <para>
+                            in "Defaults Namespaces Definition in Parent Tag" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configuration by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfiguration"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Defaults Namespaces Definition in Parent Tag" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0].@token - Token of Metadata Configuration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConf</emphasis> - Metadata Configuration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+ <listitem>
+                          <para>
+                            If <emphasis role="italic">metadataConf</emphasis>.Name != "TestName1", restore DUT settings and FAIL the test.
+                          </para>
+                        </listitem>                
+                </orderedlist>
               </para>
             </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
-              </para>
-            </listitem>
+          <listitem>
+                          <para>
+                            ONVIF Client restores DUT settings.
+                          </para>
+                        </listitem>
           </orderedlist>
         </para>
         <para>
@@ -19444,7 +20240,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
@@ -19453,7 +20249,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT accepts requests for Device Management Service with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> None.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -19476,39 +20272,121 @@
             </listitem>
             <listitem>
               <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                If Network Configuration is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                If Network Configuration is not supported by the DUT and Metadata feature under Media2 Service is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfigurationsList"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Non-Standard Prefixes" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConfList</emphasis> - Metadata Configurations list
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client sets Metadata Configuration with Non-Standard Prefixes namespaces definition by following the procedure mentioned in <xref linkend="Annex_HelperSetMetadataConfiguration"/> with the following input parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0] - Metadata Configuration
+                          </para>
+                        </listitem>
+                       <listitem>
+                          <para>
+                            in "Non-Standard Prefixes" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configuration by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfiguration"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Non-Standard Prefixes" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0].@token - Token of Metadata Configuration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConf</emphasis> - Metadata Configuration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+ <listitem>
+                          <para>
+                            If <emphasis role="italic">metadataConf</emphasis>.Name != "TestName1", restore DUT settings and FAIL the test.
+                          </para>
+                        </listitem>                
+                </orderedlist>
               </para>
             </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
-              </para>
-            </listitem>
+        <listitem>
+                          <para>
+                            ONVIF Client restores DUT settings.
+                          </para>
+                        </listitem>
           </orderedlist>
         </para>
         <para>
@@ -19558,7 +20436,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
@@ -19567,7 +20445,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT accepts requests for Device Management Service with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> None.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -19590,39 +20468,121 @@
             </listitem>
             <listitem>
               <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                If Network Configuration is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                If Network Configuration is not supported by the DUT and Metadata feature under Media2 Service is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfigurationsList"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Different Prefixes for the Same Namespace" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConfList</emphasis> - Metadata Configurations list
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client sets Metadata Configuration with Different Prefixes for the Same Namespace namespaces declaration by following the procedure mentioned in <xref linkend="Annex_HelperSetMetadataConfiguration"/> with the following input parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0] - Metadata Configuration
+                          </para>
+                        </listitem>
+                       <listitem>
+                          <para>
+                            in "Different Prefixes for the Same Namespace" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configuration by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfiguration"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Different Prefixes for the Same Namespace" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0].@token - Token of Metadata Configuration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConf</emphasis> - Metadata Configuration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+ <listitem>
+                          <para>
+                            If <emphasis role="italic">metadataConf</emphasis>.Name != "TestName1", restore DUT settings and FAIL the test.
+                          </para>
+                        </listitem>                
+                </orderedlist>
               </para>
             </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
-              </para>
-            </listitem>
+          <listitem>
+                          <para>
+                            ONVIF Client restores DUT settings.
+                          </para>
+                        </listitem>
           </orderedlist>
         </para>
         <para>
@@ -19672,7 +20632,7 @@
           <emphasis role="bold">Specification Coverage:</emphasis> None.
         </para>
         <para>
-          <emphasis role="bold">Feature Under Test:</emphasis> XML nmespaces definition
+          <emphasis role="bold">Feature Under Test:</emphasis> XML namespaces definition
         </para>
         <para>
           <emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl
@@ -19681,7 +20641,7 @@
           <emphasis role="bold">Test Purpose:</emphasis> To verify that the DUT accepts requests for Device Management Service with different namespaces definition.
         </para>
         <para>
-          <emphasis role="bold">Pre-Requisite:</emphasis> Network Configuration is supported by the DUT.
+          <emphasis role="bold">Pre-Requisite:</emphasis> None.
         </para>
         <para>
           <emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
@@ -19704,39 +20664,121 @@
             </listitem>
             <listitem>
               <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                If Network Configuration is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
+                    </para>
+                  </listitem>
+                </orderedlist>
               </para>
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT.
+                If Network Configuration is not supported by the DUT and Metadata feature under Media2 Service is supported by the DUT
+                <orderedlist numeration="arabic" inheritnum="inherit">
+                  <?dbfo label-width=2.5em"?>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configurations list by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfigurationsList"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Same Prefixes for Different Namespaces" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConfList</emphasis> - Metadata Configurations list
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client sets Metadata Configuration with Same Prefixes for Different Namespaces namespaces declaration by following the procedure mentioned in <xref linkend="Annex_HelperSetMetadataConfiguration"/> with the following input parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0] - Metadata Configuration
+                          </para>
+                        </listitem>
+                       <listitem>
+                          <para>
+                            in "Same Prefixes for Different Namespaces" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      ONVIF Client retrieves Metadata Configuration by following the procedure mentioned in <xref linkend="Annex_HelperGetMetadataConfiguration"/> with the following input and output parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>
+                            in "Same Prefixes for Different Namespaces" - option for namespaces declaration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            in <emphasis role="italic">metadataConfList</emphasis>[0].@token - Token of Metadata Configuration
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            out <emphasis role="italic">metadataConf</emphasis> - Metadata Configuration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+ <listitem>
+                          <para>
+                            If <emphasis role="italic">metadataConf</emphasis>.Name != "TestName1", restore DUT settings and FAIL the test.
+                          </para>
+                        </listitem>                
+                </orderedlist>
               </para>
             </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">SetDNS</emphasis> message (FromDHCP = false, DNSManual = ["IPv4", "DNS IP"]) to retrieve the original settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">SetDNSResponse</emphasis> message from the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client invokes <emphasis role="bold">GetDNS</emphasis> message to retrieve the settings of the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Verify the <emphasis role="bold">GetDNSResponse</emphasis> message from the DUT and verify DNS configurations in the DUT.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                ONVIF Client will invoke <emphasis role="bold">SetDNS</emphasis> message to restore the original settings of the DUT.
-              </para>
-            </listitem>
+          <listitem>
+                          <para>
+                            ONVIF Client restores DUT settings.
+                          </para>
+                        </listitem>
           </orderedlist>
         </para>
         <para>
@@ -21488,47 +22530,68 @@
                   <?dbfo label-width="2.5em"?>
                   <listitem>
                     <para>
-                      The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted with parameters:
-                      <itemizedlist>
+                      If DUT supports Discovery:
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
                         <listitem>
                           <para>
-                            EndpointReference.Address equal to unique endpoint reference of the DUT
+                            The DUT will send Multicast <emphasis role="bold">Hello</emphasis> message after it is successfully rebooted with parameters:
+                            <itemizedlist>
+                              <listitem>
+                                <para>
+                                  EndpointReference.Address equal to unique endpoint reference of the DUT
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  Types list
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  Scopes list
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  XAddrs list := <emphasis role="italic">xaddrsList</emphasis>
+                                </para>
+                              </listitem>
+                              <listitem>
+                                <para>
+                                  MetadataVersion
+                                </para>
+                              </listitem>
+                            </itemizedlist>
                           </para>
                         </listitem>
                         <listitem>
                           <para>
-                            Types list
+                            If <emphasis role="italic">xaddrsList</emphasis> contains URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, go to step <link linkend="tc.DEVICE-9-1-4.12">12</link>.
                           </para>
                         </listitem>
-                        <listitem>
-                          <para>
-                            Scopes list
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            XAddrs list := <emphasis role="italic">xaddrsList</emphasis>
-                          </para>
-                        </listitem>
-                        <listitem>
-                          <para>
-                            MetadataVersion
-                          </para>
-                        </listitem>
-                      </itemizedlist>
+                      </orderedlist>
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      If <emphasis role="italic">xaddrsList</emphasis> contains URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, go to step <link linkend="tc.DEVICE-9-1-4.12">12</link>.
+                      If DUT does not support Discovery:
+                      <orderedlist numeration="arabic" inheritnum="inherit">
+                        <?dbfo label-width="3.5em"?>
+                        <listitem>
+                          <para>
+                            ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                          </para>
+                        </listitem>
+                      </orderedlist>
                     </para>
-                  </listitem>
+                  </listitem>                  
                 </orderedlist>
               </para>
             </listitem>
             <listitem xml:id="tc.DEVICE-9-1-4.11">
               <para>
-                If <emphasis role="italic">timeout2</emphasis> timeout expires for step <link linkend="tc.DEVICE-9-1-4.10">10</link> without <emphasis role="bold">Hello</emphasis> with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
+                If Discovery is supported and <emphasis role="italic">timeout2</emphasis> timeout expires for step <link linkend="tc.DEVICE-9-1-4.10">10</link> without <emphasis role="bold">Hello</emphasis> with URI address with not a LinkLocal IPv4 address from ONVIF Client subnet, FAIL the test and skip other steps.
               </para>
             </listitem>
             <listitem xml:id="tc.DEVICE-9-1-4.12">
@@ -24708,7 +25771,7 @@
         <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to restore the original default network settings.
       </para>
       <para>
-        <emphasis role="bold">Pre-requisite:</emphasis> None.
+        <emphasis role="bold">Pre-requisite:</emphasis> Network Configuration is supported.
       </para>
       <para>
         <emphasis role="bold">Input:</emphasis> Original default network settings (<emphasis role="italic">defaultNetworkSettings</emphasis>).
@@ -24722,7 +25785,8 @@
       <para>
         <orderedlist>
           <?dbfo label-width="1.5em"?>
-          <listitem>
+          <listitem xml:id="tc.Annex_HelperRestoreNetworkSettings.NetworkRestore"
+                    xreflabel="1">
             <para>
               ONVIF Client invokes <emphasis role="bold">SetNetworkInterfaces</emphasis> request with parameters
               <itemizedlist>
@@ -24808,12 +25872,44 @@
                 </listitem>
               </orderedlist>
             </para>
+          </listitem>          
+          <listitem>
+            <para>
+              If DUT supports Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    The DUT sends <emphasis role="bold">Hello</emphasis> message from the default network interface during <emphasis role="italic">rebootTimeout</emphasis>.
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
-              The DUT sends <emphasis role="bold">Hello</emphasis> message from the default network interface.
+              If DUT does not support Discovery:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+                <listitem>
+                  <para>
+                    ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If manual IP was set at step <xref linkend="tc.Annex_HelperRestoreNetworkSettings.NetworkRestore"/>, ONVIF Client uses set IP as IP of the DUT for further test cases.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If DHCP IP was set at step <xref linkend="tc.Annex_HelperRestoreNetworkSettings.NetworkRestore"/>, ONVIF Client uses initial IP of the DUT for further test cases.
+                  </para>
+                </listitem>
+              </orderedlist>
             </para>
           </listitem>
+
         </orderedlist>
       </para>
       <para>
@@ -25692,7 +26788,7 @@
         <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to turn on IPv4 DHCP.
       </para>
       <para>
-        <emphasis role="bold">Pre-requisite:</emphasis> None.
+        <emphasis role="bold">Pre-requisite:</emphasis> Network Configuration is supported. Discovery is supported.
       </para>
       <para>
         <emphasis role="bold">Input:</emphasis> None.
@@ -25876,7 +26972,7 @@
     </section>
     <!--A.13-->
     <section xml:id="Annex_HelperTurnOffIPv4DHCP">
-      <title>Procedure to Turn On IPv4 DHCP</title>
+      <title>Procedure to Turn Off IPv4 DHCP</title>
       <para>
         <emphasis role="bold">Name:</emphasis> HelperTurnOffIPv4DHCP
       </para>
@@ -25884,7 +26980,7 @@
         <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to turn off IPv4 DHCP.
       </para>
       <para>
-        <emphasis role="bold">Pre-requisite:</emphasis> None.
+        <emphasis role="bold">Pre-requisite:</emphasis> Network Configuration is supported by the DUT.
       </para>
       <para>
         <emphasis role="bold">Input:</emphasis> None.
@@ -26021,7 +27117,28 @@
                 </listitem>
                 <listitem>
                   <para>
-                    The DUT sends <emphasis role="bold">Hello</emphasis> message from the default network interface.
+                    If DUT supports Discovery:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          The DUT sends <emphasis role="bold">Hello</emphasis> message from the default network interface during <emphasis role="italic">rebootTimeout</emphasis>.
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If DUT does not support Discovery:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                        </para>
+                      </listitem>
+                    </orderedlist>
                   </para>
                 </listitem>
               </orderedlist>
@@ -26062,7 +27179,7 @@
           </listitem>
           <listitem>
             <para>
-              DUT did not send <emphasis role="bold">Hello</emphasis> message during <emphasis role="italic">rebootTimeout</emphasis>.
+              DUT did not send <emphasis role="bold">Hello</emphasis> message during <emphasis role="italic">rebootTimeout</emphasis> if Discovery is supported.
             </para>
           </listitem>
         </itemizedlist>
@@ -26081,7 +27198,7 @@
         <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to turn on IPv6 DHCP.
       </para>
       <para>
-        <emphasis role="bold">Pre-requisite:</emphasis> IPv6 is supported by DUT.
+        <emphasis role="bold">Pre-requisite:</emphasis> IPv6 is supported. Network Configuration is supported. Discovery is supported.
       </para>
       <para>
         <emphasis role="bold">Input:</emphasis> None.
@@ -26423,7 +27540,28 @@
                 </listitem>
                 <listitem>
                   <para>
-                    The DUT sends <emphasis role="bold">Hello</emphasis> message from the default network interface.
+                    If DUT supports Discovery:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          The DUT sends <emphasis role="bold">Hello</emphasis> message from the default network interface during <emphasis role="italic">rebootTimeout</emphasis>.
+                        </para>
+                      </listitem>
+                    </orderedlist>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    If DUT does not support Discovery:
+                    <orderedlist numeration="arabic" inheritnum="inherit">
+                      <?dbfo label-width="3.5em"?>
+                      <listitem>
+                        <para>
+                          ONVIF Client waits during <emphasis role="italic">rebootTimeout</emphasis>.
+                        </para>
+                      </listitem>
+                    </orderedlist>
                   </para>
                 </listitem>
               </orderedlist>
@@ -28130,6 +29268,321 @@
             </para>
           </listitem>
 
+        </itemizedlist>
+      </para>
+    </section>
+    <!--A.32-->
+    <section xml:id="Annex_HelperGetMetadataConfigurationsList" xreflabel="Annex A.32">
+      <title>Get Metadata Configurations List</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperGetMetadataConfigurationsList
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to retrieve Metadata Configurations List.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> Media2 Service is received from the DUT. Metadata feature under Media2 Service is supported by the DUT. Option for namespaces declartion.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> Metadata Configurations List (<emphasis role="italic">metadataConfList</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+                          <para>                            
+                            All requests to the DUT shall have requested namespaces definition (see corresponding option in <link linkend="Annex_namespaces_examples">Annex A.11</link>)
+                          </para>
+                        </listitem>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetMetadataConfigurations</emphasis> request with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    ConfigurationToken skipped
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ProfileToken skipped
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with <emphasis role="bold">GetMetadataConfigurationsResponse</emphasis> with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Configurations list =: <emphasis role="italic">metadataConfList</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">metadataConfList</emphasis> is empty, FAIL the test.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT did not send <emphasis role="bold">GetMetadataConfigurationsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  <!--A.33-->
+  <section xml:id="Annex_HelperGetMetadataConfiguration" xreflabel="Annex A.33">
+      <title>Get Metadata Configuration</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperGetMetadataConfiguration
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to retrieve Metadata Configuration.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> Media2 Service is received from the DUT. Metadata feature under Media2 Service is supported by the DUT.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> Token of Metadata Configuration (<emphasis role="italic">configurationToken</emphasis>). Option for namespaces declartion.
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> Metadata Configuration (<emphasis role="italic">metadataConf</emphasis>).
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>
+          <listitem>
+                          <para>                            
+                            All requests to the DUT shall have requested namespaces definition (see corresponding option in <link linkend="Annex_namespaces_examples">Annex A.11</link>)
+                          </para>
+                        </listitem>
+          <listitem>
+            <para>
+              ONVIF Client invokes <emphasis role="bold">GetMetadataConfigurations</emphasis> request with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    ConfigurationToken := <emphasis role="italic">configurationToken</emphasis>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    ProfileToken skipped
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              The DUT responds with <emphasis role="bold">GetMetadataConfigurationsResponse</emphasis> with parameters
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    Configurations list =: <emphasis role="italic">metadataConfList</emphasis>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              If <emphasis role="italic">metadataConfList</emphasis> is empty, FAIL the test.
+            </para>
+          </listitem>
+         <listitem>
+            <para>
+              Set <emphasis role="italic">metadataConfList</emphasis>[0] =: <emphasis role="italic">metadataConf</emphasis>.
+            </para>
+          </listitem>
+         <listitem>
+            <para>
+              If <emphasis role="italic">metadataConf</emphasis>.token != <emphasis role="italic">configurationToken</emphasis>, FAIL the test.
+            </para>
+          </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT did not send <emphasis role="bold">GetMetadataConfigurationsResponse</emphasis> message.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+  <!--A.34-->
+<section xml:id="Annex_HelperSetMetadataConfiguration" xreflabel="Annex A.34">
+      <title>Set Metadata Configuration For Namespace Handling Test Cases</title>
+      <para>
+        <emphasis role="bold">Name:</emphasis> HelperSetMetadataConfigurationForNamespaceHandling
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to change Metadata Configuration with different namespaces definition.
+      </para>
+      <para>
+        <emphasis role="bold">Pre-requisite:</emphasis> Media2 Service is received from the DUT. Metadata feature under Media2 Service is supported by the DUT.
+      </para>
+      <para>
+        <emphasis role="bold">Input:</emphasis> Metadata Configuration (<emphasis role="italic">metadataConf</emphasis>). Option for namespaces declartion.
+      </para>
+      <para>
+        <emphasis role="bold">Returns:</emphasis> None.
+      </para>
+      <para>
+        <emphasis role="bold">Procedure:</emphasis>
+      </para>
+      <para>
+        <orderedlist>
+          <?dbfo label-width="1.5em"?>          
+           <listitem>
+                          <para>                            
+                            All requests to the DUT shall have requested namespaces definition (see corresponding option in <link linkend="Annex_namespaces_examples">Annex A.11</link>)
+                          </para>
+                        </listitem>
+          <listitem>
+                    <para>
+                      ONVIF Client invokes <emphasis role="bold">SetMetadataConfiguration</emphasis> request with parameters
+                      <itemizedlist>
+                        <listitem>
+                          <para>                            
+                            Configuration.@token := <emphasis role="italic">metadataConfList</emphasis>[0].@token
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.Name := "TestName1"
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.UseCount := <emphasis role="italic">metadataConfList</emphasis>[0].UseCount
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.CompressionType := <emphasis role="italic">metadataConfList</emphasis>[0].CompressionType
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.GeoLocation := <emphasis role="italic">metadataConfList</emphasis>[0].GeoLocation
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.ShapePolygon := <emphasis role="italic">metadataConfList</emphasis>[0].ShapePolygon
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.PTZStatus := <emphasis role="italic">metadataConfList</emphasis>[0].PTZStatus
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.Events := <emphasis role="italic">metadataConfList</emphasis>[0].Events
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.Analytics := <emphasis role="italic">metadataConfList</emphasis>[0].Analytics
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.Multicast := <emphasis role="italic">metadataConfList</emphasis>[0].Multicast
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.SessionTimeout := <emphasis role="italic">metadataConfList</emphasis>[0].SessionTimeout
+                          </para>
+                        </listitem>
+                        <listitem>
+                          <para>
+                            Configuration.AnalyticsEngineConfiguration := <emphasis role="italic">metadataConfList</emphasis>[0].AnalyticsEngineConfiguration
+                          </para>
+                        </listitem>
+                      </itemizedlist>
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      DUT responds with <emphasis role="bold">SetMetadataConfigurationResponse</emphasis> message.
+                    </para>
+                  </listitem>
+        </orderedlist>
+      </para>
+      <para>
+        <emphasis role="bold">Procedure Result:</emphasis>
+      </para>
+      <para>
+        <emphasis role="bold">PASS –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT passes all assertions.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        <emphasis role="bold">FAIL –</emphasis>
+        <itemizedlist>
+          <listitem>
+            <para>
+              DUT did not send <emphasis role="bold">SetMetadataConfigurationResponse</emphasis> message.
+            </para>
+          </listitem>
         </itemizedlist>
       </para>
     </section>

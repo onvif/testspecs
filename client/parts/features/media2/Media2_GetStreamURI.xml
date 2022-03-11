@@ -84,14 +84,6 @@
           <emphasis role="bold">Feature Under Test:</emphasis> Get Stream URI Using Media2 (Media2_GetStreamURI_Media2_GetStreamURIRequest)
         </para>
         <para>
-          <emphasis role="bold"
-                    annotations="GetStreamURI">Profile T Normative Reference:</emphasis> Mandatory
-        </para>
-        <para>
-          <emphasis role="bold"
-                    annotations="GetStreamUri">Profile M Normative Reference:</emphasis> Mandatory
-        </para>
-        <para>
           <emphasis role="bold">Test Purpose:</emphasis> To verify that stream URI provided by Device is received by Client using the
           <emphasis role="bold">GetStreamUri</emphasis> operation.
         </para>

@@ -227,12 +227,6 @@
         <emphasis role="bold">Feature Under Test:</emphasis> Access Door (DoorControl_AccessDoor)
       </para>
       <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="AccessDoor">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         change the state of door using AccessDoor operation.
       </para>
@@ -327,12 +321,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Lock Door (DoorControl_LockDoor)
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="LockDoor">Profile D Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -430,12 +418,7 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Unlock Door (DoorControl_UnlockDoor)
       </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Mandatory
-      </para>
-      <para>
-        <emphasis role="bold" annotations="UnlockDoor">Profile D Normative Reference:</emphasis> Mandatory
-      </para>
+      
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         change the state of door using UnlockDoor operation.
@@ -531,9 +514,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Double Lock Door (DoorControl_DoubleLockDoor)
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -632,9 +612,6 @@
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Block Door (DoorControl_BlockDoor)
       </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
-      </para>
 
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
@@ -731,9 +708,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Lock Down Door (DoorControl_LockDownDoor)
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
       </para>
 
       <para>
@@ -878,9 +852,6 @@
       </para>
       <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Lock Open Door (DoorControl_LockOpenDoor)
-      </para>
-      <para>
-        <emphasis role="bold">Profile C Normative Reference:</emphasis> Conditional
       </para>
 
       <para>

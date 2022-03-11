@@ -68,13 +68,7 @@
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Supported Rules (GetSupportedRules_GetSupportedRulesRequest)
       </para>
-      <para>
-        <emphasis role="bold" annotations="GetSupportedRules">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-      <para>
-        <emphasis role="bold" annotations="GetSupportedRules">Profile M Normative Reference:</emphasis> Conditional
-      </para>
-     
+           
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to
         retrieve supported rules using the <emphasis role="bold">GetSupportedRules</emphasis> operation.

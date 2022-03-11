@@ -21,7 +21,7 @@
         <emphasis role="bold">Validated Feature:</emphasis> Get Supported Metadata (GetSupportedMetadata)
       </para>
       <para>
-        <emphasis role="bold" annotations="TODO">Check Condition based on Device Features:</emphasis> Supported Metadata is supported by Device.
+        <emphasis role="bold" annotations="SupportedMetadata">Check Condition based on Device Features:</emphasis> Supported Metadata is supported by Device.
       </para>
       <para>
         <emphasis role="bold">Required Number of Devices:</emphasis> 3
@@ -66,9 +66,6 @@
       </para>
        <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Supported Metadata (GetSupportedMetadata_GetSupportedMetadataRequest)
-      </para>      
-      <para>
-        <emphasis role="bold" annotations="GetSupportedMetadata">Profile M Normative Reference:</emphasis> Mandatory
       </para>
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to

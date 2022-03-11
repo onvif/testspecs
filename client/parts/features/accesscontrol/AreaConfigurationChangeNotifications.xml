@@ -63,18 +63,18 @@
             <para>
               Client is considered as supporting Configuration change  notification if the following conditions are met:<itemizedlist>
                 <listitem>
-                  <para>Client supports EventHandling_Pullpoint feature AND</para>
+                  <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.AreaConfigurationChangeNotifications.EVENTHANDLING-1"/> section) AND</para>
                 </listitem>
                 <listitem>
-                  <para>Client supports AreaInformation_AreaInfoList feature AND</para>
+                  <para>Client supports AreaInformation_AreaInfoList feature (please see <xref linkend="tc.AreaInformation.AREAINFORMATION-1"/> section) AND</para> 
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.35">
                   <para>
                     Client is able to retrieve <emphasis role="bold">tns1:Configuration/Area/Changed</emphasis> notification
                     AND
                   </para>
                 </listitem>
-                <listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.36">
                   <para>
                     Client is able to retrieve <emphasis role="bold">tns1:Configuration/Area/Removed</emphasis> notification.
                   </para>
@@ -89,13 +89,13 @@
               of the following is TRUE:<itemizedlist>
                 <listitem>
                   <para>
-                    Client does not support EventHandling_Pullpoint feature
+                    Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.AreaConfigurationChangeNotifications.EVENTHANDLING-1"/> section)
                     OR
                   </para>
                 </listitem>
                 <listitem>
                   <para>
-                    Client does not support AreaInformation_AreaInfoList feature
+                    Client does not support AreaInformation_AreaInfoList feature (please see <xref linkend="tc.AreaInformation.AREAINFORMATION-1"/> section)
                     OR
                   </para>
                 </listitem>
@@ -116,5 +116,9 @@
         </orderedlist>
       </para>
     </section>
+    <section xml:id="tc.AreaConfigurationChangeNotifications.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="../core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </section>
   </section>
 </feature>

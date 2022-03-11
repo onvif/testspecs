@@ -11,12 +11,12 @@
     </revision>
   </revhistory>
   <section xml:id="s.intro.GetDigitalInputs">
-      <title>Get Digital Inputs</title>
-      <para>
-        Get Digital Inputs section specifies Client ability to retrieve of Digital Inputs connected to a device.
-      </para>
+    <title>Get Digital Inputs</title>
+    <para>
+      Get Digital Inputs section specifies Client ability to retrieve of Digital Inputs connected to a device.
+    </para>
   </section>
-      <section xml:id="tc.GetDigitalInputs">
+  <section xml:id="tc.GetDigitalInputs">
     <title>Get Digital Inputs Test Cases</title>
     <section xml:id="tc.GetDigitalInputs.feature">
       <title>Feature Level Normative Reference:</title>
@@ -57,29 +57,55 @@
           <listitem>
             <para>
               Client is considered as supporting Digital Inputs if the
-              following conditions are met:<itemizedlist><listitem><para>
+              following conditions are met:<itemizedlist>
+                <listitem>
+                  <para>
                     Client is able to retrieve available Digital Inputs using
                     <emphasis role="bold">GetDigitalInputs</emphasis> operation
                     AND
-                  </para></listitem><listitem><para>Client supports EventHandling_Pullpoint feature AND</para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>Client supports EventHandling_Pullpoint feature (please see <xref linkend="tc.GetDigitalInputs.EVENTHANDLING-1"/> section) AND</para>
+                </listitem>
+                <listitem xml:id="tc.Unknown.UNKNOWN-1.63">
+                  <para>
                     Client is able to monitor the state of the input pins using
                     <emphasis role="bold">tns1:Device/Trigger/DigitalInput</emphasis> event if device supports DigitalInputs feature.
 
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
               Client is considered as NOT supporting Digital Inputs if
-              ANY of the following is TRUE:<itemizedlist><listitem><para>
+              ANY of the following is TRUE:<itemizedlist>
+                <listitem>
+                  <para>
                     No valid response to <emphasis role="bold">GetDigitalInputs</emphasis> request
                     OR
-                  </para></listitem><listitem><para>Client does not support EventHandling_Pullpoint feature OR</para></listitem><listitem><para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>Client does not support EventHandling_Pullpoint feature (please see <xref linkend="tc.GetDigitalInputs.EVENTHANDLING-1"/> section) OR</para>
+                </listitem>
+                <listitem>
+                  <para>
                     Client does not support <emphasis role="bold">tns1:Device/Trigger/DigitalInput</emphasis> event.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
         </orderedlist>
       </para>
     </section>
+    <section xml:id="tc.GetDigitalInputs.EVENTHANDLING-1" xreflabel="EVENTHANDLING-1 PULLPOINT">   
+       <xi:include href="../core/EventHandling.xml"
+                  xpointer="xpointer(id('tc.EventHandling.EVENTHANDLING-1')/*)" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</section>
     <section xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1">
       <title>GET DIGITAL INPUTS</title>
       <para>
@@ -88,13 +114,10 @@
       <para>
         <emphasis role="bold">Test Case ID:</emphasis> GETDIGITALINPUTS-1
       </para>
-         <para>
+      <para>
         <emphasis role="bold">Feature Under Test:</emphasis> Get Digital Inputs (GetDigitalInputs_GetDigitalInputsRequest)
       </para>
-      <para>
-        <emphasis role="bold" annotations="GetDigitalInputs">Profile T Normative Reference:</emphasis> Conditional
-      </para>
-   
+
       <para>
         <emphasis role="bold">Test Purpose:</emphasis> To verify that digital inputs provided by Device is received by Client using the
         <emphasis role="bold">GetDigitalInputs</emphasis> operation.
@@ -148,18 +171,31 @@
           <listitem>
             <para>
               Client <emphasis role="bold">GetDigitalInputs</emphasis> request in Test Procedure fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.0"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.0">
+                  <para>
                     [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tmd:GetDigitalInputs</emphasis> AND
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
           <listitem>
             <para>
               Device response on the <emphasis role="bold">GetDigitalInputs</emphasis> request fulfills the following requirements:
-              <itemizedlist><listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.1"><para>
+              <itemizedlist>
+                <listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.1">
+                  <para>
                     [S2] It has HTTP 200 response code AND
-                  </para></listitem><listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.2"><para>
+                  </para>
+                </listitem>
+                <listitem xml:id="tc.GetDigitalInputs.GETDIGITALINPUTS-1.2">
+                  <para>
                     [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tmd:GetDigitalInputsResponse</emphasis>.
-                  </para></listitem></itemizedlist></para>
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </para>
           </listitem>
         </itemizedlist>
       </para>
@@ -173,7 +209,7 @@
           </listitem>
         </itemizedlist>
       </para>
-      
+
     </section>
   </section>
 </feature>
