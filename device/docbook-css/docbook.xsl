@@ -207,6 +207,16 @@ font-weight: bold;
         </ul>
     </xsl:template>
     
+    <xsl:template match="db:orderedlist">
+        <ol>
+            <xsl:for-each select="db:listitem">
+                <li>
+                    <xsl:apply-templates select="db:para" mode="plaindiv"/>
+                </li>
+            </xsl:for-each>
+        </ol>
+    </xsl:template>
+    
     <xsl:template match="db:para" mode="plaindiv">
         <div class="plaindiv"><xsl:apply-templates/></div>
     </xsl:template>
