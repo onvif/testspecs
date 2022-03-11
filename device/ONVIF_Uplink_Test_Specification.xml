@@ -853,8 +853,8 @@
 							<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
 						</para>
 						<para>
-				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to get Uplink
-				Service Capabilities from the DUT. </para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to remove all
+				uplink configurations from the DUT. </para>
 						<para>
 				<emphasis role="bold">Pre-requisite:</emphasis> Uplink Service is received from the
 				DUT. </para>
@@ -862,8 +862,7 @@
 							<emphasis role="bold">Input:</emphasis> None
 						</para>
 						<para>
-							<emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
-						</para>
+				<emphasis role="bold">Returns:</emphasis> None. </para>
 						<para>
 							<emphasis role="bold">Procedure:</emphasis>
 						</para>
@@ -872,19 +871,24 @@
 								<?dbfo label-width="1.5em"?>
 								<listitem>
 									<para>
-										ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> request.
+										ONVIF Client invokes <emphasis role="bold">GetUplinks</emphasis> request.
 									</para>
 								</listitem>
 								<listitem>
 									<para>
-										The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
-										<itemizedlist>
-											<listitem>
-												<para>
-													Capabilities =: <emphasis role="italic">cap</emphasis>
-												</para>
-											</listitem>
-										</itemizedlist>
+										The DUT responds with <emphasis role="bold">GetUplinksResponse</emphasis> message.
+									</para>
+								</listitem>
+								<listitem>
+									<para> For each reported configuration with remoteAddress repeat the following steps:
+									<orderedlist>
+										<listitem><para>ONVIF Client invokes <emphasis role="bold">DeleteUplinks</emphasis> request.</para></listitem>
+										<listitem>
+											<para>
+												The DUT responds with <emphasis role="bold">DeleteUplinksResponse</emphasis> message.
+											</para>
+										</listitem>
+									</orderedlist>
 									</para>
 								</listitem>
 							</orderedlist>
@@ -907,7 +911,7 @@
 							<itemizedlist>
 								<listitem>
 									<para>
-										DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+										DUT did not send <emphasis role="bold">DeleteUplinksResponse</emphasis> message.
 									</para>
 								</listitem>
 							</itemizedlist>
