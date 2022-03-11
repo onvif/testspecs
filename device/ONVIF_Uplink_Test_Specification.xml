@@ -379,7 +379,7 @@
 				The DUT shall adhere to the test policies defined in this section.
 			</para>
 			<section xml:id="overview.test_policy.uplink_connect">
-				<title>Uplink Move</title>
+				<title>Uplink</title>
 				<para> The test policies specific to the test case execution of all functional blocks: <itemizedlist>
 						<listitem>
 							<para> DUT shall give the Uplink Service entry point by GetServices
@@ -517,10 +517,10 @@
 								mentioned in <link linkend="Annex_HelperGetServiceCapabilities"
 									>Annex A.1</link> with the following input and output parameters <itemizedlist>
 									<listitem>
-										<para> out <emphasis role="italic">cap</emphasis> - Uplink Service capabilities </para>
+										<para> out <emphasis role="italic">cap</emphasis> - Uplink
+											Service capabilities </para>
 									</listitem>
-								</itemizedlist>
-							</para>
+								</itemizedlist></para>
 									</listitem>
 									<listitem>
 										<para> ONVIF Client removes any existing uplink configurations using the procedure <link
@@ -554,7 +554,10 @@
 										<para> ONVIF Client removes any existing uplink configurations using the procedure <link
 											linkend="Annex_HelperClear">Annex A.2</link>.</para>
 									</listitem>
-								
+									<listitem>
+										<para> ONVIF Client verifies that the device disconnects from the service endpoint.</para>
+									</listitem>
+									
 								</orderedlist>
 							</para>
 							<para>
