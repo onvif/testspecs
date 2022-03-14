@@ -302,19 +302,14 @@
 	</chapter>
 	<chapter xml:id="overview">
 		<title>Test Overview</title>
-		<para>
-			This section provides information about the test setup procedure and required prerequisites, and the test policies that should be followed for test case execution.
-		</para>
+		<para>This section provides information about the test setup procedure and required prerequisites,
+			and the test policies that should be followed for test case execution. </para>
 		<section xml:id="overview.test_setup">
 			<title>Test Setup</title>
 			<section xml:id="overview.test_setup.network_configuration">
 				<title>Network Configuration for DUT</title>
-				<para>
-					The generic test configuration for the execution of test cases defined in this document is as shown below (Figure 4.1).
-				</para>
-				<para>
-					Based on the individual test case requirements, some of the entities in the below setup may not be needed for the execution of those corresponding test cases.
-				</para>
+				<para>The generic test configuration for the execution of test cases defined in this document is
+					as shown below (Figure 1). </para>
 				<figure>
 					<title>Test Configuration for DUT</title>
 					<mediaobject>
@@ -332,6 +327,8 @@
 				<para>
 					<emphasis role="bold">ONVIF Client (Test Tool):</emphasis> Tests are executed by this system and it controls the behavior of the DUT. It handles both expected and unexpected behavior.
 				</para>
+				<para><emphasis role="bold">Service Endpoint:</emphasis> Cloud connection endpoint
+					according to the ONVIF Uplink Specification to which the DUT can connect.</para>
 			</section>
 		</section>
 		<section xml:id="overview.prerequisites">
@@ -552,6 +549,9 @@
 									</listitem>
 									<listitem>
 										<para> ONVIF Client sends GetDeviceInformation via the service endpoint.</para>
+									</listitem>
+									<listitem>
+										<para> ONVIF Client awaits GetDeviceInformationResponse via the service endpoint.</para>
 									</listitem>
 									<listitem>
 										<para> ONVIF Client removes any existing uplink configurations using the procedure <link
