@@ -530,7 +530,7 @@
 							<para> ONVIF Client starts service endpoint.</para>
 						</listitem>
 						<listitem>
-							<para> ONVIF Client calls SetUplink with with parameters</para>
+							<para> ONVIF Client calls SetUplink with with parameters
 								<itemizedlist>
 									<listitem>
 										<para> RemoteAddress  := <emphasis role="italic">IPv4 address and port of service
@@ -543,6 +543,7 @@
 										<para> Without CertificateID  </para>
 									</listitem>
 								</itemizedlist>
+							</para>
 						</listitem>
 									<listitem>
 										<para> ONVIF Client awaits device connecting to service endpoint.</para>
