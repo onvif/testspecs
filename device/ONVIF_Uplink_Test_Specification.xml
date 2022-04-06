@@ -780,6 +780,142 @@
 							</para>
 						</section>
 					</section>
+		<section xml:id="tc.uplink.security">
+			<title>Security</title>
+			<!-- UPLINK-2-1-1 -->
+			<section xml:id="tc.UPLINK-3-1-1">
+				<title>Client Certificate For Uplink Authentication</title>
+				<para>
+					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-3-1-1 </para>
+				<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> GetUplinks (UplinkSpecification), SetUplink (Uplink Specification), DeleteUplink (UplinkSpecification) </para>
+				<para>
+					<emphasis role="bold">Feature Under Test:</emphasis> Connect (uplink), Disconnect(uplink), GetDeviceInformation </para>
+				<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> evicemgmt.wsdl,uplink.wsdl, advancedsecurity.wsdl</para>
+				<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify TLS based authentication can be performed in connection setup and GetDeviceInformation command can be sent to device. </para>
+				<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service, DeviceMgmt service and Advance Security service is received from the DUT.  </para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT </para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist> <?dbfo label-width="1.5em"?>
+						<listitem>
+							<para> Start an ONVIF Client. </para>
+						</listitem>
+						<listitem>
+							<para> Start the DUT. </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters: <itemizedlist>
+									<listitem>
+										<para> IncludeCapability := false </para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters: <itemizedlist>
+									<listitem>
+										<para> Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps. </para>
+						</listitem>
+						<listitem>
+							<para> If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/advancedsecurity/wsdl", FAIL the test and skip other steps. </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client Creates a self signed certifcate, using procedure in <link linkend="Annex_HelperCreateSelfSignedCertificate">Annex A.8</link> </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link linkend="Annex_HelperClear">Annex A.2</link> </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client starts service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client calls SetUplink with with parameters 
+							    <itemizedlist>
+									<listitem>
+										<para> RemoteAddress =: <emphasis role="italic">IPv4 address and port of serviceendpoint</emphasis>
+										</para>
+									</listitem>
+									<listitem>
+										<para> UserLevel =: <emphasis role="italic">Administrator</emphasis>
+										</para>
+									</listitem>
+									<listitem>
+										<para> CertificateID =: <emphasis role="italic">With newly created certifciate ID</emphasis>
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits device connecting to service endpoint. (Checks if the client certificate Common Name is same as the one created) </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client sends  <emphasis role="bold">GetDeviceInformation</emphasis> via the service endpoint. </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits <emphasis role="bold">GetDeviceInformationResponse</emphasis> via the service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link linkend="Annex_HelperClear">Annex A.2</link></para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client verifies that the device disconnects from the service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client deletes the newly created self signed certifiate <link linkend="Annex_HelperDeleteRSAKeyPair">Annex A.5</link> </para>
+						</listitem>
+						<listitem>
+							<para> If <emphasis role="italic">cap</emphasis> differs from <emphasis role="italic">uplinkServ</emphasis>.Capabilities.Capabilities, FAIL the test. </para>
+						</listitem>
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para> DUT passed all assertions. </para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">SetUplinkResponse</emphasis> message(s).  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not connect to the service endpoint.  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not use the newly created selfsigned certificate as the client certificate.  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">GetDeviceInformationResponsemessage(s)</emphasis>.  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">DeleteUplinkResponse message(s)</emphasis>.  </para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+		</section>
 				</chapter>
 				<appendix>
 					<title>Helper Procedures and Additional Notes</title>
@@ -921,5 +1057,488 @@
 							</itemizedlist>
 						</para>
 					</section>
+		<!--A.3-->
+		<section xml:id="Annex_HelperSecurityGetServiceCapabilities" xreflabel="Annex A.3">
+			<title>Get advanced security service capabilities</title>
+			<para>
+				<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
+      </para>
+			<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to get service capabilities.
+      </para>
+			<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Security Configuration Service is received from the DUT.
+      </para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None
+      </para>
+			<para>
+				<emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
+      </para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+          <?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+              ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+              The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
+              <itemizedlist>
+								<listitem>
+									<para>
+                    Capabilities =: <emphasis role="italic">cap</emphasis>
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT passes all assertions.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<!--A.4-->
+		<section xml:id="Annex_HelperDetermineRSAKeyLength" xreflabel="Annex A.4">
+			<title>Determine RSA key length</title>
+			<para>
+				<emphasis role="bold">Name:</emphasis> HelperDetermineRSAKeyLength
+      </para>
+			<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to determine the RSA key length to use during testing.
+      </para>
+			<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Security Configuration Service is received from the DUT. On-board RSA key pair generation is supported by the DUT as indicated by the RSAKeyPairGeneration capability.
+      </para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None
+      </para>
+			<para>
+				<emphasis role="bold">Returns:</emphasis> The smallest supported RSA key length (<emphasis role="italic">keyLength</emphasis>).
+      </para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+          <?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+              ONVIF Client gets the service capabilities (out <emphasis role="italic">cap</emphasis>) by the following the procedure mentioned in <xref linkend="Annex_HelperSecurityGetServiceCapabilities"/>.
+            </para>
+					</listitem>
+					<listitem>
+						<para>
+              ONVIF Client loops through the supported Key length list (<emphasis role="italic">cap</emphasis>.RSAKeyLengths) and selects the smallest supported key length (<emphasis role="italic">keyLength</emphasis>).
+            </para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT passes all assertions.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              No supported key length was found at step 2.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<!--A.5-->
+		<section xml:id="Annex_HelperDeleteRSAKeyPair" xreflabel="Annex A.5">
+			<title>Delete an RSA key pair </title>
+			<para>
+				<emphasis role="bold">Name:</emphasis>HelperDeleteRSAKeyPair
+      </para>
+			<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to delete an RSA key pair.
+      </para>
+			<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Security Configuration Service is received from the DUT. On-board RSA key pair generation is supported by the DUT as indicated by the RSAKeyPairGeneration capability.
+      </para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> The identifier of the key pair (<emphasis role="italic">keyID</emphasis>) to delete.
+      </para>
+			<para>
+				<emphasis role="bold">Returns:</emphasis> None
+      </para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+          <?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+              ONVIF Client invokes <emphasis role="bold">DeleteKey</emphasis> with parameters
+            </para>
+						<itemizedlist>
+							<listitem>
+								<para>
+                  KeyID := <emphasis role="italic">keyID</emphasis>
+								</para>
+							</listitem>
+						</itemizedlist>
+					</listitem>
+					<listitem>
+						<para>
+              DUT responds with a <emphasis role="bold">DeleteKeyResponse</emphasis> message.
+            </para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT passes all assertions.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT did not send <emphasis role="bold">DeleteKeyResponse</emphasis> message.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<!--A.6-->
+		<section xml:id="Annex_HelperCreateRSAKeyPair" xreflabel="Annex A.6">
+			<title>Create an RSA key pair</title>
+			<para>
+				<emphasis role="bold">Name:</emphasis> HelperCreateRSAKeyPair
+      </para>
+			<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to create an RSA key pair
+      </para>
+			<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Security Configuration Service is received from the DUT. On-board RSA key pair generation is supported by the DUT as indicated by the RSAKeyPairGeneration capability. The DUT shall have enough free storage capacity for one additional RSA key pair.
+      </para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None
+      </para>
+			<para>
+				<emphasis role="bold">Returns:</emphasis> The identifier of the new key pair (<emphasis role="italic">keyID</emphasis>).
+      </para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+          <?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+              ONVIF Client determines the length of the key to generate (out <emphasis role="italic">length</emphasis>) by following the procedure mentioned in <xref linkend="Annex_HelperDetermineRSAKeyLength"/>.
+            </para>
+					</listitem>
+					<listitem>
+						<para>
+              ONVIF Client invokes <emphasis role="bold">CreateRSAKeyPair</emphasis> with parameter
+              <itemizedlist>
+								<listitem>
+									<para>
+                    KeyLength := <emphasis role="italic">length</emphasis>
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+              The DUT responds with <emphasis role="bold">CreateRSAKeyPairResponse</emphasis> message with parameters
+              <itemizedlist>
+								<listitem>
+									<para>
+                    KeyID =: <emphasis role="italic">keyID</emphasis>
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+                    EstimatedCreationTime =: <emphasis role="italic">duration</emphasis>
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</listitem>
+					<listitem xml:id="Annex_HelperCreateRSAKeyPair.4">
+						<para>
+              Until <emphasis role="italic">operationDelay</emphasis> + <emphasis role="italic">duration</emphasis> expires repeat the following steps:
+              <orderedlist numeration="arabic" inheritnum="inherit">
+                <?dbfo label-width="2.5em"?>
+								<listitem>
+									<para>
+                    ONVIF Client waits for 5 seconds.
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    ONVIF Client invokes <emphasis role="bold">GetKeyStatus</emphasis> with parameters
+                    <itemizedlist>
+											<listitem>
+												<para>
+                          KeyID := <emphasis role="italic">keyID</emphasis>
+												</para>
+											</listitem>
+										</itemizedlist>
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+                    The DUT responds with <emphasis role="bold">GetKeyStatusResponse</emphasis> message with parameters
+                    <itemizedlist>
+											<listitem>
+												<para>
+                          KeyStatus =: <emphasis role="italic">keyStatus</emphasis>
+												</para>
+											</listitem>
+										</itemizedlist>
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+                    If <emphasis role="italic">keyStatus</emphasis> is equal to "ok", <emphasis role="italic">keyID</emphasis> will be return as a result of the procedure, other steps will be skipped.
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    If <emphasis role="italic">keyStatus</emphasis> is equal to "corrupt", FAIL the procedure and deletes the RSA key pair (<emphasis role="italic">keyID</emphasis>) by following the procedure mentioned in <xref linkend="Annex_HelperDeleteRSAKeyPair"/>.
+                  </para>
+								</listitem>
+							</orderedlist>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+              If <emphasis role="italic">operationDelay</emphasis> + <emphasis role="italic">duration</emphasis> expires for step <xref linkend="Annex_HelperCreateRSAKeyPair.4"/> and the last <emphasis role="italic">keyStatus</emphasis> is other than "ok", FAIL the procedure and deletes the RSA key pair (<emphasis role="italic">keyID</emphasis>) by following the procedure mentioned in <xref linkend="Annex_HelperDeleteRSAKeyPair"/>.
+            </para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT passes all assertions.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT did not send <emphasis role="bold">CreateRSAKeyPairResponse</emphasis> message.
+            </para>
+					</listitem>
+					<listitem>
+						<para>
+              DUT did not send <emphasis role="bold">GetKeyStatusResponse</emphasis> message(s).
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Note:</emphasis>
+				<emphasis role="italic">operationDelay</emphasis> will be taken from Operation Delay field of ONVIF Device Test Tool.
+      </para>
+		</section>
+		<!--A.7-->
+		<section xml:id="Annex_SubjectForAClientCertificate" xreflabel="Annex A.7">
+			<title>Subject for a client certificate</title>
+			<para>
+        Use the following subject for test cases:
+        <itemizedlist>
+					<listitem>
+						<para>
+              Subject.Country := "US"
+            </para>
+					</listitem>
+					<listitem>
+						<para>
+              Subject.CommonName := &lt;DUT IP-address&gt;
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<!--A.8-->
+		<section xml:id="Annex_HelperCreateSelfSignedCertificate" xreflabel="Annex A.8">
+			<title>Create a self-signed certificate </title>
+			<para>
+				<emphasis role="bold">Name:</emphasis> HelperCreateSelfSignedCertificate
+      </para>
+			<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to create a self-signed certificate.
+      </para>
+			<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Security Configuration Service is received from the DUT. Create self-signed certificate supported by the DUT as indicated by the SelfSignedCertificateCreationWithRSA capability. RSA key pair generation supported by the DUT as indicated by the RSAKeyPairGeneration capability. The DUT shall have enough free storage capacity for one additional RSA key pair. The DUT shall have enough free storage capacity for one additional certificate.
+      </para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None
+      </para>
+			<para>
+				<emphasis role="bold">Returns:</emphasis> The identifier of the new certificate (<emphasis role="italic">certID</emphasis>) and RSA key pair (<emphasis role="italic">keyID</emphasis>).
+      </para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+          <?dbfo label-width="1.5em"?>
+					<listitem>
+						<para>
+              ONVIF Client creates an RSA key pair (out <emphasis role="italic">keyID</emphasis>) by following the procedure mentioned in <xref linkend="Annex_HelperCreateRSAKeyPair"/>.
+            </para>
+					</listitem>
+					<listitem>
+						<para>
+              ONVIF Client invokes <emphasis role="bold">CreateSelfSignedCertificate</emphasis> with parameters
+              <itemizedlist>
+								<listitem>
+									<para>
+                    X509Version skipped
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    KeyID := <emphasis role="italic">keyID</emphasis>
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+                    Subject := subject (see <xref linkend="Annex_SubjectForAServerCertificate"/>)
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    Alias skipped
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    notValidBefore skipped
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    notValidAfter skipped
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    SignatureAlgorithm.algorithm := 1.2.840.113549.1.1.5 (OID of SHA-1 with RSA Encryption algorithm)
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    SignatureAlgorithm.parameters skipped
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    SignatureAlgorithm.anyParameters skipped
+                  </para>
+								</listitem>
+								<listitem>
+									<para>
+                    Extension skipped
+
+                  </para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+              The DUT responds with <emphasis role="bold">CreateSelfSignedCertificateResponse</emphasis> message with parameters
+              <itemizedlist>
+								<listitem>
+									<para>
+                    CertificateID =: <emphasis role="italic">certID</emphasis>
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT passes all assertions.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
+						<para>
+              DUT did not send <emphasis role="bold">CreateSelfSignedCertificateResponse</emphasis> message.
+            </para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
 				</appendix>
 			</book>			
