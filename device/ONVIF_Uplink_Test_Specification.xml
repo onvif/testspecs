@@ -597,17 +597,162 @@
 				</para>
 			</section>
 			<!-- UPLINK-1-1-2 -->
-			<section xml:id="tc.UPLINK-1-1-5">
+			<section xml:id="tc.UPLINK-1-1-2">
 				<para> </para>
+			</section>
+		</section>
+		<!--Uplink streaming -->
+		<section xml:id="tc.uplink.uplink_streaming">
+			<title> Uplink Streaming</title>
+			<!-- UPLINK-2-1-1 -->
+			<section xml:id="tc.UPLINK-2-1-1">
+				<title>CONNECT AND STREAM</title>
+				<para>
+					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-2-1-1 </para>
+				<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> GetUplinks (Uplink
+					Specification), SetUplink (Uplink Specification), DeleteUplink (Uplink
+					Specification), GetProfiles (Media2 Specification), GetStreamUri (Media2 Specification), RTSP over WebSocket (Streaming Specification)  </para>
+				<para>
+					<emphasis role="bold">Feature Under Test:</emphasis> Connect, Live Video, Disconnect</para>
+				<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> uplink.wsdl</para>
+				<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify live video over the uplink operation. </para>
+				<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service is received from the DUT and uplink service endpoint is operational.
+					Media2 Service is received from the DUT. H.264 encoding is supported by DUT. Real-time streaming is supported by DUT. 
+					A media profile with H.264 video encoder configuration is configured on the Device. 
+				</para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist>
+						<?dbfo label-width="1.5em"?>
+						<listitem>
+							<para>
+								Start an ONVIF Client.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Start the DUT.
+							</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link
+								linkend="Annex_HelperClear">Annex A.2</link>.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client calls SetUplink with parameters
+								<itemizedlist>
+									<listitem>
+										<para> RemoteAddress  := <emphasis role="italic">IPv4 address and port of service
+											endpoint</emphasis></para>
+									</listitem>
+									<listitem>
+										<para> UserLevel := <emphasis>Administrator</emphasis></para>
+									</listitem>
+									<listitem>
+										<para> Without CertificateID  </para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits device connecting to service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client sends GetProfiles via the service endpoint without any parameters.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits GetProfilesResponse via the service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client sends GetStreamUri via the service endpoint with parameters
+								<itemizedlist>
+									<listitem>
+										<para> Protocol := <emphasis role="italic">RtspOverHttp</emphasis></para>
+									</listitem>
+									<listitem>
+										<para> Profile := <emphasis>First profile returned by GetProfilesResponse</emphasis></para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits GetStreamUriResponse via the service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client tries to start and decode media streaming via the uplink service endpoint 
+								using the procedure mentioned in Annex A.12 of Media2 Test Specifcation
+								with the following input and output parameters 
+								<itemizedlist>
+									<listitem>
+										<para>in streamUri - Uri for media streaming </para>
+									</listitem>
+									<listitem>
+										<para>in video - media type</para>
+									</listitem>
+									<listitem>
+										<para>in H.264 - expected media stream encoding </para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link
+								linkend="Annex_HelperClear">Annex A.2</link>.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client verifies that the device disconnects from the service endpoint.</para>
+						</listitem>
+						
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT passes all assertions.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para> DUT did not send any of the required response messages.</para>
+						</listitem>
+						<listitem>
+							<para> DUT did not connect to the service endpoint. </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not process the RTSP setup. </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not send H.264 Video. </para>
+						</listitem>
+					</itemizedlist>
+				</para>
 			</section>
 		</section>
 		<section xml:id="tc.uplink.security">
 			<title>Security</title>
-			<!-- UPLINK-2-1-1 -->
+			<!-- UPLINK-3-1-1 -->
 			<section xml:id="tc.UPLINK-3-1-1">
 				<title>Client Certificate For Uplink Authentication</title>
 				<para>
-					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-2-1-1 </para>
+					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-3-1-1 </para>
 				<para>
 					<emphasis role="bold">Specification Coverage:</emphasis> GetUplinks (UplinkSpecification), SetUplink (Uplink Specification), DeleteUplink (UplinkSpecification) </para>
 				<para>
@@ -736,8 +881,8 @@
 		</section>
 		<section xml:id="tc.uplink.capabilities">
 			<title>Capabilities</title>
-			<!-- UPLINK-2-1-1 -->
-			<section xml:id="tc.UPLINK-2-1-1">
+			<!-- UPLINK-4-1-1 -->
+			<section xml:id="tc.UPLINK-4-1-1">
 				<title>GET SERVICES AND GET UPLINK SERVICE CAPABILITIES CONSISTENCY</title>
 				<para>
 					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-4-1-1 </para>
