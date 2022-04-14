@@ -220,6 +220,12 @@
 				</para>
 			</listitem>
 			<listitem>
+				<para> [ONVIF RTSP via Media2 Test] Real Time Streaming using Media2 Test Specifcation</para>
+				<para>>
+					<link xlink:href="https://www.onvif.org/wp-content/uploads/2021/06/ONVIF_Real_Time_Streaming_using_Media2_Device_Test_Specification_21.06.pdf"></link>
+				</para>
+			</listitem>
+			<listitem>
 				<para>[ISO/IEC Directives, Part 2] ISO/IEC Directives, Part 2, Annex H:</para>
 				<para>
 					<link xlink:href="http://www.iso.org/directives">http://www.iso.org/directives</link>
@@ -596,10 +602,6 @@
 					</itemizedlist>
 				</para>
 			</section>
-			<!-- UPLINK-1-1-2 -->
-			<section xml:id="tc.UPLINK-1-1-2">
-				<para> </para>
-			</section>
 		</section>
 		<!--Uplink streaming -->
 		<section xml:id="tc.uplink.uplink_streaming">
@@ -612,7 +614,8 @@
 				<para>
 					<emphasis role="bold">Specification Coverage:</emphasis> GetUplinks (Uplink
 					Specification), SetUplink (Uplink Specification), DeleteUplink (Uplink
-					Specification), GetProfiles (Media2 Specification), GetStreamUri (Media2 Specification), RTSP over WebSocket (Streaming Specification)  </para>
+					Specification), GetProfiles (Media2 Specification), GetStreamUri (Media2
+					Specification), RTSP over HTTP (Streaming Specification) </para>
 				<para>
 					<emphasis role="bold">Feature Under Test:</emphasis> Connect, Live Video, Disconnect</para>
 				<para>
@@ -620,10 +623,11 @@
 				<para>
 					<emphasis role="bold">Test Purpose:</emphasis> To verify live video over the uplink operation. </para>
 				<para>
-					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service is received from the DUT and uplink service endpoint is operational.
-					Media2 Service is received from the DUT. H.264 encoding is supported by DUT. Real-time streaming is supported by DUT. 
-					A media profile with H.264 video encoder configuration is configured on the Device. 
-				</para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service is received from
+					the DUT and uplink service endpoint is operational. Media2 Service is received
+					from the DUT. H.264 or H.265 encoding is supported by DUT. Real-time streaming
+					is supported by DUT. A media profile with H.264 video encoder configuration is
+					configured on the Device. </para>
 				<para>
 					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
 				</para>
@@ -689,7 +693,8 @@
 						</listitem>
 						<listitem>
 							<para> ONVIF Client tries to start and decode media streaming via the uplink service endpoint 
-								using the procedure mentioned in Annex A.12 of Media2 Test Specifcation
+								using the procedure mentioned in Annex A.12 of Real Time Streaming using
+								Media2 Test Specifcation
 								with the following input and output parameters 
 								<itemizedlist>
 									<listitem>
