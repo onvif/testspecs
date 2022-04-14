@@ -378,46 +378,46 @@
 			<section xml:id="overview.test_policy.uplink_connect">
 				<title>Uplink</title>
 				<para> The test policies specific to the test case execution of all functional blocks: <itemizedlist>
-						<listitem>
-							<para> DUT shall give the Uplink Service entry point by GetServices
-								command, if DUT supports this service. Otherwise, these test cases
-								will be skipped. </para>
-						</listitem>
-						<listitem>
-							<para> DUT shall support the following commands: <itemizedlist>
-									<listitem>
-										<para> GetUplinks </para>
-									</listitem>
-									<listitem>
-										<para> SetUplink </para>
-									</listitem>
-									<listitem>
-										<para> DeleteUplink </para>
-									</listitem>
-									<listitem>
-										<para> GetDeviceInformation (Device Mgmt Service) </para>
-									</listitem>
-									<listitem>
-										<para> GetUsers (Device Mgmt Service) </para>
-									</listitem>
-							</itemizedlist></para></listitem>
+					<listitem>
+						<para> DUT shall give the Uplink Service entry point by GetServices
+							command, if DUT supports this service. Otherwise, these test cases
+							will be skipped. </para>
+					</listitem>
+					<listitem>
+						<para> DUT shall support the following commands: <itemizedlist>
 							<listitem>
-								<para> A DUT supporting the Media2 service shall support the following commands: <itemizedlist>
-									<listitem>
-										<para> GetProfiles (Media2) </para>
-									</listitem>
-									<listitem>
-										<para> GetStreamUri (Media2) </para>
-									</listitem>
-								</itemizedlist>
-							</para>
-						</listitem>
-					</itemizedlist>
+								<para> GetUplinks </para>
+							</listitem>
+							<listitem>
+								<para> SetUplink </para>
+							</listitem>
+							<listitem>
+								<para> DeleteUplink </para>
+							</listitem>
+							<listitem>
+								<para> GetDeviceInformation (Device Mgmt Service) </para>
+							</listitem>
+							<listitem>
+								<para> GetUsers (Device Mgmt Service) </para>
+							</listitem>
+						</itemizedlist></para></listitem>
+					<listitem>
+						<para> A DUT supporting the Media2 service shall support the following commands: <itemizedlist>
+							<listitem>
+								<para> GetProfiles (Media2) </para>
+							</listitem>
+							<listitem>
+								<para> GetStreamUri (Media2) </para>
+							</listitem>
+						</itemizedlist>
+						</para>
+					</listitem>
+				</itemizedlist>
 				</para>
-							<para> Please refer to <link linkend="tc.uplink.uplink_connect">Section 5.1</link>
+				<para> Please refer to <link linkend="tc.uplink.uplink_connect">Section 5.1</link>
 					for Uplink Test Cases. </para>
-						</section>
-						
+			</section>
+			
 			<section xml:id="overview.test_policy.capabilities">
 				<title>Capabilities</title>
 				<para>
@@ -462,71 +462,71 @@
 							</para>
 						</listitem>
 					</itemizedlist>
-							</para>
-							<para> Please refer to <link linkend="tc.uplink.capabilities">Section 5.2</link> for
+				</para>
+				<para> Please refer to <link linkend="tc.uplink.capabilities">Section 5.2</link> for
 					Uplink Test Cases. </para>
-						</section>
-					</section>
-				</chapter>
-				<!--Uplink Test Cases-->
-				<chapter xml:id="tc.uplink">
-					<title>Uplink Test Cases</title>
-					<!--Uplink connect -->
-					<section xml:id="tc.uplink.uplink_connect">
-						<title> Uplink Connection</title>
-						<!-- UPLINK-1-1-1 -->
-						<section xml:id="tc.UPLINK-1-1-1">
-							<title>CONNECT AND DISCONNECT</title>
-							<para>
+			</section>
+		</section>
+	</chapter>
+	<!--Uplink Test Cases-->
+	<chapter xml:id="tc.uplink">
+		<title>Uplink Test Cases</title>
+		<!--Uplink connect -->
+		<section xml:id="tc.uplink.uplink_connect">
+			<title> Uplink Connection</title>
+			<!-- UPLINK-1-1-1 -->
+			<section xml:id="tc.UPLINK-1-1-1">
+				<title>CONNECT AND DISCONNECT</title>
+				<para>
 					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-1-1-1 </para>
-							<para>
+				<para>
 					<emphasis role="bold">Specification Coverage:</emphasis> GetUplinks (Uplink
 					Specification), SetUplink (Uplink Specification), DeleteUplink (Uplink
 					Specification)  </para>
-							<para>
+				<para>
 					<emphasis role="bold">Feature Under Test:</emphasis> Connect, Disconnect</para>
-							<para>
+				<para>
 					<emphasis role="bold">WSDL Reference:</emphasis> uplink.wsdl</para>
-							<para>
+				<para>
 					<emphasis role="bold">Test Purpose:</emphasis> To verify conect and disconnect
 					operation. </para>
-							<para>
+				<para>
 					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service is received from
 					the DUT. </para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist>
+						<?dbfo label-width="1.5em"?>
+						<listitem>
 							<para>
-								<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+								Start an ONVIF Client.
 							</para>
+						</listitem>
+						<listitem>
 							<para>
-								<emphasis role="bold">Test Procedure:</emphasis>
+								Start the DUT.
 							</para>
-							<para>
-								<orderedlist>
-									<?dbfo label-width="1.5em"?>
-									<listitem>
-										<para>
-											Start an ONVIF Client.
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											Start the DUT.
-										</para>
-									</listitem>
-									<listitem>
-										<para> ONVIF Client retrieves Uplink Service capabilities by following the procedure
+						</listitem>
+						<listitem>
+							<para> ONVIF Client retrieves Uplink Service capabilities by following the procedure
 								mentioned in <link linkend="Annex_HelperGetServiceCapabilities"
 									>Annex A.1</link> with the following input and output parameters <itemizedlist>
-									<listitem>
-										<para> out <emphasis role="italic">cap</emphasis> - Uplink
-											Service capabilities </para>
-									</listitem>
-								</itemizedlist></para>
-									</listitem>
-									<listitem>
-										<para> ONVIF Client removes any existing uplink configurations using the procedure <link
-									linkend="Annex_HelperClear">Annex A.2</link>.</para>
-									</listitem>
-									<listitem>
+										<listitem>
+											<para> out <emphasis role="italic">cap</emphasis> - Uplink
+												Service capabilities </para>
+										</listitem>
+									</itemizedlist></para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link
+								linkend="Annex_HelperClear">Annex A.2</link>.</para>
+						</listitem>
+						<listitem>
 							<para> ONVIF Client starts service endpoint.</para>
 						</listitem>
 						<listitem>
@@ -545,241 +545,241 @@
 								</itemizedlist>
 							</para>
 						</listitem>
-									<listitem>
-										<para> ONVIF Client awaits device connecting to service endpoint.</para>
-									</listitem>
-									<listitem>
-										<para> ONVIF Client sends GetDeviceInformation via the service endpoint.</para>
-									</listitem>
-									<listitem>
-										<para> ONVIF Client awaits GetDeviceInformationResponse via the service endpoint.</para>
-									</listitem>
-									<listitem>
-										<para> ONVIF Client removes any existing uplink configurations using the procedure <link
-											linkend="Annex_HelperClear">Annex A.2</link>.</para>
-									</listitem>
-									<listitem>
-										<para> ONVIF Client verifies that the device disconnects from the service endpoint.</para>
-									</listitem>
-									
-								</orderedlist>
-							</para>
+						<listitem>
+							<para> ONVIF Client awaits device connecting to service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client sends GetDeviceInformation via the service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits GetDeviceInformationResponse via the service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link
+								linkend="Annex_HelperClear">Annex A.2</link>.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client verifies that the device disconnects from the service endpoint.</para>
+						</listitem>
+						
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
 							<para>
-								<emphasis role="bold">Test Result:</emphasis>
+								DUT passes all assertions.
 							</para>
-							<para>
-								<emphasis role="bold">PASS –</emphasis>
-								<itemizedlist>
-									<listitem>
-										<para>
-											DUT passes all assertions.
-										</para>
-									</listitem>
-								</itemizedlist>
-							</para>
-							<para>
-								<emphasis role="bold">FAIL –</emphasis>
-								<itemizedlist>
-									<listitem>
-										<para> DUT did not send <emphasis role="bold">SetUplinkResponseC</emphasis> message(s). </para>
-									</listitem>
-									<listitem>
-										<para> DUT did not connect to the service endpoint. </para>
-									</listitem>
-									<listitem>
-										<para> DUT did not send <emphasis role="bold">GetDeviceInformationResponse</emphasis>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">SetUplinkResponseC</emphasis> message(s). </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not connect to the service endpoint. </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">GetDeviceInformationResponse</emphasis>
 								message(s). </para>
-									</listitem>
-									<listitem>
-										<para> DUT did not send <emphasis role="bold">DeleteUplinkResponseC</emphasis> message(s). </para>
-									</listitem>
-								</itemizedlist>
-							</para>
-						</section>
-						<!-- UPLINK-1-1-2 -->
-						<section xml:id="tc.UPLINK-1-1-5">
+						</listitem>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">DeleteUplinkResponseC</emphasis> message(s). </para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+			<!-- UPLINK-1-1-2 -->
+			<section xml:id="tc.UPLINK-1-1-5">
 				<para> </para>
 			</section>
-					</section>
-					<section xml:id="tc.uplink.capabilities">
-						<title>Capabilities</title>
-						<!-- UPLINK-2-1-1 -->
-						<section xml:id="tc.UPLINK-2-1-1">
-							<title>GET SERVICES AND GET UPLINK SERVICE CAPABILITIES CONSISTENCY</title>
-							<para>
+		</section>
+		<section xml:id="tc.uplink.capabilities">
+			<title>Capabilities</title>
+			<!-- UPLINK-2-1-1 -->
+			<section xml:id="tc.UPLINK-2-1-1">
+				<title>GET SERVICES AND GET UPLINK SERVICE CAPABILITIES CONSISTENCY</title>
+				<para>
 					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-2-1-1 </para>
-							<para>
+				<para>
 					<emphasis role="bold">Specification Coverage:</emphasis> Capability exchange
 					(ONVIF Core Specification), Capabilities (Uplink Service Specification) </para>
-							<para>
+				<para>
 					<emphasis role="bold">Feature Under Test:</emphasis> GetServices,
 					GetServiceCapabilities (Uplink) </para>
-							<para>
+				<para>
 					<emphasis role="bold">WSDL Reference:</emphasis> devicemgmt.wsdl,
 					uplink.wsdl</para>
-							<para>
+				<para>
 					<emphasis role="bold">Test Purpose:</emphasis> To verify getting Uplink Service
 					using GetServices request. To verify Get Services and Uplink Service
 					Capabilities consistency. </para>
-							<para>
+				<para>
 					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service is received from
 					the DUT. </para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+				</para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist>
+						<?dbfo label-width="1.5em"?>
+						<listitem>
 							<para>
-								<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT
+								Start an ONVIF Client.
 							</para>
+						</listitem>
+						<listitem>
 							<para>
-								<emphasis role="bold">Test Procedure:</emphasis>
+								Start the DUT.
 							</para>
+						</listitem>
+						<listitem>
 							<para>
-								<orderedlist>
-									<?dbfo label-width="1.5em"?>
+								ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
+								<itemizedlist>
 									<listitem>
 										<para>
-											Start an ONVIF Client.
+											IncludeCapability := false
 										</para>
 									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
+								<itemizedlist>
 									<listitem>
 										<para>
-											Start the DUT.
+											Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
 										</para>
 									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Set <emphasis role="italic">uplinkServ</emphasis> := item from <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/uplink/wsdl".
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">uplinkServ</emphasis>.Capabilities is specified, FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
+								<itemizedlist>
 									<listitem>
 										<para>
-											ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
-											<itemizedlist>
-												<listitem>
-													<para>
-														IncludeCapability := false
-													</para>
-												</listitem>
-											</itemizedlist>
+											IncludeCapability := true
 										</para>
 									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
+								<itemizedlist>
 									<listitem>
 										<para>
-											The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
-											<itemizedlist>
-												<listitem>
-													<para>
-														Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
-													</para>
-												</listitem>
-											</itemizedlist>
+											Service list =: <emphasis role="italic">listOfServicesWithCapabilities</emphasis>
 										</para>
 									</listitem>
-									<listitem>
-										<para>
-											If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps.
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											Set <emphasis role="italic">uplinkServ</emphasis> := item from <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/uplink/wsdl".
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											If <emphasis role="italic">uplinkServ</emphasis>.Capabilities is specified, FAIL the test and skip other steps.
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters:
-											<itemizedlist>
-												<listitem>
-													<para>
-														IncludeCapability := true
-													</para>
-												</listitem>
-											</itemizedlist>
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters:
-											<itemizedlist>
-												<listitem>
-													<para>
-														Service list =: <emphasis role="italic">listOfServicesWithCapabilities</emphasis>
-													</para>
-												</listitem>
-											</itemizedlist>
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											If <emphasis role="italic">listOfServicesWithCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps.
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											Set <emphasis role="italic">uplinkServ</emphasis> := item from <emphasis role="italic">listOfServicesWithCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/uplink/wsdl".
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											If <emphasis role="italic">uplinkServ</emphasis>.Capabilities is not specified, FAIL the test and skip other steps.
-										</para>
-									</listitem>
-									<listitem>
-										<para> If <emphasis role="italic">uplinkServ</emphasis>.Capabilities does not
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">listOfServicesWithCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Set <emphasis role="italic">uplinkServ</emphasis> := item from <emphasis role="italic">listOfServicesWithCapabilities</emphasis> list with Namespace = "http://www.onvif.org/ver10/uplink/wsdl".
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								If <emphasis role="italic">uplinkServ</emphasis>.Capabilities is not specified, FAIL the test and skip other steps.
+							</para>
+						</listitem>
+						<listitem>
+							<para> If <emphasis role="italic">uplinkServ</emphasis>.Capabilities does not
 								contain valid Capabilities element for Uplink service from
 								"http://www.onvif.org/ver10/uplink/wsdl" namespace, FAIL the
 								test and skip other steps. </para>
-									</listitem>
-									<listitem>
-										<para> ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis>
 								(Uplink) message. </para>
-									</listitem>
-									<listitem>
-										<para>
-											The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
-											<itemizedlist>
-												<listitem>
-													<para>
-														Capabilities =: <emphasis role="italic">cap</emphasis>
-													</para>
-												</listitem>
-											</itemizedlist>
-										</para>
-									</listitem>
-									<listitem>
-										<para>
-											If <emphasis role="italic">cap</emphasis> differs from <emphasis role="italic">uplinkServ</emphasis>.Capabilities.Capabilities, FAIL the test.
-										</para>
-									</listitem>
-								</orderedlist>
-							</para>
+						</listitem>
+						<listitem>
 							<para>
-								<emphasis role="bold">Test Result:</emphasis>
-							</para>
-							<para>
-								<emphasis role="bold">PASS –</emphasis>
+								The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
 								<itemizedlist>
 									<listitem>
 										<para>
-											DUT passed all assertions.
+											Capabilities =: <emphasis role="italic">cap</emphasis>
 										</para>
 									</listitem>
 								</itemizedlist>
 							</para>
+						</listitem>
+						<listitem>
 							<para>
-								<emphasis role="bold">FAIL –</emphasis>
-								<itemizedlist>
-									<listitem>
-										<para>
-											The DUT did not send <emphasis role="bold">GetServicesResponse</emphasis> message.
-										</para>
-									</listitem>
-                  <listitem>
-										<para>
-											The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
-										</para>
-									</listitem>
-								</itemizedlist>
+								If <emphasis role="italic">cap</emphasis> differs from <emphasis role="italic">uplinkServ</emphasis>.Capabilities.Capabilities, FAIL the test.
 							</para>
-						</section>
-					</section>
+						</listitem>
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								DUT passed all assertions.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para>
+								The DUT did not send <emphasis role="bold">GetServicesResponse</emphasis> message.
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								The DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
+							</para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+		</section>
 		<section xml:id="tc.uplink.security">
 			<title>Security</title>
 			<!-- UPLINK-2-1-1 -->
@@ -812,19 +812,19 @@
 						</listitem>
 						<listitem>
 							<para> ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters: <itemizedlist>
-									<listitem>
-										<para> IncludeCapability := false </para>
-									</listitem>
-								</itemizedlist>
+								<listitem>
+									<para> IncludeCapability := false </para>
+								</listitem>
+							</itemizedlist>
 							</para>
 						</listitem>
 						<listitem>
 							<para> The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters: <itemizedlist>
-									<listitem>
-										<para> Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
-										</para>
-									</listitem>
-								</itemizedlist>
+								<listitem>
+									<para> Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
+									</para>
+								</listitem>
+							</itemizedlist>
 							</para>
 						</listitem>
 						<listitem>
@@ -844,7 +844,7 @@
 						</listitem>
 						<listitem>
 							<para> ONVIF Client calls SetUplink with with parameters 
-							    <itemizedlist>
+								<itemizedlist>
 									<listitem>
 										<para> RemoteAddress =: <emphasis role="italic">IPv4 address and port of serviceendpoint</emphasis>
 										</para>
@@ -913,235 +913,235 @@
 				</para>
 			</section>
 		</section>
-				</chapter>
-				<appendix>
-					<title>Helper Procedures and Additional Notes</title>
-					<!--A.1-->
-					<section xml:id="Annex_HelperGetServiceCapabilities">
-						<title>Get Uplink Service Capabilities</title>
-						<para>
-							<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
-						</para>
-						<para>
+	</chapter>
+	<appendix>
+		<title>Helper Procedures and Additional Notes</title>
+		<!--A.1-->
+		<section xml:id="Annex_HelperGetServiceCapabilities">
+			<title>Get Uplink Service Capabilities</title>
+			<para>
+				<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
+			</para>
+			<para>
 				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to get Uplink
 				Service Capabilities from the DUT. </para>
-						<para>
+			<para>
 				<emphasis role="bold">Pre-requisite:</emphasis> Uplink Service is received from the
 				DUT. </para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None
+			</para>
+			<para>
+				<emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
+			</para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
 						<para>
-							<emphasis role="bold">Input:</emphasis> None
+							ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> request.
 						</para>
+					</listitem>
+					<listitem>
 						<para>
-							<emphasis role="bold">Returns:</emphasis> The service capabilities (<emphasis role="italic">cap</emphasis>).
-						</para>
-						<para>
-							<emphasis role="bold">Procedure:</emphasis>
-						</para>
-						<para>
-							<orderedlist>
-								<?dbfo label-width="1.5em"?>
-								<listitem>
-									<para>
-										ONVIF Client invokes <emphasis role="bold">GetServiceCapabilities</emphasis> request.
-									</para>
-								</listitem>
-								<listitem>
-									<para>
-										The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
-										<itemizedlist>
-											<listitem>
-												<para>
-													Capabilities =: <emphasis role="italic">cap</emphasis>
-												</para>
-											</listitem>
-										</itemizedlist>
-									</para>
-								</listitem>
-							</orderedlist>
-						</para>
-						<para>
-							<emphasis role="bold">Procedure Result:</emphasis>
-						</para>
-						<para>
-							<emphasis role="bold">PASS –</emphasis>
+							The DUT responds with <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message with parameters
 							<itemizedlist>
 								<listitem>
 									<para>
-										DUT passed all assertions.
+										Capabilities =: <emphasis role="italic">cap</emphasis>
 									</para>
 								</listitem>
 							</itemizedlist>
 						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
 						<para>
-							<emphasis role="bold">FAIL –</emphasis>
-							<itemizedlist>
-								<listitem>
-									<para>
-										DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
-									</para>
-								</listitem>
-							</itemizedlist>
+							DUT passed all assertions.
 						</para>
-					</section>
-					<!--A.2-->
-					<section xml:id="Annex_HelperClear">
-						<title>Clear Uplink Service Configuration</title>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
 						<para>
-							<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
+							DUT did not send <emphasis role="bold">GetServiceCapabilitiesResponse</emphasis> message.
 						</para>
-						<para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<!--A.2-->
+		<section xml:id="Annex_HelperClear">
+			<title>Clear Uplink Service Configuration</title>
+			<para>
+				<emphasis role="bold">Name:</emphasis> HelperGetServiceCapabilities
+			</para>
+			<para>
 				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to remove all
 				uplink configurations from the DUT. </para>
-						<para>
+			<para>
 				<emphasis role="bold">Pre-requisite:</emphasis> Uplink Service is received from the
 				DUT. </para>
-						<para>
-							<emphasis role="bold">Input:</emphasis> None
-						</para>
-						<para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None
+			</para>
+			<para>
 				<emphasis role="bold">Returns:</emphasis> None. </para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
 						<para>
-							<emphasis role="bold">Procedure:</emphasis>
+							ONVIF Client invokes <emphasis role="bold">GetUplinks</emphasis> request.
 						</para>
+					</listitem>
+					<listitem>
 						<para>
+							The DUT responds with <emphasis role="bold">GetUplinksResponse</emphasis> message.
+						</para>
+					</listitem>
+					<listitem>
+						<para> For each reported configuration with remoteAddress repeat the following steps:
 							<orderedlist>
-								<?dbfo label-width="1.5em"?>
+								<listitem><para>ONVIF Client invokes <emphasis role="bold">DeleteUplinks</emphasis> request.</para></listitem>
 								<listitem>
 									<para>
-										ONVIF Client invokes <emphasis role="bold">GetUplinks</emphasis> request.
-									</para>
-								</listitem>
-								<listitem>
-									<para>
-										The DUT responds with <emphasis role="bold">GetUplinksResponse</emphasis> message.
-									</para>
-								</listitem>
-								<listitem>
-									<para> For each reported configuration with remoteAddress repeat the following steps:
-									<orderedlist>
-										<listitem><para>ONVIF Client invokes <emphasis role="bold">DeleteUplinks</emphasis> request.</para></listitem>
-										<listitem>
-											<para>
-												The DUT responds with <emphasis role="bold">DeleteUplinksResponse</emphasis> message.
-											</para>
-										</listitem>
-									</orderedlist>
+										The DUT responds with <emphasis role="bold">DeleteUplinksResponse</emphasis> message.
 									</para>
 								</listitem>
 							</orderedlist>
 						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
 						<para>
-							<emphasis role="bold">Procedure Result:</emphasis>
+							DUT passed all assertions.
 						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
 						<para>
-							<emphasis role="bold">PASS –</emphasis>
-							<itemizedlist>
-								<listitem>
-									<para>
-										DUT passed all assertions.
-									</para>
-								</listitem>
-							</itemizedlist>
+							DUT did not send <emphasis role="bold">DeleteUplinksResponse</emphasis> message.
 						</para>
-						<para>
-							<emphasis role="bold">FAIL –</emphasis>
-							<itemizedlist>
-								<listitem>
-									<para>
-										DUT did not send <emphasis role="bold">DeleteUplinksResponse</emphasis> message.
-									</para>
-								</listitem>
-							</itemizedlist>
-						</para>
-					</section>
-					<!--A.3-->
-					<section xml:id="Annex_ChooseClientCert">
-						<title>Choose Client Certificate</title>
-						<para>
-							<emphasis role="bold">Name:</emphasis> HelperChooseClientCertificate
-						</para>
-						<para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+		<!--A.3-->
+		<section xml:id="Annex_ChooseClientCert">
+			<title>Choose Client Certificate</title>
+			<para>
+				<emphasis role="bold">Name:</emphasis> HelperChooseClientCertificate
+			</para>
+			<para>
 				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to choose one certificate that has private key. </para>
-						<para>
+			<para>
 				<emphasis role="bold">Pre-requisite:</emphasis> Security Configuration Service is received from the DUT. </para>
-						<para>
-							<emphasis role="bold">Input:</emphasis> None
-						</para>
-						<para>
+			<para>
+				<emphasis role="bold">Input:</emphasis> None
+			</para>
+			<para>
 				<emphasis role="bold">Returns:</emphasis> Certificate ID which has private key and the CN field. </para>
+			<para>
+				<emphasis role="bold">Procedure:</emphasis>
+			</para>
+			<para>
+				<orderedlist>
+					<?dbfo label-width="1.5em"?>
+					<listitem>
 						<para>
-							<emphasis role="bold">Procedure:</emphasis>
+							ONVIF Client invokes <emphasis role="bold">GetAllCertificates </emphasis> request.
 						</para>
+					</listitem>
+					<listitem>
 						<para>
+							The DUT responds with <emphasis role="bold">GetAllCertificatesResponse</emphasis> message.
+						</para>
+					</listitem>
+					<listitem>
+						<para> For each reported KeyID repeat the following steps:
 							<orderedlist>
-								<?dbfo label-width="1.5em"?>
+								<listitem><para>ONVIF Client invokes <emphasis role="bold">GetPrivateKeyStatus</emphasis> request.</para></listitem>
 								<listitem>
 									<para>
-										ONVIF Client invokes <emphasis role="bold">GetAllCertificates </emphasis> request.
+										The DUT responds with <emphasis role="bold">GetPrivateKeyStatusResponse</emphasis> message.
 									</para>
 								</listitem>
 								<listitem>
 									<para>
-										The DUT responds with <emphasis role="bold">GetAllCertificatesResponse</emphasis> message.
-									</para>
-								</listitem>
-								<listitem>
-									<para> For each reported KeyID repeat the following steps:
-									<orderedlist>
-										<listitem><para>ONVIF Client invokes <emphasis role="bold">GetPrivateKeyStatus</emphasis> request.</para></listitem>
-										<listitem>
-											<para>
-												The DUT responds with <emphasis role="bold">GetPrivateKeyStatusResponse</emphasis> message.
-											</para>
-										</listitem>
-										<listitem>
-											<para>
-												The DUT Checks if privatekey is available, if available breaks the loop, with corresponding certificateID
-											</para>
-										</listitem>
-									</orderedlist>
-									</para>
-								</listitem>
-								<listitem>
-									<para>
-										ONVIF Client extracts the CN field of the selected certificateID, from  <emphasis role="bold">GetAllCertificatesResponse</emphasis>.
+										The DUT Checks if privatekey is available, if available breaks the loop, with corresponding certificateID
 									</para>
 								</listitem>
 							</orderedlist>
 						</para>
+					</listitem>
+					<listitem>
 						<para>
-							<emphasis role="bold">Procedure Result:</emphasis>
+							ONVIF Client extracts the CN field of the selected certificateID, from  <emphasis role="bold">GetAllCertificatesResponse</emphasis>.
 						</para>
+					</listitem>
+				</orderedlist>
+			</para>
+			<para>
+				<emphasis role="bold">Procedure Result:</emphasis>
+			</para>
+			<para>
+				<emphasis role="bold">PASS –</emphasis>
+				<itemizedlist>
+					<listitem>
 						<para>
-							<emphasis role="bold">PASS –</emphasis>
-							<itemizedlist>
-								<listitem>
-									<para>
-										DUT passed all assertions.
-									</para>
-								</listitem>
-							</itemizedlist>
+							DUT passed all assertions.
 						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+				<emphasis role="bold">FAIL –</emphasis>
+				<itemizedlist>
+					<listitem>
 						<para>
-							<emphasis role="bold">FAIL –</emphasis>
-							<itemizedlist>
-								<listitem>
-									<para>
-										DUT did not send <emphasis role="bold">GetAllCertificates</emphasis> message.
-									</para>
-								</listitem>
-								<listitem>
-									<para>
-										DUT did not send <emphasis role="bold">GetPrivateKeyStatus</emphasis> message.
-									</para>
-								</listitem>
-								<listitem>
-									<para>
-										DUT did not have a valid certificate id that has associated private key.
-									</para>
-								</listitem>
-							</itemizedlist>
+							DUT did not send <emphasis role="bold">GetAllCertificates</emphasis> message.
 						</para>
-					</section>
-				</appendix>
-			</book>			
+					</listitem>
+					<listitem>
+						<para>
+							DUT did not send <emphasis role="bold">GetPrivateKeyStatus</emphasis> message.
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							DUT did not have a valid certificate id that has associated private key.
+						</para>
+					</listitem>
+				</itemizedlist>
+			</para>
+		</section>
+	</appendix>
+</book>			
