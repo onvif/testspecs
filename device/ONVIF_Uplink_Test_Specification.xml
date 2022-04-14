@@ -780,6 +780,139 @@
 							</para>
 						</section>
 					</section>
+		<section xml:id="tc.uplink.security">
+			<title>Security</title>
+			<!-- UPLINK-2-1-1 -->
+			<section xml:id="tc.UPLINK-3-1-1">
+				<title>Client Certificate For Uplink Authentication</title>
+				<para>
+					<emphasis role="bold">Test Case ID:</emphasis> UPLINK-3-1-1 </para>
+				<para>
+					<emphasis role="bold">Specification Coverage:</emphasis> GetUplinks (UplinkSpecification), SetUplink (Uplink Specification), DeleteUplink (UplinkSpecification) </para>
+				<para>
+					<emphasis role="bold">Feature Under Test:</emphasis> Connect (uplink), Disconnect(uplink), GetDeviceInformation </para>
+				<para>
+					<emphasis role="bold">WSDL Reference:</emphasis> evicemgmt.wsdl,uplink.wsdl, advancedsecurity.wsdl</para>
+				<para>
+					<emphasis role="bold">Test Purpose:</emphasis> To verify TLS based authentication can be performed in connection setup and GetDeviceInformation command can be sent to device. </para>
+				<para>
+					<emphasis role="bold">Pre-Requisite:</emphasis> Uplink Service, DeviceMgmt service and Advance Security service is received from the DUT.  </para>
+				<para>
+					<emphasis role="bold">Test Configuration:</emphasis> ONVIF Client and DUT </para>
+				<para>
+					<emphasis role="bold">Test Procedure:</emphasis>
+				</para>
+				<para>
+					<orderedlist> <?dbfo label-width="1.5em"?>
+						<listitem>
+							<para> Start an ONVIF Client. </para>
+						</listitem>
+						<listitem>
+							<para> Start the DUT. </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client invokes <emphasis role="bold">GetServices</emphasis> message with parameters: <itemizedlist>
+									<listitem>
+										<para> IncludeCapability := false </para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> The DUT responds with a <emphasis role="bold">GetServicesResponse</emphasis> message with parameters: <itemizedlist>
+									<listitem>
+										<para> Service list =: <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis>
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/uplink/wsdl", FAIL the test and skip other steps. </para>
+						</listitem>
+						<listitem>
+							<para> If <emphasis role="italic">listOfServicesWithoutCapabilities</emphasis> does not contain item with Namespace = "http://www.onvif.org/ver10/advancedsecurity/wsdl", FAIL the test and skip other steps. </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client chooses one of the available certificate with a valid private key using the procedure in <link linkend="Annex_ChooseClientCert">Annex A.3</link> and get the comman name field.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link linkend="Annex_HelperClear">Annex A.2</link> </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client starts service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client calls SetUplink with with parameters 
+							    <itemizedlist>
+									<listitem>
+										<para> RemoteAddress =: <emphasis role="italic">IPv4 address and port of serviceendpoint</emphasis>
+										</para>
+									</listitem>
+									<listitem>
+										<para> UserLevel =: <emphasis role="italic">Administrator</emphasis>
+										</para>
+									</listitem>
+									<listitem>
+										<para> CertificateID =: <emphasis role="italic">With the certificate Id received in step 7</emphasis>
+										</para>
+									</listitem>
+								</itemizedlist>
+							</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits device connecting to service endpoint. (Checks if the client certificate Common Name is same as the one selected) </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client sends  <emphasis role="bold">GetDeviceInformation</emphasis> via the service endpoint. </para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client awaits <emphasis role="bold">GetDeviceInformationResponse</emphasis> via the service endpoint.</para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client removes any existing uplink configurations using the procedure <link linkend="Annex_HelperClear">Annex A.2</link></para>
+						</listitem>
+						<listitem>
+							<para> ONVIF Client verifies that the device disconnects from the service endpoint.</para>
+						</listitem>
+					</orderedlist>
+				</para>
+				<para>
+					<emphasis role="bold">Test Result:</emphasis>
+				</para>
+				<para>
+					<emphasis role="bold">PASS –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para> DUT passed all assertions. </para>
+						</listitem>
+					</itemizedlist>
+				</para>
+				<para>
+					<emphasis role="bold">FAIL –</emphasis>
+					<itemizedlist>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">SetUplinkResponse</emphasis> message(s).  </para>
+						</listitem>
+						<listitem>
+							<para>DUT does not have any valid certificate id with a privatekey.  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not connect to the service endpoint.  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not use the selected certificate for connection.  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">GetDeviceInformationResponsemessage(s)</emphasis>.  </para>
+						</listitem>
+						<listitem>
+							<para> DUT did not send <emphasis role="bold">DeleteUplinkResponse message(s)</emphasis>.  </para>
+						</listitem>
+					</itemizedlist>
+				</para>
+			</section>
+		</section>
 				</chapter>
 				<appendix>
 					<title>Helper Procedures and Additional Notes</title>
@@ -916,6 +1049,95 @@
 								<listitem>
 									<para>
 										DUT did not send <emphasis role="bold">DeleteUplinksResponse</emphasis> message.
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+					</section>
+					<!--A.3-->
+					<section xml:id="Annex_ChooseClientCert">
+						<title>Choose Client Certificate</title>
+						<para>
+							<emphasis role="bold">Name:</emphasis> HelperChooseClientCertificate
+						</para>
+						<para>
+				<emphasis role="bold">Procedure Purpose:</emphasis> Helper procedure to choose one certificate that has private key. </para>
+						<para>
+				<emphasis role="bold">Pre-requisite:</emphasis> Security Configuration Service is received from the DUT. </para>
+						<para>
+							<emphasis role="bold">Input:</emphasis> None
+						</para>
+						<para>
+				<emphasis role="bold">Returns:</emphasis> Certificate ID which has private key and the CN field. </para>
+						<para>
+							<emphasis role="bold">Procedure:</emphasis>
+						</para>
+						<para>
+							<orderedlist>
+								<?dbfo label-width="1.5em"?>
+								<listitem>
+									<para>
+										ONVIF Client invokes <emphasis role="bold">GetAllCertificates </emphasis> request.
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										The DUT responds with <emphasis role="bold">GetAllCertificatesResponse</emphasis> message.
+									</para>
+								</listitem>
+								<listitem>
+									<para> For each reported KeyID repeat the following steps:
+									<orderedlist>
+										<listitem><para>ONVIF Client invokes <emphasis role="bold">GetPrivateKeyStatus</emphasis> request.</para></listitem>
+										<listitem>
+											<para>
+												The DUT responds with <emphasis role="bold">GetPrivateKeyStatusResponse</emphasis> message.
+											</para>
+										</listitem>
+										<listitem>
+											<para>
+												The DUT Checks if privatekey is available, if available breaks the loop, with corresponding certificateID
+											</para>
+										</listitem>
+									</orderedlist>
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										ONVIF Client extracts the CN field of the selected certificateID, from  <emphasis role="bold">GetAllCertificatesResponse</emphasis>.
+									</para>
+								</listitem>
+							</orderedlist>
+						</para>
+						<para>
+							<emphasis role="bold">Procedure Result:</emphasis>
+						</para>
+						<para>
+							<emphasis role="bold">PASS –</emphasis>
+							<itemizedlist>
+								<listitem>
+									<para>
+										DUT passed all assertions.
+									</para>
+								</listitem>
+							</itemizedlist>
+						</para>
+						<para>
+							<emphasis role="bold">FAIL –</emphasis>
+							<itemizedlist>
+								<listitem>
+									<para>
+										DUT did not send <emphasis role="bold">GetAllCertificates</emphasis> message.
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										DUT did not send <emphasis role="bold">GetPrivateKeyStatus</emphasis> message.
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										DUT did not have a valid certificate id that has associated private key.
 									</para>
 								</listitem>
 							</itemizedlist>
