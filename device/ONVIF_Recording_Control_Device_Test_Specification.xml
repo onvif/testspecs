@@ -1238,7 +1238,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as the ones changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as the ones changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -1440,7 +1440,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -1667,7 +1667,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -1677,7 +1677,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">SetRecordingJobModeResponse</emphasis> message from the DUT. Mark the time of <emphasis role="bold">SetRecordingJobModeRequest</emphasis> message as T1.
+                Verify <emphasis role="bold">SetRecordingJobModeResponse</emphasis> message from the DUT. Mark the time of <emphasis role="bold" service="skip">SetRecordingJobModeRequest</emphasis> message as T1.
               </para>
             </listitem>
             <listitem>
@@ -1939,7 +1939,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -2151,7 +2151,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -2343,7 +2343,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify that JobConfiguration in <emphasis role="bold">CreateRecordingJobResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateRecordingJobRequest</emphasis> message.
+                Verify that JobConfiguration in <emphasis role="bold">CreateRecordingJobResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold" service="skip">CreateRecordingJobRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -2515,7 +2515,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify that JobConfiguration in <emphasis role="bold">CreateRecordingJobResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateRecordingJobRequest</emphasis> message.
+                Verify that JobConfiguration in <emphasis role="bold">CreateRecordingJobResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold" service="skip">CreateRecordingJobRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -2716,7 +2716,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify that JobConfiguration in <emphasis role="bold">CreateRecordingJobResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateRecordingJobRequest</emphasis> message.
+                Verify that JobConfiguration in <emphasis role="bold">CreateRecordingJobResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold" service="skip">CreateRecordingJobRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -2913,7 +2913,7 @@
             </listitem>
             <listitem>
               <para>
-                Check that new track (TrackToken = TrackToken1) is presented in updated track list for RecordingToken = RecordingToken1. Check that all parameter values are the same as were sent in <emphasis role="bold">CreateTrackRequest</emphasis> message.
+                Check that new track (TrackToken = TrackToken1) is presented in updated track list for RecordingToken = RecordingToken1. Check that all parameter values are the same as were sent in <emphasis role="bold" service="skip">CreateTrackRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -3131,7 +3131,7 @@
             </listitem>
             <listitem>
               <para>
-                Check that created recording (RecordingToken = RecordingToken1) is present on the updated recordings list. Check that all parameter values are the same as were sent in <emphasis role="bold">CreateRecordingRequest</emphasis> message.
+                Check that created recording (RecordingToken = RecordingToken1) is present on the updated recordings list. Check that all parameter values are the same as were sent in <emphasis role="bold" service="skip">CreateRecordingRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -8339,7 +8339,7 @@ Verify that Data.ElementItem item with Name = "Information" from Notification me
           </listitem>
           <listitem>
             <para>
-              If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
+              If no events are returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
             </para>
           </listitem>
           <listitem>
@@ -8424,7 +8424,7 @@ Verify that Data.ElementItem item with Name = "Information" from Notification me
           </listitem>
           <listitem>
             <para>
-              If no events returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is less or equal to T1+delta, go to the step 1.
+              If no events returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is less or equal to T1+delta, go to the step 1.
             </para>
           </listitem>
           <listitem>

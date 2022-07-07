@@ -18483,12 +18483,12 @@
           <?dbfo label-width="1.5em"?>
           <listitem>
             <para>
-              ONVIF Client will invoke GetNetworkInterfacesRequest message to retrieve the original settings of the DUT.
+              ONVIF Client will invoke <emphasis role="bold">GetNetworkInterfacesRequest</emphasis> message to retrieve the original settings of the DUT.
             </para>
           </listitem>
           <listitem>
             <para>
-              ONVIF Client verifies GetNetworkInterfacesResponse message.
+              ONVIF Client verifies <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message.
             </para>
           </listitem>
           <listitem>
@@ -18498,7 +18498,7 @@
           </listitem>
           <listitem>
             <para>
-              If GetNetworkInterfacesResponse message contains NetworkInterfaces.IPv6 and NetworkInterfaces.IPv6.Enabled=true, then ONVIF Client checks NetworkInterfaces.IPv6.Config.DHCP. Otherwise, go to step 11.
+              If <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message contains NetworkInterfaces.IPv6 and NetworkInterfaces.IPv6.Enabled=true, then ONVIF Client checks NetworkInterfaces.IPv6.Config.DHCP. Otherwise, go to step 11.
             </para>
           </listitem>
           <listitem>
@@ -18519,32 +18519,32 @@
 
           <listitem>
             <para>
-              ONVIF Client will invoke SetNetworkInterfacesRequest message to turn off DHCP IPv6 (InterfaceToken = available network interface, NetworkInterfaces.IPv6.Config.DHCP=Off).
+              ONVIF Client will invoke <emphasis role="bold">SetNetworkInterfacesRequest</emphasis> message to turn off DHCP IPv6 (InterfaceToken = available network interface, NetworkInterfaces.IPv6.Config.DHCP=Off).
             </para>
           </listitem>
           <listitem>
             <para>
-              ONVIF Client gets current network interfaces via GetNetworkInterfacesRequest message.
+              ONVIF Client gets current network interfaces via <emphasis role="bold">GetNetworkInterfacesRequest</emphasis> message.
             </para>
           </listitem>
           <listitem>
             <para>
-              ONVIF Client verifies GetNetworkInterfacesResponse message and checks that set settings were applied. Repeat steps 6-7.
+              ONVIF Client verifies <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message and checks that set settings were applied. Repeat steps 6-7.
             </para>
           </listitem>
           <listitem>
             <para>
-              If GetNetworkInterfacesResponse message does not contain NetworkInterfaces.IPv6 or NetworkInterfaces.IPv6.Enabled=false, then ONVIF Client will invoke SetNetworkInterfacesRequest message (InterfaceToken = available network interface,  NetworkInterfaces.IPv6. Enabled=true) to turn on IPv6 configuration.
+              If <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message does not contain NetworkInterfaces.IPv6 or NetworkInterfaces.IPv6.Enabled=false, then ONVIF Client will invoke <emphasis role="bold">SetNetworkInterfacesRequest</emphasis> message (InterfaceToken = available network interface,  NetworkInterfaces.IPv6. Enabled=true) to turn on IPv6 configuration.
             </para>
           </listitem>
           <listitem>
             <para>
-              The DUT will return SetNetworkInterfacesResponse message.
+              The DUT will return <emphasis role="bold">SetNetworkInterfacesResponse</emphasis> message.
             </para>
           </listitem>
           <listitem>
             <para>
-              If Reboot is required by DUT, invoke SystemReboot command.
+              If Reboot is required by DUT, invoke <emphasis role="bold">SystemReboot</emphasis> command.
             </para>
           </listitem>
           <listitem>
@@ -18575,12 +18575,12 @@
           </listitem>
           <listitem>
             <para>
-              ONVIF Client gets current network interfaces via GetNetworkInterfacesRequest message.
+              ONVIF Client gets current network interfaces via <emphasis role="bold">GetNetworkInterfacesRequest</emphasis> message.
             </para>
           </listitem>
           <listitem>
             <para>
-              ONVIF Client verifies GetNetworkInterfacesResponse message and checks that set settings were applaied. Execute steps 5-7.
+              ONVIF Client verifies <emphasis role="bold">GetNetworkInterfacesResponse</emphasis> message and checks that set settings were applaied. Execute steps 5-7.
             </para>
           </listitem>
         </orderedlist>
@@ -18645,17 +18645,17 @@
           <?dbfo label-width="1.5em"?>
           <listitem>
             <para>
-              Restore the initial network settings by invoking SetNetworkInterfaces (Default settings) command.
+              Restore the initial network settings by invoking <emphasis role="bold">SetNetworkInterfaces</emphasis> (Default settings) command.
             </para>
           </listitem>
           <listitem>
             <para>
-              If Reboot is required by DUT, invoke SystemReboot command.
+              If Reboot is required by DUT, invoke <emphasis role="bold">SystemReboot</emphasis> command.
             </para>
           </listitem>
           <listitem>
             <para>
-              If SystemReboot is invoked and DUT supports Discovery, wait for HELLO message from the default network interface.
+            If <emphasis role="bold"  service="skip">SystemReboot</emphasis> is invoked and DUT supports Discovery, wait for HELLO message from the default network interface.
             </para>
           </listitem>
           <listitem>

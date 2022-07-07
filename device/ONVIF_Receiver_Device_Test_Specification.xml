@@ -1355,7 +1355,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold" service="skip">CreateReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -1531,7 +1531,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold" service="skip">CreateReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -1727,7 +1727,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = token2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold" service="skip">CreateReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -1864,7 +1864,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = ReceiverToken2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+                Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (Token = ReceiverToken2, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as was sent in <emphasis role="bold" service="skip">CreateReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -2603,7 +2603,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -2874,7 +2874,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -3100,7 +3100,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold">ConfigureReceiverRequest</emphasis> message.
+                Verify <emphasis role="bold">GetReceiverResponse</emphasis> message from the DUT. Check that <emphasis role="bold">GetReceiverResponse</emphasis> message contains the same parameters values as were changed in <emphasis role="bold" service="skip">ConfigureReceiverRequest</emphasis> message.
               </para>
             </listitem>
             <listitem>
@@ -3665,7 +3665,7 @@
           </listitem>
           <listitem>
             <para>
-              Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (ReceiverToken1, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as were sent in <emphasis role="bold">CreateReceiverRequest</emphasis> message.
+              Verify the <emphasis role="bold">CreateReceiverResponse</emphasis> message (ReceiverToken1, Configuration.Mode = "NeverConnect", Configuration.MediaUri = validUri, Configuration.StreamSetup.Stream = ’RTP-Unicast’, Configuration.StreamSetup.Transport.Protocol = ’UDP’) from the DUT. Check that <emphasis role="bold">CreateReceiverResponse</emphasis> message contains the same parameters values as were sent in <emphasis role="bold" service="skip">CreateReceiverRequest</emphasis> message.
             </para>
           </listitem>
         </orderedlist>
@@ -3693,7 +3693,7 @@
           </listitem>
           <listitem>
             <para>
-              If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
+              If no events are returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
             </para>
           </listitem>
           <listitem>
@@ -3751,7 +3751,7 @@
           </listitem>
           <listitem>
             <para>
-              If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
+              If no events are returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is more than T1+delta, where delta is Operation delay time, skip other steps. If no events are returned and CurrentTime of sending <emphasis role="bold" service="skip">PullMessages</emphasis> is less or equal than T1+delta go to the step 1.
             </para>
           </listitem>
           <listitem>

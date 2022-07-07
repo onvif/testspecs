@@ -5069,7 +5069,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindMetadataRequest</emphasis> message at step 6.
+                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindMetadataRequest</emphasis> message at step 6.
               </para>
             </listitem>
             <listitem>
@@ -5094,7 +5094,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindMetadataRequest</emphasis> message at step 11.
+                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindMetadataRequest</emphasis> message at step 11.
               </para>
             </listitem>
             <listitem>
@@ -5449,7 +5449,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindMetadataRequest</emphasis> message at step 6.
+                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindMetadataRequest</emphasis> message at step 6.
               </para>
             </listitem>
             <listitem>
@@ -5474,7 +5474,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindMetadataRequest</emphasis> message at step 11.
+                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindMetadataRequest</emphasis> message at step 11.
               </para>
             </listitem>
             <listitem>
@@ -5639,7 +5639,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindMetadataRequest</emphasis> message at step 6.
+                Verify the <emphasis role="bold">GetMetadataSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindMetadataRequest</emphasis> message at step 6.
               </para>
             </listitem>
             <listitem>
@@ -6619,7 +6619,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindPTZPositionRequest</emphasis> message at step 6.
+                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindPTZPositionRequest</emphasis> message at step 6.
               </para>
             </listitem>
             <listitem>
@@ -6644,7 +6644,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindPTZPositionRequest</emphasis> message at step 11.
+                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindPTZPositionRequest</emphasis> message at step 11.
               </para>
             </listitem>
             <listitem>
@@ -6999,7 +6999,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindPTZPositionRequest</emphasis> message at step 6.
+                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindPTZPositionRequest</emphasis> message at step 6.
               </para>
             </listitem>
             <listitem>
@@ -7024,7 +7024,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindPTZPositionRequest</emphasis> message at step 11.
+                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindPTZPositionRequest</emphasis> message at step 11.
               </para>
             </listitem>
             <listitem>
@@ -7189,7 +7189,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindPTZPositionRequest</emphasis> message at step 6.
+                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], ResultList) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindPTZPositionRequest</emphasis> message at step 6.
               </para>
             </listitem>
             <listitem>
@@ -7476,7 +7476,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], Result.Position.PanTilt = PTZPosition1) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindPTZPositionRequest</emphasis> message at step 6.
+                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], Result.Position.PanTilt = PTZPosition1) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindPTZPositionRequest</emphasis> message at step 6.
               </para>
             </listitem>
             <listitem>
@@ -7501,7 +7501,7 @@
             </listitem>
             <listitem>
               <para>
-                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], Result.Position.PanTilt) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold">FindPTZPositionRequest</emphasis> message at step 11.
+                Verify the <emphasis role="bold">GetPTZPositionSearchResultsResponse</emphasis> message (SearchState = [CurrentSearchState], Result.Position.PanTilt) from the DUT. Check that time (ResultList.Result.Time) of the search result is inside the search endpoints that were defined in <emphasis role="bold" service="skip">FindPTZPositionRequest</emphasis> message at step 11.
               </para>
             </listitem>
             <listitem>

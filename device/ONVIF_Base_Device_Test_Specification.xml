@@ -10674,12 +10674,12 @@
                   </listitem>
                   <listitem>
                     <para>
-                      <emphasis role="italic">uriHost</emphasis> := host of uri used for <emphasis role="bold">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.3"/> (IP or hostname)
+                      <emphasis role="italic">uriHost</emphasis> := host of uri used for <emphasis role="bold" service="skip">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.3"/> (IP or hostname)
                     </para>
                   </listitem>
                   <listitem>
                     <para>
-                      <emphasis role="italic">uriHostPort</emphasis> := host port of uri used for <emphasis role="bold">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.3"/>
+                      <emphasis role="italic">uriHostPort</emphasis> := host port of uri used for <emphasis role="bold" service="skip">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.3"/>
                     </para>
                   </listitem>
                 </itemizedlist>
@@ -10769,12 +10769,12 @@
                         </listitem>
                         <listitem>
                           <para>
-                            <emphasis role="italic">uriHost</emphasis> := host of uri used for <emphasis role="bold">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.7.2"/> (IP or hostname)
+                            <emphasis role="italic">uriHost</emphasis> := host of uri used for <emphasis role="bold" service="skip">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.7.2"/> (IP or hostname)
                           </para>
                         </listitem>
                         <listitem>
                           <para>
-                            <emphasis role="italic">uriHostPort</emphasis> := host port of uri used for <emphasis role="bold">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.7.2"/>
+                            <emphasis role="italic">uriHostPort</emphasis> := host port of uri used for <emphasis role="bold" service="skip">GetServices</emphasis> request at step <xref linkend="tc.DEVICE-1-1-31.7.2"/>
                           </para>
                         </listitem>
                       </itemizedlist>

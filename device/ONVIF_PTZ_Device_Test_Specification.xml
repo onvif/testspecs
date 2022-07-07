@@ -2856,7 +2856,7 @@
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">RelativeMove</emphasis> request for PanTilt, verify that DUT returns <emphasis role="bold">RelativeMoveResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">RelativeMove</emphasis> request for PanTilt, verify that DUT returns <emphasis role="bold">RelativeMoveResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
@@ -2866,7 +2866,7 @@
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">RelativeMove</emphasis> request for Zoom, verify that DUT returns <emphasis role="bold">RelativeMoveResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">RelativeMove</emphasis> request for Zoom, verify that DUT returns <emphasis role="bold">RelativeMoveResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
@@ -3003,17 +3003,17 @@
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus after 60 second.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus after 60 second.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
                 </para>
               </listitem>
               <listitem>
@@ -3023,17 +3023,17 @@
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for Zoom, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for Zoom, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for Zoom, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus after 60 second.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for Zoom, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus after 60 second.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
                 </para>
               </listitem>
             </orderedlist>
@@ -3162,27 +3162,27 @@
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, ONVIF Client will invoke <emphasis role="bold">Stop</emphasis> request to stop continuous move.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, ONVIF Client will invoke <emphasis role="bold">Stop</emphasis> request to stop continuous move.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">StopResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">StopResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
                 </para>
               </listitem>
               <listitem>
@@ -3192,27 +3192,27 @@
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for Zoom, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for Zoom, verify that DUT returns <emphasis role="bold">ContinuousMoveResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for Zoom, ONVIF Client will invoke <emphasis role="bold">Stop</emphasis> request to stop continuous move.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for Zoom, ONVIF Client will invoke <emphasis role="bold">Stop</emphasis> request to stop continuous move.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for Zoom, verify that the DUT returns <emphasis role="bold">StopResponse</emphasis> message indicating success.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for Zoom, verify that the DUT returns <emphasis role="bold">StopResponse</emphasis> message indicating success.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for Zoom, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for Zoom, ONVIF Client will invoke <emphasis role="bold">GetStatus</emphasis> request to get a current PTZStatus.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  If ONVIF Client invoked <emphasis role="bold">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
+                  If ONVIF Client invoked <emphasis role="bold" service="skip">ContinuousMove</emphasis> request for PanTilt, verify that the DUT returns <emphasis role="bold">GetStatusResponse</emphasis> message with MoveStatus = IDLE or UNKNOWN.
                 </para>
               </listitem>
             </orderedlist>
@@ -4872,7 +4872,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -4882,7 +4882,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5007,7 +5007,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5017,7 +5017,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5146,7 +5146,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">RelativeMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">RelativeMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5156,7 +5156,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">RelativeMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">RelativeMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5278,7 +5278,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">RelativeMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">RelativeMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5288,7 +5288,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">RelativeMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">RelativeMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5414,7 +5414,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">ContinuousMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">ContinuousMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5424,7 +5424,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">ContinuousMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">ContinuousMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5546,7 +5546,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">ContinuousMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">ContinuousMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5556,7 +5556,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">ContinuousMove</emphasis> request is accepted.
+                    Verify that the <emphasis role="bold" service="skip">ContinuousMove</emphasis> request is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5682,7 +5682,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request (or <emphasis role="bold">RelativeMove</emphasis> request) is accepted.
+                  Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request (or <emphasis role="bold" service="skip">RelativeMove</emphasis> request) is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5692,7 +5692,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request (or <emphasis role="bold">RelativeMove</emphasis> request) is accepted.
+                  Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request (or <emphasis role="bold" service="skip">RelativeMove</emphasis> request) is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5817,7 +5817,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request (or <emphasis role="bold">RelativeMove</emphasis> request) is accepted.
+                  Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request (or <emphasis role="bold" service="skip">RelativeMove</emphasis> request) is accepted.
                   </para>
                 </listitem>
                 <listitem>
@@ -5827,7 +5827,7 @@
                 </listitem>
                 <listitem>
                   <para>
-                    Verify that the <emphasis role="bold">AbsoluteMove</emphasis> request (or <emphasis role="bold">RelativeMove</emphasis> request) is accepted.
+                  Verify that the <emphasis role="bold" service="skip">AbsoluteMove</emphasis> request (or <emphasis role="bold" service="skip">RelativeMove</emphasis> request) is accepted.
                   </para>
                 </listitem>
                 <listitem>
