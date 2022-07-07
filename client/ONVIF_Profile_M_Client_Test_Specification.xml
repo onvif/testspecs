@@ -20,12 +20,12 @@
     <title>Profile M Client Test Specification</title>
      <!--<releaseinfo>Profile M is under development. This test specification is not final and it is subject to changes.</releaseinfo>-->
     <subtitle>
-      Version 21.12
+      Version 22.06
     </subtitle>    
-    <date>December 2021</date>    
+    <date>June 2022</date>    
    
     <copyright>
-      <year>2021</year>
+      <year>2022</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -33,19 +33,20 @@
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
     <revhistory>
+        <revision>
+        <revnumber>22.06</revnumber>
+        <date>Dec 27, 2022</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
       <xi:include href="parts/features/core/Discovery.xml"
                   xpointer="s.revhistory.Discovery.20211012.All"/>
       <!--Use the following to add history from the parts-->
       <!--xi:include href="parts/features/core/HTTPDigest.xml" xpointer="s.revhistory.HTTPDigest.20190814.ProfileC"/-->
       <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
                 xpointer="s.revhistory.SetSynchronizationPoint.20210603.All"/>
-      <revision>
-        <revnumber>21.12</revnumber>
-        <date>Jun 02, 2021</date>
-        <revdescription>         
-          <para>Profile Normative Reference were removed from test cases according to #364</para>
-        </revdescription>
-      </revision>
+
       <revision>
         <revnumber>21.06</revnumber>
         <date>Jun 01, 2021</date>

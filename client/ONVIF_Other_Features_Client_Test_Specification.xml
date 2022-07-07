@@ -10,10 +10,10 @@
       </phrase>
     </orgname>
     <title>Other Features Client Test Specification</title>
-    <subtitle>Version 21.12</subtitle>
-    <date>December 2021</date>
+    <subtitle>Version 22.06</subtitle>
+    <date>June 2022</date>
     <copyright>
-      <year>2021</year>
+      <year>2022</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -22,6 +22,28 @@
     <xi:include href="parts/general/legalnotice.xml"/>
  
       <revhistory> 
+       <revision>
+        <revnumber>22.06</revnumber>
+        <date>Apr 07, 2022</date>
+        <revdescription>
+          <para>Media2Service AND Mask were added to Check Condition based on Device Features</para>
+        </revdescription>
+      </revision>
+       <revision>
+        <revnumber>22.06</revnumber>
+        <date>Mar 18, 2022</date>
+        <revdescription>
+          <para>The following test cases added according to #327:</para>
+          <para>Privacy Mask Using Media2 Test Cases </para>
+        </revdescription>
+      </revision>
+        <revision>
+        <revnumber>22.06</revnumber>
+        <date>Dec 27, 2022</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
          <xi:include href="parts/features/core/MonitoringNotifications.xml" xpointer="s.revhistory.MonitoringNotifications.20211007.OtherFeatures"/>
         <xi:include href="parts/features/core/HTTPSystemRestore.xml" xpointer="s.revhistory.HTTPSystemRestore.20211007.OtherFeatures"/>
         <xi:include href="parts/features/core/HTTPSystemBackup.xml" xpointer="s.revhistory.HTTPSystemBackup.20211007.OtherFeatures"/>
@@ -36,13 +58,6 @@
         <para>Operational State section and Operational State Test Cases was moved from ONVIF Profile Q Client Test Specification to ONVIF Other Features Client Test Specifications.</para>
       </revdescription>
     </revision>
-        <revision>
-        <revnumber>21.12</revnumber>
-        <date>Jun 02, 2021</date>
-        <revdescription>         
-          <para>Profile Normative Reference were removed from test cases according to #364</para>
-        </revdescription>
-      </revision>
         <revision>
         <revnumber>19.12</revnumber>
         <date>Oct 04, 2019</date>
@@ -272,7 +287,15 @@
         <title>TLS Configuration Features</title>
         <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="s.intro.TLSConfiguration"/>
     </section>
-    
+    <section xml:id="s.intro.Media2_Masks">
+      <title>Mask for Media2 Features</title>
+     <section xml:id="s.intro.Media2_Mask">
+        <title>Mask Configuration Using Media2</title>
+        <para>
+          Privacy Mask Using Media2 section specifies listing and modification of Mask configurations on Device.
+        </para>
+      </section>
+    </section>
     
       
   </chapter>
@@ -419,6 +442,11 @@
               <entry>http://www.onvif.org/ver10/advancedsecurity/wsdl</entry>
               <entry>The namespace for the WSDL Security Configuration service</entry>
             </row>
+             <row>
+          <entry>tr2</entry>
+          <entry>http://www.onvif.org/ver20/media/wsdl</entry>
+          <entry>The namespace for the WSDL media2 service</entry>
+        </row>
           </tbody>
         </tgroup>
       </table>
@@ -437,7 +465,7 @@
       An ONVIF Client with OSD features support can provide OSD configuration with Media Service.
     </para>
     <para>
-      An ONVIF Client with securitu configuration features support can provide TLS Enabled Versions Configuration configuration.
+      An ONVIF Client with security configuration features support can provide TLS Enabled Versions Configuration configuration.
     </para>
     <xi:include href="parts/general/overview_common.xml" xpointer="overview.para.3"/>
     <xi:include href="parts/general/overview_common.xml" xpointer="overview.general"/>
@@ -5478,8 +5506,679 @@
     <title>Test Cases for TLS Configuration</title>
     <xi:include href="parts/features/securityconfiguration/TLSConfiguration.xml" xpointer="tc.TLSConfiguration"/>
   </chapter> 
-  
-  
+
+  <chapter xml:id="tc.OtherFeatures.Media2_Mask">
+      <title>Test Cases for Privacy Masks for Media2</title>
+    <section xml:id="tc.Media2_Mask">
+      <title>Privacy Masks for Media2 Test Cases</title>
+      <section xml:id="tc.Media2_Mask.feature">
+        <title>Feature Level Normative Reference:</title>
+        <para>
+          <emphasis role="bold">Validated Feature:</emphasis> Mask Configuration (Media2_Mask)
+        </para>
+        <para>
+          <emphasis role="bold" annotations="Media2Service AND Mask">Check Condition based on Device Features:</emphasis> Mask and Media2 Service are supported by Device.
+        </para>
+        <para>
+          <emphasis role="bold">Required Number of Devices:</emphasis> 1
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_Mask.scenario">
+        <title>Expected Scenarios Under Test:</title>
+        <para>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client connects to Device to list Masks, create Mask, remove Mask, and modify Mask on the device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as supporting Privacy Masks if the
+                following conditions are met:<itemizedlist>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve Privacy Masks using
+                      <emphasis role="bold">GetMasks</emphasis> operation (Media2 Service)
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to create Privacy Masks using
+                      <emphasis role="bold">CreateMask</emphasis> operation (Media2 Service)
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to retrieve Mask options using
+                      <emphasis role="bold">GetMaskOptions</emphasis> operation (Media2 Service)
+                        AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to delete Privacy Mask using
+                      <emphasis role="bold">DeleteMask</emphasis> operation (Media2 Service)
+                      AND
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      Client is able to modify Mask using <emphasis role="bold">SetMask</emphasis> operation (Media2 Service).
+
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client is considered as NOT supporting OSD Configuration if
+                ANY of the following is TRUE:<itemizedlist>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">GetMasks</emphasis> request (Media2 Service)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">CreateMask</emphasis> operation (Media2 Service)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">GetMaskOptions</emphasis> operation (Media2 Service)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">DeleteMask</emphasis> operation (Media2 Service)
+                      OR
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      No valid response to <emphasis role="bold">SetMask</emphasis> operation (Media2 Service).
+
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+      </section>
+      <section xml:id="tc.Media2_Mask.MEDIA2_MASK-1">
+        <title>GET MASKS USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Mask - Get Masks
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_MASK-1
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Get Masks (Media2_Mask_Media2_GetMasks)
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that existing Mask configurations is received by Client using the
+          <emphasis role="bold">GetMasks</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetMasks</emphasis> operation with skipped <emphasis role="bold">Token</emphasis> element for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Mask (Mask).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetMasks</emphasis> request message to retrieve Mask configurations
+                from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetMasksResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetMasks</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetMasks</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-1.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetMasks</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-1.1">
+                    <para>
+                      [S2] <emphasis role="bold">tr2:GetMasks</emphasis> element does not contain child element <emphasis role="bold">tr2:Token</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetMasks</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-1.2">
+                    <para>
+                      [S3] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-1.3">
+                    <para>
+                      [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetMasksResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_Mask.MEDIA2_MASK-2">
+        <title>CREATE MASK USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Mask - Create Mask
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_MASK-2
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Create Mask (Media2_Mask_Media2_CreateMask)
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to create Mask using the
+          <emphasis role="bold">CreateMask</emphasis> operation 
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">CreateMask</emphasis> operation for Media2 Service.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Mask (Mask).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">CreateMask</emphasis> request message to create Mask on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">CreateMaskResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateMask</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">CreateMask</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-2.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:CreateMask</emphasis> AND
+                    </para>
+                  </listitem>
+
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">CreateMask</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-2.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-2.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:CreateMaskResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_Mask.MEDIA2_MASK-3">
+        <title>GET MASK OPTIONS USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Mask - Get Mask Options
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_MASK-3
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Get Mask Options (Media2_Mask_Media2_GetMaskOptions)
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Mask options provided by Device is received by Client using the
+          <emphasis role="bold">GetMaskOptions</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">GetMaskOptions</emphasis> operation for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Mask (Mask).
+              </para>
+            </listitem>
+
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">GetMaskOptions</emphasis> request message to retrieve an Mask options
+                from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">GetMaskOptionsResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetMaskOptions</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">GetMaskOptions</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-3.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetMaskOptions</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">GetMaskOptions</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-3.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-3.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:GetMaskOptionsResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_Mask.MEDIA2_MASK-4">
+          <title>DELETE MASK USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Mask - Delete Mask
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_MASK-4
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Delete Mask (Media2_Mask_Media2_DeleteMask)
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to delete Mask using the
+          <emphasis role="bold">DeleteMask</emphasis> operation 
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">DeleteMask</emphasis> operation with <emphasis role="bold">Token</emphasis> element for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Mask (Mask).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">DeleteMask</emphasis> request message to delete Mask configuration
+                from the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">DeleteMaskResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DeleteMask</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">DeleteMask</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-4.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:DeleteMask</emphasis> AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-4.1">
+                    <para>
+                      [S2] <emphasis role="bold">tr2:DeleteMask</emphasis> element has child element <emphasis role="bold">tr2:Token</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">DeleteMask</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-4.2">
+                    <para>
+                      [S3] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-4.3">
+                    <para>
+                      [S4] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:DeleteMaskResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+      <section xml:id="tc.Media2_Mask.MEDIA2_MASK-5">
+        <title>SET MASK USING MEDIA2</title>
+        <para>
+          <emphasis role="bold">Test Label:</emphasis> Mask - Set Mask 
+        </para>
+        <para>
+          <emphasis role="bold">Test Case ID:</emphasis> MEDIA2_MASK-5
+        </para>
+        <para>
+          <emphasis role="bold">Feature Under Test:</emphasis> Set Mask (Media2_Mask_Media2_SetMask)
+        </para>
+
+        <para>
+          <emphasis role="bold">Test Purpose:</emphasis> To verify that Client is able to change Mask provided by Device using the
+          <emphasis role="bold">SetMask</emphasis> operation.
+        </para>
+        <para>
+          <emphasis role="bold">Pre-Requisite:</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Network Trace Capture files contains at least one Conversation
+                between Client and Device with <emphasis role="bold">SetMask</emphasis> operation for Media2 Service present.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Media2 Service (Media2Service).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device supports Mask (Mask).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">
+            Test Procedure (expected to be reflected in network trace
+            file):
+          </emphasis>
+          <orderedlist>
+            <listitem>
+              <para>
+                Client invokes <emphasis role="bold">SetMask</emphasis> request message to change a Mask
+                on the Device.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device responds with code HTTP 200 OK and <emphasis role="bold">SetMaskResponse</emphasis> message.
+              </para>
+            </listitem>
+          </orderedlist>
+        </para>
+        <para>
+          <emphasis role="bold">Test Result:</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold">PASS -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetMask</emphasis> request messages are valid according to XML Schemas listed in <link linkend="additions.namespaces">Namespaces</link> AND
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Client <emphasis role="bold">SetMask</emphasis> request in Test Procedure fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-5.0">
+                    <para>
+                      [S1] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:SetMask</emphasis> AND
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Device response on the <emphasis role="bold">SetMask</emphasis> request fulfills the following requirements:
+                <itemizedlist>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-5.1">
+                    <para>
+                      [S2] It has HTTP 200 response code AND
+                    </para>
+                  </listitem>
+                  <listitem xml:id="tc.Media2_Mask.MEDIA2_MASK-5.2">
+                    <para>
+                      [S3] <emphasis role="bold">soapenv:Body</emphasis> element has child element <emphasis role="bold">tr2:SetMaskResponse</emphasis>.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+        <para>
+          <emphasis role="bold">FAIL -</emphasis>
+          <itemizedlist>
+            <listitem>
+              <para>
+                The Client failed PASS criteria.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </para>
+
+      </section>
+    </section>
+  </chapter>
+    
+    
   <appendix>
     <title>Test for Appendix A</title>
     <section xml:id="Annex_A.1">

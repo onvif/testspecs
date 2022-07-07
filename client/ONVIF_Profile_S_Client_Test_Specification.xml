@@ -18,10 +18,10 @@
       </phrase>
     </orgname>
     <title>Profile S Client Test Specification</title>
-    <subtitle>Version 21.12</subtitle>
-    <date>December 2021</date>
+    <subtitle>Version 22.06</subtitle>
+    <date>June 2022</date>
     <copyright>
-      <year>2021</year>
+      <year>2022</year>
       <holder>ONVIF, Inc. All rights reserved.</holder>
     </copyright>
     <address>
@@ -29,6 +29,13 @@
     </address>
     <xi:include href="parts/general/legalnotice.xml"/>
     <revhistory>
+        <revision>
+        <revnumber>22.06</revnumber>
+        <date>Dec 27, 2022</date>
+        <revdescription>         
+          <para>Profile Normative Reference were removed from test cases according to #364</para>
+        </revdescription>
+      </revision>
       <xi:include href="parts/features/core/Discovery.xml"
                   xpointer="s.revhistory.Discovery.20211012.All"/>
       <xi:include href="parts/features/core/SetSynchronizationPoint.xml"
@@ -49,13 +56,7 @@
                   xpointer="s.revhistory.KeepAliveForPullPointEventHandling.20200831.All"/>
        <xi:include href="parts/features/core/EventHandling.xml"
                   xpointer="s.revhistory.EventHandling.20200831.All"/>
-      <revision>
-        <revnumber>21.12</revnumber>
-        <date>Jun 02, 2021</date>
-        <revdescription>         
-          <para>Profile Normative Reference were removed from test cases according to #364</para>
-        </revdescription>
-      </revision>
+
       <revision>
         <revnumber>19.12</revnumber>
         <date>Oct 04, 2019</date>
